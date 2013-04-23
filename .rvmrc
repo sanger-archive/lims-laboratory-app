@@ -1,2 +1,2 @@
-rvm use 1.9.3@lims-s2-app --create
+rvm use 1.9.3@lims-laboratory-app --create
 

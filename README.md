@@ -1,4 +1,4 @@
-# Lims::S2::App
+# Lims::Laboratory::App
 
 Main Lims application. Deal with labware and order processing.
 
@@ -6,7 +6,7 @@ Main Lims application. Deal with labware and order processing.
 
 Add this line to your application's Gemfile:
 
-    gem 'lims-s2-app'
+    gem 'lims-laboratory-app'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install lims-s2-app
+    $ gem install lims-laboratory-app
 
 ## Usage
 

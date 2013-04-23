@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in lims-s2-app.gemspec
+# Specify your gem's dependencies in lims-laboratory-app.gemspec
 gemspec
 
 gem 'lims-core', '~>1.5.0.1', :git => 'http://github.com/sanger/lims-core.git' , :branch => 'development'
