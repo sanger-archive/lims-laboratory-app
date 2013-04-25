@@ -12,7 +12,7 @@ shared_examples "a container" do |contained|
   end
 end
 
-module Lims::Core::Laboratory
+module Lims::LaboratoryApp::Laboratory
   shared_examples "a hash" do
     it "can be indexed with a symbol " do
       subject[:B3].should be_a(container)

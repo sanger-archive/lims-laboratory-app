@@ -4,7 +4,7 @@ require 'laboratory/spec_helper'
 # Model requirements
 require 'lims-laboratory-app/laboratory/oligo'
 
-module Lims::Core::Laboratory
+module Lims::LaboratoryApp::Laboratory
   describe Oligo, :oligo => true, :laboratory => true do
     let(:sequence_1) { "AAA" }
     let(:sequence_2) { "CCCT" }

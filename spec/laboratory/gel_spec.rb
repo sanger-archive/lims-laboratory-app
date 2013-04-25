@@ -8,7 +8,7 @@ require 'laboratory/receptacle_examples'
 # Model requirements
 require 'lims-laboratory-app/laboratory/gel'
 
-module Lims::Core::Laboratory
+module Lims::LaboratoryApp::Laboratory
   shared_examples "a valid gel" do
     it_behaves_like "located" 
     context "contains windows" do

@@ -33,7 +33,7 @@ module Lims::Core
 
     shared_examples_for "a label" do
       subject { result[:labellable] }
-      it { should be_a(Lims::Core::Labels::Labellable) }
+      it { should be_a(Lims::LaboratoryApp::Labels::Labellable) }
 
       its(:positions) { should_not be_empty }
       its(:positions) { should be_a(Array) }

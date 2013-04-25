@@ -4,7 +4,7 @@ require 'spec_helper'
 # Model requirements
 require 'lims-laboratory-app/organization/batch'
 
-module Lims::Core::Organization
+module Lims::LaboratoryApp::Organization
   describe Batch, :batch => true, :organization => true do
     def self.it_has_a(attribute, type=nil)
       it "responds to #{attribute}" do

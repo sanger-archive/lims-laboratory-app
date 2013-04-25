@@ -5,7 +5,7 @@ require 'laboratory/container_examples'
 # Model requirements
 require 'lims-laboratory-app/laboratory/tag_group'
 
-module Lims::Core::Laboratory
+module Lims::LaboratoryApp::Laboratory
   describe TagGroup, :tag_group => true, :tag => true, :laboratory => true do
     let(:sequence_1) { "AAA" }
     let(:sequence_2) { "CCC" }

@@ -22,7 +22,7 @@ shared_examples_for "transfer tube to spin column" do
       end
       spin_column2.size.should == tube2.size
       spin_column2.each do |aliquot|
-        next if aliquot.type == Lims::Core::Laboratory::Aliquot::Solvent
+        next if aliquot.type == Lims::LaboratoryApp::Laboratory::Aliquot::Solvent
         aliquot.type.should == type2
         aliquot.quantity.should == finalQuantity2
       end

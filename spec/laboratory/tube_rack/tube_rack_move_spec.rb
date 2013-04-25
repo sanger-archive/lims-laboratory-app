@@ -115,13 +115,13 @@ module Lims::Core
               source_tube_rack2[:E8].should be_nil
 
               target_tube_rack1[:B9].should_not be_nil
-              target_tube_rack1[:B9].should be_a(Lims::Core::Laboratory::Tube)
+              target_tube_rack1[:B9].should be_a(Lims::LaboratoryApp::Laboratory::Tube)
               target_tube_rack1[:D4].should_not be_nil
-              target_tube_rack1[:D4].should be_a(Lims::Core::Laboratory::Tube)
+              target_tube_rack1[:D4].should be_a(Lims::LaboratoryApp::Laboratory::Tube)
               target_tube_rack2[:F3].should_not be_nil
-              target_tube_rack2[:F3].should be_a(Lims::Core::Laboratory::Tube)
+              target_tube_rack2[:F3].should be_a(Lims::LaboratoryApp::Laboratory::Tube)
               target_tube_rack2[:A9].should_not be_nil
-              target_tube_rack2[:A9].should be_a(Lims::Core::Laboratory::Tube)
+              target_tube_rack2[:A9].should be_a(Lims::LaboratoryApp::Laboratory::Tube)
             end
           end
         end

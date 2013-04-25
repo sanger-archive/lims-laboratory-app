@@ -1,7 +1,7 @@
 # Spec requirements
 require 'laboratory/spec_helper'
 
-Lab=Lims::Core::Laboratory
+Lab=Lims::LaboratoryApp::Laboratory
 
 shared_examples "add contents" do
   it "can have a chemical content added to it" do

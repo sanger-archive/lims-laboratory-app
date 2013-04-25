@@ -7,7 +7,7 @@ require 'labels/labellable_examples'
 # Model requirements
 require 'lims-laboratory-app/laboratory/tube'
 
-module Lims::Core::Laboratory
+module Lims::LaboratoryApp::Laboratory
   describe Tube, :tube => true, :laboratory => true  do
 
     def self.it_can_assign(attribute)

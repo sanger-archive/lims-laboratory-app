@@ -2,7 +2,7 @@ require 'laboratory/container_examples'
 require 'labels/labellable_examples'
 require 'lims-laboratory-app/laboratory/tube_rack'
 
-module Lims::Core::Laboratory
+module Lims::LaboratoryApp::Laboratory
   shared_examples "a tube rack hash" do
     it "can be indexed with a symbol " do
       subject[:B5].should be_a(Tube)
@@ -43,9 +43,9 @@ module Lims::Core::Laboratory
       let(:size) { number_of_rows * number_of_columns }
       subject { 
         described_class.new(:number_of_columns => number_of_columns, :number_of_rows => number_of_rows).tap do |rack|
-          rack[:A1] = Lims::Core::Laboratory::Tube.new
-          rack[:B5] = Lims::Core::Laboratory::Tube.new
-          rack[:E3] = Lims::Core::Laboratory::Tube.new
+          rack[:A1] = Lims::LaboratoryApp::Laboratory::Tube.new
+          rack[:B5] = Lims::LaboratoryApp::Laboratory::Tube.new
+          rack[:E3] = Lims::LaboratoryApp::Laboratory::Tube.new
         end
       }
 
@@ -57,7 +57,7 @@ module Lims::Core::Laboratory
       end
 
       it "cannot replace a tube if it already exists in the rack" do
-        expect { subject[:A1] = Lims::Core::Laboratory::Tube.new }.to raise_error(TubeRack::RackPositionNotEmpty)
+        expect { subject[:A1] = Lims::LaboratoryApp::Laboratory::Tube.new }.to raise_error(TubeRack::RackPositionNotEmpty)
       end
 
       it_behaves_like "a container", Tube

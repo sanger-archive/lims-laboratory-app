@@ -4,7 +4,7 @@ require 'laboratory/spec_helper'
 # Model requirements
 require 'lims-laboratory-app/laboratory/aliquot'
 
-module Lims::Core::Laboratory
+module Lims::LaboratoryApp::Laboratory
   describe Aliquot, :aliquot => true, :laboratory => true do
     context "to be valid" do
       let (:aliquot) {Aliquot.new(:quantity=>10)}

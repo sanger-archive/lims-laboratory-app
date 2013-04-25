@@ -4,7 +4,7 @@ require 'laboratory/spec_helper'
 # Model requirements
 require 'lims-laboratory-app/laboratory/sample'
 
-module Lims::Core::Laboratory
+module Lims::LaboratoryApp::Laboratory
   describe Sample, :sample => true, :laboratory => true do
 
     context "to be valid" do

@@ -6,7 +6,7 @@ require 'labels/labellable_examples'
 # Model requirement
 require 'lims-laboratory-app/laboratory/spin_column'
 
-module Lims::Core::Laboratory
+module Lims::LaboratoryApp::Laboratory
   describe SpinColumn, :spin_column => true, :laboratory => true  do
     it_behaves_like "located" 
     it_behaves_like "receptacle"

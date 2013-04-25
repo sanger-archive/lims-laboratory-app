@@ -9,7 +9,7 @@ require 'laboratory/receptacle_examples'
 # Model requirements
 require 'lims-laboratory-app/laboratory/flowcell'
 
-module Lims::Core::Laboratory
+module Lims::LaboratoryApp::Laboratory
   shared_examples "contains lanes" do
     its(:size) { should eq(number_of_lanes) } 
     it_behaves_like "a container", Flowcell::Lane

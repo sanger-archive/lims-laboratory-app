@@ -4,7 +4,7 @@ require 'organization/spec_helper'
 # Model requirements
 require 'lims-laboratory-app/organization/study'
 
-module Lims::Core::Organization
+module Lims::LaboratoryApp::Organization
   describe Study, :study => true, :organization => true do
   end
 end

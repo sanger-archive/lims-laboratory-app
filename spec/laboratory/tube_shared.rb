@@ -6,7 +6,7 @@ require 'spec_helper'
 require 'lims-laboratory-app/laboratory/tube/all'
 require 'facets/array'
 
-L=Lims::Core::Laboratory
+L=Lims::LaboratoryApp::Laboratory
 def new_sample(i=1)
   L::Sample.new(:name => "Sample ##{i}")
 end
