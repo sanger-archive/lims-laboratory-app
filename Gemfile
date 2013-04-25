@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in lims-laboratory-app.gemspec
 gemspec
 
-gem 'lims-core', '~>1.5.0.1', :git => 'http://github.com/sanger/lims-core.git' , :branch => 'development'
+gem 'lims-core', '~>2.0', :git => 'http://github.com/sanger/lims-core.git' , :branch => 'version-2'
 gem 'lims-api', '~>1.2', :git => 'http://github.com/sanger/lims-api.git' , :branch => 'development'
 
 group :debugging do
