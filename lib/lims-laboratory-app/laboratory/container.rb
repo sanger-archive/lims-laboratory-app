@@ -115,3 +115,22 @@ module Lims
 		end
   end
 end
+
+# Extend Base to add is_matrix_of
+module Lims::Core
+  module Base
+    module ClassMethod
+      def is_matrix_of(child_klass, options = {},  &initializer)
+        element_name = child_klass.name.split('::').last.downcase
+        class_eval do
+          is_array_of(child_klass, options, &initializer)
+          include Lims::LaboratoryApp::Laboratory::Container
+
+          define_method "get_#{element_name}" do |*args|
+            get_element(*args)
+          end
+        end
+      end
+    end
+  end
+end
