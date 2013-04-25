@@ -5,7 +5,7 @@ require 'actions/spec_helper'
 # Model requirements
 require 'lims-laboratory-app/laboratory/tube_rack/create_tube_rack'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
 
     shared_context "has tube rack dimension" do |row, col|
@@ -71,7 +71,7 @@ module Lims::Core
 
     describe TubeRack::CreateTubeRack, :tube_rack => true, :laboratory => true, :persistence => true do
       context "valid calling context" do
-        let!(:store) { Persistence::Store.new() }
+        let!(:store) { Lims::Core::Persistence::Store.new() }
         include_context "for application", "Test TubeRack creation"
         include_context "has tube rack dimension", 8, 12 
 

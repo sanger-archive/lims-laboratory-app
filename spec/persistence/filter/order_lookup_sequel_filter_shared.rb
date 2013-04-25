@@ -5,8 +5,8 @@ require 'persistence/sequel/page_shared'
 require 'lims-core/persistence/multi_criteria_filter'
 require 'lims-laboratory-app/organization/order/all'
 
-module Lims::Core
-  module Persistence
+module Lims::LaboratoryApp
+  module Lims::Core::Persistence
     shared_context "with saved orders" do
       include_context "with saved batches"
       let(:basic_parameters) { { :creator => Organization::User.new(), :study => Organization::Study.new(), :pipeline => "testing" } }
@@ -138,8 +138,8 @@ module Lims::Core
     shared_examples_for "orders filtrable" do
       include_context "with saved orders"
       let(:description) { "lookup by order" }
-      let(:filter) { Persistence::OrderFilter.new(criteria) }
-      let(:search) { Persistence::Search.new(:model => model, :filter => filter, :description => description) }
+      let(:filter) { Lims::Core::Persistence::OrderFilter.new(criteria) }
+      let(:search) { Lims::Core::Persistence::Search.new(:model => model, :filter => filter, :description => description) }
 
       context "by order pipeline" do
         let(:criteria) { {:order => {:pipeline => "P1"}} }

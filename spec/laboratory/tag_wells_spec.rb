@@ -12,7 +12,7 @@ require 'lims-laboratory-app/laboratory/tag_wells'
 require 'lims-core/persistence/sequel/store'
 
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     describe TagWells, :plate => true, :tag => true, :laboratory => true, :persistence => true, :sequel => true do
       include_context "plate or gel factory"

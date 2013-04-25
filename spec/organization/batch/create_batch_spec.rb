@@ -6,12 +6,12 @@ require 'actions/action_examples'
 require 'lims-laboratory-app/organization/batch/create_batch'
 require 'lims-core/persistence/store'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Organization
     describe Batch::CreateBatch, :batch => true, :organization => true, :persistence => true do
       context "with a valid store" do
         include_context "create object"
-        let (:store) { Persistence::Store.new }
+        let (:store) { Lims::Core::Persistence::Store.new }
         let(:user) { mock(:user) }
         let(:application) { "Test create batch" }
         let(:process) { mock(:process) }
@@ -28,7 +28,7 @@ module Lims::Core
           it_behaves_like "an action"
 
           it "create a batch when called" do
-            Persistence::Session.any_instance.should_receive(:save)
+            Lims::Core::Persistence::Session.any_instance.should_receive(:save)
             result = subject.call
             result.should be_a(Hash)
             result[:batch].should be_a(Organization::Batch)

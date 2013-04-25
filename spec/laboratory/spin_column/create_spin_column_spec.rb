@@ -7,12 +7,12 @@ require 'lims-laboratory-app/laboratory/spin_column/create_spin_column'
 require 'laboratory/tube_shared'
 require 'lims-core/persistence/store'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     describe SpinColumn::CreateSpinColumn, :spin_column => true, :laboratory => true, :persistence => true do
       context "with a valid store" do
         include_context "create object"
-        let (:store) { Persistence::Store.new }
+        let (:store) { Lims::Core::Persistence::Store.new }
         include_context("for application", "Test create spin column")
 
         context "create an empty spin column" do
@@ -22,7 +22,7 @@ module Lims::Core
           end
           it_behaves_like "an action"
           it "create a spin column when called" do
-            Persistence::Session.any_instance.should_receive(:save)
+            Lims::Core::Persistence::Session.any_instance.should_receive(:save)
             result = subject.call
             result.should be_a(Hash)
             result[:spin_column].should be_a(Laboratory::SpinColumn)
@@ -38,7 +38,7 @@ module Lims::Core
           end
           it_behaves_like "an action"
           it "create a spin column when called" do
-            Persistence::Session.any_instance.should_receive(:save)
+            Lims::Core::Persistence::Session.any_instance.should_receive(:save)
             result = subject.call
             result.should be_a(Hash)
             result[:spin_column].should be_a(Laboratory::SpinColumn)

@@ -7,7 +7,7 @@ require 'persistence/sequel/store_shared'
 require 'lims-core/labels/labellable/create_labellable'
 require 'lims-core/labels/create_label'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Labels
 
     shared_context "setup required attributes for label" do

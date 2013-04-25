@@ -8,7 +8,7 @@ require 'lims-laboratory-app/laboratory/gel/all'
 require 'lims-laboratory-app/laboratory/plate/all'
 require 'facets/array'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     shared_context "plate or gel factory" do
       include_context "aliquot factory"

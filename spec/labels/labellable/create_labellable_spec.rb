@@ -5,7 +5,7 @@ require 'actions/spec_helper'
 # Model requirements
 require 'lims-core/labels/labellable/create_labellable'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Labels
     shared_context "setup required attributes" do |name, type|
       let(:name) { name }
@@ -49,7 +49,7 @@ module Lims::Core
 
     describe Labellable::CreateLabellable, :labellable => true, :labels => true, :persistence => true   do
       context "with a valid store" do
-        let!(:store) { Persistence::Store.new }
+        let!(:store) { Lims::Core::Persistence::Store.new }
         include_context("setup required attributes", "my test plate", "plate")
 
         context "to be valid Laballable" do

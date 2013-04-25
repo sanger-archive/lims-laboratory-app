@@ -7,12 +7,12 @@ require 'lims-laboratory-app/laboratory/tube/create_tube'
 require 'laboratory/tube_shared'
 require 'lims-core/persistence/store'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     describe Tube::CreateTube, :tube => true, :laboratory => true, :persistence => true do
       context "with a valid store" do
         include_context "create object"
-        let (:store) { Persistence::Store.new }
+        let (:store) { Lims::Core::Persistence::Store.new }
         let(:user) { mock(:user) }
         let(:application) { "Test create tube" }
         let(:tube_type) { "Eppendorf" }
@@ -28,7 +28,7 @@ module Lims::Core
           it_behaves_like "an action"
 
           it "create a tube when called" do
-            Persistence::Session.any_instance.should_receive(:save)
+            Lims::Core::Persistence::Session.any_instance.should_receive(:save)
             result = subject.call
             result.should be_a(Hash)
             result[:tube].should be_a(Laboratory::Tube)
@@ -49,7 +49,7 @@ module Lims::Core
           end
           it_behaves_like "an action"
           it "create a tube when called" do
-            Persistence::Session.any_instance.should_receive(:save)
+            Lims::Core::Persistence::Session.any_instance.should_receive(:save)
             result = subject.call
             result.should be_a(Hash)
             result[:tube].should be_a(Laboratory::Tube)

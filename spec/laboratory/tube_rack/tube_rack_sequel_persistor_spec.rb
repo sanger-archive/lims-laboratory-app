@@ -14,7 +14,7 @@ require 'lims-laboratory-app/laboratory/tube_rack'
 
 require 'lims-core/labels/labellable/all'
 
-module Lims::Core
+module Lims::LaboratoryApp
 
   describe "Sequel#TubeRack ", :tube => true, :laboratory => true, :persistence => true, :sequel => true do
     include_context "sequel store"

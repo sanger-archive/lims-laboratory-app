@@ -16,7 +16,7 @@ def new_aliquot(q=1, i=1)
 end
 
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     shared_context "tube factory" do
       def new_tube_with_samples(sample_nb=5, quantity=100, volume=100)

@@ -4,7 +4,7 @@ require 'persistence/sequel/spec_helper'
 require 'lims-core/labels/labellable/all'
 require 'lims-core/persistence/search'
 
-module Lims::Core
+module Lims::LaboratoryApp
 
   shared_examples_for "labels filtrable" do
     context "with a label" do
@@ -21,8 +21,8 @@ module Lims::Core
 
       let!(:labellable_resource) { store.with_session { |s| s[uuid] } }
       it "find the resource by label value"  do
-        filter = Persistence::LabelFilter.new(:label => {:value => label_value})
-        search = Persistence::Search.new(:model => labellable_resource.class , :filter => filter, :description => "lookup plate by label value")
+        filter = Lims::Core::Persistence::LabelFilter.new(:label => {:value => label_value})
+        search = Lims::Core::Persistence::Search.new(:model => labellable_resource.class , :filter => filter, :description => "lookup plate by label value")
 
         store.with_session do |session|
           results = search.call(session)
@@ -32,8 +32,8 @@ module Lims::Core
         end
       end
       it "find the resource by label position" do
-        filter = Persistence::LabelFilter.new(:label => {:position => label_position})
-        search = Persistence::Search.new(:model => labellable_resource.class, :filter => filter, :description => "lookup plate by label value")
+        filter = Lims::Core::Persistence::LabelFilter.new(:label => {:position => label_position})
+        search = Lims::Core::Persistence::Search.new(:model => labellable_resource.class, :filter => filter, :description => "lookup plate by label value")
 
         store.with_session do |session|
           results = search.call(session)

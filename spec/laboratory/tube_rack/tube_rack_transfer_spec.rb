@@ -8,7 +8,7 @@ require 'lims-laboratory-app/laboratory/tube_rack/tube_rack_transfer'
 require 'lims-core/persistence/sequel/store'
 
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     describe TubeRack::TubeRackTransfer, :tube_rack => true, :transfer => true, :laboratory => true, :persistence => true, :sequel => true do
       context "with a sequel store" do
@@ -19,7 +19,7 @@ module Lims::Core
         let(:number_of_rows) { 8 }
         let(:number_of_columns) { 12 }
         let(:db) { ::Sequel.sqlite('') }
-        let(:store) { Persistence::Sequel::Store.new(db) }
+        let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
         before(:each) { prepare_table(db) }
 
         let(:source_id) {

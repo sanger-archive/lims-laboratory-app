@@ -9,7 +9,7 @@ require 'lims-laboratory-app/laboratory/plate/plate_transfer'
 require 'lims-core/persistence/sequel/store'
 require 'logger'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     describe Plate::PlateTransfer, :plate => true, :transfer => true, :laboratory => true, :persistence => true, :sequel => true do
       include_context "plate or gel factory"
@@ -44,7 +44,7 @@ module Lims::Core
       context "with a sequel store" do
         include_context "prepare tables"
         let(:db) { ::Sequel.sqlite('') }
-        let(:store) { Persistence::Sequel::Store.new(db) }
+        let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
         before (:each) { prepare_table(db) }
 
         context "with invalid paramters" do

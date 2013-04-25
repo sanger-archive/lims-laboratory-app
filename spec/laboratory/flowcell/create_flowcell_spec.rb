@@ -7,7 +7,7 @@ require 'laboratory/flowcell_shared'
 #Model requirement
 require 'lims-laboratory-app/laboratory/flowcell/create_flowcell'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
 
     shared_context "for empty flowcell" do
@@ -82,7 +82,7 @@ module Lims::Core
     
     describe Flowcell::CreateFlowcell, :flowcell => true,:laboratory => true, :persistence => true  do
       context "valid calling context" do
-        let!(:store) { Persistence::Store.new() }
+        let!(:store) { Lims::Core::Persistence::Store.new() }
         include_context "flowcell factory"
         include_context("for application",  "Test flowcell creation")
         

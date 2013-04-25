@@ -7,7 +7,7 @@ require 'laboratory/plate_and_gel_shared'
 #Model requirements
 require 'lims-laboratory-app/laboratory/gel/create_gel'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     shared_context "for empty gel" do
       subject do
@@ -77,7 +77,7 @@ module Lims::Core
 
     describe Gel::CreateGel, :gel => true, :laboratory => true, :persistence => true do
       context "valid calling context" do
-        let!(:store) { Persistence::Store.new() }
+        let!(:store) { Lims::Core::Persistence::Store.new() }
         include_context "plate or gel factory"
         include_context("for application",  "Test gel creation")
 

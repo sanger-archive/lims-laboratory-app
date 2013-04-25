@@ -12,7 +12,7 @@ require 'persistence/filter/multi_criteria_sequel_filter_shared'
 # Model requirement
 require 'lims-laboratory-app/laboratory/gel'
 
-module Lims::Core
+module Lims::LaboratoryApp
   describe "Persistence#Sequel#Gel", :gel => true, :laboratory => true, :persistence => true, :sequel => true do
     include_context "sequel store"
     include_context "plate or gel factory"

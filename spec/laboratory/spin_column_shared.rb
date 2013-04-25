@@ -1,7 +1,7 @@
 # Model requirements
 require 'lims-laboratory-app/laboratory/spin_column/all'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     shared_context "spin column factory" do
       def new_spin_column_with_samples(sample_nb=5, quantity=100, volume=100)

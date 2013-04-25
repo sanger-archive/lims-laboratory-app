@@ -6,7 +6,7 @@ require 'actions/action_examples'
 #Model requirements
 require 'lims-laboratory-app/organization/order/update_order'
 require 'lims-laboratory-app/organization/order'
-module Lims::Core
+module Lims::LaboratoryApp
   module Organization
 
     shared_context "draft order" do
@@ -328,7 +328,7 @@ module Lims::Core
 
     describe Order::UpdateOrder, :order => true, :organization => true, :persistence => true do
       context "valid calling context" do
-        let!(:store) { Persistence::Store.new() }
+        let!(:store) { Lims::Core::Persistence::Store.new() }
         include_context("for application",  "Test search creation")
         let(:batch) { mock(:batch) }
         let(:action) { described_class.new(:store => store , :user => user, :application => application) do |action, session|

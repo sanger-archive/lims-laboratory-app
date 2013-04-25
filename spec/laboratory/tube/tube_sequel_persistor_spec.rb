@@ -11,12 +11,12 @@ require 'persistence/filter/batch_sequel_filter_shared'
 require 'lims-core/persistence/sequel/store'
 require 'lims-laboratory-app/laboratory/tube'
 
-module Lims::Core
+module Lims::LaboratoryApp
   describe Laboratory::Tube, :tube => true, :laboratory => true, :persistence => true, :sequel => true do
     include_context "prepare tables"
     include_context "tube factory"
     let(:db) { ::Sequel.sqlite('') }
-    let(:store) { Persistence::Sequel::Store.new(db) }
+    let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
     before (:each) { prepare_table(db) }
 
     context "created and added to session" do

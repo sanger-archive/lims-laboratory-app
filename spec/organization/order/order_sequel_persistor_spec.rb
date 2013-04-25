@@ -7,7 +7,7 @@ require 'persistence/filter/order_lookup_sequel_filter_shared'
 # Model requirements
 require 'lims-core/persistence/sequel/store'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Organization
     describe Order, :order => true, :organization => true, :persistence => true, :sequel => true  do
       include_context "sequel store"

@@ -7,7 +7,7 @@ require 'laboratory/aliquot_shared'
 require 'lims-laboratory-app/laboratory/tube_rack/all'
 require 'facets/array'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     shared_context "tube_rack factory" do
       include_context "aliquot factory"

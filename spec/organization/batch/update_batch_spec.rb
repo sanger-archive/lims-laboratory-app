@@ -5,14 +5,14 @@ require 'actions/action_examples'
 # Model requirements
 require 'lims-laboratory-app/organization/batch/all'
 
-module Lims::Core
+module Lims::LaboratoryApp
   class Organization::Batch
     describe UpdateBatch do
       context "valid calling context" do
         include_context "for application", "test update batch"
         include_context "create object"
 
-        let(:store) { Persistence::Store.new }
+        let(:store) { Lims::Core::Persistence::Store.new }
         let(:process) { "process" }
         let(:kit) { "kit" }
         let(:action) {

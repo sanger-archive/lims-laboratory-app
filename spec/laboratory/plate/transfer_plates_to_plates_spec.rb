@@ -86,7 +86,7 @@ shared_examples_for "transfer from many racks to many plates" do
   end
 end
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     describe Plate::TransferPlatesToPlates, :plate => true, :transfer => true, :laboratory => true, :persistence => true, :sequel => true do
       include_context "plate or gel factory"

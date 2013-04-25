@@ -7,7 +7,7 @@ require 'persistence/filter/label_sequel_filter_shared'
 # Model requirements
 require 'lims-laboratory-app/laboratory/spin_column'
 
-module Lims::Core
+module Lims::LaboratoryApp
   describe Laboratory::SpinColumn, :spin_column => true, :laboratory => true, :persistence => true, :sequel => true do
     include_context "sequel store"
     

@@ -7,14 +7,14 @@ require 'laboratory/plate_and_gel_shared'
 require 'lims-laboratory-app/laboratory/plate/update_plate'
 require 'lims-laboratory-app/laboratory/plate'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     describe Plate::UpdatePlate, :plate => true, :laboratory => true, :persistence => true do
       include_context "for application", "test update tube rack"
       include_context "plate or gel factory"
       include_context "create object"
 
-      let!(:store) { Persistence::Store.new }
+      let!(:store) { Lims::Core::Persistence::Store.new }
       let(:plate) { new_plate_with_samples }
       let(:number_of_rows) { 8 }
       let(:number_of_columns) { 12 }

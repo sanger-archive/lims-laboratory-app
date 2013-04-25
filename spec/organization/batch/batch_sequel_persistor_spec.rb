@@ -6,11 +6,11 @@ require 'persistence/sequel/store_shared'
 require 'lims-core/persistence/sequel/store'
 require 'lims-laboratory-app/organization/batch'
 
-module Lims::Core
+module Lims::LaboratoryApp
   describe Organization::Batch, :batch => true, :organization => true,  :persistence => true, :sequel => true  do
     include_context "prepare tables" 
     let(:db) { ::Sequel.sqlite('') }
-    let(:store) { Persistence::Sequel::Store.new(db) }
+    let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
     before(:each) { prepare_table(db) }
 
 

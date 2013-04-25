@@ -5,7 +5,7 @@ require 'actions/action_examples'
 #Model requirements
 require 'lims-laboratory-app/organization/order/create_order'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Organization
     describe Order::CreateOrder, :order => true, :organization => true, :persistence => true do
       shared_examples_for "creating an order" do
@@ -13,7 +13,7 @@ module Lims::Core
         it_behaves_like "an action"
 
         it "creates an order object" do
-          Persistence::Session.any_instance.should_receive(:save)
+          Lims::Core::Persistence::Session.any_instance.should_receive(:save)
           result = subject.call 
           order = result[:order]
           order.should be_a Organization::Order
@@ -42,7 +42,7 @@ module Lims::Core
         end
       end
 
-      let!(:store) { Persistence::Store.new() }
+      let!(:store) { Lims::Core::Persistence::Store.new() }
 
       let(:pipeline) { mock(:pipeline) }
       let(:parameters) { mock(:parameters) }

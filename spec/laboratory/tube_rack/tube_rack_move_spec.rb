@@ -7,7 +7,7 @@ require 'laboratory/tube_rack_shared'
 require 'lims-laboratory-app/laboratory/tube_rack/tube_rack_move'
 require 'lims-core/persistence/sequel/store'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     describe TubeRack::TubeRackMove, :tube_rack => true, :move => true, :laboratory => true, :persistence => true, :sequel => true do
       context "with a sequel store" do

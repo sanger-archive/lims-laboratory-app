@@ -7,12 +7,12 @@ require 'persistence/sequel/store_shared'
 require 'lims-core/persistence/sequel/store'
 require 'lims-laboratory-app/laboratory/oligo/oligo_persistor'
 
-module Lims::Core
+module Lims::LaboratoryApp
 
   describe "Laboratory::Oligo::OligoSequelPersistor", :oligo => true, :laboratory => true, :persistence => true, :sequel => true do
     include_context "prepare tables"
     let(:db) { ::Sequel.sqlite('') }
-    let(:store) { Persistence::Sequel::Store.new(db) }
+    let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
     before (:each) { prepare_table(db) }
 
     let (:oligo) { Laboratory::Oligo.new ("AAA") }

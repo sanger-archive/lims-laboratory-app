@@ -12,7 +12,7 @@ require 'persistence/filter/batch_sequel_filter_shared'
 # Model requirements
 require 'lims-laboratory-app/laboratory/plate/all'
 
-module Lims::Core
+module Lims::LaboratoryApp
 
   describe "Sequel#Plate ", :plate => true, :laboratory => true, :persistence => true, :sequel => true do
     include_context "sequel store"

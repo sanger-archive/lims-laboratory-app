@@ -7,7 +7,7 @@ require 'laboratory/tube_shared'
 require 'lims-laboratory-app/laboratory/tube/update_tube'
 require 'lims-laboratory-app/laboratory/tube'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     describe Tube::UpdateTube, :tube => true, :laboratory => true, :persistence => true do
       context "valid calling context" do
@@ -15,7 +15,7 @@ module Lims::Core
         include_context "tube factory"
         include_context "create object"
 
-        let!(:store) { Persistence::Store.new() }
+        let!(:store) { Lims::Core::Persistence::Store.new() }
         let(:tube_type) { "Eppendorf" }
         let(:tube_max_volume) { 2 }
         let(:aliquot_type) { "DNA" }

@@ -7,14 +7,14 @@ require 'laboratory/tube_rack_shared'
 require 'lims-laboratory-app/laboratory/tube_rack/update_tube_rack'
 require 'lims-laboratory-app/laboratory/tube_rack'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     describe TubeRack::UpdateTubeRack, :tube_rack => true, :laboratory => true, :persistence => true do
       include_context "for application", "test update tube rack"
       include_context "tube_rack factory"
       include_context "create object"
 
-      let!(:store) { Persistence::Store.new }
+      let!(:store) { Lims::Core::Persistence::Store.new }
       let(:tube_rack) { new_tube_rack_with_samples }
       let(:number_of_rows) { 8 }
       let(:number_of_columns) { 12 }

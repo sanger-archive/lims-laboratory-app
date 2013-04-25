@@ -72,7 +72,7 @@ shared_examples_for "transfer a tube content to a spin column and a tube" do
   end
 end
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     describe Tube::TransferTubesToTubes, :tube => true, :transfer => true, :laboratory => true, :persistence => true, :sequel => true do
       include_context "spin column factory"

@@ -1,4 +1,4 @@
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     shared_context "aliquot factory" do
       def new_sample(i=1, j=1)

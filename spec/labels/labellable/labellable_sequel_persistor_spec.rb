@@ -6,7 +6,7 @@ require 'persistence/sequel/store_shared'
 require 'lims-core/labels/labellable/labellable_persistor'
 require 'lims-core/labels/sanger_barcode'
 
-module Lims::Core
+module Lims::LaboratoryApp
   describe Labels::Labellable, :labellable => true, :labels => true, :persistence => true, :sequel => true do
     include_context "sequel store"
 
@@ -60,8 +60,8 @@ module Lims::Core
       end
 
       it "finds the labellable by label value" do
-        filter = Persistence::LabelFilter.new(:label => {:value => label_value})
-        search = Persistence::Search.new(:model => Labels::Labellable, :filter => filter, :description => "search")
+        filter = Lims::Core::Persistence::LabelFilter.new(:label => {:value => label_value})
+        search = Lims::Core::Persistence::Search.new(:model => Labels::Labellable, :filter => filter, :description => "search")
         store.with_session do |session|
           results = search.call(session)
           all = results.slice(0, 1000).to_a
@@ -71,8 +71,8 @@ module Lims::Core
       end
 
       it "finds the labellable by label position" do
-        filter = Persistence::LabelFilter.new(:label => {:position => label_position})
-        search = Persistence::Search.new(:model => Labels::Labellable, :filter => filter, :description => "search")
+        filter = Lims::Core::Persistence::LabelFilter.new(:label => {:position => label_position})
+        search = Lims::Core::Persistence::Search.new(:model => Labels::Labellable, :filter => filter, :description => "search")
         store.with_session do |session|
           results = search.call(session)
           all = results.slice(0, 1000).to_a

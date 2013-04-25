@@ -2,7 +2,7 @@ require 'actions/spec_helper'
 
 require 'actions/action_examples'
 
-module Lims::Core::Action
+module Lims::LaboratoryApp::Action
   describe "Plate::Stamping", :plate => true, :laboratory => true do
     pending "Not Implemented" do
       it_behaves_like "an action"
