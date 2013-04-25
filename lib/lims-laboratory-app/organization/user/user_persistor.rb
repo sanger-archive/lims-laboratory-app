@@ -7,7 +7,7 @@ module Lims::LaboratoryApp
   module Organization
     # Base for all User persistors.
     class User
-      class UserPersistor < Persistence::Persistor
+      class UserPersistor < Lims::Core::Persistence::Persistor
         Model = Organization::User
       end
     end

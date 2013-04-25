@@ -11,7 +11,7 @@ module Lims::LaboratoryApp
     # Real implementation classes (e.g. Sequel::Plate) should
     # include the suitable persistor.
     class Oligo
-      class OligoPersistor < Persistence::Persistor
+      class OligoPersistor < Lims::Core::Persistence::Persistor
         Model = Laboratory::Oligo
       end
     end

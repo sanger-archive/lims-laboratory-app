@@ -14,10 +14,10 @@ module Lims::LaboratoryApp
     class Tube
       module TubeAliquot
         SESSION_NAME = :tube_persistor_aliquot
-        class TubeAliquotPersistor < Persistence::Persistor
+        class TubeAliquotPersistor < Lims::Core::Persistence::Persistor
         end
       end
-      class TubePersistor < Persistence::Persistor
+      class TubePersistor < Lims::Core::Persistence::Persistor
         # this module is here only to give 'parent' class for the persistor
         # to be associated 
         Model = Laboratory::Tube

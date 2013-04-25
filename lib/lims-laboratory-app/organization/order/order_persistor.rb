@@ -9,7 +9,7 @@ module Lims::LaboratoryApp
   module Organization
     # Base for all Order persistor.
     class Order
-      class OrderPersistor < Persistence::Persistor
+      class OrderPersistor < Lims::Core::Persistence::Persistor
         Model = Organization::Order
 
         # Saves all children of the given order
@@ -49,7 +49,7 @@ module Lims::LaboratoryApp
 
       class Item
         SESSION_NAME = :order_item
-        class ItemPersistor < Persistence::Persistor
+        class ItemPersistor < Lims::Core::Persistence::Persistor
           Model = Organization::Order::Item
 
           def filter_attributes_on_save(attributes, order_id=nil, role=nil)

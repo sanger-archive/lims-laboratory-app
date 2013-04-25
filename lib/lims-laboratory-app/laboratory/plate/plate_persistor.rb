@@ -12,7 +12,7 @@ module Lims::LaboratoryApp
     # Real implementation classes (e.g. Sequel::Plate) should
     # include the suitable persistor.
     class Plate
-      class PlatePersistor < Persistence::Persistor
+      class PlatePersistor < Lims::Core::Persistence::Persistor
         Model = Laboratory::Plate
 
         include Container::ContainerPersistor
@@ -32,7 +32,7 @@ module Lims::LaboratoryApp
       # include the suitable persistor.
       class Well
         SESSION_NAME = :plate_well
-        class WellPersistor < Persistence::Persistor
+        class WellPersistor < Lims::Core::Persistence::Persistor
           Model = Laboratory::Plate::Well
 
           include Container::ContainerElementPersistor

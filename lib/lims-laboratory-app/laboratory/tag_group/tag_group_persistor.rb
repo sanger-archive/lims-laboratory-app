@@ -12,7 +12,7 @@ module Lims::LaboratoryApp
     # Real implementation classes (e.g. Sequel::Plate) should
     # include the suitable persistor.
     class TagGroup
-      class TagGroupPersistor < Persistence::Persistor
+      class TagGroupPersistor < Lims::Core::Persistence::Persistor
         Model = Laboratory::TagGroup
 
         # Save all children of the given group
@@ -50,7 +50,7 @@ module Lims::LaboratoryApp
       # It probably correspond to one table on the database.
       module Association
         SESSION_NAME = :tag_group_assocation
-        class AssociationPersistor < Persistence::Persistor
+        class AssociationPersistor < Lims::Core::Persistence::Persistor
         end
       end
     end

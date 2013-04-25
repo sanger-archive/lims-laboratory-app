@@ -7,7 +7,7 @@ require 'lims-core/labels/sanger_barcode'
 module Lims::LaboratoryApp
   module Labels
     class Labellable
-      class LabellablePersistor < Persistence::Persistor
+      class LabellablePersistor < Lims::Core::Persistence::Persistor
         Model = Labels::Labellable
 
         def label
@@ -30,7 +30,7 @@ module Lims::LaboratoryApp
       end
       module Label 
         SESSION_NAME=:labellable_label
-        class LabelPersistor < Persistence::Persistor
+        class LabelPersistor < Lims::Core::Persistence::Persistor
           Model = Labels::Labellable::Label
         end
       end

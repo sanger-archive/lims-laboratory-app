@@ -5,7 +5,7 @@ require 'lims-core/resource'
 
 module Lims::LaboratoryApp
   module Persistence
-    class BatchFilter < Persistence::Filter
+    class BatchFilter < Lims::Core::Persistence::Filter
       include Lims::Core::Resource
       attribute :criteria, Hash, :required => true
 

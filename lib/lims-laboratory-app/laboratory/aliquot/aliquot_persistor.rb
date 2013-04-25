@@ -12,7 +12,7 @@ module Lims::LaboratoryApp
     # Real implementation classes (e.g. Sequel::Aliquot) should
     # include the suitable persistor.
     class Aliquot
-      class AliquotPersistor < Persistence::Persistor
+      class AliquotPersistor < Lims::Core::Persistence::Persistor
         Model = Laboratory::Aliquot
       end
     end

@@ -10,10 +10,10 @@ module Lims::LaboratoryApp
     class SpinColumn
       module SpinColumnAliquot
         SESSION_NAME = :spin_column_persistor_aliquot
-        class SpinColumnAliquotPersistor < Persistence::Persistor
+        class SpinColumnAliquotPersistor < Lims::Core::Persistence::Persistor
         end
       end
-      class SpinColumnPersistor < Persistence::Persistor
+      class SpinColumnPersistor < Lims::Core::Persistence::Persistor
         Model = Laboratory::SpinColumn
 
         # Save all children of the given spin column

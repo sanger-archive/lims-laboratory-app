@@ -21,7 +21,7 @@ module Lims::Core
     #   Will look for all the orders in pending or in progress status
     #   *holding* a plate with a pending status.
     #    
-    class OrderFilter < Persistence::Filter 
+    class OrderFilter < Lims::Core::Persistence::Filter 
       include Lims::Core::Resource
       attribute :criteria, Hash, :required => true
       # For Sequel, keys needs to be a Symbol to be seen as column.

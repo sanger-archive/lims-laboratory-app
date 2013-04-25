@@ -7,7 +7,7 @@ module Lims::LaboratoryApp
   module Organization
     # Base for all Study persistors.
     class Study
-      class StudyPersistor < Persistence::Persistor
+      class StudyPersistor < Lims::Core::Persistence::Persistor
         Model = Organization::Study
       end
     end

@@ -10,7 +10,7 @@ module Lims::LaboratoryApp
     # Real implementation classes (e.g. Sequel::Gel) should
     # include the suitable persistor.
     class Gel
-      class GelPersistor < Persistence::Persistor
+      class GelPersistor < Lims::Core::Persistence::Persistor
         Model = Laboratory::Gel
 
         include Container::ContainerPersistor
@@ -30,7 +30,7 @@ module Lims::LaboratoryApp
         # include the suitable persistor.
       class Window 
         SESSION_NAME = :gel_window
-        class WindowPersistor < Persistence::Persistor
+        class WindowPersistor < Lims::Core::Persistence::Persistor
           Model = Laboratory::Gel::Window
 
           include Container::ContainerElementPersistor

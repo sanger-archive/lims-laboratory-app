@@ -12,7 +12,7 @@ module Lims::LaboratoryApp
     # Real implementation classes (e.g. Sequel::Flowcell) should
     # include the suitable persistor.
     class Flowcell
-      class FlowcellPersistor < Persistence::Persistor
+      class FlowcellPersistor < Lims::Core::Persistence::Persistor
         Model = Laboratory::Flowcell
       end
 
@@ -22,7 +22,7 @@ module Lims::LaboratoryApp
       # include the suitable persistor.
       class Lane 
         SESSION_NAME = :flowcell_lane
-        class LanePersistor < Persistence::Persistor
+        class LanePersistor < Lims::Core::Persistence::Persistor
           Model = Laboratory::Flowcell::Lane
           def save(lane, flowcell_id, position)
             #todo bulk save if needed
