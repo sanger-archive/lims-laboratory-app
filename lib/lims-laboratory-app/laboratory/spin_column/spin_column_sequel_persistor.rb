@@ -1,12 +1,12 @@
-require 'lims-core/laboratory/spin_column/spin_column_persistor'
+require 'lims-laboratory-app/laboratory/spin_column/spin_column_persistor'
 require 'lims-core/persistence/sequel/persistor'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     # a spin column persistor.
     class SpinColumn
       class SpinColumnSequelPersistor < SpinColumnPersistor
-        include Persistence::Sequel::Persistor
+        include Lims::Core::Persistence::Sequel::Persistor
         # Delete all children of the given spin column
         # But don't destroy the 'external' elements (example aliquots)
         # @param [Fixnum] id the id in the database
@@ -18,7 +18,7 @@ module Lims::Core
 
       module SpinColumnAliquot
         class SpinColumnSequelAliquotPersistor < SpinColumnAliquotPersistor
-          include Persistence::Sequel::Persistor
+          include Lims::Core::Persistence::Sequel::Persistor
 
           # Do a bulk load of aliquot and pass each to a block
           # @param spin_column_id the id of the spin column to load.

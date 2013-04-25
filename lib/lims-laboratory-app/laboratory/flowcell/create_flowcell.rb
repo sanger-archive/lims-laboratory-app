@@ -1,13 +1,13 @@
 #create_flowcell.rb
 require 'lims-core/actions/action'
 
-require 'lims-core/laboratory/flowcell'
+require 'lims-laboratory-app/laboratory/flowcell'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     class Flowcell
       class CreateFlowcell
-        include Actions::Action
+        include Lims::Core::Actions::Action
 
         attribute :number_of_lanes, Fixnum, :required => true, :gte => 0, :writer => :private
 

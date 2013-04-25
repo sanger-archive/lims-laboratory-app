@@ -1,14 +1,14 @@
 # vi: ts=2:sts=2:et:sw=2 spell:spelllang=en 
 require 'common'
 require 'lims-core/resource'
-require 'lims-core/organization/user'
-require 'lims-core/organization/study'
-require 'lims-core/organization/batch'
+require 'lims-laboratory-app/organization/user'
+require 'lims-laboratory-app/organization/study'
+require 'lims-laboratory-app/organization/batch'
 
 require 'state_machine'
 
 StateMachine::Machine.ignore_method_conflicts = true
-module Lims::Core
+module Lims::LaboratoryApp
   module Organization
     class Order
       # @see Order

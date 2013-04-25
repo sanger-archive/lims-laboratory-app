@@ -1,13 +1,13 @@
 # vi: ts=2:sts=2:et:sw=2  spell:spelllang=en  
 require 'lims-core/actions/action'
 
-require 'lims-core/laboratory/tube'
+require 'lims-laboratory-app/laboratory/tube'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     class Tube
       class CreateTube
-        include Actions::Action
+        include Lims::Core::Actions::Action
 
         attribute :aliquots, Array, :default => []
         attribute :type, String, :required => false, :writer => :private

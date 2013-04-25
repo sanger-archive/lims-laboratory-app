@@ -1,10 +1,10 @@
 # vi: ts=2:sts=2:et:sw=2  spell:spelllang=en  
 require 'lims-core/actions/action'
 
-require 'lims-core/laboratory/plate'
-require 'lims-core/laboratory/tube'
+require 'lims-laboratory-app/laboratory/plate'
+require 'lims-laboratory-app/laboratory/tube'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     # This {Action}  transfer the content between too plate.
     # At the moment there are no quantity associated  to the transfer.
@@ -12,7 +12,7 @@ module Lims::Core
     # For more details, see attributes.
     class Tube
       class TransferWellsToTubes
-        include Actions::Action
+        include Lims::Core::Actions::Action
 
         attribute :plate, Laboratory::Plate, :required => true, :writer => :private
         attribute :well_to_tube_map, Hash, :required => true, :writer => :private

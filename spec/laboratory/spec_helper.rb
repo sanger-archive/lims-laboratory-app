@@ -1,4 +1,4 @@
 require 'spec_helper'
-require 'lims-core/laboratory'
+require 'lims-laboratory-app/laboratory'
 
 

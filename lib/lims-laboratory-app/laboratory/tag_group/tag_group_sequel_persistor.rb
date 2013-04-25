@@ -1,14 +1,14 @@
 # vi: ts=2:sts=2:et:sw=2 spell:spelllang=en
 
-require 'lims-core/laboratory/tag_group/tag_group_persistor'
+require 'lims-laboratory-app/laboratory/tag_group/tag_group_persistor'
 require 'lims-core/persistence/sequel/persistor'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     # Not a tag_group but a tag_group persistor.
     class TagGroup
       class TagGroupSequelPersistor < TagGroupPersistor
-        include Persistence::Sequel::Persistor
+        include Lims::Core::Persistence::Sequel::Persistor
 
 
         def save_raw_association(tag_group_id, oligo_id, position)
@@ -26,7 +26,7 @@ module Lims::Core
 
       module Association
         class AssociationSequelPersistor < AssociationPersistor
-          include Persistence::Sequel::Persistor
+          include Lims::Core::Persistence::Sequel::Persistor
           def self.table_name
             :tag_group_associations
           end

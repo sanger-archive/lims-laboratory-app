@@ -1,14 +1,14 @@
 # vi: ts=2:sts=2:et:sw=2 spell:spelllang=en
 
-require 'lims-core/organization/order/order_persistor'
+require 'lims-laboratory-app/organization/order/order_persistor'
 require 'lims-core/persistence/sequel/persistor'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Organization
     # Not a order but a order persistor.
     class Order
       class OrderSequelPersistor < OrderPersistor
-        include Persistence::Sequel::Persistor
+        include Lims::Core::Persistence::Sequel::Persistor
         def self.table_name
           :orders
         end
@@ -40,7 +40,7 @@ module Lims::Core
 
       class Item
         class ItemSequelPersistor < ItemPersistor
-          include Persistence::Sequel::Persistor
+          include Lims::Core::Persistence::Sequel::Persistor
 
           def self.table_name
             :items

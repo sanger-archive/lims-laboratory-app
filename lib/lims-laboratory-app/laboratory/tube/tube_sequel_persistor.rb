@@ -1,14 +1,14 @@
 # vi: ts=2:sts=2:et:sw=2 spell:spelllang=en
 
-require 'lims-core/laboratory/tube/tube_persistor'
+require 'lims-laboratory-app/laboratory/tube/tube_persistor'
 require 'lims-core/persistence/sequel/persistor'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     # Not a tube but a tube persistor.
     class Tube
       class TubeSequelPersistor < TubePersistor
-        include Persistence::Sequel::Persistor
+        include Lims::Core::Persistence::Sequel::Persistor
 
 
         # Delete all children of the given tube
@@ -21,7 +21,7 @@ module Lims::Core
       end
       module TubeAliquot
         class TubeSequelAliquotPersistor < TubeAliquotPersistor
-          include Persistence::Sequel::Persistor
+          include Lims::Core::Persistence::Sequel::Persistor
 
           # Do a bulk load of aliquot and pass each to a block
           # @param tube_id the id of the tube to load.

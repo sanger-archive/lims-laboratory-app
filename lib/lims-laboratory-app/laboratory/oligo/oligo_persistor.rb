@@ -2,9 +2,9 @@
 
 
 require 'lims-core/persistence/persistor'
-require 'lims-core/laboratory/oligo'
+require 'lims-laboratory-app/laboratory/oligo'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
 
     # Base for all Plate persistor.

@@ -8,7 +8,7 @@ require 'laboratory/tube_shared'
 require 'persistence/sequel/store_shared'
 
 #Model requirements
-require 'lims-core/laboratory/tube/transfer_wells_to_tubes'
+require 'lims-laboratory-app/laboratory/tube/transfer_wells_to_tubes'
 
 require 'lims-core/persistence/sequel/store'
 

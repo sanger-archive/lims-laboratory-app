@@ -1,14 +1,14 @@
 # vi: ts=2:sts=2:et:sw=2 spell:spelllang=en
 
-require 'lims-core/laboratory/tube_rack/tube_rack_persistor'
+require 'lims-laboratory-app/laboratory/tube_rack/tube_rack_persistor'
 require 'lims-core/persistence/sequel/persistor'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     # Not a tube_rack but a tube_rack persistor.
     class TubeRack
       class TubeRackSequelPersistor < TubeRackPersistor
-        include Persistence::Sequel::Persistor
+        include Lims::Core::Persistence::Sequel::Persistor
 
 
         def self.table_name
@@ -23,7 +23,7 @@ module Lims::Core
       # Not a slot but a slot {Persistor}.
       class Slot 
         class SlotSequelPersitor < SlotPersistor
-          include Persistence::Sequel::Persistor
+          include Lims::Core::Persistence::Sequel::Persistor
           def self.table_name
             :tube_rack_slots
           end

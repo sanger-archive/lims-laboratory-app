@@ -3,7 +3,7 @@ require 'actions/spec_helper'
 require 'actions/action_examples'
 
 #Model requirements
-require 'lims-core/organization/order/create_order'
+require 'lims-laboratory-app/organization/order/create_order'
 
 module Lims::Core
   module Organization

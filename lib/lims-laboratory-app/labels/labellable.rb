@@ -1,7 +1,7 @@
 require 'common'
 require 'lims-core/resource'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Labels
     # A labellable is something which can have one or more labels.
     # By labels we mean any readable information found on a physical oblect.
@@ -12,7 +12,7 @@ module Lims::Core
     # if it's a resource (plate, tube) an equipment a user etc ...
     # Labellable acts mainly has a hash of location => labels
     class Labellable
-      include Resource
+      include Lims::Core::Resource
       attribute :name, String, :required => true, :writer => :private, :initializable => true
       attribute :type, String, :required => true, :writer => :private, :initializable => true
       attribute :content, Hash, :default => {}, :writer => :private, :initializable => true
@@ -85,7 +85,7 @@ module Lims::Core
       @@subclasses = Set.new()
       def self.included(klass)
         klass.instance_eval do
-          include Resource
+          include Lims::Core::Resource
           include After
           attribute :value, String, :required => true
           attribute :type, String, :writter => true, :required => true

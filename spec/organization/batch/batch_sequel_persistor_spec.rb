@@ -4,7 +4,7 @@ require 'persistence/sequel/store_shared'
 
 # Model requirements
 require 'lims-core/persistence/sequel/store'
-require 'lims-core/organization/batch'
+require 'lims-laboratory-app/organization/batch'
 
 module Lims::Core
   describe Organization::Batch, :batch => true, :organization => true,  :persistence => true, :sequel => true  do

@@ -6,7 +6,7 @@ require 'laboratory/tube_shared'
 require 'laboratory/spin_column_shared'
 
 # Model requirements
-require 'lims-core/laboratory/tube/transfer_tubes_to_tubes'
+require 'lims-laboratory-app/laboratory/tube/transfer_tubes_to_tubes'
 
 shared_examples_for "transfer tube to spin column" do
   it "transfers a tube like(s)'s content to tube-like(s) as expected" do

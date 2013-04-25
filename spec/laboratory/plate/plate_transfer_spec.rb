@@ -5,7 +5,7 @@ require 'laboratory/plate_and_gel_shared'
 
 require 'persistence/sequel/store_shared'
 #Model requirements
-require 'lims-core/laboratory/plate/plate_transfer'
+require 'lims-laboratory-app/laboratory/plate/plate_transfer'
 require 'lims-core/persistence/sequel/store'
 require 'logger'
 

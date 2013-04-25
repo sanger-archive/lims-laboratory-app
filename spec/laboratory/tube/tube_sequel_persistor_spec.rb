@@ -9,7 +9,7 @@ require 'persistence/filter/batch_sequel_filter_shared'
 
 # Model requirements
 require 'lims-core/persistence/sequel/store'
-require 'lims-core/laboratory/tube'
+require 'lims-laboratory-app/laboratory/tube'
 
 module Lims::Core
   describe Laboratory::Tube, :tube => true, :laboratory => true, :persistence => true, :sequel => true do

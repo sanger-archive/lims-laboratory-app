@@ -1,8 +1,8 @@
 # vi: ts=2:sts=2:et:sw=2  spell:spelllang=en 
 require 'lims-core/actions/action'
-require 'lims-core/laboratory/tube_rack'
+require 'lims-laboratory-app/laboratory/tube_rack'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     # This {Action} moves physically tubes from source racks
     # to target racks.
@@ -13,7 +13,7 @@ module Lims::Core
     # move the tube and to move the tube.
     class TubeRack
       class TubeRackMove
-        include Actions::Action
+        include Lims::Core::Actions::Action
 
         attribute :moves, Array, :required => true, :writer => :private
 

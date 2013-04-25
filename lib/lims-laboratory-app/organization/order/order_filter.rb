@@ -22,7 +22,7 @@ module Lims::Core
     #   *holding* a plate with a pending status.
     #    
     class OrderFilter < Persistence::Filter 
-      include Resource
+      include Lims::Core::Resource
       attribute :criteria, Hash, :required => true
       # For Sequel, keys needs to be a Symbol to be seen as column.
       # String are seen as 'value'

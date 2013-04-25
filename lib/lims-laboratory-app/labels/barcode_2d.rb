@@ -2,7 +2,7 @@ require 'common'
 
 require 'lims-core/labels/labellable'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Labels
     class Barcode2D
       include Labellable::Label

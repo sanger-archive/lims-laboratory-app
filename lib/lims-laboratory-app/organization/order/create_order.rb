@@ -1,15 +1,15 @@
 # vi: ts=2:sts=2:et:sw=2  spell:spelllang=en  
 require 'lims-core/actions/action'
-require 'lims-core/organization/order'
+require 'lims-laboratory-app/organization/order'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Organization
       # sources and targets represent the {Organization::Order} order {Organization::Order::Item items}.
       # source items get a "done" status and
       # target items get a "pending" status on creation. 
     class Order
       class CreateOrder
-        include Actions::Action
+        include Lims::Core::Actions::Action
 
         attribute :pipeline, String
         attribute :parameters, Hash, :default => {}

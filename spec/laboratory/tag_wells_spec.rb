@@ -7,7 +7,7 @@ require 'laboratory/plate_and_gel_shared'
 require 'persistence/sequel/store_shared'
 
 #Model requirements
-require 'lims-core/laboratory/tag_wells'
+require 'lims-laboratory-app/laboratory/tag_wells'
 
 require 'lims-core/persistence/sequel/store'
 

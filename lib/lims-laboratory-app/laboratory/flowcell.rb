@@ -1,13 +1,13 @@
-require 'lims-core/laboratory/receptacle'
+require 'lims-laboratory-app/laboratory/receptacle'
 require 'lims-core/resource'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     # A flowcell with some lanes.
     # readable labels on it.
     # TODO add label behavior
     class Flowcell
-      include Resource
+      include Lims::Core::Resource
 
       attribute :number_of_lanes, Fixnum, :required => true, :gte => 0, :writer => :private
 

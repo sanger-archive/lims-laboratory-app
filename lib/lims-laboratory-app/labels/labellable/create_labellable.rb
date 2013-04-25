@@ -3,11 +3,11 @@ require 'lims-core/actions/action'
 
 require 'lims-core/labels/labellable'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Labels
     class Labellable
       class CreateLabellable
-        include Actions::Action
+        include Lims::Core::Actions::Action
 
         attribute :name, String, :required => true, :writer => :private, :initializable => true
         attribute :type, String, :required => true, :writer => :private, :initializable => true

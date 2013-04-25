@@ -5,8 +5,8 @@ require 'laboratory/plate_and_gel_shared'
 require 'laboratory/tube_rack_shared'
 
 # Model requirements
-require 'lims-core/laboratory/plate/all'
-require 'lims-core/laboratory/gel/all'
+require 'lims-laboratory-app/laboratory/plate/all'
+require 'lims-laboratory-app/laboratory/gel/all'
 
 shared_examples_for "transfer from many plates to many gels" do
   it "transfers the contents of plate-like(s) to plate-like(s)" do

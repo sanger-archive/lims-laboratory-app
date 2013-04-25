@@ -4,7 +4,7 @@ require 'persistence/sequel/store_shared'
 require 'laboratory/tube_rack_shared'
 
 # Model requirements
-require 'lims-core/laboratory/tube_rack/tube_rack_transfer'
+require 'lims-laboratory-app/laboratory/tube_rack/tube_rack_transfer'
 require 'lims-core/persistence/sequel/store'
 
 

@@ -1,14 +1,14 @@
 # vi: ts=2:sts=2:et:sw=2 spell:spelllang=en 
 require 'common'
 require 'lims-core/resource'
-require 'lims-core/organization/user'
-require 'lims-core/organization/study'
-require 'lims-core/organization/order/item'
+require 'lims-laboratory-app/organization/user'
+require 'lims-laboratory-app/organization/study'
+require 'lims-laboratory-app/organization/order/item'
 
 require 'state_machine'
 
 StateMachine::Machine.ignore_method_conflicts = true
-module Lims::Core
+module Lims::LaboratoryApp
   module Organization
     # An order represents the idea of 'work to be done'.
     # However, an order focuses more on the final outcomes than the steps to achieve it.
@@ -24,7 +24,7 @@ module Lims::Core
     # Ultimately, someone wanted to sequence an existing library, can create an order with the same parameters, with the **library** given instead of the **sample**.
     class Order
 
-      include Resource
+      include Lims::Core::Resource
       attribute :creator, User, :required => true, :writer => :private, :initializable=>true
       attribute :pipeline, String, :required => true
       attribute :items, HashString, :default => {}, :reader => :private, :writer => :private, :initializable => true

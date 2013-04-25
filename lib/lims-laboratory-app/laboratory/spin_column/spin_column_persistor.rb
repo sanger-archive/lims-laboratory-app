@@ -1,7 +1,7 @@
 require 'lims-core/persistence/persistor'
-require 'lims-core/laboratory/spin_column'
+require 'lims-laboratory-app/laboratory/spin_column'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
 
     # Base for all Spin Column persistor.

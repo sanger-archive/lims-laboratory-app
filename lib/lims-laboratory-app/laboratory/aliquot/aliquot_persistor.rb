@@ -2,10 +2,10 @@
 
 
 require 'lims-core/persistence/persistor'
-require 'lims-core/laboratory/aliquot'
-require 'lims-core/laboratory/sample/sample_persistor'
+require 'lims-laboratory-app/laboratory/aliquot'
+require 'lims-laboratory-app/laboratory/sample/sample_persistor'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     # @abstract
     # Base for all Aliquot persistor.

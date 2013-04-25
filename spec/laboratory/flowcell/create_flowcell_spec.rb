@@ -5,7 +5,7 @@ require 'actions/action_examples'
 require 'laboratory/flowcell_shared'
 
 #Model requirement
-require 'lims-core/laboratory/flowcell/create_flowcell'
+require 'lims-laboratory-app/laboratory/flowcell/create_flowcell'
 
 module Lims::Core
   module Laboratory

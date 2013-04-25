@@ -2,11 +2,11 @@
 require 'common'
 require 'lims-core/resource'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Organization
     # A batch groups multiple items together.
     class Batch
-      include Resource
+      include Lims::Core::Resource
       # Store the process that the batch is going through.
       # Ex: 8 tubes might go through the process "manual extraction".
       attribute :process, String, :required => false

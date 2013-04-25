@@ -1,8 +1,8 @@
 require 'lims-core/actions/action'
-require 'lims-core/laboratory/transfer_action'
-require 'lims-core/laboratory/transfers_parameters'
+require 'lims-laboratory-app/laboratory/transfer_action'
+require 'lims-laboratory-app/laboratory/transfers_parameters'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
 
     # This {Action} transfers the given fraction and type of aliquot from plate-like asset(s)
@@ -19,7 +19,7 @@ module Lims::Core
     # Aliquot_type is the type of the aliquot (DNA, RNA, NA, sample etc...).
     class Plate
       class TransferPlatesToPlates
-        include Actions::Action
+        include Lims::Core::Actions::Action
         include TransferAction
         include TransfersParameters
 

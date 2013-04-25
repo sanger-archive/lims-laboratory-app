@@ -3,7 +3,7 @@ require 'actions/spec_helper'
 require 'actions/action_examples'
 
 #Model requirements
-require 'lims-core/laboratory/tube/create_tube'
+require 'lims-laboratory-app/laboratory/tube/create_tube'
 require 'laboratory/tube_shared'
 require 'lims-core/persistence/store'
 

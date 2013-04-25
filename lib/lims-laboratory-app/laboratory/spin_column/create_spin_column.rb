@@ -1,11 +1,11 @@
 require 'lims-core/actions/action'
-require 'lims-core/laboratory/spin_column'
+require 'lims-laboratory-app/laboratory/spin_column'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     class SpinColumn
       class CreateSpinColumn
-        include Actions::Action
+        include Lims::Core::Actions::Action
 
         attribute :aliquots, Array, :default => []
 

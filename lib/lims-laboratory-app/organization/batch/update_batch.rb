@@ -1,12 +1,12 @@
 # vi: ts=2:sts=2:et:sw=2  spell:spelllang=en  
 require 'lims-core/actions/action'
-require 'lims-core/organization/batch'
+require 'lims-laboratory-app/organization/batch'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Organization
     class Batch
       class UpdateBatch
-        include Actions::Action
+        include Lims::Core::Actions::Action
 
         attribute :batch, Organization::Batch, :required => true, :writer => :private
         attribute :process, String, :required => false, :writer => :private

@@ -2,11 +2,11 @@
 require 'common'
 
 
-require 'lims-core/laboratory/sample'
-require 'lims-core/laboratory/oligo'
+require 'lims-laboratory-app/laboratory/sample'
+require 'lims-laboratory-app/laboratory/oligo'
 require 'lims-core/resource'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     # An aliquot represent the fraction of identical chemical substance inside a receptacle.
     # it should have:
@@ -24,7 +24,7 @@ module Lims::Core
     # At the moment, rather than allowing an aliquot to have many constituents (in a free form way),
     # an aliquot can be formed of at least a {Laboratory::Sample sample}, a {Laboratory::Oligo tag} and  or a {Laboratory::BaitLibrary bait library}.
     class Aliquot
-      include Resource
+      include Lims::Core::Resource
       attribute :sample, Sample
       attribute :tag, Oligo
       # @todo add a unit to quantity

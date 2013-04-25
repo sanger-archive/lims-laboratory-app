@@ -4,8 +4,8 @@ require 'actions/action_examples'
 
 
 #Model requirements
-require 'lims-core/organization/order/update_order'
-require 'lims-core/organization/order'
+require 'lims-laboratory-app/organization/order/update_order'
+require 'lims-laboratory-app/organization/order'
 module Lims::Core
   module Organization
 

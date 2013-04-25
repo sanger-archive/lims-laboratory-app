@@ -2,9 +2,9 @@
 
 
 require 'lims-core/persistence/persistor'
-require 'lims-core/laboratory/sample'
+require 'lims-laboratory-app/laboratory/sample'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     # @abstract
     # Base for all Sample persistor.

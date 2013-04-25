@@ -5,7 +5,7 @@ require 'laboratory/tube_shared'
 require 'persistence/filter/label_sequel_filter_shared'
 
 # Model requirements
-require 'lims-core/laboratory/spin_column'
+require 'lims-laboratory-app/laboratory/spin_column'
 
 module Lims::Core
   describe Laboratory::SpinColumn, :spin_column => true, :laboratory => true, :persistence => true, :sequel => true do

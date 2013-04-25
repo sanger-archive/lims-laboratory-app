@@ -4,8 +4,8 @@ require 'laboratory/aliquot_shared'
 
 # Model requirements
 
-require 'lims-core/laboratory/gel/all'
-require 'lims-core/laboratory/plate/all'
+require 'lims-laboratory-app/laboratory/gel/all'
+require 'lims-laboratory-app/laboratory/plate/all'
 require 'facets/array'
 
 module Lims::Core

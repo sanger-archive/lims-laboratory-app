@@ -5,7 +5,7 @@ require 'persistence/sequel/store_shared'
 require 'lims-core/persistence/sequel/store'
 require 'lims-core/persistence/uuid_resource_persistor'
 
-require 'lims-core/laboratory/tube/all'
+require 'lims-laboratory-app/laboratory/tube/all'
 module Lims::Core
   module Persistence
     describe UuidResource::UuidResourcePersistor, :uuid_resource => true, :uuid => true, :persistence => true, :persistence => true, :sequel => true do

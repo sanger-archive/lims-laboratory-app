@@ -1,11 +1,11 @@
 # vi: ts=2:sts=2:et:sw=2 spell:spelllang=en
 
 require 'lims-core/persistence/persistor'
-require 'lims-core/organization/order'
-require 'lims-core/organization/study/all'
-require 'lims-core/organization/user/all'
+require 'lims-laboratory-app/organization/order'
+require 'lims-laboratory-app/organization/study/all'
+require 'lims-laboratory-app/organization/user/all'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Organization
     # Base for all Order persistor.
     class Order

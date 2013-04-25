@@ -1,3 +1,3 @@
-require('lims-core/organization/user/user_persistor')
-require('lims-core/organization/user')
-require('lims-core/organization')
+require('lims-laboratory-app/organization/user/user_persistor')
+require('lims-laboratory-app/organization/user')
+require('lims-laboratory-app/organization')

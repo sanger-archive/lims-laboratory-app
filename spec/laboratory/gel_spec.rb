@@ -6,7 +6,7 @@ require 'labels/labellable_examples'
 require 'laboratory/receptacle_examples'
 
 # Model requirements
-require 'lims-core/laboratory/gel'
+require 'lims-laboratory-app/laboratory/gel'
 
 module Lims::Core::Laboratory
   shared_examples "a valid gel" do

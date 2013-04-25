@@ -1,9 +1,9 @@
 require 'lims-core/persistence/persistor'
-require 'lims-core/laboratory/container/container_persistor'
-require 'lims-core/laboratory/container/container_element_persistor'
-require 'lims-core/laboratory/gel'
+require 'lims-laboratory-app/laboratory/container/container_persistor'
+require 'lims-laboratory-app/laboratory/container/container_element_persistor'
+require 'lims-laboratory-app/laboratory/gel'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
 
     # Base for all Gel persistor.

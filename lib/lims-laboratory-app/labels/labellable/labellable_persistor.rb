@@ -4,7 +4,7 @@ require 'lims-core/labels/labellable'
 # needs to require all label subclasses
 require 'lims-core/labels/sanger_barcode'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Labels
     class Labellable
       class LabellablePersistor < Persistence::Persistor

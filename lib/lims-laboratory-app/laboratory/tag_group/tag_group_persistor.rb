@@ -2,10 +2,10 @@
 
 
 require 'lims-core/persistence/persistor'
-require 'lims-core/laboratory/tag_group'
-require 'lims-core/laboratory/oligo/all'
+require 'lims-laboratory-app/laboratory/tag_group'
+require 'lims-laboratory-app/laboratory/oligo/all'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
 
     # Base for all Plate persistor.

@@ -4,8 +4,8 @@ require 'actions/action_examples'
 require 'laboratory/tube_shared'
 
 # Model requirements
-require 'lims-core/laboratory/tube/update_tube'
-require 'lims-core/laboratory/tube'
+require 'lims-laboratory-app/laboratory/tube/update_tube'
+require 'lims-laboratory-app/laboratory/tube'
 
 module Lims::Core
   module Laboratory

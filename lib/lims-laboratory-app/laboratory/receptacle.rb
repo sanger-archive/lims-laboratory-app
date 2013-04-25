@@ -1,11 +1,11 @@
 # vi: ts=2 sts=2 et sw=2 spell spelllang=en  
 require 'common'
-require 'lims-core/laboratory/aliquot'
+require 'lims-laboratory-app/laboratory/aliquot'
 require 'lims-core/base'
 
 require 'forwardable'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     # A Receptacle has a chemical content which is a set of {Laboratory::Aliquot aliquots}.
     # It can be seen (and used) as a Array of Aliquots (until a certain extend).
@@ -14,7 +14,7 @@ module Lims::Core
 
       def self.included(klass)
         klass.class_eval do
-          include Base
+          include Lims::Core::Base
 
           is_array_of(Aliquot) { |l,t| Array.new }
 

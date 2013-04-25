@@ -1,12 +1,12 @@
 # vi: ts=2:sts=2:et:sw=2  spell:spelllang=en  
 require 'lims-core/actions/action'
-require 'lims-core/laboratory/tube_rack'
+require 'lims-laboratory-app/laboratory/tube_rack'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     class TubeRack
       class CreateTubeRack
-        include Actions::Action
+        include Lims::Core::Actions::Action
 
         %w(row column).each do |w|
           attribute :"number_of_#{w}s", Fixnum, :required => true, :gte => 0, :writer => :private

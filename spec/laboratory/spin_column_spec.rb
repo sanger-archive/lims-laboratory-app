@@ -4,7 +4,7 @@ require 'laboratory/receptacle_examples'
 require 'labels/labellable_examples'
 
 # Model requirement
-require 'lims-core/laboratory/spin_column'
+require 'lims-laboratory-app/laboratory/spin_column'
 
 module Lims::Core::Laboratory
   describe SpinColumn, :spin_column => true, :laboratory => true  do

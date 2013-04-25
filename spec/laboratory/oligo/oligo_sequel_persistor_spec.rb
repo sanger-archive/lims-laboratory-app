@@ -5,7 +5,7 @@ require 'persistence/sequel/store_shared'
 
 # Model requirements
 require 'lims-core/persistence/sequel/store'
-require 'lims-core/laboratory/oligo/oligo_persistor'
+require 'lims-laboratory-app/laboratory/oligo/oligo_persistor'
 
 module Lims::Core
 

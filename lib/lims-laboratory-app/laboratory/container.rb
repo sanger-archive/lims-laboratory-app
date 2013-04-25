@@ -1,7 +1,7 @@
 require 'common'
 
 module Lims
-  module Core
+  module LaboratoryApp
 		module Laboratory
 			# A container is an a laboratory pieces
 			# containing other laboratory pieces.

@@ -4,8 +4,8 @@ require 'actions/action_examples'
 require 'laboratory/plate_and_gel_shared'
 
 # Model requirements
-require 'lims-core/laboratory/plate/update_plate'
-require 'lims-core/laboratory/plate'
+require 'lims-laboratory-app/laboratory/plate/update_plate'
+require 'lims-laboratory-app/laboratory/plate'
 
 module Lims::Core
   module Laboratory

@@ -7,7 +7,7 @@ require 'labels/labellable_examples'
 require 'laboratory/receptacle_examples'
 
 # Model requirements
-require 'lims-core/laboratory/flowcell'
+require 'lims-laboratory-app/laboratory/flowcell'
 
 module Lims::Core::Laboratory
   shared_examples "contains lanes" do

@@ -2,12 +2,12 @@
 require 'common'
 
 require 'lims-core/resource'
-require 'lims-core/laboratory/oligo'
+require 'lims-laboratory-app/laboratory/oligo'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     class TagGroup
-      include Resource
+      include Lims::Core::Resource
       include Forwardable
       attribute :name, String, :writer => :protected, :initializable => true
       is_array_of Oligo

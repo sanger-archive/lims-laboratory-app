@@ -1,4 +1,4 @@
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     module Container::ContainerElementSequelPersistor
 

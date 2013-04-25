@@ -1,4 +1,4 @@
 require 'spec_helper'
-require 'lims-core/organization'
+require 'lims-laboratory-app/organization'
 
 

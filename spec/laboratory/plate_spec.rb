@@ -6,7 +6,7 @@ require 'labels/labellable_examples'
 
 require 'laboratory/receptacle_examples'
 # Model requirements
-require 'lims-core/laboratory/plate'
+require 'lims-laboratory-app/laboratory/plate'
 
 module Lims::Core::Laboratory
   shared_examples "a valid plate" do

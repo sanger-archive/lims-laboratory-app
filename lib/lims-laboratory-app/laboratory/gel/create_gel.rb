@@ -1,13 +1,13 @@
 require 'lims-core/actions/action'
 
-require 'lims-core/laboratory/gel'
-require 'lims-core/laboratory/container/action_container'
+require 'lims-laboratory-app/laboratory/gel'
+require 'lims-laboratory-app/laboratory/container/action_container'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     class Gel
       class CreateGel
-        include Actions::Action
+        include Lims::Core::Actions::Action
         include Container::ActionContainer
 
         # @attribute [Hash<String, Array<Hash>>] windows_description

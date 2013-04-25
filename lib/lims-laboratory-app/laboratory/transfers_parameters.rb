@@ -1,4 +1,4 @@
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
 
     # This module holds the parameter of transfer related action like TransfersPlatesToPlates

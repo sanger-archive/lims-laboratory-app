@@ -2,10 +2,10 @@
 
 
 require 'lims-core/persistence/persistor'
-require 'lims-core/laboratory/tube_rack'
-require 'lims-core/laboratory/tube/all'
+require 'lims-laboratory-app/laboratory/tube_rack'
+require 'lims-laboratory-app/laboratory/tube/all'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
 
     # Base for all TubeRack persistor.

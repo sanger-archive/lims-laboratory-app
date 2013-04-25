@@ -5,7 +5,7 @@ require 'persistence/sequel/store_shared'
 
 # Model requirements
 require 'lims-core/persistence/sequel/store'
-require 'lims-core/laboratory/tag_group/all'
+require 'lims-laboratory-app/laboratory/tag_group/all'
 
 module Lims::Core
 

@@ -3,7 +3,7 @@ require 'actions/spec_helper'
 require 'actions/action_examples'
 
 #Model requirements
-require 'lims-core/laboratory/spin_column/create_spin_column'
+require 'lims-laboratory-app/laboratory/spin_column/create_spin_column'
 require 'laboratory/tube_shared'
 require 'lims-core/persistence/store'
 

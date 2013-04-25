@@ -3,7 +3,7 @@ require 'laboratory/spec_helper'
 require 'laboratory/container_examples'
 
 # Model requirements
-require 'lims-core/laboratory/tag_group'
+require 'lims-laboratory-app/laboratory/tag_group'
 
 module Lims::Core::Laboratory
   describe TagGroup, :tag_group => true, :tag => true, :laboratory => true do

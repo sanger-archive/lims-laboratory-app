@@ -5,7 +5,7 @@ require 'actions/action_examples'
 require 'laboratory/plate_and_gel_shared'
 
 #Model requirements
-require 'lims-core/laboratory/gel/create_gel'
+require 'lims-laboratory-app/laboratory/gel/create_gel'
 
 module Lims::Core
   module Laboratory

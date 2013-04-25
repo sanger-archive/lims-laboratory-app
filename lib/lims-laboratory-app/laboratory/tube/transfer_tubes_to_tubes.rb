@@ -1,11 +1,11 @@
 require 'lims-core/actions/action'
-require 'lims-core/laboratory/transfer_action'
-require 'lims-core/laboratory/transfers_parameters'
+require 'lims-laboratory-app/laboratory/transfer_action'
+require 'lims-laboratory-app/laboratory/transfers_parameters'
 
-require 'lims-core/laboratory/spin_column'
-require 'lims-core/laboratory/tube'
+require 'lims-laboratory-app/laboratory/spin_column'
+require 'lims-laboratory-app/laboratory/tube'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
 
     # This {Action} transfers the given fraction and type of aliquot from tube-like asset(s)
@@ -18,7 +18,7 @@ module Lims::Core
     # Type is the type of the aliquot.
     class Tube
       class TransferTubesToTubes
-        include Actions::Action
+        include Lims::Core::Actions::Action
         include TransferAction
         include TransfersParameters
 

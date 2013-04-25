@@ -1,16 +1,16 @@
 # vi: ts=2:sts=2:et:sw=2  spell:spelllang=en  
 require 'lims-core/actions/action'
 
-require 'lims-core/laboratory/tube'
-require 'lims-core/laboratory/spin_column'
+require 'lims-laboratory-app/laboratory/tube'
+require 'lims-laboratory-app/laboratory/spin_column'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     # Update a tube and set a new type and/or a new quantity to 
     # all its aliquots.
     class Tube
       class UpdateTube
-        include Actions::Action
+        include Lims::Core::Actions::Action
 
         # The tube to update
         attribute :tube, Laboratory::Tube, :required => true, :writer => :private

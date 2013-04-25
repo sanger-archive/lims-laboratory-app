@@ -3,11 +3,11 @@ require 'lims-core/persistence/sequel/persistor'
 
 require 'lims-core/persistence/uuid_resource'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Labels
     class Labellable
       class LabellableSequelPersistor < LabellablePersistor
-        include Persistence::Sequel::Persistor
+        include Lims::Core::Persistence::Sequel::Persistor
 
         def self.table_name
           :labellables
@@ -39,7 +39,7 @@ module Lims::Core
       # Mixin to be included by classes of Labellable::Labels
       module Label  
         class LabelSequelPersistor < Label::LabelPersistor
-          include Persistence::Sequel::Persistor
+          include Lims::Core::Persistence::Sequel::Persistor
 
           def self.table_name
             :labels

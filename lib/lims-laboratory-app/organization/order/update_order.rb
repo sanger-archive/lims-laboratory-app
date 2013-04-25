@@ -1,13 +1,13 @@
 # vi: ts=2:sts=2:et:sw=2  spell:spelllang=en  
 require 'lims-core/actions/action'
 
-require 'lims-core/organization/order'
+require 'lims-laboratory-app/organization/order'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Organization
     class Order
       class UpdateOrder
-        include Actions::Action
+        include Lims::Core::Actions::Action
 
         #@ attribute :order
         #  The order to update.

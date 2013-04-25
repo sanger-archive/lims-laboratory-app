@@ -1,2 +1,2 @@
-require('lims-core/organization/study/study_persistor')
-require('lims-core/organization/study')
+require('lims-laboratory-app/organization/study/study_persistor')
+require('lims-laboratory-app/organization/study')

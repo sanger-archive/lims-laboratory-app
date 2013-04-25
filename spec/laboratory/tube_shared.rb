@@ -3,7 +3,7 @@ require 'spec_helper'
 
 # Model requirements
 
-require 'lims-core/laboratory/tube/all'
+require 'lims-laboratory-app/laboratory/tube/all'
 require 'facets/array'
 
 L=Lims::Core::Laboratory

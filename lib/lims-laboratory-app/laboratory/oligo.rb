@@ -3,12 +3,12 @@ require 'common'
 require 'lims-core/resource'
 require 'forwardable'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     # A tag is a sequence of DNA meant to be bound to a sample to recognize
     # from other samples in the same multiplex.
     class Oligo
-      include Resource
+      include Lims::Core::Resource
       include Forwardable
       attribute :sequence, String, :writer => :protected, :initializable => true
 

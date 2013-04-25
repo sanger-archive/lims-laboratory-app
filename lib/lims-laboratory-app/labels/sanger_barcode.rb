@@ -2,7 +2,7 @@ require 'common'
 
 require 'lims-core/labels/labellable'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Labels
     class SangerBarcode
       include Labellable::Label

@@ -1,5 +1,5 @@
-require 'lims-core/laboratory/container'
-module Lims::Core
+require 'lims-laboratory-app/laboratory/container'
+module Lims::LaboratoryApp
   module Laboratory
     module Container::ContainerElementPersistor
 

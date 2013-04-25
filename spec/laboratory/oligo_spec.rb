@@ -2,7 +2,7 @@
 require 'laboratory/spec_helper'
 
 # Model requirements
-require 'lims-core/laboratory/oligo'
+require 'lims-laboratory-app/laboratory/oligo'
 
 module Lims::Core::Laboratory
   describe Oligo, :oligo => true, :laboratory => true do

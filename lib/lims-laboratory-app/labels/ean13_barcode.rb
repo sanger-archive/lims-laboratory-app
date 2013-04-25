@@ -1,7 +1,7 @@
 require 'common'
 require 'lims-core/labels/labellable'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Labels
     class EAN13Barcode
       include Labellable::Label

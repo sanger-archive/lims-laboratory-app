@@ -2,10 +2,10 @@
 
 
 require 'lims-core/persistence/persistor'
-require 'lims-core/laboratory/tube'
-require 'lims-core/laboratory/aliquot/all'
+require 'lims-laboratory-app/laboratory/tube'
+require 'lims-laboratory-app/laboratory/aliquot/all'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
 
     # Base for all Tube persistor.

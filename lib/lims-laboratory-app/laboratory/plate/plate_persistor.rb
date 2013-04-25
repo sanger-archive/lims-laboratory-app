@@ -1,11 +1,11 @@
 # vi: ts=2:sts=2:et:sw=2 spell:spelllang=en
 
 require 'lims-core/persistence/persistor'
-require 'lims-core/laboratory/container/container_persistor'
-require 'lims-core/laboratory/container/container_element_persistor'
-require 'lims-core/laboratory/plate'
+require 'lims-laboratory-app/laboratory/container/container_persistor'
+require 'lims-laboratory-app/laboratory/container/container_element_persistor'
+require 'lims-laboratory-app/laboratory/plate'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
 
     # Base for all Plate persistor.

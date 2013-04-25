@@ -5,7 +5,7 @@ require 'laboratory/receptacle_examples'
 require 'labels/labellable_examples'
 
 # Model requirements
-require 'lims-core/laboratory/tube'
+require 'lims-laboratory-app/laboratory/tube'
 
 module Lims::Core::Laboratory
   describe Tube, :tube => true, :laboratory => true  do

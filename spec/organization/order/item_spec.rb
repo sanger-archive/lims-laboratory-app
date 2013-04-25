@@ -1,7 +1,7 @@
 # vi: ts=2:sts=2:et:sw=2 spell:spelllang=en 
 require 'spec_helper'
 
-require 'lims-core/organization/order/item'
+require 'lims-laboratory-app/organization/order/item'
 
 module Lims
   module Core

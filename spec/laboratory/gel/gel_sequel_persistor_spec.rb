@@ -10,7 +10,7 @@ require 'persistence/filter/order_lookup_sequel_filter_shared'
 require 'persistence/filter/multi_criteria_sequel_filter_shared'
 
 # Model requirement
-require 'lims-core/laboratory/gel'
+require 'lims-laboratory-app/laboratory/gel'
 
 module Lims::Core
   describe "Persistence#Sequel#Gel", :gel => true, :laboratory => true, :persistence => true, :sequel => true do

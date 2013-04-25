@@ -1,14 +1,14 @@
 # vi: ts=2:sts=2:et:sw=2  spell:spelllang=en  
 require 'lims-core/actions/action'
-require 'lims-core/laboratory/tube_rack'
+require 'lims-laboratory-app/laboratory/tube_rack'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     # This action transfers the content of a source tube rack
     # to a target tube rack according to a transfer map.
     class TubeRack
       class TubeRackTransfer
-        include Actions::Action
+        include Lims::Core::Actions::Action
 
         attribute :source, Laboratory::TubeRack, :required => true, :writer => :private
         attribute :target, Laboratory::TubeRack, :required => true, :writer => :private

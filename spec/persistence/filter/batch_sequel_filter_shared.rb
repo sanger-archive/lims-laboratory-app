@@ -1,5 +1,5 @@
 require 'persistence/sequel/spec_helper'
-require 'lims-core/organization/batch/all'
+require 'lims-laboratory-app/organization/batch/all'
 require 'persistence/filter/order_lookup_sequel_filter_shared'
 
 module Lims::Core

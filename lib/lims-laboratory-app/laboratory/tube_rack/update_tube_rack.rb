@@ -1,13 +1,13 @@
 # vi: ts=2:sts=2:et:sw=2  spell:spelllang=en  
 require 'lims-core/actions/action'
-require 'lims-core/laboratory/tube_rack'
+require 'lims-laboratory-app/laboratory/tube_rack'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     # Update a tube rack by updating each of its tube type or quantity.
     class TubeRack
       class UpdateTubeRack
-        include Actions::Action
+        include Lims::Core::Actions::Action
 
         attribute :tube_rack, Laboratory::TubeRack, :required => true, :writer => :private
         attribute :aliquot_type, String, :required => false, :writer => :private

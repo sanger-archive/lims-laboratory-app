@@ -2,10 +2,10 @@
 
 
 require 'lims-core/persistence/persistor'
-require 'lims-core/laboratory/flowcell'
-require 'lims-core/laboratory/aliquot/all'
+require 'lims-laboratory-app/laboratory/flowcell'
+require 'lims-laboratory-app/laboratory/aliquot/all'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     # @abstract
     # Base for all Flowcell persistor.

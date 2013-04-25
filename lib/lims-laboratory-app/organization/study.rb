@@ -3,12 +3,12 @@ require 'common'
 
 require 'lims-core/resource'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Organization
     # A study. It as an owner, a title and data release attributes, EGA accession number.
     # Correspond roughly to a published paper.
     class Study
-      include Resource
+      include Lims::Core::Resource
     end
   end
 end

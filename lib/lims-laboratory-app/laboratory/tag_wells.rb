@@ -1,12 +1,12 @@
 # vi: ts=2:sts=2:et:sw=2  spell:spelllang=en  
 require 'lims-core/actions/action'
 
-require 'lims-core/laboratory/plate'
+require 'lims-laboratory-app/laboratory/plate'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     class TagWells
-      include Actions::Action
+      include Lims::Core::Actions::Action
 
       attribute :plate, Laboratory::Plate, :writer => :private
       attribute :well_to_tag_map, Hash, :writer => :private

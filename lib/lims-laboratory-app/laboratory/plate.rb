@@ -1,17 +1,17 @@
 require 'lims-core/resource'
-require 'lims-core/laboratory/receptacle'
+require 'lims-laboratory-app/laboratory/receptacle'
 
 require 'facets/hash'
 require 'facets/array'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     # A plate is a plate as seen in a laboratory, .i.e
     # a rectangular bits of platics with wells and some 
     # readable labels on it.
     # TODO add label behavior
     class Plate 
-      include Resource
+      include Lims::Core::Resource
       # Type contains the actual type of the plate.
       attribute :type, String, :required => false
 

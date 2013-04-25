@@ -1,7 +1,7 @@
-require 'lims-core/laboratory/container'
-require 'lims-core/laboratory/aliquot/aliquot_persistor'
+require 'lims-laboratory-app/laboratory/container'
+require 'lims-laboratory-app/laboratory/aliquot/aliquot_persistor'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     module Container::ContainerPersistor
 

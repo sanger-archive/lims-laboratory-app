@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-require 'lims-core/organization/order'
+require 'lims-laboratory-app/organization/order'
 
 
 share_examples_for "terminal state" do

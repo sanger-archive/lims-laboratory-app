@@ -5,7 +5,7 @@ require 'persistence/sequel/store_shared'
 
 # Model requirements
 require 'lims-core/persistence/sequel/store'
-require 'lims-core/laboratory/sample/sample_persistor'
+require 'lims-laboratory-app/laboratory/sample/sample_persistor'
 
 module Lims::Core
 

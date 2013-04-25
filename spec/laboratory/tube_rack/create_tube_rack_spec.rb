@@ -3,7 +3,7 @@ require 'actions/action_examples'
 require 'actions/spec_helper'
 
 # Model requirements
-require 'lims-core/laboratory/tube_rack/create_tube_rack'
+require 'lims-laboratory-app/laboratory/tube_rack/create_tube_rack'
 
 module Lims::Core
   module Laboratory

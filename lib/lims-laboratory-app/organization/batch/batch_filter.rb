@@ -1,12 +1,12 @@
 # vi: ts=2:sts=2:et:sw=2 spell:spelllang=en
 require 'lims-core/persistence/multi_criteria_filter'
-require 'lims-core/organization/batch'
+require 'lims-laboratory-app/organization/batch'
 require 'lims-core/resource'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Persistence
     class BatchFilter < Persistence::Filter
-      include Resource
+      include Lims::Core::Resource
       attribute :criteria, Hash, :required => true
 
       # For Sequel, keys needs to be a Symbol to be seen as column.

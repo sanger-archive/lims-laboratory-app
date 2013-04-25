@@ -2,7 +2,7 @@
 require 'laboratory/spec_helper'
 
 # Model requirements
-require 'lims-core/laboratory/sample'
+require 'lims-laboratory-app/laboratory/sample'
 
 module Lims::Core::Laboratory
   describe Sample, :sample => true, :laboratory => true do
