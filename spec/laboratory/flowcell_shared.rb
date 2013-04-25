@@ -6,7 +6,7 @@ require 'spec_helper'
 require 'lims-laboratory-app/laboratory/flowcell'
 require 'facets/array'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     shared_context "flowcell factory" do
       def new_flowcell_with_samples(sample_nb=5)

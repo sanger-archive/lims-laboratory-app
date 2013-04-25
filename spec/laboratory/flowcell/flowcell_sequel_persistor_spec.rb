@@ -11,7 +11,7 @@ require 'persistence/filter/multi_criteria_sequel_filter_shared'
 require 'lims-core/persistence/sequel/store'
 require 'lims-laboratory-app/laboratory/flowcell/all'
 
-module Lims::Core
+module Lims::LaboratoryApp
   shared_context "already created flowcell" do
     let(:aliquot) { new_aliquot }
     before (:each) do
@@ -58,7 +58,7 @@ module Lims::Core
   describe "Sequel#Flowcell ", :flowcell => true, :laboratory => true, :persistence => true, :sequel => true do
     include_context "prepare tables"
     let(:db) { ::Sequel.sqlite('') }
-    let(:store) { Persistence::Sequel::Store.new(db) }
+    let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
     let(:hiseq_number_of_lanes) { 8 }
     let(:miseq_number_of_lanes) { 1 }
     before (:each) { prepare_table(db) }
