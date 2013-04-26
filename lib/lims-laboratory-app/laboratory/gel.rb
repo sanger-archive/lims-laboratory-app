@@ -1,5 +1,6 @@
 require 'lims-core/resource'
 require 'lims-laboratory-app/laboratory/receptacle'
+require 'lims-laboratory-app/laboratory/container'
 
 require 'facets/hash'
 require 'facets/array'
