@@ -1,4 +1,4 @@
-require 'lims-core/labels/labellable/labellable_persistor'
+require 'lims-laboratory-app/labels/labellable/labellable_persistor'
 require 'lims-core/persistence/sequel/persistor'
 
 require 'lims-core/persistence/uuid_resource'

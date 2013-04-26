@@ -29,7 +29,7 @@ shared_examples_for "unmodifiable states" do
 end
 
 module Lims
-  module Core
+  module LaboratoryApp
     module Organization
       describe Order, :order => true, :organization => true do
         #== Macro ====

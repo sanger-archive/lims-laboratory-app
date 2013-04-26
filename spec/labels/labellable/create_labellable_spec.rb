@@ -3,7 +3,7 @@ require 'actions/action_examples'
 require 'actions/spec_helper'
 
 # Model requirements
-require 'lims-core/labels/labellable/create_labellable'
+require 'lims-laboratory-app/labels/labellable/create_labellable'
 
 module Lims::LaboratoryApp
   module Labels

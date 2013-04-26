@@ -4,7 +4,7 @@ require 'spec_helper'
 require 'lims-laboratory-app/organization/order/item'
 
 module Lims
-  module Core
+  module LaboratoryApp
     module Organization
       describe Order::Item, :item => true, :order => true, :organization => true do
         #== Macro ====

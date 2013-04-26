@@ -16,9 +16,9 @@ module Lims::LaboratoryApp
         # @attribute [Hash<String, String>] sources
         # @example
         #   { "role" => "{uuid of the underlying object}"}
-        attribute :sources, Base::HashString, :default => {}
+        attribute :sources, Lims::Core::Base::HashString, :default => {}
         # @attribute [Hash<String, String>] targets
-        attribute :targets, Base::HashString, :default => {}
+        attribute :targets, Lims::Core::Base::HashString, :default => {}
         #   { "role" => "{uuid of the underlying object}",
         #     "role1" => nil}
         attribute :study, Organization::Study, :required => true

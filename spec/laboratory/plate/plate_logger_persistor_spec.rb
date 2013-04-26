@@ -5,7 +5,7 @@ require 'laboratory/plate_and_gel_shared'
 # Model requirements
 require 'lims-core/persistence/logger/store'
 
-module Lims::LaboratoryApp::Persistence
+module Lims::Core::Persistence
   describe Logger::Store, :store => true, :logger => true, :persistence => true do
     include_context "plate or gel factory"
     context "initialized with a logger" do

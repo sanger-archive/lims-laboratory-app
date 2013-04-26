@@ -4,8 +4,8 @@ require 'actions/spec_helper'
 require 'persistence/sequel/store_shared'
 
 # Model requirements
-require 'lims-core/labels/labellable/create_labellable'
-require 'lims-core/labels/create_label'
+require 'lims-laboratory-app/labels/labellable/create_labellable'
+require 'lims-laboratory-app/labels/create_label'
 
 module Lims::LaboratoryApp
   module Labels

@@ -3,7 +3,7 @@ require 'laboratory/spec_helper'
 require 'labels/label_examples'
 
 # Model requirements
-require 'lims-core/labels/sanger_barcode'
+require 'lims-laboratory-app/labels/sanger_barcode'
 
 module Lims::LaboratoryApp::Labels
 

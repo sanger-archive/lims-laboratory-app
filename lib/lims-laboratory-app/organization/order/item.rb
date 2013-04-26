@@ -18,7 +18,7 @@ module Lims::LaboratoryApp
       # initial order.
       # The status represents the *progress* of the item.
       class Item
-        include Base
+        include Lims::Core::Base
 
         attribute :iteration, Fixnum, :writer => :private, :default => 0
         attribute :uuid, String

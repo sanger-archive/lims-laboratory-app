@@ -1,7 +1,7 @@
 # create_labellable.rb
 require 'lims-core/actions/action'
 
-require 'lims-core/labels/labellable'
+require 'lims-laboratory-app/labels/labellable'
 
 module Lims::LaboratoryApp
   module Labels

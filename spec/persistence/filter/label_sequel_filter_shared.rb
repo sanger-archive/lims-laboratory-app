@@ -1,7 +1,7 @@
 # Spec requirements
 require 'persistence/sequel/spec_helper'
 
-require 'lims-core/labels/labellable/all'
+require 'lims-laboratory-app/labels/labellable/all'
 require 'lims-core/persistence/search'
 
 module Lims::LaboratoryApp

@@ -3,8 +3,8 @@ require 'persistence/sequel/spec_helper'
 require 'persistence/sequel/store_shared'
 
 # Model requirements
-require 'lims-core/labels/labellable/labellable_persistor'
-require 'lims-core/labels/sanger_barcode'
+require 'lims-laboratory-app/labels/labellable/labellable_persistor'
+require 'lims-laboratory-app/labels/sanger_barcode'
 
 module Lims::LaboratoryApp
   describe Labels::Labellable, :labellable => true, :labels => true, :persistence => true, :sequel => true do

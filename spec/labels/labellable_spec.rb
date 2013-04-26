@@ -6,7 +6,7 @@ require 'labels/labellable_examples'
 
 require 'laboratory/receptacle_examples'
 # Model requirements
-require 'lims-core/labels/labellable'
+require 'lims-laboratory-app/labels/labellable'
 
 module Lims::LaboratoryApp::Labels
   shared_examples_for "label creator" do |type, klass|
