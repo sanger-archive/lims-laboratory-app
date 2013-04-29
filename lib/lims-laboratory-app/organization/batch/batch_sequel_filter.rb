@@ -1,4 +1,6 @@
 require 'lims-core/persistence/sequel/filters'
+require 'lims-laboratory-app/organization/batch/batch_filter'
+require 'lims-laboratory-app/organization/order/order_sequel_filter'
 
 module Lims::Core
   module Persistence
