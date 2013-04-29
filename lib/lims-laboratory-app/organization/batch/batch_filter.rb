@@ -3,7 +3,7 @@ require 'lims-core/persistence/multi_criteria_filter'
 require 'lims-laboratory-app/organization/batch'
 require 'lims-core/resource'
 
-module Lims::LaboratoryApp
+module Lims::Core
   module Persistence
     class BatchFilter < Lims::Core::Persistence::Filter
       include Lims::Core::Resource

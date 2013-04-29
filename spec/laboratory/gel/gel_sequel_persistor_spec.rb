@@ -9,6 +9,7 @@ require 'persistence/filter/batch_sequel_filter_shared'
 require 'persistence/filter/order_lookup_sequel_filter_shared'
 require 'persistence/filter/multi_criteria_sequel_filter_shared'
 
+debugger
 # Model requirement
 require 'lims-laboratory-app/laboratory/gel'
 
