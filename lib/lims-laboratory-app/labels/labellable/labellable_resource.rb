@@ -2,7 +2,7 @@ require 'lims-api/resources/receptacle'
 require 'lims-api/core_resource'
 require 'lims-api/struct_stream'
 
-require 'lims-core/labels/labellable'
+require 'lims-laboratory-app/labels/labellable'
 
 module Lims::Core
   module Labels

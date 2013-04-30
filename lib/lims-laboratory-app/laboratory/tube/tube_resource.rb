@@ -3,7 +3,7 @@ require 'lims-api/core_resource'
 require 'lims-api/struct_stream'
 require 'lims-api/resources/receptacle'
 
-require 'lims-core/laboratory/tube'
+require 'lims-laboratory-app/laboratory/tube'
 
 module Lims::Core
   module Laboratory

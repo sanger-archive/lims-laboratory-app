@@ -4,7 +4,7 @@ require 'lims-api/resources/container'
 require 'lims-api/core_resource'
 require 'lims-api/struct_stream'
 
-require 'lims-core/laboratory/gel'
+require 'lims-laboratory-app/laboratory/gel'
 
 module Lims::Core
   module Laboratory

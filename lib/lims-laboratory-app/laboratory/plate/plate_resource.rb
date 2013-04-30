@@ -4,7 +4,7 @@ require 'lims-api/resources/container'
 require 'lims-api/core_resource'
 require 'lims-api/struct_stream'
 
-require 'lims-core/laboratory/plate'
+require 'lims-laboratory-app/laboratory/plate'
 module Lims::Core
   module Laboratory
     class Plate

@@ -1,8 +1,8 @@
 require 'lims-api/core_action_resource'
 require 'lims-api/struct_stream'
 
-require 'lims-core/labels/labellable'
-require 'lims-core/labels/create_label'
+require 'lims-laboratory-app/labels/labellable'
+require 'lims-laboratory-app/labels/create_label'
 
 module Lims::Core
   module Labels

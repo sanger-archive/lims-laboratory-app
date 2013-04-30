@@ -2,7 +2,7 @@ require 'lims-api/resources/container'
 require 'lims-api/core_resource'
 require 'lims-api/struct_stream'
 
-require 'lims-core/laboratory/tube_rack'
+require 'lims-laboratory-app/laboratory/tube_rack'
 module Lims::Core
   module Laboratory
     class TubeRack

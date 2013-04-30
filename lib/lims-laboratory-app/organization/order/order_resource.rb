@@ -2,7 +2,7 @@
 require 'lims-api/core_resource'
 require 'lims-api/struct_stream'
 
-require 'lims-core/organization/order'
+require 'lims-laboratory-app/organization/order'
 module Lims::Core
   module Organization
     class Order

@@ -1,7 +1,7 @@
 require 'lims-api/core_action_resource'
 require 'lims-api/resources/create_container'
 
-require 'lims-core/laboratory/plate'
+require 'lims-laboratory-app/laboratory/plate'
 
 module Lims::Core
   module Laboratory
