@@ -3,7 +3,7 @@ require 'lims-api/resources/create_container'
 
 require 'lims-laboratory-app/laboratory/plate'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     class Plate
       class CreatePlateResource < Lims::Api::CoreActionResource

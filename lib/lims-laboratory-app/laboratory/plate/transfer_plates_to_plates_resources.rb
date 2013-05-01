@@ -3,7 +3,7 @@ require 'lims-api/resources/container_to_uuid'
 
 require 'lims-laboratory-app/laboratory/plate/transfer_plates_to_plates'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     class Plate
       class TransferPlatesToPlatesResource < Lims::Api::CoreActionResource

@@ -6,7 +6,7 @@ require 'lims-api/struct_stream'
 
 require 'lims-laboratory-app/laboratory/gel'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     class Gel
       class GelResource < Lims::Api::CoreResource

@@ -4,7 +4,7 @@ require 'lims-api/struct_stream'
 
 require 'lims-laboratory-app/labels/labellable'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Labels
     class Labellable
       class LabellableResource < Lims::Api::CoreResource

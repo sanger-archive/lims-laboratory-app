@@ -8,7 +8,7 @@ require 'lims-core/persistence/sequel'
 require 'integrations/laboratory/lab_resource_shared'
 require 'integrations/organization/spec_helper'
 
-module Lims::Core
+module Lims::LaboratoryApp
 
   shared_context "json order" do
     let(:expected_json) {

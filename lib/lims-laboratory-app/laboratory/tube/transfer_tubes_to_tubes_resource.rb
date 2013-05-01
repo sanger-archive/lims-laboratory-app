@@ -3,7 +3,7 @@ require 'lims-api/resources/container_to_uuid'
 
 require 'lims-laboratory-app/laboratory/tube'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     class Tube
       class TransferTubesToTubes

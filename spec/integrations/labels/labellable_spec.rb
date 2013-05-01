@@ -7,7 +7,7 @@ require 'lims-core/persistence/sequel'
 require 'integrations/spec_helper'
 require 'integrations/laboratory/lab_resource_shared'
 
-module Lims::Core
+module Lims::LaboratoryApp
 
   shared_context "expect labellables without labels" do
     let(:labels_hash) { {} }

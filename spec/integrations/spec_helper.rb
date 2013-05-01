@@ -70,6 +70,7 @@ end
 shared_context "an invalid core action" do |expected_status, &extra|
   it "doesn't create anything" do
     response = post(url, parameters.to_json)
+    puts response.body
     response.status.should  == expected_status
     response.body.should match_json(expected_json) if expected_json
     extra.call(response) if extra

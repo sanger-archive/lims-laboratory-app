@@ -4,7 +4,7 @@ require 'lims-api/struct_stream'
 require 'lims-laboratory-app/labels/labellable'
 require 'lims-laboratory-app/labels/create_label'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Labels
     class CreateLabel
       class CreateLabelResource < Lims::Api::CoreActionResource

@@ -5,7 +5,7 @@ require 'lims-api/resources/receptacle'
 
 require 'lims-laboratory-app/laboratory/tube'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     class Tube
       class TubeResource < Lims::Api::CoreResource

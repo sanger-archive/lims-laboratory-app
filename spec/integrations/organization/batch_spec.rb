@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'integrations/laboratory/lab_resource_shared'
 require 'integrations/spec_helper'
 
-module Lims::Core
+module Lims::LaboratoryApp
   describe Organization::Order do
     include_context "use core context service"
     include_context "JSON"

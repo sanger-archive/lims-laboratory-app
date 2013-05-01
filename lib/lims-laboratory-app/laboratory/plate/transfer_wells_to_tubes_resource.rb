@@ -3,7 +3,7 @@ require 'lims-api/core_action_resource'
 require 'lims-api/struct_stream'
 
 require 'lims-laboratory-app/laboratory/tube/transfer_wells_to_tubes'
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     class Tube
       class TransferWellsToTubesResource < Lims::Api::CoreActionResource

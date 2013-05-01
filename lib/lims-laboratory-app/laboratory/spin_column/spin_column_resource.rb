@@ -5,7 +5,7 @@ require 'lims-api/resources/receptacle'
 
 require 'lims-laboratory-app/laboratory/spin_column'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     class SpinColumn
       class SpinColumnResource < Lims::Api::CoreResource

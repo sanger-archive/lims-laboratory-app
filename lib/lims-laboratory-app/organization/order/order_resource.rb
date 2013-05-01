@@ -3,7 +3,7 @@ require 'lims-api/core_resource'
 require 'lims-api/struct_stream'
 
 require 'lims-laboratory-app/organization/order'
-module Lims::Core
+module Lims::LaboratoryApp
   module Organization
     class Order
       class OrderResource < Lims::Api::CoreResource

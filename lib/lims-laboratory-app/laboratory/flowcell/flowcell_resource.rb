@@ -5,7 +5,7 @@ require 'lims-api/struct_stream'
 
 require 'lims-laboratory-app/laboratory/flowcell'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     class Flowcell
       class FlowcellResource < Lims::Api::CoreResource

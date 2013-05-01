@@ -3,7 +3,7 @@ require 'lims-api/resources/container_to_uuid'
 
 require 'lims-laboratory-app/laboratory/tube_rack/tube_rack_move'
 
-module Lims::Core
+module Lims::LaboratoryApp
   module Laboratory
     class TubeRack
       class TubeRackMoveResource < Lims::Api::CoreActionResource
