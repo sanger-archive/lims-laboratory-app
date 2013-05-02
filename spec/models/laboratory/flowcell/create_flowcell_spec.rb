@@ -68,18 +68,6 @@ module Lims::LaboratoryApp
       end
     end
 
-    shared_context "has number of lane" do |nb_of_lanes|
-      let(:number_of_lanes_hash) { { :number_of_lanes => nb_of_lanes } }
-    end
-    
-    shared_context "miseq flowcell" do
-      include_context("has number of lane", 1)
-    end
-    
-    shared_context "hiseq flowcell" do
-      include_context("has number of lane", 8)
-    end
-    
     describe Flowcell::CreateFlowcell, :flowcell => true,:laboratory => true, :persistence => true  do
       context "valid calling context" do
         let!(:store) { Lims::Core::Persistence::Store.new() }

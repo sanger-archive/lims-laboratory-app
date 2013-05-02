@@ -46,7 +46,7 @@ shared_context "expect plate JSON with labels" do
   }
 end
 
-shared_context "for empty plate" do
+shared_context "parameters for empty plate" do
   let (:parameters) { { :plate => dimensions } }
   let(:plate_type) { nil }
   include_context "expect empty plate"
@@ -104,7 +104,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
   context "#create" do
     include_context "has standard dimensions"
     context "with empty plates" do
-      include_context "for empty plate"
+      include_context "parameters for empty plate"
       include_context "expect plate JSON"
       it_behaves_like('creating a resource')
     end

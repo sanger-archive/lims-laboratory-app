@@ -42,7 +42,7 @@ shared_context "expect gel JSON with labels" do
   }
 end
 
-shared_context "for empty gel" do
+shared_context "parameters for empty gel" do
   let(:parameters) { { :gel => dimensions } }
   include_context "expect empty gel"
 end
@@ -76,7 +76,7 @@ describe Lims::LaboratoryApp::Laboratory::Gel do
   context "#create" do
     include_context "has standard dimensions"
     context "with empty gels" do
-      include_context "for empty gel"
+      include_context "parameters for empty gel"
       include_context "expect gel JSON"
       it_behaves_like('creating a resource')
     end

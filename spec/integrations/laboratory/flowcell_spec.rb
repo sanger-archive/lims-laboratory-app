@@ -9,6 +9,7 @@ require 'integrations/laboratory/lab_resource_shared'
 require 'integrations/spec_helper'
 
 require 'integrations/laboratory/resource_shared'
+require 'models/laboratory/flowcell_shared'
 
 def create_lane_array
   {}.tap do |flowcell| 
@@ -51,7 +52,7 @@ shared_context "expect flowcell JSON  with labels" do
   }
 end
 
-shared_context "for empty flowcell" do
+shared_context "for empty flowcell parameter" do
   let (:parameters) { { :flowcell => number_of_lanes_hash} }
   include_context "expect empty flowcell"
 end
@@ -74,18 +75,7 @@ shared_examples_for "with saved flowcell with samples" do
   include_context "with sample in location"
 end
 
-shared_context "has number of lane" do |nb_of_lanes|
-  let(:number_of_lanes) { nb_of_lanes }
-  let(:number_of_lanes_hash) { { :number_of_lanes => number_of_lanes } }
-end
     
-shared_context "miseq flowcell" do
-  include_context("has number of lane", 1)
-end
-    
-shared_context "hiseq flowcell" do
-  include_context("has number of lane", 8)
-end
 
 shared_context "for flowcell with samples and labels" do
   include_context "for flowcell with samples"
@@ -97,7 +87,7 @@ end
 
 shared_context "#create" do
   context do
-    include_context "for empty flowcell"
+    include_context "for empty flowcell parameter"
     include_context "expect flowcell JSON"
     it_behaves_like('creating a resource') 
   end

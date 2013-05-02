@@ -230,7 +230,7 @@ module Lims::LaboratoryApp
       let(:updated_order) { result[:order] }
     end
 
-    shared_context "updating variable" do |key, value|
+    shared_context "updating variable parameters" do |key, value|
       include_context "order updated"
       context key do
         let(:parameters) { { key => value  } }
@@ -252,9 +252,9 @@ module Lims::LaboratoryApp
     end
 
     shared_context "updating states" do
-      it_behaves_like "updating variable", :pipeline, "new pipeline "
-      it_behaves_like "updating variable", :parameters, {:my_param => :new_value }
-      it_behaves_like "updating variable", :state, {:my_state => :new_value }
+      it_behaves_like "updating variable parameters", :pipeline, "new pipeline "
+      it_behaves_like "updating variable parameters", :parameters, {:my_param => :new_value }
+      it_behaves_like "updating variable parameters", :state, {:my_state => :new_value }
     end
 
     shared_context "changing status" do |event, new_status|
@@ -283,9 +283,9 @@ module Lims::LaboratoryApp
       it_behaves_like "updating states"
 
       # only draft
-      it_behaves_like "updating variable", :cost_code, "new cost code"
-      it_behaves_like "updating variable", :creator, "new user"
-      it_behaves_like "updating variable", :study, "new study"
+      it_behaves_like "updating variable parameters", :cost_code, "new cost code"
+      it_behaves_like "updating variable parameters", :creator, "new user"
+      it_behaves_like "updating variable parameters", :study, "new study"
 
       it_behaves_like "changing status", :build, "pending"
       it_behaves_like "adding items", :build, "pending"

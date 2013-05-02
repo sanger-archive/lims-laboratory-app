@@ -49,7 +49,7 @@ module Lims::LaboratoryApp::Laboratory
   end
 
 
-  shared_context "for empty tube rack" do
+  shared_context "parameters for empty tube rack" do
     let(:parameters) { {:tube_rack => dimensions} }
     let(:tubes_hash) { {} }
   end
@@ -183,7 +183,7 @@ module Lims::LaboratoryApp::Laboratory
       include_context "has standard dimensions"
 
       context "with empty tube rack" do
-        include_context "for empty tube rack"
+        include_context "parameters for empty tube rack"
         include_context "expected tube rack JSON"
         it_behaves_like "creating a resource"
       end
