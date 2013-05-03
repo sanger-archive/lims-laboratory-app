@@ -91,3 +91,10 @@ RSpec::Matchers.define :include_json do |content|
     diffs.map { |d| d.join(' ') }.join("\n")}"
   end
 end
+
+
+def set_uuid(session, object, uuid)
+  session << object
+  ur = session.new_uuid_resource_for(object)
+  ur.send(:uuid=, uuid)
+end

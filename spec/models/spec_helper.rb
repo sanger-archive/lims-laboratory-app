@@ -1,3 +1,4 @@
+require 'spec_helper'
   shared_examples "requires" do |attribute|
     context "without #{attribute}" do
       let(:excluded_parameters) { [attribute] }
