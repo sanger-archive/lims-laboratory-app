@@ -1,5 +1,4 @@
 # Spec requirements
-require 'search_shared'
 require 'models/persistence/sequel/spec_helper'
 require 'models/persistence/sequel/page_shared'
 
@@ -8,6 +7,64 @@ require 'lims-laboratory-app/organization/order/all'
 
 module Lims::LaboratoryApp
   module Lims::Core::Persistence
+    shared_context "with saved orders ('models' version)" do
+      include_context "with saved batches ('models' version)"
+      let(:basic_parameters) { { :creator => Organization::User.new(), :study => Organization::Study.new(), :pipeline => "testing" } }
+      let(:orders) {
+        # We give a different pipeline to be able to differentiate each order easily
+        # and sort them
+        [
+          Organization::Order.new(basic_parameters.merge(:pipeline => "P1")).tap do |o|
+            o.add_source("source1", "11111111-1111-0000-0000-000000000000")
+            o.add_target("source2", "11111111-2222-0000-0000-000000000000")
+            o.add_source("source3", "00000000-3333-0000-0000-000000000000")
+            o.build!
+            o.start!
+          end,
+          Organization::Order.new(basic_parameters.merge(:pipeline => "P2")).tap do |o|
+            o.add_source("source1", "22222222-1111-0000-0000-000000000000")
+            o.add_source("source2", "22222222-2222-0000-0000-000000000000")
+            o.add_target("source3", "00000000-3333-0000-0000-000000000000")
+            o.build!
+            o.start!
+          end,
+          Organization::Order.new(basic_parameters.merge(:pipeline => "P3")).tap do |o|
+            o.add_source("source1", "33333333-1111-0000-0000-000000000000")
+            o.add_source("source2", "33333333-2222-0000-0000-000000000000")
+            o.add_target("target1", "00000000-3333-0000-0000-000000000000")
+            o.build!
+            o.start!
+            o.complete!
+          end
+        ]
+      }
+      let!(:ids) {
+        orders.map do |o|
+          store.with_session do |session|
+            session << o
+            o[:source2].first.batch = session[batch_uuids[0]] if o.pipeline == 'P1'
+            o[:source1].first.batch = session[batch_uuids[1]] if o.pipeline == 'P2'
+            o[:target1].first.batch = session[batch_uuids[0]] if o.pipeline == 'P3'
+          end
+        end
+      }
+    end
+
+    shared_context "with saved batches ('models' version)" do
+      let!(:batch_uuids) do
+        ['11111111-2222-2222-3333-000000000000', '11111111-2222-2222-3333-111111111111'].tap do |uuids|
+          uuids.each do |uuid|
+            store.with_session do |session|
+              batch = Organization::Batch.new
+              session << batch
+              ur = session.new_uuid_resource_for(batch)
+              ur.send(:uuid=, uuid)
+            end
+          end
+        end
+      end
+    end
+
     shared_examples_for "finding orders" do |criteria, indexes|
       let(:filter) { MultiCriteriaFilter.new(criteria)
       }
@@ -28,7 +85,7 @@ module Lims::LaboratoryApp
 
     shared_examples_for "searchable by item criteria" do
       context "saved orders" do
-        include_context "with saved orders"
+        include_context "with saved orders ('models' version)"
 
         context "lookup by one uuid" do
           it_behaves_like "finding orders", { :item => {:uuid => "11111111-2222-0000-0000-000000000000" } }, [0]
@@ -79,7 +136,7 @@ module Lims::LaboratoryApp
     end
 
     shared_examples_for "orders filtrable" do
-      include_context "with saved orders"
+      include_context "with saved orders ('models' version)"
       let(:description) { "lookup by order" }
       let(:filter) { Lims::Core::Persistence::OrderFilter.new(criteria) }
       let(:search) { Lims::Core::Persistence::Search.new(:model => model, :filter => filter, :description => description) }

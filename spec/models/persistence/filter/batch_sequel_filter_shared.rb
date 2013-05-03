@@ -4,7 +4,7 @@ require 'models/persistence/filter/order_lookup_sequel_filter_shared'
 
 module Lims::LaboratoryApp
   shared_examples_for "batch filtrable" do
-    include_context "with saved orders"
+    include_context "with saved orders ('models' version)"
     let(:description) { "lookup resources by batch" }
     let(:filter) { Lims::Core::Persistence::BatchFilter.new(criteria) }
     let(:search) { Lims::Core::Persistence::Search.new(:model => model, :filter => filter, :description => description) }
