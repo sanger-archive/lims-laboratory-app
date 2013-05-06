@@ -17,10 +17,10 @@ describe "transfer_the_content_from_one_tube_to_multiple_tubes", :tube => true d
   # 
   # **Note you can replace tube uuids with spin column uuids in order to make a transfer from one tube to 
   # a target tube and a target spin columns**
-    sample = Lims::Core::Laboratory::Sample.new(:name => 'sample 1')
-    tube = Lims::Core::Laboratory::Tube.new << Lims::Core::Laboratory::Aliquot.new(:quantity => 10, :type => "RNA", :sample => sample)
-    target = Lims::Core::Laboratory::Tube.new
-    target2 = Lims::Core::Laboratory::Tube.new
+    sample = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
+    tube = Lims::LaboratoryApp::Laboratory::Tube.new << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 10, :type => "RNA", :sample => sample)
+    target = Lims::LaboratoryApp::Laboratory::Tube.new
+    target2 = Lims::LaboratoryApp::Laboratory::Tube.new
     
     save_with_uuid sample => [1,2,3,0,0], tube => [1,2,3,4,5], target => [1,2,3,4,6], target2 => [1,2,3,4,7]
 

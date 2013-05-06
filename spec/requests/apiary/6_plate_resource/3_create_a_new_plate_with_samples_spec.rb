@@ -8,7 +8,7 @@ describe "create_a_new_plate_with_samples", :plate => true do
   # * `number_of_columns` number of columns in the plate
   # * `type` actual type of the plate
   # * `wells_description` map aliquots to well locations
-    sample1 = Lims::Core::Laboratory::Sample.new(:name => 'sample 1')
+    sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
     save_with_uuid sample1 => [1,2,3,4,6]
 
     header('Accept', 'application/json')

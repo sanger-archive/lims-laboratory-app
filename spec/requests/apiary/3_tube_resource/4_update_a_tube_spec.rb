@@ -9,8 +9,8 @@ describe "update_a_tube", :tube => true do
   # * `max_volume` the max volume a tube can hold
   # * `aliquot_type`
   # * `aliquot_quantity` volume (ul) if liquid, mass (mg) if solid
-    sample = Lims::Core::Laboratory::Sample.new(:name => 'sample 1')
-    tube = Lims::Core::Laboratory::Tube.new << Lims::Core::Laboratory::Aliquot.new(:quantity => 10, :type => "DNA", :sample => sample)
+    sample = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
+    tube = Lims::LaboratoryApp::Laboratory::Tube.new << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 10, :type => "DNA", :sample => sample)
     
     save_with_uuid sample => [1,2,3,4,6], tube => [1,2,3,4,5]
 

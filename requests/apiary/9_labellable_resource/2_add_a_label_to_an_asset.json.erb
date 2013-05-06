@@ -16,7 +16,7 @@ h[:method] = "POST"
 h[:url] = '/labellables'
 h[:header] << 'Accept: application/json'
 h[:setup]=<<EOD
-save_with_uuid Lims::Core::Laboratory::Tube.new => [1,2,3,4,0]
+save_with_uuid Lims::LaboratoryApp::Laboratory::Tube.new => [1,2,3,4,0]
 EOD
 h[:parameters] = <<EOD
 { "labellable": {

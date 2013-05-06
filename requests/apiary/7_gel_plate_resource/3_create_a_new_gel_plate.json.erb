@@ -12,7 +12,7 @@ h[:method] = "POST"
 h[:url]='/gels'
 h[:header] << 'Accept: application/json'
 h[:setup]=<<EOD
-save_with_uuid Lims::Core::Laboratory::Sample.new(:name => 'sample 1') => [1,2,3,4,6]
+save_with_uuid Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1') => [1,2,3,4,6]
 EOD
 h[:parameters]=<<EOD
 { "gel": {

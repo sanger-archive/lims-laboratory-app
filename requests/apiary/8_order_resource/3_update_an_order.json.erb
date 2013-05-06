@@ -17,14 +17,14 @@ h[:method] = "PUT"
 h[:url]='/11111111-2222-3333-4444-555555555555'
 h[:header] << 'Accept: application/json'
 h[:setup]=<<EOD
-study = Lims::Core::Organization::Study.new
-user = Lims::Core::Organization::User.new
-plate = Lims::Core::Laboratory::Plate.new(:number_of_rows => 8,
+study = Lims::LaboratoryApp::Organization::Study.new
+user = Lims::LaboratoryApp::Organization::User.new
+plate = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_rows => 8,
                                     :number_of_columns => 12,
                                     :type => "stock plate type")
-tube1 = Lims::Core::Laboratory::Tube.new
-tube_new = Lims::Core::Laboratory::Tube.new
-order = Lims::Core::Organization::Order.new(:creator => user, :study => study).tap { |o|
+tube1 = Lims::LaboratoryApp::Laboratory::Tube.new
+tube_new = Lims::LaboratoryApp::Laboratory::Tube.new
+order = Lims::LaboratoryApp::Organization::Order.new(:creator => user, :study => study).tap { |o|
     o.add_source("Stock Plate 1", "11111111-2222-3333-4444-888888888888") #add plate to order as source
     o.add_target("Tube 1", "11111111-2222-3333-4444-999999999999") #add tube1 to order as target
 }

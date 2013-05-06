@@ -8,11 +8,11 @@ describe "update_a_tube_rack", :tube_rack => true do
   # 
   # * `aliquot_type`
   # * `aliquot_quantity` volume (ul) if liquid, mass (mg) if solid
-    sample1 = Lims::Core::Laboratory::Sample.new(:name => 'sample 1')
-    sample2 = Lims::Core::Laboratory::Sample.new(:name => 'sample 2')
-    source_tube1 = Lims::Core::Laboratory::Tube.new << Lims::Core::Laboratory::Aliquot.new(:quantity => 5, :type => "NA", :sample => sample1)
-    source_tube2 = Lims::Core::Laboratory::Tube.new << Lims::Core::Laboratory::Aliquot.new(:quantity => 5, :type => "NA", :sample => sample2)
-    tube_rack = Lims::Core::Laboratory::TubeRack.new(:number_of_columns => 12, :number_of_rows => 8)
+    sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
+    sample2 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2')
+    source_tube1 = Lims::LaboratoryApp::Laboratory::Tube.new << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 5, :type => "NA", :sample => sample1)
+    source_tube2 = Lims::LaboratoryApp::Laboratory::Tube.new << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 5, :type => "NA", :sample => sample2)
+    tube_rack = Lims::LaboratoryApp::Laboratory::TubeRack.new(:number_of_columns => 12, :number_of_rows => 8)
     tube_rack["A1"] = source_tube1
     tube_rack["E5"] = source_tube2
     

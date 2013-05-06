@@ -12,10 +12,10 @@ h[:method] = "POST"
 h[:url]='/tube_racks'
 h[:header] << 'Accept: application/json'
 h[:setup]=<<EOD
-sample1 = Lims::Core::Laboratory::Sample.new(:name => 'sample 1')
-sample2 = Lims::Core::Laboratory::Sample.new(:name => 'sample 2')
-tube1 = Lims::Core::Laboratory::Tube.new << Lims::Core::Laboratory::Aliquot.new(:quantity => 5, :type => "NA", :sample => sample1)
-tube2 = Lims::Core::Laboratory::Tube.new << Lims::Core::Laboratory::Aliquot.new(:quantity => 10, :type => "RNA", :sample => sample2)
+sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
+sample2 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2')
+tube1 = Lims::LaboratoryApp::Laboratory::Tube.new << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 5, :type => "NA", :sample => sample1)
+tube2 = Lims::LaboratoryApp::Laboratory::Tube.new << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 10, :type => "RNA", :sample => sample2)
 
 save_with_uuid sample1 => [1,2,3,0,0], sample2 => [1,2,3,0,1], tube1 => [1,2,3,4,1], tube2 => [1,2,3,4,2]
 set_uuid_start(1,2,3,4,7)

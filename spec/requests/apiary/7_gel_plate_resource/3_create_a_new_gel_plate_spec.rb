@@ -7,7 +7,7 @@ describe "create_a_new_gel_plate", :gel_plate => true do
   # * `number_of_rows` number of rows in the gel plate
   # * `number_of_columns` number of columns in the gel plate
   # * `windows_description` map tubes identified by their uuids to rack locations
-    save_with_uuid Lims::Core::Laboratory::Sample.new(:name => 'sample 1') => [1,2,3,4,6]
+    save_with_uuid Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1') => [1,2,3,4,6]
 
     header('Accept', 'application/json')
     header('Content-Type', 'application/json')

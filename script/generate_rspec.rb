@@ -178,11 +178,11 @@ def generate_http_request(example, target)
   end
 end
 
-create_needed_file('spec/integrations/requests/spec_helper.rb') do |target|
-  target.puts "require 'integrations/spec_helper'"
+create_needed_file('spec/requests/spec_helper.rb') do |target|
+  target.puts "require 'spec_helper'"
 end
 
-process_directory("spec/requests", ["spec/integrations/requests"]) do |directory|
+process_directory("requests", ["spec/requests"]) do |directory|
   title = directory.sub(/\A\d+_/, '').split('_').map(&:capitalize).join(' ')
   print <<EOF
   --

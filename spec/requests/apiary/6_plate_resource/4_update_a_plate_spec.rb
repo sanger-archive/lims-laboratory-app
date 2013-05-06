@@ -8,11 +8,11 @@ describe "update_a_plate", :plate => true do
   # * `type` new type of the plate
   # * `aliquot_type` new type of aliquots
   # * `aliquot_quantity` new quantity of aliquots. volume (ul) if liquid, mass (mg) if solid.
-    sample1 = Lims::Core::Laboratory::Sample.new(:name => 'sample 1')
-    plate = Lims::Core::Laboratory::Plate.new(:number_of_rows => 8,
+    sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
+    plate = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_rows => 8,
                                     :number_of_columns => 12,
                                     :type => "original plate type")
-    plate["C5"] << Lims::Core::Laboratory::Aliquot.new(:quantity => 10, :type => "sample", :sample => sample1)
+    plate["C5"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 10, :type => "sample", :sample => sample1)
     save_with_uuid sample1 => [1,2,3,4,6], plate => [1,2,3,4,5]
 
     header('Accept', 'application/json')

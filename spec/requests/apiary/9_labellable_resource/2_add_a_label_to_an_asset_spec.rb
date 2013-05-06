@@ -11,7 +11,7 @@ describe "add_a_label_to_an_asset", :labellable => true do
   # Label can eventually be identified by a position: an arbitray string (not a Symbol).
   # It has a value, which can be serial number, stick label with barcode etc.
   # It has a type, which can be sanger-barcode, 2d-barcode, ean13-barcode etc...
-    save_with_uuid Lims::Core::Laboratory::Tube.new => [1,2,3,4,0]
+    save_with_uuid Lims::LaboratoryApp::Laboratory::Tube.new => [1,2,3,4,0]
 
     header('Accept', 'application/json')
     header('Content-Type', 'application/json')

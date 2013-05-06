@@ -6,7 +6,7 @@ describe "update_a_batch", :batch => true do
   # 
   # * `process` the process that the batch is going through
   # * `kit`
-    batch = Lims::Core::Organization::Batch.new
+    batch = Lims::LaboratoryApp::Organization::Batch.new
     save_with_uuid batch => [1,2,3,4,5]
 
     header('Accept', 'application/json')

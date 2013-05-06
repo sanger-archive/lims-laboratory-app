@@ -20,22 +20,22 @@ describe "transfer_plates_to_plates_without_solvent", :plate => true do
   # Fraction is the fraction of an aliquot to transfer.
   # You should give the fraction OR the amount of the transfer, not both of them.
   # * `aliquot_type` set a new type for all aliquots in the target plate-like asset
-    sample1 = Lims::Core::Laboratory::Sample.new(:name => 'sample for A1')
-    source_plate1 = Lims::Core::Laboratory::Plate.new(:number_of_rows => 8,
+    sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample for A1')
+    source_plate1 = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_rows => 8,
                                     :number_of_columns => 12,
                                     :type => "source plate type")
-    source_plate1["A1"] << Lims::Core::Laboratory::Aliquot.new(:quantity => 100, :type => "sample", :sample => sample1)
+    source_plate1["A1"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 100, :type => "sample", :sample => sample1)
     
-    sample2 = Lims::Core::Laboratory::Sample.new(:name => 'sample for C3')
-    source_plate2 = Lims::Core::Laboratory::Plate.new(:number_of_rows => 8,
+    sample2 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample for C3')
+    source_plate2 = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_rows => 8,
                                     :number_of_columns => 12,
                                     :type => "source plate type")
-    source_plate2["C3"] << Lims::Core::Laboratory::Aliquot.new(:quantity => 100, :type => "sample", :sample => sample2)
+    source_plate2["C3"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 100, :type => "sample", :sample => sample2)
     
-    target_plate1 = Lims::Core::Laboratory::Plate.new(:number_of_rows => 8,
+    target_plate1 = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_rows => 8,
                                     :number_of_columns => 12,
                                     :type => "target plate type")
-    target_plate2 = Lims::Core::Laboratory::Plate.new(:number_of_rows => 8,
+    target_plate2 = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_rows => 8,
                                     :number_of_columns => 12,
                                     :type => "target plate type")
     

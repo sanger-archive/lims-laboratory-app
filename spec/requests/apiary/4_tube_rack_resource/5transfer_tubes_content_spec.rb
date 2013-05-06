@@ -12,11 +12,11 @@ describe "5transfer_tubes_content", :tube_rack => true do
   # 
   # In the example below, the content of the tube in B5 in the tube rack `11111111-2222-3333-4444-555555555555` is
   # tranfered into the tube in C3 in the tube rack `11111111-2222-3333-4444-666666666666`.
-    sample1 = Lims::Core::Laboratory::Sample.new(:name => 'sample 1')
-    source_tube1 = Lims::Core::Laboratory::Tube.new << Lims::Core::Laboratory::Aliquot.new(:quantity => 10, :type => "sample", :sample => sample1)
-    target_tube1 = Lims::Core::Laboratory::Tube.new
-    source_tube_rack = Lims::Core::Laboratory::TubeRack.new(:number_of_columns => 12, :number_of_rows => 8)
-    target_tube_rack = Lims::Core::Laboratory::TubeRack.new(:number_of_columns => 12, :number_of_rows => 8)
+    sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
+    source_tube1 = Lims::LaboratoryApp::Laboratory::Tube.new << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 10, :type => "sample", :sample => sample1)
+    target_tube1 = Lims::LaboratoryApp::Laboratory::Tube.new
+    source_tube_rack = Lims::LaboratoryApp::Laboratory::TubeRack.new(:number_of_columns => 12, :number_of_rows => 8)
+    target_tube_rack = Lims::LaboratoryApp::Laboratory::TubeRack.new(:number_of_columns => 12, :number_of_rows => 8)
     source_tube_rack["B5"] = source_tube1
     target_tube_rack["C3"] = target_tube1
     

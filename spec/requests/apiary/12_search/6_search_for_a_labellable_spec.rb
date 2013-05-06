@@ -20,11 +20,11 @@ describe "search_for_a_labellable", :search => true do
   # 
   # To actually get the search results, you need to access the first page of result 
   # thanks to the `first` action in the JSON response.
-    tube = Lims::Core::Laboratory::Tube.new
-    labellable = Lims::Core::Labels::Labellable.new({
+    tube = Lims::LaboratoryApp::Laboratory::Tube.new
+    labellable = Lims::LaboratoryApp::Labels::Labellable.new({
       :name => '11111111-2222-3333-4444-666666666666',
       :type => 'resource',
-      :content => {'barcode' => Lims::Core::Labels::SangerBarcode.new({:value => 'ABC123456'})}
+      :content => {'barcode' => Lims::LaboratoryApp::Labels::SangerBarcode.new({:value => 'ABC123456'})}
     })
     
     save_with_uuid tube => [1,2,3,4,6], labellable => [1,2,3,4,7]

@@ -10,7 +10,7 @@ describe "create_a_new_tube_with_samples", :tube => true do
   # * `sample_uuid` uuid of a sample
   # * `type` aliquot type
   # * `aliquot_quantity` volume (ul) if liquid, mass (mg) if solid
-    save_with_uuid Lims::Core::Laboratory::Sample.new(:name => 'sample 1') => [1,2,3,4,6]
+    save_with_uuid Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1') => [1,2,3,4,6]
 
     header('Accept', 'application/json')
     header('Content-Type', 'application/json')

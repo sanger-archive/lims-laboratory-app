@@ -22,12 +22,12 @@ h[:method] = "POST"
 h[:url]='/actions/transfer_tubes_to_tubes'
 h[:header] << 'Accept: application/json'
 h[:setup]=<<EOD
-sample1 = Lims::Core::Laboratory::Sample.new(:name => 'sample 1')
-sample2 = Lims::Core::Laboratory::Sample.new(:name => 'sample 2')
-source_tube1 = Lims::Core::Laboratory::Tube.new << Lims::Core::Laboratory::Aliquot.new(:quantity => 10, :type => "RNA", :sample => sample1)
-source_tube2 = Lims::Core::Laboratory::Tube.new << Lims::Core::Laboratory::Aliquot.new(:quantity => 10, :type => "RNA", :sample => sample2)
-target_tube1 = Lims::Core::Laboratory::Tube.new
-target_tube2 = Lims::Core::Laboratory::Tube.new
+sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
+sample2 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2')
+source_tube1 = Lims::LaboratoryApp::Laboratory::Tube.new << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 10, :type => "RNA", :sample => sample1)
+source_tube2 = Lims::LaboratoryApp::Laboratory::Tube.new << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 10, :type => "RNA", :sample => sample2)
+target_tube1 = Lims::LaboratoryApp::Laboratory::Tube.new
+target_tube2 = Lims::LaboratoryApp::Laboratory::Tube.new
 
 save_with_uuid sample1 => [1,2,3,0,0], sample2 => [1,2,3,0,1], source_tube1 => [1,2,3,4,5], source_tube2 => [1,2,3,4,7], target_tube1 => [1,2,3,4,6], target_tube2 => [1,2,3,4,8]
 EOD

@@ -8,12 +8,12 @@ describe "transfer_content_from_a_source_plate_to_a_target_plate", :plate => tru
   # * `target_uuid` uuid of the target plate
   # * `transfer_map` map locations in the source plate to other locations in the target plate
   # * `aliquot_type` set a new type for all aliquots in the target plate
-    sample1 = Lims::Core::Laboratory::Sample.new(:name => 'sample 1')
-    plate1 = Lims::Core::Laboratory::Plate.new(:number_of_rows => 8,
+    sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
+    plate1 = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_rows => 8,
                                     :number_of_columns => 12,
                                     :type => "source plate type")
-    plate1["C5"] << Lims::Core::Laboratory::Aliquot.new(:quantity => 10, :type => "new type", :sample => sample1)
-    plate2 = Lims::Core::Laboratory::Plate.new(:number_of_rows => 8,
+    plate1["C5"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 10, :type => "new type", :sample => sample1)
+    plate2 = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_rows => 8,
                                     :number_of_columns => 12,
                                     :type => "target plate type")
     save_with_uuid sample1 => [1,2,3,4,7], plate1 => [1,2,3,4,5], plate2 => [1,2,3,4,6]

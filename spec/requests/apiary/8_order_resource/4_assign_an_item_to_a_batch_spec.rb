@@ -11,11 +11,11 @@ describe "assign_an_item_to_a_batch", :order => true do
   # The example below update an order and assign the item `11111111-2222-3333-4444-666666666666` to the batch 
   # `11111111-2222-3333-4444-777777777777`. Note that an item can be assigned to a batch only through 
   # an update order action.
-    study = Lims::Core::Organization::Study.new
-    user = Lims::Core::Organization::User.new
-    order = Lims::Core::Organization::Order.new(:creator => user, :study => study, :pipeline => "P1", :cost_code => "cost code")
-    tube = Lims::Core::Laboratory::Tube.new
-    batch = Lims::Core::Organization::Batch.new(:process => "manual extraction")
+    study = Lims::LaboratoryApp::Organization::Study.new
+    user = Lims::LaboratoryApp::Organization::User.new
+    order = Lims::LaboratoryApp::Organization::Order.new(:creator => user, :study => study, :pipeline => "P1", :cost_code => "cost code")
+    tube = Lims::LaboratoryApp::Laboratory::Tube.new
+    batch = Lims::LaboratoryApp::Organization::Batch.new(:process => "manual extraction")
     
     save_with_uuid study => [1,1,1,1,1], user => [1,1,1,1,0], order => [1,2,3,4,5], tube => [1,2,3,4,6], batch => [1,2,3,4,7]
 
