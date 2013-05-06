@@ -6,3 +6,8 @@ require('lims-laboratory-app/laboratory/tube/tube_sequel_persistor')
 require('lims-laboratory-app/laboratory/tube/update_tube')
 require 'lims-laboratory-app/laboratory/aliquot/all'
 require('lims-laboratory-app/laboratory/tube')
+require 'lims-laboratory-app/laboratory/tube/transfer_tubes_to_tubes_resource'
+require 'lims-laboratory-app/laboratory/tube/tube_resource'
+require 'lims-laboratory-app/laboratory/tube_rack/tube_rack_resource'
+require 'lims-laboratory-app/laboratory/tube_rack/create_tube_rack_resource'
+require 'lims-laboratory-app/laboratory/tube_rack/tube_rack_move_resource'
