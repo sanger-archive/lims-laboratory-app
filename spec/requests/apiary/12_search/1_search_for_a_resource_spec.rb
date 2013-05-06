@@ -31,7 +31,8 @@ describe "search_for_a_resource", :search => true do
     }
 }
     EOD
-    response.status.should == 200
+
+    puts response.body
     response.body.should match_json <<-EOD
     {
     "search": {
