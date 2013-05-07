@@ -1,7 +1,5 @@
 #shared contexts for integrations
 require 'spec_helper'
-require 'lims-api/context_service'
-require 'lims-api/message_bus'
 require 'lims-laboratory-app'
 
 require 'logger'
