@@ -47,7 +47,7 @@ PATH
     lims-laboratory-app (1.0.2)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     active_support (3.0.0)
       activesupport (= 3.0.0)
