@@ -1,0 +1,118 @@
+GIT
+  remote: http://github.com/sanger/lims-api.git
+  revision: a962922fa206a3b3eefcbf80ec14d8b224c730e4
+  branch: version-2
+  specs:
+    lims-api (2.0.0.0.0)
+      active_support
+      bunny (= 0.9.0.pre4)
+      json
+      sequel
+      state_machine
+
+GIT
+  remote: http://github.com/sanger/lims-core.git
+  revision: b11bdc138767c3c8681506916704991e84bb1815
+  branch: version-2
+  specs:
+    lims-core (2.0.0.1.0)
+      active_support
+      aequitas
+      bunny (= 0.9.0.pre4)
+      facets (= 2.9.3)
+      sequel
+      state_machine
+      uuid
+      virtus (= 0.2.0)
+
+GIT
+  remote: http://github.com/sinatra/sinatra.git
+  revision: 459369eb66224836f72e21bbece58c007f3422fa
+  branch: 459369eb66224836f72e21bbece58c007f3422fa
+  specs:
+    sinatra (1.4.0)
+      rack (~> 1.4)
+      rack-protection (~> 1.3)
+      tilt (~> 1.3, >= 1.3.3)
+
+PATH
+  remote: .
+  specs:
+    lims-laboratory-app (1.0.2)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    active_support (3.0.0)
+      activesupport (= 3.0.0)
+    activesupport (3.0.0)
+    aequitas (0.0.2)
+    amq-protocol (1.4.0)
+    bond (0.4.3)
+    bunny (0.9.0.pre4)
+      amq-protocol (>= 1.0.1)
+    columnize (0.3.6)
+    debugger (1.5.0)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.0)
+    debugger-completion (1.0.0)
+      bond (>= 0.4.2)
+      debugger (~> 1.1)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.0)
+    diff-lcs (1.1.3)
+    facets (2.9.3)
+    hashdiff (0.0.6)
+    json (1.7.7)
+    macaddr (1.6.1)
+      systemu (~> 2.5.0)
+    rack (1.5.2)
+    rack-protection (1.5.0)
+      rack
+    rack-test (0.6.2)
+      rack (>= 1.0)
+    redcarpet (2.2.2)
+    rspec (2.8.0)
+      rspec-core (~> 2.8.0)
+      rspec-expectations (~> 2.8.0)
+      rspec-mocks (~> 2.8.0)
+    rspec-core (2.8.0)
+    rspec-expectations (2.8.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.8.0)
+    ruby-graphviz (1.0.8)
+    sequel (3.47.0)
+    sqlite3 (1.3.7)
+    state_machine (1.2.0)
+    systemu (2.5.2)
+    tilt (1.4.0)
+    uuid (2.3.7)
+      macaddr (~> 1.0)
+    virtus (0.2.0)
+    yard (0.7.3)
+    yard-rspec (0.1)
+      yard
+    yard-state_machine (0.0.1)
+      ruby-graphviz (~> 1.0.0)
+      yard (~> 0.7.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  debugger
+  debugger-completion
+  hashdiff
+  lims-api (~> 2.0)!
+  lims-core (~> 2.0)!
+  lims-laboratory-app!
+  rack-test (~> 0.6.1)
+  redcarpet
+  rspec (~> 2.8.0)
+  ruby-graphviz
+  sinatra!
+  sqlite3
+  yard (= 0.7.3)
+  yard-rspec (= 0.1)
+  yard-state_machine
