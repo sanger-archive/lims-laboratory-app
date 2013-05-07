@@ -11,14 +11,26 @@ gem 'lims-api', '~>2.0', :git => 'http://github.com/sanger/lims-api.git' , :bran
 
 
 group :debugging do
-  gem 'debugger'
-  gem 'debugger-completion'
+  gem 'debugger', :platforms => :mri
+  gem 'debugger-completion', :platforms => :mri
+end
+
+group :development do
+  gem 'sqlite3', :platforms => :mri
 end
 
 group :yard do
-  gem 'yard', '= 0.7.3'
-  gem 'yard-rspec', '0.1'
-  gem 'yard-state_machine'
-  gem 'redcarpet'
-  gem 'ruby-graphviz'
+  gem 'yard', '= 0.7.3', :platforms => :mri
+  gem 'yard-rspec', '0.1', :platforms => :mri
+  gem 'yard-state_machine', :platforms => :mri
+  gem 'redcarpet', :platforms => :mri
+  gem 'ruby-graphviz', :platforms => :mri
+end
+
+group :deployment do
+  gem "psd_logger", :git => "http://github.com/sanger/psd_logger.git"
+  gem 'trinidad', :platforms => :jruby
+  gem "trinidad_daemon_extension", :platforms => :jruby
+  gem 'activesupport', '~> 3.0.0', :platforms => :jruby
+  gem 'jdbc-mysql', :platforms => :jruby
 end

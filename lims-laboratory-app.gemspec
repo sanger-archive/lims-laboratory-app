@@ -20,6 +20,5 @@ Gem::Specification.new do |gem|
   #development
   gem.add_development_dependency('rspec', '~>2.8.0')
   gem.add_development_dependency('rack-test', '~> 0.6.1')
-  gem.add_development_dependency('sqlite3')
   gem.add_development_dependency('hashdiff')
 end
