@@ -8,6 +8,7 @@ require 'models/persistence/filter/multi_criteria_sequel_filter_shared'
 require 'models/persistence/filter/label_sequel_filter_shared'
 require 'models/persistence/filter/order_lookup_sequel_filter_shared'
 require 'models/persistence/filter/batch_sequel_filter_shared'
+require 'models/persistence/filter/comparison_lookup_sequel_filter_shared'
 
 # Model requirements
 require 'lims-laboratory-app/laboratory/plate/all'
@@ -132,6 +133,10 @@ module Lims::LaboratoryApp
                end
              end
           }
+
+          context "by comparison" do
+            it_behaves_like "comparison filter for plate"
+          end
 
           context "by label" do
             let!(:uuid) {
