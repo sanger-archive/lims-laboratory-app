@@ -5,6 +5,7 @@ module Lims::Core
   module Persistence
     module Sequel::Filters
       def label_filter(criteria)
+        comparison_criteria = criteria.delete(:comparison)
         labellable_dataset = @session.labellable.__multi_criteria_filter(criteria).dataset
 
         # join labellabe request to uuid_resource
@@ -14,6 +15,9 @@ module Lims::Core
         # labellables#id.
         uuid_resources_joint = (self.class == Lims::LaboratoryApp::Labels::Labellable::LabellableSequelPersistor) ? {:key => :"id"} : {:uuid => :"name"}
         persistor = self.class.new(self, labellable_dataset.join("uuid_resources", uuid_resources_joint).select(:key).qualify(:uuid_resources))
+
+        # add comparison criteria if exists
+        persistor = add_comparison_filter(persistor.dataset, comparison_criteria) if comparison_criteria
 
         # join everything to current resource table
         # Qualify method is needed to get only the fields related to the searched
