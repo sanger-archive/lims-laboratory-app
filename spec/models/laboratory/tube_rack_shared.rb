@@ -12,9 +12,10 @@ module Lims::LaboratoryApp
     shared_context "tube_rack factory" do
       include_context "aliquot factory"
 
-      def new_tube_rack_with_samples(sample_nb=5, quantity=nil, volume=100)
+      def new_tube_rack_with_samples(sample_nb=5, quantity=nil, volume=100, tube_quantity=nil)
         TubeRack.new(:number_of_rows => number_of_rows, :number_of_columns => number_of_columns).tap do |tube_rack|
-          tube_rack.each_with_index do |slot, i|
+          tube_quantity = number_of_rows * number_of_columns unless tube_quantity
+          (0..tube_quantity-1).to_a.each do |i|
             tube = Tube.new
             tube_rack[i] = tube
             1.upto(sample_nb) do |j|
