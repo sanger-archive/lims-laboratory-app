@@ -1,5 +1,6 @@
 require 'lims-core/resource'
 require 'lims-laboratory-app/laboratory/tube'
+require 'lims-laboratory-app/laboratory/container'
 
 module Lims::LaboratoryApp
   module Laboratory
