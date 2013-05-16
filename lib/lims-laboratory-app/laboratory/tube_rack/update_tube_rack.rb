@@ -24,7 +24,7 @@ module Lims::LaboratoryApp
         # @see Laboratory::TubeRack#[]=
         def _call_in_session(session)
           tubes.each do |location, tube|
-            tube_rack[position] = tube 
+            tube_rack[location] = tube 
           end
 
           tube_rack.each do |tube|
