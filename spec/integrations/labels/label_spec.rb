@@ -96,13 +96,24 @@ module Lims::LaboratoryApp
     include_context "JSON"
     let(:create_label_url) { "/actions/create_label" }
     let(:model) { "labellables" }
-    
+
     context "#create" do
       context "with empty parameters" do
         let(:parameters) { {} }
-        let(:expected_json) { {"errors"=> 
-          { "labellable"=>"invalid", "type"=>"invalid", "value"=>"invalid", "position"=>"invalid"}
-        } }
+        let(:expected_json) { {"errors"=> {
+          "labellable" => [
+            "Labellable must not be blank"
+          ],
+            "type" => [
+              "Type must not be blank"
+          ],
+            "value" => [
+              "Value must not be blank"
+          ],
+            "position" => [
+              "Position must not be blank"
+          ]
+        }} }
         let!(:url) { create_label_url }
         it_behaves_like "an invalid core action", 422
       end
