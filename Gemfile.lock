@@ -1,7 +1,7 @@
 GIT
   remote: http://github.com/sanger/lims-api.git
-  revision: d847d80d49d8675fb072f88b1eee432985cb74f2
-  branch: version-2
+  revision: f10cc644beda933069a2a98bafe5f7a88e321b0f
+  branch: development
   specs:
     lims-api (2.0.0.2.0)
       active_support
@@ -12,10 +12,10 @@ GIT
 
 GIT
   remote: http://github.com/sanger/lims-core.git
-  revision: 43e0bc492bb20a8f32c740304a5fa5b75eab8041
-  branch: version-2
+  revision: 73f31c8ca9ffd2260b4d279232355a825c1c13b9
+  branch: development
   specs:
-    lims-core (2.0.0.3.1)
+    lims-core (2.0.0.3.2)
       active_support
       aequitas
       bunny (= 0.9.0.pre10)
@@ -53,7 +53,7 @@ GEM
       activesupport (= 3.0.0)
     activesupport (3.0.0)
     aequitas (0.0.2)
-    amq-protocol (1.5.0)
+    amq-protocol (1.6.0)
     bond (0.4.3)
     bunny (0.9.0.pre10)
       amq-protocol (>= 1.4.0)
@@ -72,8 +72,8 @@ GEM
     hashdiff (0.0.6)
     jdbc-mysql (5.1.24)
     jruby-rack (1.1.13.2)
-    json (1.7.7)
-    json (1.7.7-java)
+    json (1.8.0)
+    json (1.8.0-java)
     macaddr (1.6.1)
       systemu (~> 2.5.0)
     rack (1.5.2)
