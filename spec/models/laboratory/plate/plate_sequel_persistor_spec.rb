@@ -39,7 +39,7 @@ module Lims::LaboratoryApp
         before (:each) do
           store.with_session { |session| session << new_empty_plate.tap {|_| _[0] << aliquot} }
         end
-        let(:plate_id) { store.with_session { |session| @plate_id = last_plate_id(session) } }
+        let!(:plate_id) { store.with_session { |session| @plate_id = last_plate_id(session) } }
 
         context "when modified within a session" do
           before do
@@ -156,7 +156,34 @@ module Lims::LaboratoryApp
             it_behaves_like "batch filtrable"
           end
         end
+
       end
+        context "#dirty-attribute" do
+          let!(:plate_id) { save(new_plate_with_samples) }
+          context "no strategy" do
+            before(:each) { store.dirty_attribute_strategy = nil }
+            it "saves everything" do
+              store.with_session do |session|
+                $stop = true
+                session.plate.should_receive(:update_raw).and_call_original
+                session.aliquot.should_receive(:save).exactly(96*5).and_call_original
+                session.aliquot.should_receive(:update_raw).exactly(96*5).and_call_original
+                plate = session.plate[plate_id]
+              end
+            end
+          end
+          context "strategy" do
+            before(:each) { store.dirty_attribute_strategy = store.class::DIRTY_ATTRIBUTE_STRATEGY_SHA1 }
+            it "saves everything" do
+              store.with_session do |session|
+                session.plate.should_not_receive(:update_raw)
+                session.aliquot.should_not_receive(:update_raw)
+                session.aliquot.should_receive(:save).exactly(96*5).and_call_original
+                plate = session.plate[plate_id]
+              end
+            end
+          end
+        end
 
       context do
         let(:constructor) { lambda { |*_| new_empty_plate } }
