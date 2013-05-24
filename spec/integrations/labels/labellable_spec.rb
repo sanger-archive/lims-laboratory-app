@@ -46,9 +46,14 @@ module Lims::LaboratoryApp
       context "with empty parameters" do
         let(:url) { "/actions/create_labellable" }
         let(:parameters) { {} }
-        let(:expected_json) { {"errors"=> 
-          { "name"=>"invalid", "type"=>"invalid"} 
-        } }
+        let(:expected_json) { {"errors"=>{ 
+          "name" => [
+            "Name must not be blank"
+          ],
+            "type" => [
+              "Type must not be blank"
+          ]
+        }}}
         it_behaves_like "an invalid core action", 422
       end
 

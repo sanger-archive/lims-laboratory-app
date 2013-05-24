@@ -43,9 +43,20 @@ module Lims::LaboratoryApp
 
         context "invalid action parameters" do
           subject { described_class.new(:store => store, :user => user, :application => application) }
-          before(:each) { subject.call }
-          its(:result) { should be_nil }
-          its(:errors) { should_not be_empty }
+
+          it "raises an invalid parameters error" do
+            expect do
+              subject.call
+            end.to raise_error(Lims::Core::Actions::Action::InvalidParameters)
+          end
+
+          it "contains the errors" do
+            begin
+              subject.call
+            rescue Lims::Core::Actions::Action::InvalidParameters => e
+              e.errors.should_not be_empty
+            end
+          end
         end
 
 

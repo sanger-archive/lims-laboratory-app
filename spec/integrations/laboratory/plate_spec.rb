@@ -161,30 +161,30 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
       it "display a page" do
         path = "http://example.org/#{uuid}"
         get("plates/page=1").body.should match_json({
-              "actions"=>{
-                "read"=>"http://example.org/plates/page=1",
-                "first"=>"http://example.org/plates/page=1",
-                "last"=>"http://example.org/plates/page=-1"},
-              "plates"=>[
-                  {"actions"=>{"read"=> path,
-                    "update"=> path,
-                    "delete"=> path,
-                    "create"=> path,
-                   },
-        "uuid" => uuid,
-        "number_of_rows" => number_of_rows,
-        "number_of_columns" => number_of_columns,
-        "type" => plate_type,
-        "wells"=>{
-          "A1"=>[],"A2"=>[],"A3"=>[],"A4"=>[],"A5"=>[],"A6"=>[],"A7"=>[],"A8"=>[],"A9"=>[],"A10"=>[],"A11"=>[],"A12"=>[],
-          "B1"=>[],"B2"=>[],"B3"=>[],"B4"=>[],"B5"=>[],"B6"=>[],"B7"=>[],"B8"=>[],"B9"=>[],"B10"=>[],"B11"=>[],"B12"=>[],
-          "C1"=>[],"C2"=>[],"C3"=>[],"C4"=>[],"C5"=>viewed_aliquot_array,"C6"=>[],"C7"=>[],"C8"=>[],"C9"=>[],"C10"=>[],"C11"=>[],"C12"=>[],
-          "D1"=>[],"D2"=>[],"D3"=>[],"D4"=>[],"D5"=>[],"D6"=>[],"D7"=>[],"D8"=>[],"D9"=>[],"D10"=>[],"D11"=>[],"D12"=>[],
-          "E1"=>[],"E2"=>[],"E3"=>[],"E4"=>[],"E5"=>[],"E6"=>[],"E7"=>[],"E8"=>[],"E9"=>[],"E10"=>[],"E11"=>[],"E12"=>[],
-          "F1"=>[],"F2"=>[],"F3"=>[],"F4"=>[],"F5"=>[],"F6"=>[],"F7"=>[],"F8"=>[],"F9"=>[],"F10"=>[],"F11"=>[],"F12"=>[],
-          "G1"=>[],"G2"=>[],"G3"=>[],"G4"=>[],"G5"=>[],"G6"=>[],"G7"=>[],"G8"=>[],"G9"=>[],"G10"=>[],"G11"=>[],"G12"=>[],
-          "H1"=>[],"H2"=>[],"H3"=>[],"H4"=>[],"H5"=>[],"H6"=>[],"H7"=>[],"H8"=>[],"H9"=>[],"H10"=>[],"H11"=>[],"H12"=>[]}}],
-        "size"=>1
+          "actions"=>{
+            "read"=>"http://example.org/plates/page=1",
+            "first"=>"http://example.org/plates/page=1",
+            "last"=>"http://example.org/plates/page=-1"},
+            "plates"=>[
+              {"actions"=>{"read"=> path,
+                           "update"=> path,
+                           "delete"=> path,
+                           "create"=> path,
+            },
+            "uuid" => uuid,
+            "number_of_rows" => number_of_rows,
+            "number_of_columns" => number_of_columns,
+            "type" => plate_type,
+            "wells"=>{
+              "A1"=>[],"A2"=>[],"A3"=>[],"A4"=>[],"A5"=>[],"A6"=>[],"A7"=>[],"A8"=>[],"A9"=>[],"A10"=>[],"A11"=>[],"A12"=>[],
+              "B1"=>[],"B2"=>[],"B3"=>[],"B4"=>[],"B5"=>[],"B6"=>[],"B7"=>[],"B8"=>[],"B9"=>[],"B10"=>[],"B11"=>[],"B12"=>[],
+              "C1"=>[],"C2"=>[],"C3"=>[],"C4"=>[],"C5"=>viewed_aliquot_array,"C6"=>[],"C7"=>[],"C8"=>[],"C9"=>[],"C10"=>[],"C11"=>[],"C12"=>[],
+              "D1"=>[],"D2"=>[],"D3"=>[],"D4"=>[],"D5"=>[],"D6"=>[],"D7"=>[],"D8"=>[],"D9"=>[],"D10"=>[],"D11"=>[],"D12"=>[],
+              "E1"=>[],"E2"=>[],"E3"=>[],"E4"=>[],"E5"=>[],"E6"=>[],"E7"=>[],"E8"=>[],"E9"=>[],"E10"=>[],"E11"=>[],"E12"=>[],
+              "F1"=>[],"F2"=>[],"F3"=>[],"F4"=>[],"F5"=>[],"F6"=>[],"F7"=>[],"F8"=>[],"F9"=>[],"F10"=>[],"F11"=>[],"F12"=>[],
+              "G1"=>[],"G2"=>[],"G3"=>[],"G4"=>[],"G5"=>[],"G6"=>[],"G7"=>[],"G8"=>[],"G9"=>[],"G10"=>[],"G11"=>[],"G12"=>[],
+              "H1"=>[],"H2"=>[],"H3"=>[],"H4"=>[],"H5"=>[],"H6"=>[],"H7"=>[],"H8"=>[],"H9"=>[],"H10"=>[],"H11"=>[],"H12"=>[]}}],
+            "size"=>1
         })
       end
     end
@@ -196,8 +196,8 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
             "read"=>"http://example.org/plates/page=1",
             "first"=>"http://example.org/plates/page=1",
             "last"=>"http://example.org/plates/page=-1"},
-          "plates"=>[],
-          "size"=>0
+            "plates"=>[],
+            "size"=>0
         })
       end
     end
@@ -206,9 +206,16 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
     let(:url) { "/actions/plate_transfer" }
     context "with empty parameters" do
       let(:parameters) { {} }
-      let(:expected_json)  { {"errors" => {:source => "invalid",
-      :target => "invalid",
-      :transfer_map => "invalid" }
+      let(:expected_json)  { {"errors" => {
+        "source" => [
+          "Source must not be blank"
+        ],
+          "target" => [
+            "Target must not be blank"
+        ],
+          "transfer_map" => [
+            "Transfer map must not be blank"
+        ]}
       }}
       it_behaves_like "an invalid core action", 422  # Unprocessable entity
     end
@@ -300,15 +307,20 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
       end
     end
 
-    context "#transfer wells to tubes" do
-      let(:url) { "/actions/transfer_wells_to_tubes" }
-      context "with empty plates" do
-        let(:parameters) { {:transfer_wells_to_tubes => {} } }
-        let(:expected_json)  { {"errors" => {:plate => "invalid",
-            :well_to_tube_map => "invalid" }
-          }}
-        it_behaves_like "an invalid core action", 422  # Unprocessable entity
-      end
+  context "#transfer wells to tubes" do
+    let(:url) { "/actions/transfer_wells_to_tubes" }
+    context "with empty plates" do
+      let(:parameters) { {:transfer_wells_to_tubes => {} } }
+      let(:expected_json)  { {"errors" => {
+        "plate" => [
+          "Plate must not be blank"
+        ],
+          "well_to_tube_map" => [
+            "Well to tube map must not be blank"
+        ]
+      }}}
+      it_behaves_like "an invalid core action", 422  # Unprocessable entity
+    end
 
     context "from a plate with sample" do
       include_context "with filled aliquots"

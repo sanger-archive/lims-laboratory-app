@@ -49,15 +49,23 @@ module Lims::LaboratoryApp
 
         context "with invalid paramters" do
           context "when called" do
-          subject do
-            described_class.new(:store => store, :user => user, :application => application)
-          end
-            before(:each)  {
-              subject.call
-            }
+            subject do
+              described_class.new(:store => store, :user => user, :application => application)
+            end
 
-            its(:result) { should == nil }
-            its(:errors) { should_not be_empty }
+            it "raises an invalid parameters error" do
+              expect do
+                subject.call
+              end.to raise_error(Lims::Core::Actions::Action::InvalidParameters)
+            end
+
+            it "contains the errors" do
+              begin
+                subject.call
+              rescue Lims::Core::Actions::Action::InvalidParameters => e
+                e.errors.should_not be_empty
+              end
+            end
           end
         end
         # should_transfer
