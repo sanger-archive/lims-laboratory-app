@@ -196,11 +196,18 @@ module Lims::LaboratoryApp
 
     context "#create" do
       include_context "set user and study uuid"
-      
+
       context "with empty parameters" do
         let(:url) { "/actions/create_order" }
         let(:parameters) { {} }
-        let(:expected_json) { {"errors" => {"study" => "invalid", "cost_code" => "invalid"}} }
+        let(:expected_json) { {"errors" => {
+          "study" => [
+            "Study must not be blank"
+          ],
+            "cost_code"=> [
+              "Cost code must not be blank"
+          ]
+        }} }
         it_behaves_like "an invalid core action", 422
       end
 

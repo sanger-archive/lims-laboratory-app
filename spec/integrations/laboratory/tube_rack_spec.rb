@@ -278,10 +278,16 @@ module Lims::LaboratoryApp::Laboratory
         let(:parameters) { {} }
         let(:expected_json) { {
           :errors => {
-            :source => "invalid",
-            :target => "invalid",
-            :transfer_map => "invalid"}
-        }}
+            "source"=> [
+              "Source must not be blank"
+            ],
+              "target"=> [
+                "Target must not be blank"
+            ],
+              "transfer_map"=> [
+                "Transfer map must not be blank"
+            ]
+          }}}
         it_behaves_like "an invalid core action", 422
       end
 
@@ -349,8 +355,10 @@ module Lims::LaboratoryApp::Laboratory
         let(:parameters) { {} }
         let(:expected_json) { {
           "errors" => {
-            "moves" => "invalid"}
-        }}
+            "moves" => [
+              "Moves must not be blank"
+            ]
+        }}}
         it_behaves_like "an invalid core action", 422
       end
 

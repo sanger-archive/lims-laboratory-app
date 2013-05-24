@@ -105,7 +105,10 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
     let(:url) { "/actions/transfer_tubes_to_tubes" }
     context "with empty tubes" do
       let(:parameters) { { :transfer_tubes_to_tubes => {} } }
-      let(:expected_json) { {"errors" => {:transfers => "invalid" }
+      let(:expected_json) { {"errors" => {
+        "transfers"=> [
+          "Transfers must not be blank"
+        ]}
       }}
       it_behaves_like "an invalid core action", 422  # Unprocessable entity
     end

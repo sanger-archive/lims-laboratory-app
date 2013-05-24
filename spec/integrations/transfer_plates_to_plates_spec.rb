@@ -14,7 +14,11 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
   context "transfer from plate(s)-like to plate(s)-like" do
     context "from empty plate-like" do
       let(:parameters) { { :transfer_plates_to_plates => {} } }
-      let(:expected_json) { {"errors" => {:transfers => "invalid"} } }
+      let(:expected_json) { {"errors" => {
+        "transfers" => [
+          "Transfers must not be blank"
+        ]
+      } } }
 
       it_behaves_like "an invalid core action", 422 # Unprocessable entity
     end
