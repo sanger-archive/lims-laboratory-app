@@ -11,22 +11,6 @@ GIT
       state_machine
 
 GIT
-  remote: http://github.com/sanger/lims-core.git
-  revision: cc390b92a75e6d9f13eb05ca3941ca8cbf925d6c
-  branch: development
-  specs:
-    lims-core (2.1.0.1.0)
-      active_support
-      aequitas
-      bunny (= 0.9.0.pre10)
-      dm-validations
-      facets (= 2.9.3)
-      sequel
-      state_machine
-      uuid
-      virtus (= 0.2.0)
-
-GIT
   remote: http://github.com/sanger/psd_logger.git
   revision: dd2d634114df75b1d8535715c169a7fc99521389
   specs:
@@ -46,6 +30,20 @@ PATH
   remote: .
   specs:
     lims-laboratory-app (1.0.4)
+
+PATH
+  remote: ../lims-core
+  specs:
+    lims-core (2.1.0.1.0)
+      active_support
+      aequitas
+      bunny (= 0.9.0.pre10)
+      dm-validations
+      facets (= 2.9.3)
+      sequel
+      state_machine
+      uuid
+      virtus (= 0.2.0)
 
 GEM
   remote: http://rubygems.org/
@@ -129,7 +127,7 @@ DEPENDENCIES
   hashdiff
   jdbc-mysql
   lims-api (~> 2.1)!
-  lims-core (~> 2.1)!
+  lims-core!
   lims-laboratory-app!
   psd_logger!
   rack-test (~> 0.6.1)
