@@ -1,9 +1,9 @@
 GIT
   remote: http://github.com/sanger/lims-api.git
-  revision: f10cc644beda933069a2a98bafe5f7a88e321b0f
+  revision: 134820f9dbdf26d874764f4daaa00aae88bc18bf
   branch: development
   specs:
-    lims-api (2.0.0.2.0)
+    lims-api (2.1.0.0.0)
       active_support
       bunny (= 0.9.0.pre10)
       json
@@ -12,10 +12,10 @@ GIT
 
 GIT
   remote: http://github.com/sanger/lims-core.git
-  revision: 73f31c8ca9ffd2260b4d279232355a825c1c13b9
+  revision: bad04efeb7527e5a5511c62bad86fbd71226386a
   branch: development
   specs:
-    lims-core (2.0.0.3.2)
+    lims-core (2.1.0.0.0)
       active_support
       aequitas
       bunny (= 0.9.0.pre10)
@@ -122,8 +122,8 @@ DEPENDENCIES
   debugger-completion
   hashdiff
   jdbc-mysql
-  lims-api (~> 2.0)!
-  lims-core (~> 2.0)!
+  lims-api (~> 2.1)!
+  lims-core (~> 2.1)!
   lims-laboratory-app!
   psd_logger!
   rack-test (~> 0.6.1)
