@@ -1,4 +1,5 @@
 require('lims-laboratory-app/laboratory/tube/create_tube')
+require('lims-laboratory-app/laboratory/tube/bulk_create_tube')
 require('lims-laboratory-app/laboratory/tube/transfer_tubes_to_tubes')
 require('lims-laboratory-app/laboratory/tube/transfer_wells_to_tubes')
 require('lims-laboratory-app/laboratory/tube/tube_persistor')
