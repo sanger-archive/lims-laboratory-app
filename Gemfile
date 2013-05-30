@@ -7,7 +7,7 @@ gem 'sinatra', :git => 'http://github.com/sinatra/sinatra.git', :branch => '4593
 gem 'lims-core', '~>2.1', :git => 'http://github.com/sanger/lims-core.git' , :branch => 'development'
 #gem 'lims-core', :path => '../lims-core'
 gem 'lims-api', '~>2.1', :git => 'http://github.com/sanger/lims-api.git' , :branch => 'development'
-#gem 'lims-api', :path => '../api'
+#gem 'lims-api', :path => '../lims-api'
 
 
 group :debugging do

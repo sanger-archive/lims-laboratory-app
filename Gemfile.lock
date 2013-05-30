@@ -1,6 +1,6 @@
 GIT
   remote: http://github.com/sanger/lims-api.git
-  revision: c638b5c6e43faff36740fafa5a88b4dc72b973d2
+  revision: 10e888945ddfc616d85d15a481a5a67ca85f56c9
   branch: development
   specs:
     lims-api (2.1.0.1.1)
@@ -45,7 +45,7 @@ GIT
 PATH
   remote: .
   specs:
-    lims-laboratory-app (1.0.6)
+    lims-laboratory-app (1.1.0)
 
 GEM
   remote: http://rubygems.org/
