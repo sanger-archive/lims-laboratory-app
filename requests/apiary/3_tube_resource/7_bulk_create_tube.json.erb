@@ -35,12 +35,6 @@ h[:parameters]=<<EOD
 EOD
 h[:status]=200
 h[:response_header] << 'Content-Type: application/json'
-h[:setup]=<<EOD
-#save_with_uuid({
-#Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1') => [1,0,0,0,1],
-#Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2') => [1,0,0,0,2],
-#Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 3') => [1,0,0,0,3]})
-EOD
 
 h[:response]=<<EOD
 {

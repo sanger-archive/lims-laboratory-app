@@ -19,7 +19,8 @@ module Lims::LaboratoryApp
                   uuid_resource = session.new_uuid_resource_for(sample)
                   uuid_resource.send(:uuid=, v)
                   ["sample", sample] 
-                else [k,v]
+                else 
+                  [k,v]
                 end
               end
               tube << Laboratory::Aliquot.new(aliquot_ready)

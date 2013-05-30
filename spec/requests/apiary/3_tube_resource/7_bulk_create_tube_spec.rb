@@ -2,10 +2,6 @@ require "requests/apiary/3_tube_resource/spec_helper"
 describe "bulk_create_tube", :tube => true do
   include_context "use core context service"
   it "bulk_create_tube" do
-    #save_with_uuid({
-    #Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1') => [1,0,0,0,1],
-    #Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2') => [1,0,0,0,2],
-    #Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 3') => [1,0,0,0,3]})
 
     header('Accept', 'application/json')
     header('Content-Type', 'application/json')
