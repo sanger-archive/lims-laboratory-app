@@ -328,6 +328,11 @@ describe "root" do
             "create": "http://example.org/actions/tag_wells"
         }
     },
+    "bulk_create_tubes": {
+        "actions": {
+            "create": "http://example.org/actions/bulk_create_tube"
+        }
+    },
     "revision": 3
 }
     EOD
