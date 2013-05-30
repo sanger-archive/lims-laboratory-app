@@ -236,6 +236,11 @@ describe "root" do
             "create": "http://example.org/actions/create_gel"
         }
     },
+    "create_filter_papers": {
+        "actions": {
+            "create": "http://example.org/actions/create_filter_paper"
+        }
+    },
     "create_labels": {
         "actions": {
             "create": "http://example.org/actions/create_label"
@@ -334,16 +339,6 @@ describe "root" do
     "tag_wells": {
         "actions": {
             "create": "http://example.org/actions/tag_wells"
-        }
-    },
-    "bulk_create_tubes": {
-        "actions": {
-            "create": "http://example.org/actions/bulk_create_tube"
-        }
-    },
-    "bulk_create_labellables": {
-        "actions": {
-            "create": "http://example.org/actions/bulk_create_labellable"
         }
     },
     "revision": 3
