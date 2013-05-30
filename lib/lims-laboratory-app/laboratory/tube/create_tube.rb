@@ -1,13 +1,14 @@
 # vi: ts=2:sts=2:et:sw=2  spell:spelllang=en  
 require 'lims-core/actions/action'
-
 require 'lims-laboratory-app/laboratory/tube'
+require 'lims-laboratory-app/laboratory/tube/create_tube_shared'
 
 module Lims::LaboratoryApp
   module Laboratory
     class Tube
       class CreateTube
         include Lims::Core::Actions::Action
+        include CreateTubeShared
 
         attribute :aliquots, Array, :default => []
         attribute :type, String, :required => false, :writer => :private
@@ -19,12 +20,7 @@ module Lims::LaboratoryApp
         end
 
         def _call_in_session(session)
-          tube = Laboratory::Tube.new(:type => type, :max_volume => max_volume)
-          session << tube
-          aliquots.each do |aliquot|
-            tube << Laboratory::Aliquot.new(aliquot)
-          end
-          { :tube => tube, :uuid => session.uuid_for!(tube) }
+          _create(type, max_volume, aliquots, session)
         end
       end
     end
