@@ -100,6 +100,14 @@ describe "dna_rna_manual_extraction" do
             "last": "http://example.org/labellables/page=-1"
         }
     },
+    "filter_papers": {
+        "actions": {
+            "create": "http://example.org/filter_papers",
+            "read": "http://example.org/filter_papers",
+            "first": "http://example.org/filter_papers/page=1",
+            "last": "http://example.org/filter_papers/page=-1"
+        }
+    },
     "sanger_barcodes": {
         "actions": {
             "create": "http://example.org/sanger_barcodes",

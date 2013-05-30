@@ -93,6 +93,14 @@ describe "root" do
             "last": "http://example.org/gels/page=-1"
         }
     },
+    "filter_papers": {
+        "actions": {
+            "create": "http://example.org/filter_papers",
+            "read": "http://example.org/filter_papers",
+            "first": "http://example.org/filter_papers/page=1",
+            "last": "http://example.org/filter_papers/page=-1"
+        }
+    },
     "labellables": {
         "actions": {
             "create": "http://example.org/labellables",
