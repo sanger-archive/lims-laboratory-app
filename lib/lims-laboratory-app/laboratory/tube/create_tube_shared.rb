@@ -7,7 +7,22 @@ module Lims::LaboratoryApp
           session << tube
           if aliquots
             aliquots.each do |aliquot|
-              tube << Laboratory::Aliquot.new(aliquot)
+              # The sample uuid comes from lims-management-app, 
+              # as a result, the sample is not present in the 
+              # lims-laboratory-app sample table. The following 
+              # creates a new sample with the expected uuid.
+              aliquot_ready = aliquot.mash do |k,v|
+                case k.to_s
+                when "sample_uuid" then 
+                  sample = Laboratory::Sample.new
+                  session << sample
+                  uuid_resource = session.new_uuid_resource_for(sample)
+                  uuid_resource.send(:uuid=, v)
+                  ["sample", sample] 
+                else [k,v]
+                end
+              end
+              tube << Laboratory::Aliquot.new(aliquot_ready)
             end
           end
           {:tube => tube, :uuid => session.uuid_for!(tube)}
