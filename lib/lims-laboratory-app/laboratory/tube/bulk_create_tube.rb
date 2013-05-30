@@ -14,7 +14,7 @@ module Lims::LaboratoryApp
         def _call_in_session(session)
           result = []
           tubes.each do |parameters|
-            result <<  _create(parameters[:type], parameters[:max_volume], parameters[:aliquots], session)
+            result <<  _create(parameters["type"], parameters["max_volume"], parameters["aliquots"], session)
           end
 
           {:tubes => result.map { |e| e[:tube] }}
