@@ -2,10 +2,10 @@ require "requests/apiary/3_tube_resource/spec_helper"
 describe "bulk_create_tube", :tube => true do
   include_context "use core context service"
   it "bulk_create_tube" do
-    save_with_uuid({
-      Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1') => [1,2,3,4,6],
-    Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2') => [1,2,3,4,7],
-    Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 3') => [1,2,3,4,8]})
+    #save_with_uuid({
+    #Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1') => [1,0,0,0,1],
+    #Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2') => [1,0,0,0,2],
+    #Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 3') => [1,0,0,0,3]})
 
     header('Accept', 'application/json')
     header('Content-Type', 'application/json')
@@ -19,7 +19,7 @@ describe "bulk_create_tube", :tube => true do
                 "max_volume": 2,
                 "aliquots": [
                     {
-                        "sample_uuid": "11111111-2222-3333-4444-666666666666",
+                        "sample_uuid": "11111111-0000-0000-0000-111111111111",
                         "type": "NA",
                         "quantity": 5
                     }
@@ -30,7 +30,7 @@ describe "bulk_create_tube", :tube => true do
                 "max_volume": 10,
                 "aliquots": [
                     {
-                        "sample_uuid": "11111111-2222-3333-4444-777777777777",
+                        "sample_uuid": "11111111-0000-0000-0000-222222222222",
                         "type": "RNA",
                         "quantity": 15
                     }
@@ -41,7 +41,7 @@ describe "bulk_create_tube", :tube => true do
                 "max_volume": 15,
                 "aliquots": [
                     {
-                        "sample_uuid": "11111111-2222-3333-4444-888888888888",
+                        "sample_uuid": "11111111-0000-0000-0000-333333333333",
                         "type": "DNA",
                         "quantity": 25
                     }
@@ -75,13 +75,13 @@ describe "bulk_create_tube", :tube => true do
                         {
                             "sample": {
                                 "actions": {
-                                    "read": "http://example.org/11111111-2222-3333-4444-666666666666",
-                                    "create": "http://example.org/11111111-2222-3333-4444-666666666666",
-                                    "update": "http://example.org/11111111-2222-3333-4444-666666666666",
-                                    "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+                                    "read": "http://example.org/11111111-0000-0000-0000-111111111111",
+                                    "create": "http://example.org/11111111-0000-0000-0000-111111111111",
+                                    "update": "http://example.org/11111111-0000-0000-0000-111111111111",
+                                    "delete": "http://example.org/11111111-0000-0000-0000-111111111111"
                                 },
-                                "uuid": "11111111-2222-3333-4444-666666666666",
-                                "name": "sample 1"
+                                "uuid": "11111111-0000-0000-0000-111111111111",
+                                "name": null
                             },
                             "quantity": 5,
                             "type": "NA",
@@ -103,13 +103,13 @@ describe "bulk_create_tube", :tube => true do
                         {
                             "sample": {
                                 "actions": {
-                                    "read": "http://example.org/11111111-2222-3333-4444-777777777777",
-                                    "create": "http://example.org/11111111-2222-3333-4444-777777777777",
-                                    "update": "http://example.org/11111111-2222-3333-4444-777777777777",
-                                    "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
+                                    "read": "http://example.org/11111111-0000-0000-0000-222222222222",
+                                    "create": "http://example.org/11111111-0000-0000-0000-222222222222",
+                                    "update": "http://example.org/11111111-0000-0000-0000-222222222222",
+                                    "delete": "http://example.org/11111111-0000-0000-0000-222222222222"
                                 },
-                                "uuid": "11111111-2222-3333-4444-777777777777",
-                                "name": "sample 2"
+                                "uuid": "11111111-0000-0000-0000-222222222222",
+                                "name": null
                             },
                             "quantity": 15,
                             "type": "RNA",
@@ -131,13 +131,13 @@ describe "bulk_create_tube", :tube => true do
                         {
                             "sample": {
                                 "actions": {
-                                    "read": "http://example.org/11111111-2222-3333-4444-888888888888",
-                                    "create": "http://example.org/11111111-2222-3333-4444-888888888888",
-                                    "update": "http://example.org/11111111-2222-3333-4444-888888888888",
-                                    "delete": "http://example.org/11111111-2222-3333-4444-888888888888"
+                                    "read": "http://example.org/11111111-0000-0000-0000-333333333333",
+                                    "create": "http://example.org/11111111-0000-0000-0000-333333333333",
+                                    "update": "http://example.org/11111111-0000-0000-0000-333333333333",
+                                    "delete": "http://example.org/11111111-0000-0000-0000-333333333333"
                                 },
-                                "uuid": "11111111-2222-3333-4444-888888888888",
-                                "name": "sample 3"
+                                "uuid": "11111111-0000-0000-0000-333333333333",
+                                "name": null
                             },
                             "quantity": 25,
                             "type": "DNA",
@@ -153,18 +153,7 @@ describe "bulk_create_tube", :tube => true do
                 "max_volume": 2,
                 "aliquots": [
                     {
-                        "sample": {
-                            "sample": {
-                                "actions": {
-                                    "read": "http://example.org/11111111-2222-3333-4444-666666666666",
-                                    "create": "http://example.org/11111111-2222-3333-4444-666666666666",
-                                    "update": "http://example.org/11111111-2222-3333-4444-666666666666",
-                                    "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
-                                },
-                                "uuid": "11111111-2222-3333-4444-666666666666",
-                                "name": "sample 1"
-                            }
-                        },
+                        "sample_uuid": "11111111-0000-0000-0000-111111111111",
                         "type": "NA",
                         "quantity": 5
                     }
@@ -175,18 +164,7 @@ describe "bulk_create_tube", :tube => true do
                 "max_volume": 10,
                 "aliquots": [
                     {
-                        "sample": {
-                            "sample": {
-                                "actions": {
-                                    "read": "http://example.org/11111111-2222-3333-4444-777777777777",
-                                    "create": "http://example.org/11111111-2222-3333-4444-777777777777",
-                                    "update": "http://example.org/11111111-2222-3333-4444-777777777777",
-                                    "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
-                                },
-                                "uuid": "11111111-2222-3333-4444-777777777777",
-                                "name": "sample 2"
-                            }
-                        },
+                        "sample_uuid": "11111111-0000-0000-0000-222222222222",
                         "type": "RNA",
                         "quantity": 15
                     }
@@ -197,18 +175,7 @@ describe "bulk_create_tube", :tube => true do
                 "max_volume": 15,
                 "aliquots": [
                     {
-                        "sample": {
-                            "sample": {
-                                "actions": {
-                                    "read": "http://example.org/11111111-2222-3333-4444-888888888888",
-                                    "create": "http://example.org/11111111-2222-3333-4444-888888888888",
-                                    "update": "http://example.org/11111111-2222-3333-4444-888888888888",
-                                    "delete": "http://example.org/11111111-2222-3333-4444-888888888888"
-                                },
-                                "uuid": "11111111-2222-3333-4444-888888888888",
-                                "name": "sample 3"
-                            }
-                        },
+                        "sample_uuid": "11111111-0000-0000-0000-333333333333",
                         "type": "DNA",
                         "quantity": 25
                     }
