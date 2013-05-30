@@ -5,8 +5,10 @@ module Lims::LaboratoryApp
         def _create(type, max_volume, aliquots, session)
           tube = Laboratory::Tube.new(:type => type, :max_volume => max_volume)
           session << tube
-          aliquots.each do |aliquot|
-            tube << Laboratory::Aliquot.new(aliquot)
+          if aliquots
+            aliquots.each do |aliquot|
+              tube << Laboratory::Aliquot.new(aliquot)
+            end
           end
           {:tube => tube, :uuid => session.uuid_for!(tube)}
         end
