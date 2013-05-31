@@ -333,6 +333,11 @@ describe "root" do
             "create": "http://example.org/actions/bulk_create_tube"
         }
     },
+    "bulk_create_labellables": {
+        "actions": {
+            "create": "http://example.org/actions/bulk_create_labellable"
+        }
+    },
     "revision": 3
 }
     EOD
