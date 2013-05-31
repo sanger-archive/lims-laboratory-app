@@ -17,7 +17,7 @@ module Lims::LaboratoryApp
 
   describe "Sequel#Plate ", :plate => true, :laboratory => true, :persistence => true, :sequel => true do
     include_context "sequel store"
-    include_context "plate or gel factory"
+    include_context "container-like asset factory"
 
     def last_plate_id(session)
       session.plate.dataset.order_by(:id).last[:id]

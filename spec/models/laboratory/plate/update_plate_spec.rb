@@ -11,7 +11,7 @@ module Lims::LaboratoryApp
   module Laboratory
     describe Plate::UpdatePlate, :plate => true, :laboratory => true, :persistence => true do
       include_context "for application", "test update tube rack"
-      include_context "plate or gel factory"
+      include_context "container-like asset factory"
       include_context "create object"
 
       let!(:store) { Lims::Core::Persistence::Store.new }

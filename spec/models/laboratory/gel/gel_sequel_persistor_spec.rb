@@ -15,7 +15,7 @@ require 'lims-laboratory-app/laboratory/gel'
 module Lims::LaboratoryApp
   describe "Persistence#Sequel#Gel", :gel => true, :laboratory => true, :persistence => true, :sequel => true do
     include_context "sequel store"
-    include_context "plate or gel factory"
+    include_context "container-like asset factory"
 
     def last_gel_id(session)
       session.gel.dataset.order_by(:id).last[:id]

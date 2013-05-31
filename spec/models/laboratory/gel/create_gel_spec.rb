@@ -78,7 +78,7 @@ module Lims::LaboratoryApp
     describe Gel::CreateGel, :gel => true, :laboratory => true, :persistence => true do
       context "valid calling context" do
         let!(:store) { Lims::Core::Persistence::Store.new() }
-        include_context "plate or gel factory"
+        include_context "container-like asset factory"
         include_context("for application",  "Test gel creation")
 
         include_context("has gel dimension", 8, 12)
