@@ -138,13 +138,13 @@ shared_examples "receptacle" do
 
     context  "can be mixed" do
       context "with a substance" do
-        before(:all) { subject << Lab::Aliquot.new(:quantity => 5) }
+        before(:each) { subject << Lab::Aliquot.new(:quantity => 5) }
         it { subject.quantity(Lab::Aliquot::AmountOfSubstance).should == 10 }
         it { subject.quantity(Lab::Aliquot::Volume).should == 100 }
       end
     end
     context "with a solvent" do
-      before(:all) { (subject << Lab::Aliquot.new(:quantity => 50, :type => Lab::Aliquot::Solvent)) }
+      before(:each) { (subject << Lab::Aliquot.new(:quantity => 50, :type => Lab::Aliquot::Solvent)) }
       it { subject.quantity(Lab::Aliquot::AmountOfSubstance).should == 5 }
       it { subject.quantity(Lab::Aliquot::Volume).should == 150 }
     end
