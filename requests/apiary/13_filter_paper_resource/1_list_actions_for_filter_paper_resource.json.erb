@@ -1,0 +1,28 @@
+<%
+require 'json'
+h={:header => [], :response_header => [] }
+h[:description]=<<EOD
+**List actions for filter paper resource.**
+
+* `create` creates a new filter paper via HTTP POST request
+* `read` returns the list of actions for a filter paper resource via HTTP GET request
+* `first` lists the first filter papers resources in a page browsing system
+* `last` lists the last filter papers resources in a page browsing system
+EOD
+h[:method] = "GET"
+h[:url]='/filter_papers'
+h[:header] << 'Accept: application/json'
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{ "filter_papers": {
+    "actions": {
+        "create": "/filter_papers",
+        "read": "/filter_papers",
+        "first": "/filter_papers/page=1",
+        "last": "/filter_papers/page=-1"
+    }
+} }
+EOD
+%>
+<%= h.to_json %>
