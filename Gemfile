@@ -6,7 +6,7 @@ gemspec
 gem 'sinatra', :git => 'http://github.com/sinatra/sinatra.git', :branch => '459369eb66224836f72e21bbece58c007f3422fa'
 gem 'lims-core', '~>2.1', :git => 'http://github.com/sanger/lims-core.git' , :branch => 'development'
 #gem 'lims-core', :path => '../lims-core'
-gem 'lims-api', '~>2.1', :git => 'http://github.com/sanger/lims-api.git' , :branch => 'development'
+gem 'lims-api', '~>2.2', :git => 'http://github.com/sanger/lims-api.git' , :branch => 'development'
 #gem 'lims-api', :path => '../lims-api'
 
 
