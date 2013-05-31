@@ -1,0 +1,151 @@
+<%
+require 'json'
+h = {:header => [], :response_header => [] }
+h[:method] = "POST"
+h[:url] = '/actions/bulk_create_labellable'
+h[:header] << 'Accept: application/json'
+h[:setup]=<<EOD
+save_with_uuid({
+  Lims::LaboratoryApp::Laboratory::Tube.new => [1,0,0,0,1],
+  Lims::LaboratoryApp::Laboratory::Tube.new => [1,0,0,0,2],
+  Lims::LaboratoryApp::Laboratory::Tube.new => [1,0,0,0,3]
+})
+EOD
+h[:parameters] = <<EOD
+{"bulk_create_labellable": {
+  "labellables": [
+    {
+    "name": "11111111-0000-0000-0000-111111111111",
+    "type": "resource",
+    "labels": {
+      "front barcode": {
+        "value": "1234-ABC",
+        "type": "sanger-barcode"
+      }
+    }
+    },
+    {
+    "name": "11111111-0000-0000-0000-222222222222",
+    "type": "resource",
+    "labels": {
+      "front barcode": {
+        "value": "5678-DEF",
+        "type": "ean13-barcode"
+      }
+    }
+    },
+    {
+    "name": "11111111-0000-0000-0000-333333333333",
+    "type": "resource",
+    "labels": {
+      "front barcode": {
+        "value": "9101-GHI",
+        "type": "ean13-barcode"
+      }
+    }
+    }
+  ]
+}}
+EOD
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json'
+
+h[:response]=<<EOD
+{
+  "bulk_create_labellable": {
+    "actions": {
+    },
+    "user": "user",
+    "application": "application",
+    "result": {
+      "labellables": [
+        {
+          "actions": {
+            "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+          },
+          "uuid": "11111111-2222-3333-4444-555555555555",
+          "name": "11111111-0000-0000-0000-111111111111",
+          "type": "resource",
+          "labels": {
+            "front barcode": {
+              "value": "1234-ABC",
+              "type": "sanger-barcode"
+            }
+          }
+        },
+        {
+          "actions": {
+            "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+            "create": "http://example.org/11111111-2222-3333-4444-666666666666",
+            "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+            "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+          },
+          "uuid": "11111111-2222-3333-4444-666666666666",
+          "name": "11111111-0000-0000-0000-222222222222",
+          "type": "resource",
+          "labels": {
+            "front barcode": {
+              "value": "5678-DEF",
+              "type": "ean13-barcode"
+            }
+          }
+        },
+        {
+          "actions": {
+            "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+            "create": "http://example.org/11111111-2222-3333-4444-777777777777",
+            "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+            "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
+          },
+          "uuid": "11111111-2222-3333-4444-777777777777",
+          "name": "11111111-0000-0000-0000-333333333333",
+          "type": "resource",
+          "labels": {
+            "front barcode": {
+              "value": "9101-GHI",
+              "type": "ean13-barcode"
+            }
+          }
+        }
+      ]
+    },
+    "labellables": [
+      {
+        "name": "11111111-0000-0000-0000-111111111111",
+        "type": "resource",
+        "labels": {
+          "front barcode": {
+            "value": "1234-ABC",
+            "type": "sanger-barcode"
+          }
+        }
+      },
+      {
+        "name": "11111111-0000-0000-0000-222222222222",
+        "type": "resource",
+        "labels": {
+          "front barcode": {
+            "value": "5678-DEF",
+            "type": "ean13-barcode"
+          }
+        }
+      },
+      {
+        "name": "11111111-0000-0000-0000-333333333333",
+        "type": "resource",
+        "labels": {
+          "front barcode": {
+            "value": "9101-GHI",
+            "type": "ean13-barcode"
+          }
+        }
+      }
+    ]
+  }
+}
+EOD
+%>
+<%= h.to_json %>
