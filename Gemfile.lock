@@ -1,9 +1,9 @@
 GIT
   remote: http://github.com/sanger/lims-api.git
-  revision: c89be1264d8cb432d22603a886646829a0695723
+  revision: 69e511809c52c436ed1a62f0870e86a6d6399dc0
   branch: development
   specs:
-    lims-api (2.1.0.1.2)
+    lims-api (2.2.0.0.0)
       active_support
       bunny (= 0.9.0.pre10)
       json
@@ -128,7 +128,7 @@ DEPENDENCIES
   debugger-completion
   hashdiff
   jdbc-mysql
-  lims-api (~> 2.1)!
+  lims-api (~> 2.2)!
   lims-core (~> 2.1)!
   lims-laboratory-app!
   psd_logger!
