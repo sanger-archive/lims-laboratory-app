@@ -39,9 +39,9 @@ module Lims::LaboratoryApp
       its(:labels) { should_not be_empty }
       its(:labels) { should be_a(Array) }
 
-      its(:positions) { subject[0].should == label_position }
-      its(:labels) { subject[0].type.should == label_type }
-      its(:labels) { subject[0].value.should == label_value }
+      it { subject.positions[0].should == label_position }
+      it { subject.labels[0].type.should == label_type }
+      it { subject.labels[0].value.should == label_value }
     end
 
     shared_examples_for "a labellable" do

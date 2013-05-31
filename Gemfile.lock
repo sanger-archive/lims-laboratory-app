@@ -1,9 +1,9 @@
 GIT
   remote: http://github.com/sanger/lims-api.git
-  revision: 9839b17f777d89742bd16c7ac41b4e0efd6a2092
+  revision: 966a0f6bf2aa0b4f7eda54f3a98c115bab5a7b54
   branch: master
   specs:
-    lims-api (2.1.1)
+    lims-api (2.2.0)
       active_support
       bunny (= 0.9.0.pre10)
       json
@@ -45,7 +45,7 @@ GIT
 PATH
   remote: .
   specs:
-    lims-laboratory-app (1.0.3)
+    lims-laboratory-app (1.2.0)
 
 GEM
   remote: http://rubygems.org/
@@ -69,7 +69,7 @@ GEM
       debugger (~> 1.1)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.0)
-    diff-lcs (1.1.3)
+    diff-lcs (1.2.4)
     dm-core (1.2.0)
       addressable (~> 2.2.6)
     dm-validations (1.2.0)
@@ -88,14 +88,14 @@ GEM
     rack-test (0.6.2)
       rack (>= 1.0)
     redcarpet (2.2.2)
-    rspec (2.8.0)
-      rspec-core (~> 2.8.0)
-      rspec-expectations (~> 2.8.0)
-      rspec-mocks (~> 2.8.0)
-    rspec-core (2.8.0)
-    rspec-expectations (2.8.0)
-      diff-lcs (~> 1.1.2)
-    rspec-mocks (2.8.0)
+    rspec (2.13.0)
+      rspec-core (~> 2.13.0)
+      rspec-expectations (~> 2.13.0)
+      rspec-mocks (~> 2.13.0)
+    rspec-core (2.13.1)
+    rspec-expectations (2.13.0)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.13.1)
     ruby-graphviz (1.0.8)
     sequel (3.47.0)
     sqlite3 (1.3.7)
@@ -128,13 +128,13 @@ DEPENDENCIES
   debugger-completion
   hashdiff
   jdbc-mysql
-  lims-api (~> 2.1)!
+  lims-api (~> 2.2)!
   lims-core (~> 2.1)!
   lims-laboratory-app!
   psd_logger!
   rack-test (~> 0.6.1)
   redcarpet
-  rspec (~> 2.8.0)
+  rspec (~> 2.13)
   ruby-graphviz
   sinatra!
   sqlite3
