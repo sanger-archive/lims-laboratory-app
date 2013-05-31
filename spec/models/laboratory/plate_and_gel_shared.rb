@@ -10,18 +10,22 @@ require 'facets/array'
 
 module Lims::LaboratoryApp
   module Laboratory
-    shared_context "plate or gel factory" do
+    shared_context "container-like asset factory" do
       include_context "aliquot factory"
 
       def new_plate_with_samples(sample_nb=5, quantity=nil)
-        new_plate_or_gel_with_samples(Plate, sample_nb, quantity)
+        new_container_with_samples(Plate, sample_nb, quantity)
       end
 
       def new_gel_with_samples(sample_nb=5, quantity=nil)
-        new_plate_or_gel_with_samples(Gel, sample_nb, quantity)
+        new_container_with_samples(Gel, sample_nb, quantity)
       end
 
-      def new_plate_or_gel_with_samples(asset_to_create, sample_nb, volume=100, quantity=nil)
+      def new_filter_paper_with_samples(sample_nb=5, quantity=nil)
+        new_container_with_samples(FilterPaper, sample_nb, quantity)
+      end
+
+      def new_container_with_samples(asset_to_create, sample_nb, volume=100, quantity=nil)
         asset_to_create.new(:number_of_rows => number_of_rows, :number_of_columns => number_of_columns).tap do |asset|
           asset.each_with_index do |w, i|
             1.upto(sample_nb) do |j|
@@ -33,14 +37,18 @@ module Lims::LaboratoryApp
       end
 
       def new_empty_plate
-        new_empty_plate_or_gel(Plate)
+        new_empty_container(Plate)
       end
 
       def new_empty_gel
-        new_empty_plate_or_gel(Gel)
+        new_empty_container(Gel)
       end
 
-      def new_empty_plate_or_gel(asset_to_create)
+      def new_empty_filter_paper
+        new_empty_container(FilterPaper)
+      end
+
+      def new_empty_container(asset_to_create)
         asset_to_create.new(:number_of_rows => number_of_rows, :number_of_columns => number_of_columns)
       end
 
