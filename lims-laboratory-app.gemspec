@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   #development
-  gem.add_development_dependency('rspec', '~>2.8.0')
+  gem.add_development_dependency('rspec', '~>2.13')
   gem.add_development_dependency('rack-test', '~> 0.6.1')
   gem.add_development_dependency('hashdiff')
 end

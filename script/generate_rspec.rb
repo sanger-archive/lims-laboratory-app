@@ -1,5 +1,6 @@
 # vi: ts=2:sts=2:et:sw=2
 require 'json'
+require 'fileutils'
 
 class Object
   def andand
