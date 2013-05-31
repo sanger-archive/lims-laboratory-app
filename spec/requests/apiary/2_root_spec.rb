@@ -261,6 +261,16 @@ describe "root" do
             "create": "http://example.org/actions/create_label"
         }
     },
+    "bulk_create_tubes": {
+        "actions": {
+            "create": "http://example.org/actions/bulk_create_tube"
+        }
+    },
+    "bulk_create_labellables": {
+        "actions": {
+            "create": "http://example.org/actions/bulk_create_labellable"
+        }
+    },
     "create_labellables": {
         "actions": {
             "create": "http://example.org/actions/create_labellable"
