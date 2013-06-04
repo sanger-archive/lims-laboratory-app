@@ -12,9 +12,9 @@ module Lims::LaboratoryApp
         attribute :tubes, Array, :required => true, :writer => :private
 
         def _call_in_session(session)
-          result = []
-          tubes.each do |parameters|
-            result <<  _create(parameters["type"], parameters["max_volume"], parameters["aliquots"], session)
+          result = tubes.map do |parameters|
+            tube_action = CreateTube.new(parameters)
+            tube_action.send(:_call_in_session, session)
           end
 
           {:tubes => result.map { |e| e[:tube] }}

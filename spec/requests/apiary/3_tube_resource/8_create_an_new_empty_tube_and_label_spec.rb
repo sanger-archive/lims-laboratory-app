@@ -40,6 +40,13 @@ describe "create_an_new_empty_tube_and_label", :tube => true do
 
         ],
         "labels": {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                "create": "http://example.org/11111111-2222-3333-4444-666666666666",
+                "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+            },
+            "uuid": "11111111-2222-3333-4444-666666666666",
             "front barcode": {
                 "value": "1234-ABC",
                 "type": "ean13-barcode"
