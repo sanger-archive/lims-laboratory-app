@@ -95,6 +95,13 @@ describe "bulk_create_tube_with_labels", :tube => true do
                         }
                     ],
                     "labels": {
+                        "actions": {
+                            "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "create": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+                        },
+                        "uuid": "11111111-2222-3333-4444-666666666666",
                         "front barcode": {
                             "value": "1234-ABC",
                             "type": "ean13-barcode"
@@ -107,12 +114,12 @@ describe "bulk_create_tube_with_labels", :tube => true do
                 },
                 {
                     "actions": {
-                        "read": "http://example.org/11111111-2222-3333-4444-666666666666",
-                        "create": "http://example.org/11111111-2222-3333-4444-666666666666",
-                        "update": "http://example.org/11111111-2222-3333-4444-666666666666",
-                        "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+                        "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+                        "create": "http://example.org/11111111-2222-3333-4444-777777777777",
+                        "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+                        "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
                     },
-                    "uuid": "11111111-2222-3333-4444-666666666666",
+                    "uuid": "11111111-2222-3333-4444-777777777777",
                     "type": "Eppendorf",
                     "max_volume": 10,
                     "aliquots": [
@@ -135,12 +142,12 @@ describe "bulk_create_tube_with_labels", :tube => true do
                 },
                 {
                     "actions": {
-                        "read": "http://example.org/11111111-2222-3333-4444-777777777777",
-                        "create": "http://example.org/11111111-2222-3333-4444-777777777777",
-                        "update": "http://example.org/11111111-2222-3333-4444-777777777777",
-                        "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
+                        "read": "http://example.org/11111111-2222-3333-4444-888888888888",
+                        "create": "http://example.org/11111111-2222-3333-4444-888888888888",
+                        "update": "http://example.org/11111111-2222-3333-4444-888888888888",
+                        "delete": "http://example.org/11111111-2222-3333-4444-888888888888"
                     },
-                    "uuid": "11111111-2222-3333-4444-777777777777",
+                    "uuid": "11111111-2222-3333-4444-888888888888",
                     "type": "New type",
                     "max_volume": 15,
                     "aliquots": [
@@ -173,7 +180,17 @@ describe "bulk_create_tube_with_labels", :tube => true do
                         "type": "NA",
                         "quantity": 5
                     }
-                ]
+                ],
+                "labels": {
+                    "front barcode": {
+                        "value": "1234-ABC",
+                        "type": "ean13-barcode"
+                    },
+                    "back barcode": {
+                        "value": "1234-ABC",
+                        "type": "sanger-barcode"
+                    }
+                }
             },
             {
                 "type": "Eppendorf",

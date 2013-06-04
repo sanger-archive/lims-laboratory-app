@@ -6,7 +6,7 @@ module Lims::LaboratoryApp
       def self.included(klass) 
         klass.class_eval do
           include Labellable::CreateLabellableShared
-          attribute :labels, Hash, :default => {}
+          attribute :labels, Hash, :default => nil
         end
       end
 
@@ -15,7 +15,7 @@ module Lims::LaboratoryApp
         # the uuid one and the model one
         create(session).tap do |result|
           uuid = result[:uuid]
-          _create(uuid, 'resource', labels, session)
+          _create(uuid, 'resource', labels, session) if labels
         end
       end
     end
