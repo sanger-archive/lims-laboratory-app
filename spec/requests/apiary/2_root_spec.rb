@@ -391,6 +391,11 @@ describe "root" do
             "create": "http://example.org/actions/swap_samples"
         }
     },
+    "transfer_locations_to_tubes": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_locations_to_tubes"
+        }
+    },
     "revision": 3
 }
     EOD

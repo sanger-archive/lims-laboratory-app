@@ -325,6 +325,11 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/bulk_create_labellable"
         }
     },
+    "transfer_locations_to_tubes": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_locations_to_tubes"
+        }
+    },
     "transfer_plates_to_plates": {
         "actions": {
             "create": "http://example.org/actions/transfer_plates_to_plates"
