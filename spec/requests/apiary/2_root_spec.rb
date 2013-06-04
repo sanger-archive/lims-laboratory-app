@@ -396,6 +396,11 @@ describe "root" do
             "create": "http://example.org/actions/transfer_locations_to_tubes"
         }
     },
+    "transfer_locations_to_wells": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_locations_to_wells"
+        }
+    },
     "revision": 3
 }
     EOD
