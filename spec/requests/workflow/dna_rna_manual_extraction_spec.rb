@@ -315,6 +315,11 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/transfer_multiple_filter_papers_to_tubes"
         }
     },
+    "transfer_multiple_filter_papers_to_wells": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_multiple_filter_papers_to_wells"
+        }
+    },
     "transfer_plates_to_plates": {
         "actions": {
             "create": "http://example.org/actions/transfer_plates_to_plates"

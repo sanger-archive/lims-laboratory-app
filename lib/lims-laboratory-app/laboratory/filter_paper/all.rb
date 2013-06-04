@@ -9,3 +9,5 @@ require 'lims-laboratory-app/laboratory/filter_paper/transfer_locations_to_wells
 require 'lims-laboratory-app/laboratory/filter_paper/transfer_locations_to_wells_resource'
 require 'lims-laboratory-app/laboratory/filter_paper/transfer_multiple_filter_papers_to_tubes'
 require 'lims-laboratory-app/laboratory/filter_paper/transfer_multiple_filter_papers_to_tubes_resource'
+require 'lims-laboratory-app/laboratory/filter_paper/transfer_multiple_filter_papers_to_wells'
+require 'lims-laboratory-app/laboratory/filter_paper/transfer_multiple_filter_papers_to_wells_resource'
