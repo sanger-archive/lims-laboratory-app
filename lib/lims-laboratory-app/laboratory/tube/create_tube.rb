@@ -15,7 +15,6 @@ module Lims::LaboratoryApp
         def initialize(*args, &block)
           @name = "Create Tube"
           super(*args, &block)
-          debugger
         end
 
         def create(session)

@@ -1,9 +1,11 @@
+require 'lims-laboratory-app/laboratory/create_labellable_resource_action'
 module Lims::LaboratoryApp
   module Laboratory
     module Container::ActionContainer
 
       def self.included(klass)
         klass.class_eval do
+          include CreateLabellableResourceAction
           include Virtus
           include Aequitas
 
@@ -39,7 +41,7 @@ module Lims::LaboratoryApp
         {:number_of_rows => number_of_rows, :number_of_columns => number_of_columns}
       end
 
-      def _call_in_session(session)
+      def create(session)
         new_container = container_class.new(container_parameters)
         session << new_container
         element_description.each do |element_name, aliquots|

@@ -8,7 +8,6 @@ module Lims::LaboratoryApp
   module Laboratory
     class Plate
       class CreatePlate
-        include Lims::Core::Actions::Action
         include Container::ActionContainer
 
         # @attribute [Hash<String, Array<Hash>>] wells_description

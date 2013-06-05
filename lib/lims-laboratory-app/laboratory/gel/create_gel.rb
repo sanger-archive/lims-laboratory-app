@@ -7,7 +7,6 @@ module Lims::LaboratoryApp
   module Laboratory
     class Gel
       class CreateGel
-        include Lims::Core::Actions::Action
         include Container::ActionContainer
 
         # @attribute [Hash<String, Array<Hash>>] windows_description

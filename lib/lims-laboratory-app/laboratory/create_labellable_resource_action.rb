@@ -14,7 +14,6 @@ module Lims::LaboratoryApp
       end
       module After
         def _call_in_session(session)
-          debugger
           # normaly the result should have to keys
           # the uuid one and the model one
           create(session).tap do |result|
