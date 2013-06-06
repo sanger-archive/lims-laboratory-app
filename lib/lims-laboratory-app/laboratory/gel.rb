@@ -1,6 +1,6 @@
 require 'lims-core/resource'
-require 'lims-laboratory-app/laboratory/receptacle'
 require 'lims-laboratory-app/laboratory/container'
+require 'lims-laboratory-app/laboratory/container_element'
 
 require 'facets/hash'
 require 'facets/array'
@@ -12,16 +12,23 @@ module Lims::LaboratoryApp
     # Gel contains Windows and has some readable labels on it (i.e. barcode).
     class Gel
       include Lims::Core::Resource
+      extend Lims::LaboratoryApp::Laboratory::ContainerElement
 
-      # The window can contain a receptacle, which is a chemical substance.
-      class Window
-        include Receptacle
+      # This method defines the name of the container element.
+      def self.element_name
+        :Window
       end
 
-      is_matrix_of Window do |gel, window|
-        (gel.number_of_rows*gel.number_of_columns).times.map { window.new }
+      # This method defines the type of the container element.
+      def self.element_type
+        Lims::LaboratoryApp::Laboratory::Gel::Window
       end
 
+      # The Window can contain a receptacle, which is a chemical substance.
+      Window = declare_element(element_name)
+
+      # creates the matrix of container elements (Windows)
+      create_container_elements(element_type)
     end
   end
 end
