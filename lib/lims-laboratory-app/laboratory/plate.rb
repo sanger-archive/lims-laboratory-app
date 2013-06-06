@@ -1,6 +1,5 @@
 require 'lims-core/resource'
 require 'lims-laboratory-app/laboratory/container'
-require 'lims-laboratory-app/laboratory/container_element'
 
 require 'facets/hash'
 require 'facets/array'
@@ -13,7 +12,7 @@ module Lims::LaboratoryApp
     # TODO add label behavior
     class Plate 
       include Lims::Core::Resource
-      extend Lims::LaboratoryApp::Laboratory::ContainerElement
+      extend Lims::LaboratoryApp::Laboratory::Container
       # Type contains the actual type of the plate.
       attribute :type, String, :required => false
 
