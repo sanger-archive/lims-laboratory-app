@@ -1,4 +1,5 @@
 require 'common'
+require 'lims-laboratory-app/laboratory/receptacle'
 
 module Lims
   module LaboratoryApp
@@ -94,6 +95,16 @@ module Lims
 					raise IndexOutOfRangeError unless (0...number_of_columns).include?(col)
 					row*number_of_columns + col
 				end
+
+        # This method dynamically creates a new class.
+        # This created class is a container element. It behaves like a Receptacle.
+        # Also creates and returns a matrix of this container elements
+        def matrix_of(element_name)
+          container_element = const_set(element_name.to_s.capitalize, Class.new do include Receptacle end)
+          is_matrix_of(container_element) do |container, container_element|
+            (container.number_of_rows*container.number_of_columns).times.map { container_element.new }
+          end
+        end
 
 				# return a element from a 2D index
 				# Also check the boundary

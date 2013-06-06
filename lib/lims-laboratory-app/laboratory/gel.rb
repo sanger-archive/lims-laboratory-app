@@ -1,6 +1,5 @@
 require 'lims-core/resource'
 require 'lims-laboratory-app/laboratory/container'
-require 'lims-laboratory-app/laboratory/container_element'
 
 require 'facets/hash'
 require 'facets/array'
@@ -12,7 +11,7 @@ module Lims::LaboratoryApp
     # Gel contains Windows and has some readable labels on it (i.e. barcode).
     class Gel
       include Lims::Core::Resource
-      extend Lims::LaboratoryApp::Laboratory::ContainerElement
+      extend Lims::LaboratoryApp::Laboratory::Container
 
       # creates the matrix of container elements (Windows)
       matrix_of(:Window)
