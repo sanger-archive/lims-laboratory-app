@@ -1,6 +1,6 @@
 require 'lims-core/resource'
-require 'lims-laboratory-app/laboratory/receptacle'
 require 'lims-laboratory-app/laboratory/container'
+require 'lims-laboratory-app/laboratory/container_element'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -11,17 +11,24 @@ module Lims::LaboratoryApp
     # or provided with the filter paper by an external company).
     class FilterPaper
       include Lims::Core::Resource
-      include Container
+      extend Lims::LaboratoryApp::Laboratory::ContainerElement
 
-      # A location is a Receptacle, which can contains 
+      # This method defines the name of the container element.
+      def self.element_name
+        :Location
+      end
+
+      # This method defines the type of the container element.
+      def self.element_type
+        Lims::LaboratoryApp::Laboratory::FilterPaper::Location
+      end
+
+      # A Location is a Receptacle, which can contains
       # 0 or more different samples
-      class Location
-        include Receptacle
-      end
+      Location = declare_element(element_name)
 
-      is_matrix_of Location do |filter_paper, location|
-        (filter_paper.number_of_rows * filter_paper.number_of_columns).times.map { location.new }
-      end
+      # creates the matrix of container elements (Locations)
+      create_container_elements(element_type)
     end
   end
 end
