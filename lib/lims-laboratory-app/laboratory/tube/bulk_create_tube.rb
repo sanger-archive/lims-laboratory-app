@@ -1,13 +1,12 @@
 require 'lims-core/actions/action'
 require 'lims-laboratory-app/laboratory/tube'
-require 'lims-laboratory-app/laboratory/tube/create_tube_shared'
+require 'lims-laboratory-app/laboratory/tube/create_tube'
 
 module Lims::LaboratoryApp
   module Laboratory
     class Tube
       class BulkCreateTube
         include Lims::Core::Actions::Action
-        include CreateTubeShared
 
         attribute :tubes, Array, :required => true, :writer => :private
 
