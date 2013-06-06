@@ -17,22 +17,8 @@ module Lims::LaboratoryApp
       # Type contains the actual type of the plate.
       attribute :type, String, :required => false
 
-      # This method defines the name of the container element.
-      def self.element_name
-        :Well
-      end
-
-      # This method defines the type of the container element.
-      def self.element_type
-        Lims::LaboratoryApp::Laboratory::Plate::Well
-      end
-
-      # The well of a {Plate}.
-      # Contains some chemical substances.
-      Well = declare_element(element_name)
-
-      # creates the matrix of container elements (Wells)
-      create_container_elements(element_type)
+#      # creates the matrix of container elements (Wells)
+      matrix_of(:Well)
 
       # This should be set by the user.
       # We mock it to give pools by column
