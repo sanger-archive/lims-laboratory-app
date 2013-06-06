@@ -45,6 +45,9 @@ module Lims::LaboratoryApp
       # creates the matrix of container elements (Wells)
       create_container_elements(element_type)
 
+#      # creates the matrix of container elements (Wells)
+      matrix_of(:Well)
+
       # This should be set by the user.
       # We mock it to give pools by column
       # @return [Hash<String, Array<String>] pools pool name => list of wells name

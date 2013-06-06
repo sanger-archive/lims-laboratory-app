@@ -14,21 +14,8 @@ module Lims::LaboratoryApp
       include Lims::Core::Resource
       extend Lims::LaboratoryApp::Laboratory::ContainerElement
 
-      # This method defines the name of the container element.
-      def self.element_name
-        :Window
-      end
-
-      # This method defines the type of the container element.
-      def self.element_type
-        Lims::LaboratoryApp::Laboratory::Gel::Window
-      end
-
-      # The Window can contain a receptacle, which is a chemical substance.
-      Window = declare_element(element_name)
-
       # creates the matrix of container elements (Windows)
-      create_container_elements(element_type)
+      matrix_of(:Window)
     end
   end
 end

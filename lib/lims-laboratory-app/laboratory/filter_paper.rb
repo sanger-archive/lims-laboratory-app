@@ -13,22 +13,8 @@ module Lims::LaboratoryApp
       include Lims::Core::Resource
       extend Lims::LaboratoryApp::Laboratory::ContainerElement
 
-      # This method defines the name of the container element.
-      def self.element_name
-        :Location
-      end
-
-      # This method defines the type of the container element.
-      def self.element_type
-        Lims::LaboratoryApp::Laboratory::FilterPaper::Location
-      end
-
-      # A Location is a Receptacle, which can contains
-      # 0 or more different samples
-      Location = declare_element(element_name)
-
       # creates the matrix of container elements (Locations)
-      create_container_elements(element_type)
+      matrix_of(:Location)
     end
   end
 end
