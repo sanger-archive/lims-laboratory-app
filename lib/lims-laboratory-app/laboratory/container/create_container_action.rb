@@ -1,7 +1,7 @@
 require 'lims-laboratory-app/laboratory/create_labellable_resource_action'
 module Lims::LaboratoryApp
   module Laboratory
-    module Container::ActionContainer
+    module Container::CreateContainerAction
 
       def self.included(klass)
         klass.class_eval do
