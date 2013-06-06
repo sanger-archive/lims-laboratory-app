@@ -10,7 +10,6 @@ module Lims::LaboratoryApp
     # or provided with the filter paper by an external company).
     class FilterPaper
       include Lims::Core::Resource
-      extend Lims::LaboratoryApp::Laboratory::Container
 
       # creates the matrix of container elements (Locations)
       matrix_of(:Location)
