@@ -15,18 +15,7 @@ module Lims::LaboratoryApp
         attribute :transfers, Hash, :required => true, :writer => :private
 
         def _call_in_session(session)
-          targets = []
-          transfers.each do |transfer|
-            source = transfer["source"]
-            source_location = transfer["source_location"]
-            target_plate = transfer["target"]
-            target_location = transfer["target_location"]
-
-            target_plate[target_location] << source[source_location].take_fraction(1)
-            targets << target_plate
-          end
-
-          { :targets => targets }
+          _transfer(transfers, _amounts(transfers), session)
         end
 
       end

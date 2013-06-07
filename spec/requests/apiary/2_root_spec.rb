@@ -351,16 +351,6 @@ describe "root" do
             "create": "http://example.org/actions/tag_wells"
         }
     },
-    "transfer_locations_to_tubes": {
-        "actions": {
-            "create": "http://example.org/actions/transfer_locations_to_tubes"
-        }
-    },
-    "transfer_locations_to_wells": {
-        "actions": {
-            "create": "http://example.org/actions/transfer_locations_to_wells"
-        }
-    },
     "transfer_multiple_filter_papers_to_tubes": {
         "actions": {
             "create": "http://example.org/actions/transfer_multiple_filter_papers_to_tubes"
