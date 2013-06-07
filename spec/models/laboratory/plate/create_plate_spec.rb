@@ -81,7 +81,7 @@ module Lims::LaboratoryApp
     describe Plate::CreatePlate, :plate => true, :laboratory => true, :persistence => true  do
       context "valid calling context" do
         let!(:store) { Lims::Core::Persistence::Store.new() }
-        include_context "plate or gel factory"
+        include_context "container-like asset factory"
         include_context("for application",  "Test plate creation")
 
         include_context("has plate dimension", 8, 12)

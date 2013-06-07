@@ -1,5 +1,4 @@
 require 'lims-core/resource'
-require 'lims-laboratory-app/laboratory/receptacle'
 require 'lims-laboratory-app/laboratory/container'
 
 require 'facets/hash'
@@ -16,15 +15,8 @@ module Lims::LaboratoryApp
       # Type contains the actual type of the plate.
       attribute :type, String, :required => false
 
-      # The well of a {Plate}. 
-      # Contains some chemical substances.
-      class Well
-        include Receptacle
-      end
-
-      is_matrix_of Well do |p,t|
-        (p.number_of_rows*p.number_of_columns).times.map { t.new }
-      end
+#      # creates the matrix of container elements (Wells)
+      matrix_of(:Well)
 
       # This should be set by the user.
       # We mock it to give pools by column

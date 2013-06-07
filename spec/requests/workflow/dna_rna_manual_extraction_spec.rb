@@ -100,6 +100,14 @@ describe "dna_rna_manual_extraction" do
             "last": "http://example.org/labellables/page=-1"
         }
     },
+    "filter_papers": {
+        "actions": {
+            "create": "http://example.org/filter_papers",
+            "read": "http://example.org/filter_papers",
+            "first": "http://example.org/filter_papers/page=1",
+            "last": "http://example.org/filter_papers/page=-1"
+        }
+    },
     "sanger_barcodes": {
         "actions": {
             "create": "http://example.org/sanger_barcodes",
@@ -227,6 +235,11 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/create_gel"
         }
     },
+    "create_filter_papers": {
+        "actions": {
+            "create": "http://example.org/actions/create_filter_paper"
+        }
+    },
     "create_labels": {
         "actions": {
             "create": "http://example.org/actions/create_label"
@@ -285,6 +298,16 @@ describe "dna_rna_manual_extraction" do
     "bulk_create_labellables": {
         "actions": {
             "create": "http://example.org/actions/bulk_create_labellable"
+        }
+    },
+    "transfer_multiple_filter_papers_to_tubes": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_multiple_filter_papers_to_tubes"
+        }
+    },
+    "transfer_multiple_filter_papers_to_wells": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_multiple_filter_papers_to_wells"
         }
     },
     "transfer_plates_to_plates": {

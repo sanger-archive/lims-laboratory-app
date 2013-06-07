@@ -1,5 +1,6 @@
 require 'lims-laboratory-app/laboratory/plate/all'
 require 'lims-laboratory-app/laboratory/gel/all'
+require 'lims-laboratory-app/laboratory/filter_paper/all'
 require 'lims-laboratory-app/laboratory/tube/all'
 require 'lims-laboratory-app/laboratory/tube_rack/all'
 require 'lims-laboratory-app/laboratory/spin_column/all'

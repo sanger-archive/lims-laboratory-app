@@ -12,7 +12,7 @@ require 'logger'
 module Lims::LaboratoryApp
   module Laboratory
     describe Plate::PlateTransfer, :plate => true, :transfer => true, :laboratory => true, :persistence => true, :sequel => true do
-      include_context "plate or gel factory"
+      include_context "container-like asset factory"
         let(:user) { mock(:user) }
         let(:application) { "Test create plate" }
       def self.should_transfer 

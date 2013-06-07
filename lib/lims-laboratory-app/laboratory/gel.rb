@@ -1,5 +1,4 @@
 require 'lims-core/resource'
-require 'lims-laboratory-app/laboratory/receptacle'
 require 'lims-laboratory-app/laboratory/container'
 
 require 'facets/hash'
@@ -13,15 +12,8 @@ module Lims::LaboratoryApp
     class Gel
       include Lims::Core::Resource
 
-      # The window can contain a receptacle, which is a chemical substance.
-      class Window
-        include Receptacle
-      end
-
-      is_matrix_of Window do |gel, window|
-        (gel.number_of_rows*gel.number_of_columns).times.map { window.new }
-      end
-
+      # creates the matrix of container elements (Windows)
+      matrix_of(:Window)
     end
   end
 end
