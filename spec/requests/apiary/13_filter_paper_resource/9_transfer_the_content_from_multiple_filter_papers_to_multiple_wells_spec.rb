@@ -71,6 +71,90 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_wells", :
         "user": "user",
         "application": "application",
         "result": {
+            "sources": [
+                {
+                    "filter_paper": {
+                        "actions": {
+                            "read": "http://example.org/11111111-2222-3333-4444-333333333333",
+                            "create": "http://example.org/11111111-2222-3333-4444-333333333333",
+                            "update": "http://example.org/11111111-2222-3333-4444-333333333333",
+                            "delete": "http://example.org/11111111-2222-3333-4444-333333333333"
+                        },
+                        "uuid": "11111111-2222-3333-4444-333333333333",
+                        "number_of_rows": 2,
+                        "number_of_columns": 2,
+                        "locations": {
+                            "A1": [
+                                {
+                                    "sample": {
+                                        "actions": {
+                                            "read": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                            "create": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                            "update": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                            "delete": "http://example.org/11111111-2222-3333-0000-000000000000"
+                                        },
+                                        "uuid": "11111111-2222-3333-0000-000000000000",
+                                        "name": "sample 1"
+                                    },
+                                    "quantity": 100,
+                                    "type": "sample",
+                                    "unit": "mole"
+                                }
+                            ],
+                            "A2": [
+
+                            ],
+                            "B1": [
+
+                            ],
+                            "B2": [
+
+                            ]
+                        }
+                    }
+                },
+                {
+                    "filter_paper": {
+                        "actions": {
+                            "read": "http://example.org/11111111-2222-3333-4444-444444444444",
+                            "create": "http://example.org/11111111-2222-3333-4444-444444444444",
+                            "update": "http://example.org/11111111-2222-3333-4444-444444444444",
+                            "delete": "http://example.org/11111111-2222-3333-4444-444444444444"
+                        },
+                        "uuid": "11111111-2222-3333-4444-444444444444",
+                        "number_of_rows": 2,
+                        "number_of_columns": 2,
+                        "locations": {
+                            "A1": [
+
+                            ],
+                            "A2": [
+                                {
+                                    "sample": {
+                                        "actions": {
+                                            "read": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                            "create": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                            "update": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                            "delete": "http://example.org/11111111-2222-3333-0000-111111111111"
+                                        },
+                                        "uuid": "11111111-2222-3333-0000-111111111111",
+                                        "name": "sample 2"
+                                    },
+                                    "quantity": 100,
+                                    "type": "sample",
+                                    "unit": "mole"
+                                }
+                            ],
+                            "B1": [
+
+                            ],
+                            "B2": [
+
+                            ]
+                        }
+                    }
+                }
+            ],
             "targets": [
                 {
                     "plate": {
@@ -97,7 +181,6 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_wells", :
                                         "uuid": "11111111-2222-3333-0000-000000000000",
                                         "name": "sample 1"
                                     },
-                                    "quantity": 100,
                                     "type": "sample",
                                     "unit": "mole"
                                 }
@@ -418,7 +501,6 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_wells", :
                                         "uuid": "11111111-2222-3333-0000-111111111111",
                                         "name": "sample 2"
                                     },
-                                    "quantity": 100,
                                     "type": "sample",
                                     "unit": "mole"
                                 }
