@@ -21,10 +21,13 @@ module Lims::Core
     module Sequel::Filters
       def sample_filter(criteria)
         resource_id_column = "#{self.table_name.to_s.chomp("s")}_id".to_sym
+        sample_uuid = @session.pack_uuid(criteria[:sample]["uuid"])
         through = aliquot_to_resource_table(resource_id_column)
+
         aliquot_dataset = self.dataset.join(through, resource_id_column => :id).join(:aliquots, :id => :aliquot_id)
-        sample_dataset = aliquot_dataset.join(:samples, :id => :sample_id)
-        self.class.new(self, sample_dataset.qualify.distinct)
+        sample_dataset = aliquot_dataset.join(:samples, :id => :sample_id).join(:uuid_resources, :key => :id).where(:uuid_resources__model_class => "sample")
+
+        self.class.new(self, sample_dataset.where(:uuid_resources__uuid => sample_uuid).qualify.distinct)
       end
 
       def aliquot_to_resource_table(resource_id_column)
