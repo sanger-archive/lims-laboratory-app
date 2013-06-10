@@ -1,0 +1,117 @@
+<%
+require 'json'
+search={:header => [], :response_header => [] }
+search[:description]=<<EOD
+EOD
+search[:method] = "POST"
+search[:url]='/searches'
+search[:header] << 'Accept: application/json'
+search[:setup]=<<EOD
+sample = Lims::LaboratoryApp::Laboratory::Sample.new
+tube = Lims::LaboratoryApp::Laboratory::Tube.new
+tube << Lims::LaboratoryApp::Laboratory::Aliquot.new({:sample => sample}) 
+tube2 = Lims::LaboratoryApp::Laboratory::Tube.new
+tube2 << Lims::LaboratoryApp::Laboratory::Aliquot.new({:sample => sample}) 
+
+save_with_uuid tube => [1,2,3,4,6], sample => [1,2,3,4,7], tube2 => [1,2,3,4,8]
+EOD
+search[:parameters]=<<EOD
+{ "search": {
+    "description": "search for a tube by its sample uuid",
+    "model": "tube",
+    "criteria": {
+      "sample": {"uuid": "11111111-2222-3333-4444-777777777777"}
+      }
+    }
+}
+EOD
+search[:status]=200
+search[:response_header] << 'Content-Type: application/json'
+search[:response]=<<EOD
+{
+    "search": {
+        "actions": {
+            "read": "/11111111-2222-3333-4444-555555555555",
+            "first": "/11111111-2222-3333-4444-555555555555/page=1",
+            "last": "/11111111-2222-3333-4444-555555555555/page=-1"
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555"
+    }
+}
+EOD
+
+result = {:header => [], :response_header => [] }
+result[:description] = "Get the search result"
+result[:method] = "GET"
+result[:url] = "/11111111-2222-3333-4444-555555555555/page=1"
+result[:header] << 'Accept: application/json'
+result[:status] = 200
+result[:response_header] << 'Content-Type: application/json'
+result[:response] = <<EOD
+{
+  "actions": {
+    "read": "http://example.org/tubes/page=1",
+    "first": "http://example.org/tubes/page=1",
+    "last": "http://example.org/tubes/page=-1"
+  },
+  "size": 2,
+  "tubes": [
+    {
+      "actions": {
+        "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+        "create": "http://example.org/11111111-2222-3333-4444-666666666666",
+        "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+        "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+      },
+      "uuid": "11111111-2222-3333-4444-666666666666",
+      "type": null,
+      "max_volume": null,
+      "aliquots": [
+        {
+          "sample": {
+            "actions": {
+              "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+              "create": "http://example.org/11111111-2222-3333-4444-777777777777",
+              "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+              "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
+            },
+            "uuid": "11111111-2222-3333-4444-777777777777",
+            "name": null
+          },
+          "unit": "mole"
+        }
+      ]
+    },
+    {
+      "actions": {
+        "read": "http://example.org/11111111-2222-3333-4444-888888888888",
+        "create": "http://example.org/11111111-2222-3333-4444-888888888888",
+        "update": "http://example.org/11111111-2222-3333-4444-888888888888",
+        "delete": "http://example.org/11111111-2222-3333-4444-888888888888"
+      },
+      "uuid": "11111111-2222-3333-4444-888888888888",
+      "type": null,
+      "max_volume": null,
+      "aliquots": [
+        {
+          "sample": {
+            "actions": {
+              "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+              "create": "http://example.org/11111111-2222-3333-4444-777777777777",
+              "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+              "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
+            },
+            "uuid": "11111111-2222-3333-4444-777777777777",
+            "name": null
+          },
+          "unit": "mole"
+        }
+      ]
+    }
+  ]
+}
+EOD
+
+spec_json = { "steps" => [search, result] }
+%>
+<%= spec_json.to_json %>
