@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: http://github.com/sanger/lims-core.git
-  revision: 90884c68170297d1dd1ff411d971461ef5fd064b
+  revision: 8df3f706c8a1c273433173527562ac2535f7da9f
   branch: development
   specs:
     lims-core (2.1.0.3.0)
