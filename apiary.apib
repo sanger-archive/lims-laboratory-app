@@ -3838,3 +3838,33 @@ POST /searches
 }
 
 
+**Search for a resource by sample uuid**
+
+* `uuid` uuid ot a sample (can pass an array of sample uuids as well)
+
+The search below looks for a tube which contain the sample referenced by the sample uuid `11111111-2222-3333-4444-666666666666`.
+
+To actually get the search results, you need to access the first page of result 
+thanks to the `first` action in the JSON response.
+POST /searches
+> Accept: application/json
+{ "search": {
+    "description": "search for a tube by sample uuid",
+    "model": "tube",
+    "criteria": {
+        "sample": {"uuid": "11111111-2222-3333-4444-666666666666"}
+    }
+}}
+< 200
+< Content-Type: application/json
+{
+    "search": {
+        "actions": {
+            "read": "/11111111-2222-3333-4444-555555555555",
+            "first": "/11111111-2222-3333-4444-555555555555/page=1",
+            "last": "/11111111-2222-3333-4444-555555555555/page=-1"
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555"
+    }
+}
+
