@@ -19,7 +19,7 @@ shared_examples_for "storable resource" do |model_name, tables|
         it "should not be saved" do
           expect do 
             store.with_session { |_| subject }
-          end.to change{ db[tables].count }.by(0)
+          end.to change{ db[table_name].count }.by(0)
         end 
       end
     end
