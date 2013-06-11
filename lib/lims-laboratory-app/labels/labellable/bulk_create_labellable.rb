@@ -8,7 +8,6 @@ module Lims::LaboratoryApp
         include Lims::Core::Actions::BulkAction
         initialize_class(:labellable, :labellables, CreateLabellable)
         def call(*args, &block)
-          debugger
           super(*args, &block)
         end
       end
