@@ -5,6 +5,7 @@ module Lims::LaboratoryApp
         def _create(type, max_volume, aliquots, session)
           tube = Laboratory::Tube.new(:type => type, :max_volume => max_volume)
           session << tube
+          count = 1
           if aliquots
             aliquots.each do |aliquot|
               # The sample uuid comes from lims-management-app, 
@@ -14,7 +15,8 @@ module Lims::LaboratoryApp
               aliquot_ready = aliquot.mash do |k,v|
                 case k.to_s
                 when "sample_uuid" then 
-                  sample = Laboratory::Sample.new
+                  sample = Laboratory::Sample.new(:name => "Sample #{count}")
+                  count += 1
                   session << sample
                   uuid_resource = session.new_uuid_resource_for(sample)
                   uuid_resource.send(:uuid=, v)

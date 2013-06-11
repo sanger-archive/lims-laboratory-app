@@ -49,7 +49,7 @@ describe "create_a_mew_tube_with_sample_uuids", :tube => true do
                         "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
                     },
                     "uuid": "11111111-2222-3333-4444-666666666666",
-                    "name": null
+                    "name": "Sample 1"
                 },
                 "quantity": 5,
                 "type": "NA",
@@ -64,7 +64,7 @@ describe "create_a_mew_tube_with_sample_uuids", :tube => true do
                         "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
                     },
                     "uuid": "11111111-2222-3333-4444-777777777777",
-                    "name": null
+                    "name": "Sample 2"
                 },
                 "quantity": 5,
                 "type": "NA",
