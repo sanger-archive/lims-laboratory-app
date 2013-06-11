@@ -1,7 +1,7 @@
 require "requests/apiary/3_tube_resource/spec_helper"
-describe "create_a_mew_tube_with_sample_uuids", :tube => true do
+describe "create_a_new_tube_with_sample_uuids", :tube => true do
   include_context "use core context service"
-  it "create_a_mew_tube_with_sample_uuids" do
+  it "create_a_new_tube_with_sample_uuids" do
 
     header('Accept', 'application/json')
     header('Content-Type', 'application/json')
