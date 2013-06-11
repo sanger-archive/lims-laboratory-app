@@ -1,0 +1,65 @@
+<%
+require 'json'
+h={:header => [], :response_header => [] }
+h[:description]=<<EOD
+EOD
+h[:method] = "POST"
+h[:url]='/tubes'
+h[:header] << 'Accept: application/json'
+h[:parameters]=<<EOD
+{ "tube": { 
+    "type": "Eppendorf",
+    "max_volume": 2,
+    "aliquots": [
+        { "sample_uuid": "11111111-2222-3333-4444-666666666666", "type": "NA", "quantity": 5 },
+        { "sample_uuid": "11111111-2222-3333-4444-777777777777", "type": "NA", "quantity": 5 }
+    ] 
+}}
+EOD
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{ "tube": {
+    "actions": {
+        "read": "/11111111-2222-3333-4444-555555555555",
+        "create": "/11111111-2222-3333-4444-555555555555",
+        "update": "/11111111-2222-3333-4444-555555555555",
+        "delete": "/11111111-2222-3333-4444-555555555555"
+    },
+    "uuid": "11111111-2222-3333-4444-555555555555",
+    "type": "Eppendorf",
+    "max_volume": 2,
+    "aliquots": [
+        { "sample": {
+            "actions": {
+                "read": "/11111111-2222-3333-4444-666666666666",
+                "create": "/11111111-2222-3333-4444-666666666666",
+                "update": "/11111111-2222-3333-4444-666666666666",
+                "delete": "/11111111-2222-3333-4444-666666666666"
+            },
+            "uuid": "11111111-2222-3333-4444-666666666666",
+            "name": "Sample 1" 
+        },
+        "quantity": 5,
+        "type": "NA",
+        "unit": "mole"
+        },
+        { "sample": {
+            "actions": {
+                "read": "/11111111-2222-3333-4444-777777777777",
+                "create": "/11111111-2222-3333-4444-777777777777",
+                "update": "/11111111-2222-3333-4444-777777777777",
+                "delete": "/11111111-2222-3333-4444-777777777777"
+            },
+            "uuid": "11111111-2222-3333-4444-777777777777",
+            "name": "Sample 2"
+        },
+        "quantity": 5,
+        "type": "NA",
+        "unit": "mole"
+        }
+    ]
+}}
+EOD
+%>
+<%= h.to_json %>
