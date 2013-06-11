@@ -87,7 +87,7 @@ describe "bulk_create_tube_with_labels", :tube => true do
                                     "delete": "http://example.org/11111111-0000-0000-0000-111111111111"
                                 },
                                 "uuid": "11111111-0000-0000-0000-111111111111",
-                                "name": null
+                                "name": "Sample 1"
                             },
                             "quantity": 5,
                             "type": "NA",
@@ -132,7 +132,7 @@ describe "bulk_create_tube_with_labels", :tube => true do
                                     "delete": "http://example.org/11111111-0000-0000-0000-222222222222"
                                 },
                                 "uuid": "11111111-0000-0000-0000-222222222222",
-                                "name": null
+                                "name": "Sample 1"
                             },
                             "quantity": 15,
                             "type": "RNA",
@@ -160,7 +160,7 @@ describe "bulk_create_tube_with_labels", :tube => true do
                                     "delete": "http://example.org/11111111-0000-0000-0000-333333333333"
                                 },
                                 "uuid": "11111111-0000-0000-0000-333333333333",
-                                "name": null
+                                "name": "Sample 1"
                             },
                             "quantity": 25,
                             "type": "DNA",
