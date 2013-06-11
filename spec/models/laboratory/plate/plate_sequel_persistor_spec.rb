@@ -158,6 +158,7 @@ module Lims::LaboratoryApp
         end
 
       end
+      pending do
         context "#dirty-attribute" do
           let!(:plate_id) { save(new_plate_with_samples) }
           context "no strategy" do
@@ -184,6 +185,7 @@ module Lims::LaboratoryApp
             end
           end
         end
+      end
 
       context do
         let(:constructor) { lambda { |*_| new_empty_plate } }
