@@ -10,10 +10,7 @@ describe "create_a_new_tube_with_samples", :tube => true do
   # * `sample_uuid` uuid of a sample
   # * `type` aliquot type
   # * `aliquot_quantity` volume (ul) if liquid, mass (mg) if solid
-    #save_with_uuid({
-    #  Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1') => [1,2,3,4,6],
-    #  Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2') => [1,2,3,4,7]
-    #  })
+    save_with_uuid Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1') => [1,2,3,4,6]
 
     header('Accept', 'application/json')
     header('Content-Type', 'application/json')
@@ -26,11 +23,6 @@ describe "create_a_new_tube_with_samples", :tube => true do
         "aliquots": [
             {
                 "sample_uuid": "11111111-2222-3333-4444-666666666666",
-                "type": "NA",
-                "quantity": 5
-            },
-            {
-                "sample_uuid": "11111111-2222-3333-4444-777777777777",
                 "type": "NA",
                 "quantity": 5
             }
@@ -62,21 +54,6 @@ describe "create_a_new_tube_with_samples", :tube => true do
                     },
                     "uuid": "11111111-2222-3333-4444-666666666666",
                     "name": "sample 1"
-                },
-                "quantity": 5,
-                "type": "NA",
-                "unit": "mole"
-            },
-            {
-                "sample": {
-                    "actions": {
-                        "read": "http://example.org/11111111-2222-3333-4444-777777777777",
-                        "create": "http://example.org/11111111-2222-3333-4444-777777777777",
-                        "update": "http://example.org/11111111-2222-3333-4444-777777777777",
-                        "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
-                    },
-                    "uuid": "11111111-2222-3333-4444-777777777777",
-                    "name": "sample 2"
                 },
                 "quantity": 5,
                 "type": "NA",
