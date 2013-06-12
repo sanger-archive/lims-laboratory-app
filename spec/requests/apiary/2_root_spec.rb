@@ -173,6 +173,14 @@ describe "root" do
             "last": "http://example.org/searches/page=-1"
         }
     },
+    "sample_filters": {
+        "actions": {
+            "create": "http://example.org/sample_filters",
+            "read": "http://example.org/sample_filters",
+            "first": "http://example.org/sample_filters/page=1",
+            "last": "http://example.org/sample_filters/page=-1"
+        }
+    },
     "multi_criteria_filters": {
         "actions": {
             "create": "http://example.org/multi_criteria_filters",
