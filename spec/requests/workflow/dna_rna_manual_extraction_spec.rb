@@ -14,8 +14,7 @@ describe "dna_rna_manual_extraction" do
 
 
     response = get "/"
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "actions": {
         "read": "http://example.org/"
@@ -370,8 +369,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "search": {
         "actions": {
@@ -388,8 +386,7 @@ describe "dna_rna_manual_extraction" do
 
 
     response = get "/349460b0-7f57-0130-e345-282066132de2/page=1"
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "actions": {
         "read": "http://example.org/tubes/page=1",
@@ -462,8 +459,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "search": {
         "actions": {
@@ -480,8 +476,7 @@ describe "dna_rna_manual_extraction" do
 
 
     response = get "/349969d0-7f57-0130-e345-282066132de2/page=1"
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "actions": {
         "read": "http://example.org/tubes/page=1",
@@ -553,8 +548,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "search": {
         "actions": {
@@ -571,8 +565,7 @@ describe "dna_rna_manual_extraction" do
 
 
     response = get "/349e3760-7f57-0130-e345-282066132de2/page=1"
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "actions": {
         "read": "http://example.org/orders/page=1",
@@ -643,8 +636,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "batch": {
         "actions": {
@@ -678,8 +670,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -772,8 +763,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -904,8 +894,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -1029,8 +1018,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "search": {
         "actions": {
@@ -1047,8 +1035,7 @@ describe "dna_rna_manual_extraction" do
 
 
     response = get "/35237a40-7f57-0130-e345-282066132de2/page=1"
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "actions": {
         "read": "http://example.org/tubes/page=1",
@@ -1120,8 +1107,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "search": {
         "actions": {
@@ -1138,8 +1124,7 @@ describe "dna_rna_manual_extraction" do
 
 
     response = get "/355d01d0-7f57-0130-e345-282066132de2/page=1"
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "actions": {
         "read": "http://example.org/orders/page=1",
@@ -1210,8 +1195,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -1285,8 +1269,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -1381,8 +1364,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -1466,8 +1448,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "batch": {
         "actions": {
@@ -1502,8 +1483,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "search": {
         "actions": {
@@ -1520,8 +1500,7 @@ describe "dna_rna_manual_extraction" do
 
 
     response = get "/35f1f2c0-7f57-0130-e345-282066132de2/page=1"
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "actions": {
         "read": "http://example.org/orders/page=1",
@@ -1715,8 +1694,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -1830,8 +1808,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -1947,8 +1924,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -2032,8 +2008,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -2120,8 +2095,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "spin_column": {
         "actions": {
@@ -2155,8 +2129,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -2187,8 +2160,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "spin_column": {
         "actions": {
@@ -2222,8 +2194,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -2255,8 +2226,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -2292,8 +2262,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -2324,8 +2293,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -2361,8 +2329,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -2414,8 +2381,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -2620,8 +2586,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "transfer_tubes_to_tubes": {
         "actions": {
@@ -2948,8 +2913,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -3130,8 +3094,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "spin_column": {
         "actions": {
@@ -3165,8 +3128,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -3198,8 +3160,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -3235,8 +3196,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -3280,8 +3240,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -3414,8 +3373,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "transfer_tubes_to_tubes": {
         "actions": {
@@ -3596,8 +3554,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -3718,8 +3675,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -3755,8 +3711,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -3787,8 +3742,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -3824,8 +3778,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -3867,8 +3820,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -4093,8 +4045,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "transfer_tubes_to_tubes": {
         "actions": {
@@ -4315,8 +4266,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -4529,8 +4479,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -4566,8 +4515,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -4605,8 +4553,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -4750,8 +4697,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "transfer_tubes_to_tubes": {
         "actions": {
@@ -4878,8 +4824,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -5017,8 +4962,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -5054,8 +4998,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -5086,8 +5029,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -5123,8 +5065,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -5166,8 +5107,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -5424,8 +5364,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "transfer_tubes_to_tubes": {
         "actions": {
@@ -5650,8 +5589,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -5896,8 +5834,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -5933,8 +5870,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -5972,8 +5908,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -6134,8 +6069,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "transfer_tubes_to_tubes": {
         "actions": {
@@ -6264,8 +6198,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -6420,8 +6353,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "spin_column": {
         "actions": {
@@ -6455,8 +6387,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -6487,8 +6418,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "spin_column": {
         "actions": {
@@ -6522,8 +6452,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -6555,8 +6484,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -6592,8 +6520,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -6624,8 +6551,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -6661,8 +6587,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -6714,8 +6639,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -7046,8 +6970,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "transfer_tubes_to_tubes": {
         "actions": {
@@ -7372,8 +7295,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -7680,8 +7602,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "spin_column": {
         "actions": {
@@ -7715,8 +7636,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -7748,8 +7668,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -7785,8 +7704,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -7830,8 +7748,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -8030,8 +7947,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "transfer_tubes_to_tubes": {
         "actions": {
@@ -8211,8 +8127,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -8399,8 +8314,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -8436,8 +8350,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -8468,8 +8381,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -8505,8 +8417,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -8548,8 +8459,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -8900,8 +8810,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "transfer_tubes_to_tubes": {
         "actions": {
@@ -9122,8 +9031,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -9462,8 +9370,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -9499,8 +9406,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -9538,8 +9444,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -9749,8 +9654,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "transfer_tubes_to_tubes": {
         "actions": {
@@ -9877,8 +9781,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -10082,8 +9985,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -10119,8 +10021,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -10151,8 +10052,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -10188,8 +10088,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -10231,8 +10130,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -10615,8 +10513,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "transfer_tubes_to_tubes": {
         "actions": {
@@ -10841,8 +10738,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -11217,8 +11113,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube_rack": {
         "actions": {
@@ -11332,8 +11227,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -11724,8 +11618,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -12113,8 +12006,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -12150,8 +12042,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -12189,8 +12080,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -12417,8 +12307,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "transfer_tubes_to_tubes": {
         "actions": {
@@ -12547,8 +12436,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -12772,8 +12660,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube_rack": {
         "actions": {
@@ -12847,8 +12734,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -13089,8 +12975,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -13328,8 +13213,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -13365,8 +13249,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -13397,8 +13280,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -13434,8 +13316,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -13477,8 +13358,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -13910,8 +13790,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "transfer_tubes_to_tubes": {
         "actions": {
@@ -14136,8 +14015,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -14561,8 +14439,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube_rack": {
         "actions": {
@@ -14676,8 +14553,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -15117,8 +14993,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -15555,8 +15430,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube": {
         "actions": {
@@ -15592,8 +15466,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {
@@ -15631,8 +15504,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -15893,8 +15765,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "transfer_tubes_to_tubes": {
         "actions": {
@@ -16023,8 +15894,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -16282,8 +16152,7 @@ describe "dna_rna_manual_extraction" do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube_rack": {
         "actions": {
@@ -16357,8 +16226,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -16633,8 +16501,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -16904,8 +16771,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {
@@ -17340,8 +17206,7 @@ describe "dna_rna_manual_extraction" do
     "user": "username"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {

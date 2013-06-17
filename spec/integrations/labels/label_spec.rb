@@ -86,8 +86,7 @@ module Lims::LaboratoryApp
     include_context "use generated uuid"
     it "creates a new label" do
       response = post(create_label_url, create_label_parameters.to_json)
-      response.status.should == 200
-      response.body.should match_json(expected_json)
+      response.should match_json_response(200, expected_json)
     end
   end
 

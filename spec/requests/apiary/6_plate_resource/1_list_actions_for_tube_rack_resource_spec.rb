@@ -13,8 +13,7 @@ describe "list_actions_for_tube_rack_resource", :plate => true do
     header('Content-Type', 'application/json')
 
     response = get "/plates"
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "plates": {
         "actions": {

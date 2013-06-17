@@ -57,8 +57,7 @@ describe "bulk_create_tube_with_labels", :tube => true do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "bulk_create_tube": {
         "actions": {

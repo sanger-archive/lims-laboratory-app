@@ -33,8 +33,7 @@ describe "assign_an_item_to_a_batch", :order => true do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "order": {
         "actions": {

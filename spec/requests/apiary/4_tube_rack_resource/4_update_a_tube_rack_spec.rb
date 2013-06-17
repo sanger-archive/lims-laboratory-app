@@ -40,8 +40,7 @@ describe "update_a_tube_rack", :tube_rack => true do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "tube_rack": {
         "actions": {
