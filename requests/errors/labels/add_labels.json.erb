@@ -1,65 +1,77 @@
 <%
 require 'json'
 examples = []
-examples << h= {:header => [], :response_header => [] }
-h[:description] = "Don't pass a the labellable name"
-h[:title]= 'Add a label to an asset'
+examples << h = {:header => [], :response_header => [] }
+h[:description] = <<EOD
+Add labels to an labellable which doesn't exit.
+
+EOD
 h[:method] = "POST"
-h[:url] = '/labellables'
+h[:url] = '/actions/create_label'
 h[:header] << 'Accept: application/json'
 h[:setup]=<<EOD
-save_with_uuid Lims::LaboratoryApp::Laboratory::Tube.new => [1,2,3,4,0]
+tube = Lims::LaboratoryApp::Laboratory::Tube.new
+
+labellable = Lims::LaboratoryApp::Labels::Labellable.new(:name => "11111111-2222-3333-4444-000000000000",
+                                                    :type => "resource")
+label = Lims::LaboratoryApp::Labels::Labellable::Label.new(:type => "sanger-barcode",
+                                                      :value => "1234-ABC")
+labellable["front barcode"] = label
+
+save_with_uuid tube => [1,2,3,4,0], labellable => [1,2,3,4,5]
 EOD
 h[:parameters] = <<EOD
-{ "labellable": {
-    "type": "resource",
-    "labels": {
-        "front barcode": {
-            "value": "1234-ABC",
-            "type": "sanger-barcode"
-        }
-    }
+{ "create_label": {
+    "labellable_uuid": "00000000-2222-3333-4444-555555555555",
+    "type": "2d-barcode",
+    "value": "2d-barcode-1234",
+    "position": "rear barcode"
 }}
 EOD
 h[:status]=422
 h[:response_header] << 'Content-Type: application/json'
 h[:response]=<<EOD
 {
-  "errors" : {
-      "name" : ["Name must not be blank"]
+  "errors": {
+    "labellable_uuid": ["value '00000000-2222-3333-4444-555555555555' is invalid"]
   }
 }
 EOD
 %>
 <%
-examples << h= {:header => [], :response_header => [] }
-h[:description] = "Pass an invalid name"
-h[:title]= 'Add a label to an asset'
+examples << h = {:header => [], :response_header => [] }
+h[:description] = <<EOD
+Add labels but forget to specify the labellable.
+EOD
 h[:method] = "POST"
-h[:url] = '/labellables'
+h[:url] = '/actions/create_label'
 h[:header] << 'Accept: application/json'
 h[:setup]=<<EOD
+tube = Lims::LaboratoryApp::Laboratory::Tube.new
+
+labellable = Lims::LaboratoryApp::Labels::Labellable.new(:name => "11111111-2222-3333-4444-000000000000",
+                                                    :type => "resource")
+label = Lims::LaboratoryApp::Labels::Labellable::Label.new(:type => "sanger-barcode",
+                                                      :value => "1234-ABC")
+labellable["front barcode"] = label
+
+save_with_uuid tube => [1,2,3,4,0], labellable => [1,2,3,4,5]
 EOD
 h[:parameters] = <<EOD
-{ "labellable": {
-    "name": "invalid name",
-    "type": "resource",
-    "labels": {
-        "front barcode": {
-            "value": "1234-ABC",
-            "type": "sanger-barcode"
-        }
-    }
+{ "create_label": {
+    "type": "2d-barcode",
+    "value": "2d-barcode-1234",
+    "position": "rear barcode"
 }}
 EOD
 h[:status]=422
 h[:response_header] << 'Content-Type: application/json'
 h[:response]=<<EOD
 {
-  "errors" : {
-      "name" : ["invalid"]
+  "errors": {
+    "labellable": ["Labellable must not be blank"]
   }
 }
 EOD
 %>
-<%= {:examples => examples }.to_json %>
+<%= {:examples => examples}.to_json %>
