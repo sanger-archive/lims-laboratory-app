@@ -1,0 +1,34 @@
+<%
+require 'json'
+examples = []
+examples << h= {:header => [], :response_header => [] }
+h[:description] = "Don't pass a the labellable name"
+h[:title]= 'Add a label to an asset'
+h[:method] = "POST"
+h[:url] = '/labellables'
+h[:header] << 'Accept: application/json'
+h[:setup]=<<EOD
+save_with_uuid Lims::LaboratoryApp::Laboratory::Tube.new => [1,2,3,4,0]
+EOD
+h[:parameters] = <<EOD
+{ "labellable": {
+    "type": "resource",
+    "labels": {
+        "front barcode": {
+            "value": "1234-ABC",
+            "type": "sanger-barcode"
+        }
+    }
+}}
+EOD
+h[:status]=422
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{
+  "errors" : {
+      "name" : ["Name must not be blank"]
+  }
+}
+EOD
+%>
+<%= {:examples => examples }.to_json %>
