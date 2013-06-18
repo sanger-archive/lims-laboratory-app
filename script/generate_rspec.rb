@@ -98,6 +98,7 @@ def generate_helper_file(filename, directories)
   create_needed_file(filename) do |target|
     puts "generating #{filename}"
     parent_file = helper_filename_for(directories[0...-1])
+    generate_helper_file(parent_file, directories[0...-1])
     require_spec(parent_file, target)
     target.puts "# This file will be required by
 # all file in this directory and subdirectory
