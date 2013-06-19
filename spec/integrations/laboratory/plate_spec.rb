@@ -205,7 +205,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
   context "#transfer between source and target plates" do
     let(:url) { "/actions/plate_transfer" }
     context "with empty parameters" do
-      let(:parameters) { {} }
+      let(:parameters) { {"plate_transfer" => {}} }
       let(:expected_json)  { {"errors" => {
         "source" => [
           "Source must not be blank"

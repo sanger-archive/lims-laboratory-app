@@ -97,8 +97,18 @@ module Lims::LaboratoryApp
     let(:model) { "labellables" }
 
     context "#create" do
-      context "with empty parameters" do
+      context "with no parameter" do
         let(:parameters) { {} }
+        let(:expected_json) { {"errors"=> {
+          "create_label" => [
+            "missing parameter"
+          ]
+        }} }
+        let!(:url) { create_label_url }
+        it_behaves_like "an invalid core action", 422
+      end
+      context "with empty parameters" do
+        let(:parameters) { {"create_label" => {}} }
         let(:expected_json) { {"errors"=> {
           "labellable" => [
             "Labellable must not be blank"

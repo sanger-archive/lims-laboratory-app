@@ -275,7 +275,7 @@ module Lims::LaboratoryApp::Laboratory
       let(:url) { "/actions/tube_rack_transfer" }
 
       context "with empty parameters" do
-        let(:parameters) { {} }
+        let(:parameters) { {"tube_rack_transfer" => [] } }
         let(:expected_json) { {
           :errors => {
             "source"=> [
@@ -351,8 +351,18 @@ module Lims::LaboratoryApp::Laboratory
       include_context "with filled aliquots"
       let(:url) { "/actions/tube_rack_move" }
 
-      context "with empty parameters" do
+      context "with no parameters" do
         let(:parameters) { {} }
+        let(:expected_json) { {
+          "errors" => {
+            "tube_rack_move" => [
+              "missing parameter"
+            ]
+        }}}
+        it_behaves_like "an invalid core action", 422
+      end
+      context "with empty parameters" do
+        let(:parameters) { { "tube_rack_move" => []} }
         let(:expected_json) { {
           "errors" => {
             "moves" => [
