@@ -13,8 +13,7 @@ describe "create_a_new_empty_spin_column", :spin_column => true do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "spin_column": {
         "actions": {

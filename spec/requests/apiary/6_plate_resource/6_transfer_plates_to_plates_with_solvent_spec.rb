@@ -72,8 +72,7 @@ describe "transfer_plates_to_plates_with_solvent", :plate => true do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "transfer_plates_to_plates": {
         "actions": {

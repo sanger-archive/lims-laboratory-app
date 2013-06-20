@@ -18,8 +18,7 @@ describe "update_a_batch", :batch => true do
     "kit": "AAABBBCCC"
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "batch": {
         "actions": {

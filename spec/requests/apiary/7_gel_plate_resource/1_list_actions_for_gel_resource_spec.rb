@@ -13,8 +13,7 @@ describe "list_actions_for_gel_resource", :gel_plate => true do
     header('Content-Type', 'application/json')
 
     response = get "/gels"
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "gels": {
         "actions": {

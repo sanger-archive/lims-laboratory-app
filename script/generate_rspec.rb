@@ -98,6 +98,7 @@ def generate_helper_file(filename, directories)
   create_needed_file(filename) do |target|
     puts "generating #{filename}"
     parent_file = helper_filename_for(directories[0...-1])
+    generate_helper_file(parent_file, directories[0...-1])
     require_spec(parent_file, target)
     target.puts "# This file will be required by
 # all file in this directory and subdirectory
@@ -157,16 +158,17 @@ def generate_http_request(example, target)
       target.puts %Q{    #{JSON.pretty_generate(parameters, :indent => '    ')}}
       target.puts "    EOD"
     end
-    target.puts %Q{    response.status.should == #{example.status || 200}}
     if example.response
       expected_response = if example.response.is_a?(Hash) 
                             example.response.to_json.gsub(/http:\/\/localhost:9292/, 'http://example.org')
                           else
                             example.response.to_s.gsub(/"\//, '"http://example.org/')
                           end
-      target.puts %Q{    response.body.should match_json <<-EOD}
+      target.puts %Q{    response.should match_json_response(#{example.status || 200 }, <<-EOD) }
       target.puts %Q{    #{JSON.pretty_generate(JSON.parse(expected_response), :indent => '    ')}}
       target.puts "    EOD"
+    else
+      target.puts %Q{    response.status.should = #{example.status || 200 }}
     end
     target.puts
   elsif example.is_a?(Hash)

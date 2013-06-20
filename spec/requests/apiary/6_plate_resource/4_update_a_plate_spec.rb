@@ -25,8 +25,7 @@ describe "update_a_plate", :plate => true do
     "aliquot_quantity": 10
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "plate": {
         "actions": {

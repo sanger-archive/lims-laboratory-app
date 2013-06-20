@@ -30,8 +30,7 @@ describe "add_a_label_to_an_asset", :labellable => true do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "labellable": {
         "actions": {

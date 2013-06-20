@@ -45,8 +45,7 @@ describe "search_for_a_labellable", :search => true do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "search": {
         "actions": {
@@ -65,8 +64,7 @@ describe "search_for_a_labellable", :search => true do
     header('Content-Type', 'application/json')
 
     response = get "/11111111-2222-3333-4444-555555555555/page=1"
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "actions": {
         "read": "http://example.org/labellables/page=1",

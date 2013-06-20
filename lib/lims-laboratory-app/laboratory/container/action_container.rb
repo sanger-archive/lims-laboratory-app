@@ -8,7 +8,9 @@ module Lims::LaboratoryApp
           include Aequitas
 
           %w(row column).each do |w|
-            attribute :"number_of_#{w}s",  Fixnum, :required => true, :gte => 0, :writer => :private
+            # Hack Aequitas 'gt' rule crashes if attribute is not present.
+            # Setting the default to 0 works ...
+            attribute :"number_of_#{w}s",  Fixnum, :required => true, :default => 0, :gt => 0, :writer => :private
           end
         end
       end
