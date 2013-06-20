@@ -55,6 +55,18 @@ RSpec::Matchers.define :io_stream do |content|
   match { |stream| content == stream.read }
 end
 
+Rspec::Matchers.define :match_json_response do |status, body|
+  match { |to_match| to_match.status == status && Helper::parse_json(to_match.body) == Helper::parse_json(body) }
+
+  failure_message_for_should do |actual|
+    hactual = {:status => status, :body =>  Helper::parse_json(actual.body)}
+    hcontent = {:status => actual.status, :body => Helper::parse_json(body) }
+    diff = hactual ? hactual.deep_diff(hcontent) : hcontent
+    "expected: \n#{JSON::pretty_generate(hcontent)}\nto match: \n#{JSON::pretty_generate(hactual)},\ndiff:\n#{JSON::pretty_generate(diff)} "
+  end
+
+end
+
 
 Rspec::Matchers.define :match_json do |content|
 

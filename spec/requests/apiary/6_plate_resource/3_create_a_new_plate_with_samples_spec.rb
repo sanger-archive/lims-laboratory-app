@@ -32,8 +32,7 @@ describe "create_a_new_plate_with_samples", :plate => true do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "plate": {
         "actions": {

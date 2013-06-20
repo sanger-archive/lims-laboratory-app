@@ -13,8 +13,7 @@ describe "list_actions_for_spin_column_resource", :spin_column => true do
     header('Content-Type', 'application/json')
 
     response = get "/spin_columns"
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "spin_columns": {
         "actions": {
