@@ -108,6 +108,14 @@ describe "root" do
             "last": "http://example.org/sanger_barcodes/page=-1"
         }
     },
+    "code128_c_barcodes": {
+        "actions": {
+            "create": "http://example.org/code128_c_barcodes",
+            "read": "http://example.org/code128_c_barcodes",
+            "first": "http://example.org/code128_c_barcodes/page=1",
+            "last": "http://example.org/code128_c_barcodes/page=-1"
+        }
+    },
     "ean13_barcodes": {
         "actions": {
             "create": "http://example.org/ean13_barcodes",
