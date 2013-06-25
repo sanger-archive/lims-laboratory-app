@@ -13,8 +13,7 @@ describe "list_actions_for_order_resource", :order => true do
     header('Content-Type', 'application/json')
 
     response = get "/orders"
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "orders": {
         "actions": {

@@ -86,8 +86,7 @@ module Lims::LaboratoryApp
     include_context "use generated uuid"
     it "creates a new label" do
       response = post(create_label_url, create_label_parameters.to_json)
-      response.status.should == 200
-      response.body.should match_json(expected_json)
+      response.should match_json_response(200, expected_json)
     end
   end
 
@@ -98,8 +97,18 @@ module Lims::LaboratoryApp
     let(:model) { "labellables" }
 
     context "#create" do
-      context "with empty parameters" do
+      context "with no parameter" do
         let(:parameters) { {} }
+        let(:expected_json) { {"errors"=> {
+          "create_label" => [
+            "missing parameter"
+          ]
+        }} }
+        let!(:url) { create_label_url }
+        it_behaves_like "an invalid core action", 422
+      end
+      context "with empty parameters" do
+        let(:parameters) { {"create_label" => {}} }
         let(:expected_json) { {"errors"=> {
           "labellable" => [
             "Labellable must not be blank"

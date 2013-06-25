@@ -15,8 +15,7 @@ describe "root" do
     header('Content-Type', 'application/json')
 
     response = get "/"
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "actions": {
         "read": "http://example.org/"

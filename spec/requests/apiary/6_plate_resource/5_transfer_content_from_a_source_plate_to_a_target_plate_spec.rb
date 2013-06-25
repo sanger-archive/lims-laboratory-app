@@ -33,8 +33,7 @@ describe "transfer_content_from_a_source_plate_to_a_target_plate", :plate => tru
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "plate_transfer": {
         "actions": {

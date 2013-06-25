@@ -45,8 +45,7 @@ describe "search_for_an_order", :search => true do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "search": {
         "actions": {

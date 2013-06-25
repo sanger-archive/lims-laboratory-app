@@ -87,8 +87,7 @@ module Lims::LaboratoryApp
       body["order"]["actions"]["read"].should == "http://example.org#{url}"
 
       reloaded_order = get url
-      reloaded_order.status.should == 200
-      reloaded_order.body.should match_json(expected_json)
+      reloaded_order.should match_json_response(200, expected_json)
     end
   end
 
@@ -199,7 +198,7 @@ module Lims::LaboratoryApp
 
       context "with empty parameters" do
         let(:url) { "/actions/create_order" }
-        let(:parameters) { {} }
+        let(:parameters) { {"create_order" => []} }
         let(:expected_json) { {"errors" => {
           "study" => [
             "Study must not be blank"

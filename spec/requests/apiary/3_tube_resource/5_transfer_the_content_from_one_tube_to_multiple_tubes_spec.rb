@@ -47,8 +47,7 @@ describe "transfer_the_content_from_one_tube_to_multiple_tubes", :tube => true d
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "transfer_tubes_to_tubes": {
         "actions": {
