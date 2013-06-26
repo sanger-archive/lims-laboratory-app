@@ -1,0 +1,43 @@
+<%
+require 'json'
+h = {:header => [], :response_header => [] }
+h[:description] = <<EOD
+**Add an already existing label to an asset.**
+
+* `labellable_uuid` unique identifier of an object the labellable related to
+* `type` the type of the label. It can be 'sanger-barcode', '2d-barcode', 'ean13-barcode' etc...
+* `value` the value of the barcode
+* `position` the position of the barcode is an arbitray string (not a Symbol).
+EOD
+h[:method] = "POST"
+h[:url] = '/actions/create_label'
+h[:header] << 'Accept: application/json'
+h[:setup]=<<EOD
+tube = Lims::LaboratoryApp::Laboratory::Tube.new
+labellable = Lims::LaboratoryApp::Labels::Labellable.new(:name => "11111111-2222-3333-4444-000000000000",
+                                                    :type => "resource")
+label = Lims::LaboratoryApp::Labels::Labellable::Label.new(:type => "sanger-barcode",
+                                                      :value => "1234-ABC")
+labellable["front barcode"] = label
+
+save_with_uuid tube => [1,2,3,4,0], labellable => [1,2,3,4,5]
+EOD
+h[:parameters] = <<EOD
+{ "create_label": {
+    "labellable_uuid": "11111111-2222-3333-4444-555555555555",
+    "type": "sanger-barcode",
+    "value": "1234-ABC",
+    "position": "front barcode"
+}}
+EOD
+h[:status]=422
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{
+  "errors": {
+    "position": "The front barcode position already contains a label."
+  }
+}
+EOD
+%>
+<%= h.to_json %>
