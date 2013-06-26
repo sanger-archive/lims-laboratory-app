@@ -5,7 +5,7 @@ module Lims::LaboratoryApp
   module Labels
     class Code128CBarcode
       include Labellable::Label
-      Type = "code128_c_barcode"
+      Type = "code128-c-barcode"
     end
   end
 end
