@@ -3,6 +3,9 @@ require 'lims-core/actions/action'
 module Lims::LaboratoryApp
   module Laboratory
     class Sample
+     
+      InvalidSample = Class.new(StandardError)
+
       class SwapSamples
         include Lims::Core::Actions::Action
 
@@ -18,6 +21,9 @@ module Lims::LaboratoryApp
             swaps.each do |old_sample_uuid, new_sample_uuid|
               old_sample = session[old_sample_uuid]
               new_sample = session[new_sample_uuid]
+
+              raise InvalidSample, "The sample #{old_sample_uuid} cannot be found" unless old_sample
+              raise InvalidSample, "The sample #{new_sample_uuid} cannot be found" unless new_sample
 
               # For plates, tube_racks...
               if resource.is_a?(Container)
