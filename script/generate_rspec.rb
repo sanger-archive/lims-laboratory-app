@@ -122,25 +122,37 @@ def print_lines(target, string)
         end
 end
 
+# Header of the same type, needs to be grouped in one
+# example, Accept:application/json, Accept:application/xml 
+# => Accept:application/jon, application/xml
+def group_header(headers)
+  Hash.new { |h,k| h[k] = [] }.tap do |groups|
+    headers.each do |h|
+      key, value = h.split(/:\s/)
+      groups[key] << value
+    end
+  end
+
+end
+
 def generate_it_block(example, target)
-    target.puts %Q{  it "#{example.title || example["method"]}" do}
-      generate_http_request(example, target)
+  target.puts %Q{  it "#{example.title || example["method"]}" do}
+    generate_http_request(example, target)
     target.puts '  end'
 end
 
 def generate_http_request(example, target)
-    example.description do |d|
-      print_lines(target, d) { |line| "  # #{line}" }
-    end
+  example.description do |d|
+    print_lines(target, d) { |line| "  # #{line}" }
+  end
 
   example.setup do |s|
     print_lines(target, s) { |line| "    #{line}" }
   end
 
   target.puts
-  ((example.header || []) + (example.response_header || [])).map do |h|
-    key, value = h.split(/:\s/)
-    target.puts "    header('#{key}', '#{value}')"
+  group_header((example.header || []) + (example.response_header || [])).each do |key,values|
+    target.puts "    header('#{key}', '#{values.join(', ')}')"
   end
 
   target.puts
