@@ -67,21 +67,6 @@ module Lims::LaboratoryApp
         
 
         context "with 2 tubes" do
-          subject do 
-            described_class.new(:store => store, :user => user, :application => application) do |a,s|
-              a.swap_samples = [
-                {
-                  "resource" => s.tube[tube_id],
-                  "swaps" => {sample1_uuid => sample2_uuid, sample3_uuid => sample4_uuid}
-                },
-                {
-                  "resource" => s.tube[tube2_id],
-                  "swaps" => {sample2_uuid => sample3_uuid, sample4_uuid => sample1_uuid}
-                }
-              ]
-            end
-          end
-
           let!(:tube_id) {
             store.with_session do |session|
               tube = Tube.new.tap do |t|
@@ -105,6 +90,21 @@ module Lims::LaboratoryApp
           }
 
           context "valid swaps" do
+            subject do 
+              described_class.new(:store => store, :user => user, :application => application) do |a,s|
+                a.swap_samples = [
+                  {
+                    "resource" => s.tube[tube_id],
+                    "swaps" => {sample1_uuid => sample2_uuid, sample3_uuid => sample4_uuid}
+                  },
+                  {
+                    "resource" => s.tube[tube2_id],
+                    "swaps" => {sample2_uuid => sample3_uuid, sample4_uuid => sample1_uuid}
+                  }
+                ]
+              end
+            end
+
             it "does the swap" do
               store.with_session do |s|
                 tube = s.tube[tube_id]
