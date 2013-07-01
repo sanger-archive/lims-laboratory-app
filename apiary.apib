@@ -3640,7 +3640,10 @@ Sample Resource
 
 **Swap samples**
 
-* `parameters`
+* `parameters` accepting an array with:
+* `resource_uuid` the uuid of the resource containing the samples
+* `swaps` hash describing the sample uuid to replace in the resource. For example {AAA:BBB} means that
+the sample AAA is replaced by the sample BBB in the resource.
 POST /actions/swap_samples
 > Accept: application/json
 {"swap_samples": {
