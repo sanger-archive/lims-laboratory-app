@@ -9,12 +9,12 @@ module Lims::LaboratoryApp
       class SwapSamples
         include Lims::Core::Actions::Action
 
-        attribute :swap_samples, Array, :required => true, :writer => :private
+        attribute :parameters, Array, :required => true, :writer => :private
 
         def _call_in_session(session)
           resources = []
 
-          swap_samples.each do |swap_sample|
+          parameters.each do |swap_sample|
             resource = swap_sample["resource"]
             swaps = swap_sample["swaps"] 
 

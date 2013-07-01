@@ -9,7 +9,7 @@ module Lims::LaboratoryApp
 
         def filtered_attributes
           super.tap do |attributes|
-            attributes[:swap_samples] = attributes[:swap_samples].map.each do |element|
+            attributes[:parameters] = attributes[:parameters].map.each do |element|
               element.mash do |k,v|
                 case k
                 when "resource" then ["resource_uuid", @context.uuid_for(v)]
