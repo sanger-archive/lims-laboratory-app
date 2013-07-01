@@ -10,9 +10,12 @@ module Lims::LaboratoryApp
 
         include Lims::Api::Resources::Container
 
-        def content_to_stream(s, mime_type)
-          dimensions_to_stream(s)
-          s.add_key "tubes"
+        def elements_name
+          :tubes
+        end
+
+        def children_to_stream(s, mime_type)
+          s.add_key :tubes
           tubes_to_stream(s, mime_type)
         end
 

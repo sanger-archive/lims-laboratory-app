@@ -1,0 +1,74 @@
+<%
+require 'json'
+examples = []
+examples << h={:header => [], :response_header => [] }
+h[:description]=<<EOD
+**Minimal representation of a plate.**
+  With the representation parameter set to minimal the JSON
+  should only contains the action and the UUID of the object.
+
+EOD
+h[:method] = "GET"
+h[:url]='/11111111-2222-3333-4444-555555555555'
+h[:header] << 'Accept: application/json ;representation=minimal'
+h[:header] << 'Accept: application/xml ;representation=full'
+h[:setup]=<<EOD
+sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
+plate = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_rows => 8,
+                                :number_of_columns => 12,
+                                :type => "original plate type")
+plate["C5"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 10, :type => "sample", :sample => sample1)
+save_with_uuid sample1 => [1,2,3,4,6], plate => [1,2,3,4,5]
+EOD
+h[:parameters]=nil
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json; level_of_detail=minimum'
+h[:response]=<<EOD
+{ "plate": {
+    "actions": {
+        "read": "/11111111-2222-3333-4444-555555555555",
+        "update": "/11111111-2222-3333-4444-555555555555",
+        "delete": "/11111111-2222-3333-4444-555555555555",
+        "create": "/11111111-2222-3333-4444-555555555555"
+    },
+    "uuid": "11111111-2222-3333-4444-555555555555"
+}}
+EOD
+%>
+<%
+examples << h={:header => [], :response_header => [] }
+h[:description]=<<EOD
+**View plate attribute.**
+  Setting the `reprensentation` parameter to `attribute` display minimal and the plate attributes
+  but doesn't show any relations.
+EOD
+h[:method] = "GET"
+h[:url]='/11111111-2222-3333-4444-555555555555'
+h[:header] << 'Accept: application/json ;representation=attributes'
+h[:setup]=<<EOD
+sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
+plate = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_rows => 8,
+                                :number_of_columns => 12,
+                                :type => "original plate type")
+plate["C5"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 10, :type => "sample", :sample => sample1)
+save_with_uuid sample1 => [1,2,3,4,6], plate => [1,2,3,4,5]
+EOD
+h[:parameters]=nil
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json; level_of_detail=minimum'
+h[:response]=<<EOD
+{ "plate": {
+    "actions": {
+        "read": "/11111111-2222-3333-4444-555555555555",
+        "update": "/11111111-2222-3333-4444-555555555555",
+        "delete": "/11111111-2222-3333-4444-555555555555",
+        "create": "/11111111-2222-3333-4444-555555555555"
+    },
+    "uuid": "11111111-2222-3333-4444-555555555555",
+    "number_of_rows": 8,
+    "number_of_columns": 12,
+    "type": "original plate type"
+}}
+EOD
+%>
+<%= {:examples => examples}.to_json %>
