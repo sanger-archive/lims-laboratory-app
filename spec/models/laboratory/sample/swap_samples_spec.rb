@@ -92,7 +92,7 @@ module Lims::LaboratoryApp
           context "valid swaps" do
             subject do 
               described_class.new(:store => store, :user => user, :application => application) do |a,s|
-                a.swap_samples = [
+                a.parameters = [
                   {
                     "resource" => s.tube[tube_id],
                     "swaps" => {sample1_uuid => sample2_uuid, sample3_uuid => sample4_uuid}
@@ -129,7 +129,7 @@ module Lims::LaboratoryApp
         context "with 3 tubes circular swap" do
           subject do 
             described_class.new(:store => store, :user => user, :application => application) do |a,s|
-              a.swap_samples = [
+              a.parameters = [
                 {
                   "resource" => s.tube[tube_id],
                   "swaps" => {sample1_uuid => sample3_uuid}
@@ -202,7 +202,7 @@ module Lims::LaboratoryApp
         context "with a spin column" do
           subject do 
             described_class.new(:store => store, :user => user, :application => application) do |a,s|
-              a.swap_samples = [
+              a.parameters = [
                 {
                   "resource" => s.spin_column[spin_column_id],
                   "swaps" => {sample1_uuid => sample2_uuid, sample3_uuid => sample4_uuid}
@@ -239,7 +239,7 @@ module Lims::LaboratoryApp
         context "with a plate" do
           subject do 
             described_class.new(:store => store, :user => user, :application => application) do |a,s|
-              a.swap_samples = [
+              a.parameters = [
                 {
                   "resource" => s.plate[plate_id],
                   "swaps" => {sample1_uuid => sample2_uuid}
@@ -274,7 +274,7 @@ module Lims::LaboratoryApp
         context "with a tube rack" do
           subject do 
             described_class.new(:store => store, :user => user, :application => application) do |a,s|
-              a.swap_samples = [
+              a.parameters = [
                 {
                   "resource" => s.tube_rack[tube_rack_id],
                   "swaps" => {sample1_uuid => sample2_uuid, sample4_uuid => sample3_uuid}

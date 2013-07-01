@@ -8,7 +8,7 @@ h[:url]='/actions/swap_samples'
 h[:header] << 'Accept: application/json'
 h[:parameters]=<<EOP
 {"swap_samples": {
-"swap_samples": [
+"parameters": [
   {
     "resource_uuid": "11111111-2222-3333-1111-111111111111",
     "swaps": {"11111111-2222-3333-0000-111111111111":"11111111-2222-3333-0000-444444444444"}
@@ -184,7 +184,7 @@ h[:response]=<<EOD
         }
       ]
     },
-    "swap_samples": [
+    "parameters": [
       {
         "resource_uuid": "11111111-2222-3333-1111-111111111111",
         "swaps": {

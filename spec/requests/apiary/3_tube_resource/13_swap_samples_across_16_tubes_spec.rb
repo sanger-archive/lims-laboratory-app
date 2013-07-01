@@ -75,7 +75,7 @@ describe "swap_samples_across_16_tubes", :tube => true do
     response = post "/actions/swap_samples", <<-EOD
     {
     "swap_samples": {
-        "swap_samples": [
+        "parameters": [
             {
                 "resource_uuid": "11111111-0000-0000-0000-111111111111",
                 "swaps": {
@@ -667,7 +667,7 @@ describe "swap_samples_across_16_tubes", :tube => true do
                 }
             ]
         },
-        "swap_samples": [
+        "parameters": [
             {
                 "resource_uuid": "11111111-0000-0000-0000-111111111111",
                 "swaps": {
