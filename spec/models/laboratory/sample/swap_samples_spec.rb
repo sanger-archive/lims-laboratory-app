@@ -64,7 +64,41 @@ module Lims::LaboratoryApp
 
         before(:each) { subject.call }
 
-        
+        context "with 1 tube" do
+          let!(:tube_id) {
+            store.with_session do |session|
+              tube = Tube.new.tap do |t|
+                t << Aliquot.new(:sample => session.sample[sample1_id], :quantity => 5)
+                t << Aliquot.new(:sample => session.sample[sample2_id], :quantity => 10)
+              end
+              session << tube
+              lambda { session.tube.id_for(tube) }
+            end.call
+          }
+
+          context "valid swaps" do
+            subject do 
+              described_class.new(:store => store, :user => user, :application => application) do |a,s|
+                a.parameters = [
+                  {
+                    "resource" => s.tube[tube_id],
+                    "swaps" => {sample1_uuid => sample2_uuid, sample2_uuid => sample1_uuid}
+                  }
+                ]
+              end
+            end
+
+            it "does the swap" do
+              store.with_session do |s|
+                tube = s.tube[tube_id]
+                tube.size.should == 2
+                tube[0].sample.should == s.sample[sample2_id]
+                tube[1].sample.should == s.sample[sample1_id]
+              end
+            end
+          end
+        end
+
 
         context "with 2 tubes" do
           let!(:tube_id) {
@@ -277,7 +311,7 @@ module Lims::LaboratoryApp
               a.parameters = [
                 {
                   "resource" => s.tube_rack[tube_rack_id],
-                  "swaps" => {sample1_uuid => sample2_uuid, sample4_uuid => sample3_uuid}
+                  "swaps" => {sample1_uuid => sample4_uuid, sample4_uuid => sample1_uuid}
                 }
               ]
             end
@@ -303,9 +337,9 @@ module Lims::LaboratoryApp
           it "does the swap" do
             store.with_session do |s|
               rack = s.tube_rack[tube_rack_id]
-              rack["A1"][0].sample.should == s.sample[sample2_id]
+              rack["A1"][0].sample.should == s.sample[sample4_id]
               rack["A1"][0].quantity.should == 25 
-              rack["E5"][0].sample.should == s.sample[sample3_id]
+              rack["E5"][0].sample.should == s.sample[sample1_id]
               rack["E5"][0].quantity.should == 10 
             end
           end
