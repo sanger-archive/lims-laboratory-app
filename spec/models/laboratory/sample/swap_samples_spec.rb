@@ -64,6 +64,9 @@ module Lims::LaboratoryApp
 
         before(:each) { subject.call }
 
+        # 1 tube
+        # 2 samples
+        # A->B, B->A
         context "with 1 tube" do
           let!(:tube_id) {
             store.with_session do |session|
@@ -100,6 +103,9 @@ module Lims::LaboratoryApp
         end
 
 
+        # 2 tubes containing 2 samples each
+        # In tube 1 (A,C): A->B, C->D
+        # In tube 2 (B,D): B->C, D->A
         context "with 2 tubes" do
           let!(:tube_id) {
             store.with_session do |session|
@@ -160,6 +166,11 @@ module Lims::LaboratoryApp
         end
 
 
+        # 3 tubes containing 1 sample each
+        # T1(A), T2(B), T3(C)
+        # T1(A) -> T3(C)
+        # T2(B) -> T1(A)
+        # T3(C) -> T2(B)
         context "with 3 tubes circular swap" do
           subject do 
             described_class.new(:store => store, :user => user, :application => application) do |a,s|
@@ -233,6 +244,8 @@ module Lims::LaboratoryApp
         end
 
 
+        # 1 spin column containing 1 sample
+        # A->B
         context "with a spin column" do
           subject do 
             described_class.new(:store => store, :user => user, :application => application) do |a,s|
@@ -270,6 +283,7 @@ module Lims::LaboratoryApp
         end
 
 
+        # A plate containing 1 sample
         context "with a plate" do
           subject do 
             described_class.new(:store => store, :user => user, :application => application) do |a,s|
@@ -305,6 +319,9 @@ module Lims::LaboratoryApp
         end
 
 
+        # 1 tube rack with 2 tubes containing 1 sample each
+        # R[:A1](S1) -> R[:A1](S4)
+        # R[:E5](S4) -> R[:E5](S1)
         context "with a tube rack" do
           subject do 
             described_class.new(:store => store, :user => user, :application => application) do |a,s|
