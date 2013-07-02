@@ -26,8 +26,8 @@ describe "tranfer_the_content_from_multiples_tubes_to_multiples_tubes", :tube =>
     
     save_with_uuid sample1 => [1,2,3,0,0], sample2 => [1,2,3,0,1], source_tube1 => [1,2,3,4,5], source_tube2 => [1,2,3,4,7], target_tube1 => [1,2,3,4,6], target_tube2 => [1,2,3,4,8]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/actions/transfer_tubes_to_tubes", <<-EOD
     {

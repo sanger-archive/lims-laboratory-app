@@ -6,8 +6,8 @@ describe "create_a_new_batch", :batch => true do
   # 
   # * `process` the process that the batch is going through
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/batches", <<-EOD
     {

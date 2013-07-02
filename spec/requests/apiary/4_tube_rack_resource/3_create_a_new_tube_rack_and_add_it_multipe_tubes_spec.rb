@@ -15,8 +15,8 @@ describe "create_a_new_tube_rack_and_add_it_multipe_tubes", :tube_rack => true d
     save_with_uuid sample1 => [1,2,3,0,0], sample2 => [1,2,3,0,1], tube1 => [1,2,3,4,1], tube2 => [1,2,3,4,2]
     set_uuid_start(1,2,3,4,7)
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/tube_racks", <<-EOD
     {

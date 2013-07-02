@@ -41,8 +41,8 @@ describe "transfer_plates_to_plates_without_solvent", :plate => true do
     
     save_with_uuid sample1 => [1,2,3,4,5], sample2 => [1,2,3,4,6], source_plate1 => [1,2,3,1,0], source_plate2 => [1,2,3,1,1], target_plate1 => [1,2,3,1,2], target_plate2 => [1,2,3,1,3]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/actions/transfer_plates_to_plates", <<-EOD
     {
