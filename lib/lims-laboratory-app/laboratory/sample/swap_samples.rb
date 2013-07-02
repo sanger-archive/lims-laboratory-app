@@ -68,8 +68,7 @@ module Lims::LaboratoryApp
         # it returns true whereas the samples are actually different.
         # A good improvement is to compare the uuid of the samples.
         def samples_equal?(session, sample1, sample2)
-          sample1 == sample2 && 
-            session.uuid_for(sample1) == session.uuid_for(sample2)
+          session.uuid_for(sample1) == session.uuid_for(sample2)
         end
       end
     end
