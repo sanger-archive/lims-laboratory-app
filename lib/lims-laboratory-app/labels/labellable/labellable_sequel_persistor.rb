@@ -53,6 +53,16 @@ module Lims::LaboratoryApp
             end
           end
 
+          def update(labellable_id, content)
+            content.each do |position, label|
+              dataset.where(
+                :labellable_id  => labellable_id,
+                :position       => position,
+                :type           => label.type).
+                update(:value => label.value)
+            end
+          end
+
           def filter_attributes_on_save(attributes, labellable_id=nil, position=nil)
             attributes.tap do
               attributes[:labellable_id]= labellable_id if labellable_id
