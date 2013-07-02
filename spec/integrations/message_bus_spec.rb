@@ -111,8 +111,8 @@ describe "Message Bus" do
   context "on valid order creation and update" do
     let(:date) { "date" }
     let(:user) { "user" }
-    let(:expected_create_settings) { {:routing_key => "pipeline.66666666222244449999000000000000.order.create"} }
-    let(:expected_update_settings) { {:routing_key => "pipeline.66666666222244449999000000000000.order.updateorder"} }
+    let(:expected_create_settings) { {:routing_key => "pipeline.66666666222244449999000000000000.order.create", :app_id => nil} }
+    let(:expected_update_settings) { {:routing_key => "pipeline.66666666222244449999000000000000.order.updateorder", :app_id => nil} }
     let(:expected_create_payload) { order_expected_payload(payload_parameters.merge({
       :action => create_action,
       :date => date,

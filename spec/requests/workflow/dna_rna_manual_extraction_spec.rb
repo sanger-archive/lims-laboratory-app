@@ -292,6 +292,11 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/tag_wells"
         }
     },
+    "swap_samples": {
+        "actions": {
+            "create": "http://example.org/actions/swap_samples"
+        }
+    },
     "bulk_create_tubes": {
         "actions": {
             "create": "http://example.org/actions/bulk_create_tube"
