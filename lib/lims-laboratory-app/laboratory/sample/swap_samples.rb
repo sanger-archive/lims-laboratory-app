@@ -11,6 +11,8 @@ module Lims::LaboratoryApp
 
         attribute :parameters, Array, :required => true, :writer => :private
 
+        # @param [Session] session
+        # @return [Hash]
         def _call_in_session(session)
           resources = []
 
@@ -18,38 +20,43 @@ module Lims::LaboratoryApp
             resource = swap_sample["resource"]
             swaps = swap_sample["swaps"] 
 
-            swaps.each do |old_sample_uuid, new_sample_uuid|
-              old_sample = session[old_sample_uuid]
-              new_sample = session[new_sample_uuid]
-
-              raise InvalidSample, "The sample #{old_sample_uuid} cannot be found" unless old_sample
-              raise InvalidSample, "The sample #{new_sample_uuid} cannot be found" unless new_sample
-
-              # For plates, tube_racks...
-              if resource.is_a?(Container)
-                resource.each do |aliquots|
-                  if aliquots
-                    aliquots.each do |aliquot|
-                      if aliquot.sample == old_sample
-                        aliquot.sample = new_sample
-                      end
-                    end
-                  end
-                end
-              # For tubes, spin columns...
-              else
-                resource.each do |aliquot|
-                  if aliquot.sample == old_sample
-                    aliquot.sample = new_sample
+            # Tube rack, plate...
+            if resource.is_a?(Container)
+              resource.each do |aliquots|
+                if aliquots
+                  aliquots.each do |aliquot|
+                    swap_sample!(session, swaps, aliquot) 
                   end
                 end
               end
-
-              resources << resource
+            # Tube, spin column...
+            else
+              resource.each do |aliquot|
+                swap_sample!(session, swaps, aliquot) 
+              end
             end
+            resources << resource
           end
 
           {:resources => resources} 
+        end
+
+        private
+
+        # @param [Session] session
+        # @param [Hash] swaps
+        # @param [Lims::LaboratoryApp::Laboratory::Aliquot] aliquot
+        def swap_sample!(session, swaps, aliquot)
+          swaps.each do |old_sample_uuid, new_sample_uuid|
+            old_sample = session[old_sample_uuid]
+            new_sample = session[new_sample_uuid]
+            raise invalidsample, "the sample #{old_sample_uuid} cannot be found" unless old_sample
+            raise invalidsample, "the sample #{new_sample_uuid} cannot be found" unless new_sample
+            if aliquot.sample == old_sample
+              aliquot.sample = new_sample
+              break # Important, do not swap again if we've found a swap for the current aliquot
+            end                 
+          end
         end
       end
     end
