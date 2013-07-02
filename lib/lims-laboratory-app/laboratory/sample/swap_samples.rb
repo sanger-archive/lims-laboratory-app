@@ -52,11 +52,24 @@ module Lims::LaboratoryApp
             new_sample = session[new_sample_uuid]
             raise invalidsample, "the sample #{old_sample_uuid} cannot be found" unless old_sample
             raise invalidsample, "the sample #{new_sample_uuid} cannot be found" unless new_sample
-            if aliquot.sample == old_sample
+            if samples_equal?(session, aliquot.sample, old_sample)
               aliquot.sample = new_sample
               break # Important, do not swap again if we've found a swap for the current aliquot
             end                 
           end
+        end
+
+        # @param [Session] session
+        # @param [Lims::LaboratoryApp::Laboratory::Sample] sample1
+        # @param [Lims::LaboratoryApp::Laboratory::Sample] sample2
+        # @return [Bool]
+        # When we evaluate only sample1 == sample2, it basically compare
+        # the name of the 2 samples. So, if the samples have the same name,
+        # it returns true whereas the samples are actually different.
+        # A good improvement is to compare the uuid of the samples.
+        def samples_equal?(session, sample1, sample2)
+          sample1 == sample2 && 
+            session.uuid_for(sample1) == session.uuid_for(sample2)
         end
       end
     end
