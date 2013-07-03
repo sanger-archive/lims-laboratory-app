@@ -7,7 +7,11 @@ h[:description] = <<EOD
 * `labellable` the labellable resource to update
 * `name` unique identifier of an asset (for example: uuid of a plate)
 * `type` type of the object the labellable related (resource, equipment, user etc...)
-* `labels` it is a hash which contains the information of the labels.
+* `labels_to_update` it is an array which contains the update information related to the labels
+This array contains hashes.
+A hash contains an existing barcode information (position, type, value) with a key "original_label",
+and also should contains the value for update under the 'value_for_update' key.
+* `new_labels` it is a hash which contains the information of the new labels.
 By labels we mean any readable information found on a physical object.
 Label can eventually be identified by a position: an arbitray string (not a Symbol).
 It has a value, which can be serial number, stick label with barcode etc.
