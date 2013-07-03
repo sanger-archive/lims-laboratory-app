@@ -353,6 +353,11 @@ describe "root" do
             "create": "http://example.org/actions/bulk_create_labellable"
         }
     },
+    "swap_samples": {
+        "actions": {
+            "create": "http://example.org/actions/swap_samples"
+        }
+    },
     "revision": 3
 }
     EOD
