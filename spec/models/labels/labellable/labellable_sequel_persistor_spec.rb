@@ -17,12 +17,26 @@ module Lims::LaboratoryApp
     let(:content) { { label_position => Labels::SangerBarcode.new({:value => label_value}) } }
     let(:parameters) { { :name => name, :type => type, :content => content } }
     let(:labellable) { Labels::Labellable.new(parameters) }
-    
-    context "when created within a session" do
+    let(:other_label_position) { "ean13" }
+    let(:other_label_value) { "1234567890123" }
+    let(:other_label) { Labels::EAN13Barcode.new({:value => other_label_value }) }
+
+    context "when created within a session", :dup => true do
       it "should modify the labellable table" do
         expect do
           store.with_session { |session| session << labellable }
         end.to change { db[:labellables].count}.by(1)
+      end
+
+      it "should modify the labels table after updating with a label" do
+        expect do
+          labellable_id = save(labellable)
+          store.with_session do |session|
+            loaded_labellable = session.labellable[labellable_id]
+            loaded_labellable[other_label_position] = other_label
+            session << loaded_labellable
+          end
+        end.to change { db[:labels].count}.by(2)
       end
     end
 
