@@ -23,6 +23,8 @@ module Lims::LaboratoryApp
           labellable.name = name if name
           labellable.type = type if type
           labels_to_update.each do |change_item|
+            raise "Not enough information provided regarding the label to change" unless check_update_information(change_item)
+
             original_label_item = change_item["original_label"]
             value_for_update = change_item["value_for_update"]
             original_label = labellable[original_label_item["position"]]
@@ -35,6 +37,19 @@ module Lims::LaboratoryApp
 
           {:labellable => labellable}
         end
+
+        def check_update_information(change_item)
+          update_provided = true
+          if change_item["original_label"].nil? ||
+            change_item["value_for_update"].nil? ||
+            change_item["original_label"]["position"].nil? ||
+            change_item["original_label"]["type"].nil? ||
+            change_item["original_label"]["value"].nil?
+            update_provided = false
+          end
+          update_provided
+        end
+        private :check_update_information
       end
     end
   end
