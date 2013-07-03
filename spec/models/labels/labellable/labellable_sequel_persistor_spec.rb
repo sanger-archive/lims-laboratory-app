@@ -38,6 +38,17 @@ module Lims::LaboratoryApp
           end
         end.to change { db[:labels].count}.by(2)
       end
+
+      it "should not add 2 labels to the same position of a labellable" do
+        expect do
+          labellable_id = save(labellable)
+          store.with_session do |session|
+            loaded_labellable = session.labellable[labellable_id]
+            loaded_labellable[label_position] = other_label
+            session << loaded_labellable
+          end
+        end.to raise_error(Lims::LaboratoryApp::Labels::Labellable::LabelPositionNotEmptyError)
+      end
     end
 
     it "should save it" do
