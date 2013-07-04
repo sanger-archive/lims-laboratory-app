@@ -55,11 +55,18 @@ module Lims::LaboratoryApp
 
           def update(labellable_id, content)
             content.each do |position, label|
-              dataset.where(
+              existing_labels_condition = dataset.where(
                 :labellable_id  => labellable_id,
                 :position       => position,
-                :type           => label.type).
-                update(:value => label.value)
+                :type           => label.type)
+              if existing_labels_condition.update(:value => label.value) < 1
+                dataset.insert(
+                  :labellable_id  => labellable_id,
+                  :position       => position,
+                  :type           => label.type,
+                  :value          => label.value
+                )
+              end
             end
           end
 

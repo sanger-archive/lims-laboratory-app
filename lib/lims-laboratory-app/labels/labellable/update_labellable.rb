@@ -6,6 +6,25 @@ require 'lims-laboratory-app/labels/labellable/create_labellable_shared'
 module Lims::LaboratoryApp
   module Labels
     class Labellable
+
+      LabelPositionNotExistError = Class.new(StandardError) do
+        def initialize(position)
+          super("There is no label exist in the '#{position}' position.")
+        end
+      end
+
+      LabelNotExistError = Class.new(StandardError) do
+        def initialize(position, value, type)
+          super("There is no label exist in the '#{position}' position with this parameters: value: '#{value}', type: '#{type}'.")
+        end
+      end
+
+      InsufficientLabelInformationError = Class.new(StandardError) do
+        def initialize
+          super("Not enough information provided regarding the label to change")
+        end
+      end
+
       # Updates a Labellable resource and its related Label resorce(s)
       class UpdateLabellable
         include Lims::Core::Actions::Action
@@ -16,35 +35,40 @@ module Lims::LaboratoryApp
         attribute :type, String, :required => false, :writer => :private, :initializable => true
         # labels array to update their values
         attribute :labels_to_update, Array, :default => [], :required => false, :writer => :private, :initializable => true
-        # labels hash to add new labels to a labellable
-        attribute :new_labels, Hash, :default => {}, :required => false, :writer => :private, :initializable => true
 
         def _call_in_session(session)
           labellable.name = name if name
           labellable.type = type if type
-          labels_to_update.each do |change_item|
-            raise "Not enough information provided regarding the label to change" unless check_update_information(change_item)
+          labels_to_update.each do |new_label|
+            raise InsufficientLabelInformationError unless check_update_information(new_label)
 
-            original_label_item = change_item["original_label"]
-            value_for_update = change_item["value_for_update"]
-            original_label = labellable[original_label_item["position"]]
-            if original_label
-              original_label.value = value_for_update
-            end
+            value_for_update = new_label["new_value"]
+            existing_label = labellable[new_label["position"]]
+
+            existing_label.value = value_for_update if label_exist(new_label, existing_label)
           end
-
-          add_labels(new_labels, labellable)
 
           {:labellable => labellable}
         end
 
-        def check_update_information(change_item)
+        private
+
+        # checks label (to update) existence
+        def label_exist(new_label, existing_label)
+          raise LabelPositionNotExistError.new(new_label["position"]) unless existing_label
+          raise LabelNotExistError.new(new_label["position"], new_label["existing_value"], new_label["type"]) unless
+            existing_label.value  == new_label["existing_value"] &&
+            existing_label.type   == new_label["type"]
+          true
+        end
+
+        # check, whether the client provided enough information for the update
+        def check_update_information(label)
           update_provided = true
-          if change_item["original_label"].nil? ||
-            change_item["value_for_update"].nil? ||
-            change_item["original_label"]["position"].nil? ||
-            change_item["original_label"]["type"].nil? ||
-            change_item["original_label"]["value"].nil?
+          if label["position"].nil? ||
+            label["type"].nil? ||
+            label["existing_value"].nil? ||
+            label["new_value"].nil?
             update_provided = false
           end
           update_provided
