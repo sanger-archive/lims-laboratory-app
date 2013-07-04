@@ -9,8 +9,8 @@ describe "list_actions_for_spin_column_resource", :spin_column => true do
   # * `first` lists the first spin columns resources in a page browsing system
   # * `last` lists the last spin columns resources in a page browsing system
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = get "/spin_columns"
     response.should match_json_response(200, <<-EOD) 

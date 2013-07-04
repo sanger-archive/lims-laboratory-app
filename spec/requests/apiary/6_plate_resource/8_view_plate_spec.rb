@@ -12,8 +12,8 @@ describe "view_plate", :plate => true do
     plate["C5"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 10, :type => "sample", :sample => sample1)
     save_with_uuid sample1 => [1,2,3,4,6], plate => [1,2,3,4,5]
 
-    header('Accept', 'application/json ;representation=minimal, application/xml ;representation=full')
     header('Content-Type', 'application/json; level_of_detail=minimum')
+    header('Accept', 'application/json ;representation=minimal, application/xml ;representation=full')
 
     response = get "/11111111-2222-3333-4444-555555555555"
     response.should match_json_response(200, <<-EOD) 
@@ -42,8 +42,8 @@ describe "view_plate", :plate => true do
     plate["C5"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 10, :type => "sample", :sample => sample1)
     save_with_uuid sample1 => [1,2,3,4,6], plate => [1,2,3,4,5]
 
-    header('Accept', 'application/json ;representation=attributes')
     header('Content-Type', 'application/json; level_of_detail=minimum')
+    header('Accept', 'application/json ;representation=attributes')
 
     response = get "/11111111-2222-3333-4444-555555555555"
     response.should match_json_response(200, <<-EOD) 

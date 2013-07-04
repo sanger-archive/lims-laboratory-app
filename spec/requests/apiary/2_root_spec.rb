@@ -11,8 +11,8 @@ describe "root" do
   # Consider this URL and the JSON response like the entry point for S2 API. All the other interactions through the 
   # API can be performed browsing this JSON response.
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = get "/"
     response.should match_json_response(200, <<-EOD) 
