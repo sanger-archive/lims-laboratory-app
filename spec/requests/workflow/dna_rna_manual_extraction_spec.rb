@@ -252,6 +252,11 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/create_labellable"
         }
     },
+    "update_labellables": {
+        "actions": {
+            "create": "http://example.org/actions/update_labellable"
+        }
+    },
     "create_orders": {
         "actions": {
             "create": "http://example.org/actions/create_order"
