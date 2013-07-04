@@ -132,7 +132,16 @@ def group_header(headers)
       groups[key] << value
     end
   end
+end
 
+# For convenience reason we use the response header (Content-Type)
+# as normal header.  However, if the content-type is in the header
+# We don't need to use the response one
+#
+def merge_headers(header, response)
+  header = group_header(header)
+  response = group_header(response)
+  response.merge(header)
 end
 
 def generate_it_block(example, target)
@@ -151,7 +160,7 @@ def generate_http_request(example, target)
   end
 
   target.puts
-  group_header((example.header || []) + (example.response_header || [])).each do |key,values|
+  merge_headers((example.header || []), (example.response_header || [])).each do |key,values|
     target.puts "    header('#{key}', '#{values.join(', ')}')"
   end
 

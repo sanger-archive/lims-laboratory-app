@@ -9,8 +9,8 @@ describe "update_a_batch", :batch => true do
     batch = Lims::LaboratoryApp::Organization::Batch.new
     save_with_uuid batch => [1,2,3,4,5]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = put "/11111111-2222-3333-4444-555555555555", <<-EOD
     {

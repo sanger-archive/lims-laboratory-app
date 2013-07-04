@@ -15,8 +15,8 @@ describe "update_a_plate", :plate => true do
     plate["C5"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 10, :type => "sample", :sample => sample1)
     save_with_uuid sample1 => [1,2,3,4,6], plate => [1,2,3,4,5]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = put "/11111111-2222-3333-4444-555555555555", <<-EOD
     {

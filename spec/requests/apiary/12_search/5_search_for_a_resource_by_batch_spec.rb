@@ -12,8 +12,8 @@ describe "search_for_a_resource_by_batch", :search => true do
   # To actually get the search results, you need to access the first page of result 
   # thanks to the `first` action in the JSON response.
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/searches", <<-EOD
     {
