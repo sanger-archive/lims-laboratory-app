@@ -1,6 +1,6 @@
 require('lims-laboratory-app/laboratory/sample/sample_filter')
 require('lims-laboratory-app/laboratory/sample/sample_sequel_filter')
 require('lims-laboratory-app/laboratory/sample/sample_persistor')
-require('lims-laboratory-app/laboratory/sample/sample_filter')
-require('lims-laboratory-app/laboratory/sample/sample_sequel_filter')
+require('lims-laboratory-app/laboratory/sample/swap_samples')
+require('lims-laboratory-app/laboratory/sample/swap_samples_resource')
 require('lims-laboratory-app/laboratory/sample')

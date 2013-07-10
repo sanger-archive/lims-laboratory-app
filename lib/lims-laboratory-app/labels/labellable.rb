@@ -17,6 +17,8 @@ module Lims::LaboratoryApp
       attribute :type, String, :required => true, :writer => :private, :initializable => true
       attribute :content, Hash, :default => {}, :writer => :private, :initializable => true
 
+      LabelPositionNotEmptyError = Class.new(Lims::Core::Actions::Action::InvalidParameters)
+
       def initialize(*args, &block)
         super(*args, &block)
       end
@@ -48,7 +50,11 @@ module Lims::LaboratoryApp
         when Symbol
           super(key, value)
         else
-          content[key] = value
+          unless content[key].nil?
+            raise LabelPositionNotEmptyError, {"position" => "The #{key} position already contains a label."}
+          else
+            content[key] = value
+          end
         end
       end
 
@@ -120,3 +126,4 @@ end
 require 'lims-laboratory-app/labels/barcode_2d'
 require 'lims-laboratory-app/labels/sanger_barcode'
 require 'lims-laboratory-app/labels/ean13_barcode'
+require 'lims-laboratory-app/labels/code128_c_barcode'

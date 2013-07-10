@@ -115,6 +115,14 @@ describe "dna_rna_manual_extraction" do
             "last": "http://example.org/ean13_barcodes/page=-1"
         }
     },
+    "code128_c_barcodes": {
+        "actions": {
+            "create": "http://example.org/code128_c_barcodes",
+            "read": "http://example.org/code128_c_barcodes",
+            "first": "http://example.org/code128_c_barcodes/page=1",
+            "last": "http://example.org/code128_c_barcodes/page=-1"
+        }
+    },
     "barcode2_ds": {
         "actions": {
             "create": "http://example.org/barcode2_ds",
@@ -282,6 +290,11 @@ describe "dna_rna_manual_extraction" do
     "tag_wells": {
         "actions": {
             "create": "http://example.org/actions/tag_wells"
+        }
+    },
+    "swap_samples": {
+        "actions": {
+            "create": "http://example.org/actions/swap_samples"
         }
     },
     "bulk_create_tubes": {
