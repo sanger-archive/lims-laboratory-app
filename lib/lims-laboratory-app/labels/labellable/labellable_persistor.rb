@@ -21,13 +21,11 @@ module Lims::LaboratoryApp
           end
         end
 
-        # update children of an existing object.
-        # @param [Fixum] id id in the database
-        # @param [Resource] object the object
-        def update_children(id, object)
-          label.update(id, object.content)
+        # deletes all children of a given Labellable
+        def delete_children(id, object)
+          label.dataset.filter(:labellable_id => id).delete
         end
-        protected :update_children
+        protected :delete_children
 
         # Loads all children of a given Labellable
         def load_children(id, labellable)
