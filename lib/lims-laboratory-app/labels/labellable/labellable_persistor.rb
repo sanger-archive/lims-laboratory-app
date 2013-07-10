@@ -21,6 +21,12 @@ module Lims::LaboratoryApp
           end
         end
 
+        # deletes all children of a given Labellable
+        def delete_children(id, object)
+          label.dataset.filter(:labellable_id => id).delete
+        end
+        protected :delete_children
+
         # Loads all children of a given Labellable
         def load_children(id, labellable)
           label.load(id) do |position, label|
