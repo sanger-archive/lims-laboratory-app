@@ -30,11 +30,11 @@ module Lims::LaboratoryApp
         include Lims::Core::Actions::Action
         include Lims::LaboratoryApp::Labels::Labellable::CreateLabellableShared
 
-        attribute :labellable, Labels::Labellable, :required => true, :writer => :private
-        attribute :name, String, :required => false, :writer => :private, :initializable => true
-        attribute :type, String, :required => false, :writer => :private, :initializable => true
+        attribute :labellable, Labels::Labellable, :required => true
+        attribute :name, String, :required => false
+        attribute :type, String, :required => false
         # labels array to update their values
-        attribute :labels_to_update, Array, :default => [], :required => false, :writer => :private, :initializable => true
+        attribute :labels_to_update, Array, :default => [], :required => false
 
         def _call_in_session(session)
           labellable.name = name if name
@@ -73,13 +73,8 @@ module Lims::LaboratoryApp
           end
           update_provided
         end
-        private :check_update_information
+
       end
-    end
-  end
-  module Labels
-    class Labellable
-      Update = UpdateLabellable
     end
   end
 end
