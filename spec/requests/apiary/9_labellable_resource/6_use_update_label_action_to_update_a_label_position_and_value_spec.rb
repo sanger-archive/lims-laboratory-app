@@ -1,16 +1,13 @@
 require "requests/apiary/9_labellable_resource/spec_helper"
-describe "use_update_laballable_action_to_update_a_label", :labellable => true do
+describe "use_update_label_action_to_update_a_label_position_and_value", :labellable => true do
   include_context "use core context service"
-  it "use_update_laballable_action_to_update_a_label" do
-  # **Use update_labellable action to update a label.**
+  it "use_update_label_action_to_update_a_label_position_and_value" do
+  # **Use update_label action to update a label.**
   # 
   # * `labellable` the labellable resource to update
-  # * `name` unique identifier of an asset (for example: uuid of a plate)
-  # * `type` type of the object the labellable related (resource, equipment, user etc...)
-  # * `labels_to_update` it is an array which contains the update information related to the labels
-  # This array contains hashes.
-  # A hash contains an existing barcode information (position, type, value),
-  # and also should contains the value for update under the 'new_value' key.
+  # * `position` position of the Label to update
+  # * `new_label` it is an hash which contains the update information related to the label
+  # A hash can contains the new label information (position, type, value).
   # 
   # By labels we mean any readable information found on a physical object.
   # Label can eventually be identified by a position: an arbitray string (not a Symbol).
@@ -31,26 +28,22 @@ describe "use_update_laballable_action_to_update_a_label", :labellable => true d
     header('Accept', 'application/json')
     header('Content-Type', 'application/json')
 
-    response = post "/actions/update_labellable", <<-EOD
+    response = post "/actions/update_label", <<-EOD
     {
-    "update_labellable": {
+    "update_label": {
         "labellable_uuid": "11111111-2222-3333-4444-555555555555",
-        "name": "11111111-2222-3333-4444-000000000000",
-        "type": "updated_resource",
-        "labels_to_update": [
-            {
-                "position": "front barcode",
-                "type": "sanger-barcode",
-                "existing_value": "1234-ABC",
-                "new_value": "5678DEF"
-            }
-        ]
+        "existing_position": "front barcode",
+        "new_label": {
+            "position": "rear barcode",
+            "type": "sanger-barcode",
+            "value": "5678DEF"
+        }
     }
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
     {
-    "update_labellable": {
+    "update_label": {
         "actions": {
         },
         "user": "user",
@@ -65,9 +58,9 @@ describe "use_update_laballable_action_to_update_a_label", :labellable => true d
                 },
                 "uuid": "11111111-2222-3333-4444-555555555555",
                 "name": "11111111-2222-3333-4444-000000000000",
-                "type": "updated_resource",
+                "type": "resource",
                 "labels": {
-                    "front barcode": {
+                    "rear barcode": {
                         "value": "5678DEF",
                         "type": "sanger-barcode"
                     }
@@ -75,16 +68,12 @@ describe "use_update_laballable_action_to_update_a_label", :labellable => true d
             }
         },
         "labellable_uuid": "11111111-2222-3333-4444-555555555555",
-        "name": "11111111-2222-3333-4444-000000000000",
-        "type": "updated_resource",
-        "labels_to_update": [
-            {
-                "position": "front barcode",
-                "type": "sanger-barcode",
-                "existing_value": "1234-ABC",
-                "new_value": "5678DEF"
-            }
-        ]
+        "existing_position": "front barcode",
+        "new_label": {
+            "position": "rear barcode",
+            "type": "sanger-barcode",
+            "value": "5678DEF"
+        }
     }
 }
     EOD

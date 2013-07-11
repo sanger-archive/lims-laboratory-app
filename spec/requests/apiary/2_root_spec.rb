@@ -253,9 +253,9 @@ describe "root" do
             "create": "http://example.org/actions/create_labellable"
         }
     },
-    "update_labellables": {
+    "update_labels": {
         "actions": {
-            "create": "http://example.org/actions/update_labellable"
+            "create": "http://example.org/actions/update_label"
         }
     },
     "create_orders": {
