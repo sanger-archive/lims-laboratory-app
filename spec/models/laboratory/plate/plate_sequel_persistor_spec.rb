@@ -165,9 +165,8 @@ module Lims::LaboratoryApp
             before(:each) { store.dirty_attribute_strategy = nil }
             it "saves everything" do
               store.with_session do |session|
-                $stop = true
                 session.plate.should_receive(:update_raw).and_call_original
-                session.aliquot.should_receive(:save).exactly(96*5).and_call_original
+                session.aliquot.should_receive(:save_all).exactly(96*5).and_call_original
                 session.aliquot.should_receive(:update_raw).exactly(96*5).and_call_original
                 plate = session.plate[plate_id]
               end
@@ -179,7 +178,7 @@ module Lims::LaboratoryApp
               store.with_session do |session|
                 session.plate.should_not_receive(:update_raw)
                 session.aliquot.should_not_receive(:update_raw)
-                session.aliquot.should_receive(:save).exactly(96*5).and_call_original
+                session.aliquot.should_receive(:save_all).exactly(96*5).and_call_original
                 plate = session.plate[plate_id]
               end
             end

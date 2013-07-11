@@ -13,7 +13,7 @@ module Lims::LaboratoryApp
         it_behaves_like "an action"
 
         it "creates an order object" do
-          Lims::Core::Persistence::Session.any_instance.should_receive(:save)
+          Lims::Core::Persistence::Session.any_instance.should_receive(:save_all)
           result = subject.call 
           order = result[:order]
           order.should be_a Organization::Order

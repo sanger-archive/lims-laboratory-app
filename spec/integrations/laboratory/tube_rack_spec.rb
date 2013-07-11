@@ -469,7 +469,7 @@ module Lims::LaboratoryApp::Laboratory
           it_behaves_like "a valid core action"
         end
 
-        context "multiply tube rack to a tube rack move", :focus => true do
+        context "multiply tube rack to a tube rack move" do
           include_context "with saved tube rack with tubes"
           include_context "with a target rack tube"
 

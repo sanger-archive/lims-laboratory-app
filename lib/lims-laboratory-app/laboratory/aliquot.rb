@@ -36,6 +36,10 @@ module Lims::LaboratoryApp
       #validates_presence_of :quantity
       #validates_numericalness_of :quantity, :gte => 0
 
+      def attributes
+        {sample: @sample, tag: @tag, quantity: @quantity, type: @type}
+      end
+
       # Take a percentage of an aliquot
       # and remove the corresponding quantity
       # 1 (100%) remove everything from the current aliquot
@@ -56,7 +60,7 @@ module Lims::LaboratoryApp
 
       def ===(other)
         to_exclude = [:quantity]
-        a, b = [self, other].map { |a| a.attributes - to_exclude }
+        a, b = [self, other].map { |al| al.attributes - to_exclude }
         a == b
       end
 

@@ -4,6 +4,7 @@ require 'models/actions/spec_helper'
 
 # Model requirements
 require 'lims-laboratory-app/labels/labellable/bulk_create_labellable'
+require 'lims-laboratory-app/labels/labellable/all'
 
 module Lims::LaboratoryApp
   module Labels
@@ -52,7 +53,7 @@ module Lims::LaboratoryApp
           it_behaves_like "an action"
 
           it "creates 10 labellables" do
-            Lims::Core::Persistence::Session.any_instance.should_receive(:save)
+            Lims::Core::Persistence::Session.any_instance.should_receive(:save_all)
             result = subject.call
             result.should be_a(Hash)
             result[:labellables].should be_a(Array)

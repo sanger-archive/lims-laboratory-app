@@ -15,6 +15,9 @@ serve:
 dserve:
 	bundle exec rackup -d
 
+benchmark:
+	bundle exec rspec -p 100 -tbenchmark spec/benchmark
+
 
 %: %.erb
 	erb < $< > $@

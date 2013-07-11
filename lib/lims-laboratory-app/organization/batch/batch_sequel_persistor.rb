@@ -5,14 +5,7 @@ require 'lims-core/persistence/sequel/persistor'
 
 module Lims::LaboratoryApp
   module Organization
-    class Batch
-      class BatchSequelPersistor < BatchPersistor
-        include Lims::Core::Persistence::Sequel::Persistor
-
-        def self.table_name
-          :batches
-        end
-      end
+    class BatchX
     end
   end
 end

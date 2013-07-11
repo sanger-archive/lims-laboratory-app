@@ -49,6 +49,7 @@ end
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
+  config.filter_run_excluding :benchmark => true
 end
 
 RSpec::Matchers.define :io_stream do |content|

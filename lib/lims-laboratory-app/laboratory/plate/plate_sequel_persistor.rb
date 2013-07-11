@@ -8,36 +8,7 @@ require 'lims-laboratory-app/laboratory/container/container_element_sequel_persi
 module Lims::LaboratoryApp
   module Laboratory
     # Not a plate but a plate persistor.
-    class Plate
-      # Not a well but a well {Persistor}.
-      class Well
-        class WellSequelPersistor < Plate::Well::WellPersistor
-          include Lims::Core::Persistence::Sequel::Persistor
-          include Container::ContainerElementSequelPersistor
-
-          def self.table_name
-            :wells
-          end
-
-          def container_id_sym
-            :plate_id
-          end
-
-        end
-      end #class Well
-
-      class PlateSequelPersistor < PlatePersistor
-        include Lims::Core::Persistence::Sequel::Persistor
-        include Container::ContainerSequelPersistor
-
-        def self.table_name
-          :plates
-        end
-
-        def container_id_sym
-          :plate_id
-        end
-      end
+    class PlateX
     end
   end
 end

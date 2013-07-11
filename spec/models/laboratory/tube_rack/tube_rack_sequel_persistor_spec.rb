@@ -102,7 +102,7 @@ module Lims::LaboratoryApp
           end
 
           it "deletes the tubes rows" do
-            expect { delete_tube_rack }.to change { db[:tube_rack_slots].count}.by(-96)
+            expect { delete_tube_rack }.to change { db[:tube_rack_slots].count}.by(-11)
           end
         end
 
