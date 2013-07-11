@@ -7,17 +7,8 @@ module Lims::LaboratoryApp
   module Labels
     class Labellable
 
-      LabelPositionNotExistError = Class.new(StandardError) do
-        def initialize(position)
-          super("There is no label exist in the '#{position}' position.")
-        end
-      end
-
-      InsufficientLabelInformationError = Class.new(StandardError) do
-        def initialize
-          super("Not enough information provided regarding the label to change")
-        end
-      end
+      LabelPositionNotExistError = Class.new(Lims::Core::Actions::Action::InvalidParameters)
+      InsufficientLabelInformationError = Class.new(Lims::Core::Actions::Action::InvalidParameters)
 
       # Updates a Label of a given Labellable resource
       class UpdateLabel
@@ -29,27 +20,19 @@ module Lims::LaboratoryApp
         attribute :new_label, Hash, :default => {}, :required => true
 
         def _call_in_session(session)
-          raise InsufficientLabelInformationError unless check_update_information(new_label)
+          raise InsufficientLabelInformationError,
+            {"general" => "Not enough information provided regarding the label to change"} unless check_update_information(new_label)
 
-          label_to_update = labellable[existing_position]
+          label_to_update = labellable.delete(existing_position)
 
-          raise LabelPositionNotExistError.new(existing_position) unless label_to_update
+          raise LabelPositionNotExistError,
+            {"position" => "There is no label exist in the '#{existing_position}' position."} unless label_to_update
 
-          # update the type/value if position is not chnaged
-          if new_label.has_key?("position") == false || new_label["position"] == existing_position
-            label_to_update.type = new_label["type"] if new_label.has_key?("type")
-            label_to_update.value = new_label["value"] if new_label.has_key?("value")
-          else
-            type_to_add = new_label.has_key?("type") ? new_label["type"] : label_to_update["type"]
-            value_to_add = new_label.has_key?("value") ? new_label["value"] : label_to_update["value"]
-            label_to_add = Labels::Labellable::Label.new(
-              { :type => type_to_add,
-                :value => value_to_add
-              }
-            )
-            labellable.delete(existing_position)
-            labellable[new_label["position"]] = label_to_add
-          end
+          label_to_update.type = new_label["type"] if new_label.has_key?("type")
+          label_to_update.value = new_label["value"] if new_label.has_key?("value")
+          updated_position = new_label.has_key?("position") ? new_label["position"] : existing_position
+
+          labellable[updated_position] = label_to_update
 
           {:labellable => labellable}
         end

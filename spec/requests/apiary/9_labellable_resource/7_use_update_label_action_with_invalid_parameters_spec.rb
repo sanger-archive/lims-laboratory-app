@@ -41,11 +41,11 @@ describe "use_update_label_action_with_invalid_parameters", :labellable => true 
     }
 }
     EOD
-    response.should match_json_response(500, <<-EOD) 
+    response.should match_json_response(422, <<-EOD) 
     {
-    "general": [
-        "Not enough information provided regarding the label to change"
-    ]
+    "errors": {
+        "general": "Not enough information provided regarding the label to change"
+    }
 }
     EOD
 
@@ -77,11 +77,11 @@ describe "use_update_label_action_with_invalid_parameters", :labellable => true 
     }
 }
     EOD
-    response.should match_json_response(500, <<-EOD) 
+    response.should match_json_response(422, <<-EOD) 
     {
-    "general": [
-        "There is no label exist in the 'not_existing_position' position."
-    ]
+    "errors": {
+        "position": "There is no label exist in the 'not_existing_position' position."
+    }
 }
     EOD
 

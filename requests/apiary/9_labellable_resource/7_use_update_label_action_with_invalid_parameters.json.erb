@@ -40,13 +40,13 @@ not_enough_info_step[:parameters] = <<EOD
         }
 }}
 EOD
-not_enough_info_step[:status]=500
+not_enough_info_step[:status]=422
 not_enough_info_step[:response_header] << 'Content-Type: application/json'
 not_enough_info_step[:response]=<<EOD
 {
-    "general": [
-        "Not enough information provided regarding the label to change"
-    ]
+    "errors": {
+        "general": "Not enough information provided regarding the label to change"
+    }
 }
 EOD
 
@@ -80,13 +80,13 @@ not_existing_position_step[:parameters] = <<EOD
     }
 }}
 EOD
-not_existing_position_step[:status]=500
+not_existing_position_step[:status]=422
 not_existing_position_step[:response_header] << 'Content-Type: application/json'
 not_existing_position_step[:response]=<<EOD
 {
-    "general": [
-        "There is no label exist in the 'not_existing_position' position."
-    ]
+    "errors": {
+        "position": "There is no label exist in the 'not_existing_position' position."
+    }
 }
 EOD
 
