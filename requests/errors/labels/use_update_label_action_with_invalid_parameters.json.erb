@@ -45,7 +45,7 @@ not_enough_info_step[:response_header] << 'Content-Type: application/json'
 not_enough_info_step[:response]=<<EOD
 {
     "errors": {
-        "general": "Not enough information provided regarding the label to change"
+        "new_label": "You should provide one or more of the following data in the new_label hash: position, value or type."
     }
 }
 EOD

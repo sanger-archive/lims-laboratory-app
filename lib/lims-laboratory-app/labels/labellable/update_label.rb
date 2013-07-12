@@ -21,7 +21,8 @@ module Lims::LaboratoryApp
 
         def _call_in_session(session)
           raise InsufficientLabelInformationError,
-            {"general" => "Not enough information provided regarding the label to change"} unless check_update_information(new_label)
+            {"new_label" =>
+              "You should provide one or more of the following data in the new_label hash: position, value or type."} unless check_update_information(new_label)
 
           label_to_update = labellable.delete(existing_position)
 
