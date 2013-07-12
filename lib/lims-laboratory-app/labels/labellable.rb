@@ -13,8 +13,8 @@ module Lims::LaboratoryApp
     # Labellable acts mainly has a hash of location => labels
     class Labellable
       include Lims::Core::Resource
-      attribute :name, String, :required => true, :writer => :private, :initializable => true
-      attribute :type, String, :required => true, :writer => :private, :initializable => true
+      attribute :name, String, :required => true, :initializable => true
+      attribute :type, String, :required => true, :initializable => true
       attribute :content, Hash, :default => {}, :writer => :private, :initializable => true
 
       LabelPositionNotEmptyError = Class.new(Lims::Core::Actions::Action::InvalidParameters)
