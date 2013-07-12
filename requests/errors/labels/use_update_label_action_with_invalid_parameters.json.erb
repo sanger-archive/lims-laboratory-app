@@ -1,0 +1,95 @@
+<%
+require 'json'
+not_enough_info_step = {:header => [], :response_header => [] }
+not_enough_info_step[:description] = <<EOD
+**Use update_label action to update a label with missing parameters for the new label.**
+
+* `labellable` the labellable resource to update
+* `position` position of the Label to update
+* `new_label` it is an hash which contains the update information related to the label
+A hash can contains the new label information (position, type, value).
+
+By labels we mean any readable information found on a physical object.
+Label can eventually be identified by a position: an arbitray string (not a Symbol).
+It has a value, which can be serial number, stick label with barcode etc.
+It has a type, which can be sanger-barcode, 2d-barcode, ean13-barcode etc...
+EOD
+not_enough_info_step[:method] = "POST"
+not_enough_info_step[:url] = '/actions/update_label'
+not_enough_info_step[:header] << 'Accept: application/json'
+not_enough_info_step[:setup]=<<EOD
+tube = Lims::LaboratoryApp::Laboratory::Tube.new
+
+labellable = Lims::LaboratoryApp::Labels::Labellable.new(
+  :name => "11111111-2222-3333-4444-000000000000",
+  :type => "resource")
+label = Lims::LaboratoryApp::Labels::Labellable::Label.new(
+  :type => "sanger-barcode",
+  :value => "1234-ABC")
+labellable["front barcode"] = label
+
+save_with_uuid tube => [1,2,3,4,0], labellable => [1,2,3,4,5]
+
+EOD
+not_enough_info_step[:parameters] = <<EOD
+{ "update_label": {
+    "labellable_uuid": "11111111-2222-3333-4444-555555555555",
+    "existing_position": "front barcode",
+    "new_label": 
+        { "test_key": "test_value"
+        }
+}}
+EOD
+not_enough_info_step[:status]=422
+not_enough_info_step[:response_header] << 'Content-Type: application/json'
+not_enough_info_step[:response]=<<EOD
+{
+    "errors": {
+        "new_label": "You should provide one or more of the following data in the new_label hash: position, value or type."
+    }
+}
+EOD
+
+
+not_existing_position_step = {:header => [], :response_header => [] }
+not_existing_position_step[:description] = <<EOD
+**Use update_label action to update a label in a non existing position.**
+
+* `labellable` the labellable resource to update
+* `position` position of the Label to update
+* `new_label` it is an hash which contains the update information related to the label
+A hash can contains the new label information (position, type, value).
+
+By labels we mean any readable information found on a physical object.
+Label can eventually be identified by a position: an arbitray string (not a Symbol).
+It has a value, which can be serial number, stick label with barcode etc.
+It has a type, which can be sanger-barcode, 2d-barcode, ean13-barcode etc...
+EOD
+not_existing_position_step[:method] = "POST"
+not_existing_position_step[:url] = '/actions/update_label'
+not_existing_position_step[:header] << 'Accept: application/json'
+
+not_existing_position_step[:parameters] = <<EOD
+{ "update_label": {
+    "labellable_uuid": "11111111-2222-3333-4444-555555555555",
+    "existing_position": "not_existing_position",
+    "new_label": {
+        "position": "rear barcode",
+        "type": "sanger-barcode",
+        "value": "5678DEF"
+    }
+}}
+EOD
+not_existing_position_step[:status]=422
+not_existing_position_step[:response_header] << 'Content-Type: application/json'
+not_existing_position_step[:response]=<<EOD
+{
+    "errors": {
+        "position": "There is no label exist in the 'not_existing_position' position."
+    }
+}
+EOD
+
+json_with_error_responses = { "steps" => [not_enough_info_step, not_existing_position_step] }
+%>
+<%= json_with_error_responses.to_json %>
