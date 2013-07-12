@@ -129,7 +129,7 @@ DEPENDENCIES
   debugger-completion
   hashdiff
   jdbc-mysql
-  lims-api (~> 2.3)!
+  lims-api (~> 2.4)!
   lims-core (~> 2.2)!
   lims-laboratory-app!
   psd_logger!
