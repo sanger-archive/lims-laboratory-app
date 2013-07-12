@@ -27,7 +27,7 @@ module Lims::LaboratoryApp
           label_to_update = labellable.delete(existing_position)
 
           raise LabelPositionNotExistError,
-            {"position" => "There is no label exist in the '#{existing_position}' position."} unless label_to_update
+            {"existing_position" => "There is no label exist in the '#{existing_position}' position."} unless label_to_update
 
           label_to_update.type = new_label["type"] if new_label.has_key?("type")
           label_to_update.value = new_label["value"] if new_label.has_key?("value")

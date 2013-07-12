@@ -50,7 +50,6 @@ not_enough_info_step[:response]=<<EOD
 }
 EOD
 
-
 not_existing_position_step = {:header => [], :response_header => [] }
 not_existing_position_step[:description] = <<EOD
 **Use update_label action to update a label in a non existing position.**
@@ -85,11 +84,83 @@ not_existing_position_step[:response_header] << 'Content-Type: application/json'
 not_existing_position_step[:response]=<<EOD
 {
     "errors": {
-        "position": "There is no label exist in the 'not_existing_position' position."
+        "existing_position": "There is no label exist in the 'not_existing_position' position."
     }
 }
 EOD
 
-json_with_error_responses = { "steps" => [not_enough_info_step, not_existing_position_step] }
+no_parameters_step = {:header => [], :response_header => [] }
+no_parameters_step[:description] = <<EOD
+**Use update_label action to update a label in a non existing position.**
+
+* `labellable` the labellable resource to update
+* `position` position of the Label to update
+* `new_label` it is an hash which contains the update information related to the label
+A hash can contains the new label information (position, type, value).
+
+By labels we mean any readable information found on a physical object.
+Label can eventually be identified by a position: an arbitray string (not a Symbol).
+It has a value, which can be serial number, stick label with barcode etc.
+It has a type, which can be sanger-barcode, 2d-barcode, ean13-barcode etc...
+EOD
+no_parameters_step[:method] = "POST"
+no_parameters_step[:url] = '/actions/update_label'
+no_parameters_step[:header] << 'Accept: application/json'
+
+no_parameters_step[:parameters] = <<EOD
+{ }
+EOD
+no_parameters_step[:status]=422
+no_parameters_step[:response_header] << 'Content-Type: application/json'
+no_parameters_step[:response]=<<EOD
+{
+    "errors": {
+        "update_label": [ "missing parameter" ]
+    }
+}
+EOD
+
+with_empty_parameters_step = {:header => [], :response_header => [] }
+with_empty_parameters_step[:description] = <<EOD
+**Use update_label action to update a label in a non existing position.**
+
+* `labellable` the labellable resource to update
+* `position` position of the Label to update
+* `new_label` it is an hash which contains the update information related to the label
+A hash can contains the new label information (position, type, value).
+
+By labels we mean any readable information found on a physical object.
+Label can eventually be identified by a position: an arbitray string (not a Symbol).
+It has a value, which can be serial number, stick label with barcode etc.
+It has a type, which can be sanger-barcode, 2d-barcode, ean13-barcode etc...
+EOD
+with_empty_parameters_step[:method] = "POST"
+with_empty_parameters_step[:url] = '/actions/update_label'
+with_empty_parameters_step[:header] << 'Accept: application/json'
+
+with_empty_parameters_step[:parameters] = <<EOD
+{ "update_label": {}
+}
+EOD
+with_empty_parameters_step[:status]=422
+with_empty_parameters_step[:response_header] << 'Content-Type: application/json'
+with_empty_parameters_step[:response]=<<EOD
+{
+    "errors": {
+        "labellable": [ "Labellable must not be blank" ],
+        "existing_position": [ "Existing position must not be blank" ],
+        "new_label": [ "New label must not be blank" ]
+    }
+}
+EOD
+
+json_with_error_responses = {
+    "steps" => [
+        not_enough_info_step,
+        not_existing_position_step,
+        no_parameters_step,
+        with_empty_parameters_step
+    ]
+}
 %>
 <%= json_with_error_responses.to_json %>
