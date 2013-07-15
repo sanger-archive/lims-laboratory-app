@@ -11,6 +11,8 @@ module Lims::LaboratoryApp
       include Lims::Core::Actions::Action
       include BarcodeMapperConstants
 
+      NOT_IN_ROOT = true
+
       attribute :file_name, String, :required => true, :writer => :private, :initializable => true
 
       def _call_in_session(session)
