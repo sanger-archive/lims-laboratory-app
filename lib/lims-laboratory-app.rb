@@ -9,6 +9,8 @@ require 'lims-api/message_bus'
 require 'lims-core/persistence/search/all'
 require 'lims-api/persistence/search_resource'
 
+require "#{File.dirname(__FILE__)}/../script/fix_barcodes/correct_barcodes"
+
 module Lims
   module LaboratoryApp
     # Your code goes here...

@@ -20,6 +20,10 @@ group :development do
   gem 'sqlite3', :platforms => :mri
 end
 
+group :barcode_fixing do
+  gem 'rest-client'
+end
+
 group :yard do
   gem 'yard', '= 0.7.3', :platforms => :mri
   gem 'yard-rspec', '0.1', :platforms => :mri
