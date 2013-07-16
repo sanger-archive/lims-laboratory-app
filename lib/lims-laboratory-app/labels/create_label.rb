@@ -8,10 +8,10 @@ module Lims::LaboratoryApp
     class CreateLabel
       include Lims::Core::Actions::Action
 
-      attribute :labellable, Lims::LaboratoryApp::Labels::Labellable, :required => true
-      attribute :type, String, :required => true
-      attribute :value, String, :required => true
-      attribute :position, String, :required => true
+      attribute :labellable, Lims::LaboratoryApp::Labels::Labellable, :required => true, :writer => :private, :initializable => true
+      attribute :type, String, :required => true, :writer => :private, :initializable => true
+      attribute :value, String, :required => true, :writer => :private, :initializable => true
+      attribute :position, String, :required => true, :writer => :private, :initializable => true
 
       def _validate_parameters
         raise InvalidParameters, 

@@ -1,8 +1,8 @@
 require 'lims-core'
 require 'logger'
 require 'lims-core/persistence/sequel'
-require 'fix_barcodes/barcode_map_processor'
-require 'fix_barcodes/seed_test_data'
+require(File.expand_path("../barcode_map_processor", __FILE__))
+require(File.expand_path("../seed_test_data", __FILE__))
 require 'lims-laboratory-app'
 
 Loggers = []
@@ -45,21 +45,21 @@ module Lims::LaboratoryApp
           :url  => "http://localhost:9292/"
         }
       }
-      let(:processor) { BarcodeMapProcessor.new(options) }
+      let(:described_class) { BarcodeMapProcessor.new(options) }
 
       it {
-        result = processor.correct_barcodes
+        result = described_class.correct_barcodes
         JSON.parse(result).should be_a Hash
       }
 
       it {
         expect do
-          result = processor.correct_barcodes
+          result = described_class.correct_barcodes
         end.to change { db[:labels].count}.by(2)
       }
 
       it {
-        processor.correct_barcodes
+        described_class.correct_barcodes
         ean13_labels = db[:labels].select(:value).where(
           :type     => "ean13-barcode",
           :position => "ean13").all

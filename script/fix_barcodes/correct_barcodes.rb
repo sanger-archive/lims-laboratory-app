@@ -1,5 +1,5 @@
 require 'lims-core/actions/action'
-require 'fix_barcodes/barcode_mapper_constants'
+require "#{File.dirname(__FILE__)}/barcode_mapper_constants"
 require 'lims-laboratory-app/labels/labellable/update_label'
 
 module Lims::LaboratoryApp
@@ -37,10 +37,8 @@ module Lims::LaboratoryApp
             raise "EAN13 barcode for the following value is not exist in the DB: #{existing_ean13}" if labellable_id_record.empty?
             labellable_id = labellable_id_record[:labellable_id]
 
-            labellable = session.labellable[labellable_id]
-
-            process_sanger_codes(session, labellable_id, labellable, existing_ean13, new_sanger_code)
-            process_ean13_codes(session, labellable_id, labellable, existing_ean13, new_ean13)
+            process_sanger_codes(labellable_id, existing_ean13, new_sanger_code)
+            process_ean13_codes(labellable_id, existing_ean13, new_ean13)
           end
         end
       end
@@ -53,7 +51,7 @@ module Lims::LaboratoryApp
       end
 
       # deals with the sanger barcode fixing
-      def process_sanger_codes(session, labellable_id, labellable, existing_ean13, new_sanger_code)
+      def process_sanger_codes(labellable_id, existing_ean13, new_sanger_code)
         # gets the existing sanger_code
         existing_sanger_code_records = @labels_table.select(
           :value, :labellable_id, :position).where(
@@ -69,18 +67,18 @@ module Lims::LaboratoryApp
 
           # save the existing barcodes to another position so that we have them 
           # to hand in the future if needed.
-          move_old_to_new_position(session, labellable, BarcodeMapperConstants::SANGER_BARCODE, existing_sanger_position, existing_sanger_code) if existing_sanger_position
+          move_old_to_new_position(labellable_id, BarcodeMapperConstants::SANGER_BARCODE, existing_sanger_position, existing_sanger_code) if existing_sanger_position
 
           # correct barcodes (ean13, sanger) in the labels table
           if existing_sanger_position
             new_label_data = { "value" => new_sanger_code}
-            correct_the_barcode(session, labellable, existing_sanger_position, new_label_data)
+            correct_the_barcode(labellable_id, existing_sanger_position, new_label_data)
           end
         end
       end
 
       # deals with the ean13 barcode fixing
-      def process_ean13_codes(session, labellable_id, labellable, existing_ean13, new_ean13)
+      def process_ean13_codes(labellable_id, existing_ean13, new_ean13)
         # gets the existing ean13 position
         existing_ean13_position_record = @labels_table.select(:position).where(
           :type           => BarcodeMapperConstants::EAN13_BARCODE,
@@ -88,41 +86,45 @@ module Lims::LaboratoryApp
           :labellable_id  => labellable_id).all
 
         existing_ean13_position_record.each do |existing_ean13_position|
-          move_old_to_new_position(session, labellable, BarcodeMapperConstants::EAN13_BARCODE, existing_ean13_position[:position], existing_ean13) if existing_ean13_position[:position]
+          move_old_to_new_position(labellable_id, BarcodeMapperConstants::EAN13_BARCODE, existing_ean13_position[:position], existing_ean13) if existing_ean13_position[:position]
 
           if existing_ean13_position[:position]
             new_label_data = { "value" => new_ean13 }
-            correct_the_barcode(session, labellable, existing_ean13_position[:position], new_label_data)
+            correct_the_barcode(labellable_id, existing_ean13_position[:position], new_label_data)
           end
         end
       end
 
       # moves the existing label to a new position to have it later if we need it
-      def move_old_to_new_position(session, labellable, type, position, value)
+      def move_old_to_new_position(labellable_id, type, position, value)
         # creates a 8 character long randon string to add to the label position,
         # so when we move it to another position it won't match to an existing one
         position_suffix = '-' + ('a'..'z').to_a.shuffle[0,8].join
-        action = Lims::LaboratoryApp::Labels::CreateLabel.new(
-          {
-            :labellable => labellable,
-            :type       => type,
-            :value      => value,
-            :position   => "old-" + position + position_suffix
-          }
-        )
-        action.send(:_call_in_session, session)
+        create_label_action = Lims::LaboratoryApp::Labels::CreateLabel.new(
+          :user => user,
+          :application => 'barcode fixing',
+          :store => store) do |action, session|
+            labellable = session.labellable[labellable_id]
+
+            action.labellable = labellable
+            action.type       = type
+            action.value      = value
+            action.position   = "old-"+ position + position_suffix
+          end.call
       end
 
       # update the label's value with the correct ean13 and sanger barcode
-      def correct_the_barcode(session, labellable, existing_position, new_label_data)
-        action = Lims::LaboratoryApp::Labels::Labellable::UpdateLabel.new(
-          {
-            :labellable         => labellable,
-            :existing_position  => existing_position,
-            :new_label          => new_label_data
-          }
-        )
-        action.send(:_call_in_session, session)
+      def correct_the_barcode(labellable_id, existing_position, new_label_data)
+        create_label_action = Lims::LaboratoryApp::Labels::Labellable::UpdateLabel.new(
+          :user => user,
+          :application => 'barcode fixing',
+          :store => store) do |action, session|
+            labellable = session.labellable[labellable_id]
+
+            action.labellable         = labellable
+            action.existing_position  = existing_position
+            action.new_label          = new_label_data
+          end.call
       end
 
     end
