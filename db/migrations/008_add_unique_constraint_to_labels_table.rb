@@ -1,7 +1,7 @@
 ::Sequel.migration do
   change do
     alter_table(:labels) do
-      add_unique_constraint [:labellable_id, :position]
+      add_index [:labellable_id, :position], :unique => true
     end
   end
 end
