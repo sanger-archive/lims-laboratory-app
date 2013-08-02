@@ -253,6 +253,11 @@ describe "root" do
             "create": "http://example.org/actions/create_labellable"
         }
     },
+    "update_labels": {
+        "actions": {
+            "create": "http://example.org/actions/update_label"
+        }
+    },
     "create_orders": {
         "actions": {
             "create": "http://example.org/actions/create_order"
@@ -336,6 +341,11 @@ describe "root" do
     "update_tube_racks": {
         "actions": {
             "create": "http://example.org/actions/update_tube_rack"
+        }
+    },
+    "delete_tube_racks": {
+        "actions": {
+            "create": "http://example.org/actions/delete_tube_rack"
         }
     },
     "tag_wells": {
