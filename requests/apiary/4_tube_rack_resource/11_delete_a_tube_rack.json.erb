@@ -1,0 +1,34 @@
+<%
+require 'json'
+h = {:header => [], :response_header => [] }
+h[:description] = <<EOD
+EOD
+h[:method] = "DELETE"
+h[:url] = '/11111111-2222-3333-4444-555555555555'
+h[:header] << 'Accept: application/json'
+h[:setup] = <<EOD
+tube_rack = Lims::LaboratoryApp::Laboratory::TubeRack.new(:number_of_rows => 8, :number_of_columns => 12)
+save_with_uuid tube_rack => [1,2,3,4,5]
+EOD
+h[:parameters] = "{}" 
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{
+    "tube_rack": {
+      "actions": {
+        "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+        "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+        "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+        "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+      },
+      "uuid": "11111111-2222-3333-4444-555555555555",
+      "number_of_rows": 8,
+      "number_of_columns": 12,
+      "tubes": {
+      }
+    }
+  }
+EOD
+%>
+<%= h.to_json %>
