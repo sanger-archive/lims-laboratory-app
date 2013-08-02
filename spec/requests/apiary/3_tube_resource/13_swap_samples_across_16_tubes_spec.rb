@@ -183,490 +183,488 @@ describe "swap_samples_across_16_tubes", :tube => true do
         },
         "user": "user",
         "application": "application",
-        "result": {
-            "resources": [
-                {
-                    "tube": {
-                        "actions": {
-                            "read": "http://example.org/11111111-0000-0000-0000-111111111111",
-                            "create": "http://example.org/11111111-0000-0000-0000-111111111111",
-                            "update": "http://example.org/11111111-0000-0000-0000-111111111111",
-                            "delete": "http://example.org/11111111-0000-0000-0000-111111111111"
-                        },
-                        "uuid": "11111111-0000-0000-0000-111111111111",
-                        "type": null,
-                        "max_volume": null,
-                        "aliquots": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-0000-444444444444",
-                                        "create": "http://example.org/11111111-2222-3333-0000-444444444444",
-                                        "update": "http://example.org/11111111-2222-3333-0000-444444444444",
-                                        "delete": "http://example.org/11111111-2222-3333-0000-444444444444"
-                                    },
-                                    "uuid": "11111111-2222-3333-0000-444444444444",
-                                    "name": null
+        "result": [
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-0000-0000-0000-111111111111",
+                        "create": "http://example.org/11111111-0000-0000-0000-111111111111",
+                        "update": "http://example.org/11111111-0000-0000-0000-111111111111",
+                        "delete": "http://example.org/11111111-0000-0000-0000-111111111111"
+                    },
+                    "uuid": "11111111-0000-0000-0000-111111111111",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-444444444444",
+                                    "create": "http://example.org/11111111-2222-3333-0000-444444444444",
+                                    "update": "http://example.org/11111111-2222-3333-0000-444444444444",
+                                    "delete": "http://example.org/11111111-2222-3333-0000-444444444444"
                                 },
-                                "quantity": 10,
-                                "type": "DNA",
-                                "unit": "mole"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "tube": {
-                        "actions": {
-                            "read": "http://example.org/11111111-0000-0000-0000-222222222222",
-                            "create": "http://example.org/11111111-0000-0000-0000-222222222222",
-                            "update": "http://example.org/11111111-0000-0000-0000-222222222222",
-                            "delete": "http://example.org/11111111-0000-0000-0000-222222222222"
-                        },
-                        "uuid": "11111111-0000-0000-0000-222222222222",
-                        "type": null,
-                        "max_volume": null,
-                        "aliquots": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-0000-333333333333",
-                                        "create": "http://example.org/11111111-2222-3333-0000-333333333333",
-                                        "update": "http://example.org/11111111-2222-3333-0000-333333333333",
-                                        "delete": "http://example.org/11111111-2222-3333-0000-333333333333"
-                                    },
-                                    "uuid": "11111111-2222-3333-0000-333333333333",
-                                    "name": null
-                                },
-                                "quantity": 10,
-                                "type": "DNA",
-                                "unit": "mole"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "tube": {
-                        "actions": {
-                            "read": "http://example.org/11111111-0000-0000-0000-333333333333",
-                            "create": "http://example.org/11111111-0000-0000-0000-333333333333",
-                            "update": "http://example.org/11111111-0000-0000-0000-333333333333",
-                            "delete": "http://example.org/11111111-0000-0000-0000-333333333333"
-                        },
-                        "uuid": "11111111-0000-0000-0000-333333333333",
-                        "type": null,
-                        "max_volume": null,
-                        "aliquots": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-0000-222222222222",
-                                        "create": "http://example.org/11111111-2222-3333-0000-222222222222",
-                                        "update": "http://example.org/11111111-2222-3333-0000-222222222222",
-                                        "delete": "http://example.org/11111111-2222-3333-0000-222222222222"
-                                    },
-                                    "uuid": "11111111-2222-3333-0000-222222222222",
-                                    "name": null
-                                },
-                                "quantity": 10,
-                                "type": "DNA",
-                                "unit": "mole"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "tube": {
-                        "actions": {
-                            "read": "http://example.org/11111111-0000-0000-0000-444444444444",
-                            "create": "http://example.org/11111111-0000-0000-0000-444444444444",
-                            "update": "http://example.org/11111111-0000-0000-0000-444444444444",
-                            "delete": "http://example.org/11111111-0000-0000-0000-444444444444"
-                        },
-                        "uuid": "11111111-0000-0000-0000-444444444444",
-                        "type": null,
-                        "max_volume": null,
-                        "aliquots": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-0000-111111111111",
-                                        "create": "http://example.org/11111111-2222-3333-0000-111111111111",
-                                        "update": "http://example.org/11111111-2222-3333-0000-111111111111",
-                                        "delete": "http://example.org/11111111-2222-3333-0000-111111111111"
-                                    },
-                                    "uuid": "11111111-2222-3333-0000-111111111111",
-                                    "name": null
-                                },
-                                "quantity": 10,
-                                "type": "DNA",
-                                "unit": "mole"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "tube": {
-                        "actions": {
-                            "read": "http://example.org/11111111-0000-0000-0000-555555555555",
-                            "create": "http://example.org/11111111-0000-0000-0000-555555555555",
-                            "update": "http://example.org/11111111-0000-0000-0000-555555555555",
-                            "delete": "http://example.org/11111111-0000-0000-0000-555555555555"
-                        },
-                        "uuid": "11111111-0000-0000-0000-555555555555",
-                        "type": null,
-                        "max_volume": null,
-                        "aliquots": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-0000-888888888888",
-                                        "create": "http://example.org/11111111-2222-3333-0000-888888888888",
-                                        "update": "http://example.org/11111111-2222-3333-0000-888888888888",
-                                        "delete": "http://example.org/11111111-2222-3333-0000-888888888888"
-                                    },
-                                    "uuid": "11111111-2222-3333-0000-888888888888",
-                                    "name": null
-                                },
-                                "quantity": 10,
-                                "type": "DNA",
-                                "unit": "mole"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "tube": {
-                        "actions": {
-                            "read": "http://example.org/11111111-0000-0000-0000-666666666666",
-                            "create": "http://example.org/11111111-0000-0000-0000-666666666666",
-                            "update": "http://example.org/11111111-0000-0000-0000-666666666666",
-                            "delete": "http://example.org/11111111-0000-0000-0000-666666666666"
-                        },
-                        "uuid": "11111111-0000-0000-0000-666666666666",
-                        "type": null,
-                        "max_volume": null,
-                        "aliquots": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-0000-777777777777",
-                                        "create": "http://example.org/11111111-2222-3333-0000-777777777777",
-                                        "update": "http://example.org/11111111-2222-3333-0000-777777777777",
-                                        "delete": "http://example.org/11111111-2222-3333-0000-777777777777"
-                                    },
-                                    "uuid": "11111111-2222-3333-0000-777777777777",
-                                    "name": null
-                                },
-                                "quantity": 10,
-                                "type": "DNA",
-                                "unit": "mole"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "tube": {
-                        "actions": {
-                            "read": "http://example.org/11111111-0000-0000-0000-777777777777",
-                            "create": "http://example.org/11111111-0000-0000-0000-777777777777",
-                            "update": "http://example.org/11111111-0000-0000-0000-777777777777",
-                            "delete": "http://example.org/11111111-0000-0000-0000-777777777777"
-                        },
-                        "uuid": "11111111-0000-0000-0000-777777777777",
-                        "type": null,
-                        "max_volume": null,
-                        "aliquots": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-0000-666666666666",
-                                        "create": "http://example.org/11111111-2222-3333-0000-666666666666",
-                                        "update": "http://example.org/11111111-2222-3333-0000-666666666666",
-                                        "delete": "http://example.org/11111111-2222-3333-0000-666666666666"
-                                    },
-                                    "uuid": "11111111-2222-3333-0000-666666666666",
-                                    "name": null
-                                },
-                                "quantity": 10,
-                                "type": "DNA",
-                                "unit": "mole"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "tube": {
-                        "actions": {
-                            "read": "http://example.org/11111111-0000-0000-0000-888888888888",
-                            "create": "http://example.org/11111111-0000-0000-0000-888888888888",
-                            "update": "http://example.org/11111111-0000-0000-0000-888888888888",
-                            "delete": "http://example.org/11111111-0000-0000-0000-888888888888"
-                        },
-                        "uuid": "11111111-0000-0000-0000-888888888888",
-                        "type": null,
-                        "max_volume": null,
-                        "aliquots": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-0000-555555555555",
-                                        "create": "http://example.org/11111111-2222-3333-0000-555555555555",
-                                        "update": "http://example.org/11111111-2222-3333-0000-555555555555",
-                                        "delete": "http://example.org/11111111-2222-3333-0000-555555555555"
-                                    },
-                                    "uuid": "11111111-2222-3333-0000-555555555555",
-                                    "name": null
-                                },
-                                "quantity": 10,
-                                "type": "DNA",
-                                "unit": "mole"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "tube": {
-                        "actions": {
-                            "read": "http://example.org/11111111-0000-0000-0000-999999999999",
-                            "create": "http://example.org/11111111-0000-0000-0000-999999999999",
-                            "update": "http://example.org/11111111-0000-0000-0000-999999999999",
-                            "delete": "http://example.org/11111111-0000-0000-0000-999999999999"
-                        },
-                        "uuid": "11111111-0000-0000-0000-999999999999",
-                        "type": null,
-                        "max_volume": null,
-                        "aliquots": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-1111-222222222222",
-                                        "create": "http://example.org/11111111-2222-3333-1111-222222222222",
-                                        "update": "http://example.org/11111111-2222-3333-1111-222222222222",
-                                        "delete": "http://example.org/11111111-2222-3333-1111-222222222222"
-                                    },
-                                    "uuid": "11111111-2222-3333-1111-222222222222",
-                                    "name": null
-                                },
-                                "quantity": 10,
-                                "type": "DNA",
-                                "unit": "mole"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "tube": {
-                        "actions": {
-                            "read": "http://example.org/11111111-0000-0000-1111-000000000000",
-                            "create": "http://example.org/11111111-0000-0000-1111-000000000000",
-                            "update": "http://example.org/11111111-0000-0000-1111-000000000000",
-                            "delete": "http://example.org/11111111-0000-0000-1111-000000000000"
-                        },
-                        "uuid": "11111111-0000-0000-1111-000000000000",
-                        "type": null,
-                        "max_volume": null,
-                        "aliquots": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-1111-111111111111",
-                                        "create": "http://example.org/11111111-2222-3333-1111-111111111111",
-                                        "update": "http://example.org/11111111-2222-3333-1111-111111111111",
-                                        "delete": "http://example.org/11111111-2222-3333-1111-111111111111"
-                                    },
-                                    "uuid": "11111111-2222-3333-1111-111111111111",
-                                    "name": null
-                                },
-                                "quantity": 10,
-                                "type": "DNA",
-                                "unit": "mole"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "tube": {
-                        "actions": {
-                            "read": "http://example.org/11111111-0000-0000-1111-111111111111",
-                            "create": "http://example.org/11111111-0000-0000-1111-111111111111",
-                            "update": "http://example.org/11111111-0000-0000-1111-111111111111",
-                            "delete": "http://example.org/11111111-0000-0000-1111-111111111111"
-                        },
-                        "uuid": "11111111-0000-0000-1111-111111111111",
-                        "type": null,
-                        "max_volume": null,
-                        "aliquots": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-1111-000000000000",
-                                        "create": "http://example.org/11111111-2222-3333-1111-000000000000",
-                                        "update": "http://example.org/11111111-2222-3333-1111-000000000000",
-                                        "delete": "http://example.org/11111111-2222-3333-1111-000000000000"
-                                    },
-                                    "uuid": "11111111-2222-3333-1111-000000000000",
-                                    "name": null
-                                },
-                                "quantity": 10,
-                                "type": "DNA",
-                                "unit": "mole"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "tube": {
-                        "actions": {
-                            "read": "http://example.org/11111111-0000-0000-1111-222222222222",
-                            "create": "http://example.org/11111111-0000-0000-1111-222222222222",
-                            "update": "http://example.org/11111111-0000-0000-1111-222222222222",
-                            "delete": "http://example.org/11111111-0000-0000-1111-222222222222"
-                        },
-                        "uuid": "11111111-0000-0000-1111-222222222222",
-                        "type": null,
-                        "max_volume": null,
-                        "aliquots": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-0000-999999999999",
-                                        "create": "http://example.org/11111111-2222-3333-0000-999999999999",
-                                        "update": "http://example.org/11111111-2222-3333-0000-999999999999",
-                                        "delete": "http://example.org/11111111-2222-3333-0000-999999999999"
-                                    },
-                                    "uuid": "11111111-2222-3333-0000-999999999999",
-                                    "name": null
-                                },
-                                "quantity": 10,
-                                "type": "DNA",
-                                "unit": "mole"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "tube": {
-                        "actions": {
-                            "read": "http://example.org/11111111-0000-0000-1111-333333333333",
-                            "create": "http://example.org/11111111-0000-0000-1111-333333333333",
-                            "update": "http://example.org/11111111-0000-0000-1111-333333333333",
-                            "delete": "http://example.org/11111111-0000-0000-1111-333333333333"
-                        },
-                        "uuid": "11111111-0000-0000-1111-333333333333",
-                        "type": null,
-                        "max_volume": null,
-                        "aliquots": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-1111-666666666666",
-                                        "create": "http://example.org/11111111-2222-3333-1111-666666666666",
-                                        "update": "http://example.org/11111111-2222-3333-1111-666666666666",
-                                        "delete": "http://example.org/11111111-2222-3333-1111-666666666666"
-                                    },
-                                    "uuid": "11111111-2222-3333-1111-666666666666",
-                                    "name": null
-                                },
-                                "quantity": 10,
-                                "type": "DNA",
-                                "unit": "mole"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "tube": {
-                        "actions": {
-                            "read": "http://example.org/11111111-0000-0000-1111-444444444444",
-                            "create": "http://example.org/11111111-0000-0000-1111-444444444444",
-                            "update": "http://example.org/11111111-0000-0000-1111-444444444444",
-                            "delete": "http://example.org/11111111-0000-0000-1111-444444444444"
-                        },
-                        "uuid": "11111111-0000-0000-1111-444444444444",
-                        "type": null,
-                        "max_volume": null,
-                        "aliquots": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-1111-555555555555",
-                                        "create": "http://example.org/11111111-2222-3333-1111-555555555555",
-                                        "update": "http://example.org/11111111-2222-3333-1111-555555555555",
-                                        "delete": "http://example.org/11111111-2222-3333-1111-555555555555"
-                                    },
-                                    "uuid": "11111111-2222-3333-1111-555555555555",
-                                    "name": null
-                                },
-                                "quantity": 10,
-                                "type": "DNA",
-                                "unit": "mole"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "tube": {
-                        "actions": {
-                            "read": "http://example.org/11111111-0000-0000-1111-555555555555",
-                            "create": "http://example.org/11111111-0000-0000-1111-555555555555",
-                            "update": "http://example.org/11111111-0000-0000-1111-555555555555",
-                            "delete": "http://example.org/11111111-0000-0000-1111-555555555555"
-                        },
-                        "uuid": "11111111-0000-0000-1111-555555555555",
-                        "type": null,
-                        "max_volume": null,
-                        "aliquots": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-1111-444444444444",
-                                        "create": "http://example.org/11111111-2222-3333-1111-444444444444",
-                                        "update": "http://example.org/11111111-2222-3333-1111-444444444444",
-                                        "delete": "http://example.org/11111111-2222-3333-1111-444444444444"
-                                    },
-                                    "uuid": "11111111-2222-3333-1111-444444444444",
-                                    "name": null
-                                },
-                                "quantity": 10,
-                                "type": "DNA",
-                                "unit": "mole"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "tube": {
-                        "actions": {
-                            "read": "http://example.org/11111111-0000-0000-1111-666666666666",
-                            "create": "http://example.org/11111111-0000-0000-1111-666666666666",
-                            "update": "http://example.org/11111111-0000-0000-1111-666666666666",
-                            "delete": "http://example.org/11111111-0000-0000-1111-666666666666"
-                        },
-                        "uuid": "11111111-0000-0000-1111-666666666666",
-                        "type": null,
-                        "max_volume": null,
-                        "aliquots": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-1111-333333333333",
-                                        "create": "http://example.org/11111111-2222-3333-1111-333333333333",
-                                        "update": "http://example.org/11111111-2222-3333-1111-333333333333",
-                                        "delete": "http://example.org/11111111-2222-3333-1111-333333333333"
-                                    },
-                                    "uuid": "11111111-2222-3333-1111-333333333333",
-                                    "name": null
-                                },
-                                "quantity": 10,
-                                "type": "DNA",
-                                "unit": "mole"
-                            }
-                        ]
-                    }
+                                "uuid": "11111111-2222-3333-0000-444444444444",
+                                "name": null
+                            },
+                            "quantity": 10,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
                 }
-            ]
-        },
+            },
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-0000-0000-0000-222222222222",
+                        "create": "http://example.org/11111111-0000-0000-0000-222222222222",
+                        "update": "http://example.org/11111111-0000-0000-0000-222222222222",
+                        "delete": "http://example.org/11111111-0000-0000-0000-222222222222"
+                    },
+                    "uuid": "11111111-0000-0000-0000-222222222222",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-333333333333",
+                                    "create": "http://example.org/11111111-2222-3333-0000-333333333333",
+                                    "update": "http://example.org/11111111-2222-3333-0000-333333333333",
+                                    "delete": "http://example.org/11111111-2222-3333-0000-333333333333"
+                                },
+                                "uuid": "11111111-2222-3333-0000-333333333333",
+                                "name": null
+                            },
+                            "quantity": 10,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-0000-0000-0000-333333333333",
+                        "create": "http://example.org/11111111-0000-0000-0000-333333333333",
+                        "update": "http://example.org/11111111-0000-0000-0000-333333333333",
+                        "delete": "http://example.org/11111111-0000-0000-0000-333333333333"
+                    },
+                    "uuid": "11111111-0000-0000-0000-333333333333",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-222222222222",
+                                    "create": "http://example.org/11111111-2222-3333-0000-222222222222",
+                                    "update": "http://example.org/11111111-2222-3333-0000-222222222222",
+                                    "delete": "http://example.org/11111111-2222-3333-0000-222222222222"
+                                },
+                                "uuid": "11111111-2222-3333-0000-222222222222",
+                                "name": null
+                            },
+                            "quantity": 10,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-0000-0000-0000-444444444444",
+                        "create": "http://example.org/11111111-0000-0000-0000-444444444444",
+                        "update": "http://example.org/11111111-0000-0000-0000-444444444444",
+                        "delete": "http://example.org/11111111-0000-0000-0000-444444444444"
+                    },
+                    "uuid": "11111111-0000-0000-0000-444444444444",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                    "create": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                    "update": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                    "delete": "http://example.org/11111111-2222-3333-0000-111111111111"
+                                },
+                                "uuid": "11111111-2222-3333-0000-111111111111",
+                                "name": null
+                            },
+                            "quantity": 10,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-0000-0000-0000-555555555555",
+                        "create": "http://example.org/11111111-0000-0000-0000-555555555555",
+                        "update": "http://example.org/11111111-0000-0000-0000-555555555555",
+                        "delete": "http://example.org/11111111-0000-0000-0000-555555555555"
+                    },
+                    "uuid": "11111111-0000-0000-0000-555555555555",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-888888888888",
+                                    "create": "http://example.org/11111111-2222-3333-0000-888888888888",
+                                    "update": "http://example.org/11111111-2222-3333-0000-888888888888",
+                                    "delete": "http://example.org/11111111-2222-3333-0000-888888888888"
+                                },
+                                "uuid": "11111111-2222-3333-0000-888888888888",
+                                "name": null
+                            },
+                            "quantity": 10,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-0000-0000-0000-666666666666",
+                        "create": "http://example.org/11111111-0000-0000-0000-666666666666",
+                        "update": "http://example.org/11111111-0000-0000-0000-666666666666",
+                        "delete": "http://example.org/11111111-0000-0000-0000-666666666666"
+                    },
+                    "uuid": "11111111-0000-0000-0000-666666666666",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-777777777777",
+                                    "create": "http://example.org/11111111-2222-3333-0000-777777777777",
+                                    "update": "http://example.org/11111111-2222-3333-0000-777777777777",
+                                    "delete": "http://example.org/11111111-2222-3333-0000-777777777777"
+                                },
+                                "uuid": "11111111-2222-3333-0000-777777777777",
+                                "name": null
+                            },
+                            "quantity": 10,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-0000-0000-0000-777777777777",
+                        "create": "http://example.org/11111111-0000-0000-0000-777777777777",
+                        "update": "http://example.org/11111111-0000-0000-0000-777777777777",
+                        "delete": "http://example.org/11111111-0000-0000-0000-777777777777"
+                    },
+                    "uuid": "11111111-0000-0000-0000-777777777777",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-666666666666",
+                                    "create": "http://example.org/11111111-2222-3333-0000-666666666666",
+                                    "update": "http://example.org/11111111-2222-3333-0000-666666666666",
+                                    "delete": "http://example.org/11111111-2222-3333-0000-666666666666"
+                                },
+                                "uuid": "11111111-2222-3333-0000-666666666666",
+                                "name": null
+                            },
+                            "quantity": 10,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-0000-0000-0000-888888888888",
+                        "create": "http://example.org/11111111-0000-0000-0000-888888888888",
+                        "update": "http://example.org/11111111-0000-0000-0000-888888888888",
+                        "delete": "http://example.org/11111111-0000-0000-0000-888888888888"
+                    },
+                    "uuid": "11111111-0000-0000-0000-888888888888",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-555555555555",
+                                    "create": "http://example.org/11111111-2222-3333-0000-555555555555",
+                                    "update": "http://example.org/11111111-2222-3333-0000-555555555555",
+                                    "delete": "http://example.org/11111111-2222-3333-0000-555555555555"
+                                },
+                                "uuid": "11111111-2222-3333-0000-555555555555",
+                                "name": null
+                            },
+                            "quantity": 10,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-0000-0000-0000-999999999999",
+                        "create": "http://example.org/11111111-0000-0000-0000-999999999999",
+                        "update": "http://example.org/11111111-0000-0000-0000-999999999999",
+                        "delete": "http://example.org/11111111-0000-0000-0000-999999999999"
+                    },
+                    "uuid": "11111111-0000-0000-0000-999999999999",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-1111-222222222222",
+                                    "create": "http://example.org/11111111-2222-3333-1111-222222222222",
+                                    "update": "http://example.org/11111111-2222-3333-1111-222222222222",
+                                    "delete": "http://example.org/11111111-2222-3333-1111-222222222222"
+                                },
+                                "uuid": "11111111-2222-3333-1111-222222222222",
+                                "name": null
+                            },
+                            "quantity": 10,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-0000-0000-1111-000000000000",
+                        "create": "http://example.org/11111111-0000-0000-1111-000000000000",
+                        "update": "http://example.org/11111111-0000-0000-1111-000000000000",
+                        "delete": "http://example.org/11111111-0000-0000-1111-000000000000"
+                    },
+                    "uuid": "11111111-0000-0000-1111-000000000000",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-1111-111111111111",
+                                    "create": "http://example.org/11111111-2222-3333-1111-111111111111",
+                                    "update": "http://example.org/11111111-2222-3333-1111-111111111111",
+                                    "delete": "http://example.org/11111111-2222-3333-1111-111111111111"
+                                },
+                                "uuid": "11111111-2222-3333-1111-111111111111",
+                                "name": null
+                            },
+                            "quantity": 10,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-0000-0000-1111-111111111111",
+                        "create": "http://example.org/11111111-0000-0000-1111-111111111111",
+                        "update": "http://example.org/11111111-0000-0000-1111-111111111111",
+                        "delete": "http://example.org/11111111-0000-0000-1111-111111111111"
+                    },
+                    "uuid": "11111111-0000-0000-1111-111111111111",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-1111-000000000000",
+                                    "create": "http://example.org/11111111-2222-3333-1111-000000000000",
+                                    "update": "http://example.org/11111111-2222-3333-1111-000000000000",
+                                    "delete": "http://example.org/11111111-2222-3333-1111-000000000000"
+                                },
+                                "uuid": "11111111-2222-3333-1111-000000000000",
+                                "name": null
+                            },
+                            "quantity": 10,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-0000-0000-1111-222222222222",
+                        "create": "http://example.org/11111111-0000-0000-1111-222222222222",
+                        "update": "http://example.org/11111111-0000-0000-1111-222222222222",
+                        "delete": "http://example.org/11111111-0000-0000-1111-222222222222"
+                    },
+                    "uuid": "11111111-0000-0000-1111-222222222222",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-999999999999",
+                                    "create": "http://example.org/11111111-2222-3333-0000-999999999999",
+                                    "update": "http://example.org/11111111-2222-3333-0000-999999999999",
+                                    "delete": "http://example.org/11111111-2222-3333-0000-999999999999"
+                                },
+                                "uuid": "11111111-2222-3333-0000-999999999999",
+                                "name": null
+                            },
+                            "quantity": 10,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-0000-0000-1111-333333333333",
+                        "create": "http://example.org/11111111-0000-0000-1111-333333333333",
+                        "update": "http://example.org/11111111-0000-0000-1111-333333333333",
+                        "delete": "http://example.org/11111111-0000-0000-1111-333333333333"
+                    },
+                    "uuid": "11111111-0000-0000-1111-333333333333",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-1111-666666666666",
+                                    "create": "http://example.org/11111111-2222-3333-1111-666666666666",
+                                    "update": "http://example.org/11111111-2222-3333-1111-666666666666",
+                                    "delete": "http://example.org/11111111-2222-3333-1111-666666666666"
+                                },
+                                "uuid": "11111111-2222-3333-1111-666666666666",
+                                "name": null
+                            },
+                            "quantity": 10,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-0000-0000-1111-444444444444",
+                        "create": "http://example.org/11111111-0000-0000-1111-444444444444",
+                        "update": "http://example.org/11111111-0000-0000-1111-444444444444",
+                        "delete": "http://example.org/11111111-0000-0000-1111-444444444444"
+                    },
+                    "uuid": "11111111-0000-0000-1111-444444444444",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-1111-555555555555",
+                                    "create": "http://example.org/11111111-2222-3333-1111-555555555555",
+                                    "update": "http://example.org/11111111-2222-3333-1111-555555555555",
+                                    "delete": "http://example.org/11111111-2222-3333-1111-555555555555"
+                                },
+                                "uuid": "11111111-2222-3333-1111-555555555555",
+                                "name": null
+                            },
+                            "quantity": 10,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-0000-0000-1111-555555555555",
+                        "create": "http://example.org/11111111-0000-0000-1111-555555555555",
+                        "update": "http://example.org/11111111-0000-0000-1111-555555555555",
+                        "delete": "http://example.org/11111111-0000-0000-1111-555555555555"
+                    },
+                    "uuid": "11111111-0000-0000-1111-555555555555",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-1111-444444444444",
+                                    "create": "http://example.org/11111111-2222-3333-1111-444444444444",
+                                    "update": "http://example.org/11111111-2222-3333-1111-444444444444",
+                                    "delete": "http://example.org/11111111-2222-3333-1111-444444444444"
+                                },
+                                "uuid": "11111111-2222-3333-1111-444444444444",
+                                "name": null
+                            },
+                            "quantity": 10,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-0000-0000-1111-666666666666",
+                        "create": "http://example.org/11111111-0000-0000-1111-666666666666",
+                        "update": "http://example.org/11111111-0000-0000-1111-666666666666",
+                        "delete": "http://example.org/11111111-0000-0000-1111-666666666666"
+                    },
+                    "uuid": "11111111-0000-0000-1111-666666666666",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-1111-333333333333",
+                                    "create": "http://example.org/11111111-2222-3333-1111-333333333333",
+                                    "update": "http://example.org/11111111-2222-3333-1111-333333333333",
+                                    "delete": "http://example.org/11111111-2222-3333-1111-333333333333"
+                                },
+                                "uuid": "11111111-2222-3333-1111-333333333333",
+                                "name": null
+                            },
+                            "quantity": 10,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            }
+        ],
         "parameters": [
             {
                 "resource_uuid": "11111111-0000-0000-0000-111111111111",
