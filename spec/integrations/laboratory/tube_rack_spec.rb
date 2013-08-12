@@ -15,15 +15,35 @@ module Lims::LaboratoryApp::Laboratory
     include_context "has standard dimensions"
     include_context "with tube and sample"
 
-    def create_new_tube_rack(rack_uuid, slots=["B5"])
+    def create_new_tube_rack(rack_uuid, tube_uuids, slots=["B5"])
       store.with_session do |session|
         tuberack = TubeRack.new(:number_of_rows => number_of_rows, :number_of_columns => number_of_columns)
-        slots.each do |slot|
+        slots.zip(tube_uuids).each do |slot, tube_uuid|
           tuberack[slot] = session[tube_uuid]
         end
         set_uuid(session, tuberack, rack_uuid)
       end
       rack_uuid
+    end
+
+    def create_new_sample(uuid, session)
+      sample = Lims::LaboratoryApp::Laboratory::Sample.new("sample 1")
+      set_uuid(session, sample, uuid)
+    end
+
+    def create_new_tubes_with_a_sample(tube_uuids = [], sample_uuids = [])
+      store.with_session do |session|
+        tube_uuids.zip(sample_uuids).each do |tube_uuid, sample_uuid|
+          create_new_sample(sample_uuid, session)
+          tube = Lims::LaboratoryApp::Laboratory::Tube.new(
+            :type => "Eppendorf",
+            :max_volume => 2)
+          tube << Lims::LaboratoryApp::Laboratory::Aliquot.new(:sample => session[sample_uuid],
+                                                      :type => "sample",
+                                                      :quantity => 10)
+          set_uuid(session, tube, tube_uuid)
+        end
+      end
     end
   end
 
@@ -202,7 +222,7 @@ module Lims::LaboratoryApp::Laboratory
       include_context "expected tube rack JSON"
       include_context "for tube rack with tubes"
 
-      let(:uuid) { create_new_tube_rack(source_rack_uuids[0]) }
+      let(:uuid) { create_new_tube_rack(source_rack_uuids[0], [tube_uuid]) }
       let(:tube_location) { "B5" }
       let(:path) { "/#{uuid}" }
       let(:aliquot_type) { "DNA" }
@@ -236,7 +256,7 @@ module Lims::LaboratoryApp::Laboratory
 
       context "with 1 tube rack" do
         include_context "with filled aliquots"
-        let!(:uuid) { create_new_tube_rack(source_rack_uuids[0]) }
+        let!(:uuid) { create_new_tube_rack(source_rack_uuids[0], [tube_uuid]) }
         let(:rack_action_path) { "http://example.org/#{uuid}" }
         let(:tube_action_path) { "http://example.org/#{tube_uuid}" }
         let(:viewed_tube) { 
@@ -296,7 +316,7 @@ module Lims::LaboratoryApp::Laboratory
         include_context "with a target rack tube"
         include_context "expected transfer actions JSON"
 
-        let(:source_rack1_uuid) { create_new_tube_rack(source_rack_uuids[0]) }
+        let(:source_rack1_uuid) { create_new_tube_rack(source_rack_uuids[0], [tube_uuid]) }
         let(:target_rack1_uuid) { create_new_target_tube_rack(target_rack_uuids[0], true) }
         let(:transfer_map) { {"B5" => "E3"} }
         let(:action_name) { "tube_rack_transfer" }
@@ -377,7 +397,7 @@ module Lims::LaboratoryApp::Laboratory
           include_context "with saved tube rack with tubes"
           include_context "with a target rack tube"
 
-          let(:source_rack1_uuid) { create_new_tube_rack(source_rack_uuids[0]) }
+          let(:source_rack1_uuid) { create_new_tube_rack(source_rack_uuids[0], [tube_uuid]) }
           let(:target_rack1_uuid) { create_new_target_tube_rack(target_rack_uuids[0], false) }
           let(:source_location) { "B5" }
           let(:moves) { [
@@ -436,12 +456,40 @@ module Lims::LaboratoryApp::Laboratory
           include_context "with saved tube rack with tubes"
           include_context "with a target rack tube"
 
+          before do
+            create_new_tubes_with_a_sample(tube_uuids_1, sample_uuids_1)
+            create_new_tubes_with_a_sample(tube_uuids_2, sample_uuids_2)
+          end
+          let(:tube_uuids_1) {
+            ['11111111-0000-3333-4444-111111111111',
+             '11111111-0000-3333-4444-222222222222'
+            ]
+          }
+          let(:tube_uuids_2) {
+            ['11111111-0000-3333-4444-333333333333',
+             '11111111-0000-3333-4444-444444444444'
+            ]
+          }
+          let(:sample_uuids_1) {
+            ['11111111-1111-3333-4444-111111111111',
+             '11111111-1111-3333-4444-222222222222'
+            ]
+          }
+          let(:sample_uuids_2) {
+            ['11111111-1111-3333-4444-333333333333',
+             '11111111-1111-3333-4444-444444444444'
+            ]
+          }
           let(:source_locations_rack1) { ["A1", "B2"] }
           let(:source_locations_rack2) { ["C5", "E8"] }
           let(:target_locations_rack1) { ["B9", "D4"] }
           let(:target_locations_rack2) { ["F3", "A9"] }
-          let(:source_rack1_uuid) { create_new_tube_rack(source_rack_uuids[0], source_locations_rack1) }
-          let(:source_rack2_uuid) { create_new_tube_rack(source_rack_uuids[1], source_locations_rack2) }
+          let(:source_rack1_uuid) {
+            create_new_tube_rack(source_rack_uuids[0], tube_uuids_1, source_locations_rack1)
+          }
+          let(:source_rack2_uuid) {
+            create_new_tube_rack(source_rack_uuids[1], tube_uuids_2, source_locations_rack2)
+          }
           let(:target_rack1_uuid) { create_new_target_tube_rack(target_rack_uuids[0], false) }
           let(:target_rack2_uuid) { create_new_target_tube_rack(target_rack_uuids[1], false) }
           let(:moves) { [
