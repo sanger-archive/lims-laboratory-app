@@ -32,12 +32,8 @@ module Lims::LaboratoryApp
             to = move["target_location"]
 
             unless source[from].nil?
-              source_tube = source[from]
+              target[to] = source[from]
               source[from] = nil
-
-              session << source
-
-              target[to] = source_tube
             end
 
             targets << target

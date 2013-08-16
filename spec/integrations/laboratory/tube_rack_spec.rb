@@ -29,21 +29,38 @@ module Lims::LaboratoryApp::Laboratory
     def create_new_sample(uuid, session)
       sample = Lims::LaboratoryApp::Laboratory::Sample.new("sample 1")
       set_uuid(session, sample, uuid)
+      sample
     end
 
     def create_new_tubes_with_a_sample(tube_uuids = [], sample_uuids = [])
       store.with_session do |session|
         tube_uuids.zip(sample_uuids).each do |tube_uuid, sample_uuid|
-          create_new_sample(sample_uuid, session)
           tube = Lims::LaboratoryApp::Laboratory::Tube.new(
             :type => "Eppendorf",
             :max_volume => 2)
-          tube << Lims::LaboratoryApp::Laboratory::Aliquot.new(:sample => session[sample_uuid],
-                                                      :type => "sample",
-                                                      :quantity => 10)
+          tube << Lims::LaboratoryApp::Laboratory::Aliquot.new(
+            :sample => create_new_sample(sample_uuid, session),
+            :type => "sample",
+            :quantity => 10)
           set_uuid(session, tube, tube_uuid)
         end
       end
+    end
+
+    def get_aliquot_array(sample_uuid)
+      path = "http://example.org/#{sample_uuid}"
+
+      [ { "sample"=> {"actions" => { "read" => path,
+              "update" => path,
+              "delete" => path,
+              "create" => path },
+              "uuid" => sample_uuid,
+              "name" => sample_name},
+              "type" => aliquot_type,
+              "quantity" => aliquot_quantity,
+              "unit" => unit_type
+        } 
+      ]
     end
   end
 
@@ -518,49 +535,51 @@ module Lims::LaboratoryApp::Laboratory
           let(:parameters) { { :tube_rack_move => { :moves => moves } } }
           let(:source_tubes) { {} }
           let(:target1_tubes) {
-            path = "http://example.org/#{tube_uuid}"
+            path1 = "http://example.org/#{tube_uuids_1[0]}"
+            path2 = "http://example.org/#{tube_uuids_2[0]}"
             {
               target_locations_rack1[0] => {"actions" =>
-                       {"read" => path,
-                        "create" => path,
-                        "update" => path,
-                        "delete" => path},
-                        "uuid" => tube_uuid,
+                       {"read" => path1,
+                        "create" => path1,
+                        "update" => path1,
+                        "delete" => path1},
+                        "uuid" => tube_uuids_1[0],
                         "type" => tube_type,
                         "max_volume" => tube_max_volume,
-                        "aliquots" => aliquot_array},
+                        "aliquots" => get_aliquot_array(sample_uuids_1[0])},
               target_locations_rack1[1] => {"actions" =>
-                       {"read" => path,
-                        "create" => path,
-                        "update" => path,
-                        "delete" => path},
-                        "uuid" => tube_uuid,
+                       {"read" => path2,
+                        "create" => path2,
+                        "update" => path2,
+                        "delete" => path2},
+                        "uuid" => tube_uuids_2[0],
                         "type" => tube_type,
                         "max_volume" => tube_max_volume,
-                        "aliquots" => aliquot_array}
+                        "aliquots" => get_aliquot_array(sample_uuids_2[0])}
             }
           }
           let(:target2_tubes) {
-            path = "http://example.org/#{tube_uuid}"
+            path1 = "http://example.org/#{tube_uuids_1[1]}"
+            path2 = "http://example.org/#{tube_uuids_2[1]}"
             {
-              target_locations_rack2[0] => {"actions" =>
-                       {"read" => path,
-                        "create" => path,
-                        "update" => path,
-                        "delete" => path},
-                        "uuid" => tube_uuid,
-                        "type" => tube_type,
-                        "max_volume" => tube_max_volume,
-                        "aliquots" => aliquot_array},
               target_locations_rack2[1] => {"actions" =>
-                       {"read" => path,
-                        "create" => path,
-                        "update" => path,
-                        "delete" => path},
-                        "uuid" => tube_uuid,
+                       {"read" => path2,
+                        "create" => path2,
+                        "update" => path2,
+                        "delete" => path2},
+                        "uuid" => tube_uuids_2[1],
                         "type" => tube_type,
                         "max_volume" => tube_max_volume,
-                        "aliquots" => aliquot_array}
+                        "aliquots" => get_aliquot_array(sample_uuids_2[1])},
+              target_locations_rack2[0] => {"actions" =>
+                       {"read" => path1,
+                        "create" => path1,
+                        "update" => path1,
+                        "delete" => path1},
+                        "uuid" => tube_uuids_1[1],
+                        "type" => tube_type,
+                        "max_volume" => tube_max_volume,
+                        "aliquots" => get_aliquot_array(sample_uuids_1[1])}
             }
           }
 
