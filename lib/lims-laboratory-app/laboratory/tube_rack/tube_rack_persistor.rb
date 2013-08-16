@@ -23,6 +23,7 @@ module Lims::LaboratoryApp
           # we use values here, so position is a number
           tube_rack.values.each_with_index do |tube, position|
             next if nil
+            slot.dataset.filter(:tube_id => @session.id_for!(tube)).delete if tube
             slot.save_as_association(id, tube, position)
           end
         end
