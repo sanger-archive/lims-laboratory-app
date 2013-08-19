@@ -1,5 +1,5 @@
-require 'common'
 require 'lims-core/resource'
+require 'lims-core/actions/action'
 
 module Lims::LaboratoryApp
   module Labels
