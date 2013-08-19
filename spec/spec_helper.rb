@@ -55,7 +55,7 @@ RSpec::Matchers.define :io_stream do |content|
   match { |stream| content == stream.read }
 end
 
-Rspec::Matchers.define :match_json_response do |status, body|
+RSpec::Matchers.define :match_json_response do |status, body|
   match { |to_match| to_match.status == status && Helper::parse_json(to_match.body) == Helper::parse_json(body) }
 
   failure_message_for_should do |actual|
@@ -68,7 +68,7 @@ Rspec::Matchers.define :match_json_response do |status, body|
 end
 
 
-Rspec::Matchers.define :match_json do |content|
+RSpec::Matchers.define :match_json do |content|
 
   match { |to_match| Helper::parse_json(to_match) == Helper::parse_json(content) }
 

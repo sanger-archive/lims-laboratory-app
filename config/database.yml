@@ -1,7 +1,3 @@
-development_:
-  adapter: postgres
-  database: core
-
 development:
   adapter: sqlite
   database: dev.db
@@ -10,20 +6,20 @@ test:
   adapter: sqlite
   database: test.db
 
-development__:
+development_mysql:
   adapter: mysql2
   encoding: utf8
   charset: utf8
-  database: development
+  database: laboratory_development
   username: root
-  password:
+  password: root
   socket: /tmp/mysql.sock
 
-test__:
+test_mysql:
   adapter: mysql2
   encoding: utf8
   charset: utf8
-  database: test_lims_api
+  database: laboratory_test
   username: root
   password:
   socket: /tmp/mysql.sock

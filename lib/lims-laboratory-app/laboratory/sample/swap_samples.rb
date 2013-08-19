@@ -38,7 +38,7 @@ module Lims::LaboratoryApp
             resources << resource
           end
 
-          {:resources => resources} 
+          resources 
         end
 
         private
