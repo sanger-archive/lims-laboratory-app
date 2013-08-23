@@ -27,9 +27,14 @@ module Lims::LaboratoryApp
         # @see Laboratory::TubeRack#[]=
         def _call_in_session(session)
           tubes.each do |location, tube_data|
-            tube = tube_data.is_a?(Hash) ? tube_data["tube"] : tube_data
-            volume = tube_data.is_a?(Hash) ? tube_data["volume"] : nil
-            update_tube(tube, volume)
+            tube, volume = nil, nil
+            if tube_data.is_a?(Hash)
+              tube = tube_data["tube"]
+              volume = tube_data["volume"]
+              update_tube(tube, volume)
+            else
+              tube = tube_data
+            end
 
             # The following line is not executed if we update the volume of an
             # existing tube. Otherwise it would raise a RackPositionNotEmpty exception. 
