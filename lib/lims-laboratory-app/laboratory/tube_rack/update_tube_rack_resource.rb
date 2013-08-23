@@ -10,8 +10,17 @@ module Lims::LaboratoryApp
       class UpdateTubeRackResource < Lims::Api::CoreActionResource
 
         def self.map_tubes(tubes, &block)
-          tubes.update_values do |tube|
-            tube = block[tube]
+          tubes.update_values do |tube_data|
+            if tube_data.is_a?(Hash)
+              tube_data = tube_data.mash do |k,v|
+                case k
+                when "tube_uuid" then ["tube", block[v]]
+                else [k,v]
+                end
+              end
+            else
+              tube_data = block[tube_data]
+            end
           end unless tubes.nil?
         end
 
