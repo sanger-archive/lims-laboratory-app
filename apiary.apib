@@ -666,6 +666,52 @@ PUT /11111111-2222-3333-4444-555555555555
 }
 
 
+**Update a tube setting the volume of the solvent** If the `volume` parameter is specified, the volume of the solvent
+aliquot is updated. If the tube does not contain a solvent, a new solvent aliquot is created with the specified
+volume and added into the tube.
+
+* `volume` the volume of the solvent
+PUT /11111111-2222-3333-4444-555555555555
+> Accept: application/json
+{ "volume": 100 }
+< 200
+< Content-Type: application/json
+{
+    "tube": {
+        "actions": {
+            "read": "/11111111-2222-3333-4444-555555555555",
+            "create": "/11111111-2222-3333-4444-555555555555",
+            "update": "/11111111-2222-3333-4444-555555555555",
+            "delete": "/11111111-2222-3333-4444-555555555555"
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555",
+        "type": "Eppendorf",
+        "max_volume": 2,
+        "aliquots": [
+            { "sample": {
+                "actions": {
+                    "read": "/11111111-2222-3333-4444-666666666666",
+                    "create": "/11111111-2222-3333-4444-666666666666",
+                    "update": "/11111111-2222-3333-4444-666666666666",
+                    "delete": "/11111111-2222-3333-4444-666666666666"
+                },
+                "uuid": "11111111-2222-3333-4444-666666666666",
+                "name": "sample 1"
+            },
+            "quantity": 10,
+            "type": "DNA",
+            "unit": "mole"
+            },
+            {
+                "quantity": 100,
+                "type": "solvent",
+                "unit": "ul"
+            }
+        ]
+    }
+}
+
+
 **Transfer the content from one tube to multiple tubes**.
 
 * `source_uuid` source tube uuid
