@@ -45,7 +45,7 @@ GIT
 PATH
   remote: .
   specs:
-    lims-laboratory-app (2.5.3.pre)
+    lims-laboratory-app (2.5.4.pre)
 
 GEM
   remote: http://rubygems.org/
