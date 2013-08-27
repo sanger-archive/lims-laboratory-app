@@ -1,8 +1,7 @@
 ::Sequel.migration do
   change do
-    alter_table(:uuid_resources) do
+    alter_table :items do
       add_index :uuid 
-      add_index [:key, :model_class]
     end
   end
 end
