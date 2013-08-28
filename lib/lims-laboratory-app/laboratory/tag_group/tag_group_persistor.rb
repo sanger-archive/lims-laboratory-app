@@ -57,6 +57,7 @@ module Lims::LaboratoryApp
       end
 
       class TagGroupOligo
+        NOT_IN_ROOT = true
         SESSION_NAME = :tag_group_oligo
         include Lims::Core::Resource
         attribute :tag_group, TagGroup

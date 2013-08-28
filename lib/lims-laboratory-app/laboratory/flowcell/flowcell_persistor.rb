@@ -14,6 +14,7 @@ module Lims::LaboratoryApp
     # include the suitable persistor.
     class Flowcell
       class LaneAliquot
+        NOT_IN_ROOT = true
         include Lims::Core::Resource
         attribute :flowcell, Flowcell
         attribute :position, Fixnum

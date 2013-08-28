@@ -14,6 +14,7 @@ module Lims::LaboratoryApp
     # include the suitable persistor.
     class Gel
       class WindowAliquot
+        NOT_IN_ROOT = true
         include Lims::Core::Resource
         attribute :gel, Gel
         attribute :position, Fixnum

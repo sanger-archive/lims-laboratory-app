@@ -13,6 +13,7 @@ module Lims::LaboratoryApp
     # include the suitable persistor.
     class Tube
       class TubeAliquot
+        NOT_IN_ROOT = true
         include Lims::Core::Resource
         attribute :tube, Tube
         attribute :aliquot, Aliquot

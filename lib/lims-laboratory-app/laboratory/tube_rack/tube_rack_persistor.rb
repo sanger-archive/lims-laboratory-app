@@ -15,6 +15,7 @@ module Lims::LaboratoryApp
     # include the suitable persistor.
     class TubeRack
       class SlotTube
+        NOT_IN_ROOT = true
         include Lims::Core::Resource
         attribute :tube_rack, TubeRack
         attribute :position, Fixnum

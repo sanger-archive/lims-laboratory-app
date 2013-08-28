@@ -67,6 +67,7 @@ module Lims::LaboratoryApp
       end
 
       class ItemProxy
+        NOT_IN_ROOT = true
         include Lims::Core::Resource
         attribute :order, Order
         attribute :role, String

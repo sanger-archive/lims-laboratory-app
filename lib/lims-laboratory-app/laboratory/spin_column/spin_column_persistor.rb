@@ -13,6 +13,7 @@ module Lims::LaboratoryApp
     # include the suitable persistor.
     class SpinColumn
       class SpinColumnAliquot
+        NOT_IN_ROOT = true
         include Lims::Core::Resource
         attribute :spin_column, SpinColumn
         attribute :aliquot, Aliquot

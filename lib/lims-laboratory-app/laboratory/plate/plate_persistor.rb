@@ -14,6 +14,7 @@ module Lims::LaboratoryApp
     # include the suitable persistor.
     class Plate
       class WellAliquot
+        NOT_IN_ROOT = true
         include Lims::Core::Resource
         attribute :plate, Plate
         attribute :position, Fixnum

@@ -74,6 +74,7 @@ module Lims::LaboratoryApp
             end
       end
       class LabelProxy 
+        NOT_IN_ROOT = true
         SESSION_NAME=:labellable_label
           def attributes
             @labellable[@position].attributes.tap do |att| 
