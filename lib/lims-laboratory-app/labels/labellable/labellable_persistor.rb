@@ -77,7 +77,9 @@ module Lims::LaboratoryApp
         NOT_IN_ROOT = true
         SESSION_NAME=:labellable_label
           def attributes
-            @labellable[@position].attributes.tap do |att| 
+            (@labellable[@position].andtap do |label|
+              label.attributes
+            end || {}).tap do |att| 
               att[:position]=@position
               att[:labellable]=@labellable
             end
@@ -99,6 +101,9 @@ module Lims::LaboratoryApp
               labellable[position] = label
               model.new(labellable, position)
             end
+          end
+          def invalid_resource?(resource)
+            !resource.labellable.include?(resource.position)
           end
         end
 
