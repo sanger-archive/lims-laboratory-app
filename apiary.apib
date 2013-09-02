@@ -1830,11 +1830,13 @@ with aliquot_type and aliquot_quantity.
 PUT /11111111-2222-3333-4444-555555555555
 > Accept: application/json
 { 
-    "C5": {
-        "sample_uuid": "11111111-2222-3333-4444-666666666666", 
-        "aliquot_type": "New type", 
-        "aliquot_quantity": 100 
+    "wells": {
+        "C5": {
+            "sample_uuid": "11111111-2222-3333-4444-666666666666", 
+            "aliquot_type": "New type", 
+            "aliquot_quantity": 100 
         }
+    }
 }
 < 200
 < Content-Type: application/json
