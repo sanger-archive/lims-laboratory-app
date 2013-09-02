@@ -1,7 +1,7 @@
 # vi: ts=2:sts=2:et:sw=2 spell:spelllang=en
 
 
-require 'lims-core/persistence/persistor'
+require 'lims-core/persistence/persistable'
 require 'lims-laboratory-app/laboratory/oligo'
 
 module Lims::LaboratoryApp
@@ -11,9 +11,7 @@ module Lims::LaboratoryApp
     # Real implementation classes (e.g. Sequel::Plate) should
     # include the suitable persistor.
     class Oligo
-      class OligoPersistor < Lims::Core::Persistence::Persistor
-        Model = Laboratory::Oligo
-      end
+      does "lims/core/persistence/persistable"
     end
   end
 end

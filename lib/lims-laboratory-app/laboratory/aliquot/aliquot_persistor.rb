@@ -13,28 +13,9 @@ module Lims::LaboratoryApp
     # Real implementation classes (e.g. Sequel::Aliquot) should
     # include the suitable persistor.
     class Aliquot
-      class AliquotPersistor < Lims::Core::Persistence::Persistor
-        Model = Laboratory::Aliquot
-
-        def attribute_for(key)
-          {sample: 'sample_id', 
-            tag: 'tag_id'}[key]
-        end
-        def filter_attributes_on_load(attributes)
-          attributes.mash do |k, v|
-            case k
-            when :sample_id then [:sample, @session.sample[v]]
-            when :tag_id then [:tag, @session.oligo[v]]
-            else [k,v]
-            end
-          end
-        end
-        def parents_for_attributes(attributes)
-          [@session.sample.state_for_id(attributes[:sample_id]),
-            @session.oligo.state_for_id(attributes[:tag_id])]
-        end
-      end
-
+      does "lims/core/persistence/persistable", :parents => [:sample,
+        {:name => :tag, :session_name => :oligo}
+       ]
     end
   end
 end
