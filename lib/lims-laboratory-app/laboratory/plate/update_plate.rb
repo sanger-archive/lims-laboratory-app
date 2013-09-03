@@ -30,11 +30,13 @@ module Lims::LaboratoryApp
             sample = well_data["sample"]
             aliquot_type = well_data["aliquot_type"]
             aliquot_quantity = well_data["aliquot_quantity"]
+            aliquot_out_of_bounds = well_data["out_of_bounds"]
             aliquot = plate[location.to_s].content.find { |aliquot| aliquot.sample == sample }
 
             if aliquot
               aliquot.type = aliquot_type if aliquot_type
               aliquot.quantity = aliquot_quantity if aliquot_quantity
+              aliquot.out_of_bounds = aliquot_out_of_bounds if aliquot_out_of_bounds
             end
           end
 
