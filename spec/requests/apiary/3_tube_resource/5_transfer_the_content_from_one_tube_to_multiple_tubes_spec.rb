@@ -81,7 +81,9 @@ describe "transfer_the_content_from_one_tube_to_multiple_tubes", :tube => true d
                                 },
                                 "quantity": 10,
                                 "type": "RNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ]
                     }
@@ -112,7 +114,9 @@ describe "transfer_the_content_from_one_tube_to_multiple_tubes", :tube => true d
                                     "name": "sample 1"
                                 },
                                 "type": "DNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ]
                     }
@@ -141,7 +145,9 @@ describe "transfer_the_content_from_one_tube_to_multiple_tubes", :tube => true d
                                     "name": "sample 1"
                                 },
                                 "type": "RNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ]
                     }

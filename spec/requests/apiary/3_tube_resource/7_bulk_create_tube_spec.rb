@@ -80,7 +80,9 @@ describe "bulk_create_tube", :tube => true do
                             },
                             "quantity": 5,
                             "type": "NA",
-                            "unit": "mole"
+                            "unit": "mole",
+                            "out_of_bounds": {
+                            }
                         }
                     ]
                 },
@@ -108,7 +110,9 @@ describe "bulk_create_tube", :tube => true do
                             },
                             "quantity": 15,
                             "type": "RNA",
-                            "unit": "mole"
+                            "unit": "mole",
+                            "out_of_bounds": {
+                            }
                         }
                     ]
                 },
@@ -136,7 +140,9 @@ describe "bulk_create_tube", :tube => true do
                             },
                             "quantity": 25,
                             "type": "DNA",
-                            "unit": "mole"
+                            "unit": "mole",
+                            "out_of_bounds": {
+                            }
                         }
                     ]
                 }

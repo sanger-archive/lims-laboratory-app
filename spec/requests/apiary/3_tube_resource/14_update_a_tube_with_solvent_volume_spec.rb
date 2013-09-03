@@ -41,12 +41,16 @@ describe "update_a_tube_with_solvent_volume", :tube => true do
                 },
                 "quantity": 10,
                 "type": "DNA",
-                "unit": "mole"
+                "unit": "mole",
+                "out_of_bounds": {
+                }
             },
             {
                 "quantity": 20,
                 "type": "solvent",
-                "unit": "ul"
+                "unit": "ul",
+                "out_of_bounds": {
+                }
             }
         ]
     }

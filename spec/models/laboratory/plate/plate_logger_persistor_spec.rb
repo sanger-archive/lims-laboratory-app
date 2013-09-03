@@ -16,10 +16,10 @@ module Lims::Core::Persistence
       subject { described_class.new(logger) }
       it "should log plate to stdout" do
         logger.should_receive(:send).with(:info, 'Lims::LaboratoryApp::Laboratory::Plate: {:type=>nil, :number_of_rows=>1, :number_of_columns=>2}')
-        logger.should_receive(:send).with(:info, '- [0] - Lims::LaboratoryApp::Laboratory::Aliquot: {:sample=>"Sample A1/1", :tag=>nil, :quantity=>nil, :type=>nil}')
-        logger.should_receive(:send).with(:info, '- [0] - Lims::LaboratoryApp::Laboratory::Aliquot: {:sample=>"Sample A1/2", :tag=>nil, :quantity=>nil, :type=>nil}')
-        logger.should_receive(:send).with(:info, '- [1] - Lims::LaboratoryApp::Laboratory::Aliquot: {:sample=>"Sample A2/1", :tag=>nil, :quantity=>nil, :type=>nil}')
-        logger.should_receive(:send).with(:info, '- [1] - Lims::LaboratoryApp::Laboratory::Aliquot: {:sample=>"Sample A2/2", :tag=>nil, :quantity=>nil, :type=>nil}')
+        logger.should_receive(:send).with(:info, '- [0] - Lims::LaboratoryApp::Laboratory::Aliquot: {:sample=>"Sample A1/1", :tag=>nil, :quantity=>nil, :type=>nil, :out_of_bounds=>{}}')
+        logger.should_receive(:send).with(:info, '- [0] - Lims::LaboratoryApp::Laboratory::Aliquot: {:sample=>"Sample A1/2", :tag=>nil, :quantity=>nil, :type=>nil, :out_of_bounds=>{}}')
+        logger.should_receive(:send).with(:info, '- [1] - Lims::LaboratoryApp::Laboratory::Aliquot: {:sample=>"Sample A2/1", :tag=>nil, :quantity=>nil, :type=>nil, :out_of_bounds=>{}}')
+        logger.should_receive(:send).with(:info, '- [1] - Lims::LaboratoryApp::Laboratory::Aliquot: {:sample=>"Sample A2/2", :tag=>nil, :quantity=>nil, :type=>nil, :out_of_bounds=>{}}')
         subject.with_session do |session|
           session << plate
         end

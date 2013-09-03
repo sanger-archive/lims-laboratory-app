@@ -51,7 +51,9 @@ describe "update_a_tube", :tube => true do
                 },
                 "quantity": 10,
                 "type": "DNA",
-                "unit": "mole"
+                "unit": "mole",
+                "out_of_bounds": {
+                }
             }
         ]
     }

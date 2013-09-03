@@ -58,7 +58,8 @@ module Lims::LaboratoryApp::Laboratory
               "name" => sample_name},
               "type" => aliquot_type,
               "quantity" => aliquot_quantity,
-              "unit" => unit_type
+              "unit" => unit_type,
+              "out_of_bounds" => {}
         } 
       ]
     end
@@ -365,7 +366,8 @@ module Lims::LaboratoryApp::Laboratory
                                                                    "name" => sample_name},
                                                                    "type" => aliquot_type,
                                                                    "quantity" => remaining_aliquot_quantity,
-                                                                   "unit" => unit_type} ]}}
+                                                                   "unit" => unit_type,
+								   "out_of_bounds" => {}} ]}}
         } 
         let(:target_tubes) {
           path = "http://example.org/#{target_tube_uuid}"

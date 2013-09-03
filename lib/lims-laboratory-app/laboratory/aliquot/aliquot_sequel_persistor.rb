@@ -27,6 +27,8 @@ module Lims::LaboratoryApp
               end
             else [k, v]
             end
+          end.tap do |attr|
+            attr.delete(:out_of_bounds)
           end
         end
 

@@ -15,6 +15,13 @@ describe "update_individual_wells_in_a_plate", :plate => true do
     response = put "/11111111-2222-3333-4444-555555555555", <<-EOD
     {
     "wells": {
+        "A1": {
+            "sample_uuid": "11111111-2222-3333-4444-666666666666",
+            "out_of_bounds": {
+                "attribute_1": "value 1",
+                "attribute_2": "value 2"
+            }
+        },
         "C5": {
             "sample_uuid": "11111111-2222-3333-4444-777777777777",
             "aliquot_type": "new type",
@@ -51,7 +58,11 @@ describe "update_individual_wells_in_a_plate", :plate => true do
                     },
                     "quantity": 5,
                     "type": "RNA",
-                    "unit": "mole"
+                    "unit": "mole",
+                    "out_of_bounds": {
+                        "attribute_1": "value 1",
+                        "attribute_2": "value 2"
+                    }
                 }
             ],
             "A2": [
@@ -149,7 +160,9 @@ describe "update_individual_wells_in_a_plate", :plate => true do
                     },
                     "quantity": 100,
                     "type": "new type",
-                    "unit": "mole"
+                    "unit": "mole",
+                    "out_of_bounds": {
+                    }
                 }
             ],
             "C6": [

@@ -104,7 +104,9 @@ describe "transfer_plates_to_plates_without_solvent", :plate => true do
                                     },
                                     "quantity": 100,
                                     "type": "sample",
-                                    "unit": "mole"
+                                    "unit": "mole",
+                                    "out_of_bounds": {
+                                    }
                                 }
                             ],
                             "A2": [
@@ -500,7 +502,9 @@ describe "transfer_plates_to_plates_without_solvent", :plate => true do
                                     },
                                     "quantity": 100,
                                     "type": "sample",
-                                    "unit": "mole"
+                                    "unit": "mole",
+                                    "out_of_bounds": {
+                                    }
                                 }
                             ],
                             "C4": [
@@ -780,7 +784,9 @@ describe "transfer_plates_to_plates_without_solvent", :plate => true do
                                         "name": "sample for A1"
                                     },
                                     "type": "DNA",
-                                    "unit": "mole"
+                                    "unit": "mole",
+                                    "out_of_bounds": {
+                                    }
                                 }
                             ],
                             "B3": [
@@ -1175,7 +1181,9 @@ describe "transfer_plates_to_plates_without_solvent", :plate => true do
                                         "name": "sample for C3"
                                     },
                                     "type": "RNA",
-                                    "unit": "mole"
+                                    "unit": "mole",
+                                    "out_of_bounds": {
+                                    }
                                 }
                             ],
                             "D5": [

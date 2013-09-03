@@ -83,7 +83,9 @@ describe "physically_move_tubes_from_a_source_tube_rack", :tube_rack => true do
                                     },
                                     "quantity": 10,
                                     "type": "sample",
-                                    "unit": "mole"
+                                    "unit": "mole",
+                                    "out_of_bounds": {
+                                    }
                                 }
                             ]
                         }
