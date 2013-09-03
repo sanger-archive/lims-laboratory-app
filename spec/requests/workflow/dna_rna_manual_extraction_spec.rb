@@ -442,7 +442,9 @@ describe "dna_rna_manual_extraction" do
                     },
                     "quantity": 1000,
                     "type": "NA+P",
-                    "unit": "mole"
+                    "unit": "mole",
+                    "out_of_bounds": {
+                    }
                 }
             ],
             "labels": {
@@ -532,7 +534,9 @@ describe "dna_rna_manual_extraction" do
                     },
                     "quantity": 1000,
                     "type": "NA+P",
-                    "unit": "mole"
+                    "unit": "mole",
+                    "out_of_bounds": {
+                    }
                 }
             ],
             "labels": {
@@ -1091,7 +1095,9 @@ describe "dna_rna_manual_extraction" do
                     },
                     "quantity": 1000,
                     "type": "NA+P",
-                    "unit": "mole"
+                    "unit": "mole",
+                    "out_of_bounds": {
+                    }
                 }
             ],
             "labels": {
@@ -2643,7 +2649,9 @@ describe "dna_rna_manual_extraction" do
                                 },
                                 "quantity": 1000,
                                 "type": "NA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -2686,7 +2694,9 @@ describe "dna_rna_manual_extraction" do
                                 },
                                 "quantity": 1000,
                                 "type": "NA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -2728,7 +2738,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_0"
                                 },
                                 "type": "DNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -2768,7 +2780,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_1"
                                 },
                                 "type": "DNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -2810,7 +2824,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_0"
                                 },
                                 "type": "RNA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -2852,7 +2868,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_1"
                                 },
                                 "type": "RNA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -3430,7 +3448,9 @@ describe "dna_rna_manual_extraction" do
                                 },
                                 "quantity": 1000,
                                 "type": "NA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -3472,7 +3492,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_2"
                                 },
                                 "type": "DNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -3514,7 +3536,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_2"
                                 },
                                 "type": "RNA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -4099,7 +4123,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_0"
                                 },
                                 "type": "DNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -4139,7 +4165,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_1"
                                 },
                                 "type": "DNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -4183,7 +4211,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_0"
                                 },
                                 "type": "DNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -4225,7 +4255,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_1"
                                 },
                                 "type": "DNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -4751,7 +4783,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_2"
                                 },
                                 "type": "DNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -4795,7 +4829,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_2"
                                 },
                                 "type": "DNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -5420,7 +5456,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_0"
                                 },
                                 "type": "RNA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -5462,7 +5500,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_1"
                                 },
                                 "type": "RNA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -5506,7 +5546,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_0"
                                 },
                                 "type": "RNA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -5548,7 +5590,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_1"
                                 },
                                 "type": "RNA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -6125,7 +6169,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_2"
                                 },
                                 "type": "RNA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -6169,7 +6215,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_2"
                                 },
                                 "type": "RNA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -7026,7 +7074,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_0"
                                 },
                                 "type": "RNA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -7068,7 +7118,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_1"
                                 },
                                 "type": "RNA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -7110,7 +7162,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_0"
                                 },
                                 "type": "RNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -7150,7 +7204,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_1"
                                 },
                                 "type": "RNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -7192,7 +7248,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_0"
                                 },
                                 "type": "RNA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -7234,7 +7292,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_1"
                                 },
                                 "type": "RNA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -8003,7 +8063,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_2"
                                 },
                                 "type": "RNA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -8045,7 +8107,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_2"
                                 },
                                 "type": "RNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -8087,7 +8151,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_2"
                                 },
                                 "type": "RNA+P",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -8864,7 +8930,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_0"
                                 },
                                 "type": "RNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -8904,7 +8972,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_1"
                                 },
                                 "type": "RNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -8948,7 +9018,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_0"
                                 },
                                 "type": "RNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -8990,7 +9062,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_1"
                                 },
                                 "type": "RNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -9708,7 +9782,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_2"
                                 },
                                 "type": "RNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -9752,7 +9828,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_2"
                                 },
                                 "type": "RNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -10569,7 +10647,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_0"
                                 },
                                 "type": "RNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -10611,7 +10691,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_1"
                                 },
                                 "type": "RNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -10655,7 +10737,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_0"
                                 },
                                 "type": "RNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -10697,7 +10781,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_1"
                                 },
                                 "type": "RNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -11172,7 +11258,9 @@ describe "dna_rna_manual_extraction" do
                             "name": "sample_0"
                         },
                         "type": "RNA",
-                        "unit": "mole"
+                        "unit": "mole",
+                        "out_of_bounds": {
+                        }
                     }
                 ],
                 "labels": {
@@ -11212,7 +11300,9 @@ describe "dna_rna_manual_extraction" do
                             "name": "sample_1"
                         },
                         "type": "RNA",
-                        "unit": "mole"
+                        "unit": "mole",
+                        "out_of_bounds": {
+                        }
                     }
                 ],
                 "labels": {
@@ -12363,7 +12453,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_2"
                                 },
                                 "type": "RNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -12407,7 +12499,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_2"
                                 },
                                 "type": "RNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -12719,7 +12813,9 @@ describe "dna_rna_manual_extraction" do
                             "name": "sample_2"
                         },
                         "type": "RNA",
-                        "unit": "mole"
+                        "unit": "mole",
+                        "out_of_bounds": {
+                        }
                     }
                 ],
                 "labels": {
@@ -13846,7 +13942,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_0"
                                 },
                                 "type": "DNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -13888,7 +13986,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_1"
                                 },
                                 "type": "DNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -13932,7 +14032,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_0"
                                 },
                                 "type": "DNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -13974,7 +14076,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_1"
                                 },
                                 "type": "DNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -14498,7 +14602,9 @@ describe "dna_rna_manual_extraction" do
                             "name": "sample_0"
                         },
                         "type": "DNA",
-                        "unit": "mole"
+                        "unit": "mole",
+                        "out_of_bounds": {
+                        }
                     }
                 ],
                 "labels": {
@@ -14538,7 +14644,9 @@ describe "dna_rna_manual_extraction" do
                             "name": "sample_1"
                         },
                         "type": "DNA",
-                        "unit": "mole"
+                        "unit": "mole",
+                        "out_of_bounds": {
+                        }
                     }
                 ],
                 "labels": {
@@ -15821,7 +15929,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_2"
                                 },
                                 "type": "DNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -15865,7 +15975,9 @@ describe "dna_rna_manual_extraction" do
                                     "name": "sample_2"
                                 },
                                 "type": "DNA",
-                                "unit": "mole"
+                                "unit": "mole",
+                                "out_of_bounds": {
+                                }
                             }
                         ],
                         "labels": {
@@ -16211,7 +16323,9 @@ describe "dna_rna_manual_extraction" do
                             "name": "sample_2"
                         },
                         "type": "DNA",
-                        "unit": "mole"
+                        "unit": "mole",
+                        "out_of_bounds": {
+                        }
                     }
                 ],
                 "labels": {

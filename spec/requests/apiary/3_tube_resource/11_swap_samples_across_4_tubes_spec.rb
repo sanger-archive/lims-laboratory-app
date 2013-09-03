@@ -92,7 +92,9 @@ describe "swap_samples_across_4_tubes", :tube => true do
                             },
                             "quantity": 10,
                             "type": "DNA",
-                            "unit": "mole"
+                            "unit": "mole",
+                            "out_of_bounds": {
+                            }
                         }
                     ]
                 }
@@ -122,7 +124,9 @@ describe "swap_samples_across_4_tubes", :tube => true do
                             },
                             "quantity": 10,
                             "type": "DNA",
-                            "unit": "mole"
+                            "unit": "mole",
+                            "out_of_bounds": {
+                            }
                         }
                     ]
                 }
@@ -152,7 +156,9 @@ describe "swap_samples_across_4_tubes", :tube => true do
                             },
                             "quantity": 10,
                             "type": "DNA",
-                            "unit": "mole"
+                            "unit": "mole",
+                            "out_of_bounds": {
+                            }
                         }
                     ]
                 }
@@ -182,7 +188,9 @@ describe "swap_samples_across_4_tubes", :tube => true do
                             },
                             "quantity": 10,
                             "type": "DNA",
-                            "unit": "mole"
+                            "unit": "mole",
+                            "out_of_bounds": {
+                            }
                         }
                     ]
                 }

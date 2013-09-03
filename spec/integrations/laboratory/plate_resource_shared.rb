@@ -83,7 +83,7 @@ shared_context "for creating a plate-like with aliquots and solvent in it" do
 end
 
 shared_context "with source elements" do
-  let(:source_solvent) { {"quantity"=>60.0, "type"=>"solvent", "unit"=>"ul"} }
+  let(:source_solvent) { {"quantity"=>60.0, "type"=>"solvent", "unit"=>"ul", "out_of_bounds" => {}} }
   let(:source_aliquot_array1) {
     path = "http://example.org/#{sample_uuid}"
     [ { "sample"=> {"actions" => { "read" => path,
@@ -94,6 +94,7 @@ shared_context "with source elements" do
                                    "name" => sample1_name},
                                    "quantity" => source_aliquot_quantity,
                                    "type" => aliquot_type,
+                                   "out_of_bounds" => {},
                                    "unit" => unit_type},
                                    source_solvent ]
   }
@@ -107,6 +108,7 @@ shared_context "with source elements" do
                                    "name" => sample2_name},
                                    "quantity" => source_aliquot_quantity,
                                    "type" => aliquot_type,
+                                   "out_of_bounds" => {},
                                    "unit" => unit_type},
                                    source_solvent ]
   }
@@ -157,8 +159,8 @@ shared_context "with source elements" do
 end
 
 shared_context "with target elements" do
-  let(:target_solvent_DNA) { {"quantity"=>40.0, "type"=>"DNA", "unit"=>"mole"} }
-  let(:target_solvent_RNA) { {"quantity"=>40.0, "type"=>"RNA", "unit"=>"mole"} }
+  let(:target_solvent_DNA) { {"quantity"=>40.0, "type"=>"DNA", "unit"=>"mole", "out_of_bounds" => {}} }
+  let(:target_solvent_RNA) { {"quantity"=>40.0, "type"=>"RNA", "unit"=>"mole", "out_of_bounds" => {}} }
   let(:target_aliquot_array1) {
     path = "http://example.org/#{sample_uuid}"
     [ { "sample"=> {"actions" => { "read" => path,
@@ -169,6 +171,7 @@ shared_context "with target elements" do
                                    "name" => sample1_name},
                                    "quantity" => target_aliquot_quantity1,
                                    "type" => target_aliquot_type1,
+                                   "out_of_bounds" => {},
                                    "unit" => unit_type},
                                    target_solvent_DNA ]
   }
@@ -183,6 +186,7 @@ shared_context "with target elements" do
                                    "type" => target_aliquot_type2,
                                    "quantity" => target_aliquot_quantity2,
                                    "type" => target_aliquot_type2,
+                                   "out_of_bounds" => {},
                                    "unit" => unit_type},
                                    target_solvent_RNA ]
   }

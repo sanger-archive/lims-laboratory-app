@@ -9,7 +9,8 @@ describe "create_a_new_plate_with_samples", :plate => true do
   # * `type` actual type of the plate
   # * `wells_description` map aliquots to well locations
     sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
-    save_with_uuid sample1 => [1,2,3,4,6]
+    sample2 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2')
+    save_with_uuid sample1 => [1,2,3,4,6], sample2 => [1,2,3,4,7]
 
     header('Accept', 'application/json')
     header('Content-Type', 'application/json')
@@ -26,6 +27,16 @@ describe "create_a_new_plate_with_samples", :plate => true do
                     "sample": "11111111-2222-3333-4444-666666666666",
                     "type": "DNA",
                     "quantity": 10
+                }
+            ],
+            "F1": [
+                {
+                    "sample": "11111111-2222-3333-4444-777777777777",
+                    "type": "DNA",
+                    "quantity": 10,
+                    "out_of_bounds": {
+                        "attribute_1": "value 1"
+                    }
                 }
             ]
         }
@@ -144,7 +155,9 @@ describe "create_a_new_plate_with_samples", :plate => true do
                     },
                     "quantity": 10,
                     "type": "DNA",
-                    "unit": "mole"
+                    "unit": "mole",
+                    "out_of_bounds": {
+                    }
                 }
             ],
             "C6": [
@@ -241,7 +254,24 @@ describe "create_a_new_plate_with_samples", :plate => true do
 
             ],
             "F1": [
-
+                {
+                    "sample": {
+                        "actions": {
+                            "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+                            "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+                            "delete": "http://example.org/11111111-2222-3333-4444-777777777777",
+                            "create": "http://example.org/11111111-2222-3333-4444-777777777777"
+                        },
+                        "uuid": "11111111-2222-3333-4444-777777777777",
+                        "name": "sample 2"
+                    },
+                    "quantity": 10,
+                    "type": "DNA",
+                    "unit": "mole",
+                    "out_of_bounds": {
+                        "attribute_1": "value 1"
+                    }
+                }
             ],
             "F2": [
 

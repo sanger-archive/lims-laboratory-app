@@ -32,7 +32,8 @@ shared_context "with filled aliquots" do
         "name" => sample_name},
         "type" => aliquot_type,
         "quantity" => aliquot_quantity,
-        "unit" => unit_type
+        "unit" => unit_type,
+        "out_of_bounds" => {}
   } ]
   }
 end
@@ -49,7 +50,8 @@ shared_context "aliquots with solvent" do
         "name" => sample_name},
         "quantity" => 0,
         "type" => aliquot_type,
-        "unit" => unit_type
+        "unit" => unit_type,
+        "out_of_bounds" => {}
         },
         solvent
       ]
@@ -66,7 +68,8 @@ shared_context "aliquots with solvent" do
         "name" => sample_name},
         "quantity" => 0.0,
         "type" => aliquot_type,
-        "unit" => unit_type
+        "unit" => unit_type,
+        "out_of_bounds" => {}
         },
         solvent_with_fraction
       ]
@@ -83,7 +86,8 @@ shared_context "aliquots with solvent" do
         "name" => sample_name},
         "quantity" => 100,
         "type" => "RNA",
-        "unit" => unit_type
+        "unit" => unit_type,
+        "out_of_bounds" => {}
         },
         modified_solvent
       ]
@@ -100,7 +104,8 @@ shared_context "aliquots with solvent" do
         "name" => sample_name},
         "quantity" => 50.0,
         "type" => "DNA",
-        "unit" => unit_type
+        "unit" => unit_type,
+        "out_of_bounds" => {}
         },
         modified_solvent_DNA
       ]
@@ -117,20 +122,21 @@ shared_context "aliquots with solvent" do
         "name" => sample_name},
         "quantity" => 50.0,
         "type" => "RNA",
-        "unit" => unit_type
+        "unit" => unit_type,
+        "out_of_bounds" => {}
         },
         modified_solvent_RNA
       ]
   }
 
-  let(:solvent) { {"quantity" => 0, "type" => "solvent", "unit" => "ul"} }
-  let(:solvent_with_fraction) { {"quantity" => 0, "type" => "solvent", "unit" => "ul"} }
+  let(:solvent) { {"quantity" => 0, "type" => "solvent", "unit" => "ul", "out_of_bounds" => {}} }
+  let(:solvent_with_fraction) { {"quantity" => 0, "type" => "solvent", "unit" => "ul", "out_of_bounds" => {}} }
 
   # currently we also change the water to the given aliquot type
   # this is not correct, we should fix it later
-  let(:modified_solvent) { {"quantity"=>100, "type"=>"RNA", "unit"=>"mole"} }
-  let(:modified_solvent_DNA) { {"quantity"=>50.0, "type"=>"DNA", "unit"=>"mole"} }
-  let(:modified_solvent_RNA) { {"quantity"=>50.0, "type"=>"RNA", "unit"=>"mole"} }
+  let(:modified_solvent) { {"quantity"=>100, "type"=>"RNA", "unit"=>"mole", "out_of_bounds" => {}} }
+  let(:modified_solvent_DNA) { {"quantity"=>50.0, "type"=>"DNA", "unit"=>"mole", "out_of_bounds" => {}} }
+  let(:modified_solvent_RNA) { {"quantity"=>50.0, "type"=>"RNA", "unit"=>"mole", "out_of_bounds" => {}} }
 end
 
 
