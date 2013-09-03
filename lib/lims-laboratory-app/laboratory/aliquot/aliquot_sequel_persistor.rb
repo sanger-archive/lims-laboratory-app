@@ -21,6 +21,8 @@ module Lims::LaboratoryApp
             when :sample then [:sample_id, @session.id_for!(v)]
             else [k, v]
             end
+          end.tap do |attr|
+            attr.delete(:out_of_bounds)
           end
         end
 
