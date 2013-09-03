@@ -70,33 +70,20 @@ module Lims::LaboratoryApp
           end
         end
       end
-      class TubePersistor < Lims::Core::Persistence::Persistor
-        # this module is here only to give 'parent' class for the persistor
-        # to be associated 
-        Model = Laboratory::Tube
+      does "lims/core/persistence/persistable", :children => [
+        {:name => :tube_aliquot, :deletable => true }
+      ]
+      class TubePersistor
+        def children_tube_aliquot(resource, children)
+          resource.each do |aliquot|
+            children << TubeAliquot.new(resource, aliquot)
+          end
+        end
+      end
+      class TubePersistor
 
         def  tube_aliquot
           @session.tube_persistor_aliquot
-        end
-
-        def children(resource)
-          resource.map do |aliquot|
-            TubeAliquot.new(resource, aliquot)
-          end
-        end
-
-        def deletable(resource)
-          children(resource)
-        end
-
-        # Load all children of the given tube
-        # Loaded object are automatically added to the session.
-        # @param  id object identifier
-        # @param [Laboratory::Tube] tube
-        # @return [Laboratory::Tube, nil] 
-        #
-        def load_children(states)
-          tube_aliquot.find_by(:tube_id => states.map(&:id))
         end
       end
     end
