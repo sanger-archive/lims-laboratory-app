@@ -69,16 +69,12 @@ describe "update_a_tube_rack_with_solvent_volume", :tube_rack => true do
                         },
                         "quantity": 5,
                         "type": "NA",
-                        "unit": "mole",
-                        "out_of_bounds": {
-                        }
+                        "unit": "mole"
                     },
                     {
                         "quantity": 10,
                         "type": "solvent",
-                        "unit": "ul",
-                        "out_of_bounds": {
-                        }
+                        "unit": "ul"
                     }
                 ]
             },
@@ -96,9 +92,7 @@ describe "update_a_tube_rack_with_solvent_volume", :tube_rack => true do
                     {
                         "quantity": 20,
                         "type": "solvent",
-                        "unit": "ul",
-                        "out_of_bounds": {
-                        }
+                        "unit": "ul"
                     }
                 ]
             }

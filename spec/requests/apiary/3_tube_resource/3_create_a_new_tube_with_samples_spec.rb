@@ -56,9 +56,7 @@ describe "create_a_new_tube_with_samples", :tube => true do
                 },
                 "quantity": 5,
                 "type": "NA",
-                "unit": "mole",
-                "out_of_bounds": {
-                }
+                "unit": "mole"
             }
         ]
     }

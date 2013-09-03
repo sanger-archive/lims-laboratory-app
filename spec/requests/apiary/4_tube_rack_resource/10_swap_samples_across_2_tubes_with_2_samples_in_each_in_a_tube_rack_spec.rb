@@ -89,9 +89,7 @@ describe "swap_samples_across_2_tubes_with_2_samples_in_each_in_a_tube_rack", :t
                                     },
                                     "quantity": 10,
                                     "type": "DNA",
-                                    "unit": "mole",
-                                    "out_of_bounds": {
-                                    }
+                                    "unit": "mole"
                                 },
                                 {
                                     "sample": {
@@ -106,9 +104,7 @@ describe "swap_samples_across_2_tubes_with_2_samples_in_each_in_a_tube_rack", :t
                                     },
                                     "quantity": 10,
                                     "type": "RNA",
-                                    "unit": "mole",
-                                    "out_of_bounds": {
-                                    }
+                                    "unit": "mole"
                                 }
                             ]
                         },
@@ -136,9 +132,7 @@ describe "swap_samples_across_2_tubes_with_2_samples_in_each_in_a_tube_rack", :t
                                     },
                                     "quantity": 10,
                                     "type": "DNA",
-                                    "unit": "mole",
-                                    "out_of_bounds": {
-                                    }
+                                    "unit": "mole"
                                 },
                                 {
                                     "sample": {
@@ -153,9 +147,7 @@ describe "swap_samples_across_2_tubes_with_2_samples_in_each_in_a_tube_rack", :t
                                     },
                                     "quantity": 10,
                                     "type": "RNA",
-                                    "unit": "mole",
-                                    "out_of_bounds": {
-                                    }
+                                    "unit": "mole"
                                 }
                             ]
                         }

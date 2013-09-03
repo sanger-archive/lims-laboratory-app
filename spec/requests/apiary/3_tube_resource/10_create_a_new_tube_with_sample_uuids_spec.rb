@@ -52,9 +52,7 @@ describe "create_a_new_tube_with_sample_uuids", :tube => true do
                 },
                 "quantity": 5,
                 "type": "NA",
-                "unit": "mole",
-                "out_of_bounds": {
-                }
+                "unit": "mole"
             },
             {
                 "sample": {
@@ -69,9 +67,7 @@ describe "create_a_new_tube_with_sample_uuids", :tube => true do
                 },
                 "quantity": 5,
                 "type": "NA",
-                "unit": "mole",
-                "out_of_bounds": {
-                }
+                "unit": "mole"
             }
         ]
     }

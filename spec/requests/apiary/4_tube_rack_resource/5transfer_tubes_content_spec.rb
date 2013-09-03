@@ -79,9 +79,7 @@ describe "5transfer_tubes_content", :tube_rack => true do
                                 },
                                 "quantity": 10,
                                 "type": "sample",
-                                "unit": "mole",
-                                "out_of_bounds": {
-                                }
+                                "unit": "mole"
                             }
                         ]
                     }
@@ -124,9 +122,7 @@ describe "5transfer_tubes_content", :tube_rack => true do
                                 },
                                 "quantity": 0,
                                 "type": "sample",
-                                "unit": "mole",
-                                "out_of_bounds": {
-                                }
+                                "unit": "mole"
                             }
                         ]
                     }
@@ -169,9 +165,7 @@ describe "5transfer_tubes_content", :tube_rack => true do
                                 },
                                 "quantity": 10,
                                 "type": "sample",
-                                "unit": "mole",
-                                "out_of_bounds": {
-                                }
+                                "unit": "mole"
                             }
                         ]
                     }
