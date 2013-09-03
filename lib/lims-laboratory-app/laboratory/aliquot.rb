@@ -73,27 +73,34 @@ module Lims::LaboratoryApp
 
         # Type
         Solvent = "solvent"
-
-        # describe what kind of measure the quantity refers to.
-        # @return [String]
-        def dimension
-          # By default, dimension are AmountOfSubstance except for
-          # solvent which are by default liquid, therefore volume.
-          case type
-          when Solvent then Volume
-          else AmountOfSubstance
-          end
-        end
       end
       include Dimension
+
+      # describe what kind of measure the quantity refers to.
+      # @return [String]
+      def self.dimension(type)
+        # By default, dimension are AmountOfSubstance except for
+        # solvent which are by default liquid, therefore volume.
+        case type
+        when Solvent then Volume
+        else AmountOfSubstance
+        end
+      end
+
+      def dimension
+        self.class.dimension(type)
+      end
 
       # The unit in which the quantity is store.
       # For example, volume are stored in microlittre
       # so the unit will be ul.
-      def unit
-        DimensionToUnit[dimension]
+      def self.unit(type)
+        DimensionToUnit[dimension(type)]
       end
 
+      def unit
+        self.class.unit(type)
+      end
 
       # add the specified amount to the current aliquot quantity, can be nil
       # @param [Float,Nil] quantity
