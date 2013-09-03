@@ -95,9 +95,7 @@ describe "swap_samples_in_a_tube_rack", :tube_rack => true do
                                     },
                                     "quantity": 10,
                                     "type": "DNA",
-                                    "unit": "mole",
-                                    "out_of_bounds": {
-                                    }
+                                    "unit": "mole"
                                 }
                             ]
                         },
@@ -125,9 +123,7 @@ describe "swap_samples_in_a_tube_rack", :tube_rack => true do
                                     },
                                     "quantity": 10,
                                     "type": "DNA",
-                                    "unit": "mole",
-                                    "out_of_bounds": {
-                                    }
+                                    "unit": "mole"
                                 }
                             ]
                         },
@@ -155,9 +151,7 @@ describe "swap_samples_in_a_tube_rack", :tube_rack => true do
                                     },
                                     "quantity": 10,
                                     "type": "DNA",
-                                    "unit": "mole",
-                                    "out_of_bounds": {
-                                    }
+                                    "unit": "mole"
                                 }
                             ]
                         },
@@ -185,9 +179,7 @@ describe "swap_samples_in_a_tube_rack", :tube_rack => true do
                                     },
                                     "quantity": 10,
                                     "type": "DNA",
-                                    "unit": "mole",
-                                    "out_of_bounds": {
-                                    }
+                                    "unit": "mole"
                                 }
                             ]
                         }

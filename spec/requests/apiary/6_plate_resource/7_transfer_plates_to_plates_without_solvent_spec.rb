@@ -104,9 +104,7 @@ describe "transfer_plates_to_plates_without_solvent", :plate => true do
                                     },
                                     "quantity": 100,
                                     "type": "sample",
-                                    "unit": "mole",
-                                    "out_of_bounds": {
-                                    }
+                                    "unit": "mole"
                                 }
                             ],
                             "A2": [
@@ -502,9 +500,7 @@ describe "transfer_plates_to_plates_without_solvent", :plate => true do
                                     },
                                     "quantity": 100,
                                     "type": "sample",
-                                    "unit": "mole",
-                                    "out_of_bounds": {
-                                    }
+                                    "unit": "mole"
                                 }
                             ],
                             "C4": [
@@ -784,9 +780,7 @@ describe "transfer_plates_to_plates_without_solvent", :plate => true do
                                         "name": "sample for A1"
                                     },
                                     "type": "DNA",
-                                    "unit": "mole",
-                                    "out_of_bounds": {
-                                    }
+                                    "unit": "mole"
                                 }
                             ],
                             "B3": [
@@ -1181,9 +1175,7 @@ describe "transfer_plates_to_plates_without_solvent", :plate => true do
                                         "name": "sample for C3"
                                     },
                                     "type": "RNA",
-                                    "unit": "mole",
-                                    "out_of_bounds": {
-                                    }
+                                    "unit": "mole"
                                 }
                             ],
                             "D5": [

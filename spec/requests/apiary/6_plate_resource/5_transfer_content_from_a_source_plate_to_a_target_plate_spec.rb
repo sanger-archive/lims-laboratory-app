@@ -105,9 +105,7 @@ describe "transfer_content_from_a_source_plate_to_a_target_plate", :plate => tru
                                 "name": "sample 1"
                             },
                             "type": "new type",
-                            "unit": "mole",
-                            "out_of_bounds": {
-                            }
+                            "unit": "mole"
                         }
                     ],
                     "B3": [
@@ -470,9 +468,7 @@ describe "transfer_content_from_a_source_plate_to_a_target_plate", :plate => tru
                             },
                             "quantity": 10,
                             "type": "new type",
-                            "unit": "mole",
-                            "out_of_bounds": {
-                            }
+                            "unit": "mole"
                         }
                     ],
                     "C6": [
@@ -744,9 +740,7 @@ describe "transfer_content_from_a_source_plate_to_a_target_plate", :plate => tru
                                 "name": "sample 1"
                             },
                             "type": "new type",
-                            "unit": "mole",
-                            "out_of_bounds": {
-                            }
+                            "unit": "mole"
                         }
                     ],
                     "B3": [

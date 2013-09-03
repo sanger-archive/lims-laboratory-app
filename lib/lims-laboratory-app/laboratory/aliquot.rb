@@ -38,6 +38,15 @@ module Lims::LaboratoryApp
       #validates_presence_of :quantity
       #validates_numericalness_of :quantity, :gte => 0
 
+      # As out_of_bounds parameter is not persisted and saved in the database
+      # we remove it from the attributes when it is not used. So, the return
+      # json in the api does not mention it.
+      def attributes
+        super.tap do |attr|
+          attr.delete(:out_of_bounds) if out_of_bounds.empty?
+        end
+      end
+
       # Take a percentage of an aliquot
       # and remove the corresponding quantity
       # 1 (100%) remove everything from the current aliquot
