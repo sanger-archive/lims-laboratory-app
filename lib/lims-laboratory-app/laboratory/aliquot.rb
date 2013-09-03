@@ -32,6 +32,8 @@ module Lims::LaboratoryApp
 
       # the form of the chemical substance, like library, sample etc ...
       attribute :type, String # Subclass ?
+      # Contain extra data which are not stored in S2 database but broadcasted on the message bus
+      attribute :out_of_bounds, Hash, :required => false, :default => {}
 
       #validates_presence_of :quantity
       #validates_numericalness_of :quantity, :gte => 0
