@@ -78,9 +78,7 @@ describe "search_for_a_tube_by_sample_uuid", :search => true do
                         "uuid": "11111111-2222-3333-4444-777777777777",
                         "name": null
                     },
-                    "unit": "mole",
-                    "out_of_bounds": {
-                    }
+                    "unit": "mole"
                 }
             ]
         },
@@ -106,9 +104,7 @@ describe "search_for_a_tube_by_sample_uuid", :search => true do
                         "uuid": "11111111-2222-3333-4444-777777777777",
                         "name": null
                     },
-                    "unit": "mole",
-                    "out_of_bounds": {
-                    }
+                    "unit": "mole"
                 }
             ]
         }
