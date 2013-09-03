@@ -19,6 +19,12 @@ module Lims::LaboratoryApp
             case k
             when :tag then [:tag_id, @session.id_for!(v)]
             when :sample then [:sample_id, @session.id_for!(v)]
+            when :quantity
+              if Aliquot.unit(attributes[:type]) == "ul"
+                [k, v*1000]
+              else
+                [k, v]
+              end
             else [k, v]
             end
           end.tap do |attr|
@@ -31,6 +37,12 @@ module Lims::LaboratoryApp
             case k
             when :tag_id then [:tag, @session.oligo[v]]
             when :sample_id then [:sample, @session.sample[v]]
+            when :quantity
+              if Aliquot.unit(attributes[:type]) == "ul"
+                [k, v/1000.0]
+              else
+                [k, v]
+              end
             else [k, v]
             end
           end
