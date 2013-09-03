@@ -144,7 +144,9 @@ describe "create_a_new_plate_with_samples", :plate => true do
                     },
                     "quantity": 10,
                     "type": "DNA",
-                    "unit": "mole"
+                    "unit": "mole",
+                    "out_of_bounds": {
+                    }
                 }
             ],
             "C6": [

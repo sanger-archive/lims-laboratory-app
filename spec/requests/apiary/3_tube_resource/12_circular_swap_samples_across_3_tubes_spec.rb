@@ -82,7 +82,9 @@ describe "circular_swap_samples_across_3_tubes", :tube => true do
                             },
                             "quantity": 10,
                             "type": "DNA",
-                            "unit": "mole"
+                            "unit": "mole",
+                            "out_of_bounds": {
+                            }
                         }
                     ]
                 }
@@ -112,7 +114,9 @@ describe "circular_swap_samples_across_3_tubes", :tube => true do
                             },
                             "quantity": 10,
                             "type": "DNA",
-                            "unit": "mole"
+                            "unit": "mole",
+                            "out_of_bounds": {
+                            }
                         }
                     ]
                 }
@@ -142,7 +146,9 @@ describe "circular_swap_samples_across_3_tubes", :tube => true do
                             },
                             "quantity": 10,
                             "type": "DNA",
-                            "unit": "mole"
+                            "unit": "mole",
+                            "out_of_bounds": {
+                            }
                         }
                     ]
                 }

@@ -8,6 +8,7 @@ describe "update_a_tube_rack", :tube_rack => true do
   # 
   # * `aliquot_type`
   # * `aliquot_quantity` volume (ul) if liquid, mass (mg) if solid
+  # * `tubes` new tubes to add to the tube rack. The specified locations need to be empty.
     sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
     sample2 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2')
     source_tube1 = Lims::LaboratoryApp::Laboratory::Tube.new << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 5, :type => "NA", :sample => sample1)
@@ -77,7 +78,9 @@ describe "update_a_tube_rack", :tube_rack => true do
                         },
                         "quantity": 10,
                         "type": "DNA",
-                        "unit": "mole"
+                        "unit": "mole",
+                        "out_of_bounds": {
+                        }
                     }
                 ]
             },
@@ -105,7 +108,9 @@ describe "update_a_tube_rack", :tube_rack => true do
                         },
                         "quantity": 10,
                         "type": "DNA",
-                        "unit": "mole"
+                        "unit": "mole",
+                        "out_of_bounds": {
+                        }
                     }
                 ]
             },
@@ -133,7 +138,9 @@ describe "update_a_tube_rack", :tube_rack => true do
                         },
                         "quantity": 10,
                         "type": "DNA",
-                        "unit": "mole"
+                        "unit": "mole",
+                        "out_of_bounds": {
+                        }
                     }
                 ]
             },
@@ -161,7 +168,9 @@ describe "update_a_tube_rack", :tube_rack => true do
                         },
                         "quantity": 10,
                         "type": "DNA",
-                        "unit": "mole"
+                        "unit": "mole",
+                        "out_of_bounds": {
+                        }
                     }
                 ]
             }

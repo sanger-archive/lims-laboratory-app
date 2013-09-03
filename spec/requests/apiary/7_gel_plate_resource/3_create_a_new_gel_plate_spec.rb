@@ -140,7 +140,9 @@ describe "create_a_new_gel_plate", :gel_plate => true do
                     },
                     "quantity": 10,
                     "type": "DNA",
-                    "unit": "mole"
+                    "unit": "mole",
+                    "out_of_bounds": {
+                    }
                 }
             ],
             "C6": [

@@ -51,7 +51,9 @@ describe "update_individual_wells_in_a_plate", :plate => true do
                     },
                     "quantity": 5,
                     "type": "RNA",
-                    "unit": "mole"
+                    "unit": "mole",
+                    "out_of_bounds": {
+                    }
                 }
             ],
             "A2": [
@@ -149,7 +151,9 @@ describe "update_individual_wells_in_a_plate", :plate => true do
                     },
                     "quantity": 100,
                     "type": "new type",
-                    "unit": "mole"
+                    "unit": "mole",
+                    "out_of_bounds": {
+                    }
                 }
             ],
             "C6": [

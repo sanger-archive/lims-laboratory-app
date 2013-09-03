@@ -67,7 +67,9 @@ describe "create_a_new_tube_rack_and_add_it_multipe_tubes", :tube_rack => true d
                         },
                         "quantity": 5,
                         "type": "NA",
-                        "unit": "mole"
+                        "unit": "mole",
+                        "out_of_bounds": {
+                        }
                     }
                 ]
             },
@@ -95,7 +97,9 @@ describe "create_a_new_tube_rack_and_add_it_multipe_tubes", :tube_rack => true d
                         },
                         "quantity": 10,
                         "type": "RNA",
-                        "unit": "mole"
+                        "unit": "mole",
+                        "out_of_bounds": {
+                        }
                     }
                 ]
             }

@@ -137,7 +137,9 @@ describe "update_a_plate", :plate => true do
                     },
                     "quantity": 10,
                     "type": "RNA",
-                    "unit": "mole"
+                    "unit": "mole",
+                    "out_of_bounds": {
+                    }
                 }
             ],
             "C6": [

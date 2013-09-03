@@ -108,12 +108,16 @@ describe "transfer_plates_to_plates_with_solvent", :plate => true do
                                     },
                                     "quantity": 60.0,
                                     "type": "sample",
-                                    "unit": "mole"
+                                    "unit": "mole",
+                                    "out_of_bounds": {
+                                    }
                                 },
                                 {
                                     "quantity": 60.0,
                                     "type": "solvent",
-                                    "unit": "ul"
+                                    "unit": "ul",
+                                    "out_of_bounds": {
+                                    }
                                 }
                             ],
                             "A2": [
@@ -509,12 +513,16 @@ describe "transfer_plates_to_plates_with_solvent", :plate => true do
                                     },
                                     "quantity": 60.0,
                                     "type": "sample",
-                                    "unit": "mole"
+                                    "unit": "mole",
+                                    "out_of_bounds": {
+                                    }
                                 },
                                 {
                                     "quantity": 60.0,
                                     "type": "solvent",
-                                    "unit": "ul"
+                                    "unit": "ul",
+                                    "out_of_bounds": {
+                                    }
                                 }
                             ],
                             "C4": [
@@ -795,12 +803,16 @@ describe "transfer_plates_to_plates_with_solvent", :plate => true do
                                     },
                                     "quantity": 40.0,
                                     "type": "DNA",
-                                    "unit": "mole"
+                                    "unit": "mole",
+                                    "out_of_bounds": {
+                                    }
                                 },
                                 {
                                     "quantity": 40.0,
                                     "type": "DNA",
-                                    "unit": "mole"
+                                    "unit": "mole",
+                                    "out_of_bounds": {
+                                    }
                                 }
                             ],
                             "B3": [
@@ -1196,12 +1208,16 @@ describe "transfer_plates_to_plates_with_solvent", :plate => true do
                                     },
                                     "type": "RNA",
                                     "quantity": 40.0,
-                                    "unit": "mole"
+                                    "unit": "mole",
+                                    "out_of_bounds": {
+                                    }
                                 },
                                 {
                                     "quantity": 40.0,
                                     "type": "RNA",
-                                    "unit": "mole"
+                                    "unit": "mole",
+                                    "out_of_bounds": {
+                                    }
                                 }
                             ],
                             "D5": [
