@@ -1,10 +1,13 @@
 require 'lims-core/persistence/persist_association_trait'
+require 'lims-core/persistence/sequel/persistor'
 module Lims::LaboratoryApp
   module Laboratory
     module Container
       module ContainerPersistorTrait
         as_trait do |args|
           element = args[:element]
+          parent_class = self.name.split('::').last
+          parent = parent_class.snakecase
           class_name = element.to_s.camelcase
           table_name = args[:table_name]
           class_eval <<-EOC
@@ -25,16 +28,16 @@ module Lims::LaboratoryApp
         end
 
         association_class "#{class_name}" do
-          attribute :flowcell, Flowcell, :relation => :parent
+          attribute :#{parent}, #{parent_class}, :relation => :parent
           attribute :position, Fixnum
           attribute :aliquot, Aliquot, :relation => :parent
 
           def on_load
-            @flowcell[@position] << @aliquot
+            @#{parent}[@position] << @aliquot
           end
 
           def invalid?
-            !@flowcell[@position].include?(@aliquot)
+            !@#{parent}[@position].include?(@aliquot)
           end
         end
 
