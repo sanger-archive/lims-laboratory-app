@@ -28,7 +28,7 @@ module Lims::LaboratoryApp
         end
 
         association_class "#{class_name}" do
-          attribute :#{parent}, #{parent_class}, :relation => :parent
+          attribute :#{parent}, #{parent_class}, :relation => :parent, :skip_parents_for_attributes => true
           attribute :position, Fixnum
           attribute :aliquot, Aliquot, :relation => :parent
 
