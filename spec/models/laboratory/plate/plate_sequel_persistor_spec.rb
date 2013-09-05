@@ -98,6 +98,9 @@ module Lims::LaboratoryApp
           it "deletes the well rows" do
             expect { delete_plate }.to change { db[:wells].count}.by(-31)
           end
+          it "deletes the aliquot rows" do
+            expect { delete_plate }.to change { db[:aliquots].count}.by(-31)
+          end
         end
 
         context "with a plate type" do

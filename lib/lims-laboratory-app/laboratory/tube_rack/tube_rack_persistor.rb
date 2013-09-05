@@ -10,7 +10,7 @@ module Lims::LaboratoryApp
     # Real implementation classes (e.g. Sequel::TubeRack) should
     # include the suitable persistor.
     class TubeRack
-      does "lims/laboratory_app/laboratory/container/container_persistor", :element => :tube_slot, :table_name => :tube_rack_slots, :contained_class => Tube
+      does "lims/laboratory_app/laboratory/container/container_persistor", :element => :tube_slot, :table_name => :tube_rack_slots, :contained_class => Tube, :deletable => false
 
       # Overwrite some behavior
       class TubeRackPersistor

@@ -13,6 +13,7 @@ module Lims::LaboratoryApp
 
           contained_class = args.fetch(:contained_class, Aliquot)
           contained = contained_class.name.split('::').last.snakecase
+          delete_contained = args.fetch(:deletable, true)
 
           class_eval <<-EOC
       (does "lims/core/persistence/persistable", :children => [
@@ -34,7 +35,7 @@ module Lims::LaboratoryApp
         association_class "#{class_name}" do
           attribute :#{parent}, #{parent_class}, :relation => :parent, :skip_parents_for_attributes => true
           attribute :position, Fixnum
-          attribute :#{contained}, #{contained_class}, :relation => :parent
+          attribute :#{contained}, #{contained_class}, :relation => :parent, :deletable => #{delete_contained}
 
           def on_load
             @#{parent}[@position] << @#{contained}
