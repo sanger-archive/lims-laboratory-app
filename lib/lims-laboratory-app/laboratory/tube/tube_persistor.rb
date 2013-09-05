@@ -23,7 +23,7 @@ module Lims::LaboratoryApp
         end
 
         association_class "TubeAliquot" do
-          attribute :tube, Tube, :relation => :parent
+          attribute :tube, Tube, :relation => :parent, :skip_parents_for_attributes => true
           attribute :aliquot, Aliquot, :relation => :parent
 
           def on_load

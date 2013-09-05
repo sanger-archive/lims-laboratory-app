@@ -10,6 +10,10 @@ module Lims::LaboratoryApp
           parent = parent_class.snakecase
           class_name = element.to_s.camelcase
           table_name = args[:table_name]
+
+          contained_class = args.fetch(:contained_class, Aliquot)
+          contained = contained_class.name.split('::').last.snakecase
+
           class_eval <<-EOC
       (does "lims/core/persistence/persistable", :children => [
           {:name => :#{element}, :deletable => true }
@@ -18,8 +22,8 @@ module Lims::LaboratoryApp
 
         def children_#{element}(resource, children)
           resource.content.each_with_index do |#{element}, position|
-            #{element}.each do |aliquot|
-              #{element} = self.class::#{class_name}.new(resource, position, aliquot)
+            #{element}.each do |#{contained}|
+              #{element} = self.class::#{class_name}.new(resource, position, #{contained})
               state = @session.state_for(#{element})
               state.resource = #{element}
               children << #{element}
@@ -30,14 +34,14 @@ module Lims::LaboratoryApp
         association_class "#{class_name}" do
           attribute :#{parent}, #{parent_class}, :relation => :parent, :skip_parents_for_attributes => true
           attribute :position, Fixnum
-          attribute :aliquot, Aliquot, :relation => :parent
+          attribute :#{contained}, #{contained_class}, :relation => :parent
 
           def on_load
-            @#{parent}[@position] << @aliquot
+            @#{parent}[@position] << @#{contained}
           end
 
           def invalid?
-            !@#{parent}[@position].include?(@aliquot)
+            !@#{parent}[@position].include?(@#{contained})
           end
         end
 
