@@ -45,24 +45,6 @@ module Lims::LaboratoryApp
         end
         let(:tube_rack_id) { store.with_session { |session| @tube_rack_id = last_tube_rack_id(session) } }
 
-        context "when a non-orphan tube is put in a new tube rack", :focus => true do
-          let(:new_tube_rack) { new_empty_tube_rack }
-          let(:save_new_tube_rack_with_non_orphan_tube) do
-            store.with_session do |session|
-              session << new_tube_rack.tap do |r| 
-                old_tube_rack = session.tube_rack[tube_rack_id]
-                r[1] = old_tube_rack[0] 
-              end
-            end
-          end
-
-          it "raises an exception" do
-            expect do
-              save_new_tube_rack_with_non_orphan_tube
-            end.to raise_error(Laboratory::TubeRack::TubeInAnotherTubeRack)
-          end
-        end
-
         context "when modified within a session" do
           before do
             store.with_session do |s|
