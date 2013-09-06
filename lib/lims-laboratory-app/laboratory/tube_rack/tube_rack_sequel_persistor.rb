@@ -17,27 +17,6 @@ module Lims::LaboratoryApp
           :tube_racks
         end
 
-        def save_children(id, tube_rack)
-          validate_tube_location(tube_rack)          
-          super(id, tube_rack)
-        end
-
-        # @param [Lims::LaboratoryApp::Laboratory::TubeRack] tube_rack
-        # Raise a TubeInAnotherTubeRack exception if the tube already belongs to
-        # another tube rack.
-        def validate_tube_location(tube_rack)
-          tube_rack.each_with_index do |tube, location|
-            next unless tube
-            tube_id = @session.id_for(tube)
-            if tube_id
-              is_orphan_tube = @session.tube_rack_slot.dataset.where(:tube_id => tube_id).count == 0
-              unless is_orphan_tube
-                raise TubeRack::TubeInAnotherTubeRack, "The tube in #{location} belongs to another tube rack."
-              end
-            end
-          end
-        end
-
         # Delete the tube, rack association, but doesn't delete the tube.
         def delete_children(id, tube_rack)
           @session.tube_rack_slot.dataset.filter(:tube_rack_id => id).delete
