@@ -10,7 +10,6 @@ module Lims::LaboratoryApp
       class TubeSequelPersistor < TubePersistor
         include Lims::Core::Persistence::Sequel::Persistor
 
-
         # Delete all children of the given tube
         # But don't destroy the 'external' elements (example aliquots)
         # @param [Fixnum] id the id in the database
@@ -18,7 +17,13 @@ module Lims::LaboratoryApp
         def delete_children(id, tube)
           TubeAliquot::TubeSequelAliquotPersistor::dataset(@session).filter(:tube_id => id).delete
         end
+
+        def belongs_to_tube_rack?(tube)
+          tube_id = @session.id_for(tube)
+          @session.tube_rack_slot.dataset.where(:tube_id => tube_id).count > 0
+        end
       end
+
       module TubeAliquot
         class TubeSequelAliquotPersistor < TubeAliquotPersistor
           include Lims::Core::Persistence::Sequel::Persistor
