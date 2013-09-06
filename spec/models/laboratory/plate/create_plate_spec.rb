@@ -30,7 +30,8 @@ module Lims::LaboratoryApp
             1.upto(number_of_columns) do |column|
               h[Laboratory::Plate.indexes_to_element_name(row-1, column-1)] = [{
                 :sample => new_sample(row, column),
-                :quantity => nil
+                :quantity => nil,
+                :out_of_bounds => {:attribute_1 => "value 1", :attribute_2 => row+column}
               }]
             end
           end
@@ -50,6 +51,7 @@ module Lims::LaboratoryApp
             aliquots = plate[well_name]
             aliquots.size.should == 1
             aliquots.first.sample.should == expected_aliquots.first[:sample]
+            aliquots.first.out_of_bounds.should == expected_aliquots.first[:out_of_bounds]
           end
         end
       end

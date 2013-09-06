@@ -1,5 +1,5 @@
 module Lims
   module LaboratoryApp
-    VERSION = "1.8.1"
+    VERSION = "2.5.7.pre"
   end
 end

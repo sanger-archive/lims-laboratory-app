@@ -1,44 +1,31 @@
 require "requests/apiary/6_plate_resource/spec_helper"
-describe "create_a_new_plate_with_samples", :plate => true do
+describe "update_individual_wells_in_a_plate", :plate => true do
   include_context "use core context service"
-  it "create_a_new_plate_with_samples" do
-  # **Create a new plate with samples.**
-  # 
-  # * `number_of_rows` number of rows in the plate
-  # * `number_of_columns` number of columns in the plate
-  # * `type` actual type of the plate
-  # * `wells_description` map aliquots to well locations
+  it "update_individual_wells_in_a_plate" do
     sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
     sample2 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2')
-    save_with_uuid sample1 => [1,2,3,4,6], sample2 => [1,2,3,4,7]
+    plate = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_rows => 8, :number_of_columns => 12)
+    plate["A1"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 5, :type => "RNA", :sample => sample1)
+    plate["C5"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 10, :type => "DNA", :sample => sample2)
+    save_with_uuid sample1 => [1,2,3,4,6], sample2 => [1,2,3,4,7], plate => [1,2,3,4,5]
 
     header('Accept', 'application/json')
     header('Content-Type', 'application/json')
 
-    response = post "/plates", <<-EOD
+    response = put "/11111111-2222-3333-4444-555555555555", <<-EOD
     {
-    "plate": {
-        "number_of_rows": 8,
-        "number_of_columns": 12,
-        "type": "plate type",
-        "wells_description": {
-            "C5": [
-                {
-                    "sample": "11111111-2222-3333-4444-666666666666",
-                    "type": "DNA",
-                    "quantity": 10
-                }
-            ],
-            "F1": [
-                {
-                    "sample": "11111111-2222-3333-4444-777777777777",
-                    "type": "DNA",
-                    "quantity": 10,
-                    "out_of_bounds": {
-                        "attribute_1": "value 1"
-                    }
-                }
-            ]
+    "wells": {
+        "A1": {
+            "sample_uuid": "11111111-2222-3333-4444-666666666666",
+            "out_of_bounds": {
+                "attribute_1": "value 1",
+                "attribute_2": "value 2"
+            }
+        },
+        "C5": {
+            "sample_uuid": "11111111-2222-3333-4444-777777777777",
+            "aliquot_type": "new type",
+            "aliquot_quantity": 100
         }
     }
 }
@@ -55,10 +42,28 @@ describe "create_a_new_plate_with_samples", :plate => true do
         "uuid": "11111111-2222-3333-4444-555555555555",
         "number_of_rows": 8,
         "number_of_columns": 12,
-        "type": "plate type",
+        "type": null,
         "wells": {
             "A1": [
-
+                {
+                    "sample": {
+                        "actions": {
+                            "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "delete": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "create": "http://example.org/11111111-2222-3333-4444-666666666666"
+                        },
+                        "uuid": "11111111-2222-3333-4444-666666666666",
+                        "name": "sample 1"
+                    },
+                    "quantity": 5,
+                    "type": "RNA",
+                    "unit": "mole",
+                    "out_of_bounds": {
+                        "attribute_1": "value 1",
+                        "attribute_2": "value 2"
+                    }
+                }
             ],
             "A2": [
 
@@ -145,16 +150,16 @@ describe "create_a_new_plate_with_samples", :plate => true do
                 {
                     "sample": {
                         "actions": {
-                            "read": "http://example.org/11111111-2222-3333-4444-666666666666",
-                            "update": "http://example.org/11111111-2222-3333-4444-666666666666",
-                            "delete": "http://example.org/11111111-2222-3333-4444-666666666666",
-                            "create": "http://example.org/11111111-2222-3333-4444-666666666666"
+                            "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+                            "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+                            "delete": "http://example.org/11111111-2222-3333-4444-777777777777",
+                            "create": "http://example.org/11111111-2222-3333-4444-777777777777"
                         },
-                        "uuid": "11111111-2222-3333-4444-666666666666",
-                        "name": "sample 1"
+                        "uuid": "11111111-2222-3333-4444-777777777777",
+                        "name": "sample 2"
                     },
-                    "quantity": 10,
-                    "type": "DNA",
+                    "quantity": 100,
+                    "type": "new type",
                     "unit": "mole"
                 }
             ],
@@ -252,24 +257,7 @@ describe "create_a_new_plate_with_samples", :plate => true do
 
             ],
             "F1": [
-                {
-                    "sample": {
-                        "actions": {
-                            "read": "http://example.org/11111111-2222-3333-4444-777777777777",
-                            "update": "http://example.org/11111111-2222-3333-4444-777777777777",
-                            "delete": "http://example.org/11111111-2222-3333-4444-777777777777",
-                            "create": "http://example.org/11111111-2222-3333-4444-777777777777"
-                        },
-                        "uuid": "11111111-2222-3333-4444-777777777777",
-                        "name": "sample 2"
-                    },
-                    "quantity": 10,
-                    "type": "DNA",
-                    "unit": "mole",
-                    "out_of_bounds": {
-                        "attribute_1": "value 1"
-                    }
-                }
+
             ],
             "F2": [
 
