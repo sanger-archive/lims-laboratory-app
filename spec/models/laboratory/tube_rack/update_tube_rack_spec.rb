@@ -30,6 +30,10 @@ module Lims::LaboratoryApp
       }
       subject { action }
 
+      before do
+        Tube::TubePersistor.any_instance.stub(:belongs_to_tube_rack?).and_return(false)
+      end
+
       context "valid" do
         let(:result) { action.call }
         let(:updated_tube_rack) { result[:tube_rack] }
