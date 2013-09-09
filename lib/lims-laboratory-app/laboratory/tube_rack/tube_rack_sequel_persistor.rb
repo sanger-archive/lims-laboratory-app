@@ -7,9 +7,6 @@ module Lims::LaboratoryApp
   module Laboratory
     # Not a tube_rack but a tube_rack persistor.
     class TubeRack
-      class TubeInAnotherTubeRack < StandardError
-      end
-
       class TubeRackSequelPersistor < TubeRackPersistor
         include Lims::Core::Persistence::Sequel::Persistor
 
