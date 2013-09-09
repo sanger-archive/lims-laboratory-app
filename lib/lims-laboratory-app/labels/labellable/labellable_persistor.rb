@@ -1,5 +1,5 @@
-require 'lims-core/persistence/sequel/persistor'
 require 'lims-laboratory-app/labels/labellable'
+require 'lims-laboratory-app/laboratory/container/container_persistor_trait'
 
 # needs to require all label subclasses
 require 'lims-laboratory-app/labels/sanger_barcode'
@@ -7,119 +7,78 @@ require 'lims-laboratory-app/labels/sanger_barcode'
 module Lims::LaboratoryApp
   module Labels
     class Labellable
-      class LabelProxy
-        include Lims::Core::Resource
-        attribute :position, String
-        attribute :labellable, Labellable
-        attribute :label, Object
-
-        def initialize(labellable, position, label=nil)
-          @labellable = labellable
-          @position = position
-          @label = label
-        end
-        def keys 
-          [@labellable.object_id, @position, @label.object_id]
-        end
-        def hash
-          keys.hash
-        end
-
-        def eql?(other)
-          keys == other.keys
-        end
-      end
-
-      class LabellablePersistor < Lims::Core::Persistence::Persistor
-        Model = Labels::Labellable
-
-        def label
-          @session.labellable_label
-        end
-
+      does "lims/laboratory_app/laboratory/container/container_persistor", :element => :label_proxy, :table_name => :labels,
+      :contained_class => Object
+      class LabellablePersistor
         # Saves all children of a given Labellable
-        def children(labellable)
+        def children_label_proxy(labellable, children)
           labellable.map do |position, label_object|
-            LabelProxy.new(labellable, position)
+            proxy = LabelProxy.new(labellable, position, label_object)
+            state = @session.state_for(proxy)
+            state.resource = proxy
+            children << proxy
           end
         end
 
-        def filter_attributes_on_save(attributes)
+        def filter_attributes_on_save(attributes, *params)
           attributes.delete(:content)
-          super(attributes)
+          if attributes[:type] == "resource"
+            name = attributes[:name]
+            attributes[:name] = @session.pack_uuid(name)
+          end
+          attributes
         end
 
-        # Loads all children of a given Labellable
-        def load_children(states, *params)
-          label.find_by(:labellable_id => states.map(&:id))
+        def filter_attributes_on_load(attributes, *params)
+          if attributes[:type] == "resource"
+            name = attributes[:name]
+            attributes[:name] = @session.unpack_uuid(name)
+          end
+          attributes
         end
-          # We need to compact the value if it's an uuid (type = resource).
-          # so that we can do a join with the uuid_resources table.
-            def filter_attributes_on_save(attributes, *params)
-              attributes.delete(:content)
-              if attributes[:type] == "resource"
-                name = attributes[:name]
-                attributes[:name] = @session.pack_uuid(name)
-              end
-              attributes
-            end
 
-            # needs to uncompact uuid if it's a resource
-            def filter_attributes_on_load(attributes, *params)
-              if attributes[:type] == "resource"
-                name = attributes[:name]
-                attributes[:name] = @session.unpack_uuid(name)
-              end
-              attributes
-            end
-      end
-      class LabelProxy 
-        NOT_IN_ROOT = true
-        SESSION_NAME=:labellable_label
+        alias label label_proxy
+
+        class LabelProxy
           def attributes
             (@labellable[@position].andtap do |label|
-              label.attributes
-            end || {}).tap do |att| 
-              att[:position]=@position
-              att[:labellable]=@labellable
-            end
-
-          end
-        class LabelPersistor < Lims::Core::Persistence::Persistor
-          Model = Labels::Labellable::LabelProxy
-          def attribute_for(key)
-            {labellable: 'labellable_id',
-            }[key]
-          end
-
-
-          def new_from_attributes(attributes)
-            labellable = @session.labellable[attributes.delete(:labellable_id)]
-            position = attributes.delete(:position)
-            super(attributes) do |att|
-              label = Label.new(att)
-              labellable[position] = label
-              model.new(labellable, position)
+                label.attributes
+              end || {}).tap do |att| 
+                att[:position]=@position
+                att[:labellable]=@labellable
             end
           end
-          def invalid_resource?(resource)
-            !resource.labellable.include?(resource.position)
-          end
-        end
 
-        class LabelSequelPersistor < LabelPersistor
-          include Lims::Core::Persistence::Sequel::Persistor
-          def self.table_name
-            :labels
-          end
-          def new_from_attributesX(attributes)
-            labellable = @session.labellable[attributes.delete(:labellable_id)]
-            position = attributes.delete(:position)
-            labellable[position] = Label.new(attributes)
+          def invalid?
+            @labellable[@position] != @object
           end
 
+          class LabelProxyPersistor
+            def on_load
+              @labellable[@position] = Label.new(@object)
+            end
+
+            # General behavior for a proxy class
+            def new_from_attributes(attributes)
+              labellable = @session.labellable[attributes.delete(:labellable_id)]
+              position = attributes.delete(:position)
+              super(attributes) do |att|
+                label = Label.new(att)
+                labellable[position] = label
+                model.new(labellable, position)
+              end
+            end
+
+            def parents(resource)
+              super(resource)
+            end
+
+            def parents_for_attributes(att)
+              []
+            end
           end
         end
       end
     end
   end
+end
