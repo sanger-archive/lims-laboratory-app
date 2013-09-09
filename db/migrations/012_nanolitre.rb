@@ -1,9 +1,9 @@
 ::Sequel.migration do
   up do
-    fetch('UPDATE aliquots SET quantity = quantity*1000 WHERE quantity is not null AND `type` = "solvent"').all
+    self[:aliquots].exclude(:quantity => nil).where(:type => "solvent").update(:quantity => Sequel.expr(:quantity) * 1000)
   end
 
   down do
-    fetch('UPDATE aliquots SET quantity = quantity/1000 WHERE quantity is not null AND `type` = "solvent"').all
+    self[:aliquots].exclude(:quantity => nil).where(:type => "solvent").update(:quantity => Sequel.expr(:quantity) / 1000)
   end
 end
