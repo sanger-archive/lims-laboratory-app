@@ -10,7 +10,6 @@ module Lims::LaboratoryApp
       class TubeRackSequelPersistor < TubeRackPersistor
         include Lims::Core::Persistence::Sequel::Persistor
 
-
         def self.table_name
           :tube_racks
         end
@@ -20,6 +19,7 @@ module Lims::LaboratoryApp
           @session.tube_rack_slot.dataset.filter(:tube_rack_id => id).delete
         end
       end
+
       # Not a slot but a slot {Persistor}.
       class Slot 
         class SlotSequelPersitor < SlotPersistor

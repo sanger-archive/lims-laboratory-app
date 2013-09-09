@@ -1,0 +1,37 @@
+<%
+require 'json'
+examples = []
+examples << h= {:header => [], :response_header => [] }
+h[:description] = "Tube is already contained in another tube rack"
+h[:title]= 'Create tube rack with non orphan tube'
+h[:method] = "POST"
+h[:url] = '/tube_racks'
+h[:header] << 'Accept: application/json'
+h[:setup]=<<EOD
+tube = Lims::LaboratoryApp::Laboratory::Tube.new
+tube_rack = Lims::LaboratoryApp::Laboratory::TubeRack.new(:number_of_rows => 8, :number_of_columns => 12)
+tube_rack["A1"] = tube
+
+save_with_uuid tube => [1,2,3,4,0], tube_rack => [1,2,3,4,1]
+EOD
+h[:parameters] = <<EOD
+{ "tube_rack": {
+    "number_of_rows": 8,
+    "number_of_columns": 12,
+    "tubes": {
+        "B1": "11111111-2222-3333-4444-000000000000"
+    }
+} }
+EOD
+h[:status]=500
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{
+  "general" :  [
+"The tube in B1 belongs to another tube rack."
+  ]
+}
+EOD
+%>
+
+<%= {:examples => examples }.to_json %>
