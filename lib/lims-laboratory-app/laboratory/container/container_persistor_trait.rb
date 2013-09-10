@@ -46,7 +46,8 @@ module Lims::LaboratoryApp
           end
 
           def invalid?
-            !@#{parent}[@position].include?(@#{contained})
+            @position.nil? && @#{contained} != nil ||
+              !@#{parent}[@position].andtap { |p| p.include?(@#{contained}) }
           end
         end
 
