@@ -49,13 +49,15 @@ module Lims::LaboratoryApp
 
         alias item item_proxy
         class ItemProxy
+
+          SESSION_NAME = :order_item
+
           def attributes
-            @item ?  @item.attributes.merge({order: @order, role: @role}) : {}
+            @item ?  @item.attributes.merge({order: @order, role: @position}) : {}
           end
 
           def on_load
-            debugger
-              @order.add_item(@position, @item)
+            @order.add_item(@position, @item)
           end
 
           class ItemProxyPersistor
@@ -98,7 +100,7 @@ module Lims::LaboratoryApp
               end
             end
             def parents(resource)
-              super(resource)
+              []
             end
 
             def parents_for_attributes(att)
