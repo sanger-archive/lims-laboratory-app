@@ -1,7 +1,7 @@
 # vi: ts=2:sts=2:et:sw=2 spell:spelllang=en
 
 
-require 'lims-core/persistence/persistable'
+require 'lims-core/persistence/persistable_trait'
 require 'lims-laboratory-app/laboratory/oligo'
 
 module Lims::LaboratoryApp
