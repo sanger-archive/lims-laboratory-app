@@ -66,6 +66,8 @@ module Lims::LaboratoryApp
             @order.add_item(@position, @item)
           end
 
+
+
           class ItemProxyPersistor
             def attribute_for(key)
               {order: 'order_id', batch: 'batch_id'
@@ -106,15 +108,17 @@ module Lims::LaboratoryApp
               end
             end
             def parents(resource)
-              []
+              [].tap do |list|
+                resource.item.andtap { |i|  i.batch.andtap { |b| list << b } }
             end
+          end
 
-            def parents_for_attributes(att)
-              []
-            end
+          def parents_for_attributes(att)
+            []
           end
         end
       end
     end
   end
+end
 end
