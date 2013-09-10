@@ -49,14 +49,20 @@ module Lims::LaboratoryApp
 
         alias item item_proxy
         class ItemProxy
-  def attributes
-    @item.attributes.merge({order: @order, role: @role})
-  end
+          def attributes
+            @item ?  @item.attributes.merge({order: @order, role: @role}) : {}
+          end
+
+          def on_load
+            debugger
+              @order.add_item(@position, @item)
+          end
+
           class ItemProxyPersistor
-    def attribute_for(key)
-      {order: 'order_id', batch: 'batch_id'
-      }[key]
-    end
+            def attribute_for(key)
+              {order: 'order_id', batch: 'batch_id'
+              }[key]
+            end
             def filter_attributes_on_save(attributes, *params)
               super(attributes).tap do |attributes|
                 attributes[:uuid].andtap do |uuid|
@@ -73,6 +79,13 @@ module Lims::LaboratoryApp
               end
             end
 
+            def self.table_name
+              :items
+            end
+
+            # We can't use yet the default association new_from_attributes method
+            # as it thinks Item is a parent or a resource and won't be able 
+            # to build it from the attributes.
             def new_from_attributes(_attributes)
               super(filter_attributes_on_load(_attributes)) do |attributes|
                 order = @session.order[attributes.delete(:order_id)]
