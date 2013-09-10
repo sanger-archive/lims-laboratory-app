@@ -1,5 +1,5 @@
 require 'lims-laboratory-app/labels/labellable'
-require 'lims-laboratory-app/laboratory/container/container_persistor_trait'
+require 'lims-laboratory-app/container_persistor_trait'
 
 # needs to require all label subclasses
 require 'lims-laboratory-app/labels/sanger_barcode'
@@ -7,7 +7,7 @@ require 'lims-laboratory-app/labels/sanger_barcode'
 module Lims::LaboratoryApp
   module Labels
     class Labellable
-      does "lims/laboratory_app/laboratory/container/container_persistor", :element => :label_proxy, :table_name => :labels,
+      does "lims/laboratory_app/container_persistor", :element => :label_proxy, :table_name => :labels,
       :contained_class => Object
       class LabellablePersistor
         # Saves all children of a given Labellable

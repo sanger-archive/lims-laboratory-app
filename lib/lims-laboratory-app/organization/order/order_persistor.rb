@@ -5,12 +5,14 @@ require 'lims-core/persistence/sequel/persistor'
 require 'lims-laboratory-app/organization/order'
 require 'lims-laboratory-app/organization/study/all'
 require 'lims-laboratory-app/organization/user/all'
+require 'lims-laboratory-app/organization/batch/all'
+require 'lims-laboratory-app/container_persistor_trait'
 
 module Lims::LaboratoryApp
   module Organization
     # Base for all Order persistor.
     class Order
-      does "lims/laboratory_app/laboratory/container/container_persistor", :element => :item_proxy, :table_name => :items,
+      does "lims/laboratory_app/container_persistor", :element => :item_proxy, :table_name => :items,
       :contained_class => Item
       class OrderPersistor
         def attribute_for(key)

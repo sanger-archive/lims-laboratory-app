@@ -1,7 +1,7 @@
 # vi: ts=2:sts=2:et:sw=2 spell:spelllang=en
 
 require 'lims-laboratory-app/laboratory/tube_rack'
-require 'lims-laboratory-app/laboratory/container/container_persistor_trait'
+require 'lims-laboratory-app/container_persistor_trait'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -10,7 +10,7 @@ module Lims::LaboratoryApp
     # Real implementation classes (e.g. Sequel::TubeRack) should
     # include the suitable persistor.
     class TubeRack
-      does "lims/laboratory_app/laboratory/container/container_persistor", :element => :tube_slot, :table_name => :tube_rack_slots, :contained_class => Tube, :deletable => false
+      does "lims/laboratory_app/container_persistor", :element => :tube_slot, :table_name => :tube_rack_slots, :contained_class => Tube, :deletable => false
 
       # Overwrite some behavior
       class TubeRackPersistor
