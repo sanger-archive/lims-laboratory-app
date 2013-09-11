@@ -1,9 +1,9 @@
 GIT
   remote: http://github.com/sanger/lims-api.git
-  revision: 67b18da64903077eb87c7080613ba815ef4e2ca5
+  revision: 5fd325b3a8a29a1916e72b35fd66eee9698a2cce
   branch: uat
   specs:
-    lims-api (2.5.0.pre)
+    lims-api (2.5.1.pre)
       active_support
       bunny (= 0.9.0.pre10)
       json
@@ -45,7 +45,7 @@ GIT
 PATH
   remote: .
   specs:
-    lims-laboratory-app (2.5.9.pre)
+    lims-laboratory-app (2.5.10.pre)
 
 GEM
   remote: http://rubygems.org/
@@ -98,6 +98,7 @@ GEM
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.13.1)
     ruby-graphviz (1.0.9)
+    ruby-prof (0.13.0)
     sequel (4.0.0)
     sqlite3 (1.3.7)
     state_machine (1.2.0)
@@ -129,7 +130,7 @@ DEPENDENCIES
   debugger-completion
   hashdiff
   jdbc-mysql
-  lims-api (~> 2.5.0.pre)!
+  lims-api (~> 2.5.1.pre)!
   lims-core (~> 2.5.0.pre)!
   lims-laboratory-app!
   psd_logger!
@@ -138,6 +139,7 @@ DEPENDENCIES
   redcarpet
   rspec (~> 2.13)
   ruby-graphviz
+  ruby-prof
   sinatra!
   sqlite3
   trinidad
