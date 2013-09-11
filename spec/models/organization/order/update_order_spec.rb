@@ -330,7 +330,7 @@ module Lims::LaboratoryApp
       context "valid calling context" do
         let!(:store) { Lims::Core::Persistence::Store.new() }
         include_context("for application",  "Test search creation")
-        let(:batch) { mock(:batch) }
+        let(:batch) { Batch.new }
         let(:action) { described_class.new(:store => store , :user => user, :application => application) do |action, session|
 
             action.order = order
