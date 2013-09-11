@@ -5,7 +5,7 @@ require 'models/actions/action_examples'
 
 #Model requirements
 require 'lims-laboratory-app/organization/order/update_order'
-require 'lims-laboratory-app/organization/order'
+require 'lims-laboratory-app/organization/order/all'
 module Lims::LaboratoryApp
   module Organization
 
