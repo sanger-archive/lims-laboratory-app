@@ -39,7 +39,7 @@ module Lims::LaboratoryApp
           # @yieldparam [Integer] position
           # @yieldparam [Aliquot] aliquot
           def load_tubes(tube_rack_id)
-            dataset.join(@session.tube.dataset, :id => :tube_id).filter(:tube_rack_id => tube_rack_id).each do |att|
+            dataset.join(:tubes, :id => :tube_id).filter(:tube_rack_id => tube_rack_id).each do |att|
               position = att.delete(:position)
               att.delete(:id)
               tube  = @session.tube.get_or_create_single_model(att[:tube_id], att)

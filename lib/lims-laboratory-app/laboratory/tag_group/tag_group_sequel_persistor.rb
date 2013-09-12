@@ -36,7 +36,7 @@ module Lims::LaboratoryApp
           # @yieldparam [Oligo] oligo Object created or loaded
           # @yieldparam [Fixnum] position the index of Oligo in the TagGroup.
           def load_oligos(group_id, &block)
-            dataset.join(@session.oligo.dataset, :id => :oligo_id).filter(:tag_group_id => group_id).order(:position).each do |att|
+            dataset.join(:oligos, :id => :oligo_id).filter(:tag_group_id => group_id).order(:position).each do |att|
               position = att.delete(:position)
               oligo_id = att.delete(:oligo_id)
               att.delete(:group_id)

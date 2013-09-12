@@ -25,7 +25,7 @@ module Lims::LaboratoryApp
           # @yieldparam [Integer] position
           # @yieldparam [Aliquot] aliquot
           def load_aliquots(spin_column_id)
-            dataset.join(@session.aliquot.dataset, :id => :aliquot_id).filter(:spin_column_id => spin_column_id).each do |att|
+            dataset.join(:aliquots, :id => :aliquot_id).filter(:spin_column_id => spin_column_id).each do |att|
               att.delete(:id)
               aliquot  = @session.aliquot.get_or_create_single_model(att[:aliquot_id], att)
               yield(aliquot)
