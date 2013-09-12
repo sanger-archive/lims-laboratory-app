@@ -26,7 +26,7 @@ module Lims::LaboratoryApp
           # @yieldparam [Integer] position
           # @yieldparam [Aliquot] aliquot
           def load_aliquots(flowcell_id)
-            dataset.join(@session.aliquot.dataset, :id => :aliquot_id).filter(:flowcell_id => flowcell_id).each do |att|
+            dataset.join(:aliquots, :id => :aliquot_id).filter(:flowcell_id => flowcell_id).each do |att|
               position = att.delete(:position)
               att.delete(:id)
               aliquot  = @session.aliquot.get_or_create_single_model(att[:aliquot_id],  att )
