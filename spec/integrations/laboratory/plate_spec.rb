@@ -60,7 +60,7 @@ shared_context "for plate with samples" do
   let(:aliquot_quantity) { 10 }
   let(:unit_type) { "mole" }
   let(:plate_type) { "plate type" }
-  let(:wells_description) { { "C5" => [{"sample" => sample_uuid, "quantity" => aliquot_quantity, "type" => aliquot_type, "unit" => unit_type }] } }
+  let(:wells_description) { { "C5" => [{"sample" => sample_uuid, "quantity" => aliquot_quantity, "type" => aliquot_type, "unit" => unit_type}] } }
   let(:wells_description_response) { { "C5" => aliquot_array } }
   let(:well_hash) { create_element_hash.merge(wells_description_response) }
 end
@@ -121,7 +121,6 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
       it_behaves_like('creating a resource with a label on it')
     end
   end
-
   
   context "#update" do
     include_context "with saved plate with samples"
@@ -155,7 +154,8 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
           "name" => sample_name},
           "type" => aliquot_type,
           "quantity" => aliquot_quantity,
-          "unit" => unit_type} ]
+          "unit" => unit_type
+      } ]
       }
 
       it "display a page" do

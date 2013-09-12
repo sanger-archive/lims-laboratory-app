@@ -67,9 +67,9 @@ describe "search_for_a_labellable", :search => true do
     response.should match_json_response(200, <<-EOD) 
     {
     "actions": {
-        "read": "http://example.org/labellables/page=1",
-        "first": "http://example.org/labellables/page=1",
-        "last": "http://example.org/labellables/page=-1"
+        "read": "http://example.org/11111111-2222-3333-4444-555555555555/page=1",
+        "first": "http://example.org/11111111-2222-3333-4444-555555555555/page=1",
+        "last": "http://example.org/11111111-2222-3333-4444-555555555555/page=-1"
     },
     "size": 1,
     "labellables": [
