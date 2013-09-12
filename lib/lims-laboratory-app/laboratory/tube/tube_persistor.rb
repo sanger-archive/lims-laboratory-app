@@ -22,6 +22,12 @@ module Lims::LaboratoryApp
           end
         end
 
+        def belongs_to_tube_rack?(tube)
+          tube_id = @session.id_for(tube)
+          @session.tube_rack_slot.dataset.where(:tube_id => tube_id).count > 0
+        end
+
+
         association_class "TubeAliquot" do
           attribute :tube, Tube, :relation => :parent, :skip_parents_for_attributes => true
           attribute :aliquot, Aliquot, :relation => :parent

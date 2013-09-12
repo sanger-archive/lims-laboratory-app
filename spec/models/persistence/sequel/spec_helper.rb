@@ -1,4 +1,5 @@
 require 'models/persistence/spec_helper'
+require 'lims-core/persistence/sequel/persistor'
 
 module Helper
 def save(object)

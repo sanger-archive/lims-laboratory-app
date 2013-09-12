@@ -32,12 +32,19 @@ module Lims::LaboratoryApp
 
       # the form of the chemical substance, like library, sample etc ...
       attribute :type, String # Subclass ?
+      # Contain extra data which are not stored in S2 database but broadcasted on the message bus
+      attribute :out_of_bounds, Hash, :required => false, :default => {}
 
       #validates_presence_of :quantity
       #validates_numericalness_of :quantity, :gte => 0
 
+      # As out_of_bounds parameter is not persisted and saved in the database
+      # we remove it from the attributes when it is not used. So, the return
+      # json in the api does not mention it.
       def attributes
-        {sample: @sample, tag: @tag, quantity: @quantity, type: @type}
+        super.tap do |attr|
+          attr.delete(:out_of_bounds) if out_of_bounds.empty?
+        end
       end
 
       # Take a percentage of an aliquot
@@ -60,7 +67,7 @@ module Lims::LaboratoryApp
 
       def ===(other)
         to_exclude = [:quantity]
-        a, b = [self, other].map { |al| al.attributes - to_exclude }
+        a, b = [self, other].map { |a| a.attributes - to_exclude }
         a == b
       end
 
@@ -77,27 +84,34 @@ module Lims::LaboratoryApp
 
         # Type
         Solvent = "solvent"
-
-        # describe what kind of measure the quantity refers to.
-        # @return [String]
-        def dimension
-          # By default, dimension are AmountOfSubstance except for
-          # solvent which are by default liquid, therefore volume.
-          case type
-          when Solvent then Volume
-          else AmountOfSubstance
-          end
-        end
       end
       include Dimension
+
+      # describe what kind of measure the quantity refers to.
+      # @return [String]
+      def self.dimension(type)
+        # By default, dimension are AmountOfSubstance except for
+        # solvent which are by default liquid, therefore volume.
+        case type
+        when Solvent then Volume
+        else AmountOfSubstance
+        end
+      end
+
+      def dimension
+        self.class.dimension(type)
+      end
 
       # The unit in which the quantity is store.
       # For example, volume are stored in microlittre
       # so the unit will be ul.
-      def unit
-        DimensionToUnit[dimension]
+      def self.unit(type)
+        DimensionToUnit[dimension(type)]
       end
 
+      def unit
+        self.class.unit(type)
+      end
 
       # add the specified amount to the current aliquot quantity, can be nil
       # @param [Float,Nil] quantity
