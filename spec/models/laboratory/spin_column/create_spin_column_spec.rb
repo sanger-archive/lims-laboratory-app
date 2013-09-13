@@ -4,6 +4,8 @@ require 'models/actions/action_examples'
 
 #Model requirements
 require 'lims-laboratory-app/laboratory/spin_column/create_spin_column'
+require 'lims-laboratory-app/laboratory/tube/all'
+require 'lims-laboratory-app/laboratory/spin_column/all'
 require 'models/laboratory/tube_shared'
 require 'lims-core/persistence/store'
 
@@ -22,7 +24,7 @@ module Lims::LaboratoryApp
           end
           it_behaves_like "an action"
           it "create a spin column when called" do
-            Lims::Core::Persistence::Session.any_instance.should_receive(:save)
+            Lims::Core::Persistence::Session.any_instance.should_receive(:save_all)
             result = subject.call
             result.should be_a(Hash)
             result[:spin_column].should be_a(Laboratory::SpinColumn)
@@ -38,7 +40,7 @@ module Lims::LaboratoryApp
           end
           it_behaves_like "an action"
           it "create a spin column when called" do
-            Lims::Core::Persistence::Session.any_instance.should_receive(:save)
+            Lims::Core::Persistence::Session.any_instance.should_receive(:save_all)
             result = subject.call
             result.should be_a(Hash)
             result[:spin_column].should be_a(Laboratory::SpinColumn)

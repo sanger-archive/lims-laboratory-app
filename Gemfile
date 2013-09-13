@@ -4,9 +4,9 @@ source 'http://rubygems.org'
 gemspec
 
 gem 'sinatra', :git => 'http://github.com/sinatra/sinatra.git', :branch => '459369eb66224836f72e21bbece58c007f3422fa'
-gem 'lims-core', '~>2.3', :git => 'http://github.com/sanger/lims-core.git' , :branch => 'development'
+gem 'lims-core', '~>3.0', :git => 'http://github.com/sanger/lims-core.git' , :branch => 'development'
 #gem 'lims-core', :path => '../lims-core'
-gem 'lims-api', '~>2.4', :git => 'http://github.com/sanger/lims-api.git' , :branch => 'development'
+gem 'lims-api', '~>3.0', :git => 'http://github.com/sanger/lims-api.git' , :branch => 'development'
 #gem 'lims-api', :path => '../lims-api'
 
 group :debugging do
@@ -16,6 +16,7 @@ end
 
 group :development do
   gem 'sqlite3', :platforms => :mri
+  gem 'mysql2', :platforms => :mri
 end
 
 group :yard do

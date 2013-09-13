@@ -11,8 +11,8 @@ module Lims::LaboratoryApp
         Array.new(p.number_of_rows * p.number_of_columns)
       end
 
-      class RackPositionNotEmpty < StandardError
-      end
+      RackPositionNotEmpty = Class.new(StandardError)
+      TubeInAnotherTubeRack = Class.new(StandardError)
 
       # Overwrite []= method to add tube in the rack.
       # The value nil needs to be set sometimes, for

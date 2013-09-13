@@ -4,6 +4,7 @@
 require 'lims-core/persistence/persistor'
 require 'lims-laboratory-app/laboratory/aliquot'
 require 'lims-laboratory-app/laboratory/sample/sample_persistor'
+require 'lims-laboratory-app/laboratory/oligo/oligo_persistor'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -12,8 +13,28 @@ module Lims::LaboratoryApp
     # Real implementation classes (e.g. Sequel::Aliquot) should
     # include the suitable persistor.
     class Aliquot
-      class AliquotPersistor < Lims::Core::Persistence::Persistor
-        Model = Laboratory::Aliquot
+      (does "lims/core/persistence/persistable", :parents => [:sample,
+          {:name => :tag, :session_name => :oligo}
+        ]).class_eval do
+
+        alias filter_attributes_on_save_old filter_attributes_on_save
+        def filter_attributes_on_save(attributes, *params)
+          if Aliquot.unit(attributes[:type] == "ul") &&
+            quantity=attributes[:quantity]
+            attributes[:quantity] = quantity*1000
+          end
+          filter_attributes_on_save_old(attributes)
+        end
+
+        alias filter_attributes_on_load_old filter_attributes_on_load
+        def filter_attributes_on_load(attributes, *params)
+
+          if Aliquot.unit(attributes[:type] == "ul") &&
+            quantity=attributes[:quantity]
+            attributes[:quantity] = quantity/(quantity % 1000 == 0 ? 1000 : 1000.0)
+          end
+          filter_attributes_on_load_old(attributes)
+        end
       end
     end
   end
