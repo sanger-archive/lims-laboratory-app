@@ -1,3 +1,4 @@
+require 'lims-laboratory-app/laboratory/aliquot/all'
 module Lims::LaboratoryApp
   module Laboratory
     shared_context "aliquot factory" do

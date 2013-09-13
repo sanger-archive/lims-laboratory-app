@@ -412,9 +412,9 @@ describe "dna_rna_manual_extraction" do
     response.should match_json_response(200, <<-EOD) 
     {
     "actions": {
-        "read": "http://example.org/tubes/page=1",
-        "first": "http://example.org/tubes/page=1",
-        "last": "http://example.org/tubes/page=-1"
+        "read": "http://example.org/349460b0-7f57-0130-e345-282066132de2/page=1",
+        "first": "http://example.org/349460b0-7f57-0130-e345-282066132de2/page=1",
+        "last": "http://example.org/349460b0-7f57-0130-e345-282066132de2/page=-1"
     },
     "size": 1,
     "tubes": [
@@ -502,9 +502,9 @@ describe "dna_rna_manual_extraction" do
     response.should match_json_response(200, <<-EOD) 
     {
     "actions": {
-        "read": "http://example.org/tubes/page=1",
-        "first": "http://example.org/tubes/page=1",
-        "last": "http://example.org/tubes/page=-1"
+        "read": "http://example.org/349969d0-7f57-0130-e345-282066132de2/page=1",
+        "first": "http://example.org/349969d0-7f57-0130-e345-282066132de2/page=1",
+        "last": "http://example.org/349969d0-7f57-0130-e345-282066132de2/page=-1"
     },
     "size": 1,
     "tubes": [
@@ -591,9 +591,9 @@ describe "dna_rna_manual_extraction" do
     response.should match_json_response(200, <<-EOD) 
     {
     "actions": {
-        "read": "http://example.org/orders/page=1",
-        "first": "http://example.org/orders/page=1",
-        "last": "http://example.org/orders/page=-1"
+        "read": "http://example.org/349e3760-7f57-0130-e345-282066132de2/page=1",
+        "first": "http://example.org/349e3760-7f57-0130-e345-282066132de2/page=1",
+        "last": "http://example.org/349e3760-7f57-0130-e345-282066132de2/page=-1"
     },
     "size": 1,
     "orders": [
@@ -1061,9 +1061,9 @@ describe "dna_rna_manual_extraction" do
     response.should match_json_response(200, <<-EOD) 
     {
     "actions": {
-        "read": "http://example.org/tubes/page=1",
-        "first": "http://example.org/tubes/page=1",
-        "last": "http://example.org/tubes/page=-1"
+        "read": "http://example.org/35237a40-7f57-0130-e345-282066132de2/page=1",
+        "first": "http://example.org/35237a40-7f57-0130-e345-282066132de2/page=1",
+        "last": "http://example.org/35237a40-7f57-0130-e345-282066132de2/page=-1"
     },
     "size": 1,
     "tubes": [
@@ -1150,9 +1150,9 @@ describe "dna_rna_manual_extraction" do
     response.should match_json_response(200, <<-EOD) 
     {
     "actions": {
-        "read": "http://example.org/orders/page=1",
-        "first": "http://example.org/orders/page=1",
-        "last": "http://example.org/orders/page=-1"
+        "read": "http://example.org/355d01d0-7f57-0130-e345-282066132de2/page=1",
+        "first": "http://example.org/355d01d0-7f57-0130-e345-282066132de2/page=1",
+        "last": "http://example.org/355d01d0-7f57-0130-e345-282066132de2/page=-1"
     },
     "size": 1,
     "orders": [
@@ -1526,9 +1526,9 @@ describe "dna_rna_manual_extraction" do
     response.should match_json_response(200, <<-EOD) 
     {
     "actions": {
-        "read": "http://example.org/orders/page=1",
-        "first": "http://example.org/orders/page=1",
-        "last": "http://example.org/orders/page=-1"
+        "read": "http://example.org/35f1f2c0-7f57-0130-e345-282066132de2/page=1",
+        "first": "http://example.org/35f1f2c0-7f57-0130-e345-282066132de2/page=1",
+        "last": "http://example.org/35f1f2c0-7f57-0130-e345-282066132de2/page=-1"
     },
     "size": 2,
     "orders": [

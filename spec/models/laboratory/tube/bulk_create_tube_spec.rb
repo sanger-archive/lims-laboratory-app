@@ -38,7 +38,7 @@ module Lims::LaboratoryApp
 
             it_behaves_like "an action"
             it "create 10 tubes" do
-              Lims::Core::Persistence::Session.any_instance.should_receive(:save)
+              Lims::Core::Persistence::Session.any_instance.should_receive(:save_all).and_call_original
               result = subject.call
               result.should be_a(Hash)
               result[:tubes].should be_a(Array)
@@ -70,7 +70,7 @@ module Lims::LaboratoryApp
 
             it_behaves_like "an action"
             it "create 10 tubes" do
-              Lims::Core::Persistence::Session.any_instance.should_receive(:save)
+              Lims::Core::Persistence::Session.any_instance.should_receive(:save_all)
               result = subject.call
               result.should be_a(Hash)
               result[:tubes].should be_a(Array)

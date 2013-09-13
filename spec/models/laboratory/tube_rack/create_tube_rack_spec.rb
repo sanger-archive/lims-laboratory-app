@@ -4,6 +4,7 @@ require 'models/actions/spec_helper'
 
 # Model requirements
 require 'lims-laboratory-app/laboratory/tube_rack/create_tube_rack'
+require 'lims-laboratory-app/laboratory/tube/tube_persistor'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -55,6 +56,10 @@ module Lims::LaboratoryApp
     shared_examples_for "creating a tube rack" do
       include_context "create object"
       it_behaves_like "an action"
+
+      before do
+        Tube::TubePersistor.any_instance.stub(:belongs_to_tube_rack?).and_return(false)
+      end
 
       it "creates a tube rack when called" do
         result = subject.call

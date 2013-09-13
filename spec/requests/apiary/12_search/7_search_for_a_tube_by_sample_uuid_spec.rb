@@ -50,9 +50,9 @@ describe "search_for_a_tube_by_sample_uuid", :search => true do
     response.should match_json_response(200, <<-EOD) 
     {
     "actions": {
-        "read": "http://example.org/tubes/page=1",
-        "first": "http://example.org/tubes/page=1",
-        "last": "http://example.org/tubes/page=-1"
+        "read": "http://example.org/11111111-2222-3333-4444-555555555555/page=1",
+        "first": "http://example.org/11111111-2222-3333-4444-555555555555/page=1",
+        "last": "http://example.org/11111111-2222-3333-4444-555555555555/page=-1"
     },
     "size": 2,
     "tubes": [

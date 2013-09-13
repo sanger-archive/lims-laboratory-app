@@ -49,6 +49,7 @@ end
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
+  config.filter_run_excluding :benchmark => true
 end
 
 RSpec::Matchers.define :io_stream do |content|
@@ -107,6 +108,10 @@ end
 
 def set_uuid(session, object, uuid)
   session << object
+  # save $uuid_sequence in case it's modify by the following block of code
+  uuid_sequence = $uuid_sequence
   ur = session.new_uuid_resource_for(object)
-  ur.send(:uuid=, uuid)
+  ur.send(:uuid=, uuid).tap do
+    $uuid_sequence = uuid_sequence
+  end
 end

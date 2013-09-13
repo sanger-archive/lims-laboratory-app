@@ -16,6 +16,13 @@ module Lims::LaboratoryApp
       # Type contains the actual type of the plate.
       attribute :type, String, :required => false
 
+      def attributes
+        {type: @type,
+          number_of_rows: @number_of_rows,
+          number_of_columns: @number_of_columns
+        }
+      end
+
       # The well of a {Plate}. 
       # Contains some chemical substances.
       class Well

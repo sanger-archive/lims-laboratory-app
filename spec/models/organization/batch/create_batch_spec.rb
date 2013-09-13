@@ -28,7 +28,7 @@ module Lims::LaboratoryApp
           it_behaves_like "an action"
 
           it "create a batch when called" do
-            Lims::Core::Persistence::Session.any_instance.should_receive(:save)
+            Lims::Core::Persistence::Session.any_instance.should_receive(:save_all)
             result = subject.call
             result.should be_a(Hash)
             result[:batch].should be_a(Organization::Batch)

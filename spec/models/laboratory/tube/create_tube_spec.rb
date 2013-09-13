@@ -28,7 +28,7 @@ module Lims::LaboratoryApp
           it_behaves_like "an action"
 
           it "create a tube when called" do
-            Lims::Core::Persistence::Session.any_instance.should_receive(:save)
+            Lims::Core::Persistence::Session.any_instance.should_receive(:save_all)
             result = subject.call
             result.should be_a(Hash)
             result[:tube].should be_a(Laboratory::Tube)
@@ -49,7 +49,7 @@ module Lims::LaboratoryApp
           end
           it_behaves_like "an action"
           it "create a tube when called" do
-            Lims::Core::Persistence::Session.any_instance.should_receive(:save)
+            Lims::Core::Persistence::Session.any_instance.should_receive(:save_all)
             result = subject.call
             result.should be_a(Hash)
             result[:tube].should be_a(Laboratory::Tube)
