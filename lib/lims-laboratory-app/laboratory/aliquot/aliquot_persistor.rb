@@ -23,6 +23,8 @@ module Lims::LaboratoryApp
             quantity=attributes[:quantity]
             attributes[:quantity] = quantity*1000
           end
+          # out_of_bounds parameter is not saved into the database
+          attributes.delete(:out_of_bounds)
           filter_attributes_on_save_old(attributes)
         end
 
