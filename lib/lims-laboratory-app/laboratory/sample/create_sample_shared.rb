@@ -3,6 +3,9 @@ module Lims::LaboratoryApp
     class Sample
       module CreateSampleShared
 
+        # @param [Session] session
+        # @param [String] name
+        # @param [String] uuid
         def create_sample(session, name, uuid)
           Laboratory::Sample.new(:name => name).tap do |sample|
             session << sample
