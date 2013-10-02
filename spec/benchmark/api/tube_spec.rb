@@ -15,7 +15,7 @@ shared_examples "creating n tubes" do |n|
   context "#{n} empty tubes", :size => n do
     let!(:parameters) { {:bulk_create_tube => {:tubes => create_tubes_parameter(n)}} }
     it "bulk creates #{n} tubes" do
-      result = benchmark_with_graph do
+      result = benchmark_with_graph("create_#{n}_tubes") do
         post('/actions/bulk_create_tube', JSON(parameters))
       end
       result.status.should == 200
@@ -26,6 +26,7 @@ end
 describe "benchmark tube creation", :benchmark => true do
   include_context "use core context service"
   include_context "JSON"
+  it_behaves_like "creating n tubes", 1
   it_behaves_like "creating n tubes", 100
   it_behaves_like "creating n tubes", 500
   it_behaves_like "creating n tubes", 1000
