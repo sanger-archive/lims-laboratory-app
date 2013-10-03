@@ -18,6 +18,7 @@ end
 
 group :development do
   gem 'sqlite3', :platforms => :mri
+  gem 'mysql2', :platforms => :mri
 end
 
 group :yard do
