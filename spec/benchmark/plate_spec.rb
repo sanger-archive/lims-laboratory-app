@@ -1,5 +1,4 @@
 require 'benchmark/spec_helper'
-require 'ruby-prof'
 
 require 'lims-laboratory-app/laboratory/plate/all'
 
@@ -42,24 +41,19 @@ describe "benchmark 100 plates", :benchmark => true do
   context "update" do
     before(:each) { plate_ids }
     it "#with no changes" do
-        #store.dirty_attribute_strategy = Lims::Core::Persistence::Store::DIRTY_ATTRIBUTE_STRATEGY_QUICK_HASH
-    #  RubyProf.start
-      store.with_session do |session|
-        loaded_plates = session.plate[plate_ids]
+      #store.dirty_attribute_strategy = Lims::Core::Persistence::Store::DIRTY_ATTRIBUTE_STRATEGY_QUICK_HASH
+      benchmark_with_graph do
+        store.with_session do |session|
+          loaded_plates = session.plate[plate_ids]
+        end
       end
-    # result =  RubyProf.stop
-     # printer = RubyProf::FlatPrinter.new(result)
-     # printer.print(STDOUT, {:sort_method => :total_time})
-     # printer.print(STDOUT, {})
-    #  graph = RubyProf::GraphHtmlPrinter.new(result)
-    #  graph.print(STDOUT, {})
     end
     it "#with changes" do
       store.with_session do |session|
         loaded_plates = session.plate[plate_ids]
         loaded_plates.each do |plate|
           # Change the content of one well
-              sample = Lims::LaboratoryApp::Laboratory::Sample.new("sample_${i}_${index}")
+          sample = Lims::LaboratoryApp::Laboratory::Sample.new("sample_${i}_${index}")
           plate[0].clear
           plate[0] << Lims::LaboratoryApp::Laboratory::Aliquot.new
         end
