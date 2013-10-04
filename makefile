@@ -15,8 +15,9 @@ serve:
 dserve:
 	bundle exec rackup -d
 
+.PHONY: benchmark
 benchmark:
-	bundle exec rspec -p 100 -tbenchmark spec/benchmark
+	PROFILING=no bundle exec rspec -p 100 -tbenchmark spec/benchmark
 
 
 %: %.erb
