@@ -1,4 +1,3 @@
-require 'lims-laboratory-app/laboratory/filter_paper/filter_paper_sequel_persistor'
 require 'models/laboratory/plate_and_gel_shared'
 require 'models/persistence/resource_shared'
 require 'models/persistence/sequel/store_shared'
@@ -26,7 +25,7 @@ module Lims::LaboratoryApp
       let(:filter_paper_id) { store.with_session { |session| @filter_paper_id = last_filter_paper_id(session) } }
     end
 
-    describe FilterPaper::FilterPaperSequelPersistor do
+    describe "Persistence#Sequel#FilterPaper" do
       include_context "sequel store"
       include_context "container-like asset factory"
 

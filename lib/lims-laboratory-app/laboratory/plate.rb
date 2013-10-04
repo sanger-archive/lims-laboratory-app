@@ -24,27 +24,16 @@ module Lims::LaboratoryApp
 
       # The well of a {Plate}. 
       # Contains some chemical substances.
-#      class Well
-#        include Receptacle
-      # This method defines the name of the container element.
-      def self.element_name
-        :Well
+      class Well
+        include Receptacle
       end
 
-      # This method defines the type of the container element.
-      def self.element_type
-        Lims::LaboratoryApp::Laboratory::Plate::Well
+      is_matrix_of Well do |p,t|
+        (p.number_of_rows*p.number_of_columns).times.map { t.new }
       end
-
-      # The well of a {Plate}.
-      # Contains some chemical substances.
-      Well = declare_element(element_name)
 
       # creates the matrix of container elements (Wells)
-      create_container_elements(element_type)
-
-#      # creates the matrix of container elements (Wells)
-      matrix_of(:Well)
+#      matrix_of(:Well)
 
       # This should be set by the user.
       # We mock it to give pools by column

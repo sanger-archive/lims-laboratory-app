@@ -1,16 +1,14 @@
-require 'lims-core/actions/action'
 require 'lims-laboratory-app/laboratory/filter_paper'
-require 'lims-laboratory-app/laboratory/container/action_container'
+require 'lims-laboratory-app/laboratory/container/create_container_action'
 
 module Lims::LaboratoryApp
   module Laboratory
     class FilterPaper
       class CreateFilterPaper
-        include Lims::Core::Actions::Action
         # The ActionContainer module implements the _call_in_session method.
         # This method create an instance of the actual resource of all
         # the container like object (like FilterPaper, Plate, Gel)
-        include Container::ActionContainer
+        include Container::CreateContainerAction
 
         # @attribute [Hash<String, Array<Hash>>] locations_description
         # @example
