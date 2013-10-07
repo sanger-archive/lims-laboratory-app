@@ -1,6 +1,6 @@
 # Spec requirements
 require 'models/persistence/logger/spec_helper'
-require 'models/laboratory/plate_and_gel_shared'
+require 'models/laboratory/container_like_asset_shared'
 
 # Model requirements
 require 'lims-core/persistence/logger/store'

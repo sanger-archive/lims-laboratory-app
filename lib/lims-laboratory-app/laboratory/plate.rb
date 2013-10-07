@@ -22,18 +22,9 @@ module Lims::LaboratoryApp
         }
       end
 
-      # The well of a {Plate}. 
-      # Contains some chemical substances.
-      class Well
-        include Receptacle
-      end
-
-      is_matrix_of Well do |p,t|
-        (p.number_of_rows*p.number_of_columns).times.map { t.new }
-      end
-
-      # creates the matrix of container elements (Wells)
-#      matrix_of(:Well)
+      # creates the matrix of container elements (Wells),
+      # which contains some chemical substances.
+      matrix_of(:Well)
 
       # This should be set by the user.
       # We mock it to give pools by column

@@ -1,4 +1,4 @@
-require 'models/laboratory/plate_and_gel_shared'
+require 'models/laboratory/container_like_asset_shared'
 require 'models/persistence/resource_shared'
 require 'models/persistence/sequel/store_shared'
 require 'models/persistence/sequel/spec_helper'

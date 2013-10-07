@@ -2,7 +2,7 @@
 require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
 
-require 'models/laboratory/plate_and_gel_shared'
+require 'models/laboratory/container_like_asset_shared'
 
 #Model requirements
 require 'lims-laboratory-app/laboratory/plate/create_plate'

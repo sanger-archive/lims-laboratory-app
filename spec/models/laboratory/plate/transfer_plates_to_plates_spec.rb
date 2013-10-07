@@ -1,7 +1,7 @@
 # Spec requirements
 require 'models/persistence/sequel/spec_helper'
 require 'models/persistence/sequel/store_shared'
-require 'models/laboratory/plate_and_gel_shared'
+require 'models/laboratory/container_like_asset_shared'
 require 'models/laboratory/tube_rack_shared'
 
 # Model requirements

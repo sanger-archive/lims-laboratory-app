@@ -1,6 +1,4 @@
 #create_flowcell.rb
-require 'lims-core/actions/action'
-
 require 'lims-laboratory-app/laboratory/flowcell'
 require 'lims-laboratory-app/laboratory/create_labellable_resource_action'
 
