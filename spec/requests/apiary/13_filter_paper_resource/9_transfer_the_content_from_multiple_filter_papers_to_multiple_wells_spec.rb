@@ -39,8 +39,8 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_wells", :
     
     save_with_uuid filter_paper1 => [1,2,3,4,3], filter_paper2 => [1,2,3,4,4], sample1 => [1,2,3,0,0], sample2 => [1,2,3,0,1], plate1 => [1,2,3,4,6], plate2 => [1,2,3,4,7]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/actions/transfer_multiple_filter_papers_to_wells", <<-EOD
     {
@@ -62,8 +62,7 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_wells", :
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "transfer_multiple_filter_papers_to_wells": {
         "actions": {

@@ -9,8 +9,8 @@ describe "create_a_new_filter_paper", :filter_paper => true do
   # * `locations_description` map aliquots to locations
     save_with_uuid Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1') => [1,2,3,4,6]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/filter_papers", <<-EOD
     {
@@ -29,8 +29,7 @@ describe "create_a_new_filter_paper", :filter_paper => true do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "filter_paper": {
         "actions": {

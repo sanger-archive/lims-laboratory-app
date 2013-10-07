@@ -10,8 +10,8 @@ describe "create_and_read_a_filter_paper_resource", :filter_paper => true do
   # * `locations_description` map aliquots to locations
     save_with_uuid Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1') => [1,2,3,4,6]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/actions/create_filter_paper", <<-EOD
     {
@@ -30,8 +30,7 @@ describe "create_and_read_a_filter_paper_resource", :filter_paper => true do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "create_filter_paper": {
         "actions": {
@@ -80,6 +79,7 @@ describe "create_and_read_a_filter_paper_resource", :filter_paper => true do
             },
             "uuid": "11111111-2222-3333-4444-555555555555"
         },
+        "labels": null,
         "number_of_rows": 2,
         "number_of_columns": 2,
         "locations_description": {
@@ -97,12 +97,11 @@ describe "create_and_read_a_filter_paper_resource", :filter_paper => true do
 
   # **Reads the previously created filter paper.**
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = get "/11111111-2222-3333-4444-555555555555"
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "filter_paper": {
         "actions": {

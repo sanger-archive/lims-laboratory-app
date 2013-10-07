@@ -8,8 +8,8 @@ describe "create_a_new_empty_filter_paper", :filter_paper => true do
   # * `number_of_columns` number of columns of the filter paper
   # * `locations_description` map aliquots to locations
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/filter_papers", <<-EOD
     {
@@ -21,8 +21,7 @@ describe "create_a_new_empty_filter_paper", :filter_paper => true do
     }
 }
     EOD
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "filter_paper": {
         "actions": {

@@ -376,29 +376,9 @@ describe "root" do
             "create": "http://example.org/actions/tag_wells"
         }
     },
-    "bulk_create_tubes": {
-        "actions": {
-            "create": "http://example.org/actions/bulk_create_tube"
-        }
-    },
-    "bulk_create_labellables": {
-        "actions": {
-            "create": "http://example.org/actions/bulk_create_labellable"
-        }
-    },
     "swap_samples": {
         "actions": {
             "create": "http://example.org/actions/swap_samples"
-        }
-    },
-    "transfer_locations_to_tubes": {
-        "actions": {
-            "create": "http://example.org/actions/transfer_locations_to_tubes"
-        }
-    },
-    "transfer_locations_to_wells": {
-        "actions": {
-            "create": "http://example.org/actions/transfer_locations_to_wells"
         }
     },
     "transfer_multiple_filter_papers_to_tubes": {

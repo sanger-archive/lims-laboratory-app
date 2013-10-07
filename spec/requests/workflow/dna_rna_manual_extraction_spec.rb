@@ -91,20 +91,20 @@ describe "dna_rna_manual_extraction" do
             "last": "http://example.org/gels/page=-1"
         }
     },
-    "labellables": {
-        "actions": {
-            "create": "http://example.org/labellables",
-            "read": "http://example.org/labellables",
-            "first": "http://example.org/labellables/page=1",
-            "last": "http://example.org/labellables/page=-1"
-        }
-    },
     "filter_papers": {
         "actions": {
             "create": "http://example.org/filter_papers",
             "read": "http://example.org/filter_papers",
             "first": "http://example.org/filter_papers/page=1",
             "last": "http://example.org/filter_papers/page=-1"
+        }
+    },
+    "labellables": {
+        "actions": {
+            "create": "http://example.org/labellables",
+            "read": "http://example.org/labellables",
+            "first": "http://example.org/labellables/page=1",
+            "last": "http://example.org/labellables/page=-1"
         }
     },
     "sanger_barcodes": {
@@ -325,16 +325,6 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/bulk_create_labellable"
         }
     },
-    "transfer_multiple_filter_papers_to_tubes": {
-        "actions": {
-            "create": "http://example.org/actions/transfer_multiple_filter_papers_to_tubes"
-        }
-    },
-    "transfer_multiple_filter_papers_to_wells": {
-        "actions": {
-            "create": "http://example.org/actions/transfer_multiple_filter_papers_to_wells"
-        }
-    },
     "transfer_plates_to_plates": {
         "actions": {
             "create": "http://example.org/actions/transfer_plates_to_plates"
@@ -348,6 +338,16 @@ describe "dna_rna_manual_extraction" do
     "transfer_wells_to_tubes": {
         "actions": {
             "create": "http://example.org/actions/transfer_wells_to_tubes"
+        }
+    },
+    "transfer_multiple_filter_papers_to_tubes": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_multiple_filter_papers_to_tubes"
+        }
+    },
+    "transfer_multiple_filter_papers_to_wells": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_multiple_filter_papers_to_wells"
         }
     },
     "tube_rack_moves": {

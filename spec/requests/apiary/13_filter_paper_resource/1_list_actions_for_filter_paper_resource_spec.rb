@@ -9,12 +9,11 @@ describe "list_actions_for_filter_paper_resource", :filter_paper => true do
   # * `first` lists the first filter papers resources in a page browsing system
   # * `last` lists the last filter papers resources in a page browsing system
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = get "/filter_papers"
-    response.status.should == 200
-    response.body.should match_json <<-EOD
+    response.should match_json_response(200, <<-EOD) 
     {
     "filter_papers": {
         "actions": {
