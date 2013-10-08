@@ -139,6 +139,14 @@ describe "dna_rna_manual_extraction" do
             "last": "http://example.org/barcode2_ds/page=-1"
         }
     },
+    "texts": {
+        "actions": {
+            "create": "http://example.org/texts",
+            "read": "http://example.org/texts",
+            "first": "http://example.org/texts/page=1",
+            "last": "http://example.org/texts/page=-1"
+        }
+    },
     "plates": {
         "actions": {
             "create": "http://example.org/plates",
