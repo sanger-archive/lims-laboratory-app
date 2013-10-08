@@ -256,6 +256,11 @@ describe "root" do
             "create": "http://example.org/actions/create_filter_paper"
         }
     },
+    "bulk_create_filter_papers": {
+        "actions": {
+            "create": "http://example.org/actions/bulk_create_filter_paper"
+        }
+    },
     "create_labels": {
         "actions": {
             "create": "http://example.org/actions/create_label"
