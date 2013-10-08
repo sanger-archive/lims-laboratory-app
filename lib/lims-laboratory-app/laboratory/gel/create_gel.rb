@@ -1,5 +1,3 @@
-require 'lims-core/actions/action'
-
 require 'lims-laboratory-app/laboratory/gel'
 require 'lims-laboratory-app/laboratory/container/create_container_action'
 

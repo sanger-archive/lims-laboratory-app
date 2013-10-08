@@ -11,8 +11,8 @@ describe "update_tube_rack" do
     
     save_with_uuid tube => [1,2,3,4,0], tube_rack => [1,2,3,4,1], tube_rack2 => [1,2,3,4,5]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = put "/11111111-2222-3333-4444-555555555555", <<-EOD
     {

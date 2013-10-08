@@ -91,6 +91,14 @@ describe "dna_rna_manual_extraction" do
             "last": "http://example.org/gels/page=-1"
         }
     },
+    "filter_papers": {
+        "actions": {
+            "create": "http://example.org/filter_papers",
+            "read": "http://example.org/filter_papers",
+            "first": "http://example.org/filter_papers/page=1",
+            "last": "http://example.org/filter_papers/page=-1"
+        }
+    },
     "labellables": {
         "actions": {
             "create": "http://example.org/labellables",
@@ -129,6 +137,14 @@ describe "dna_rna_manual_extraction" do
             "read": "http://example.org/barcode2_ds",
             "first": "http://example.org/barcode2_ds/page=1",
             "last": "http://example.org/barcode2_ds/page=-1"
+        }
+    },
+    "texts": {
+        "actions": {
+            "create": "http://example.org/texts",
+            "read": "http://example.org/texts",
+            "first": "http://example.org/texts/page=1",
+            "last": "http://example.org/texts/page=-1"
         }
     },
     "plates": {
@@ -242,6 +258,11 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/create_gel"
         }
     },
+    "create_filter_papers": {
+        "actions": {
+            "create": "http://example.org/actions/create_filter_paper"
+        }
+    },
     "create_labels": {
         "actions": {
             "create": "http://example.org/actions/create_label"
@@ -312,6 +333,11 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/bulk_create_labellable"
         }
     },
+    "bulk_create_filter_papers": {
+        "actions": {
+            "create": "http://example.org/actions/bulk_create_filter_paper"
+        }
+    },
     "transfer_plates_to_plates": {
         "actions": {
             "create": "http://example.org/actions/transfer_plates_to_plates"
@@ -325,6 +351,16 @@ describe "dna_rna_manual_extraction" do
     "transfer_wells_to_tubes": {
         "actions": {
             "create": "http://example.org/actions/transfer_wells_to_tubes"
+        }
+    },
+    "transfer_multiple_filter_papers_to_tubes": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_multiple_filter_papers_to_tubes"
+        }
+    },
+    "transfer_multiple_filter_papers_to_wells": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_multiple_filter_papers_to_wells"
         }
     },
     "tube_rack_moves": {
