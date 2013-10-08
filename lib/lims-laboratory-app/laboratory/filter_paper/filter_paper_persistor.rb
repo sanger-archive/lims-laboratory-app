@@ -1,8 +1,6 @@
-require 'lims-core/persistence/persistor'
 require 'lims-laboratory-app/laboratory/filter_paper'
-
-require 'lims-laboratory-app/laboratory/container/container_persistor'
-require 'lims-laboratory-app/laboratory/container/container_element_persistor'
+require 'lims-laboratory-app/laboratory/aliquot'
+require 'lims-laboratory-app/container_persistor_trait'
 
 module Lims::LaboratoryApp
   module Laboratory

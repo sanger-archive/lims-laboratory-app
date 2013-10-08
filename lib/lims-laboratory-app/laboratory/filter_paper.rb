@@ -1,6 +1,9 @@
 require 'lims-core/resource'
 require 'lims-laboratory-app/laboratory/container'
 
+require 'facets/hash'
+require 'facets/array'
+
 module Lims::LaboratoryApp
   module Laboratory
     # Filter Paper is a labware which can contains samples.
