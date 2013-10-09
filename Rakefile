@@ -23,3 +23,4 @@ end
 task :default => [ 'db:test', :spec ]
 task :migrate_test => [ 'db:test' ]
 task :migrate_dev => [ 'db:dev' ]
+

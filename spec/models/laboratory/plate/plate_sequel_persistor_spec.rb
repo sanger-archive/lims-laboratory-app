@@ -1,7 +1,7 @@
 # Spec requirements
 require 'models/persistence/sequel/spec_helper'
 
-require 'models/laboratory/plate_and_gel_shared'
+require 'models/laboratory/container_like_asset_shared'
 require 'models/persistence/resource_shared'
 require 'models/persistence/sequel/store_shared'
 require 'models/persistence/filter/multi_criteria_sequel_filter_shared'
@@ -17,7 +17,7 @@ module Lims::LaboratoryApp
 
   describe "Sequel#Plate ", :plate => true, :laboratory => true, :persistence => true, :sequel => true do
     include_context "sequel store"
-    include_context "plate or gel factory"
+    include_context "container-like asset factory"
 
     def last_plate_id(session)
       session.plate.dataset.order_by(:id).last[:id]

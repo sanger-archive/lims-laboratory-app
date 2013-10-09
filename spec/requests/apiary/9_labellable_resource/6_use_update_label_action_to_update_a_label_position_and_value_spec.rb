@@ -25,8 +25,8 @@ describe "use_update_label_action_to_update_a_label_position_and_value", :labell
     
     save_with_uuid tube => [1,2,3,4,0], labellable => [1,2,3,4,5]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/actions/update_label", <<-EOD
     {

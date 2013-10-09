@@ -1,7 +1,7 @@
 # Spec requirements
 require 'models/persistence/sequel/spec_helper'
 require 'models/persistence/sequel/store_shared'
-require 'models/laboratory/plate_and_gel_shared'
+require 'models/laboratory/container_like_asset_shared'
 require 'models/laboratory/tube_rack_shared'
 
 # Model requirements
@@ -89,7 +89,7 @@ end
 module Lims::LaboratoryApp
   module Laboratory
     describe Plate::TransferPlatesToPlates, :plate => true, :transfer => true, :laboratory => true, :persistence => true, :sequel => true do
-      include_context "plate or gel factory"
+      include_context "container-like asset factory"
       include_context "tube_rack factory"
 
       context "with a sequel store" do

@@ -3,7 +3,7 @@ require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
 
 require 'models/persistence/sequel/spec_helper'
-require 'models/laboratory/plate_and_gel_shared'
+require 'models/laboratory/container_like_asset_shared'
 require 'models/persistence/sequel/store_shared'
 
 #Model requirements
@@ -15,7 +15,7 @@ require 'lims-core/persistence/sequel/store'
 module Lims::LaboratoryApp
   module Laboratory
     describe TagWells, :plate => true, :tag => true, :laboratory => true, :persistence => true, :sequel => true do
-      include_context "plate or gel factory"
+      include_context "container-like asset factory"
 			let(:number_of_rows) {8}
 			let(:number_of_columns) {12}
       context "with a sequel store" do
