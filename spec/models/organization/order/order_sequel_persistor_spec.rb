@@ -82,7 +82,7 @@ module Lims::LaboratoryApp
           end
 
           let(:long_attribute) { (1..50).inject("") { |s,i|  s+"#{i}-abcdefghi" } }
-          let(:state) { {:my_state => 34, :state => :hidden, :long_attribute => long_attribute } }
+          let(:state) { {"my_state" => 34, "state" => "hidden", "long_attribute" => long_attribute } }
           it "can its state updated with a really long state" do
             load_order(order_id) do |order|
               order.state = state
@@ -92,7 +92,7 @@ module Lims::LaboratoryApp
               order.state.should == state
             end
           end
-          let(:parameters) { {:read_length => 102, :hash => { :long_attribute => long_attribute}} }
+          let(:parameters) { {"read_length" => 102, "hash" => { "long_attribute" => long_attribute}} }
           it "can its parameters updated with a really long parameters" do
             load_order(order_id) do |order|
               order.parameters = parameters
