@@ -1,9 +1,9 @@
 GIT
   remote: http://github.com/sanger/lims-api.git
-  revision: 8e9fc898b9be1382a773f2384ac758f5059c2c08
+  revision: 43ba078bece2c8cdb9fd26af30d397f09e4f86db
   branch: development
   specs:
-    lims-api (3.0.0.0.1)
+    lims-api (3.0.0.0.3)
       active_support
       bunny (= 0.9.0.pre10)
       json
@@ -12,10 +12,10 @@ GIT
 
 GIT
   remote: http://github.com/sanger/lims-core.git
-  revision: ad76cb207586d30fd01b04c43ab110bf3b2679d5
+  revision: f58564b4fc0256e46d59be93872403c50ccde5ff
   branch: development
   specs:
-    lims-core (3.0.0.2.4)
+    lims-core (3.0.0.3.0)
       active_support
       aequitas
       bunny (= 0.9.0.pre10)
@@ -62,10 +62,10 @@ GEM
     bunny (0.9.0.pre10)
       amq-protocol (>= 1.4.0)
     columnize (0.3.6)
-    debugger (1.6.0)
+    debugger (1.6.1)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.1)
+      debugger-ruby_core_source (~> 1.2.3)
     debugger-completion (1.0.0)
       bond (>= 0.4.2)
       debugger (~> 1.1)
@@ -77,7 +77,7 @@ GEM
     dm-validations (1.2.0)
       dm-core (~> 1.2.0)
     facets (2.9.3)
-    hashdiff (0.0.6)
+    hashdiff (0.1.1)
     jdbc-mysql (5.1.25)
     jruby-rack (1.1.13.2)
     json (1.8.0)
@@ -93,19 +93,19 @@ GEM
     rack-test (0.6.2)
       rack (>= 1.0)
     rake (0.9.6)
-    redcarpet (2.3.0)
-    rspec (2.13.0)
-      rspec-core (~> 2.13.0)
-      rspec-expectations (~> 2.13.0)
-      rspec-mocks (~> 2.13.0)
-    rspec-core (2.13.1)
-    rspec-expectations (2.13.0)
+    redcarpet (3.0.0)
+    rspec (2.14.1)
+      rspec-core (~> 2.14.0)
+      rspec-expectations (~> 2.14.0)
+      rspec-mocks (~> 2.14.0)
+    rspec-core (2.14.5)
+    rspec-expectations (2.14.2)
       diff-lcs (>= 1.1.3, < 2.0)
-    rspec-mocks (2.13.1)
-    ruby-graphviz (1.0.8)
+    rspec-mocks (2.14.3)
+    ruby-graphviz (1.0.9)
     ruby-prof (0.13.0)
     sequel (4.3.0)
-    sqlite3 (1.3.7)
+    sqlite3 (1.3.8)
     state_machine (1.2.0)
     systemu (2.5.2)
     tilt (1.4.1)

@@ -1,4 +1,6 @@
 require 'lims-laboratory-app/laboratory/create_labellable_resource_action'
+require 'lims-laboratory-app/laboratory/sample/create_sample_shared'
+
 module Lims::LaboratoryApp
   module Laboratory
     module Container::CreateContainerAction
@@ -8,6 +10,7 @@ module Lims::LaboratoryApp
           include CreateLabellableResourceAction
           include Virtus
           include Aequitas
+          include Sample::CreateSampleShared
 
           %w(row column).each do |w|
             # Hack Aequitas 'gt' rule crashes if attribute is not present.
@@ -46,9 +49,19 @@ module Lims::LaboratoryApp
       def create(session)
         new_container = container_class.new(container_parameters)
         session << new_container
+        count = 0
         element_description.each do |element_name, aliquots|
           aliquots.each do |aliquot|
-            new_container[element_name] <<  Laboratory::Aliquot.new(aliquot)
+            aliquot_ready = aliquot.mash do |k,v|
+              case k.to_s
+              when "sample_uuid" then 
+                count += 1
+                ["sample", create_sample(session, "Sample #{count}", v)] 
+              else 
+                [k,v]
+              end
+            end
+            new_container[element_name] <<  Laboratory::Aliquot.new(aliquot_ready)
           end
         end
         { container_symbol => new_container, :uuid => session.uuid_for!(new_container) }
