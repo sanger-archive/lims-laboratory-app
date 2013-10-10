@@ -13,7 +13,7 @@ module Lims::LaboratoryApp
       context "with a valid store" do
         include_context "create object"
         let (:store) { Lims::Core::Persistence::Store.new }
-        let(:user) { mock(:user) }
+        let(:user) { double(:user) }
         let(:application) { "Test create tube" }
         let(:tube_type) { "Eppendorf" }
         let(:tube_max_volume) { 2 }

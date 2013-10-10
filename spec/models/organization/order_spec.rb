@@ -60,7 +60,7 @@ module Lims
 
         def self.it_can_assign(attribute)
           it "can assign #{attribute}" do
-            value = mock(:attribute)
+            value = double(:attribute)
             subject.send("#{attribute}=", value)
             subject.send(attribute).should == value
           end
@@ -73,19 +73,19 @@ module Lims
             rescue
               # if responds to, try to call the 
               expect {
-                subject.send("#{attribute}=", mock(:attribute))
+                subject.send("#{attribute}=", double(:attribute))
               }.to raise_error(NoMethodError)
             end
           end
         end
         #=== End of Macro ===
 
-        let(:creator) { mock(:creator) }
+        let(:creator) { double(:creator) }
         let(:pipeline) { "pipeline 1" }
         let(:parameters) { { :read_lenght => 26 } }
-        let(:study) { mock(:study) }
+        let(:study) { double(:study) }
         let(:cost_code) { "cost code" }
-        let(:items) { {:source => mock(:source) } }
+        let(:items) { {:source => double(:source) } }
         let!(:creation_parameters) { { :creator => creator,
           :pipeline => pipeline,
           :parameters => parameters,
@@ -122,7 +122,7 @@ module Lims
           its(:status) { should == "draft" }
 
           context "#items" do
-            let (:item) { mock(:item) }
+            let (:item) { double(:item) }
             let(:role) { "role#1" }
             it "can have item added to it" do
               subject.add_item(role, item)
@@ -157,8 +157,8 @@ module Lims
             end
 
             context "with items" do
-              let (:item2) { mock(:item2) }
-              let (:item3) { mock(:item3) }
+              let (:item2) { double(:item2) }
+              let (:item3) { double(:item3) }
               let(:role2) { "role#2" }
               let(:items) { { role => [item], role2 => [item2, item3] } }
               subject { Order.new(creation_parameters.merge(items)) }
@@ -201,12 +201,12 @@ module Lims
             it_can_assign :cost_code
 
             it "can have a creator set" do
-              creator = mock(:creator)
+              creator = double(:creator)
               (subject.creator=creator).should == creator
             end
 
             it "can have a study set" do
-              study = mock(:study)
+              study = double(:study)
               (subject.study=study).should == study
             end
 
