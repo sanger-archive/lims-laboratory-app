@@ -12,10 +12,10 @@ module Lims::LaboratoryApp
       context "with a valid store" do
         include_context "create object"
         let (:store) { Lims::Core::Persistence::Store.new }
-        let(:user) { mock(:user) }
+        let(:user) { double(:user) }
         let(:application) { "Test create batch" }
-        let(:process) { mock(:process) }
-        let(:kit) { mock(:kit) }
+        let(:process) { double(:process) }
+        let(:kit) { double(:kit) }
 
         context "create a batch" do
           subject do

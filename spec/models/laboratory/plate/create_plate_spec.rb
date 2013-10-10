@@ -87,7 +87,7 @@ module Lims::LaboratoryApp
         include_context("for application",  "Test plate creation")
 
         include_context("has plate dimension", 8, 12)
-        let(:plate_type) { mock(:plate_type) }
+        let(:plate_type) { double(:plate_type) }
 
         context do
           include_context "for empty plate"

@@ -96,7 +96,7 @@ module Lims::LaboratoryApp
         include_context "sequel store"
 
         context "and everything already in the database" do
-          let(:user) { mock(:user) }
+          let(:user) { double(:user) }
           let(:application) { "test transfer plate-like(s) to plate-like(s) with a given transfer map" }
           let(:number_of_rows) { 8 }
           let(:number_of_columns) { 12 }

@@ -33,7 +33,7 @@ module Lims::LaboratoryApp
           let(:tube1_id) { save(new_empty_tube) }
           let(:tube2_id) { save(new_empty_tube) }
 
-          let(:user) { mock(:user) }
+          let(:user) { double(:user) }
           let(:application) { "test transfer wells to tubes" }
 
           context "with valid parameters" do
@@ -76,7 +76,7 @@ module Lims::LaboratoryApp
         context "with an empty database" do
           let(:number_of_rows) {3}
           let(:number_of_columns) {5}
-          let(:user) { mock(:user) }
+          let(:user) { double(:user) }
           let(:application) { "Test assign tag to well" }
           let(:tube) {  new_empty_tube }
           let(:plate) { new_plate_with_samples }

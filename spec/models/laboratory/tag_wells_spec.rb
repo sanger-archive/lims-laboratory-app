@@ -27,7 +27,7 @@ module Lims::LaboratoryApp
           let(:oligo_2_id) { save(Laboratory::Oligo.new("TAG")) }
           let(:well_to_tag_id_map) { { :C1 => oligo_1_id, :F7 => oligo_2_id } }
 
-          let(:user) { mock(:user) }
+          let(:user) { double(:user) }
           let(:application) { "Test assign tag to well" }
           subject { described_class.new(:store => store, :user => user, :application => application) do |a,s|
             a.plate = s.plate[plate_id]
@@ -59,7 +59,7 @@ module Lims::LaboratoryApp
         context "with an empty database" do
       let(:number_of_rows) {3}
       let(:number_of_columns) {1}
-          let(:user) { mock(:user) }
+          let(:user) { double(:user) }
           let(:application) { "Test assign tag to well" }
           subject { described_class.new(:store => store, :user => user, :application => application) do |a,s|
             s << a.plate=new_plate_with_samples(1)

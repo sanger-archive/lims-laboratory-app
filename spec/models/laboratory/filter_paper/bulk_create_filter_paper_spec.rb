@@ -12,7 +12,7 @@ module Lims::LaboratoryApp
       context "with a valid store" do
         include_context "create object"
         let(:store) { Lims::Core::Persistence::Store.new }
-        let(:user) { mock(:user) }
+        let(:user) { double(:user) }
         let(:application) { "bulk create filter paper" }
 
         # define parameters for the action
