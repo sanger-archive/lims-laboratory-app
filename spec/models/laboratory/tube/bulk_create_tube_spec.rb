@@ -13,7 +13,7 @@ module Lims::LaboratoryApp
       context "with a valid store" do
         include_context "create object"
         let(:store) { Lims::Core::Persistence::Store.new }
-        let(:user) { mock(:user) }
+        let(:user) { double(:user) }
         let(:application) { "bulk create tube" }
         let(:types) { ["type1", "type2", "type3"] }
         let(:aliquot_types) { ["NA", "DNA", "RNA", "NAP"] }
