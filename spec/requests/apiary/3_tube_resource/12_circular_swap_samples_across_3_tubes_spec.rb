@@ -20,8 +20,8 @@ describe "circular_swap_samples_across_3_tubes", :tube => true do
       tube1 => [1,2,3,1,1], tube2 => [1,2,3,1,2], tube3 => [1,2,3,1,3]
     })
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/actions/swap_samples", <<-EOD
     {

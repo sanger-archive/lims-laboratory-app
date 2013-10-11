@@ -82,7 +82,7 @@ module Lims::LaboratoryApp
         include_context "sequel store"
 
         context "and everything already in the database" do
-          let(:user) { mock(:user) }
+          let(:user) { double(:user) }
           let(:application) { "test transfer tube-like(s) to tube-like(s)" }
 
           context "with valid parameters" do

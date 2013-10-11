@@ -12,7 +12,7 @@ module Lims::LaboratoryApp::Laboratory
 
     def self.it_can_assign(attribute)
       it "can assign #{attribute}" do
-        value = mock(:attribute)
+        value = double(:attribute)
         subject.send("#{attribute}=", value)
         subject.send(attribute).should == value
       end
@@ -26,13 +26,13 @@ module Lims::LaboratoryApp::Laboratory
     it_can_assign :max_volume
 
     it "sets a type" do
-      type = mock(:type)
+      type = double(:type)
       subject.type = type
       subject.type.should == type
     end
 
     it "sets a max volume" do
-      max_volume = mock(:max_volume)
+      max_volume = double(:max_volume)
       subject.max_volume = max_volume
       subject.max_volume.should == max_volume
     end

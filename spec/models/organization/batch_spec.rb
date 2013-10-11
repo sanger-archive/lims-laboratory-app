@@ -20,7 +20,7 @@ module Lims::LaboratoryApp::Organization
 
     def self.it_can_assign(attribute)
       it "can assign #{attribute}" do
-        value = mock(:attribute)
+        value = double(:attribute)
         subject.send("#{attribute}=", value)
         subject.send(attribute).should == value
       end
@@ -32,13 +32,13 @@ module Lims::LaboratoryApp::Organization
     it_has_a :kit
 
     it "sets a process" do
-      process = mock(:process)
+      process = double(:process)
       subject.process = process
       subject.process.should == process
     end
 
     it "sets a kit" do
-      kit = mock(:kit)
+      kit = double(:kit)
       subject.kit = kit
       subject.kit.should == kit
     end

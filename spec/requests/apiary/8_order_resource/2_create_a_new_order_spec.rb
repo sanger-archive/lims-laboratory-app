@@ -20,8 +20,8 @@ describe "create_a_new_order", :order => true do
     
     save_with_uuid study => [1,2,3,4,7], user => [1,2,3,4,6], plate => [1,2,3,0,1], tube1 => [1,2,3,0,2], tube2 => [1,2,3,0,3]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/orders", <<-EOD
     {

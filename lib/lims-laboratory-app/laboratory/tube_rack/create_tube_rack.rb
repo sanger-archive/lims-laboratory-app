@@ -22,7 +22,7 @@ module Lims::LaboratoryApp
           session << tube_rack
 
           tubes.each do |position, tube|
-            raise TubeInAnotherTubeRack, "The tube in #{position} belongs to another tube rack." if session.tube.belongs_to_tube_rack?(tube) 
+            raise TubeInAnotherTubeRack, "The tube in #{position} belongs to another tube rack." if session.tube_rack.belongs_to_tube_rack?(tube) 
             tube_rack[position] = tube
           end
 

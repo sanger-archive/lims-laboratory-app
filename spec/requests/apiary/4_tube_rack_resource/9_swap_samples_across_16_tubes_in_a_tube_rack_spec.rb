@@ -88,8 +88,8 @@ describe "swap_samples_across_16_tubes_in_a_tube_rack", :tube_rack => true do
       tube13 => [1,0,0,1,3], tube14 => [1,0,0,1,4], tube15 => [1,0,0,1,5], tube16 => [1,0,0,1,6]
     })
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/actions/swap_samples", <<-EOD
     {

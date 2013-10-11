@@ -27,8 +27,8 @@ describe "use_update_label_action_with_invalid_parameters" do
     
     save_with_uuid tube => [1,2,3,4,0], labellable => [1,2,3,4,5]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/actions/update_label", <<-EOD
     {
@@ -61,8 +61,8 @@ describe "use_update_label_action_with_invalid_parameters" do
   # It has a value, which can be serial number, stick label with barcode etc.
   # It has a type, which can be sanger-barcode, 2d-barcode, ean13-barcode etc...
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/actions/update_label", <<-EOD
     {
@@ -97,8 +97,8 @@ describe "use_update_label_action_with_invalid_parameters" do
   # It has a value, which can be serial number, stick label with barcode etc.
   # It has a type, which can be sanger-barcode, 2d-barcode, ean13-barcode etc...
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/actions/update_label", <<-EOD
     {
@@ -126,8 +126,8 @@ describe "use_update_label_action_with_invalid_parameters" do
   # It has a value, which can be serial number, stick label with barcode etc.
   # It has a type, which can be sanger-barcode, 2d-barcode, ean13-barcode etc...
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/actions/update_label", <<-EOD
     {

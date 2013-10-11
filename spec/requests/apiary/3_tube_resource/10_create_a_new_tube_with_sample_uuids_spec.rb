@@ -3,8 +3,8 @@ describe "create_a_new_tube_with_sample_uuids", :tube => true do
   include_context "use core context service"
   it "create_a_new_tube_with_sample_uuids" do
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/tubes", <<-EOD
     {

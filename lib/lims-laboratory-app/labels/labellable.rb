@@ -17,6 +17,11 @@ module Lims::LaboratoryApp
       attribute :type, String, :required => true, :initializable => true
       attribute :content, Hash, :default => {}, :writer => :private, :initializable => true
 
+      # Exclude content from attributes
+      def attributes
+        { name:@name, type:@type }
+      end
+
       LabelPositionNotEmptyError = Class.new(Lims::Core::Actions::Action::InvalidParameters)
 
       def initialize(*args, &block)
@@ -127,3 +132,4 @@ require 'lims-laboratory-app/labels/barcode_2d'
 require 'lims-laboratory-app/labels/sanger_barcode'
 require 'lims-laboratory-app/labels/ean13_barcode'
 require 'lims-laboratory-app/labels/code128_c_barcode'
+require 'lims-laboratory-app/labels/text'

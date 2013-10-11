@@ -39,7 +39,7 @@ module Lims::LaboratoryApp
             # The following line is not executed if we update the volume of an
             # existing tube. Otherwise it would raise a RackPositionNotEmpty exception. 
             unless tube_rack[location].is_a?(Tube) && tube_rack[location] == tube && volume
-              raise TubeInAnotherTubeRack, "The tube in #{location} belongs to another tube rack." if session.tube.belongs_to_tube_rack?(tube) 
+              raise TubeInAnotherTubeRack, "The tube in #{location} belongs to another tube rack." if session.tube_rack.belongs_to_tube_rack?(tube) 
               tube_rack[location] = tube
             end
           end

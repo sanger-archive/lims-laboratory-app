@@ -8,8 +8,8 @@ describe "create_a_new_empty_gel_plate", :gel_plate => true do
   # * `number_of_columns` number of columns in the rack
   # * `windows_description` map aliquots to window locations
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/gels", <<-EOD
     {

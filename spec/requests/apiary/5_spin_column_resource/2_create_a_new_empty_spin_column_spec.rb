@@ -4,8 +4,8 @@ describe "create_a_new_empty_spin_column", :spin_column => true do
   it "create_a_new_empty_spin_column" do
   # **Create a new empty spin column.**
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/spin_columns", <<-EOD
     {

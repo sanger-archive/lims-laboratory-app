@@ -1,7 +1,7 @@
 # Spec requirements
 require 'models/persistence/sequel/spec_helper'
 
-require 'models/laboratory/plate_and_gel_shared'
+require 'models/laboratory/container_like_asset_shared'
 require 'models/persistence/resource_shared'
 require 'models/persistence/sequel/store_shared'
 require 'models/persistence/filter/multi_criteria_sequel_filter_shared'
@@ -17,7 +17,7 @@ module Lims::LaboratoryApp
 
   describe "Sequel#Plate ", :plate => true, :laboratory => true, :persistence => true, :sequel => true do
     include_context "sequel store"
-    include_context "plate or gel factory"
+    include_context "container-like asset factory"
 
     def last_plate_id(session)
       session.plate.dataset.order_by(:id).last[:id]
@@ -98,6 +98,9 @@ module Lims::LaboratoryApp
           it "deletes the well rows" do
             expect { delete_plate }.to change { db[:wells].count}.by(-31)
           end
+          it "deletes the aliquot rows" do
+            expect { delete_plate }.to change { db[:aliquots].count}.by(-31)
+          end
         end
 
         context "with a plate type" do
@@ -165,9 +168,8 @@ module Lims::LaboratoryApp
             before(:each) { store.dirty_attribute_strategy = nil }
             it "saves everything" do
               store.with_session do |session|
-                $stop = true
                 session.plate.should_receive(:update_raw).and_call_original
-                session.aliquot.should_receive(:save).exactly(96*5).and_call_original
+                session.aliquot.should_receive(:save_all).exactly(96*5).and_call_original
                 session.aliquot.should_receive(:update_raw).exactly(96*5).and_call_original
                 plate = session.plate[plate_id]
               end
@@ -179,7 +181,7 @@ module Lims::LaboratoryApp
               store.with_session do |session|
                 session.plate.should_not_receive(:update_raw)
                 session.aliquot.should_not_receive(:update_raw)
-                session.aliquot.should_receive(:save).exactly(96*5).and_call_original
+                session.aliquot.should_receive(:save_all).exactly(96*5).and_call_original
                 plate = session.plate[plate_id]
               end
             end

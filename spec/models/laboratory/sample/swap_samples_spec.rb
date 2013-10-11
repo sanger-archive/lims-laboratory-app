@@ -2,7 +2,7 @@
 require 'models/actions/action_examples'
 require 'models/persistence/sequel/store_shared'
 require 'models/laboratory/tube_shared'
-require 'models/laboratory/plate_and_gel_shared'
+require 'models/laboratory/container_like_asset_shared'
 require 'models/laboratory/spin_column_shared'
 require 'models/laboratory/tube_rack_shared'
 

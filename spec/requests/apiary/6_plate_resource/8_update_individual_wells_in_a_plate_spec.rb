@@ -9,8 +9,8 @@ describe "update_individual_wells_in_a_plate", :plate => true do
     plate["C5"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 10, :type => "DNA", :sample => sample2)
     save_with_uuid sample1 => [1,2,3,4,6], sample2 => [1,2,3,4,7], plate => [1,2,3,4,5]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = put "/11111111-2222-3333-4444-555555555555", <<-EOD
     {

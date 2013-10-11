@@ -3,8 +3,8 @@ describe "bulk_create_tube_with_labels", :tube => true do
   include_context "use core context service"
   it "bulk_create_tube_with_labels" do
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/actions/bulk_create_tube", <<-EOD
     {

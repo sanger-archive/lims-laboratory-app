@@ -470,7 +470,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
       end
     end
 
-    context "from a tube-rack and a plate with samples", :focus => true do
+    context "from a tube-rack and a plate with samples" do
       let(:source_rack1_uuid) { create_tube_rack_with_aliquots_and_solvent(
         '11111111-2222-3333-1111-000000000000',
         samples[0],

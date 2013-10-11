@@ -1,7 +1,7 @@
-require 'lims-core/persistence/persistor'
-require 'lims-laboratory-app/laboratory/container/container_persistor'
-require 'lims-laboratory-app/laboratory/container/container_element_persistor'
+# vi: ts=2:sts=2:et:sw=2 spell:spelllang=en
+
 require 'lims-laboratory-app/laboratory/gel'
+require 'lims-laboratory-app/container_persistor_trait'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -10,33 +10,10 @@ module Lims::LaboratoryApp
     # Real implementation classes (e.g. Sequel::Gel) should
     # include the suitable persistor.
     class Gel
-      class GelPersistor < Lims::Core::Persistence::Persistor
-        Model = Laboratory::Gel
+      does "lims/laboratory_app/container_persistor", :element => :window_aliquot, :table_name => :windows,
+        :contained_class => Aliquot
 
-        include Container::ContainerPersistor
-
-        # calls the correct element method
-        def element
-          window
-        end
-
-        def window
-          @session.gel_window
-        end
-      end
-
-        # Base for all Window persistor.
-        # Real implementation classes (e.g. Sequel::Window) should
-        # include the suitable persistor.
-      class Window 
-        SESSION_NAME = :gel_window
-        class WindowPersistor < Lims::Core::Persistence::Persistor
-          Model = Laboratory::Gel::Window
-
-          include Container::ContainerElementPersistor
-
-        end
-      end
     end
   end
 end
+
