@@ -1,84 +1,124 @@
 # vi: ts=2:sts=2:et:sw=2 spell:spelllang=en
 
 require 'lims-core/persistence/persistor'
+require 'lims-core/persistence/sequel/persistor'
 require 'lims-laboratory-app/organization/order'
 require 'lims-laboratory-app/organization/study/all'
 require 'lims-laboratory-app/organization/user/all'
+require 'lims-laboratory-app/organization/batch/all'
+require 'lims-laboratory-app/container_persistor_trait'
 
 module Lims::LaboratoryApp
   module Organization
     # Base for all Order persistor.
     class Order
-      class OrderPersistor < Lims::Core::Persistence::Persistor
-        Model = Organization::Order
+      does "lims/laboratory_app/container_persistor", :element => :item_proxy, :table_name => :items,
+      :contained_class => Item
+      class OrderPersistor
+        def attribute_for(key)
+          {creator: 'creator_id',
+            study: 'study_id'
+          }[key]
+        end
+        def filter_attributes_on_save(attributes)
+          attributes.delete(:items)
+          super(attributes) do |k,v|
+            case k
+            when :parameters, :state then [k, @session.serialize(v)]
+            end
+          end
+        end
+        def filter_attributes_on_load(attributes)
+          super(attributes) do |k,v|
+            case k
+            when :parameters, :state then [k, @session.unserialize(v)]
+            when :creator_id then  [:creator, @session.user[v]]
+            when :study_id then  [:study, @session.study[v]]
+            end
+          end
+        end
 
-        # Saves all children of the given order
-        # @param id obect identifier
-        # @param [Organization::Order] order
-        # @return [Boolean]
-        def save_children(id, order)
+        def children_item_proxy(order, children)
           order.each do |role, items|
             items.each do |item|
-              @session.save(item, id, role)
+              item_proxy = ItemProxy.new(order, role, item)
+              state = self.item.state_for(item_proxy)
+              state.resource = item_proxy
+              children << item_proxy
             end
           end
         end
 
-        # Loads all children of the given order
+        alias item item_proxy
+        class ItemProxy
 
-        # @param  id object identifier
-        # @param [Organization::Order] order
-        # @return [Organization::Order, nil] 
-        #
-        def load_children(id, order)
-          # We don't really need to keep the order of the item
-          # however as the user can update an item via is index
-          # it's need to be the same between what we display
-          # and how we load items.
-          # For this items are loaded sorted by id
-          # So they should be always presented the same way (between and load and a save)
-          item.loads(id) do |role, item|
-            order.add_item(role, item)
+          SESSION_NAME = :order_item
+
+          def attributes
+            @item ?  @item.attributes.merge({order: @order, role: @position}) : {}
           end
-        end
 
-        def item
-          @session.order_item
-        end
-      end
+          def Xinvalid?
+            !@order[@position].include?(@item)
+          end
 
-      class Item
-        SESSION_NAME = :order_item
-        class ItemPersistor < Lims::Core::Persistence::Persistor
-          Model = Organization::Order::Item
+          def on_load
+            @order.add_item(@position, @item)
+          end
 
-          def filter_attributes_on_save(attributes, order_id=nil, role=nil)
-            attributes = attributes.mash do |k,v|
-              case k
-              when :batch then [:batch_id, @session.id_for!(v)]
-              else [k,v]
+
+
+          class ItemProxyPersistor
+            def attribute_for(key)
+              {order: 'order_id', batch: 'batch_id'
+              }[key]
+            end
+            def filter_attributes_on_save(attributes, *params)
+              super(attributes).tap do |attributes|
+                attributes[:uuid].andtap do |uuid|
+                  attributes[:uuid] = @session.pack_uuid(uuid)
+                end
               end
             end
-            attributes[:role] = role if role
-            attributes[:order_id] = order_id if order_id
-            uuid = attributes[:uuid]
-            attributes[:uuid] = @session.pack_uuid(uuid) if uuid
-            attributes
-          end
 
-          def filter_attributes_on_load(attributes)
-            attributes = attributes.mash do |k,v|
-              case k
-              when :batch_id then [:batch, @session.batch[v]]
-              else [k,v]
+            def filter_attributes_on_load(attributes)
+              super(attributes).tap do |attributes|
+                attributes[:uuid].andtap do |uuid|
+                  attributes[:uuid] = @session.unpack_uuid(uuid) if uuid
+                end
               end
             end
-            uuid = attributes[:uuid]
-            attributes[:uuid] = @session.unpack_uuid(uuid) if uuid
-            attributes
+
+            def self.table_name
+              :items
+            end
+
+            # We can't use yet the default association new_from_attributes method
+            # as it thinks Item is a parent or a resource and won't be able 
+            # to build it from the attributes.
+            def new_from_attributes(_attributes)
+              super(filter_attributes_on_load(_attributes)) do |attributes|
+                order = @session.order[attributes.delete(:order_id)]
+                batch = @session.batch[attributes.delete(:batch_id)]
+                role = attributes.delete(:role)
+                item = Item.new(attributes)
+                item.batch = batch
+                order.add_item(role, item)
+                Model.new(order, role, item)
+              end
+            end
+            def parents(resource)
+              [].tap do |list|
+                resource.item.andtap { |i|  i.batch.andtap { |b| list << b } }
+            end
+          end
+
+          def parents_for_attributes(att)
+            []
           end
         end
       end
     end
   end
+end
 end

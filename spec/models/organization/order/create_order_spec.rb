@@ -13,7 +13,7 @@ module Lims::LaboratoryApp
         it_behaves_like "an action"
 
         it "creates an order object" do
-          Lims::Core::Persistence::Session.any_instance.should_receive(:save)
+          Lims::Core::Persistence::Session.any_instance.should_receive(:save_all)
           result = subject.call 
           order = result[:order]
           order.should be_a Organization::Order
@@ -44,16 +44,16 @@ module Lims::LaboratoryApp
 
       let!(:store) { Lims::Core::Persistence::Store.new() }
 
-      let(:pipeline) { mock(:pipeline) }
-      let(:parameters) { mock(:parameters) }
-      let(:sources) { {:source_role => mock(:source)} } 
-      let(:targets) { {:target_role => mock(:target)} } 
-      let(:study) { mock(:study) }
-      let(:cost_code) { mock(:cost_code) }
+      let(:pipeline) { double(:pipeline) }
+      let(:parameters) { double(:parameters) }
+      let(:sources) { {:source_role => double(:source)} } 
+      let(:targets) { {:target_role => double(:target)} } 
+      let(:study) { double(:study) }
+      let(:cost_code) { double(:cost_code) }
 
       let(:create_order_parameters) { 
-        { :store => mock(:store),
-          :user => mock(:user),
+        { :store => double(:store),
+          :user => double(:user),
           :application => "my application",
           :pipeline => pipeline,
           :parameters => parameters,

@@ -17,8 +17,8 @@ describe "add_multiply_labels_to_an_asset_with_an_existing_label", :labellable =
     
     save_with_uuid tube => [1,2,3,4,0], labellable => [1,2,3,4,5]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/actions/create_label", <<-EOD
     {

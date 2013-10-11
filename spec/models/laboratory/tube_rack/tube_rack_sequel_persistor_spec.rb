@@ -10,7 +10,8 @@ require 'models/persistence/filter/label_sequel_filter_shared'
 
 
 # Model requirements
-require 'lims-laboratory-app/laboratory/tube_rack'
+require 'lims-laboratory-app/laboratory/tube_rack/all'
+require 'lims-laboratory-app/laboratory/tube/all'
 
 require 'lims-laboratory-app/labels/labellable/all'
 
@@ -102,7 +103,10 @@ module Lims::LaboratoryApp
           end
 
           it "deletes the tubes rows" do
-            expect { delete_tube_rack }.to change { db[:tube_rack_slots].count}.by(-96)
+            expect { delete_tube_rack }.to change { db[:tube_rack_slots].count}.by(-11)
+          end
+          it "doesn't delete the tubes" do
+            expect { delete_tube_rack }.to change { db[:tubes].count}.by(0)
           end
         end
 

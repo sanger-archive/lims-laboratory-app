@@ -19,7 +19,7 @@ end
 shared_context 'use core context service' do
   let(:db) { connect_db(:test) }
   let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
-  let(:message_bus) { mock(:message_bus).tap { |m| m.stub(:publish) } } 
+  let(:message_bus) { double(:message_bus).tap { |m| m.stub(:publish) } } 
   let(:context_service) { Lims::Api::ContextService.new(store, message_bus) }
 
   before(:each) do
@@ -28,7 +28,7 @@ shared_context 'use core context service' do
   #This code is cleaning up the DB after each test case execution
   after(:each) do
     # list of all the tables in our DB
-    %w{items orders batches searches labels labellables tube_aliquots spin_column_aliquots windows wells lanes tag_group_associations aliquots tube_rack_slots tube_racks tubes spin_columns gels plates flowcells samples oligos tag_groups studies users uuid_resources}.each do |table|
+    %w{items orders batches searches labels labellables tube_aliquots spin_column_aliquots windows wells lanes locations tag_group_associations aliquots tube_rack_slots tube_racks tubes spin_columns gels plates flowcells filter_papers samples oligos tag_groups studies users uuid_resources primary_keys}.each do |table|
       db[table.to_sym].delete
     end
     db.disconnect

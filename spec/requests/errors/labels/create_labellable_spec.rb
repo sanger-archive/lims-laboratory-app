@@ -5,8 +5,8 @@ describe "create_labellable" do
   # Don't pass a the labellable name
     save_with_uuid Lims::LaboratoryApp::Laboratory::Tube.new => [1,2,3,4,0]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/labellables", <<-EOD
     {

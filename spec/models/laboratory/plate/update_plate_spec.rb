@@ -1,7 +1,7 @@
 # Spec requirements
 require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
-require 'models/laboratory/plate_and_gel_shared'
+require 'models/laboratory/container_like_asset_shared'
 
 # Model requirements
 require 'lims-laboratory-app/laboratory/plate/update_plate'
@@ -11,7 +11,7 @@ module Lims::LaboratoryApp
   module Laboratory
     describe Plate::UpdatePlate, :plate => true, :laboratory => true, :persistence => true do
       include_context "for application", "test update tube rack"
-      include_context "plate or gel factory"
+      include_context "container-like asset factory"
       include_context "create object"
 
       let!(:store) { Lims::Core::Persistence::Store.new }

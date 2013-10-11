@@ -22,8 +22,8 @@ describe "physically_move_tubes_from_a_source_tube_rack", :tube_rack => true do
     
     save_with_uuid sample1 => [1,2,3,4,0], source_tube => [1,2,3,4,7], source_tube_rack => [1,2,3,4,5], target_tube_rack => [1,2,3,4,6]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/actions/tube_rack_move", <<-EOD
     {

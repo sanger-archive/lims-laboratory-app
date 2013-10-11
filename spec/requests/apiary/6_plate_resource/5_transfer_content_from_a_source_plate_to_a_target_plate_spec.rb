@@ -18,8 +18,8 @@ describe "transfer_content_from_a_source_plate_to_a_target_plate", :plate => tru
                                     :type => "target plate type")
     save_with_uuid sample1 => [1,2,3,4,7], plate1 => [1,2,3,4,5], plate2 => [1,2,3,4,6]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/actions/plate_transfer", <<-EOD
     {

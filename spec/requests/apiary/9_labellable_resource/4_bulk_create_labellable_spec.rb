@@ -8,8 +8,8 @@ describe "bulk_create_labellable", :labellable => true do
       Lims::LaboratoryApp::Laboratory::Tube.new => [1,0,0,0,3]
     })
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/actions/bulk_create_labellable", <<-EOD
     {

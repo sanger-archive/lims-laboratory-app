@@ -1,5 +1,4 @@
 require('lims-laboratory-app/organization/batch/batch_persistor')
-require('lims-laboratory-app/organization/batch/batch_sequel_persistor')
 require('lims-laboratory-app/organization/batch/create_batch')
 require('lims-laboratory-app/organization/batch/update_batch')
 require('lims-laboratory-app/organization/batch/batch_filter')

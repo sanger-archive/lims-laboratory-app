@@ -1,13 +1,13 @@
 # Spec requirements
 require 'models/persistence/logger/spec_helper'
-require 'models/laboratory/plate_and_gel_shared'
+require 'models/laboratory/container_like_asset_shared'
 
 # Model requirements
 require 'lims-core/persistence/logger/store'
 
 module Lims::Core::Persistence
   describe Logger::Store, :store => true, :logger => true, :persistence => true do
-    include_context "plate or gel factory"
+    include_context "container-like asset factory"
     context "initialized with a logger" do
       let(:number_of_rows) { 1 }
       let(:number_of_columns) { 2 }

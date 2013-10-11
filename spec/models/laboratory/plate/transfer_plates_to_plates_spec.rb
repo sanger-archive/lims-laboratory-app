@@ -1,7 +1,7 @@
 # Spec requirements
 require 'models/persistence/sequel/spec_helper'
 require 'models/persistence/sequel/store_shared'
-require 'models/laboratory/plate_and_gel_shared'
+require 'models/laboratory/container_like_asset_shared'
 require 'models/laboratory/tube_rack_shared'
 
 # Model requirements
@@ -89,14 +89,14 @@ end
 module Lims::LaboratoryApp
   module Laboratory
     describe Plate::TransferPlatesToPlates, :plate => true, :transfer => true, :laboratory => true, :persistence => true, :sequel => true do
-      include_context "plate or gel factory"
+      include_context "container-like asset factory"
       include_context "tube_rack factory"
 
       context "with a sequel store" do
         include_context "sequel store"
 
         context "and everything already in the database" do
-          let(:user) { mock(:user) }
+          let(:user) { double(:user) }
           let(:application) { "test transfer plate-like(s) to plate-like(s) with a given transfer map" }
           let(:number_of_rows) { 8 }
           let(:number_of_columns) { 12 }
@@ -157,7 +157,7 @@ module Lims::LaboratoryApp
               it_behaves_like "transfer from many plates to many gels"
             end
 
-            context "transfer from 2 racks to 2 plates", :tube_rack => true,  :focus => true do
+            context "transfer from 2 racks to 2 plates", :tube_rack => true do
               let(:quantity1) { 1000 }
               let(:quantity2) { 1000 }
               let(:final_quantity_rack1_A1) { 940 }

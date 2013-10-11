@@ -1,0 +1,77 @@
+<%
+require 'json'
+h={:header => [], :response_header => [] }
+h[:description]=<<EOD
+**Bulk create new empty plates.**
+
+* `number_of_rows` number of rows in the plate
+* `number_of_columns` number of columns in the plate
+* `type` actual type of the plate
+* `wells_description` map aliquots to well locations
+EOD
+h[:method] = "POST"
+h[:url]='/plates'
+h[:header] << 'Accept: application/json; representation=minimal'
+h[:header] << 'Content-Type: application/json; bulk=true'
+h[:parameters]=<<EOD
+{ "plates": [
+    {
+      "number_of_rows": 8,
+      "number_of_columns": 12,
+      "type": "plate type1",
+      "wells_description": {}
+    },
+    {
+      "number_of_rows": 8,
+      "number_of_columns": 12,
+      "type": "plate type2",
+      "wells_description": {}
+    },
+    {
+      "number_of_rows": 8,
+      "number_of_columns": 12,
+      "type": "plate type3",
+      "wells_description": {}
+    }
+  ]
+}
+EOD
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json; representation=minimal'
+h[:response]=<<EOD
+{
+  "actions": {},
+  "plates": [
+    {
+      "actions": {
+        "read": "/11111111-2222-3333-4444-555555555555",
+        "update": "/11111111-2222-3333-4444-555555555555",
+        "delete": "/11111111-2222-3333-4444-555555555555",
+        "create": "/11111111-2222-3333-4444-555555555555"
+      },
+      "uuid": "11111111-2222-3333-4444-555555555555"
+    },
+    {
+      "actions": {
+        "read": "/11111111-2222-3333-4444-666666666666",
+        "update": "/11111111-2222-3333-4444-666666666666",
+        "delete": "/11111111-2222-3333-4444-666666666666",
+        "create": "/11111111-2222-3333-4444-666666666666"
+      },
+      "uuid": "11111111-2222-3333-4444-666666666666"
+    },
+    {
+      "actions": {
+        "read": "/11111111-2222-3333-4444-777777777777",
+        "update": "/11111111-2222-3333-4444-777777777777",
+        "delete": "/11111111-2222-3333-4444-777777777777",
+        "create": "/11111111-2222-3333-4444-777777777777"
+      },
+      "uuid": "11111111-2222-3333-4444-777777777777"
+    }
+  ],
+  "size": 3
+}
+EOD
+%>
+<%= h.to_json %>

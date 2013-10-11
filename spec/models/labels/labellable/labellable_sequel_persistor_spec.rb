@@ -76,7 +76,7 @@ module Lims::LaboratoryApp
       end
     end
 
-    context "lookup", :focus => true do
+    context "lookup" do
       before do
         store.with_session do |session|
           session << labellable

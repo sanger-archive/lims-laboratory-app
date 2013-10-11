@@ -12,8 +12,8 @@ describe "search_for_a_tube_by_sample_uuid", :search => true do
     
     save_with_uuid tube => [1,2,3,4,6], sample => [1,2,3,4,7], tube2 => [1,2,3,4,8]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/searches", <<-EOD
     {
@@ -43,8 +43,8 @@ describe "search_for_a_tube_by_sample_uuid", :search => true do
 
   # Get the search result
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = get "/11111111-2222-3333-4444-555555555555/page=1"
     response.should match_json_response(200, <<-EOD) 
