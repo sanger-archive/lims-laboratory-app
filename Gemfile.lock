@@ -1,9 +1,9 @@
 GIT
   remote: http://github.com/sanger/lims-api.git
-  revision: 43ba078bece2c8cdb9fd26af30d397f09e4f86db
-  branch: development
+  revision: 73870c86a3e9e4158d73d57375b83160b4ebb05a
+  branch: uat
   specs:
-    lims-api (3.0.0.0.3)
+    lims-api (3.0.1.rc1)
       active_support
       bunny (= 0.9.0.pre10)
       json
@@ -12,10 +12,10 @@ GIT
 
 GIT
   remote: http://github.com/sanger/lims-core.git
-  revision: 9e9f7867fccee589a589cf0d63416b2011737ea8
-  branch: development
+  revision: bc263264c56d16e5edf5141d5fa26b033e548fab
+  branch: uat
   specs:
-    lims-core (3.0.0.3.1)
+    lims-core (3.0.0.rc1)
       active_support
       aequitas
       bunny (= 0.9.0.pre10)
@@ -46,7 +46,7 @@ GIT
 PATH
   remote: .
   specs:
-    lims-laboratory-app (3.0.6)
+    lims-laboratory-app (3.0.6.rc1)
 
 GEM
   remote: http://rubygems.org/
@@ -133,8 +133,8 @@ DEPENDENCIES
   debugger-completion
   hashdiff
   jdbc-mysql
-  lims-api (~> 3.0)!
-  lims-core (~> 3.0)!
+  lims-api (~> 3.0.1.rc1)!
+  lims-core (~> 3.0.0.rc1)!
   lims-laboratory-app!
   mysql2
   psd_logger!
