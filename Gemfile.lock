@@ -1,9 +1,9 @@
 GIT
   remote: http://github.com/sanger/lims-api.git
-  revision: 43ba078bece2c8cdb9fd26af30d397f09e4f86db
+  revision: 1871a366a3a4c56de685dd5223e61fc5230c2b3a
   branch: development
   specs:
-    lims-api (3.0.0.0.3)
+    lims-api (3.0.0.0.4)
       active_support
       bunny (= 0.9.0.pre10)
       json
@@ -12,10 +12,10 @@ GIT
 
 GIT
   remote: http://github.com/sanger/lims-core.git
-  revision: 9e9f7867fccee589a589cf0d63416b2011737ea8
+  revision: df65402894bf40c0b545cf9e6d19cf4758e0865c
   branch: development
   specs:
-    lims-core (3.0.0.3.1)
+    lims-core (3.0.0.3.2)
       active_support
       aequitas
       bunny (= 0.9.0.pre10)
@@ -46,7 +46,7 @@ GIT
 PATH
   remote: .
   specs:
-    lims-laboratory-app (3.0.6)
+    lims-laboratory-app (3.0.6.0.2)
 
 GEM
   remote: http://rubygems.org/
