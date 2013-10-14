@@ -17,6 +17,7 @@ end
 group :development do
   gem 'sqlite3', :platforms => :mri
   gem 'mysql2', :platforms => :mri
+  gem 'ruby-prof', :platforms => :mri
 end
 
 group :yard do

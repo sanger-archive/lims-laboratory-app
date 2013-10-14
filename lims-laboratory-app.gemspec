@@ -22,5 +22,4 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency('rspec', '~>2.13')
   gem.add_development_dependency('rack-test', '~> 0.6.1')
   gem.add_development_dependency('hashdiff')
-  gem.add_development_dependency('ruby-prof')
 end
