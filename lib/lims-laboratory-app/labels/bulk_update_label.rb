@@ -6,7 +6,7 @@ module Lims::LaboratoryApp
       attribute :by, String, :required => true
       attribute :labels, Hash, :default => {}, :required => true
 
-      SangerIdNotFound        = Class.new(StandardError)
+      LabelPositionNotFound   = Class.new(StandardError)
       LabellableUuidNotFound  = Class.new(StandardError)
 
       def _call_in_session(session)
@@ -28,7 +28,7 @@ module Lims::LaboratoryApp
           labellable = session.labellable.label.dataset.filter(
             { :position => by,
               :value => existing_label_value}).first
-          raise SangerIdNotFound, "Position '#{existing_label_value}' is not found" unless labellable
+          raise LabelPositionNotFound, "Position '#{existing_label_value}' is not found" unless labellable
 
           labellables << add_new_labels(session, labellable[:labellable_id], new_labels)
         end

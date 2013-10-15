@@ -106,7 +106,7 @@ module Lims::LaboratoryApp
             it "raises an exception" do
               expect {
                 subject.call
-              }.to raise_error(BulkUpdateLabel::SangerIdNotFound)
+              }.to raise_error(BulkUpdateLabel::LabelPositionNotFound)
             end
           end
         end
