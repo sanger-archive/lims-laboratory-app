@@ -18,9 +18,7 @@ module Lims::LaboratoryApp
 
         let(:number_of_rows) { 8 }
         let(:number_of_columns) { 12 }
-        let(:db) { ::Sequel.sqlite('') }
-        let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
-        before(:each) { prepare_table(db) }
+        include_context "sequel store"
 
         let(:source_id) {
           store.with_session do |session|

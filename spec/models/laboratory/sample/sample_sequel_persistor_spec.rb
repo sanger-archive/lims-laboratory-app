@@ -10,10 +10,7 @@ require 'lims-laboratory-app/laboratory/sample/sample_persistor'
 module Lims::LaboratoryApp
 
   describe Laboratory::Sample::SamplePersistor, :sample => true, :laboratory => true, :persistence => true, :sequel => true do
-    include_context "prepare tables"
-    let(:db) { ::Sequel.sqlite('') }
-    let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
-    before (:each) { prepare_table(db) }
+    include_context "sequel store"
 
     let (:sample) { Laboratory::Sample.new(:name => "Sample 1") }
 
