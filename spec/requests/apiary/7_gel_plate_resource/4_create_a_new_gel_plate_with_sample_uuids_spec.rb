@@ -8,8 +8,8 @@ describe "create_a_new_gel_plate_with_sample_uuids", :gel_plate => true do
   # * `number_of_columns` number of columns in the gel plate
   # * `windows_description` map tubes identified by their uuids to rack locations
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/gels", <<-EOD
     {
