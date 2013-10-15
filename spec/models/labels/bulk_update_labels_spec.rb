@@ -42,10 +42,12 @@ module Lims::LaboratoryApp
           :labels => {}.merge!(new_label1).merge!(new_label2)
         }
       }
+      let(:labellable_uuid1) { '00000000-1111-2222-3333-444444444444' }
+      let(:labellable_uuid2) { '00000000-1111-2222-3333-000000000000' }
       let!(:existing_labellable_id1) {
         store.with_session do |session|
           labellable = new_labellable_with_labels(
-            name='00000000-1111-2222-3333-444444444444',
+            name= labellable_uuid1,
             type='resource', 
             position='sanger_id',
             value='s1')
@@ -57,7 +59,7 @@ module Lims::LaboratoryApp
       let!(:existing_labellable_id2) {
         store.with_session do |session|
           labellable = new_labellable_with_labels(
-            name='00000000-1111-2222-3333-000000000000',
+            name=labellable_uuid2,
             type='resource', 
             position='sanger_id',
             value='s2')
@@ -68,8 +70,8 @@ module Lims::LaboratoryApp
       }
 
       context "invalid action" do
-        it "requires a valid by attribute" do
-          described_class.new(parameters.merge({:by => "dummy"})).valid?.should == false
+        it "requires a by attribute" do
+          described_class.new(parameters - [:by]).valid?.should == false
         end
 
         it "requires a labels hash" do
@@ -79,31 +81,69 @@ module Lims::LaboratoryApp
 
       context "valid action" do
         let(:result) { subject.call }
-        subject {
-          described_class.new(:store => store, :user => user, :application => application) do |a,s|
-            a.by = parameters[:by]
-            a.labels = parameters[:labels]
+
+        context "by position" do
+          subject {
+            described_class.new(:store => store, :user => user, :application => application) do |a,s|
+              a.by = parameters[:by]
+              a.labels = parameters[:labels]
+            end
+          }
+          it "has valid parameters" do
+            described_class.new(parameters).valid?.should == true
           end
-        }
 
-        it "has valid parameters" do
-          described_class.new(parameters).valid?.should == true
+          context "with valid sanger ids" do
+            it_behaves_like "bulk updating labels"
+          end
+
+          context "with invalid sanger ids" do
+            let(:new_label1) { { "s3" => { "lot_no" => {"value" => "1", "type" => "text"},
+                                           "barcode" => {"value" => "123", "type" => "sanger-barcode"}} } }
+            let(:new_label2) { { "s4" => { "lot_no" => {"value" => "2", "type" => "text"},
+                                           "barcode" => {"value" => "465", "type" => "sanger-barcode"}} } }
+
+            it "raises an exception" do
+              expect {
+                subject.call
+              }.to raise_error(BulkUpdateLabel::SangerIdNotFound)
+            end
+          end
         end
 
-        context "with valid sanger ids" do
-          it_behaves_like "bulk updating labels"
-        end
+        context "by uuid" do
+          subject {
+            described_class.new(:store => store, :user => user, :application => application) do |a,s|
+              a.by = by
+              a.labels = parameters[:labels]
+            end
+          }
 
-        context "with invalid sanger ids" do
-          let(:new_label1) { { "s3" => { "lot_no" => {"value" => "1", "type" => "text"},
-                                         "barcode" => {"value" => "123", "type" => "sanger-barcode"}} } }
-          let(:new_label2) { { "s4" => { "lot_no" => {"value" => "2", "type" => "text"},
-                                         "barcode" => {"value" => "465", "type" => "sanger-barcode"}} } }
+          let(:by) { "uuid" }
+          let(:new_label1) { { labellable_uuid1 => {  "lot_no" => {"value" => "1", "type" => "text"},
+                                                      "barcode" => {"value" => "123", "type" => "sanger-barcode"}} } }
+          let(:new_label2) { { labellable_uuid2 => {  "lot_no" => {"value" => "2", "type" => "text"},
+                                                      "barcode" => {"value" => "465", "type" => "sanger-barcode"}} } }
 
-          it "raises an exception" do
-            expect {
-              subject.call
-            }.to raise_error(BulkUpdateLabel::SangerIdNotFound)
+          it "has valid parameters" do
+            described_class.new(parameters).valid?.should == true
+          end
+
+          context "with valid uuids" do
+            it_behaves_like "bulk updating labels"
+          end
+
+          context "with invalid sanger ids" do
+            let(:new_label1) { { "12345678" => {  "lot_no" => {"value" => "1", "type" => "text"},
+                                                  "barcode" => {"value" => "123", "type" => "sanger-barcode"}} } }
+            let(:new_label2) { { "09029021" => {  "lot_no" => {"value" => "2", "type" => "text"},
+                                                  "barcode" => {"value" => "465", "type" => "sanger-barcode"}} } }
+
+            it "raises an exception" do
+              expect {
+                subject.call
+              }.to raise_error(BulkUpdateLabel::LabellableUuidNotFound)
+            end
           end
         end
       end

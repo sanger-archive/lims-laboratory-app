@@ -1,7 +1,7 @@
 require "requests/apiary/9_labellable_resource/spec_helper"
-describe "bulk_update_labels_on_existing_labellable", :labellable => true do
+describe "bulk_update_labels_on_existing_labellable_using_uuids", :labellable => true do
   include_context "use core context service"
-  it "bulk_update_labels_on_existing_labellable" do
+  it "bulk_update_labels_on_existing_labellable_using_uuids" do
   # **Bulk update labels on existing labellabels.**
   # 
   # * `labellable_uuid` unique identifier of an object the labellable related to
@@ -24,9 +24,9 @@ describe "bulk_update_labels_on_existing_labellable", :labellable => true do
     response = post "/actions/bulk_update_label", <<-EOD
     {
     "bulk_update_label": {
-        "by": "sanger_id",
+        "by": "uuid",
         "labels": {
-            "s1": {
+            "11111111-2222-3333-4444-000000000000": {
                 "lot_no": {
                     "value": "1",
                     "type": "text"
@@ -76,9 +76,9 @@ describe "bulk_update_labels_on_existing_labellable", :labellable => true do
                 }
             ]
         },
-        "by": "sanger_id",
+        "by": "uuid",
         "labels": {
-            "s1": {
+            "11111111-2222-3333-4444-000000000000": {
                 "lot_no": {
                     "value": "1",
                     "type": "text"
