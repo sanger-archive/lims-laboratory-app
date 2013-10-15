@@ -16,10 +16,10 @@ module Lims::LaboratoryApp
           labellables.should be_a(Array)
           labellables.each do |labellable|
             labellable.should be_a(Labellable)
-            labellable.content.keys.include?(pos1)
-            labellable.content.keys.include?(pos2)
+            positions.each do |position|
+              labellable.content.keys.include?(position)
+            end
           end
-          
         end
       end
 
@@ -29,6 +29,7 @@ module Lims::LaboratoryApp
 
       let(:pos1) { "lot_no" }
       let(:pos2) { "barcode" }
+      let(:positions) { [pos1, pos2] }
       let(:new_label1) { { "s1" => { pos1 => {"value" => "1", "type" => "text"},
                                      pos2 => {"value" => "123", "type" => "sanger-barcode"}} } }
       let(:new_label2) { { "s2" => { pos1 => {"value" => "2", "type" => "text"},
@@ -95,6 +96,25 @@ module Lims::LaboratoryApp
 
           context "with valid sanger ids" do
             it_behaves_like "bulk updating labels"
+          end
+
+          context "update a label on an already existing position" do
+            let(:old_value) { "s1" }
+            let(:new_value) { "new label" }
+            let(:position) { "sanger_id" }
+            let(:new_label1) { { old_value => { position => {"value" => new_value, "type" => "text"}
+            } } }
+            let(:new_label2) { { old_value => { position => {"value" => new_value, "type" => "text"}
+            } } }
+            let(:positions) { [position] }
+            it_behaves_like "bulk updating labels"
+
+            it "updates the label with the new value" do
+              labellables = result[:labellables]
+              labellables.each do |labellable|
+                labellable[position].value.should == new_value
+              end
+            end
           end
 
           context "with invalid sanger ids" do

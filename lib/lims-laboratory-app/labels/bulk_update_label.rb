@@ -53,6 +53,9 @@ module Lims::LaboratoryApp
         labellable_object = session.labellable[labellable_id]
 
         new_labels.each do |position, value|
+          # workaround to fix multiply manifest upload
+          labellable_object.delete(position)
+
           new_label = Labels::Labellable::Label.new(:type   => value["type"],
                                                     :value  => value["value"])
           labellable_object[position] = new_label
