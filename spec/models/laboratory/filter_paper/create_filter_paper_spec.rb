@@ -1,7 +1,10 @@
-require 'lims-laboratory-app/laboratory/filter_paper/create_filter_paper'
+require 'lims-laboratory-app/laboratory/filter_paper/all'
 require 'models/actions/spec_helper'
+require 'models/laboratory/spec_helper'
 require 'models/actions/action_examples'
 require 'models/laboratory/aliquot_shared'
+
+require 'models/persistence/sequel/store_shared'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -78,7 +81,7 @@ module Lims::LaboratoryApp
     end
 
     describe FilterPaper::CreateFilterPaper do
-      let!(:store) { Lims::Core::Persistence::Store.new() }
+      include_context "sequel store"
 
       # define parameters for the action
       let(:number_of_rows) { 2 }

@@ -3,6 +3,8 @@
 require 'lims-laboratory-app/laboratory/plate'
 require 'lims-laboratory-app/container_persistor_trait'
 
+require 'lims-laboratory-app/laboratory/aliquot/aliquot_persistor'
+
 module Lims::LaboratoryApp
   module Laboratory
 

@@ -23,3 +23,9 @@ test_mysql:
   username: root
   password:
   socket: /tmp/mysql.sock
+
+test_jruby:
+  adapter: jdbc
+  url: mysql://localhost/laboratory_test?user=root
+  charset: utf8
+  encoding: utf8

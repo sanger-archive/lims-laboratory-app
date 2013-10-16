@@ -8,7 +8,7 @@ require 'models/persistence/filter/batch_sequel_filter_shared'
 require 'models/persistence/filter/order_lookup_sequel_filter_shared'
 require 'models/persistence/filter/multi_criteria_sequel_filter_shared'
 
-require 'lims-laboratory-app/laboratory/filter_paper'
+require 'lims-laboratory-app/laboratory/filter_paper/all'
 
 module Lims::LaboratoryApp
   module Laboratory

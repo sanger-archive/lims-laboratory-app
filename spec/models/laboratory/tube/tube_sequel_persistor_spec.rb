@@ -15,9 +15,7 @@ module Lims::LaboratoryApp
   describe Laboratory::Tube, :tube => true, :laboratory => true, :persistence => true, :sequel => true do
     include_context "prepare tables"
     include_context "tube factory"
-    let(:db) { ::Sequel.sqlite('') }
-    let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
-    before (:each) { prepare_table(db) }
+    include_context "sequel store"
 
     context "created and added to session" do
       it "modifies the tubes table" do

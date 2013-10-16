@@ -23,10 +23,7 @@ module Lims::LaboratoryApp
       let(:number_of_rows) {8}
       let(:number_of_columns) {12}
       context "with a sequel store" do
-        include_context "prepare tables"
-        let(:db) { ::Sequel.sqlite('') }
-        let(:store) { PS::Store.new(db) }
-        before (:each) { prepare_table(db) }
+        include_context "sequel store"
 
         context "and everything already in the database" do
           let(:plate_id) { save(new_plate_with_samples(1)) }
