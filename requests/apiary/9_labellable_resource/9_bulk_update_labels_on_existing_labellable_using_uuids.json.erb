@@ -4,10 +4,14 @@ h = {:header => [], :response_header => [] }
 h[:description] = <<EOD
 **Bulk update labels on existing labellabels.**
 
-* `labellable_uuid` unique identifier of an object the labellable related to
-* `type` the type of the label. It can be 'sanger-barcode', '2d-barcode', 'ean13-barcode' etc...
-* `value` the value of the barcode
-* `position` the position of the barcode is an arbitray string (not a Symbol).
+* `by` can contains either the position name on an asset 
+* or a UUID of an asset to search for.
+* The position of the label is an arbitray string (not a Symbol).
+* `labels` contains key value pairs.
+* If the 'by' paramater contains the 'uuid' string, then the key contains
+* the UUID of an asset, otherwise the label value on the position 
+* described by the 'by' parameter.
+* The value contains a list of the labels to add to the selected asset.
 EOD
 h[:method] = "POST"
 h[:url] = '/actions/bulk_update_label'

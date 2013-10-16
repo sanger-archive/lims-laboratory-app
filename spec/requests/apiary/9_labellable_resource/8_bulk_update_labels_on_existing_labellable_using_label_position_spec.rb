@@ -2,12 +2,16 @@ require "requests/apiary/9_labellable_resource/spec_helper"
 describe "bulk_update_labels_on_existing_labellable_using_label_position", :labellable => true do
   include_context "use core context service"
   it "bulk_update_labels_on_existing_labellable_using_label_position" do
-  # **Bulk update labels on existing labellabels.**
+  # **Bulk update labels on existing labellables.**
   # 
-  # * `labellable_uuid` unique identifier of an object the labellable related to
-  # * `type` the type of the label. It can be 'sanger-barcode', '2d-barcode', 'ean13-barcode' etc...
-  # * `value` the value of the barcode
-  # * `position` the position of the barcode is an arbitray string (not a Symbol).
+  # * `by` can contains either the position name on an asset 
+  # * or a UUID of an asset to search for.
+  # * The position of the label is an arbitray string (not a Symbol).
+  # * `labels` contains key value pairs.
+  # * If the 'by' paramater contains the 'uuid' string, then the key contains
+  # * the UUID of an asset, otherwise the label value on the position 
+  # * described by the 'by' parameter.
+  # * The value contains a list of the labels to add to the selected asset.
     filter_paper = Lims::LaboratoryApp::Laboratory::FilterPaper.new(:number_of_rows => 1,
                                     :number_of_columns => 2)
     labellable = Lims::LaboratoryApp::Labels::Labellable.new(:name => "11111111-2222-3333-4444-000000000000",
