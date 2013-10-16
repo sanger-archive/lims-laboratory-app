@@ -56,12 +56,9 @@ module Lims::LaboratoryApp
   end
 
   describe "Sequel#Flowcell ", :flowcell => true, :laboratory => true, :persistence => true, :sequel => true do
-    include_context "prepare tables"
-    let(:db) { ::Sequel.sqlite('') }
-    let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
+    include_context "sequel store"
     let(:hiseq_number_of_lanes) { 8 }
     let(:miseq_number_of_lanes) { 1 }
-    before (:each) { prepare_table(db) }
 
     include_context "flowcell factory"
 

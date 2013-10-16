@@ -10,10 +10,7 @@ require 'lims-laboratory-app/laboratory/oligo/oligo_persistor'
 module Lims::LaboratoryApp
 
   describe "Laboratory::Oligo::OligoSequelPersistor", :oligo => true, :laboratory => true, :persistence => true, :sequel => true do
-    include_context "prepare tables"
-    let(:db) { ::Sequel.sqlite('') }
-    let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
-    before (:each) { prepare_table(db) }
+    include_context "sequel store"
 
     let (:oligo) { Laboratory::Oligo.new ("AAA") }
 

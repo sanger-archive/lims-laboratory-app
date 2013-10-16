@@ -4,6 +4,7 @@ require 'lims-core/persistence/persist_association_trait'
 require 'lims-core/persistence/sequel/persistor'
 require 'lims-laboratory-app/container_persistor_trait'
 require 'lims-laboratory-app/laboratory/flowcell'
+require 'lims-laboratory-app/laboratory/aliquot/aliquot_persistor'
 
 module Lims::LaboratoryApp
   module Laboratory
