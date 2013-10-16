@@ -17,10 +17,6 @@ module Lims::LaboratoryApp
         include_context "for application", "swap samples"
         include_context "sequel store"
 
-        let(:db) { ::Sequel.sqlite('') }
-        let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
-        before(:each) { prepare_table(db) }
-
         let(:sample1_uuid) { "11111111-2222-3333-4444-555555555555" }
         let!(:sample1_id) {
           store.with_session do |session|
