@@ -9,17 +9,14 @@ module Lims
     MINOR_DEV = %{
     --llh1
     --ke4
-    x
     --mb14
-    x
-    x
-    x
     }
 
     MAJOR_DEV = %{
     --llh1
     --ke4
     --mb14
+    x
     }
 
 
