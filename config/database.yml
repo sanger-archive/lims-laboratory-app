@@ -2,7 +2,7 @@ development:
   adapter: sqlite
   database: dev.db
 
-test__:
+test:
   adapter: sqlite
   database: test.db
 
@@ -24,7 +24,7 @@ test_mysql:
   password:
   socket: /tmp/mysql.sock
 
-test:
+test_jruby:
   adapter: jdbc
   url: mysql://localhost/laboratory_test?user=root
   charset: utf8
