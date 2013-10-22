@@ -1,5 +1,5 @@
 require 'lims-laboratory-app/laboratory/filter_paper'
-require 'lims-laboratory-app/laboratory/aliquot'
+require 'lims-laboratory-app/laboratory/aliquot/aliquot_persistor'
 require 'lims-laboratory-app/container_persistor_trait'
 
 module Lims::LaboratoryApp

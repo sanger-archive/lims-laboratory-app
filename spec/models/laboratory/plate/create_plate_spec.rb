@@ -5,7 +5,7 @@ require 'models/actions/action_examples'
 require 'models/laboratory/container_like_asset_shared'
 
 #Model requirements
-require 'lims-laboratory-app/laboratory/plate/create_plate'
+require 'lims-laboratory-app/laboratory/plate/all'
 
 module Lims::LaboratoryApp
   module Laboratory

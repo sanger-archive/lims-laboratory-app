@@ -8,11 +8,7 @@ require 'lims-laboratory-app/organization/batch'
 
 module Lims::LaboratoryApp
   describe Organization::Batch, :batch => true, :organization => true,  :persistence => true, :sequel => true  do
-    include_context "prepare tables" 
-    let(:db) { ::Sequel.sqlite('') }
-    let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
-    before(:each) { prepare_table(db) }
-
+    include_context "sequel store"
 
     context "create a batch and add it to session" do
       it "modifies the batches table" do
