@@ -16,10 +16,9 @@ module Lims
     --llh1
     --ke4
     --mb14
-    x
     }
 
 
-    VERSION = "3.0.6.#{MAJOR_DEV.scan(/\sx/i).size}.#{MINOR_DEV.scan(/\sx/i).size}"
+    VERSION = "3.1.0.#{MAJOR_DEV.scan(/\sx/i).size}.#{MINOR_DEV.scan(/\sx/i).size}"
   end
 end
