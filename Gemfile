@@ -12,11 +12,15 @@ gem 'lims-api', '~>3.0.1.rc1', :git => 'http://github.com/sanger/lims-api.git' ,
 group :debugging do
   gem 'debugger', :platforms => :mri
   gem 'debugger-completion', :platforms => :mri
+  gem 'ruby-debug', :platforms => :jruby
 end
 
 group :development do
   gem 'sqlite3', :platforms => :mri
   gem 'mysql2', :platforms => :mri
+  gem 'ruby-prof', :platforms => :mri
+  gem 'jdbc-sqlite3', :platforms => :jruby
+  gem 'jdbc-mysql', :platforms => :jruby
 end
 
 group :yard do
