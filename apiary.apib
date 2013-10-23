@@ -3293,6 +3293,400 @@ POST /gels
 
 
 --
+Filter Paper Resource
+--
+**List actions for filter paper resource.**
+
+* `create` creates a new filter paper via HTTP POST request
+* `read` returns the list of actions for a filter paper resource via HTTP GET request
+* `first` lists the first page of filter paper resources in a page browsing system
+* `last` lists the last page of filter paper resources in a page browsing system
+GET /filter_papers
+> Accept: application/json
+< 200
+< Content-Type: application/json
+{ "filter_papers": {
+    "actions": {
+        "create": "/filter_papers",
+        "read": "/filter_papers",
+        "first": "/filter_papers/page=1",
+        "last": "/filter_papers/page=-1"
+    }
+} }
+
+
+**Create a new empty filter paper.**
+
+* `number_of_rows` number of rows in the filter paper
+* `number_of_columns` number of columns in the filter paper
+* `locations_description` map aliquots to locations
+POST /filter_papers
+> Accept: application/json
+{ "filter_paper": {
+    "number_of_rows": 2,
+    "number_of_columns": 2,
+    "locations_description": {}
+}}
+< 200
+< Content-Type: application/json
+{ "filter_paper": {
+    "actions": {
+        "read": "/11111111-2222-3333-4444-555555555555",
+        "update": "/11111111-2222-3333-4444-555555555555",
+        "delete": "/11111111-2222-3333-4444-555555555555",
+        "create": "/11111111-2222-3333-4444-555555555555"
+    },
+    "uuid": "11111111-2222-3333-4444-555555555555",
+    "number_of_rows": 2,
+    "number_of_columns": 2,
+    "locations": { 
+        "A1": [], "A2": [],
+        "B1": [], "B2": []}
+}}
+
+
+**Create a new filter paper.**
+
+* `number_of_rows` number of rows in the filter paper
+* `number_of_columns` number of columns in the filter paper
+* `locations_description` map aliquots to locations
+POST /filter_papers
+> Accept: application/json
+{ "filter_paper": {
+    "number_of_rows": 2,
+    "number_of_columns": 2,
+    "locations_description": { 
+        "A1": [{ "sample": "11111111-2222-3333-4444-666666666666", "type": "DNA", "quantity": 2 }]
+    }
+} }
+< 200
+< Content-Type: application/json
+{ "filter_paper": {
+    "actions": {
+        "read": "/11111111-2222-3333-4444-555555555555",
+        "update": "/11111111-2222-3333-4444-555555555555",
+        "delete": "/11111111-2222-3333-4444-555555555555",
+        "create": "/11111111-2222-3333-4444-555555555555"
+    },
+    "uuid": "11111111-2222-3333-4444-555555555555",
+    "number_of_rows": 2,
+    "number_of_columns": 2,
+    "locations": { 
+        "A1": [ { "sample": {
+            "actions": { 
+                "read": "/11111111-2222-3333-4444-666666666666",
+                "update": "/11111111-2222-3333-4444-666666666666",
+                "delete": "/11111111-2222-3333-4444-666666666666",
+                "create": "/11111111-2222-3333-4444-666666666666" 
+            },
+            "uuid": "11111111-2222-3333-4444-666666666666",
+            "name": "sample 1"},
+            "quantity": 2,
+            "type": "DNA",
+            "unit": "mole"
+        } ],
+        "A2": [],
+        "B1": [], "B2": []}
+}}
+
+**Use the create filter paper action.**
+
+* `number_of_rows` number of rows in the filter paper
+* `number_of_columns` number of columns in the filter paper
+* `locations_description` map aliquots to locations
+POST /actions/create_filter_paper
+> Accept: application/json
+{ "create_filter_paper": {
+    "number_of_rows": 2,
+    "number_of_columns": 2,
+    "locations_description": { 
+        "A1": [{ "sample": "11111111-2222-3333-4444-666666666666", "type": "DNA", "quantity": 2 }]
+    }
+} }
+< 200
+< Content-Type: application/json
+{ "create_filter_paper": {
+    "actions": {
+    },
+    "user": "user",
+    "application": "application",
+    "result": {
+        "filter_paper": {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "delete": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "create": "http://example.org/11111111-2222-3333-4444-555555555555"
+            },
+            "uuid": "11111111-2222-3333-4444-555555555555",
+            "number_of_rows": 2,
+            "number_of_columns": 2,
+            "locations": {
+                "A1": [
+                    {
+                        "sample": {
+                            "actions": {
+                                "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                                "create": "http://example.org/11111111-2222-3333-4444-666666666666",
+                                "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                                "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+                            },
+                            "uuid": "11111111-2222-3333-4444-666666666666",
+                            "name": "sample 1"
+                        },
+                        "quantity": 2,
+                        "type": "DNA",
+                        "unit": "mole"
+                    }
+                ],
+                "A2": [],
+                "B1": [], "B2": []
+            }
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555"
+    },
+    "labels": null,
+    "number_of_rows": 2,
+    "number_of_columns": 2,
+    "locations_description": {
+        "A1": [
+            {
+                "sample": "11111111-2222-3333-4444-666666666666",
+                "type": "DNA",
+                "quantity": 2
+            }
+        ]
+    }
+}}
+
+
+**Read a created filter paper.**
+
+* `uuid_of_the_filter_paper` for example: 11111111-2222-3333-4444-555555555555
+GET /<uuid_of_the_filter_paper>
+> Accept: application/json
+< 200
+< Content-Type: application/json
+{ "filter_paper": {
+    "actions": {
+        "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+        "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+        "delete": "http://example.org/11111111-2222-3333-4444-555555555555",
+        "create": "http://example.org/11111111-2222-3333-4444-555555555555"
+    },
+    "uuid": "11111111-2222-3333-4444-555555555555",
+    "number_of_rows": 2,
+    "number_of_columns": 2,
+    "locations": {
+        "A1": [
+            {
+                "sample": {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                        "create": "http://example.org/11111111-2222-3333-4444-666666666666",
+                        "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                        "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+                    },
+                    "uuid": "11111111-2222-3333-4444-666666666666",
+                    "name": "sample 1"
+                },
+                "quantity": 2,
+                "type": "DNA",
+                "unit": "mole"
+            }
+        ],
+        "A2": [],
+        "B1": [], "B2": []
+    }
+}}
+
+**Transfer the content from the location(s) of multiple filter papers to 1 or multiple tubes.**
+
+This action transfers the content of 1 or more location(s) of multiple Filter Paper to to 1 or more tube(s).
+The action takes an array, which contains the elements of the transfer(s).
+ 
+* `source_uuid` uuid of the source Filter Paper
+* `source_location` is the location on the Filter Paper (like "A1") from transfer the aliquots
+* `target_uuid` uuid of the target tube
+ 
+The example below shows how to make a transfer from "A1" Location 
+of one Filter Paper and "A2" Location of another Filter Paper to multiple tubes:
+ 
+* from filter paper `11111111-2222-3333-4444-333333333333` "A1" Location
+to tube `11111111-2222-3333-4444-666666666666` and
+from filter paper `11111111-2222-3333-4444-444444444444` "A2" Location
+to tube `11111111-2222-3333-4444-777777777777`
+POST /actions/transfer_multiple_filter_papers_to_tubes
+> Accept: application/json
+{ "transfer_multiple_filter_papers_to_tubes": {
+    "transfers": [
+        {
+            "source_uuid": "11111111-2222-3333-4444-333333333333",
+            "source_location": "A1",
+            "target_uuid": "11111111-2222-3333-4444-666666666666"
+        },
+        {
+            "source_uuid": "11111111-2222-3333-4444-444444444444",
+            "source_location": "A2",
+            "target_uuid": "11111111-2222-3333-4444-777777777777"
+        }
+    ]
+}}
+< 200
+< Content-Type: application/json
+{ "transfer_multiple_filter_papers_to_tubes": {
+    "actions": {
+    },
+    "user": "user",
+    "application": "application",
+    "result": {
+        "sources": [
+            {
+                "filter_paper": {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-333333333333",
+                        "create": "http://example.org/11111111-2222-3333-4444-333333333333",
+                        "update": "http://example.org/11111111-2222-3333-4444-333333333333",
+                        "delete": "http://example.org/11111111-2222-3333-4444-333333333333"
+                    },
+                    "uuid": "11111111-2222-3333-4444-333333333333",
+                    "number_of_rows": 2,
+                    "number_of_columns": 2,
+                    "locations": {
+                        "A1": [
+                            {
+                                "sample": {
+                                    "actions": {
+                                        "read": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                        "create": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                        "update": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                        "delete": "http://example.org/11111111-2222-3333-0000-000000000000"
+                                    },
+                                    "uuid": "11111111-2222-3333-0000-000000000000",
+                                    "name": "sample 1"
+                                },
+                                "quantity": 100,
+                                "type": "sample",
+                                "unit": "mole"
+                            }
+                        ],
+                        "A2": [],
+                        "B1": [], "B2": []
+                    }
+                }
+            },
+            {
+                "filter_paper": {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-444444444444",
+                        "create": "http://example.org/11111111-2222-3333-4444-444444444444",
+                        "update": "http://example.org/11111111-2222-3333-4444-444444444444",
+                        "delete": "http://example.org/11111111-2222-3333-4444-444444444444"
+                    },
+                    "uuid": "11111111-2222-3333-4444-444444444444",
+                    "number_of_rows": 2,
+                    "number_of_columns": 2,
+                    "locations": {
+                        "A1": [], "A2": [
+                            {
+                                "sample": {
+                                    "actions": {
+                                        "read": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                        "create": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                        "update": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                        "delete": "http://example.org/11111111-2222-3333-0000-111111111111"
+                                    },
+                                    "uuid": "11111111-2222-3333-0000-111111111111",
+                                    "name": "sample 2"
+                                },
+                                "quantity": 100,
+                                "type": "sample",
+                                "unit": "mole"
+                            }
+                        ],
+                        "B1": [], "B2": []
+                    }
+                }
+            }
+        ],
+        "targets": [
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                        "create": "http://example.org/11111111-2222-3333-4444-666666666666",
+                        "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                        "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+                    },
+                    "uuid": "11111111-2222-3333-4444-666666666666",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                    "create": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                    "update": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                    "delete": "http://example.org/11111111-2222-3333-0000-000000000000"
+                                },
+                                "uuid": "11111111-2222-3333-0000-000000000000",
+                                "name": "sample 1"
+                            },
+                            "type": "sample",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+                        "create": "http://example.org/11111111-2222-3333-4444-777777777777",
+                        "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+                        "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
+                    },
+                    "uuid": "11111111-2222-3333-4444-777777777777",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                    "create": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                    "update": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                    "delete": "http://example.org/11111111-2222-3333-0000-111111111111"
+                                },
+                                "uuid": "11111111-2222-3333-0000-111111111111",
+                                "name": "sample 2"
+                            },
+                            "type": "sample",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "transfers": [
+        {
+            "source_uuid": "11111111-2222-3333-4444-333333333333",
+            "source_location": "A1",
+            "target_uuid": "11111111-2222-3333-4444-666666666666"
+        },
+        {
+            "source_uuid": "11111111-2222-3333-4444-444444444444",
+            "source_location": "A2",
+            "target_uuid": "11111111-2222-3333-4444-777777777777"
+        }
+    ]
+}}
+
+
+
+--
 Order Resource
 --
 An order stores all the information needed by a pipeline to achieve works. In particular, an order has a list of 
