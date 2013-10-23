@@ -1,9 +1,9 @@
 GIT
   remote: http://github.com/sanger/lims-api.git
-  revision: 85bd3a78fb66efe4995df30054f9bf84e2975407
+  revision: 9b1b2364c5094664488e48ebf252a18c1150baf4
   branch: development
   specs:
-    lims-api (3.1.0.0.0)
+    lims-api (3.1.0.0.1)
       active_support
       bunny (= 0.9.0.pre10)
       json
@@ -115,6 +115,7 @@ GEM
     state_machine (1.2.0)
     systemu (2.5.2)
     tilt (1.4.1)
+    timecop (0.6.3)
     trinidad (1.4.5)
       jruby-rack (>= 1.1.13)
       trinidad_jars (>= 1.2.3)
@@ -156,6 +157,7 @@ DEPENDENCIES
   ruby-prof
   sinatra!
   sqlite3
+  timecop
   trinidad
   trinidad_daemon_extension
   yard (= 0.7.3)
