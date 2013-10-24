@@ -4022,7 +4022,7 @@ POST /filter_papers
 }}
 
 
-**Create a new filter paper.**
+**Create a new filter paper with sample on it.**
 
 * `number_of_rows` number of rows in the filter paper
 * `number_of_columns` number of columns in the filter paper
@@ -5039,6 +5039,7 @@ GET /labellables
 * `name` unique identifier of an asset (for example: uuid of a plate)
 * `type` type of the object the labellable related (resource, equipment, user etc...)
 * `labels` it is a hash which contains the information of the labels.
+
 By labels we mean any readable information found on a physical object.
 Label can eventually be identified by a position: an arbitray string (not a Symbol).
 It has a value, which can be serial number, stick label with barcode etc.
@@ -5079,6 +5080,11 @@ POST /labellables
 **Bulk create labellable**
 
 * `labellables` is mandatory
+
+This action creates a number of labellables with the given parameters.
+The parameter of this action is an array. An element of this array contains parameters to create a labellable. 
+The elements can contains different parameters, so this way we could create labellables with different types and content with the use of only one action.
+
 POST /actions/bulk_create_labellable
 > Accept: application/json
 {
@@ -5266,29 +5272,156 @@ POST /actions/create_label
     "position": "rear barcode"
 }}
 
+**Add an already existing label to an asset.**
 
---
-Batch Resource
---
-A batch groups order items together.
-**Create a new batch**
+The above example should return an error message, if the given label position already contains a label on a resource.
 
-* `process` the process that the batch is going through
-POST /batches
+* `labellable_uuid` unique identifier of an object the labellable related to
+* `type` the type of the label. It can be 'sanger-barcode', '2d-barcode', 'ean13-barcode' etc...
+* `value` the value of the barcode
+* `position` the position of the barcode is an arbitray string (not a Symbol).
+
+POST /actions/create_label
 > Accept: application/json
-{ "batch": {"process": "manual extraction"} }
+{
+    "create_label": {
+        "labellable_uuid": "11111111-2222-3333-4444-555555555555",
+        "type": "sanger-barcode",
+        "value": "1234-ABC",
+        "position": "front barcode"
+    }
+}
 < 200
 < Content-Type: application/json
 {
-   "batch":{
-      "actions":{
-         "read":"/11111111-2222-3333-4444-555555555555",
-         "create":"/11111111-2222-3333-4444-555555555555",
-         "update":"/11111111-2222-3333-4444-555555555555",
-         "delete":"/11111111-2222-3333-4444-555555555555"
-      },
-      "uuid":"11111111-2222-3333-4444-555555555555",
-      "process":"manual extraction"
+    "errors": {
+        "position": "The front barcode position already contains a label."
+    }
+}
+
+**Use update_label action to update a label.**
+
+* `labellable` the labellable resource to update
+* `position` position of the label to update
+* `new_label` it is an hash which contains the update information related to the label
+The hash can contains the new label information (position, type, value).
+
+By labels we mean any readable information found on a physical object.
+Label can eventually be identified by a position: an arbitray string (not a Symbol).
+It has a value, which can be serial number, stick label with barcode etc.
+It has a type, which can be sanger-barcode, 2d-barcode, ean13-barcode etc...
+
+POST /actions/update_label
+> Accept: application/json
+{
+    "update_label": {
+        "labellable_uuid": "11111111-2222-3333-4444-555555555555",
+        "existing_position": "front barcode",
+        "new_label": {
+            "position": "rear barcode",
+            "type": "sanger-barcode",
+            "value": "5678DEF"
+        }
+    }
+}
+< 200
+< Content-Type: application/json
+{
+    "update_label": {
+        "actions": {
+        },
+        "user": "user",
+        "application": "application",
+        "result": {
+            "labellable": {
+                "actions": {
+                    "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                    "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                    "delete": "http://example.org/11111111-2222-3333-4444-555555555555",
+                    "create": "http://example.org/11111111-2222-3333-4444-555555555555"
+                },
+                "uuid": "11111111-2222-3333-4444-555555555555",
+                "name": "11111111-2222-3333-4444-000000000000",
+                "type": "resource",
+                "labels": {
+                    "rear barcode": {
+                        "value": "5678DEF",
+                        "type": "sanger-barcode"
+                    }
+                }
+            }
+        },
+        "labellable_uuid": "11111111-2222-3333-4444-555555555555",
+        "existing_position": "front barcode",
+        "new_label": {
+            "position": "rear barcode",
+            "type": "sanger-barcode",
+            "value": "5678DEF"
+        }
+    }
+}
+
+--
+Batch Resource
+
+A batch groups order items together.
+--
+
+**Create a new batch.**
+
+* `process` the process that the batch is going through
+* `kit`
+
+POST /batches
+> Accept: application/json
+{ 
+    "batch": {
+        "process": "manual extraction",
+        "kit": "AAABBBCCC"
+    } 
+}
+< 200
+< Content-Type: application/json
+{
+    "batch":{
+        "actions":{
+            "read":"/11111111-2222-3333-4444-555555555555",
+            "create":"/11111111-2222-3333-4444-555555555555",
+            "update":"/11111111-2222-3333-4444-555555555555",
+            "delete":"/11111111-2222-3333-4444-555555555555"
+        },
+        "uuid":"11111111-2222-3333-4444-555555555555",
+        "process":"manual extraction",
+        "kit": "AAABBBCCC"
+   }
+}
+
+**Update a batch.**
+
+* `process` the process that the batch is going through
+* `kit` the kit to update the batch with
+
+PUT /batches
+> Accept: application/json
+{ 
+    "batch": {
+        "process": "manual extraction",
+        "kit": "AAABBBCCC"
+    } 
+}
+< 200
+< Content-Type: application/json
+{
+    "batch":{
+        "actions":{
+            "read":"/11111111-2222-3333-4444-555555555555",
+            "create":"/11111111-2222-3333-4444-555555555555",
+            "update":"/11111111-2222-3333-4444-555555555555",
+            "delete":"/11111111-2222-3333-4444-555555555555"
+        },
+        "uuid":"11111111-2222-3333-4444-555555555555",
+        "process":"manual extraction",
+        "kit": "AAABBBCCC"
    }
 }
 
@@ -5499,7 +5632,7 @@ Search
 The search below returns plates with ids 1 and 2.
 You can search for a tube the same way as below if you know its id.
 
-To actually get the search results, you need to access the first page of result 
+To actually get the search results, you need to access the first page of the result 
 thanks to the `first` action in the JSON response.
 POST /searches
 > Accept: application/json
@@ -5527,10 +5660,10 @@ POST /searches
 * `description` describe the search
 * `model` searched model
 * `criteria` set parameters for the search. Here, it can be a combination of the following attributes:
-    * `pipeline` 
+    * `pipeline` the pipeline to search for
     * `items` which itself can contain the parameters `uuid`, `status`, `role` and `batch_uuid`
-    * `status`
-    * `cost_code`
+    * `status` the status to search for
+    * `cost_code` the cost_code to search for
 
 The search below looks for an order for the `pipeline 1` which has a status `in_progress`. On top of
 that, the search looks for an order which contains an item which has the uuid 
@@ -5578,9 +5711,9 @@ POST /searches
 * `description` describe the search
 * `model` searched model
 * `criteria` set parameters for the search. Here, it can be a combination of the following attributes:
-    * `position`
-    * `type`
-    * `value`
+    * `position`    position of the label to search for
+    * `type`        the type of the label to search for
+    * `value`       the value of the label to search for
 
 The search below looks for a tube by its label which is a `sanger-barcode` with the position 
 `front barcode` and the value `ABC123456`.
@@ -5619,10 +5752,10 @@ POST /searches
 * `description` describe the search
 * `model` search for resource instances of model
 * `criteria` set parameters for the search. Here, it can be a combination of the following attributes:
-    * `pipeline` 
+    * `pipeline` the pipeline to search for
     * `items` which itself can contain the parameters `status` and `role`
-    * `status`
-    * `cost_code`
+    * `status` the status to search for
+    * `cost_code` the cost_code to search for
 
 The search below looks for a tube used in a order for the pipeline `pipeline 1` which has the status `in_progress`.
 On top of that, the tube used in that order should have a role `role A` and a `pending` status.
@@ -5690,10 +5823,51 @@ POST /searches
     }
 }
 
+**Search for a labellable**
+
+* `description` describe the search
+* `model` labellable model 
+* `criteria` set parameters for the search. Here, it can be a combination of the following attributes:
+    * `position` the label position to search for
+    * `type` the label type to search for
+    * `value` the label value to search for
+
+Searching for a labellable is useful to get a resource without knowing its model. 
+In fact, in a normal search, the model attribute needs to be set. In the case the model of the
+searched resource isn't known in advance, we can search its corresponding labellable,
+then get the resource (the uuid of the resource appears under the name attribute in the labellable JSON).
+ 
+To actually get the search results, you need to access the first page of result thanks to the `first` action in the JSON response.
+
+POST /searches
+> Accept: application/json
+{
+    "search": {
+        "description": "search for a labellable",
+        "model": "labellable",
+        "criteria": {
+            "label": {
+                "value": "ABC123456"
+            }
+        }
+    }
+}
+< 200
+< Content-Type: application/json
+{
+    "search": {
+        "actions": {
+            "read": "/11111111-2222-3333-4444-555555555555",
+            "first": "/11111111-2222-3333-4444-555555555555/page=1",
+            "last": "/11111111-2222-3333-4444-555555555555/page=-1"
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555"
+    }
+}
 
 **Search for a resource by sample uuid**
 
-* `uuid` uuid ot a sample (can pass an array of sample uuids as well)
+* `uuid` uuid of a sample (can pass an array of sample uuids as well)
 
 The search below looks for a tube which contain the sample referenced by the sample uuid `11111111-2222-3333-4444-666666666666`.
 
