@@ -34,9 +34,8 @@ end
 
 
 shared_examples_for "messages on the bus" do 
-  before(:each) do
-    Timecop.freeze(Time.utc(2013,"jan",1,20,0,0))
-  end
+  before(:each) { Timecop.freeze(Time.utc(2013,"jan",1,20,0,0)) }
+  after(:each) { Timecop.return }
 
   it "publishes a message after order creation" do
     message_bus.should_receive(:publish).with(expected_create_payload, expected_create_settings) 
