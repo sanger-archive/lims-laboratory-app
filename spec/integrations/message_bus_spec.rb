@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bunny'
 require 'lims-core'
 require 'integrations/spec_helper'
-
+require 'timecop'
 
 def order_expected_payload(args)
   action_url = "http://example.org/#{args[:uuid]}"
@@ -34,13 +34,8 @@ end
 
 
 shared_examples_for "messages on the bus" do 
-  before(:each) do
-    Time.stub(:now) do 
-      double(:time_now).tap do |t| 
-        t.stub(:utc).and_return("date")
-      end
-    end
-  end
+  before(:each) { Timecop.freeze(Time.utc(2013,"jan",1,20,0,0)) }
+  after(:each) { Timecop.return }
 
   it "publishes a message after order creation" do
     message_bus.should_receive(:publish).with(expected_create_payload, expected_create_settings) 
@@ -109,7 +104,7 @@ describe "Message Bus" do
   }}
 
   context "on valid order creation and update" do
-    let(:date) { "date" }
+    let(:date) { "2013-01-01 20:00:00 UTC" }
     let(:user) { "user" }
     let(:expected_create_settings) { {:routing_key => "pipeline.66666666222244449999000000000000.order.create", :app_id => nil} }
     let(:expected_update_settings) { {:routing_key => "pipeline.66666666222244449999000000000000.order.updateorder", :app_id => nil} }
