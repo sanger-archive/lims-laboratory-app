@@ -25,14 +25,8 @@ shared_context 'use core context service' do
   before(:each) do
     app.set(:context_service, context_service)
   end
-  #This code is cleaning up the DB after each test case execution
-  after(:each) do
-    # list of all the tables in our DB
-    %w{items orders batches searches labels labellables tube_aliquots spin_column_aliquots windows wells lanes locations tag_group_associations aliquots tube_rack_slots tube_racks tubes spin_columns gels plates flowcells filter_papers samples oligos tag_groups studies users uuid_resources primary_keys}.each do |table|
-      db[table.to_sym].delete
-    end
-    db.disconnect
-  end
+
+  include_context "clean store"
 end
 
 shared_context 'JSON' do
