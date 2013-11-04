@@ -198,7 +198,7 @@ module Lims::LaboratoryApp
 
       context "with empty parameters" do
         let(:url) { "/actions/create_order" }
-        let(:parameters) { {"create_order" => []} }
+        let(:parameters) { {"create_order" => {}} }
         let(:expected_json) { {"errors" => {
           "study" => [
             "Study must not be blank"
