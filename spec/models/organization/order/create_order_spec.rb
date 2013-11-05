@@ -4,6 +4,7 @@ require 'models/actions/action_examples'
 
 #Model requirements
 require 'lims-laboratory-app/organization/order/create_order'
+require 'lims-laboratory-app/organization/order/order_persistor'
 
 module Lims::LaboratoryApp
   module Organization
@@ -17,7 +18,7 @@ module Lims::LaboratoryApp
           result = subject.call 
           order = result[:order]
           order.should be_a Organization::Order
-          order.creator.should == user
+          order.creator.should == creator
           order.pipeline.should == pipeline
           order.parameters.should == parameters
           order.study.should == study
@@ -50,10 +51,12 @@ module Lims::LaboratoryApp
       let(:targets) { {:target_role => double(:target)} } 
       let(:study) { double(:study) }
       let(:cost_code) { double(:cost_code) }
+      let(:creator) { double(:creator) }
 
       let(:create_order_parameters) { 
         { :store => double(:store),
           :user => double(:user),
+          :creator => creator,
           :application => "my application",
           :pipeline => pipeline,
           :parameters => parameters,
@@ -79,6 +82,7 @@ module Lims::LaboratoryApp
 
         subject {
           Order::CreateOrder.new(:store => store, :user => user, :application => application) do |a,s|
+            a.creator = creator
             a.pipeline = pipeline
             a.parameters = parameters
             a.sources = sources

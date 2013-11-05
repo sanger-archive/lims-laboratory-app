@@ -6,7 +6,7 @@ require 'timecop'
 
 def order_expected_payload(args)
   action_url = "http://example.org/#{args[:uuid]}"
-  user_url = "http://example.org/#{args[:user_uuid]}"
+  creator_url = "http://example.org/#{args[:creator_uuid]}"
   study_url = "http://example.org/#{args[:study_uuid]}"
 
   {:order => {
@@ -18,8 +18,8 @@ def order_expected_payload(args)
     :state => args[:state],
     :cost_code => args[:cost_code],
     :creator => {
-      :actions => {:read => user_url, :create => user_url, :update => user_url, :delete => user_url},
-      :uuid => args[:user_uuid] 
+      :actions => {:read => creator_url, :create => creator_url, :update => creator_url, :delete => creator_url},
+      :uuid => args[:creator_uuid]
     },
     :study => {
       :actions => {:read => study_url, :create => study_url, :update => study_url, :delete => study_url},
@@ -64,16 +64,16 @@ describe "Message Bus" do
   end
   } 
 
-  let(:user_uuid) { "66666666-2222-4444-9999-000000000000".tap do |uuid|
+  let(:creator_uuid) { "66666666-2222-4444-9999-000000000000".tap do |uuid|
     store.with_session do |session|
-      user = Lims::LaboratoryApp::Organization::User.new
-      set_uuid(session, user, uuid)
+      creator = Lims::LaboratoryApp::Organization::User.new
+      set_uuid(session, creator, uuid)
     end
   end
   }
   let(:create_url) { "/orders" }
   let(:update_url) { "/#{uuid}" }     
-  let(:create_action) { "create" }
+  let(:create_action) { "create_order" }
   let(:update_action) { "update_order" }
   let(:order_items) { {
     :source_role1 => [{ "uuid" => "99999999-2222-4444-9999-000000000000", "status" => "done", "batch" => nil}],
@@ -83,8 +83,8 @@ describe "Message Bus" do
   let(:order_state) { {} }
   let(:order_status) { "draft" }
   let(:order_cost_code) { "cost code" }
-  let(:order_pipeline) { "pipeline" }
-  let(:parameters) { {:order => {:user_uuid => user_uuid,
+  let(:order_pipeline) { "application" }
+  let(:parameters) { {:order => {:creator_uuid => creator_uuid,
                                  :study_uuid => study_uuid,
                                  :sources => {:source_role1 => ["99999999-2222-4444-9999-000000000000"]},
                                  :targets => {:target_role1 => ["99999999-2222-4444-9999-111111111111"]},
@@ -94,7 +94,7 @@ describe "Message Bus" do
   let(:payload_parameters) {{
     :uuid => uuid,
     :study_uuid => study_uuid,
-    :user_uuid => user_uuid,
+    :creator_uuid => creator_uuid,
     :pipeline => order_pipeline,
     :status => order_status,
     :parameters => order_parameters,
@@ -106,8 +106,8 @@ describe "Message Bus" do
   context "on valid order creation and update" do
     let(:date) { "2013-01-01 20:00:00 UTC" }
     let(:user) { "user" }
-    let(:expected_create_settings) { {:routing_key => "pipeline.66666666222244449999000000000000.order.create", :app_id => nil} }
-    let(:expected_update_settings) { {:routing_key => "pipeline.66666666222244449999000000000000.order.updateorder", :app_id => nil} }
+    let(:expected_create_settings) { {:routing_key => "application.66666666222244449999000000000000.order.createorder"} }
+    let(:expected_update_settings) { {:routing_key => "application.66666666222244449999000000000000.order.updateorder"} }
     let(:expected_create_payload) { order_expected_payload(payload_parameters.merge({
       :action => create_action,
       :date => date,
