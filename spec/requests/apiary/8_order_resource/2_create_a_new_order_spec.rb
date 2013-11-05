@@ -11,14 +11,14 @@ describe "create_a_new_order", :order => true do
   # * `sources` map a role to an array of resource uuids. All the items in sources get a `done` status on order creation
   # * `targets` map a role to an array of resource uuids. All the items in targets get a `pending` status on order creation
     study = Lims::LaboratoryApp::Organization::Study.new
-    user = Lims::LaboratoryApp::Organization::User.new
+    creator = Lims::LaboratoryApp::Organization::User.new
     plate = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_rows => 8,
                                         :number_of_columns => 12,
                                         :type => "stock plate type")
     tube1 = Lims::LaboratoryApp::Laboratory::Tube.new
     tube2 = Lims::LaboratoryApp::Laboratory::Tube.new
     
-    save_with_uuid study => [1,2,3,4,7], user => [1,2,3,4,6], plate => [1,2,3,0,1], tube1 => [1,2,3,0,2], tube2 => [1,2,3,0,3]
+    save_with_uuid study => [1,2,3,4,7], creator => [1,2,3,4,6], plate => [1,2,3,0,1], tube1 => [1,2,3,0,2], tube2 => [1,2,3,0,3]
 
     header('Content-Type', 'application/json')
     header('Accept', 'application/json')
@@ -26,7 +26,7 @@ describe "create_a_new_order", :order => true do
     response = post "/orders", <<-EOD
     {
     "order": {
-        "user_uuid": "11111111-2222-3333-4444-666666666666",
+        "creator_uuid": "11111111-2222-3333-4444-666666666666",
         "study_uuid": "11111111-2222-3333-4444-777777777777",
         "pipeline": "pipeline 1",
         "cost_code": "cost code 1",

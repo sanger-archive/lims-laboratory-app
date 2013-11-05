@@ -11,6 +11,7 @@ module Lims::LaboratoryApp
       class CreateOrder
         include Lims::Core::Actions::Action
 
+        attribute :creator, User
         attribute :pipeline, String
         attribute :parameters, Hash, :default => {}
         # @attribute [Hash<String, String>] sources
@@ -25,7 +26,7 @@ module Lims::LaboratoryApp
         attribute :cost_code, String, :required => true
 
         def _call_in_session(session)
-          order = Organization::Order.new(:creator => user,
+          order = Organization::Order.new(:creator => creator,
                                           :pipeline => pipeline,
                                           :parameters => parameters,
                                           :study => study,

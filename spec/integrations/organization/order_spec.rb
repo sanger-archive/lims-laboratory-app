@@ -13,15 +13,15 @@ module Lims::LaboratoryApp
   shared_context "json order" do
     let(:expected_json) {
           action_url = "http://example.org/#{uuid}"
-          user_url = "http://example.org/#{user_uuid}"
+          creator_url = "http://example.org/#{creator_uuid}"
           study_url = "http://example.org/#{study_uuid}"
 
           {:order => {
             :actions => {:read => action_url, :create => action_url, :update => action_url, :delete => action_url},
             :uuid => uuid, 
             :creator => {
-              :actions => {:read => user_url, :create => user_url, :update => user_url, :delete => user_url},
-              :uuid => user_uuid 
+              :actions => {:read => creator_url, :create => creator_url, :update => creator_url, :delete => creator_url},
+              :uuid => creator_uuid
             },
             :pipeline => order_pipeline,
             :status => order_status,
@@ -63,10 +63,10 @@ module Lims::LaboratoryApp
     end
     } 
 
-    let(:user_uuid) { "66666666-2222-4444-9999-000000000000".tap do |uuid|
+    let(:creator_uuid) { "66666666-2222-4444-9999-000000000000".tap do |uuid|
       store.with_session do |session|
-        user = Lims::LaboratoryApp::Organization::User.new
-        set_uuid(session, user, uuid)
+        creator = Lims::LaboratoryApp::Organization::User.new
+        set_uuid(session, creator, uuid)
       end
     end
     }
@@ -102,7 +102,7 @@ module Lims::LaboratoryApp
           order.add_target(role, item_uuid)
         end
         set_uuid(session, order, uuid)
-        set_uuid(session, order.creator, user_uuid)
+        set_uuid(session, order.creator, creator_uuid)
         set_uuid(session, order.study, study_uuid)
       end
       uuid
@@ -198,7 +198,7 @@ module Lims::LaboratoryApp
 
       context "with empty parameters" do
         let(:url) { "/actions/create_order" }
-        let(:parameters) { {"create_order" => []} }
+        let(:parameters) { {"create_order" => {}} }
         let(:expected_json) { {"errors" => {
           "study" => [
             "Study must not be blank"
@@ -225,7 +225,7 @@ module Lims::LaboratoryApp
         let(:order_pipeline) { "pipeline" }
         let(:sources) { {:source_role1 => ["99999999-2222-4444-9999-000000000000"]} }
         let(:targets) { {:target_role1 => ["99999999-2222-4444-9999-111111111111"]} }
-        let(:parameters) { {:order => {:user_uuid => user_uuid, :study_uuid => study_uuid, :sources => sources, :targets => targets, :cost_code => order_cost_code, :pipeline => order_pipeline}} }
+        let(:parameters) { {:order => {:creator_uuid => creator_uuid, :study_uuid => study_uuid, :sources => sources, :targets => targets, :cost_code => order_cost_code, :pipeline => order_pipeline}} }
         it_behaves_like "a valid core action" do
         end 
       end
@@ -235,7 +235,7 @@ module Lims::LaboratoryApp
       include_context "save order", "11111111-2222-3333-4444-555555555555"
       let(:url) { "/#{uuid}" }
       let(:study_uuid) { "55555555-2222-3333-6666-777777777777" }
-      let(:user_uuid) { "66666666-2222-4444-9999-000000000000" }
+      let(:creator_uuid) { "66666666-2222-4444-9999-000000000000" }
       let(:items_update) { {} }
       let(:sources) { {} }
       let(:targets) { {} }

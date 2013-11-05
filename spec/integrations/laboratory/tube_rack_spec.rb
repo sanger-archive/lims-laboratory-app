@@ -312,7 +312,7 @@ module Lims::LaboratoryApp::Laboratory
       let(:url) { "/actions/tube_rack_transfer" }
 
       context "with empty parameters" do
-        let(:parameters) { {"tube_rack_transfer" => [] } }
+        let(:parameters) { {"tube_rack_transfer" => {} } }
         let(:expected_json) { {
           :errors => {
             "source"=> [
