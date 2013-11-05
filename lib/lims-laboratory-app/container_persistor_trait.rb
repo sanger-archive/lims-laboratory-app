@@ -31,6 +31,13 @@ module Lims::LaboratoryApp
               end
             end
           end
+    
+          alias :filter_attributes_on_save_without_out_of_bounds :filter_attributes_on_save
+          def filter_attributes_on_save(attributes, *params)
+            attributes.delete(:out_of_bounds)
+            filter_attributes_on_save_without_out_of_bounds(attributes)
+          end
+
 
           association_class "#{class_name}" do
             attribute :#{parent}, #{self.name}, :relation => :parent, :skip_parents_for_attributes => true

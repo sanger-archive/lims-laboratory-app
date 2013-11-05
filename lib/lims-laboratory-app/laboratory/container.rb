@@ -21,6 +21,8 @@ module Lims
 						include Virtus
 						include Aequitas
 
+            attribute :out_of_bounds, Hash, :required => false, :default => {}
+
 						%w(row column).each do |w|
 							attribute :"number_of_#{w}s", Fixnum, :required => true, :gte => 0, :writer => :private, :initializable => true
 						end
@@ -33,6 +35,15 @@ module Lims
 								yield well, index_to_element_name(index)
 							end
 						end
+
+            # If out_of_bounds is empty, it is removed from the
+            # attributes as there is no need to have it in the
+            # json.
+						def attributes
+              super.tap do |attr|
+                attr.delete(:out_of_bounds) if out_of_bounds.empty? 
+              end
+            end
 					end
 				end
 

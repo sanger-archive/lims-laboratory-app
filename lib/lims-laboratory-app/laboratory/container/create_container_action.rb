@@ -12,6 +12,10 @@ module Lims::LaboratoryApp
           include Aequitas
           include Sample::CreateSampleShared
 
+          # Everything contained in out_of_bounds parameter is send through
+          # s2 but not stored in s2.
+          attribute :out_of_bounds, Hash, :required => false, :default => {}, :writer => :private
+
           %w(row column).each do |w|
             # Hack Aequitas 'gt' rule crashes if attribute is not present.
             # Setting the default to 0 works ...
@@ -48,6 +52,7 @@ module Lims::LaboratoryApp
 
       def create(session)
         new_container = container_class.new(container_parameters)
+        new_container.out_of_bounds = out_of_bounds
         session << new_container
         count = 0
         element_description.each do |element_name, aliquots|

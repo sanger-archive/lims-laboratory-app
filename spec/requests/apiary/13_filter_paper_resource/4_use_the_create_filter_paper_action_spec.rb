@@ -78,6 +78,8 @@ describe "use_the_create_filter_paper_action", :filter_paper => true do
             "uuid": "11111111-2222-3333-4444-555555555555"
         },
         "labels": null,
+        "out_of_bounds": {
+        },
         "number_of_rows": 2,
         "number_of_columns": 2,
         "locations_description": {
