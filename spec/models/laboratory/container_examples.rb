@@ -41,6 +41,7 @@ module Lims::LaboratoryApp::Laboratory
     end
 
     it { should respond_to(:values) }
+    it { should respond_to(:out_of_bounds) }
 
     it "iterates as a Hash" do
       subject.each_with_index do |w, index|

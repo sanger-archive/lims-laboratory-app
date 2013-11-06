@@ -22,7 +22,12 @@ plate["C5"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 10, :ty
 save_with_uuid sample1 => [1,2,3,4,6], plate => [1,2,3,4,5]
 EOD
 h[:parameters]=<<EOP
-{ "type": "new plate type", "aliquot_type": "RNA", "aliquot_quantity": 10 }
+{ 
+  "type": "new plate type", 
+  "aliquot_type": "RNA", 
+  "aliquot_quantity": 10,
+  "out_of_bounds": {"test": "test value"}
+}
 EOP
 h[:status]=200
 h[:response_header] << 'Content-Type: application/json'
@@ -38,6 +43,7 @@ h[:response]=<<EOD
     "number_of_rows": 8,
     "number_of_columns": 12,
     "type": "new plate type",
+    "out_of_bounds": {"test": "test value"},
     "wells": { 
         "A1": [], "A2": [], "A3": [], "A4": [], "A5": [], "A6": [], "A7": [], "A8": [], "A9": [], "A10": [], "A11": [], "A12": [],
         "B1": [], "B2": [], "B3": [], "B4": [], "B5": [], "B6": [], "B7": [],"B8": [],"B9": [],"B10": [],"B11": [],"B12": [],

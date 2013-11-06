@@ -22,7 +22,10 @@ describe "update_a_plate", :plate => true do
     {
     "type": "new plate type",
     "aliquot_type": "RNA",
-    "aliquot_quantity": 10
+    "aliquot_quantity": 10,
+    "out_of_bounds": {
+        "test": "test value"
+    }
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -38,6 +41,9 @@ describe "update_a_plate", :plate => true do
         "number_of_rows": 8,
         "number_of_columns": 12,
         "type": "new plate type",
+        "out_of_bounds": {
+            "test": "test value"
+        },
         "wells": {
             "A1": [
 
