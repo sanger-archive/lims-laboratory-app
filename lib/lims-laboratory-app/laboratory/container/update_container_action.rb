@@ -42,6 +42,7 @@ module Lims::LaboratoryApp
       def update(session)
         container.out_of_bounds = out_of_bounds if out_of_bounds
 
+        # Update aliquot individually 
         elements.each do |location, element_data|
           sample = element_data["sample"]
           aliquot_type = element_data["aliquot_type"]
@@ -56,6 +57,7 @@ module Lims::LaboratoryApp
           end
         end
 
+        # Update aliquot globally
         container.each do |element|
           element.each do |aliquot|
             aliquot.type = aliquot_type if aliquot_type
