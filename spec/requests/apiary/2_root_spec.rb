@@ -60,6 +60,14 @@ describe "root" do
             "last": "http://example.org/samples/page=-1"
         }
     },
+    "assays": {
+        "actions": {
+            "create": "http://example.org/assays",
+            "read": "http://example.org/assays",
+            "first": "http://example.org/assays/page=1",
+            "last": "http://example.org/assays/page=-1"
+        }
+    },
     "oligos": {
         "actions": {
             "create": "http://example.org/oligos",
@@ -287,6 +295,11 @@ describe "root" do
     "create_labellables": {
         "actions": {
             "create": "http://example.org/actions/create_labellable"
+        }
+    },
+    "create_assays": {
+        "actions": {
+            "create": "http://example.org/actions/create_assay"
         }
     },
     "update_labels": {
