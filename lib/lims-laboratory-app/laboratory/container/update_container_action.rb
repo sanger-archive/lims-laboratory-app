@@ -14,10 +14,6 @@ module Lims::LaboratoryApp
           # the quantity of every single aliquot contained in the resource.
           attribute :aliquot_type, String, :required => false, :writer => :private
           attribute :aliquot_quantity, Numeric, :required => false, :writer => :private
-
-          # out_of_bounds parameter is not stored in s2 database, just passed
-          # through s2 to the message bus.
-          attribute :out_of_bounds, Hash, :required => false, :writer => :private
         end
       end
 
@@ -40,8 +36,6 @@ module Lims::LaboratoryApp
       # @param [Session] session
       # @return [Hash]
       def update(session)
-        container.out_of_bounds = out_of_bounds if out_of_bounds
-
         # Update aliquot individually 
         elements.each do |location, element_data|
           sample = element_data["sample"]
