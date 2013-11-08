@@ -27,9 +27,6 @@ describe "update_a_gel_plate", :gel_plate => true do
             "aliquot_type": "new type",
             "aliquot_quantity": 100
         }
-    },
-    "out_of_bounds": {
-        "test": "value test"
     }
 }
     EOD
@@ -366,9 +363,6 @@ describe "update_a_gel_plate", :gel_plate => true do
             "H12": [
 
             ]
-        },
-        "out_of_bounds": {
-            "test": "value test"
         }
     }
 }

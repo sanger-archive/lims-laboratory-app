@@ -25,13 +25,11 @@ module Lims::LaboratoryApp
       subject { action }
 
       context "when updating all the aliquots of the gel" do
-        let(:out_of_bounds) { {:test => "test"} }
         let(:action) {
           described_class.new(:store => store, :user => user, :application => application) do |a,s|
             a.gel = gel 
             a.aliquot_type = aliquot_type
             a.aliquot_quantity = aliquot_quantity
-            a.out_of_bounds = out_of_bounds
           end
         }
 
@@ -40,10 +38,6 @@ module Lims::LaboratoryApp
         it "updates the gel" do
           result.should be_a Hash
           updated_gel.should be_a Laboratory::Gel
-        end
-
-        it "passes the out_of_bounds parameter through" do
-          updated_gel.out_of_bounds.should == out_of_bounds
         end
 
         it "changes aliquots type in each window" do
