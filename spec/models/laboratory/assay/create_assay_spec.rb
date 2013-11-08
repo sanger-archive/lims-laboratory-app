@@ -3,6 +3,7 @@ require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
 
 #Model requirements
+require 'lims-laboratory-app/laboratory/assay/all'
 require 'lims-laboratory-app/laboratory/assay/create_assay'
 require 'lims-core/persistence/store'
 
