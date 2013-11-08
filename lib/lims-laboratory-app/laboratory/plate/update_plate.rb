@@ -1,6 +1,7 @@
 # vi: ts=2:sts=2:et:sw=2  spell:spelllang=en  
 require 'lims-laboratory-app/laboratory/plate'
-require 'lims-laboratory-app/laboratory/container/update_container_action'
+require 'lims-laboratory-app/laboratory/container/update_container_trait'
+require 'lims-core/actions/action'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -8,7 +9,7 @@ module Lims::LaboratoryApp
     # all its aliquots.
     class Plate
       class UpdatePlate
-        include Container::UpdateContainerAction
+        include Lims::Core::Actions::Action
 
         # The plate to update
         attribute :plate, Laboratory::Plate, :required => true, :writer => :private
@@ -19,13 +20,9 @@ module Lims::LaboratoryApp
         # Update the aliquot containing sample_1 with aliquot_type and aliquot_quantity.
         attribute :wells, Hash, :required => false, :writer => :private, :default => {}
 
-        def container_symbol
-          :plate
-        end
-
-        def elements_symbol
-          :wells
-        end
+        does "lims/laboratory_app/laboratory/container/update_container", {
+          :container_name => "plate", :elements_name => "wells"
+        }
 
         def _call_in_session(session)
           plate.type = type if type
