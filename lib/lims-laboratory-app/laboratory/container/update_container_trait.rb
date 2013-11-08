@@ -3,8 +3,8 @@ module Lims::LaboratoryApp
     module Container::UpdateContainerTrait
 
       as_trait do |args|
-        container_symbol = args[:container_name].to_sym
-        elements_symbol = args[:elements_name].to_sym
+        container_name = args[:container_name].to_sym
+        elements_name = args[:elements_name].to_sym
 
         # aliquot_type and aliquot_quantity will replace the type and
         # the quantity of every single aliquot contained in the resource.
@@ -12,11 +12,11 @@ module Lims::LaboratoryApp
         attribute :aliquot_quantity, Numeric, :required => false, :writer => :private
 
         define_method(:container) do
-          self.send(container_symbol)
+          self.send(container_name)
         end
 
         define_method(:elements) do
-          self.send(elements_symbol)
+          self.send(elements_name)
         end
 
         # @param [Session] session
@@ -45,7 +45,7 @@ module Lims::LaboratoryApp
             end
           end
 
-          {container_symbol => container}
+          {container_name => container}
         end
 
         def _call_in_session(session)
