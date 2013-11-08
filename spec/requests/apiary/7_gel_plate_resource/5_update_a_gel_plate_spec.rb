@@ -1,30 +1,35 @@
 require "requests/apiary/7_gel_plate_resource/spec_helper"
-describe "create_a_new_gel_plate_with_sample_uuids", :gel_plate => true do
+describe "update_a_gel_plate", :gel_plate => true do
   include_context "use core context service"
-  it "create_a_new_gel_plate_with_sample_uuids" do
-  # **Create a new gel plate.**
-  # 
-  # * `number_of_rows` number of rows in the gel plate
-  # * `number_of_columns` number of columns in the gel plate
-  # * `windows_description` map tubes identified by their uuids to rack locations
+  it "update_a_gel_plate" do
+    sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
+    sample2 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2')
+    gel = Lims::LaboratoryApp::Laboratory::Gel.new(:number_of_rows => 8, :number_of_columns => 12)
+    gel["A1"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 5, :type => "RNA", :sample => sample1)
+    gel["C5"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 10, :type => "DNA", :sample => sample2)
+    save_with_uuid sample1 => [1,2,3,4,6], sample2 => [1,2,3,4,7], gel => [1,2,3,4,5]
 
     header('Content-Type', 'application/json')
     header('Accept', 'application/json')
 
-    response = post "/gels", <<-EOD
+    response = put "/11111111-2222-3333-4444-555555555555", <<-EOD
     {
-    "gel": {
-        "number_of_rows": 8,
-        "number_of_columns": 12,
-        "windows_description": {
-            "C5": [
-                {
-                    "sample_uuid": "11111111-2222-3333-4444-666666666666",
-                    "type": "DNA",
-                    "quantity": 10
-                }
-            ]
+    "windows": {
+        "A1": {
+            "sample_uuid": "11111111-2222-3333-4444-666666666666",
+            "out_of_bounds": {
+                "attribute_1": "value 1",
+                "attribute_2": "value 2"
+            }
+        },
+        "C5": {
+            "sample_uuid": "11111111-2222-3333-4444-777777777777",
+            "aliquot_type": "new type",
+            "aliquot_quantity": 100
         }
+    },
+    "out_of_bounds": {
+        "test": "value test"
     }
 }
     EOD
@@ -42,7 +47,25 @@ describe "create_a_new_gel_plate_with_sample_uuids", :gel_plate => true do
         "number_of_columns": 12,
         "windows": {
             "A1": [
-
+                {
+                    "sample": {
+                        "actions": {
+                            "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "delete": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "create": "http://example.org/11111111-2222-3333-4444-666666666666"
+                        },
+                        "uuid": "11111111-2222-3333-4444-666666666666",
+                        "name": "sample 1"
+                    },
+                    "quantity": 5,
+                    "type": "RNA",
+                    "unit": "mole",
+                    "out_of_bounds": {
+                        "attribute_1": "value 1",
+                        "attribute_2": "value 2"
+                    }
+                }
             ],
             "A2": [
 
@@ -129,16 +152,16 @@ describe "create_a_new_gel_plate_with_sample_uuids", :gel_plate => true do
                 {
                     "sample": {
                         "actions": {
-                            "read": "http://example.org/11111111-2222-3333-4444-666666666666",
-                            "update": "http://example.org/11111111-2222-3333-4444-666666666666",
-                            "delete": "http://example.org/11111111-2222-3333-4444-666666666666",
-                            "create": "http://example.org/11111111-2222-3333-4444-666666666666"
+                            "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+                            "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+                            "delete": "http://example.org/11111111-2222-3333-4444-777777777777",
+                            "create": "http://example.org/11111111-2222-3333-4444-777777777777"
                         },
-                        "uuid": "11111111-2222-3333-4444-666666666666",
-                        "name": "Sample 1"
+                        "uuid": "11111111-2222-3333-4444-777777777777",
+                        "name": "sample 2"
                     },
-                    "quantity": 10,
-                    "type": "DNA",
+                    "quantity": 100,
+                    "type": "new type",
                     "unit": "mole"
                 }
             ],
@@ -343,6 +366,9 @@ describe "create_a_new_gel_plate_with_sample_uuids", :gel_plate => true do
             "H12": [
 
             ]
+        },
+        "out_of_bounds": {
+            "test": "value test"
         }
     }
 }
