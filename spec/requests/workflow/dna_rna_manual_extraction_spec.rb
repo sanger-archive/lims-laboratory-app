@@ -59,6 +59,14 @@ describe "dna_rna_manual_extraction" do
             "last": "http://example.org/samples/page=-1"
         }
     },
+    "assays": {
+        "actions": {
+            "create": "http://example.org/assays",
+            "read": "http://example.org/assays",
+            "first": "http://example.org/assays/page=1",
+            "last": "http://example.org/assays/page=-1"
+        }
+    },
     "oligos": {
         "actions": {
             "create": "http://example.org/oligos",
@@ -311,6 +319,11 @@ describe "dna_rna_manual_extraction" do
     "create_tubes": {
         "actions": {
             "create": "http://example.org/actions/create_tube"
+        }
+    },
+    "create_assays": {
+        "actions": {
+              "create": "http://example.org/actions/create_assay"
         }
     },
     "create_tube_racks": {
