@@ -18,8 +18,8 @@ module Lims::LaboratoryApp
       include Lims::Core::Resource
 
       attribute :name, String, :required => true
-      attribute :allele_x, Allele, :required => true
-      attribute :allele_y, Allele, :required => true
+      attribute :allele_x, String, :required => true
+      attribute :allele_y, String, :required => true
 
     end
   end
