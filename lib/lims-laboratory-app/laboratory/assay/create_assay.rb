@@ -11,9 +11,9 @@ module Lims::LaboratoryApp
         # name of the assay
         attribute :name, String, :required => true
         # x allele of the assay (can be A, C, G or T)
-        attribute :allele_x, Allele, :required => true
+        attribute :allele_x, String, :required => true
         # y allele of the assay (can be A, C, G or T)
-        attribute :allele_y, Allele, :required => true
+        attribute :allele_y, String, :required => true
 
         def _call_in_session(session)
           assay = Laboratory::Assay.new(:name     => name, 
