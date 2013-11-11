@@ -13,31 +13,31 @@ shared_examples "a container" do |contained|
 end
 
 module Lims::LaboratoryApp::Laboratory
-  shared_examples "a hash" do
+  shared_examples "a hash" do |location1, location2, not_existing_location1, not_existing_location2|
     it "can be indexed with a symbol " do
-      subject[:B3].should be_a(container)
+      subject[location1].should be_a(container)
       aliquot = Aliquot.new
-      subject[:B3] << aliquot
-      subject[:B3].should include(aliquot)
+      subject[location1] << aliquot
+      subject[location1].should include(aliquot)
     end
 
     it "can be indexed with a string " do
-      subject["B3"].should be_a(container)
+      subject[location1.to_s].should be_a(container)
       aliquot = Aliquot.new
-      subject["B3"] << aliquot
-      subject["B3"].should include(aliquot)
+      subject[location1.to_s] << aliquot
+      subject[location1.to_s].should include(aliquot)
     end
 
     it "raise an exception if container doesn't exit" do
-      expect { subject[:A13] }.to raise_error(error_container_does_not_exists)
-      expect { subject[:I1] }.to raise_error(error_container_does_not_exists)
+      expect { subject[not_existing_location1] }.to raise_error(error_container_does_not_exists)
+      expect { subject[not_existing_location2] }.to raise_error(error_container_does_not_exists)
     end
 
     it "has a key for each wells" do
       subject.keys.size.should be == size
-      subject.keys.should include("B3")
-      subject.keys.should include("A1")
-      subject.keys.should_not include("L2")
+      subject.keys.should include(location1.to_s)
+      subject.keys.should include(location2.to_s)
+      subject.keys.should_not include(not_existing_location1)
     end
 
     it { should respond_to(:values) }
@@ -63,7 +63,7 @@ module Lims::LaboratoryApp::Laboratory
 
     it "can be iterated with index (String)" do
       aliquot= Aliquot.new
-      index = "A3"
+      index = location2.to_s
       subject.each_with_index do |w, i|
         if i == index
           w << aliquot
