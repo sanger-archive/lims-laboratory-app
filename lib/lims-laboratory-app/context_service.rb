@@ -6,6 +6,21 @@ module Lims::LaboratoryApp
   # Subclass ContextService to extract an Organization::User instead
   # of a string for request params
   class ContextService < Lims::Api::ContextService
+
+    # We need a User adapter class, otherwise
+    # the User will be seen as a Resource and so expanded as such
+    # in the Json
+    class UserAdapter
+      attr_reader :user
+      def  initialize(user)
+        @user = user
+      end
+
+      def to_s
+        user.email
+      end
+    end
+
     def  get_user(request)
       user = nil
       super(request).andtap do |user_email|
@@ -20,7 +35,7 @@ module Lims::LaboratoryApp
         end
 
       end
-      user
+      UserAdapter.new(user)
     end
   end
 end

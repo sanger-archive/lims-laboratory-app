@@ -16,7 +16,7 @@ def config_bus(env)
   YAML.load_file(File.join('config','amqp.yml'))[env.to_s] 
 end
 
-shared_context 'use core context service' do
+shared_context 'use core context service' do |user='user@example.com', application_id='application_id'|
   let(:db) { connect_db(:test) }
   let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
   let(:message_bus) { double(:message_bus).tap { |m|
@@ -27,7 +27,10 @@ shared_context 'use core context service' do
 
   before(:each) do
     app.set(:context_service, context_service)
+    header('user_email', user) if user
+    header('application_id', application_id) if application_id
   end
+
 
   include_context "clean store"
 end

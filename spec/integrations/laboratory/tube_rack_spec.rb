@@ -157,8 +157,8 @@ module Lims::LaboratoryApp::Laboratory
       {
         action_name => {
           :actions => {},
-          :user => "user",
-          :application => "application",
+          :user => "user@example.com",
+          :application => "application_id",
           :result => { 
             :tube_rack => { 
               :actions => {
@@ -446,8 +446,8 @@ module Lims::LaboratoryApp::Laboratory
             {
               :tube_rack_move => {
                 :actions => {},
-                :user => "user",
-                :application => "application",
+                :user => "user@example.com",
+                :application => "application_id",
                 :result => [{
                   "tube_rack" => {
                     "actions" => {
@@ -589,8 +589,8 @@ module Lims::LaboratoryApp::Laboratory
             {
               :tube_rack_move => {
                 :actions => {},
-                :user => "user",
-                :application => "application",
+                :user => "user@example.com",
+                :application => "application_id",
                 :result => [
                   {"tube_rack" => {
                     "actions" => {

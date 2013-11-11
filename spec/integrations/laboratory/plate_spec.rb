@@ -265,8 +265,8 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
               target_url = "http://example.org/#{target_uuid}"
               {:plate_transfer =>
                 {:actions => {},
-                  :user => "user",
-                  :application => "application",
+                  :user => "user@example.com",
+                  :application => "application_id",
                   :result => { "plate" => { "actions" => {"read" => target_url,
                     "create" => target_url,
                     "update" => target_url,
@@ -346,8 +346,8 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
           source_url = "http://example.org/#{uuid}"
           { :transfer_wells_to_tubes =>
             {:actions => {},
-            :user => "user",
-            :application => "application",
+            :user => "user@example.com",
+            :application => "application_id",
             :plate => {"plate" => {"actions" => {"read" => source_url,
               "update" => source_url,
               "delete" => source_url,

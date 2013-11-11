@@ -62,15 +62,6 @@ module Lims::LaboratoryApp
               end
             end
           end
-
-          def routing_key(for_action)
-            Lims::Api::MessageBus::generate_routing_key(
-              :pipeline_uuid => 'pipeline',
-              :user_uuid => @context.uuid_for(object.creator),  
-              :model => @context.find_model_name(object.class),
-              :action => for_action
-            )
-          end
         end
       end
   end

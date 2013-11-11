@@ -137,8 +137,8 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
           target_tube2_url = "http://example.org/#{target_tube2_uuid}"
           { :transfer_tubes_to_tubes =>
             { :actions => {},
-              :user => "user",
-              :application => "application",
+              :user => "user@example.com",
+              :application => "application_id",
               :result => {
                 :sources => [
                   {"tube" => {
@@ -194,8 +194,8 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
           target_spin_column_url = "http://example.org/#{target_spin_column_uuid}"
           { :transfer_tubes_to_tubes =>
             { :actions => {},
-              :user => "user",
-              :application => "application",
+              :user => "user@example.com",
+              :application => "application_id",
               :result => {
                 :sources => [
                     {"tube" => {
@@ -255,8 +255,8 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
           target_spin_column_url = "http://example.org/#{target_spin_column_uuid}"
           { :transfer_tubes_to_tubes =>
             { :actions => {},
-              :user => "user",
-              :application => "application",
+              :user => "user@example.com",
+              :application => "application_id",
               :result => {
                 :sources => [
                     {"tube" => {
