@@ -25,6 +25,7 @@ module Lims::LaboratoryApp
         attribute :cost_code, String, :required => true
 
         def _call_in_session(session)
+          debugger
           order = Organization::Order.new(:creator => user.user(session),
                                           :pipeline => pipeline,
                                           :parameters => parameters,
@@ -34,6 +35,7 @@ module Lims::LaboratoryApp
           sources.each { |role, uuid| order.add_source(role, uuid) }
           targets.each { |role, uuid| order.add_target(role, uuid) }
 
+          debugger
           session << order
           { :order => order, :uuid => session.uuid_for!(order) }
         end
