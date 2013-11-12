@@ -19,7 +19,8 @@ def order_expected_payload(args)
     :cost_code => args[:cost_code],
     :creator => {
       :actions => {:read => user_url, :create => user_url, :update => user_url, :delete => user_url},
-      :uuid => args[:user_uuid] 
+      :uuid => args[:user_uuid] ,
+      :email => args[:user_email]
     },
     :study => {
       :actions => {:read => study_url, :create => study_url, :update => study_url, :delete => study_url},
@@ -46,7 +47,10 @@ shared_examples_for "messages on the bus" do
   end
 
   it "publishes messages after order creation and update" do
-    message_bus.should_receive(:publish).with(expected_create_payload, expected_create_settings) 
+    message_bus.should_receive(:publish) do |create_payload, create_setting| 
+      create_payload.should == expected_create_payload
+     create_settings.should ==  expected_create_settings
+    end 
     message_bus.should_receive(:publish).with(expected_update_payload, expected_update_settings) 
     post(create_url, parameters.to_json)
     put(update_url, update_parameters.to_json)
@@ -100,6 +104,7 @@ describe "Message Bus" do
   let(:update_parameters) { {:event => :build} }
   let(:payload_parameters) {{
     :uuid => uuid,
+    :user_email => user_email,
     :study_uuid => study_uuid,
     :user_uuid => user_uuid,
     :pipeline => order_pipeline,
@@ -113,18 +118,18 @@ describe "Message Bus" do
   context "on valid order creation and update" do
     let(:date) { "2013-01-01 20:00:00 UTC" }
     let(:user) { "user" }
-    let(:expected_create_settings) { {:routing_key => "pipeline.66666666222244449999000000000000.order.create", :app_id => nil} }
-    let(:expected_update_settings) { {:routing_key => "pipeline.66666666222244449999000000000000.order.updateorder", :app_id => nil} }
+    let(:expected_create_settings) { {:routing_key => "applicationid.creatorexamplecom.order.create" } }
+    let(:expected_update_settings) { {:routing_key => "applicationid.creatorexamplecom.order.updateorder" } }
     let(:expected_create_payload) { order_expected_payload(payload_parameters.merge({
       :action => create_action,
       :date => date,
-      :user => user
+      :user => user_email
     })).to_json }
     let(:expected_update_payload) { order_expected_payload(payload_parameters.merge({
       :action => update_action, 
       :status => "pending",
       :date => date,
-      :user => user
+      :user => user_email
     })).to_json }
     it_behaves_like "messages on the bus"
   end
