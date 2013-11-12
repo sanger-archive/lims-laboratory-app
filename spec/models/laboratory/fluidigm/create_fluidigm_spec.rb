@@ -6,8 +6,8 @@ require 'models/laboratory/container_like_asset_shared'
 
 #Model requirements
 require 'lims-laboratory-app/laboratory/fluidigm/all'
+require 'lims-laboratory-app/laboratory/assay/all'
 require 'lims-laboratory-app/laboratory/fluidigm/create_fluidigm'
-require 'lims-core/persistence/store'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -29,7 +29,7 @@ module Lims::LaboratoryApp
     shared_context "for fluidigm with a map of samples" do
       let(:wells_description) do
         y = {}.tap do |h|
-          0.upto(10) do |row|
+          0.upto(number_of_rows-2) do |row|
             1.upto(number_of_columns/2) do |column|
               h["A#{row*number_of_columns/2+column}"] = [{
                 :sample => new_sample(row, column),
@@ -69,7 +69,6 @@ module Lims::LaboratoryApp
       include_context "create object"
       it_behaves_like "an action"
       it "creates a fluidigm when called" do
-        debugger
         result = subject.call()
         result.should be_a Hash
 
