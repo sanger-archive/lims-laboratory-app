@@ -1,4 +1,5 @@
 require 'common'
+require 'lims-core/helpers'
 
 ::Sequel.migration do
   up do
