@@ -7,6 +7,11 @@ module Lims::LaboratoryApp
     class User
       include Lims::Core::Resource
       attribute :email, String
+
+      def initialize(*args)
+        debugger
+        super(*args)
+      end
     end
   end
 end
