@@ -1,6 +1,6 @@
 # vi: ts=2:sts=2:et:sw=2  spell:spelllang=en  
 require 'lims-laboratory-app/laboratory/plate'
-require 'lims-laboratory-app/laboratory/container/update_container_trait'
+require 'lims-laboratory-app/laboratory/container/update_container_action_trait'
 require 'lims-core/actions/action'
 
 module Lims::LaboratoryApp
@@ -20,7 +20,7 @@ module Lims::LaboratoryApp
         # Update the aliquot containing sample_1 with aliquot_type and aliquot_quantity.
         attribute :wells, Hash, :required => false, :writer => :private, :default => {}
 
-        does "lims/laboratory_app/laboratory/container/update_container", {
+        does "lims/laboratory_app/laboratory/container/update_container_action", {
           :container_name => "plate", :elements_name => "wells"
         }
 

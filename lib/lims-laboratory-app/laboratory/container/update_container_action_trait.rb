@@ -1,6 +1,8 @@
+require 'modularity'
+
 module Lims::LaboratoryApp
   module Laboratory
-    module Container::UpdateContainerTrait
+    module Container::UpdateContainerActionTrait
 
       as_trait do |args|
         container_name = args[:container_name].to_sym
