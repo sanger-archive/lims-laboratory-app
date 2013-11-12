@@ -1,5 +1,5 @@
 require 'lims-laboratory-app/laboratory/gel'
-require 'lims-laboratory-app/laboratory/container/update_container_trait'
+require 'lims-laboratory-app/laboratory/container/update_container_action_trait'
 require 'lims-core/actions/action'
 
 module Lims::LaboratoryApp
@@ -11,7 +11,7 @@ module Lims::LaboratoryApp
         attribute :gel, Laboratory::Gel, :required => true, :writer => :private
         attribute :windows, Hash, :required => false, :writer => :private, :default => {}
 
-        does "lims/laboratory_app/laboratory/container/update_container", {
+        does "lims/laboratory_app/laboratory/container/update_container_action", {
           :container_name => "gel", :elements_name => "windows"
         }
       end
