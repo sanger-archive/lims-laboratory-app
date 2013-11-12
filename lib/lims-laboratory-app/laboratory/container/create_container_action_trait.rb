@@ -4,7 +4,7 @@ require 'lims-laboratory-app/laboratory/sample/create_sample_shared'
 
 module Lims::LaboratoryApp
   module Laboratory
-    module Container::CreateContainerTrait
+    module Container::CreateContainerActionTrait
 
       as_trait do |args|
         include CreateLabellableResourceAction
