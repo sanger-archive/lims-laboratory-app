@@ -107,6 +107,14 @@ describe "dna_rna_manual_extraction" do
             "last": "http://example.org/filter_papers/page=-1"
         }
     },
+    "fluidigms": {
+        "actions": {
+            "create": "http://example.org/fluidigms",
+            "read": "http://example.org/fluidigms",
+            "first": "http://example.org/fluidigms/page=1",
+            "last": "http://example.org/fluidigms/page=-1"
+        }
+    },
     "labellables": {
         "actions": {
             "create": "http://example.org/labellables",
@@ -271,6 +279,16 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/create_filter_paper"
         }
     },
+    "create_assays": {
+          "actions": {
+              "create": "http://example.org/actions/create_assay"
+        }
+    },
+    "create_fluidigms": {
+        "actions": {
+            "create": "http://example.org/actions/create_fluidigm"
+        }
+    },
     "create_labels": {
         "actions": {
             "create": "http://example.org/actions/create_label"
@@ -319,11 +337,6 @@ describe "dna_rna_manual_extraction" do
     "create_tubes": {
         "actions": {
             "create": "http://example.org/actions/create_tube"
-        }
-    },
-    "create_assays": {
-        "actions": {
-              "create": "http://example.org/actions/create_assay"
         }
     },
     "create_tube_racks": {
