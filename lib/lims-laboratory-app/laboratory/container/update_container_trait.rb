@@ -1,3 +1,5 @@
+require 'modularity'
+
 module Lims::LaboratoryApp
   module Laboratory
     module Container::UpdateContainerTrait
