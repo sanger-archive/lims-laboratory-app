@@ -38,7 +38,10 @@ shared_examples_for "messages on the bus" do
   after(:each) { Timecop.return }
 
   it "publishes a message after order creation" do
-    message_bus.should_receive(:publish).with(expected_create_payload, expected_create_settings) 
+    message_bus.should_receive(:publish) do |create_payload, create_setting| 
+      create_payload.should == expected_create_payload
+     create_settings.should ==  expected_create_settings
+    end 
     post(create_url, parameters.to_json)
   end
 
@@ -52,7 +55,11 @@ end
 
 
 describe "Message Bus" do
-  include_context "use core context service"
+  def self.user_email 
+    'creator@example.com'
+  end
+  let(:user_email) { self.class.user_email }
+  include_context "use core context service", user_email
   include_context "JSON"
   include_context "use generated uuid"
 
@@ -64,9 +71,9 @@ describe "Message Bus" do
   end
   } 
 
-  let(:user_uuid) { "66666666-2222-4444-9999-000000000000".tap do |uuid|
+  let!(:user_uuid) { "66666666-2222-4444-9999-000000000000".tap do |uuid|
     store.with_session do |session|
-      user = Lims::LaboratoryApp::Organization::User.new
+      user = Lims::LaboratoryApp::Organization::User.new(:email => user_email)
       set_uuid(session, user, uuid)
     end
   end

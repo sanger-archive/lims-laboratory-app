@@ -11,18 +11,24 @@ module Lims::LaboratoryApp
     # the User will be seen as a Resource and so expanded as such
     # in the Json
     class UserAdapter
-      attr_reader :user
-      def  initialize(user)
+      def  initialize(user, user_uuid)
         @user = user
+        @user_uuid = user_uuid
       end
 
       def to_s
-        user.email
+        @user.email
+      end
+
+      # Quick hack to reload the user
+      # in a new session.
+      def user(session)
+        session[@user_uuid]
       end
     end
 
     def  get_user(request)
-      user = nil
+      user, user_uuid = nil, nil
       super(request).andtap do |user_email|
 
         # Load or create the user if needed
@@ -32,10 +38,11 @@ module Lims::LaboratoryApp
           unless user
             session << user = Organization::User.new(:email => user_email)
           end
+          user_uuid = session.uuid_for!(user)
         end
 
       end
-      UserAdapter.new(user)
+      UserAdapter.new(user, user_uuid)
     end
   end
 end
