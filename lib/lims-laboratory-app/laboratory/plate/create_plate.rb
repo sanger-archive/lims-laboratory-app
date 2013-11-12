@@ -6,15 +6,6 @@ module Lims::LaboratoryApp
   module Laboratory
     class Plate
       class CreatePlate
-        include Virtus
-        include Aequitas
-
-        # @attribute [Hash<String, Array<Hash>>] wells_description
-        # @example
-        #   { "A1" => [{ :sample => s1, :quantity => 2}, {:sample => s2}] }
-        attribute :wells_description, Hash, :default => {}
-        # Type is the actual type of the plate, not the role in the order.
-        attribute :type, String, :required => false, :writer => :private 
 
         does "lims/laboratory_app/laboratory/container/create_container_action", {
           :container_name => "plate",
@@ -22,6 +13,13 @@ module Lims::LaboratoryApp
           :element_description_name => :wells_description,
           :extra_parameters => [:type]
         }
+
+        # @attribute [Hash<String, Array<Hash>>] wells_description
+        # @example
+        #   { "A1" => [{ :sample => s1, :quantity => 2}, {:sample => s2}] }
+        attribute :wells_description, Hash, :default => {}
+        # Type is the actual type of the plate, not the role in the order.
+        attribute :type, String, :required => false, :writer => :private 
       end
     end
   end
