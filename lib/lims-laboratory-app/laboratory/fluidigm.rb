@@ -10,7 +10,7 @@ module Lims::LaboratoryApp
     # It has a number of rows and number of columns property.
     # It is a rectangular bit of plastic and contains Wells for Assay and Samples.
     # It can have a layout of 96 Assay wells and 96 Sample wells or
-    # 192 samples wells and 24 assay wells.
+    # 192 samples wells and 24 snp assay wells.
     # It can has some readable labels on it (i.e. barcode).
     class Fluidigm
       include Lims::Core::Resource

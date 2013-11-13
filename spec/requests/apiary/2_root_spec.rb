@@ -60,12 +60,12 @@ describe "root" do
             "last": "http://example.org/samples/page=-1"
         }
     },
-    "assays": {
+    "snp_assays": {
         "actions": {
-            "create": "http://example.org/assays",
-            "read": "http://example.org/assays",
-            "first": "http://example.org/assays/page=1",
-            "last": "http://example.org/assays/page=-1"
+            "create": "http://example.org/snp_assays",
+            "read": "http://example.org/snp_assays",
+            "first": "http://example.org/snp_assays/page=1",
+            "last": "http://example.org/snp_assays/page=-1"
         }
     },
     "oligos": {
@@ -310,9 +310,9 @@ describe "root" do
             "create": "http://example.org/actions/create_labellable"
         }
     },
-    "create_assays": {
+    "create_snp_assays": {
         "actions": {
-            "create": "http://example.org/actions/create_assay"
+            "create": "http://example.org/actions/create_snp_assay"
         }
     },
     "update_labels": {

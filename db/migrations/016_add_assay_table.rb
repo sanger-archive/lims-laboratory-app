@@ -1,6 +1,6 @@
 ::Sequel.migration do
   up do
-    create_table(:assays) do
+    create_table(:snp_assays) do
       primary_key :id
       String :name
       String :allele_x
@@ -9,6 +9,6 @@
   end
 
   down do
-    drop_table(:assays)
+    drop_table(:snp_assays)
   end
 end

@@ -6,7 +6,7 @@ require 'models/laboratory/container_like_asset_shared'
 
 #Model requirements
 require 'lims-laboratory-app/laboratory/fluidigm/all'
-require 'lims-laboratory-app/laboratory/assay/all'
+require 'lims-laboratory-app/laboratory/snp_assay/all'
 require 'lims-laboratory-app/laboratory/fluidigm/create_fluidigm'
 
 module Lims::LaboratoryApp
@@ -38,7 +38,7 @@ module Lims::LaboratoryApp
             end
             1.upto(number_of_columns/2) do |column|
               h["S#{row*number_of_columns/2+column}"] = [{
-                :sample => new_assay(row, column),
+                :snp_assay => new_snp_assay(row, column),
                 :quantity => nil
               }]
             end
