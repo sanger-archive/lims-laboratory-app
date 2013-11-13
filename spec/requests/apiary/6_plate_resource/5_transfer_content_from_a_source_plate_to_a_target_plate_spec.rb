@@ -38,8 +38,8 @@ describe "transfer_content_from_a_source_plate_to_a_target_plate", :plate => tru
     "plate_transfer": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "plate": {
                 "actions": {

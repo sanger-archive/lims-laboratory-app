@@ -41,8 +41,8 @@ describe "5transfer_tubes_content", :tube_rack => true do
     "tube_rack_transfer": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "tube_rack": {
                 "actions": {

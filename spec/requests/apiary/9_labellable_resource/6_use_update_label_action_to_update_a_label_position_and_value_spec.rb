@@ -46,8 +46,8 @@ describe "use_update_label_action_to_update_a_label_position_and_value", :labell
     "update_label": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "labellable": {
                 "actions": {

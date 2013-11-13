@@ -181,8 +181,8 @@ describe "swap_samples_across_16_tubes", :tube => true do
     "swap_samples": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": [
             {
                 "tube": {

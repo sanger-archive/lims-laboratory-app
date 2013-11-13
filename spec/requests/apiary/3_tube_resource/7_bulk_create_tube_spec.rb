@@ -52,8 +52,8 @@ describe "bulk_create_tube", :tube => true do
     "bulk_create_tube": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "tubes": [
                 {

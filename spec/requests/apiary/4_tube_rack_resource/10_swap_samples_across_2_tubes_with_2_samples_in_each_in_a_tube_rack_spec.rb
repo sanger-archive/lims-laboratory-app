@@ -50,8 +50,8 @@ describe "swap_samples_across_2_tubes_with_2_samples_in_each_in_a_tube_rack", :t
     "swap_samples": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": [
             {
                 "tube_rack": {
