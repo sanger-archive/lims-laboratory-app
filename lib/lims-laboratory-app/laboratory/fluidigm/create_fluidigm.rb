@@ -11,14 +11,14 @@ module Lims::LaboratoryApp
         # @attribute [Hash<String, Array<Hash>>] wells_description
         # @example
         #   { "A1" => [{ :sample => s1, :quantity => 2}, {:sample => s2}] }
-        attribute :wells_description, Hash, :default => {}
+        attribute :fluidigm_wells_description, Hash, :default => {}
 
         def container_class
           Laboratory::Fluidigm
         end
 
         def element_description
-          wells_description
+          fluidigm_wells_description
         end
 
         def container_symbol
