@@ -1,0 +1,51 @@
+<%
+require 'json'
+h = {:header => [], :response_header => [] }
+h[:description] = <<EOD
+**Use the createn snp assay action.**
+
+* `name` the name of the snp assay
+* `allele_x` a group of genes. Its value can be A, C, G or T.
+* `allele_y` a group of genes. Its value can be A, C, G or T.
+
+EOD
+h[:method] = "POST"
+h[:url] = '/actions/create_snp_assay'
+h[:header] << 'Accept: application/json'
+h[:parameters] = <<EOD
+{ "create_snp_assay": {
+    "name": "snp assay name",
+    "allele_x": "G",
+    "allele_y": "A"
+}}
+EOD
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{ "create_snp_assay": {
+    "actions": {
+    },
+    "user": "user",
+    "application": "application",
+    "result": {
+        "snp_assay": {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "delete": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "create": "http://example.org/11111111-2222-3333-4444-555555555555"
+            },
+            "uuid": "11111111-2222-3333-4444-555555555555",
+            "name": "snp assay name",
+            "allele_x": "G",
+            "allele_y": "A"
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555"
+    },
+    "name": "snp assay name",
+    "allele_x": "G",
+    "allele_y": "A"
+}}
+EOD
+%>
+<%= h.to_json %>
