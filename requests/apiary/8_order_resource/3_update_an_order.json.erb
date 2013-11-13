@@ -18,7 +18,7 @@ h[:url]='/11111111-2222-3333-4444-555555555555'
 h[:header] << 'Accept: application/json'
 h[:setup]=<<EOD
 study = Lims::LaboratoryApp::Organization::Study.new
-user = Lims::LaboratoryApp::Organization::User.new
+user = Lims::LaboratoryApp::Organization::User.new(:email => 'user@example.com')
 plate = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_rows => 8,
                                     :number_of_columns => 12,
                                     :type => "stock plate type")
@@ -67,13 +67,14 @@ h[:response]=<<EOD
     },
     "cost_code": "cost code 2",
     "creator": {
-        "actions": {
+      "actions": {
                 "create": "/11111111-2222-3333-4444-666666666666",
                 "read": "/11111111-2222-3333-4444-666666666666",
                 "update": "/11111111-2222-3333-4444-666666666666",
                 "delete": "/11111111-2222-3333-4444-666666666666"
             },
-        "uuid": "11111111-2222-3333-4444-666666666666"
+        "uuid": "11111111-2222-3333-4444-666666666666",
+        "email": "user@example.com"
     },
     "study": {
         "actions": {

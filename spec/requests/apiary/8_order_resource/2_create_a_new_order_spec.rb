@@ -11,7 +11,7 @@ describe "create_a_new_order", :order => true do
   # * `sources` map a role to an array of resource uuids. All the items in sources get a `done` status on order creation
   # * `targets` map a role to an array of resource uuids. All the items in targets get a `pending` status on order creation
     study = Lims::LaboratoryApp::Organization::Study.new
-    user = Lims::LaboratoryApp::Organization::User.new
+    user = Lims::LaboratoryApp::Organization::User.new(:email => 'user@example.com')
     plate = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_rows => 8,
                                         :number_of_columns => 12,
                                         :type => "stock plate type")
@@ -61,7 +61,8 @@ describe "create_a_new_order", :order => true do
                 "update": "http://example.org/11111111-2222-3333-4444-666666666666",
                 "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
             },
-            "uuid": "11111111-2222-3333-4444-666666666666"
+            "uuid": "11111111-2222-3333-4444-666666666666",
+            "email": "user@example.com"
         },
         "study": {
             "actions": {

@@ -68,7 +68,6 @@ module Lims::LaboratoryApp
       context "to be valid" do
         it do
           s = described_class.new(create_order_parameters)
-          debugger
           described_class.new(create_order_parameters).valid?.should == true
         end
 
