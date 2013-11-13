@@ -1,13 +1,13 @@
 require 'models/spec_helper'
 
 # Model requirements
-require 'lims-laboratory-app/laboratory/assay'
+require 'lims-laboratory-app/laboratory/snp_assay'
 require 'lims-laboratory-app/laboratory/allele'
 module Lims::LaboratoryApp::Laboratory
-  describe Assay do
+  describe SnpAssay do
 
-    # define the parameters for an assay
-    let(:name)        { "assay name" }
+    # define the parameters for an snp_assay
+    let(:name)        { "snp_assay name" }
     let(:allele_x)    { Allele::A }
     let(:allele_y)    { Allele::G }
     let(:parameters)  {
