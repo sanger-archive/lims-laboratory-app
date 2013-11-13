@@ -8,7 +8,7 @@ module Lims::LaboratoryApp
     # Real implementation classes (e.g. Sequel::Fluidigm) should
     # include the suitable persistor.
     class Fluidigm
-      does "lims/laboratory_app/container_persistor", :element => :fluidigm_well_aliquot, :table_name => :wells,
+      does "lims/laboratory_app/container_persistor", :element => :fluidigm_well_aliquot, :table_name => :fluidigm_wells,
         :contained_class => Aliquot
 
     end

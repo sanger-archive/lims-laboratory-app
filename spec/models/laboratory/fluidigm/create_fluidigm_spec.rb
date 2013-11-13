@@ -27,7 +27,7 @@ module Lims::LaboratoryApp
     end
 
     shared_context "for fluidigm with a map of samples" do
-      let(:wells_description) do
+      let(:fluidigm_wells_description) do
         y = {}.tap do |h|
           0.upto(number_of_rows-2) do |row|
             1.upto(number_of_columns/2) do |column|
@@ -50,13 +50,13 @@ module Lims::LaboratoryApp
         Fluidigm::CreateFluidigm.new(:store => store, :user => user, :application => application)  do |a,s|
           a.number_of_rows    = number_of_rows
           a.number_of_columns = number_of_columns
-          a.wells_description = wells_description
+          a.fluidigm_wells_description = fluidigm_wells_description
         end
       end
 
       let (:fluidigm_checker) do
         lambda do |fluidigm|
-          wells_description.each do |well_name, expected_aliquots|
+          fluidigm_wells_description.each do |well_name, expected_aliquots|
             aliquots = fluidigm[well_name]
             aliquots.size.should == 1
             aliquots.first.sample.should == expected_aliquots.first[:sample]
