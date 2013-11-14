@@ -19,7 +19,6 @@ module Lims::LaboratoryApp
       end
 
       def _call_in_session(session)
-        debugger
         label = Labels::Labellable::Label.new(:type => type,
                                       :value => value)
 

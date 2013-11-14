@@ -34,7 +34,6 @@ module Lims::LaboratoryApp
           sources.each { |role, uuid| order.add_source(role, uuid) }
           targets.each { |role, uuid| order.add_target(role, uuid) }
 
-          debugger
           session << order
           { :order => order, :uuid => session.uuid_for!(order) }
         end
