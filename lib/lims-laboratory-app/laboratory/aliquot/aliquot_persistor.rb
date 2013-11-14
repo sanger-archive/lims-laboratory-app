@@ -4,6 +4,7 @@
 require 'lims-core/persistence/persistor'
 require 'lims-laboratory-app/laboratory/aliquot'
 require 'lims-laboratory-app/laboratory/sample/sample_persistor'
+require 'lims-laboratory-app/laboratory/snp_assay/snp_assay_persistor'
 require 'lims-laboratory-app/laboratory/oligo/oligo_persistor'
 
 module Lims::LaboratoryApp

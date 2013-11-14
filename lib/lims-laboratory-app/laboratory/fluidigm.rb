@@ -35,8 +35,10 @@ module Lims::LaboratoryApp
         location = index.to_i
         if size == Fluidigm::FLUIDIGM_96_96
           row = location/(number_of_columns/2)
-          col = location % (number_of_columns/2) - 1
-          col += number_of_columns/2 if type == Fluidigm::SAMPLE
+          col_position = location % (number_of_columns/2)
+          col = col_position - 1
+          col += number_of_columns/2 if type == Fluidigm::SAMPLE && col_position > 0
+          col -= number_of_columns/2 if type == Fluidigm::ASSAY && col_position == 0 && row > 0
         elsif size == Fluidigm::FLUIDIGM_192_24
           if type == Fluidigm::SAMPLE
             row = location/(number_of_rows-2)
@@ -58,9 +60,6 @@ module Lims::LaboratoryApp
         end
 
         # returns the location (row and column) in the container of the given assay/sample
-        raise IndexOutOfRangeError, "row: #{row}" unless (0...number_of_rows).include?(row)
-        raise IndexOutOfRangeError, "col: #{col}" unless (-1...number_of_columns).include?(col)
-
         row*number_of_columns + col
       end
 
