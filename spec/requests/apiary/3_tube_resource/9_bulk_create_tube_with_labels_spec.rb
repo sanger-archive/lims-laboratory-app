@@ -62,8 +62,8 @@ describe "bulk_create_tube_with_labels", :tube => true do
     "bulk_create_tube": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "tubes": [
                 {

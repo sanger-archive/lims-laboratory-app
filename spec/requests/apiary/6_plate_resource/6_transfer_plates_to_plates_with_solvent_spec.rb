@@ -77,8 +77,8 @@ describe "transfer_plates_to_plates_with_solvent", :plate => true do
     "transfer_plates_to_plates": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {

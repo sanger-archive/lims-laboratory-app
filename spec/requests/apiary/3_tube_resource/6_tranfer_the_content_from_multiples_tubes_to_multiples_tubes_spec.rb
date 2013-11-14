@@ -54,8 +54,8 @@ describe "tranfer_the_content_from_multiples_tubes_to_multiples_tubes", :tube =>
     "transfer_tubes_to_tubes": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {

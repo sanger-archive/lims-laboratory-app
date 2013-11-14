@@ -157,8 +157,8 @@ module Lims::LaboratoryApp::Laboratory
       {
         action_name => {
           :actions => {},
-          :user => "user",
-          :application => "application",
+          :user => "user@example.com",
+          :application => "application_id",
           :result => { 
             :tube_rack => { 
               :actions => {
@@ -399,7 +399,7 @@ module Lims::LaboratoryApp::Laboratory
         it_behaves_like "an invalid core action", 422
       end
       context "with empty parameters" do
-        let(:parameters) { { "tube_rack_move" => {}} }
+        let(:parameters) { { "tube_rack_move" => {} } }
         let(:expected_json) { {
           "errors" => {
             "moves" => [
@@ -446,8 +446,8 @@ module Lims::LaboratoryApp::Laboratory
             {
               :tube_rack_move => {
                 :actions => {},
-                :user => "user",
-                :application => "application",
+                :user => "user@example.com",
+                :application => "application_id",
                 :result => [{
                   "tube_rack" => {
                     "actions" => {
@@ -589,8 +589,8 @@ module Lims::LaboratoryApp::Laboratory
             {
               :tube_rack_move => {
                 :actions => {},
-                :user => "user",
-                :application => "application",
+                :user => "user@example.com",
+                :application => "application_id",
                 :result => [
                   {"tube_rack" => {
                     "actions" => {
