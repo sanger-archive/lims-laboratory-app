@@ -32,6 +32,10 @@ module Lims::LaboratoryApp
       # The result could be from 0 to size - 1
       def element_name_to_index(type, index)
         raise IndexOutOfRangeError unless type == Fluidigm::SAMPLE || type == Fluidigm::ASSAY
+        raise Fluidigm::InvalidContentError, {
+          "content" => "The content of the well should be an Assay or a Sample."
+        } unless [Fluidigm::SAMPLE, Fluidigm::ASSAY].include?(type)
+
         location = index.to_i
         if size == Fluidigm::FLUIDIGM_96_96
           row = location/(number_of_columns/2)
@@ -48,16 +52,14 @@ module Lims::LaboratoryApp
             col = is_assay_in_right_column?(location, Fluidigm::NUMBER_OF_ASSAY_IN_A_GROUP) ? 13 : 0
             row = (location / Fluidigm::NUMBER_OF_ASSAY_IN_A_GROUP) * 2
             row -= 1 if location % Fluidigm::NUMBER_OF_ASSAY_IN_A_GROUP == 0
-          else
-            raise Fluidigm::InvalidContentError, {
-              "content" => "The content of the well should be an Assay or a Sample."
-            }
           end
         else
           raise Fluidigm::InvalidSizeError, {
             "size" => "The number of rows/columns parameter is invalid."
           }
         end
+
+        raise IndexOutOfRangeError unless (-1..number_of_rows).include?(row)
 
         # returns the location (row and column) in the container of the given assay/sample
         row*number_of_columns + col
