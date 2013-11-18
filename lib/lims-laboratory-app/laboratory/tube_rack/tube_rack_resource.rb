@@ -2,6 +2,7 @@ require 'lims-api/resources/container'
 require 'lims-api/core_resource'
 require 'lims-api/struct_stream'
 
+require 'lims-laboratory-app/labels/labellable/labelled_resource'
 require 'lims-laboratory-app/laboratory/tube_rack'
 module Lims::LaboratoryApp
   module Laboratory
@@ -9,9 +10,15 @@ module Lims::LaboratoryApp
       class TubeRackResource < Lims::Api::CoreResource
 
         include Lims::Api::Resources::Container
+        include Labels::Labellable::LabelledResource
 
         def elements_name
           :tubes
+        end
+
+        def content_to_stream(s, mime_type)
+          super(s, mime_type)
+          labellable_to_stream(s, mime_type)
         end
 
         def children_to_stream(s, mime_type)
