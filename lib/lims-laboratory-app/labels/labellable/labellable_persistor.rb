@@ -20,6 +20,10 @@ module Lims::LaboratoryApp
           end
         end
 
+        def load_labellables?
+          false
+        end
+
         def filter_attributes_on_save(attributes, *params)
           attributes.delete(:content)
           if attributes[:type] == "resource"
