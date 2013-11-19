@@ -1,7 +1,6 @@
 require 'lims-core/actions/action'
 require 'lims-laboratory-app/laboratory/transfer_action'
 require 'lims-laboratory-app/laboratory/transfers_parameters'
-require 'lims-laboratory-app/laboratory/plate/transfer_plates_to_plates'
 
 module Lims::LaboratoryApp
   module Laboratory

@@ -1,5 +1,6 @@
 module Lims::LaboratoryApp
   module Laboratory
+    # This is a module for moving a sample or a snp_assay to another location
     module AliquotContentShared
 
       InvalidContent = Class.new(StandardError)
@@ -9,9 +10,9 @@ module Lims::LaboratoryApp
       def change_content(session, content_type)
         resources = []
 
-        parameters.each do |swap_sample|
-          resource = swap_sample["resource"]
-          moves = swap_sample["swaps"] 
+        parameters.each do |move_sample|
+          resource = move_sample["resource"]
+          moves = move_sample["swaps"]
 
           # Tube rack, plate...
           if resource.is_a?(Container)
@@ -47,14 +48,14 @@ module Lims::LaboratoryApp
           raise InvalidContent, "The content (sample/snp_assay) #{new_content_uuid} cannot be found" unless new_content
           if contents_equal?(session, aliquot.send(content_type.to_sym), old_content)
             aliquot.send("#{content_type}=".to_sym, new_content)
-            break # Important, do not move again
+            break # Important, do not it move again
           end                 
         end
       end
 
       # @param [Session] session
-      # @param [Lims::LaboratoryApp::Laboratory::Sample/Assay] content1
-      # @param [Lims::LaboratoryApp::Laboratory::Sample/Assay] content2
+      # @param [Lims::LaboratoryApp::Laboratory::Sample/SnpAssay] content1
+      # @param [Lims::LaboratoryApp::Laboratory::Sample/SnpAssay] content2
       # @return [Bool]
       # When we evaluate only content1 == content2, it basically compare
       # the name of the 2 contents (sample/snp_assay). So, if they have the same name,
