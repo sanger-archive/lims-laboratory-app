@@ -399,11 +399,6 @@ describe "root" do
             "create": "http://example.org/actions/swap_samples"
         }
     },
-    "transfer_multiple_filter_papers_to_tubes": {
-        "actions": {
-            "create": "http://example.org/actions/transfer_multiple_filter_papers_to_tubes"
-        }
-    },
     "transfer_multiple_filter_papers_to_wells": {
         "actions": {
             "create": "http://example.org/actions/transfer_multiple_filter_papers_to_wells"
