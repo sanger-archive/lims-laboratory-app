@@ -1,12 +1,14 @@
 # vi: ts=2:sts=2:et:sw=2  spell:spelllang=en  
 require 'lims-laboratory-app/laboratory/tube'
 require 'lims-laboratory-app/laboratory/create_labellable_resource_action'
+require 'lims-laboratory-app/laboratory/sample/create_sample_shared'
 
 module Lims::LaboratoryApp
   module Laboratory
     class Tube
       class CreateTube
         include CreateLabellableResourceAction
+        include CreateSampleShared
 
         attribute :aliquots, Array, :default => []
         attribute :type, String, :required => false
@@ -30,12 +32,8 @@ module Lims::LaboratoryApp
               aliquot_ready = aliquot.mash do |k,v|
                 case k.to_s
                 when "sample_uuid" then 
-                  sample = Laboratory::Sample.new(:name => "Sample #{count}")
                   count += 1
-                  session << sample
-                  uuid_resource = session.new_uuid_resource_for(sample)
-                  uuid_resource.send(:uuid=, v)
-                  ["sample", sample] 
+                  ["sample", create_sample(session, "Sample #{count}", v)] 
                 else 
                   [k,v]
                 end
