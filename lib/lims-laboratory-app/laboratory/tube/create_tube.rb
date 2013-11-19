@@ -8,7 +8,7 @@ module Lims::LaboratoryApp
     class Tube
       class CreateTube
         include CreateLabellableResourceAction
-        include CreateSampleShared
+        include Laboratory::Sample::CreateSampleShared
 
         attribute :aliquots, Array, :default => []
         attribute :type, String, :required => false

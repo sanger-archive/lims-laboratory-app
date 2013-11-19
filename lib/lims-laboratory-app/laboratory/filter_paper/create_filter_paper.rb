@@ -7,7 +7,7 @@ module Lims::LaboratoryApp
     class FilterPaper
       class CreateFilterPaper
         include CreateLabellableResourceAction
-        include CreateSampleShared
+        include Laboratory::Sample::CreateSampleShared
 
         attribute :aliquots, Array, :default => []
 
