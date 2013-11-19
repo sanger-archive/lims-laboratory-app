@@ -8,9 +8,9 @@ module Lims::LaboratoryApp
   module Laboratory
     # Fluidigm is a labware as seen in the laboratory.
     # It has a number of rows and number of columns property.
-    # It is a rectangular bit of plastic and contains Wells for Assay and Samples.
-    # It can have a layout of 96 Assay wells and 96 Sample wells or
-    # 192 samples wells and 24 snp assay wells.
+    # It is a rectangular bit of plastic and contains Wells for SNP Assay and Samples.
+    # It can have a layout of 96 SNP Assay wells and 96 Sample wells or
+    # 192 Samples wells and 24 SNP Assay wells.
     # It can has some readable labels on it (i.e. barcode).
     class Fluidigm
       include Lims::Core::Resource
@@ -30,13 +30,16 @@ module Lims::LaboratoryApp
 
       # Converts an element name to an index of the underlying container
       # The result could be from 0 to size - 1
-      def element_name_to_index(type, index)
+      # @param [String] type of the content (sample/snp_assay)
+      # @param [Fixnum] location (starting from 1)
+      # @return [Fixnum] index could be from 0 to size - 1
+      def element_name_to_index(type, location)
         raise IndexOutOfRangeError unless type == Fluidigm::SAMPLE || type == Fluidigm::ASSAY
         raise Fluidigm::InvalidContentError, {
           "content" => "The content of the well should be an Assay or a Sample."
         } unless [Fluidigm::SAMPLE, Fluidigm::ASSAY].include?(type)
 
-        location = index.to_i
+        location = location.to_i
         if size == Fluidigm::FLUIDIGM_96_96
           row = location/(number_of_columns/2)
           col_position = location % (number_of_columns/2)
@@ -59,7 +62,7 @@ module Lims::LaboratoryApp
           }
         end
 
-        raise IndexOutOfRangeError unless (-1..number_of_rows).include?(row)
+        raise IndexOutOfRangeError unless (0..number_of_rows).include?(row)
 
         # returns the location (row and column) in the container of the given assay/sample
         row*number_of_columns + col
@@ -101,16 +104,19 @@ module Lims::LaboratoryApp
         "#{type}#{location.to_i}"
       end
 
+      # Checks if the content is a snp_assay at index
       def is_assay_at_index(index)
         is_assay_in_left_column?(index) || is_assay_in_right_column?(index, number_of_columns)
       end
       private :is_assay_at_index
 
+      # Checks if the index location is in the left column
       def is_assay_in_left_column?(index)
         index % number_of_columns == 0
       end
       private :is_assay_in_left_column?
 
+      # Checks if the index location is in the right column
       def is_assay_in_right_column?(index, number_of_columns)
         (index+1) % number_of_columns == 0
       end
