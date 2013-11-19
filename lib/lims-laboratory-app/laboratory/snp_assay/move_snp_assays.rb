@@ -3,13 +3,13 @@ require 'lims-laboratory-app/laboratory/aliquot_content_shared'
 
 module Lims::LaboratoryApp
   module Laboratory
-    class Sample
+    class SnpAssay
 
-      class SwapSamples
+      class MoveSnpAssays
         include Lims::Core::Actions::Action
         include AliquotContentShared
 
-        CONTENT_TYPE = "sample"
+        CONTENT_TYPE = "snp_assay"
 
         attribute :parameters, Array, :required => true, :writer => :private
 
