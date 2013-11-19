@@ -107,7 +107,7 @@ end
 
 shared_context "clean store" do
   after(:each) do
-    %w{items orders batches searches labels labellables tube_aliquots spin_column_aliquots windows wells lanes locations tag_group_associations aliquots tube_rack_slots tube_racks tubes spin_columns gels plates flowcells filter_papers samples oligos tag_groups studies users uuid_resources primary_keys}.each do |table|
+    %w{items orders batches searches labels labellables tube_aliquots filter_paper_aliquots spin_column_aliquots windows wells lanes tag_group_associations aliquots tube_rack_slots tube_racks tubes spin_columns gels plates flowcells filter_papers samples oligos tag_groups studies users uuid_resources primary_keys}.each do |table|
       db[table.to_sym].delete
     end
     db.disconnect
