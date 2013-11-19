@@ -44,8 +44,8 @@ describe "bulk_create_filter_paper", :filter_paper => true do
     "bulk_create_filter_paper": {
         "actions": {
         },
-        "user": "user@example.com",
-        "application": "application_id",
+        "user": "user",
+        "application": "application",
         "result": {
             "filter_papers": [
                 {

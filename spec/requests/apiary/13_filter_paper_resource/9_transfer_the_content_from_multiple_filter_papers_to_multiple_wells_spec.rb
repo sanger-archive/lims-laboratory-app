@@ -61,8 +61,8 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_wells", :
     "transfer_multiple_filter_papers_to_wells": {
         "actions": {
         },
-        "user": "user@example.com",
-        "application": "application_id",
+        "user": "user",
+        "application": "application",
         "result": {
             "sources": [
                 {
