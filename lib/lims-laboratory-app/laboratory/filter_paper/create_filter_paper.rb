@@ -1,36 +1,45 @@
 require 'lims-laboratory-app/laboratory/filter_paper'
-require 'lims-laboratory-app/laboratory/container/create_container_action'
+require 'lims-laboratory-app/laboratory/create_labellable_resource_action'
+require 'lims-laboratory-app/laboratory/sample/create_sample_shared'
 
 module Lims::LaboratoryApp
   module Laboratory
     class FilterPaper
       class CreateFilterPaper
-        # The ActionContainer module implements the _call_in_session method.
-        # This method create an instance of the actual resource of all
-        # the container like object (like FilterPaper, Plate, Gel)
-        include Container::CreateContainerAction
+        include CreateLabellableResourceAction
+        include CreateSampleShared
 
-        # @attribute [Hash<String, Array<Hash>>] locations_description
-        # @example
-        #   { "A1" => [{ :sample => s1, :quantity => 2}, {:sample => s2}] }
-        attribute :locations_description, Hash, :default => {}
+        attribute :aliquots, Array, :default => []
 
-        # The ActionContainer using this method.
-        # It should return the object of the class to create.
-        def container_class
-          Laboratory::FilterPaper
+        def initialize(*args, &block)
+          @name = "Create Filter Paper"
+          super(*args, &block)
         end
 
-        # The ActionContainer using this method.
-        # It should return the property name of specific container's element.
-        def element_description
-          locations_description
-        end
-
-        # The ActionContainer using this method.
-        # It should return the name of the container in symbol type.
-        def container_symbol
-          :filter_paper
+        # TODO : to refactor with create_tube
+        def create(session)
+          filter_paper = Laboratory::FilterPaper.new
+          session << filter_paper
+          count = 1
+          if aliquots
+            aliquots.each do |aliquot|
+              # The sample uuid comes from lims-management-app, 
+              # as a result, the sample is not present in the 
+              # lims-laboratory-app sample table. The following 
+              # creates a new sample with the expected uuid.
+              aliquot_ready = aliquot.mash do |k,v|
+                case k.to_s
+                when "sample_uuid" then 
+                  count += 1
+                  ["sample", create_sample(session, "Sample #{count}", v)] 
+                else 
+                  [k,v]
+                end
+              end
+              filter_paper << Laboratory::Aliquot.new(aliquot_ready)
+            end
+          end
+          {:filter_paper => filter_paper, :uuid => session.uuid_for!(filter_paper)}
         end
       end
 

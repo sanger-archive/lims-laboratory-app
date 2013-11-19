@@ -1,26 +1,21 @@
-require 'lims-laboratory-app/laboratory/filter_paper'
-
-require 'lims-api/resources/receptacle'
-require 'lims-api/resources/container'
 require 'lims-api/core_resource'
+require 'lims-api/struct_stream'
+require 'lims-api/resources/receptacle'
+
+require 'lims-laboratory-app/laboratory/filter_paper'
 
 module Lims::LaboratoryApp
   module Laboratory
     class FilterPaper
-      # This is the resource file for JSON representation of a Filter Paper.
-      # The JSON representation of the samples are in the Receptacle module.
-      # All of the common resource related method for container objects
-      # (FilterPaper, Gel, Plate) has been implemented in the Container module.
       class FilterPaperResource < Lims::Api::CoreResource
 
         include Lims::Api::Resources::Receptacle
-        include Lims::Api::Resources::Container
 
-        # this method define the name of the elements of this container
-        def elements_name
-          "locations"
+        def content_to_stream(s, mime_type)
+          super(s, mime_type)
+          s.add_key "aliquots"
+          receptacle_to_stream(s, object, mime_type)
         end
-
       end
     end
   end
