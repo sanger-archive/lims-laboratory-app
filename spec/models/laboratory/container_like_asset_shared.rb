@@ -60,7 +60,20 @@ module Lims::LaboratoryApp
           end
         # FLUIDIGM 192.24
         elsif size == 224
-          # TODO
+          0.upto(number_of_rows-1) do |row|
+            1.upto(number_of_columns-2) do |column|
+              index = row*(number_of_columns-2) + column
+              1.upto(sample_nb) do |j|
+                asset["S#{index}"] << new_aliquot(index,j,quantity)
+              end
+            end
+          end
+          1.upto(24) do |index|
+            1.upto(sample_nb) do |j|
+              asset["A#{index}"] << new_snp_assay_aliquot(index,j,quantity)
+            end
+          end
+
         end
       end
 
