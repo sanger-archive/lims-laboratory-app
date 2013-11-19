@@ -44,8 +44,8 @@ describe "use_the_create_fluidigm_action", :fluidigm => true do
     "create_fluidigm": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "fluidigm": {
                 "actions": {

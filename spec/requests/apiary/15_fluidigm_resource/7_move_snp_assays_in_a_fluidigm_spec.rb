@@ -45,8 +45,8 @@ describe "move_snp_assays_in_a_fluidigm", :fluidigm => true do
     "move_snp_assays": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": [
             {
                 "fluidigm": {

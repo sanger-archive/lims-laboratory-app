@@ -45,8 +45,8 @@ describe "create_and_read_a_fluidigm_resource", :fluidigm => true do
     "create_fluidigm": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "fluidigm": {
                 "actions": {
