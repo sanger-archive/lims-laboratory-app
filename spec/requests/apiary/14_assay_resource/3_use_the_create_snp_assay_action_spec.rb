@@ -25,8 +25,8 @@ describe "use_the_create_snp_assay_action", :assay => true do
     "create_snp_assay": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "snp_assay": {
                 "actions": {

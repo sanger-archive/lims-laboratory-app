@@ -63,8 +63,8 @@ describe "transfer_plates_to_fluidigm", :fluidigm => true do
     "transfer_plates_to_fluidigm": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {
