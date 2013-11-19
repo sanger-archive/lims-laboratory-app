@@ -24,11 +24,11 @@ module Lims::LaboratoryApp
       session.fluidigm.dataset.order_by(:id).last[:id]
     end
 
+    let(:expected_fluidigm_size) { number_of_rows*number_of_columns }
     context "16*12 Fluidigm" do
       # Set default dimension to create a fluidigm
       let(:number_of_rows) { 16 }
       let(:number_of_columns) { 12 }
-      let(:expected_fluidigm_size) { number_of_rows*number_of_columns }
 
       context do
         let(:number_of_samples) { 3 }
@@ -110,5 +110,20 @@ module Lims::LaboratoryApp
         it_behaves_like "filtrable", :fluidigm
       end
     end
+
+    context "16*12 Fluidigm" do
+      # Set default dimension to create a fluidigm
+      let(:number_of_rows) { 16 }
+      let(:number_of_columns) { 14 }
+
+      context do
+        let(:number_of_samples) { 3 }
+        subject { new_fluidigm_with_samples(number_of_samples) }
+        # in this fluidigm layout, there are 8 empty wells in the right side
+        it_behaves_like "storable resource", :fluidigm,
+          {:fluidigms => 1, :fluidigm_wells => 16*14*3 - 8*3 }
+      end
+    end
+
   end
 end
