@@ -6,6 +6,7 @@ require 'models/laboratory/aliquot_shared'
 
 require 'lims-laboratory-app/laboratory/gel/all'
 require 'lims-laboratory-app/laboratory/plate/all'
+require 'lims-laboratory-app/laboratory/fluidigm/all'
 require 'facets/array'
 
 module Lims::LaboratoryApp
