@@ -3,20 +3,12 @@ require 'json'
 h={:header => [], :response_header => [] }
 h[:description]=<<EOD
 **Create a new empty filter paper.**
-
-* `number_of_rows` number of rows of the filter paper
-* `number_of_columns` number of columns of the filter paper
-* `locations_description` map aliquots to locations
 EOD
 h[:method] = "POST"
 h[:url]='/filter_papers'
 h[:header] << 'Accept: application/json'
 h[:parameters]=<<EOD
-{ "filter_paper": {
-    "number_of_rows": 2,
-    "number_of_columns": 2,
-    "locations_description": {}
-}}
+{ "filter_paper": {}}
 EOD
 h[:status]=200
 h[:response_header] << 'Content-Type: application/json'
@@ -29,12 +21,7 @@ h[:response]=<<EOD
         "create": "/11111111-2222-3333-4444-555555555555"
     },
     "uuid": "11111111-2222-3333-4444-555555555555",
-    "number_of_rows": 2,
-    "number_of_columns": 2,
-    "locations": { 
-        "A1": [], "A2": [],
-        "B1": [], "B2": []
-     }
+    "aliquots": []
 }}
 EOD
 %>
