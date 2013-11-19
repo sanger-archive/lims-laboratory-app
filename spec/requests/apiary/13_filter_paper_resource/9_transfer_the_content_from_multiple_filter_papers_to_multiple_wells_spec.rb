@@ -24,15 +24,11 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_wells", :
     sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
     sample2 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2')
     
-    filter_paper1 = Lims::LaboratoryApp::Laboratory::FilterPaper.new(
-        :number_of_rows =>      2,
-        :number_of_columns =>   2)
-    filter_paper1["A1"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 100, :type => "sample", :sample => sample1)
+    filter_paper1 = Lims::LaboratoryApp::Laboratory::FilterPaper.new
+    filter_paper1 << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 100, :type => "sample", :sample => sample1)
     
-    filter_paper2 = Lims::LaboratoryApp::Laboratory::FilterPaper.new(
-        :number_of_rows =>      2,
-        :number_of_columns =>   2)
-    filter_paper2["A2"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 100, :type => "sample", :sample => sample2)
+    filter_paper2 = Lims::LaboratoryApp::Laboratory::FilterPaper.new
+    filter_paper2 << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 100, :type => "sample", :sample => sample2)
     
     plate1 = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_columns => 12, :number_of_rows => 8)
     plate2 = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_columns => 12, :number_of_rows => 8)
@@ -48,13 +44,11 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_wells", :
         "transfers": [
             {
                 "source_uuid": "11111111-2222-3333-4444-333333333333",
-                "source_location": "A1",
                 "target_uuid": "11111111-2222-3333-4444-666666666666",
                 "target_location": "A1"
             },
             {
                 "source_uuid": "11111111-2222-3333-4444-444444444444",
-                "source_location": "A2",
                 "target_uuid": "11111111-2222-3333-4444-777777777777",
                 "target_location": "A2"
             }
@@ -80,36 +74,23 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_wells", :
                             "delete": "http://example.org/11111111-2222-3333-4444-333333333333"
                         },
                         "uuid": "11111111-2222-3333-4444-333333333333",
-                        "number_of_rows": 2,
-                        "number_of_columns": 2,
-                        "locations": {
-                            "A1": [
-                                {
-                                    "sample": {
-                                        "actions": {
-                                            "read": "http://example.org/11111111-2222-3333-0000-000000000000",
-                                            "create": "http://example.org/11111111-2222-3333-0000-000000000000",
-                                            "update": "http://example.org/11111111-2222-3333-0000-000000000000",
-                                            "delete": "http://example.org/11111111-2222-3333-0000-000000000000"
-                                        },
-                                        "uuid": "11111111-2222-3333-0000-000000000000",
-                                        "name": "sample 1"
+                        "aliquots": [
+                            {
+                                "sample": {
+                                    "actions": {
+                                        "read": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                        "create": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                        "update": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                        "delete": "http://example.org/11111111-2222-3333-0000-000000000000"
                                     },
-                                    "quantity": 100,
-                                    "type": "sample",
-                                    "unit": "mole"
-                                }
-                            ],
-                            "A2": [
-
-                            ],
-                            "B1": [
-
-                            ],
-                            "B2": [
-
-                            ]
-                        }
+                                    "uuid": "11111111-2222-3333-0000-000000000000",
+                                    "name": "sample 1"
+                                },
+                                "quantity": 100,
+                                "type": "sample",
+                                "unit": "mole"
+                            }
+                        ]
                     }
                 },
                 {
@@ -121,36 +102,23 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_wells", :
                             "delete": "http://example.org/11111111-2222-3333-4444-444444444444"
                         },
                         "uuid": "11111111-2222-3333-4444-444444444444",
-                        "number_of_rows": 2,
-                        "number_of_columns": 2,
-                        "locations": {
-                            "A1": [
-
-                            ],
-                            "A2": [
-                                {
-                                    "sample": {
-                                        "actions": {
-                                            "read": "http://example.org/11111111-2222-3333-0000-111111111111",
-                                            "create": "http://example.org/11111111-2222-3333-0000-111111111111",
-                                            "update": "http://example.org/11111111-2222-3333-0000-111111111111",
-                                            "delete": "http://example.org/11111111-2222-3333-0000-111111111111"
-                                        },
-                                        "uuid": "11111111-2222-3333-0000-111111111111",
-                                        "name": "sample 2"
+                        "aliquots": [
+                            {
+                                "sample": {
+                                    "actions": {
+                                        "read": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                        "create": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                        "update": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                        "delete": "http://example.org/11111111-2222-3333-0000-111111111111"
                                     },
-                                    "quantity": 100,
-                                    "type": "sample",
-                                    "unit": "mole"
-                                }
-                            ],
-                            "B1": [
-
-                            ],
-                            "B2": [
-
-                            ]
-                        }
+                                    "uuid": "11111111-2222-3333-0000-111111111111",
+                                    "name": "sample 2"
+                                },
+                                "quantity": 100,
+                                "type": "sample",
+                                "unit": "mole"
+                            }
+                        ]
                     }
                 }
             ],
@@ -794,13 +762,11 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_wells", :
         "transfers": [
             {
                 "source_uuid": "11111111-2222-3333-4444-333333333333",
-                "source_location": "A1",
                 "target_uuid": "11111111-2222-3333-4444-666666666666",
                 "target_location": "A1"
             },
             {
                 "source_uuid": "11111111-2222-3333-4444-444444444444",
-                "source_location": "A2",
                 "target_uuid": "11111111-2222-3333-4444-777777777777",
                 "target_location": "A2"
             }

@@ -6,31 +6,13 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_tubes", :
   # 
   # This action transfers the content of 1 or more location(s) of multiple Filter Paper
   # to to 1 or more tube(s).
-  # 
-  # The action takes an array, which contains the elements of the transfer(s).
-  # 
-  # * `source_uuid` uuid of the source Filter Paper
-  # * `source_location` is the location on the Filter Paper (like "A1") from transfer the aliquots
-  # * `target_uuid` uuid of the target tube
-  # 
-  # The example below shows how to make a transfer from "A1" Location 
-  # of one Filter Paper and "A2" Location of another Filter Paper to multiple tubes:
-  # 
-  # * from filter paper `11111111-2222-3333-4444-333333333333` "A1" Location
-  # to tube `11111111-2222-3333-4444-666666666666` and
-  # from filter paper `11111111-2222-3333-4444-444444444444` "A2" Location
-  # to tube `11111111-2222-3333-4444-777777777777`
     sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
     sample2 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2')
     
-    filter_paper1 = Lims::LaboratoryApp::Laboratory::FilterPaper.new(
-        :number_of_rows =>      2,
-        :number_of_columns =>   2)
-    filter_paper1["A1"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 100, :type => "sample", :sample => sample1)
-    filter_paper2 = Lims::LaboratoryApp::Laboratory::FilterPaper.new(
-        :number_of_rows =>      2,
-        :number_of_columns =>   2)
-    filter_paper2["A2"] << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 100, :type => "sample", :sample => sample2)
+    filter_paper1 = Lims::LaboratoryApp::Laboratory::FilterPaper.new
+    filter_paper1 << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 100, :type => "sample", :sample => sample1)
+    filter_paper2 = Lims::LaboratoryApp::Laboratory::FilterPaper.new
+    filter_paper2 << Lims::LaboratoryApp::Laboratory::Aliquot.new(:quantity => 100, :type => "sample", :sample => sample2)
     
     tube1 = Lims::LaboratoryApp::Laboratory::Tube.new
     tube2 = Lims::LaboratoryApp::Laboratory::Tube.new
@@ -40,19 +22,21 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_tubes", :
     header('Content-Type', 'application/json')
     header('Accept', 'application/json')
 
-    response = post "/actions/transfer_multiple_filter_papers_to_tubes", <<-EOD
+    response = post "/actions/transfer_tubes_to_tubes", <<-EOD
     {
-    "transfer_multiple_filter_papers_to_tubes": {
+    "transfer_tubes_to_tubes": {
         "transfers": [
             {
                 "source_uuid": "11111111-2222-3333-4444-333333333333",
-                "source_location": "A1",
-                "target_uuid": "11111111-2222-3333-4444-666666666666"
+                "target_uuid": "11111111-2222-3333-4444-666666666666",
+                "amount": 5,
+                "aliquot_type": "DNA"
             },
             {
                 "source_uuid": "11111111-2222-3333-4444-444444444444",
-                "source_location": "A2",
-                "target_uuid": "11111111-2222-3333-4444-777777777777"
+                "target_uuid": "11111111-2222-3333-4444-777777777777",
+                "amount": 10,
+                "aliquot_type": "DNA"
             }
         ]
     }
@@ -60,7 +44,7 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_tubes", :
     EOD
     response.should match_json_response(200, <<-EOD) 
     {
-    "transfer_multiple_filter_papers_to_tubes": {
+    "transfer_tubes_to_tubes": {
         "actions": {
         },
         "user": "user",
@@ -76,36 +60,23 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_tubes", :
                             "delete": "http://example.org/11111111-2222-3333-4444-333333333333"
                         },
                         "uuid": "11111111-2222-3333-4444-333333333333",
-                        "number_of_rows": 2,
-                        "number_of_columns": 2,
-                        "locations": {
-                            "A1": [
-                                {
-                                    "sample": {
-                                        "actions": {
-                                            "read": "http://example.org/11111111-2222-3333-0000-000000000000",
-                                            "create": "http://example.org/11111111-2222-3333-0000-000000000000",
-                                            "update": "http://example.org/11111111-2222-3333-0000-000000000000",
-                                            "delete": "http://example.org/11111111-2222-3333-0000-000000000000"
-                                        },
-                                        "uuid": "11111111-2222-3333-0000-000000000000",
-                                        "name": "sample 1"
+                        "aliquots": [
+                            {
+                                "sample": {
+                                    "actions": {
+                                        "read": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                        "create": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                        "update": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                        "delete": "http://example.org/11111111-2222-3333-0000-000000000000"
                                     },
-                                    "quantity": 100,
-                                    "type": "sample",
-                                    "unit": "mole"
-                                }
-                            ],
-                            "A2": [
-
-                            ],
-                            "B1": [
-
-                            ],
-                            "B2": [
-
-                            ]
-                        }
+                                    "uuid": "11111111-2222-3333-0000-000000000000",
+                                    "name": "sample 1"
+                                },
+                                "quantity": 100,
+                                "type": "sample",
+                                "unit": "mole"
+                            }
+                        ]
                     }
                 },
                 {
@@ -117,36 +88,23 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_tubes", :
                             "delete": "http://example.org/11111111-2222-3333-4444-444444444444"
                         },
                         "uuid": "11111111-2222-3333-4444-444444444444",
-                        "number_of_rows": 2,
-                        "number_of_columns": 2,
-                        "locations": {
-                            "A1": [
-
-                            ],
-                            "A2": [
-                                {
-                                    "sample": {
-                                        "actions": {
-                                            "read": "http://example.org/11111111-2222-3333-0000-111111111111",
-                                            "create": "http://example.org/11111111-2222-3333-0000-111111111111",
-                                            "update": "http://example.org/11111111-2222-3333-0000-111111111111",
-                                            "delete": "http://example.org/11111111-2222-3333-0000-111111111111"
-                                        },
-                                        "uuid": "11111111-2222-3333-0000-111111111111",
-                                        "name": "sample 2"
+                        "aliquots": [
+                            {
+                                "sample": {
+                                    "actions": {
+                                        "read": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                        "create": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                        "update": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                        "delete": "http://example.org/11111111-2222-3333-0000-111111111111"
                                     },
-                                    "quantity": 100,
-                                    "type": "sample",
-                                    "unit": "mole"
-                                }
-                            ],
-                            "B1": [
-
-                            ],
-                            "B2": [
-
-                            ]
-                        }
+                                    "uuid": "11111111-2222-3333-0000-111111111111",
+                                    "name": "sample 2"
+                                },
+                                "quantity": 100,
+                                "type": "sample",
+                                "unit": "mole"
+                            }
+                        ]
                     }
                 }
             ],
@@ -174,7 +132,7 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_tubes", :
                                     "uuid": "11111111-2222-3333-0000-000000000000",
                                     "name": "sample 1"
                                 },
-                                "type": "sample",
+                                "type": "DNA",
                                 "unit": "mole"
                             }
                         ]
@@ -203,7 +161,7 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_tubes", :
                                     "uuid": "11111111-2222-3333-0000-111111111111",
                                     "name": "sample 2"
                                 },
-                                "type": "sample",
+                                "type": "DNA",
                                 "unit": "mole"
                             }
                         ]
@@ -214,13 +172,15 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_tubes", :
         "transfers": [
             {
                 "source_uuid": "11111111-2222-3333-4444-333333333333",
-                "source_location": "A1",
-                "target_uuid": "11111111-2222-3333-4444-666666666666"
+                "target_uuid": "11111111-2222-3333-4444-666666666666",
+                "amount": 5,
+                "aliquot_type": "DNA"
             },
             {
                 "source_uuid": "11111111-2222-3333-4444-444444444444",
-                "source_location": "A2",
-                "target_uuid": "11111111-2222-3333-4444-777777777777"
+                "target_uuid": "11111111-2222-3333-4444-777777777777",
+                "amount": 10,
+                "aliquot_type": "DNA"
             }
         ]
     }

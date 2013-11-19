@@ -15,37 +15,25 @@ describe "bulk_create_filter_paper", :filter_paper => true do
     "bulk_create_filter_paper": {
         "filter_papers": [
             {
-                "number_of_rows": 2,
-                "number_of_columns": 2,
-                "locations_description": {
-                    "A1": [
-                        {
-                            "sample_uuid": "11111111-2222-3333-4444-000000000000"
-                        }
-                    ]
-                }
+                "aliquots": [
+                    {
+                        "sample_uuid": "11111111-2222-3333-4444-000000000000"
+                    }
+                ]
             },
             {
-                "number_of_rows": 2,
-                "number_of_columns": 2,
-                "locations_description": {
-                    "A1": [
-                        {
-                            "sample_uuid": "11111111-2222-3333-4444-111111111111"
-                        }
-                    ]
-                }
+                "aliquots": [
+                    {
+                        "sample_uuid": "11111111-2222-3333-4444-111111111111"
+                    }
+                ]
             },
             {
-                "number_of_rows": 2,
-                "number_of_columns": 2,
-                "locations_description": {
-                    "A1": [
-                        {
-                            "sample_uuid": "11111111-2222-3333-4444-222222222222"
-                        }
-                    ]
-                }
+                "aliquots": [
+                    {
+                        "sample_uuid": "11111111-2222-3333-4444-222222222222"
+                    }
+                ]
             }
         ]
     }
@@ -68,34 +56,21 @@ describe "bulk_create_filter_paper", :filter_paper => true do
                         "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
                     },
                     "uuid": "11111111-2222-3333-4444-555555555555",
-                    "number_of_rows": 2,
-                    "number_of_columns": 2,
-                    "locations": {
-                        "A1": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-4444-000000000000",
-                                        "update": "http://example.org/11111111-2222-3333-4444-000000000000",
-                                        "delete": "http://example.org/11111111-2222-3333-4444-000000000000",
-                                        "create": "http://example.org/11111111-2222-3333-4444-000000000000"
-                                    },
-                                    "uuid": "11111111-2222-3333-4444-000000000000",
-                                    "name": "sample 1"
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-4444-000000000000",
+                                    "update": "http://example.org/11111111-2222-3333-4444-000000000000",
+                                    "delete": "http://example.org/11111111-2222-3333-4444-000000000000",
+                                    "create": "http://example.org/11111111-2222-3333-4444-000000000000"
                                 },
-                                "unit": "mole"
-                            }
-                        ],
-                        "A2": [
-
-                        ],
-                        "B1": [
-
-                        ],
-                        "B2": [
-
-                        ]
-                    }
+                                "uuid": "11111111-2222-3333-4444-000000000000",
+                                "name": "sample 1"
+                            },
+                            "unit": "mole"
+                        }
+                    ]
                 },
                 {
                     "actions": {
@@ -105,34 +80,21 @@ describe "bulk_create_filter_paper", :filter_paper => true do
                         "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
                     },
                     "uuid": "11111111-2222-3333-4444-666666666666",
-                    "number_of_rows": 2,
-                    "number_of_columns": 2,
-                    "locations": {
-                        "A1": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-4444-111111111111",
-                                        "update": "http://example.org/11111111-2222-3333-4444-111111111111",
-                                        "delete": "http://example.org/11111111-2222-3333-4444-111111111111",
-                                        "create": "http://example.org/11111111-2222-3333-4444-111111111111"
-                                    },
-                                    "uuid": "11111111-2222-3333-4444-111111111111",
-                                    "name": "sample 2"
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-4444-111111111111",
+                                    "update": "http://example.org/11111111-2222-3333-4444-111111111111",
+                                    "delete": "http://example.org/11111111-2222-3333-4444-111111111111",
+                                    "create": "http://example.org/11111111-2222-3333-4444-111111111111"
                                 },
-                                "unit": "mole"
-                            }
-                        ],
-                        "A2": [
-
-                        ],
-                        "B1": [
-
-                        ],
-                        "B2": [
-
-                        ]
-                    }
+                                "uuid": "11111111-2222-3333-4444-111111111111",
+                                "name": "sample 2"
+                            },
+                            "unit": "mole"
+                        }
+                    ]
                 },
                 {
                     "actions": {
@@ -142,70 +104,45 @@ describe "bulk_create_filter_paper", :filter_paper => true do
                         "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
                     },
                     "uuid": "11111111-2222-3333-4444-777777777777",
-                    "number_of_rows": 2,
-                    "number_of_columns": 2,
-                    "locations": {
-                        "A1": [
-                            {
-                                "sample": {
-                                    "actions": {
-                                        "read": "http://example.org/11111111-2222-3333-4444-222222222222",
-                                        "update": "http://example.org/11111111-2222-3333-4444-222222222222",
-                                        "delete": "http://example.org/11111111-2222-3333-4444-222222222222",
-                                        "create": "http://example.org/11111111-2222-3333-4444-222222222222"
-                                    },
-                                    "uuid": "11111111-2222-3333-4444-222222222222",
-                                    "name": "sample 3"
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-4444-222222222222",
+                                    "update": "http://example.org/11111111-2222-3333-4444-222222222222",
+                                    "delete": "http://example.org/11111111-2222-3333-4444-222222222222",
+                                    "create": "http://example.org/11111111-2222-3333-4444-222222222222"
                                 },
-                                "unit": "mole"
-                            }
-                        ],
-                        "A2": [
-
-                        ],
-                        "B1": [
-
-                        ],
-                        "B2": [
-
-                        ]
-                    }
+                                "uuid": "11111111-2222-3333-4444-222222222222",
+                                "name": "sample 3"
+                            },
+                            "unit": "mole"
+                        }
+                    ]
                 }
             ]
         },
         "filter_papers": [
             {
-                "number_of_rows": 2,
-                "number_of_columns": 2,
-                "locations_description": {
-                    "A1": [
-                        {
-                            "sample_uuid": "11111111-2222-3333-4444-000000000000"
-                        }
-                    ]
-                }
+                "aliquots": [
+                    {
+                        "sample_uuid": "11111111-2222-3333-4444-000000000000"
+                    }
+                ]
             },
             {
-                "number_of_rows": 2,
-                "number_of_columns": 2,
-                "locations_description": {
-                    "A1": [
-                        {
-                            "sample_uuid": "11111111-2222-3333-4444-111111111111"
-                        }
-                    ]
-                }
+                "aliquots": [
+                    {
+                        "sample_uuid": "11111111-2222-3333-4444-111111111111"
+                    }
+                ]
             },
             {
-                "number_of_rows": 2,
-                "number_of_columns": 2,
-                "locations_description": {
-                    "A1": [
-                        {
-                            "sample_uuid": "11111111-2222-3333-4444-222222222222"
-                        }
-                    ]
-                }
+                "aliquots": [
+                    {
+                        "sample_uuid": "11111111-2222-3333-4444-222222222222"
+                    }
+                ]
             }
         ]
     }
