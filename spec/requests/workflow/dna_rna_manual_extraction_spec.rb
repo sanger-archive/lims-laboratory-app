@@ -394,6 +394,16 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/transfer_multiple_filter_papers_to_wells"
         }
     },
+    "transfer_plates_to_fluidigms": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_plates_to_fluidigm"
+        }
+    },
+    "move_snp_assays": {
+        "actions": {
+            "create": "http://example.org/actions/move_snp_assays"
+        }
+    },
     "tube_rack_moves": {
         "actions": {
             "create": "http://example.org/actions/tube_rack_move"
