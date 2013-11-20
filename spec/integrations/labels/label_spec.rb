@@ -53,8 +53,8 @@ module Lims::LaboratoryApp
       { "create_label" => {
           "actions" => {
           },
-          "user" => "user",
-          "application" => "application",
+          "user" => "user@example.com",
+          "application" => "application_id",
           "result" => {
               "labellable" => {
                   "actions" => {

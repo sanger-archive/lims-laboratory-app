@@ -44,8 +44,8 @@ describe "physically_move_tubes_from_a_source_tube_rack", :tube_rack => true do
     "tube_rack_move": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": [
             {
                 "tube_rack": {

@@ -63,8 +63,8 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_tubes", :
     "transfer_multiple_filter_papers_to_tubes": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {

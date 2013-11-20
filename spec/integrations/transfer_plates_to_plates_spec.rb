@@ -96,8 +96,8 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
           target_plate2_url = "http://example.org/#{target_plate2_uuid}"
           { :transfer_plates_to_plates =>
             { :actions => {},
-              :user => "user",
-              :application => "application",
+              :user => "user@example.com",
+              :application => "application_id",
               :result => {
                 :sources => [
                   { "plate" => {
@@ -194,8 +194,8 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
           target_gel2_url = "http://example.org/#{target_gel2_uuid}"
           { :transfer_plates_to_plates =>
             { :actions => {},
-              :user => "user",
-              :application => "application",
+              :user => "user@example.com",
+              :application => "application_id",
               :result => {
                 :sources => [
                   { "plate" => {
@@ -305,8 +305,8 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
           target_plate2_url = "http://example.org/#{target_plate2_uuid}"
           { :transfer_plates_to_plates =>
             { :actions => {},
-              :user => "user",
-              :application => "application",
+              :user => "user@example.com",
+              :application => "application_id",
               :result => {
                 :sources => [
                   { "tube_rack" => {
@@ -405,8 +405,8 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
           target_rack2_url = "http://example.org/#{target_rack2_uuid}"
           { :transfer_plates_to_plates =>
             { :actions => {},
-              :user => "user",
-              :application => "application",
+              :user => "user@example.com",
+              :application => "application_id",
               :result => {
                 :sources => [
                   { "tube_rack" => {
@@ -511,8 +511,8 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
           target_plate1_url = "http://example.org/#{target_plate1_uuid}"
           { :transfer_plates_to_plates =>
             { :actions => {},
-              :user => "user",
-              :application => "application",
+              :user => "user@example.com",
+              :application => "application_id",
               :result => {
                 :sources => [
                   { "tube_rack" => {

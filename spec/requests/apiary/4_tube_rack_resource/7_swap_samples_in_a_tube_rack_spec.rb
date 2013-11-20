@@ -56,8 +56,8 @@ describe "swap_samples_in_a_tube_rack", :tube_rack => true do
     "swap_samples": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": [
             {
                 "tube_rack": {
