@@ -59,14 +59,6 @@ describe "dna_rna_manual_extraction" do
             "last": "http://example.org/samples/page=-1"
         }
     },
-    "snp_assays": {
-        "actions": {
-            "create": "http://example.org/snp_assays",
-            "read": "http://example.org/snp_assays",
-            "first": "http://example.org/snp_assays/page=1",
-            "last": "http://example.org/snp_assays/page=-1"
-        }
-    },
     "oligos": {
         "actions": {
             "create": "http://example.org/oligos",
@@ -97,14 +89,6 @@ describe "dna_rna_manual_extraction" do
             "read": "http://example.org/gels",
             "first": "http://example.org/gels/page=1",
             "last": "http://example.org/gels/page=-1"
-        }
-    },
-    "fluidigms": {
-        "actions": {
-            "create": "http://example.org/fluidigms",
-            "read": "http://example.org/fluidigms",
-            "first": "http://example.org/fluidigms/page=1",
-            "last": "http://example.org/fluidigms/page=-1"
         }
     },
     "filter_papers": {
@@ -274,11 +258,6 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/create_gel"
         }
     },
-    "create_fluidigms": {
-        "actions": {
-            "create": "http://example.org/actions/create_fluidigm"
-        }
-    },
     "create_filter_papers": {
         "actions": {
             "create": "http://example.org/actions/create_filter_paper"
@@ -309,11 +288,6 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/update_label"
         }
     },
-    "create_snp_assays": {
-        "actions": {
-            "create": "http://example.org/actions/create_snp_assay"
-        }
-    },
     "create_orders": {
         "actions": {
             "create": "http://example.org/actions/create_order"
@@ -327,11 +301,6 @@ describe "dna_rna_manual_extraction" do
     "create_searches": {
         "actions": {
             "create": "http://example.org/actions/create_search"
-        }
-    },
-    "update_gels": {
-        "actions": {
-            "create": "http://example.org/actions/update_gel"
         }
     },
     "create_spin_columns": {
@@ -399,16 +368,6 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/transfer_multiple_filter_papers_to_wells"
         }
     },
-    "transfer_plates_to_fluidigms": {
-        "actions": {
-            "create": "http://example.org/actions/transfer_plates_to_fluidigm"
-        }
-    },
-    "move_snp_assays": {
-        "actions": {
-            "create": "http://example.org/actions/move_snp_assays"
-        }
-    },
     "tube_rack_moves": {
         "actions": {
             "create": "http://example.org/actions/tube_rack_move"
@@ -449,6 +408,47 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/delete_tube_rack"
         }
     },
+    "update_gels": {
+        "actions": {
+            "create": "http://example.org/actions/update_gel"
+        }
+    },
+    "snp_assays": {
+        "actions": {
+            "create": "http://example.org/snp_assays",
+            "read": "http://example.org/snp_assays",
+            "first": "http://example.org/snp_assays/page=1",
+            "last": "http://example.org/snp_assays/page=-1"
+        }
+    },
+    "fluidigms": {
+        "actions": {
+            "create": "http://example.org/fluidigms",
+            "read": "http://example.org/fluidigms",
+            "first": "http://example.org/fluidigms/page=1",
+            "last": "http://example.org/fluidigms/page=-1"
+        }
+    },
+    "transfer_plates_to_fluidigms": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_plates_to_fluidigm"
+        }
+    },
+    "create_fluidigms": {
+        "actions": {
+            "create": "http://example.org/actions/create_fluidigm"
+        }
+    },
+    "create_snp_assays": {
+        "actions": {
+            "create": "http://example.org/actions/create_snp_assay"
+        }
+    },
+    "move_snp_assays": {
+        "actions": {
+            "create": "http://example.org/actions/move_snp_assays"
+        }
+    },
     "revision": 3
 }
     EOD
@@ -461,7 +461,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/searches", <<-EOD
     {
     "search": {
-        "user": "username",
+        "user": "user@example.com",
         "description": "search for barcoded tube",
         "model": "tube",
         "criteria": {
@@ -551,7 +551,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/searches", <<-EOD
     {
     "search": {
-        "user": "username",
+        "user": "user@example.com",
         "description": "search for barcoded tube",
         "model": "tube",
         "criteria": {
@@ -641,7 +641,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/searches", <<-EOD
     {
     "search": {
-        "user": "username",
+        "user": "user@example.com",
         "description": "search for order",
         "model": "order",
         "criteria": {
@@ -678,59 +678,57 @@ describe "dna_rna_manual_extraction" do
         "last": "http://example.org/349e3760-7f57-0130-e345-282066132de2/page=-1"
     },
     "size": 1,
-    "body": {
-        "orders": [
-            {
+    "orders": [
+        {
+            "actions": {
+                "read": "http://example.org/2ea9d600-7f57-0130-e344-282066132de2",
+                "create": "http://example.org/2ea9d600-7f57-0130-e344-282066132de2",
+                "update": "http://example.org/2ea9d600-7f57-0130-e344-282066132de2",
+                "delete": "http://example.org/2ea9d600-7f57-0130-e344-282066132de2"
+            },
+            "uuid": "2ea9d600-7f57-0130-e344-282066132de2",
+            "pipeline": "DNA+RNA manual extraction",
+            "status": "draft",
+            "parameters": {
+            },
+            "state": {
+            },
+            "cost_code": "cost code",
+            "creator": {
                 "actions": {
-                    "read": "http://example.org/2ea9d600-7f57-0130-e344-282066132de2",
-                    "create": "http://example.org/2ea9d600-7f57-0130-e344-282066132de2",
-                    "update": "http://example.org/2ea9d600-7f57-0130-e344-282066132de2",
-                    "delete": "http://example.org/2ea9d600-7f57-0130-e344-282066132de2"
+                    "read": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
+                    "create": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
+                    "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
+                    "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
                 },
-                "uuid": "2ea9d600-7f57-0130-e344-282066132de2",
-                "pipeline": "DNA+RNA manual extraction",
-                "status": "draft",
-                "parameters": {
+                "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+                "email": null
+            },
+            "study": {
+                "actions": {
+                    "read": "http://example.org/2ea2dc40-7f57-0130-e344-282066132de2",
+                    "create": "http://example.org/2ea2dc40-7f57-0130-e344-282066132de2",
+                    "update": "http://example.org/2ea2dc40-7f57-0130-e344-282066132de2",
+                    "delete": "http://example.org/2ea2dc40-7f57-0130-e344-282066132de2"
                 },
-                "state": {
-                },
-                "cost_code": "cost code",
-                "creator": {
-                    "actions": {
-                        "read": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
-                        "create": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
-                        "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
-                        "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
+                "uuid": "2ea2dc40-7f57-0130-e344-282066132de2"
+            },
+            "items": {
+                "tube_to_be_extracted_nap": [
+                    {
+                        "uuid": "2ea58a10-7f57-0130-e344-282066132de2",
+                        "status": "done",
+                        "batch": null
                     },
-                    "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
-                    "email": null
-                },
-                "study": {
-                    "actions": {
-                        "read": "http://example.org/2ea2dc40-7f57-0130-e344-282066132de2",
-                        "create": "http://example.org/2ea2dc40-7f57-0130-e344-282066132de2",
-                        "update": "http://example.org/2ea2dc40-7f57-0130-e344-282066132de2",
-                        "delete": "http://example.org/2ea2dc40-7f57-0130-e344-282066132de2"
-                    },
-                    "uuid": "2ea2dc40-7f57-0130-e344-282066132de2"
-                },
-                "items": {
-                    "tube_to_be_extracted_nap": [
-                        {
-                            "uuid": "2ea58a10-7f57-0130-e344-282066132de2",
-                            "status": "done",
-                            "batch": null
-                        },
-                        {
-                            "uuid": "2ea6d7b0-7f57-0130-e344-282066132de2",
-                            "status": "done",
-                            "batch": null
-                        }
-                    ]
-                }
+                    {
+                        "uuid": "2ea6d7b0-7f57-0130-e344-282066132de2",
+                        "status": "done",
+                        "batch": null
+                    }
+                ]
             }
-        ]
-    }
+        }
+    ]
 }
     EOD
 
@@ -740,7 +738,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/batches", <<-EOD
     {
     "batch": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -775,7 +773,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -802,7 +800,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -868,7 +867,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -895,7 +894,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -999,7 +999,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -1026,7 +1026,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -1113,7 +1114,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/searches", <<-EOD
     {
     "search": {
-        "user": "username",
+        "user": "user@example.com",
         "description": "search for barcoded tube",
         "model": "tube",
         "criteria": {
@@ -1203,7 +1204,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/searches", <<-EOD
     {
     "search": {
-        "user": "username",
+        "user": "user@example.com",
         "description": "search for order",
         "model": "order",
         "criteria": {
@@ -1263,7 +1264,8 @@ describe "dna_rna_manual_extraction" do
                     "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                     "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
                 },
-                "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+                "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+                "email": null
             },
             "study": {
                 "actions": {
@@ -1300,7 +1302,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -1327,7 +1329,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -1374,7 +1377,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -1401,7 +1404,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -1469,7 +1473,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -1496,7 +1500,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -1553,7 +1558,7 @@ describe "dna_rna_manual_extraction" do
     response = put "/34a52320-7f57-0130-e345-282066132de2", <<-EOD
     {
     "kit": "1234567891011",
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -1580,7 +1585,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/searches", <<-EOD
     {
     "search": {
-        "user": "username",
+        "user": "user@example.com",
         "description": "search order by batch",
         "model": "order",
         "criteria": {
@@ -1639,7 +1644,8 @@ describe "dna_rna_manual_extraction" do
                     "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                     "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
                 },
-                "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+                "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+                "email": null
             },
             "study": {
                 "actions": {
@@ -1739,7 +1745,8 @@ describe "dna_rna_manual_extraction" do
                     "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                     "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
                 },
-                "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+                "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+                "email": null
             },
             "study": {
                 "actions": {
@@ -1799,7 +1806,7 @@ describe "dna_rna_manual_extraction" do
     response = put "/2ea9d600-7f57-0130-e344-282066132de2", <<-EOD
     {
     "event": "build",
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -1826,7 +1833,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -1913,7 +1921,7 @@ describe "dna_rna_manual_extraction" do
     response = put "/2ea9d600-7f57-0130-e344-282066132de2", <<-EOD
     {
     "event": "start",
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -1940,7 +1948,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -2029,7 +2038,7 @@ describe "dna_rna_manual_extraction" do
     response = put "/2eaaf660-7f57-0130-e344-282066132de2", <<-EOD
     {
     "event": "build",
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -2056,7 +2065,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -2113,7 +2123,7 @@ describe "dna_rna_manual_extraction" do
     response = put "/2eaaf660-7f57-0130-e344-282066132de2", <<-EOD
     {
     "event": "start",
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -2140,7 +2150,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -2199,7 +2210,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/spin_columns", <<-EOD
     {
     "spin_column": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -2225,7 +2236,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "362fbaa0-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -2264,7 +2275,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/spin_columns", <<-EOD
     {
     "spin_column": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -2290,7 +2301,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "365fd5b0-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -2330,7 +2341,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -2358,7 +2369,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "368d90c0-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -2397,7 +2408,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -2425,7 +2436,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "36bb5bd0-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -2486,7 +2497,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -2513,7 +2524,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -2664,7 +2676,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/actions/transfer_tubes_to_tubes", <<-EOD
     {
     "transfer_tubes_to_tubes": {
-        "user": "username",
+        "user": "user@example.com",
         "transfers": [
             {
                 "source_uuid": "2ea58a10-7f57-0130-e344-282066132de2",
@@ -2699,8 +2711,8 @@ describe "dna_rna_manual_extraction" do
     "transfer_tubes_to_tubes": {
         "actions": {
         },
-        "user": "username",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {
@@ -3018,7 +3030,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -3045,7 +3057,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -3198,7 +3211,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/spin_columns", <<-EOD
     {
     "spin_column": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -3224,7 +3237,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "3bb68680-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -3264,7 +3277,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -3292,7 +3305,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "3be83770-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -3345,7 +3358,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -3372,7 +3385,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -3463,7 +3477,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/actions/transfer_tubes_to_tubes", <<-EOD
     {
     "transfer_tubes_to_tubes": {
-        "user": "username",
+        "user": "user@example.com",
         "transfers": [
             {
                 "source_uuid": "2ea83c50-7f57-0130-e344-282066132de2",
@@ -3486,8 +3500,8 @@ describe "dna_rna_manual_extraction" do
     "transfer_tubes_to_tubes": {
         "actions": {
         },
-        "user": "username",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {
@@ -3659,7 +3673,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -3686,7 +3700,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -3779,7 +3794,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -3807,7 +3822,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "37669990-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -3846,7 +3861,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -3874,7 +3889,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "37a563a0-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -3925,7 +3940,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -3952,7 +3967,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -4135,7 +4151,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/actions/transfer_tubes_to_tubes", <<-EOD
     {
     "transfer_tubes_to_tubes": {
-        "user": "username",
+        "user": "user@example.com",
         "transfers": [
             {
                 "source_uuid": "362fbaa0-7f57-0130-e345-282066132de2",
@@ -4158,8 +4174,8 @@ describe "dna_rna_manual_extraction" do
     "transfer_tubes_to_tubes": {
         "actions": {
         },
-        "user": "username",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {
@@ -4371,7 +4387,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -4398,7 +4414,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -4583,7 +4600,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -4611,7 +4628,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "3c744720-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -4658,7 +4675,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -4685,7 +4702,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -4793,7 +4811,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/actions/transfer_tubes_to_tubes", <<-EOD
     {
     "transfer_tubes_to_tubes": {
-        "user": "username",
+        "user": "user@example.com",
         "transfers": [
             {
                 "source_uuid": "3bb68680-7f57-0130-e345-282066132de2",
@@ -4810,8 +4828,8 @@ describe "dna_rna_manual_extraction" do
     "transfer_tubes_to_tubes": {
         "actions": {
         },
-        "user": "username",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {
@@ -4929,7 +4947,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -4956,7 +4974,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -5066,7 +5085,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -5094,7 +5113,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "38343460-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -5133,7 +5152,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -5161,7 +5180,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "38791c40-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -5212,7 +5231,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -5239,7 +5258,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -5454,7 +5474,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/actions/transfer_tubes_to_tubes", <<-EOD
     {
     "transfer_tubes_to_tubes": {
-        "user": "username",
+        "user": "user@example.com",
         "transfers": [
             {
                 "source_uuid": "368d90c0-7f57-0130-e345-282066132de2",
@@ -5477,8 +5497,8 @@ describe "dna_rna_manual_extraction" do
     "transfer_tubes_to_tubes": {
         "actions": {
         },
-        "user": "username",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {
@@ -5694,7 +5714,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -5721,7 +5741,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -5938,7 +5959,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -5966,7 +5987,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "3d0b15d0-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -6013,7 +6034,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -6040,7 +6061,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -6165,7 +6187,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/actions/transfer_tubes_to_tubes", <<-EOD
     {
     "transfer_tubes_to_tubes": {
-        "user": "username",
+        "user": "user@example.com",
         "transfers": [
             {
                 "source_uuid": "3be83770-7f57-0130-e345-282066132de2",
@@ -6182,8 +6204,8 @@ describe "dna_rna_manual_extraction" do
     "transfer_tubes_to_tubes": {
         "actions": {
         },
-        "user": "username",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {
@@ -6303,7 +6325,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -6330,7 +6352,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -6457,7 +6480,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/spin_columns", <<-EOD
     {
     "spin_column": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -6483,7 +6506,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "3915b1c0-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -6522,7 +6545,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/spin_columns", <<-EOD
     {
     "spin_column": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -6548,7 +6571,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "395a39c0-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -6588,7 +6611,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -6616,7 +6639,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "397e9f30-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -6655,7 +6678,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -6683,7 +6706,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "39ac3fc0-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -6744,7 +6767,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -6771,7 +6794,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -7048,7 +7072,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/actions/transfer_tubes_to_tubes", <<-EOD
     {
     "transfer_tubes_to_tubes": {
-        "user": "username",
+        "user": "user@example.com",
         "transfers": [
             {
                 "source_uuid": "38343460-7f57-0130-e345-282066132de2",
@@ -7083,8 +7107,8 @@ describe "dna_rna_manual_extraction" do
     "transfer_tubes_to_tubes": {
         "actions": {
         },
-        "user": "username",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {
@@ -7400,7 +7424,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -7427,7 +7451,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -7706,7 +7731,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/spin_columns", <<-EOD
     {
     "spin_column": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -7732,7 +7757,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "3d9bd4f0-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -7772,7 +7797,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -7800,7 +7825,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "3dc69b90-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -7853,7 +7878,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -7880,7 +7905,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -8037,7 +8063,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/actions/transfer_tubes_to_tubes", <<-EOD
     {
     "transfer_tubes_to_tubes": {
-        "user": "username",
+        "user": "user@example.com",
         "transfers": [
             {
                 "source_uuid": "3d0b15d0-7f57-0130-e345-282066132de2",
@@ -8060,8 +8086,8 @@ describe "dna_rna_manual_extraction" do
     "transfer_tubes_to_tubes": {
         "actions": {
         },
-        "user": "username",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {
@@ -8232,7 +8258,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -8259,7 +8285,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -8418,7 +8445,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -8446,7 +8473,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "3a6019a0-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -8485,7 +8512,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -8513,7 +8540,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "3a884ee0-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -8564,7 +8591,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -8591,7 +8618,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -8900,7 +8928,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/actions/transfer_tubes_to_tubes", <<-EOD
     {
     "transfer_tubes_to_tubes": {
-        "user": "username",
+        "user": "user@example.com",
         "transfers": [
             {
                 "source_uuid": "3915b1c0-7f57-0130-e345-282066132de2",
@@ -8923,8 +8951,8 @@ describe "dna_rna_manual_extraction" do
     "transfer_tubes_to_tubes": {
         "actions": {
         },
-        "user": "username",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {
@@ -9136,7 +9164,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -9163,7 +9191,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -9474,7 +9503,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -9502,7 +9531,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "3e795c30-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -9549,7 +9578,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -9576,7 +9605,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -9750,7 +9780,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/actions/transfer_tubes_to_tubes", <<-EOD
     {
     "transfer_tubes_to_tubes": {
-        "user": "username",
+        "user": "user@example.com",
         "transfers": [
             {
                 "source_uuid": "3d9bd4f0-7f57-0130-e345-282066132de2",
@@ -9767,8 +9797,8 @@ describe "dna_rna_manual_extraction" do
     "transfer_tubes_to_tubes": {
         "actions": {
         },
-        "user": "username",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {
@@ -9886,7 +9916,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -9913,7 +9943,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -10089,7 +10120,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -10117,7 +10148,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "3f2f7110-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -10156,7 +10187,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -10184,7 +10215,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "3f551340-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -10235,7 +10266,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -10262,7 +10293,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -10603,7 +10635,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/actions/transfer_tubes_to_tubes", <<-EOD
     {
     "transfer_tubes_to_tubes": {
-        "user": "username",
+        "user": "user@example.com",
         "transfers": [
             {
                 "source_uuid": "3a6019a0-7f57-0130-e345-282066132de2",
@@ -10626,8 +10658,8 @@ describe "dna_rna_manual_extraction" do
     "transfer_tubes_to_tubes": {
         "actions": {
         },
-        "user": "username",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {
@@ -10843,7 +10875,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -10870,7 +10902,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -11211,7 +11244,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tube_racks", <<-EOD
     {
     "tube_rack": {
-        "user": "username",
+        "user": "user@example.com",
         "number_of_columns": 12,
         "number_of_rows": 8,
         "tubes": {
@@ -11332,7 +11365,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -11359,7 +11392,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -11723,7 +11757,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -11750,7 +11784,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -12110,7 +12145,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -12138,7 +12173,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "409cf0e0-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -12185,7 +12220,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -12212,7 +12247,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -12403,7 +12439,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/actions/transfer_tubes_to_tubes", <<-EOD
     {
     "transfer_tubes_to_tubes": {
-        "user": "username",
+        "user": "user@example.com",
         "transfers": [
             {
                 "source_uuid": "3e795c30-7f57-0130-e345-282066132de2",
@@ -12420,8 +12456,8 @@ describe "dna_rna_manual_extraction" do
     "transfer_tubes_to_tubes": {
         "actions": {
         },
-        "user": "username",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {
@@ -12541,7 +12577,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -12568,7 +12604,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -12759,7 +12796,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tube_racks", <<-EOD
     {
     "tube_rack": {
-        "user": "username",
+        "user": "user@example.com",
         "number_of_columns": 12,
         "number_of_rows": 8,
         "tubes": {
@@ -12839,7 +12876,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -12866,7 +12903,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -13080,7 +13118,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -13107,7 +13145,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -13317,7 +13356,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -13345,7 +13384,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "41e65bf0-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -13384,7 +13423,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -13412,7 +13451,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "42288860-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -13463,7 +13502,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -13490,7 +13529,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -13880,7 +13920,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/actions/transfer_tubes_to_tubes", <<-EOD
     {
     "transfer_tubes_to_tubes": {
-        "user": "username",
+        "user": "user@example.com",
         "transfers": [
             {
                 "source_uuid": "37669990-7f57-0130-e345-282066132de2",
@@ -13903,8 +13943,8 @@ describe "dna_rna_manual_extraction" do
     "transfer_tubes_to_tubes": {
         "actions": {
         },
-        "user": "username",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {
@@ -14120,7 +14160,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -14147,7 +14187,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -14537,7 +14578,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tube_racks", <<-EOD
     {
     "tube_rack": {
-        "user": "username",
+        "user": "user@example.com",
         "number_of_columns": 12,
         "number_of_rows": 8,
         "tubes": {
@@ -14658,7 +14699,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -14685,7 +14726,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -15098,7 +15140,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -15125,7 +15167,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -15534,7 +15577,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tubes", <<-EOD
     {
     "tube": {
-        "user": "username"
+        "user": "user@example.com"
     }
 }
     EOD
@@ -15562,7 +15605,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/labellables", <<-EOD
     {
     "labellable": {
-        "user": "username",
+        "user": "user@example.com",
         "name": "4342d570-7f57-0130-e345-282066132de2",
         "type": "resource",
         "labels": {
@@ -15609,7 +15652,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -15636,7 +15679,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -15861,7 +15905,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/actions/transfer_tubes_to_tubes", <<-EOD
     {
     "transfer_tubes_to_tubes": {
-        "user": "username",
+        "user": "user@example.com",
         "transfers": [
             {
                 "source_uuid": "3c744720-7f57-0130-e345-282066132de2",
@@ -15878,8 +15922,8 @@ describe "dna_rna_manual_extraction" do
     "transfer_tubes_to_tubes": {
         "actions": {
         },
-        "user": "username",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {
@@ -15999,7 +16043,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -16026,7 +16070,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -16251,7 +16296,7 @@ describe "dna_rna_manual_extraction" do
     response = post "/tube_racks", <<-EOD
     {
     "tube_rack": {
-        "user": "username",
+        "user": "user@example.com",
         "number_of_columns": 12,
         "number_of_rows": 8,
         "tubes": {
@@ -16331,7 +16376,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -16358,7 +16403,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -16606,7 +16652,7 @@ describe "dna_rna_manual_extraction" do
             }
         }
     },
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -16633,7 +16679,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -16876,7 +16923,7 @@ describe "dna_rna_manual_extraction" do
     response = put "/2ea9d600-7f57-0130-e344-282066132de2", <<-EOD
     {
     "event": "complete",
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -16903,7 +16950,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
@@ -17311,7 +17359,7 @@ describe "dna_rna_manual_extraction" do
     response = put "/2eaaf660-7f57-0130-e344-282066132de2", <<-EOD
     {
     "event": "complete",
-    "user": "username"
+    "user": "user@example.com"
 }
     EOD
     response.should match_json_response(200, <<-EOD) 
@@ -17338,7 +17386,8 @@ describe "dna_rna_manual_extraction" do
                 "update": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2",
                 "delete": "http://example.org/2ea2d340-7f57-0130-e344-282066132de2"
             },
-            "uuid": "2ea2d340-7f57-0130-e344-282066132de2"
+            "uuid": "2ea2d340-7f57-0130-e344-282066132de2",
+            "email": null
         },
         "study": {
             "actions": {
