@@ -26,8 +26,8 @@ describe "use_the_create_filter_paper_action", :filter_paper => true do
     "create_filter_paper": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "filter_paper": {
                 "actions": {

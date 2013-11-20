@@ -28,8 +28,8 @@ describe "create_and_read_a_filter_paper_resource", :filter_paper => true do
     "create_filter_paper": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "filter_paper": {
                 "actions": {
