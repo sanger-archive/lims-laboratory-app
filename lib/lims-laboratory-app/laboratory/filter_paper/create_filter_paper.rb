@@ -1,21 +1,16 @@
 require 'lims-laboratory-app/laboratory/filter_paper'
-require 'lims-laboratory-app/laboratory/container/create_container_action_trait'
+require 'lims-laboratory-app/laboratory/create_receptacle_action_trait'
 
 module Lims::LaboratoryApp
   module Laboratory
     class FilterPaper
       class CreateFilterPaper
 
-        does "lims/laboratory_app/laboratory/container/create_container_action", {
-          :container_name => "filter_paper",
-          :container_class => Laboratory::FilterPaper,
-          :element_description_name => "locations_description"
+        does "lims/laboratory_app/laboratory/receptacle/create_receptacle_action", {
+          :receptacle_name => "filter_paper",
+          :receptacle_class => Laboratory::FilterPaper
         }
 
-        # @attribute [Hash<String, Array<Hash>>] locations_description
-        # @example
-        #   { "A1" => [{ :sample => s1, :quantity => 2}, {:sample => s2}] }
-        attribute :locations_description, Hash, :default => {}
       end
 
       Create = CreateFilterPaper
