@@ -12,13 +12,19 @@ module Lims::LaboratoryApp
           attribute :labels, Hash, :default => nil
         end
       end
+
       module After
         def _call_in_session(session)
           # normaly the result should have to keys
           # the uuid one and the model one
           create(session).tap do |result|
-          uuid = result[:uuid]
-          _create(uuid, 'resource', labels, session) if labels
+            if labels
+              uuid = result[:uuid]
+              labellable_result = _create(uuid, 'resource', labels, session)
+              resource_name = (result.keys - [:uuid]).first
+              resource = result[resource_name]
+              resource.labellable = labellable_result[:labellable]
+            end
           end
         end
       end

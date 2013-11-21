@@ -1,8 +1,6 @@
 require 'modularity'
 require 'lims-core/persistence/persistable_trait'
 require 'lims-core/persistence/state_group'
-require 'rubygems'
-require 'ruby-debug/debugger'
 
 module Lims
   module LaboratoryApp

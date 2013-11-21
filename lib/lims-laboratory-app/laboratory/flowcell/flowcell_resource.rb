@@ -3,6 +3,7 @@ require 'lims-api/resources/receptacle'
 require 'lims-api/core_resource'
 require 'lims-api/struct_stream'
 
+require 'lims-laboratory-app/labels/labellable/labelled_resource'
 require 'lims-laboratory-app/laboratory/flowcell'
 
 module Lims::LaboratoryApp
@@ -11,12 +12,14 @@ module Lims::LaboratoryApp
       class FlowcellResource < Lims::Api::CoreResource
 
         include Lims::Api::Resources::Receptacle
+        include Labels::Labellable::LabelledResource
 
         def content_to_stream(s, mime_type)
           s.add_key "number_of_lanes"
           s.add_value object.number_of_lanes 
           s.add_key "lanes"
           lanes_to_stream(s, mime_type)
+          labellable_to_stream(s, mime_type)
         end
 
         def lanes_to_stream(s, mime_type)
