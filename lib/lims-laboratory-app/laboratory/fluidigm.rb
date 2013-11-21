@@ -21,51 +21,51 @@ module Lims::LaboratoryApp
       ASSAY           = 'A'
       SAMPLE          = 'S'
 
-      InvalidContentError = Class.new(Lims::Core::Actions::Action::InvalidParameters)
+      InvalidElementNameError = Class.new(Lims::Core::Actions::Action::InvalidParameters)
       InvalidSizeError = Class.new(Lims::Core::Actions::Action::InvalidParameters)
 
       # creates the matrix of container elements (Wells),
       # which contains some chemical substances.
       matrix_of(:Well)
 
-      # Converts an element name to an index of the underlying container
+      # Converts an element name to indexes and call super,
+      # which will convert these indexes to an index of the underlying container.
       # The result could be from 0 to size - 1
-      # @param [String] type of the content (sample/snp_assay)
+      # @param [String/Fixnum] type of the content (sample/snp_assay) if it is a String
+      # or the row location if it is a Fixnum
       # @param [Fixnum] location (starting from 1)
       # @return [Fixnum] index could be from 0 to size - 1
-      def element_name_to_index(type, location)
-        raise IndexOutOfRangeError unless type == Fluidigm::SAMPLE || type == Fluidigm::ASSAY
-        raise Fluidigm::InvalidContentError, {
-          "content" => "The content of the well should be an Assay or a Sample."
-        } unless [Fluidigm::SAMPLE, Fluidigm::ASSAY].include?(type)
+      def element_name_to_index(row_string, column_string)
+        if row_string.is_a?(String)
+          raise Fluidigm::InvalidElementNameError, {
+            "content" => "The content of the well should be an Assay or a Sample."
+          } unless [Fluidigm::SAMPLE, Fluidigm::ASSAY].include?(row_string)
 
-        location = location.to_i
-        if size == Fluidigm::FLUIDIGM_96_96
-          row = location/(number_of_columns/2)
-          col_position = location % (number_of_columns/2)
-          col = col_position - 1
-          col += number_of_columns/2 if type == Fluidigm::SAMPLE && col_position > 0
-          col -= number_of_columns/2 if type == Fluidigm::ASSAY && col_position == 0 && row > 0
-        elsif size == Fluidigm::FLUIDIGM_192_24
-          if type == Fluidigm::SAMPLE
-            row = location/(number_of_rows-2)
-            col = location % (number_of_rows-2)
-            col = -1 if col == 0
-          elsif type == Fluidigm::ASSAY
-            col = is_assay_in_right_column?(location, Fluidigm::NUMBER_OF_ASSAY_IN_A_GROUP) ? 13 : 0
-            row = (location / Fluidigm::NUMBER_OF_ASSAY_IN_A_GROUP) * 2
-            row -= 1 if location % Fluidigm::NUMBER_OF_ASSAY_IN_A_GROUP == 0
+          column_string = column_string.to_i
+          if size == Fluidigm::FLUIDIGM_96_96
+            row     = (column_string - 1)/(number_of_columns/2)
+            column  = (column_string - 1)%(number_of_columns/2)
+            column += number_of_columns/2 if row_string == Fluidigm::SAMPLE
+          elsif size == Fluidigm::FLUIDIGM_192_24
+            if row_string == Fluidigm::SAMPLE
+              column_location = column_string%(number_of_columns-2)
+              row = column_string/(number_of_columns-2)
+              row -= 1 if column_location == 0
+              column = column_location == 0 ? 12 : column_location
+            elsif row_string == Fluidigm::ASSAY
+              row = (column_string / Fluidigm::NUMBER_OF_ASSAY_IN_A_GROUP) * 2
+              row -= 1 if column_string % Fluidigm::NUMBER_OF_ASSAY_IN_A_GROUP == 0
+              column = is_assay_in_right_column?(column_string, Fluidigm::NUMBER_OF_ASSAY_IN_A_GROUP) ? 13 : 0
+            end
           end
         else
-          raise Fluidigm::InvalidSizeError, {
-            "size" => "The number of rows/columns parameter is invalid."
-          }
+          row = row_string
+          column = column_string
         end
 
-        raise IndexOutOfRangeError unless (0..number_of_rows).include?(row)
-
-        # returns the location (row and column) in the container of the given assay/sample
-        row*number_of_columns + col
+        # calling super with the calculated row and column indexes
+        # A1 -> like (0,0)
+        super(row, column)
       end
 
       # Returns the element name from the element's index
