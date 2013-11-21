@@ -73,4 +73,27 @@ module Lims::LaboratoryApp::Laboratory
       subject[index].should include(aliquot)
     end
   end
+
+  shared_examples "a hash with invalid key" do |invalid_key|
+    it "raise an exception if the key is not valid for the container" do
+      expect { subject[invalid_key] }.to raise_error(error_invalid_element_name)
+    end
+  end
+
+  shared_examples "a hash with 2D indexes" do |valid_indexes1, valid_indexes2, invalid_indexes1, invalid_indexes2|
+    it "can be indexed with valid 2D indexes" do
+      [valid_indexes1, valid_indexes2].each do |valid_indexes|
+        subject[valid_indexes].should be_a(container)
+        aliquot = Aliquot.new
+        subject[valid_indexes] << aliquot
+        subject[valid_indexes].should include(aliquot)
+      end
+    end
+
+    it "can not be indexed with invalid 2D indexes" do
+      [invalid_indexes1, invalid_indexes2].each do |valid_indexes|
+        expect { subject[valid_indexes] }.to raise_error(error_container_does_not_exists)
+      end
+    end
+  end
 end
