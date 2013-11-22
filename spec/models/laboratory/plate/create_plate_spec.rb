@@ -2,10 +2,10 @@
 require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
 
-require 'models/laboratory/plate_and_gel_shared'
+require 'models/laboratory/container_like_asset_shared'
 
 #Model requirements
-require 'lims-laboratory-app/laboratory/plate/create_plate'
+require 'lims-laboratory-app/laboratory/plate/all'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -83,11 +83,11 @@ module Lims::LaboratoryApp
     describe Plate::CreatePlate, :plate => true, :laboratory => true, :persistence => true  do
       context "valid calling context" do
         let!(:store) { Lims::Core::Persistence::Store.new() }
-        include_context "plate or gel factory"
+        include_context "container-like asset factory"
         include_context("for application",  "Test plate creation")
 
         include_context("has plate dimension", 8, 12)
-        let(:plate_type) { mock(:plate_type) }
+        let(:plate_type) { double(:plate_type) }
 
         context do
           include_context "for empty plate"

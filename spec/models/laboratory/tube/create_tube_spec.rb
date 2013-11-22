@@ -13,7 +13,7 @@ module Lims::LaboratoryApp
       context "with a valid store" do
         include_context "create object"
         let (:store) { Lims::Core::Persistence::Store.new }
-        let(:user) { mock(:user) }
+        let(:user) { double(:user) }
         let(:application) { "Test create tube" }
         let(:tube_type) { "Eppendorf" }
         let(:tube_max_volume) { 2 }
@@ -28,7 +28,7 @@ module Lims::LaboratoryApp
           it_behaves_like "an action"
 
           it "create a tube when called" do
-            Lims::Core::Persistence::Session.any_instance.should_receive(:save)
+            Lims::Core::Persistence::Session.any_instance.should_receive(:save_all)
             result = subject.call
             result.should be_a(Hash)
             result[:tube].should be_a(Laboratory::Tube)
@@ -49,7 +49,7 @@ module Lims::LaboratoryApp
           end
           it_behaves_like "an action"
           it "create a tube when called" do
-            Lims::Core::Persistence::Session.any_instance.should_receive(:save)
+            Lims::Core::Persistence::Session.any_instance.should_receive(:save_all)
             result = subject.call
             result.should be_a(Hash)
             result[:tube].should be_a(Laboratory::Tube)

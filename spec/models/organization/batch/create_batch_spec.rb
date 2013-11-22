@@ -12,10 +12,10 @@ module Lims::LaboratoryApp
       context "with a valid store" do
         include_context "create object"
         let (:store) { Lims::Core::Persistence::Store.new }
-        let(:user) { mock(:user) }
+        let(:user) { double(:user) }
         let(:application) { "Test create batch" }
-        let(:process) { mock(:process) }
-        let(:kit) { mock(:kit) }
+        let(:process) { double(:process) }
+        let(:kit) { double(:kit) }
 
         context "create a batch" do
           subject do
@@ -28,7 +28,7 @@ module Lims::LaboratoryApp
           it_behaves_like "an action"
 
           it "create a batch when called" do
-            Lims::Core::Persistence::Session.any_instance.should_receive(:save)
+            Lims::Core::Persistence::Session.any_instance.should_receive(:save_all)
             result = subject.call
             result.should be_a(Hash)
             result[:batch].should be_a(Organization::Batch)

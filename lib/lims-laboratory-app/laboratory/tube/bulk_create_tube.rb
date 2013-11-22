@@ -1,24 +1,13 @@
-require 'lims-core/actions/action'
+require 'lims-core/actions/bulk_action'
 require 'lims-laboratory-app/laboratory/tube'
-require 'lims-laboratory-app/laboratory/tube/create_tube_shared'
+require 'lims-laboratory-app/laboratory/tube/create_tube'
 
 module Lims::LaboratoryApp
   module Laboratory
     class Tube
-      class BulkCreateTube
-        include Lims::Core::Actions::Action
-        include CreateTubeShared
-
-        attribute :tubes, Array, :required => true, :writer => :private
-
-        def _call_in_session(session)
-          result = tubes.map do |parameters|
-            tube_action = CreateTube.new(parameters)
-            tube_action.send(:_call_in_session, session)
-          end
-
-          {:tubes => result.map { |e| e[:tube] }}
-        end
+      class BulkCreateTube 
+        include Lims::Core::Actions::BulkAction
+        initialize_class(:tube, :tubes, CreateTube)
       end
     end
   end

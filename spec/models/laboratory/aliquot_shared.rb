@@ -1,3 +1,6 @@
+require 'lims-laboratory-app/laboratory/sample'
+require 'lims-laboratory-app/laboratory/aliquot'
+
 module Lims::LaboratoryApp
   module Laboratory
     shared_context "aliquot factory" do
@@ -6,7 +9,6 @@ module Lims::LaboratoryApp
       end
 
       def new_aliquot(i=nil, j=nil, q=nil)
-        sample = Sample
         aliquot = Aliquot.new(:sample => new_sample(i,j))
         aliquot.quantity = q if q
         aliquot
@@ -14,3 +16,4 @@ module Lims::LaboratoryApp
     end
   end
 end
+

@@ -45,17 +45,12 @@ module Lims::LaboratoryApp
 
               # do the element transfer according to the given transfer (map)
               target_element, source_element = nil, nil
-              if from
-                source_element = source[from]
-                target_element = target[to]
-              else
-                source_element = source
-                target_element = target
-              end
+              target_element = to ? target[to] : target
+              source_element = from ? source[from] : source
               target_element << source_element.take_amount(amount)
 
               # change the aliquot_type of the target
-              unless aliquot_type.nil?
+              unless aliquot_type.nil? || aliquot_type.empty?
                 target_element.each do |aliquot|
                   aliquot.type = aliquot_type
                 end
@@ -63,7 +58,6 @@ module Lims::LaboratoryApp
 
               sources << source
               targets << target
-
             end
 
             { :sources => sources.uniq, :targets => targets.uniq}
@@ -71,6 +65,7 @@ module Lims::LaboratoryApp
 
           def _transfers
             transfers = []
+            @aliquot_type = nil unless instance_variable_defined?("@aliquot_type")
             transfer_map.each do |from, to|
               transfers <<
                 { "source" => source,
@@ -78,7 +73,7 @@ module Lims::LaboratoryApp
                   "target" => target,
                   "target_location" => to,
                   "fraction" => 1,
-                  "aliquot_type" => aliquot_type
+                  "aliquot_type" => @aliquot_type
                 }
             end
             transfers

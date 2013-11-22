@@ -12,8 +12,8 @@ describe "create_a_new_plate_with_samples", :plate => true do
     sample2 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2')
     save_with_uuid sample1 => [1,2,3,4,6], sample2 => [1,2,3,4,7]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/plates", <<-EOD
     {

@@ -19,8 +19,8 @@ describe "assign_an_item_to_a_batch", :order => true do
     
     save_with_uuid study => [1,1,1,1,1], user => [1,1,1,1,0], order => [1,2,3,4,5], tube => [1,2,3,4,6], batch => [1,2,3,4,7]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = put "/11111111-2222-3333-4444-555555555555", <<-EOD
     {

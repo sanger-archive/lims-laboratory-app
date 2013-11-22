@@ -1,4 +1,5 @@
 require 'common'
+require 'lims-laboratory-app/laboratory/receptacle'
 
 module Lims
   module LaboratoryApp
@@ -109,7 +110,7 @@ module Lims
 				module ClassMethods
 					def indexes_to_element_name(row, column)
 						"#{(row+?A.ord).chr}#{column+1}"
-					end 
+					end
 				end
 			end
 		end
@@ -120,6 +121,17 @@ end
 module Lims::Core
   module Base
     module ClassMethod
+
+      # This method dynamically creates a new class.
+      # This class is a container element. It behaves like a Receptacle
+      # Also creates a matrix of this container elements
+      def matrix_of(element_name)
+        container_element = const_set(element_name.to_s.capitalize, Class.new { include Lims::LaboratoryApp::Laboratory::Receptacle })
+        is_matrix_of(container_element) do |container, container_element|
+          (container.number_of_rows*container.number_of_columns).times.map { container_element.new }
+        end
+      end
+
       def is_matrix_of(child_klass, options = {},  &initializer)
         element_name = child_klass.name.split('::').last.downcase
         class_eval do

@@ -8,8 +8,8 @@ describe "create_a_new_empty_tube_rack", :tube_rack => true do
   # * `number_of_columns` number of columns in the rack
   # * `tubes` map tubes identified by their uuids to rack locations
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/tube_racks", <<-EOD
     {

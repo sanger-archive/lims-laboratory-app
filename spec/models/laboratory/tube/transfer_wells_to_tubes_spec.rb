@@ -3,7 +3,7 @@ require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
 
 require 'models/persistence/sequel/spec_helper'
-require 'models/laboratory/plate_and_gel_shared'
+require 'models/laboratory/container_like_asset_shared'
 require 'models/laboratory/tube_shared'
 require 'models/persistence/sequel/store_shared'
 
@@ -18,22 +18,19 @@ PS=Lims::Core::Persistence::Sequel
 module Lims::LaboratoryApp
   module Laboratory
     describe Tube::TransferWellsToTubes, :tube => true, :transfer => true, :laboratory => true, :persistence => true, :sequel => true do
-      include_context "plate or gel factory"
+      include_context "container-like asset factory"
       include_context "tube factory"
       let(:number_of_rows) {8}
       let(:number_of_columns) {12}
       context "with a sequel store" do
-        include_context "prepare tables"
-        let(:db) { ::Sequel.sqlite('') }
-        let(:store) { PS::Store.new(db) }
-        before (:each) { prepare_table(db) }
+        include_context "sequel store"
 
         context "and everything already in the database" do
           let(:plate_id) { save(new_plate_with_samples(1)) }
           let(:tube1_id) { save(new_empty_tube) }
           let(:tube2_id) { save(new_empty_tube) }
 
-          let(:user) { mock(:user) }
+          let(:user) { double(:user) }
           let(:application) { "test transfer wells to tubes" }
 
           context "with valid parameters" do
@@ -76,7 +73,7 @@ module Lims::LaboratoryApp
         context "with an empty database" do
           let(:number_of_rows) {3}
           let(:number_of_columns) {5}
-          let(:user) { mock(:user) }
+          let(:user) { double(:user) }
           let(:application) { "Test assign tag to well" }
           let(:tube) {  new_empty_tube }
           let(:plate) { new_plate_with_samples }

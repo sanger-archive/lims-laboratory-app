@@ -36,7 +36,7 @@ module Lims::LaboratoryApp::Laboratory
       it_behaves_like "labellable"
 
       it "sets a type" do
-        type = mock(:type)
+        type = double(:type)
         subject.type = type
         subject.type.should == type
       end

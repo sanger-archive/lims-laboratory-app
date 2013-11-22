@@ -26,8 +26,8 @@ describe "update_an_order", :order => true do
     
     save_with_uuid study => [1,2,3,4,7], user => [1,2,3,4,6], order => [1,2,3,4,5], plate => [1,2,3,4,8], tube1 => [1,2,3,4,9], tube_new => [1,0,0,0,1]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = put "/11111111-2222-3333-4444-555555555555", <<-EOD
     {

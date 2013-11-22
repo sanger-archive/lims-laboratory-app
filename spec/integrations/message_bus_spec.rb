@@ -35,9 +35,9 @@ end
 
 shared_examples_for "messages on the bus" do 
   before(:each) do
-    Time.stub!(:now) do 
-      mock(:time_now).tap do |t| 
-        t.stub!(:utc).and_return("date")
+    Time.stub(:now) do 
+      double(:time_now).tap do |t| 
+        t.stub(:utc).and_return("date")
       end
     end
   end

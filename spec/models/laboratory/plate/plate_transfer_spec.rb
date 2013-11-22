@@ -1,19 +1,20 @@
 # Spec requirements
 require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
-require 'models/laboratory/plate_and_gel_shared'
+require 'models/laboratory/container_like_asset_shared'
 
 require 'models/persistence/sequel/store_shared'
 #Model requirements
-require 'lims-laboratory-app/laboratory/plate/plate_transfer'
+require 'lims-laboratory-app/laboratory/plate/all'
+require 'lims-laboratory-app/laboratory/tube_rack/all'
 require 'lims-core/persistence/sequel/store'
 require 'logger'
 
 module Lims::LaboratoryApp
   module Laboratory
     describe Plate::PlateTransfer, :plate => true, :transfer => true, :laboratory => true, :persistence => true, :sequel => true do
-      include_context "plate or gel factory"
-        let(:user) { mock(:user) }
+      include_context "container-like asset factory"
+        let(:user) { double(:user) }
         let(:application) { "Test create plate" }
       def self.should_transfer 
         # @todo special test session class ?
@@ -42,10 +43,7 @@ module Lims::LaboratoryApp
 
 
       context "with a sequel store" do
-        include_context "prepare tables"
-        let(:db) { ::Sequel.sqlite('') }
-        let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
-        before (:each) { prepare_table(db) }
+        include_context "sequel store"
 
         context "with invalid paramters" do
           context "when called" do

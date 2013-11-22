@@ -36,7 +36,7 @@ module Lims::LaboratoryApp::Laboratory
     it "has a key for each wells" do
       subject.keys.size.should be == size
       subject.keys.should include("B3")
-      subject.keys.should include("H12")
+      subject.keys.should include("A1")
       subject.keys.should_not include("L2")
     end
 

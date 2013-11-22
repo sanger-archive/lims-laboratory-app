@@ -2,7 +2,7 @@
 require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
 
-require 'models/laboratory/plate_and_gel_shared'
+require 'models/laboratory/container_like_asset_shared'
 
 #Model requirements
 require 'lims-laboratory-app/laboratory/gel/create_gel'
@@ -78,7 +78,7 @@ module Lims::LaboratoryApp
     describe Gel::CreateGel, :gel => true, :laboratory => true, :persistence => true do
       context "valid calling context" do
         let!(:store) { Lims::Core::Persistence::Store.new() }
-        include_context "plate or gel factory"
+        include_context "container-like asset factory"
         include_context("for application",  "Test gel creation")
 
         include_context("has gel dimension", 8, 12)
