@@ -2,7 +2,6 @@
 
 
 require 'lims-core/persistence/persist_association_trait'
-require 'lims-laboratory-app/persistable_labellable_trait'
 require 'lims-laboratory-app/laboratory/tube'
 require 'lims-laboratory-app/laboratory/aliquot/all'
 
@@ -14,7 +13,7 @@ module Lims::LaboratoryApp
     # include the suitable persistor.
     class Tube
 
-      (does "lims/laboratory_app/persistable_labellable", :children => [
+      (does "lims/core/persistence/persistable", :children => [
         {:name => :tube_aliquot, :deletable => true }
       ]).class_eval do
         def children_tube_aliquot(resource, children)
