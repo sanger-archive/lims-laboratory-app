@@ -96,4 +96,24 @@ module Lims::LaboratoryApp::Laboratory
       end
     end
   end
+
+  shared_examples "a hash with different indexes" do |indexes, index, location_name|
+    it "its value in the indexes position should equal in the index position and in the location_name's position" do
+      aliquot = Aliquot.new
+      subject[indexes] << aliquot
+      subject[indexes].should == subject[index]
+      subject[indexes].should == subject[location_name]
+    end
+
+    it "using element_name_to_index method should convert the indexes to an index position" do
+      subject.element_name_to_index(indexes[0], indexes[1]).should == index
+      row_string = location_name[0]
+      column_string = location_name[1..-1]
+      subject.element_name_to_index(row_string, column_string).should == index
+    end
+
+    it "using index_to_element_name method should convert the index to an element name" do
+      subject.index_to_element_name(index).should == location_name
+    end
+  end
 end
