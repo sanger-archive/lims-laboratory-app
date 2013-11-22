@@ -1,5 +1,4 @@
 require 'lims-core/persistence/persist_association_trait'
-require 'lims-laboratory-app/persistable_labellable_trait'
 require 'lims-core/persistence/sequel/persistor'
 module Lims::LaboratoryApp
     module ContainerPersistorTrait
@@ -17,7 +16,7 @@ module Lims::LaboratoryApp
         delete_contained = args.fetch(:deletable, contained_is_a_resource)
 
         class_eval <<-EOC
-        (does "lims/laboratory_app/persistable_labellable", :children => [
+        (does "lims/core/persistence/persistable", :children => [
             {:name => :#{element}, :deletable => true }
           ]).class_eval do
 
