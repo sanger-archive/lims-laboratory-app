@@ -34,6 +34,9 @@ module Lims::LaboratoryApp::Laboratory
       it_behaves_like "a hash", :S1, :A11, :S314, :A300
       it_behaves_like "a hash with invalid key", :B2
       it_behaves_like "a hash with 2D indexes", [0,0], [3,8], [3,80], [20,30]
+      it_behaves_like "a hash with different indexes", [0,0], 0, "A1"
+      it_behaves_like "a hash with different indexes", [3,5], 41, "A24"
+      it_behaves_like "a hash with different indexes", [15,11], 191, "S96"
       it_behaves_like "labellable"
     end
 
@@ -51,6 +54,9 @@ module Lims::LaboratoryApp::Laboratory
       it_behaves_like "a hash", :S100, :A8, :S500, :A1000
       it_behaves_like "a hash with invalid key", :C3
       it_behaves_like "a hash with 2D indexes", [0,0], [3,8], [3,80], [20,30]
+      it_behaves_like "a hash with different indexes", [0,0], 0, "A1"
+      it_behaves_like "a hash with different indexes", [15,0], 210, "A24"
+      it_behaves_like "a hash with different indexes", [7,12], 110, "S96"
       it_behaves_like "labellable"
     end
 
