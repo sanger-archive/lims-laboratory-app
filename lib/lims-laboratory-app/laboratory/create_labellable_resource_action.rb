@@ -23,7 +23,7 @@ module Lims::LaboratoryApp
               labellable_result = _create(uuid, 'resource', labels, session)
               resource_name = (result.keys - [:uuid]).first
               resource = result[resource_name]
-              resource.labellable = labellable_result[:labellable]
+              session.persistor_for(resource_name).bind(resource, labellable_result[:labellable])
             end
           end
         end
