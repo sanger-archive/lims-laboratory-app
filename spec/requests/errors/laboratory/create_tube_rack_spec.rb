@@ -9,8 +9,8 @@ describe "create_tube_rack" do
     
     save_with_uuid tube => [1,2,3,4,0], tube_rack => [1,2,3,4,1]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/tube_racks", <<-EOD
     {

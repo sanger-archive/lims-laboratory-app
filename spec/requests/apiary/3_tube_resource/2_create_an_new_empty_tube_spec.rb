@@ -4,8 +4,8 @@ describe "create_an_new_empty_tube", :tube => true do
   it "create_an_new_empty_tube" do
   # **Create an new empty tube.**
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/tubes", <<-EOD
     {

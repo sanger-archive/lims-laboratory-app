@@ -10,6 +10,10 @@ shared_context "create object" do
       session.stub(:save)
       session.stub(:uuid_for!) { uuid }
     end
+    Lims::Core::Persistence::Persistor.any_instance.tap do |persistor|
+      persistor.stub(:bulk_insert)
+      persistor.stub(:bulk_delete)
+    end
   end
 end
 

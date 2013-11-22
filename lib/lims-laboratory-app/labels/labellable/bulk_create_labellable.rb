@@ -1,23 +1,14 @@
-require 'lims-core/actions/action'
-require 'lims-laboratory-app/labels/labellable'
-require 'lims-laboratory-app/labels/labellable/create_labellable_shared'
+require 'lims-core/actions/bulk_action'
+require 'lims-laboratory-app/labels/labellable/create_labellable'
 
 module Lims::LaboratoryApp
   module Labels
     class Labellable
       class BulkCreateLabellable
-        include Lims::Core::Actions::Action
-        include CreateLabellableShared
-
-        attribute :labellables, Array, :required => true, :writer => :private
-
-        def _call_in_session(session)
-          result = []
-          labellables.each do |parameters|
-            result << _create(parameters["name"], parameters["type"], parameters["labels"], session)
-          end
-
-          {:labellables => result.map { |e| e[:labellable] }}
+        include Lims::Core::Actions::BulkAction
+        initialize_class(:labellable, :labellables, CreateLabellable)
+        def call(*args, &block)
+          super(*args, &block)
         end
       end
     end

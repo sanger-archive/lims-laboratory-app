@@ -15,7 +15,7 @@ module Lims::LaboratoryApp::Labels
     end
   end
   describe Labellable, :labellable => true, :labels => true  do
-    let(:barcode) { mock(:barcode) do |barcode| 
+    let(:barcode) { double(:barcode) do |barcode| 
         barcode.stub(:value) {"12345"}
         barcode.stub(:type) { "barcode 1d" }
       end

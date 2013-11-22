@@ -9,8 +9,8 @@ describe "list_actions_for_a_tube_resource", :tube => true do
   # * `first` lists the first tube resources in a page browsing system
   # * `last` lists the last tube resources in a page browsing system
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = get "/tubes"
     response.should match_json_response(200, <<-EOD) 

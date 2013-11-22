@@ -5,8 +5,8 @@ describe "dna_rna_manual_extraction" do
   it "dna_rna_manual_extraction" do
     push_uuids(["349460b0-7f57-0130-e345-282066132de2", "349969d0-7f57-0130-e345-282066132de2", "349e3760-7f57-0130-e345-282066132de2", "34a52320-7f57-0130-e345-282066132de2", "35237a40-7f57-0130-e345-282066132de2", "355d01d0-7f57-0130-e345-282066132de2", "35f1f2c0-7f57-0130-e345-282066132de2", "362fbaa0-7f57-0130-e345-282066132de2", "36437e60-7f57-0130-e345-282066132de2", "365fd5b0-7f57-0130-e345-282066132de2", "36761180-7f57-0130-e345-282066132de2", "368d90c0-7f57-0130-e345-282066132de2", "36a3d7a0-7f57-0130-e345-282066132de2", "36bb5bd0-7f57-0130-e345-282066132de2", "36cfea70-7f57-0130-e345-282066132de2", "3bb68680-7f57-0130-e345-282066132de2", "3bc66470-7f57-0130-e345-282066132de2", "3be83770-7f57-0130-e345-282066132de2", "3bf17180-7f57-0130-e345-282066132de2", "37669990-7f57-0130-e345-282066132de2", "37795ee0-7f57-0130-e345-282066132de2", "37a563a0-7f57-0130-e345-282066132de2", "37b7e9e0-7f57-0130-e345-282066132de2", "3c744720-7f57-0130-e345-282066132de2", "3c899370-7f57-0130-e345-282066132de2", "38343460-7f57-0130-e345-282066132de2", "384d3fa0-7f57-0130-e345-282066132de2", "38791c40-7f57-0130-e345-282066132de2", "38946f40-7f57-0130-e345-282066132de2", "3d0b15d0-7f57-0130-e345-282066132de2", "3d2054f0-7f57-0130-e345-282066132de2", "3915b1c0-7f57-0130-e345-282066132de2", "392cde50-7f57-0130-e345-282066132de2", "395a39c0-7f57-0130-e345-282066132de2", "396d5db0-7f57-0130-e345-282066132de2", "397e9f30-7f57-0130-e345-282066132de2", "3997d580-7f57-0130-e345-282066132de2", "39ac3fc0-7f57-0130-e345-282066132de2", "39c3d4e0-7f57-0130-e345-282066132de2", "3d9bd4f0-7f57-0130-e345-282066132de2", "3db09950-7f57-0130-e345-282066132de2", "3dc69b90-7f57-0130-e345-282066132de2", "3ddedb10-7f57-0130-e345-282066132de2", "3a6019a0-7f57-0130-e345-282066132de2", "3a6dc620-7f57-0130-e345-282066132de2", "3a884ee0-7f57-0130-e345-282066132de2", "3a9ea280-7f57-0130-e345-282066132de2", "3e795c30-7f57-0130-e345-282066132de2", "3e8d2a10-7f57-0130-e345-282066132de2", "3f2f7110-7f57-0130-e345-282066132de2", "3f3d3a50-7f57-0130-e345-282066132de2", "3f551340-7f57-0130-e345-282066132de2", "3f6943a0-7f57-0130-e345-282066132de2", "401029e0-7f57-0130-e345-282066132de2", "409cf0e0-7f57-0130-e345-282066132de2", "40a8d510-7f57-0130-e345-282066132de2", "4167fda0-7f57-0130-e345-282066132de2", "41e65bf0-7f57-0130-e345-282066132de2", "41f5ab70-7f57-0130-e345-282066132de2", "42288860-7f57-0130-e345-282066132de2", "423b3e80-7f57-0130-e345-282066132de2", "42c31630-7f57-0130-e345-282066132de2", "4342d570-7f57-0130-e345-282066132de2", "4359fcb0-7f57-0130-e345-282066132de2", "43d17810-7f57-0130-e345-282066132de2"])
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
 
 
@@ -91,6 +91,14 @@ describe "dna_rna_manual_extraction" do
             "last": "http://example.org/gels/page=-1"
         }
     },
+    "filter_papers": {
+        "actions": {
+            "create": "http://example.org/filter_papers",
+            "read": "http://example.org/filter_papers",
+            "first": "http://example.org/filter_papers/page=1",
+            "last": "http://example.org/filter_papers/page=-1"
+        }
+    },
     "labellables": {
         "actions": {
             "create": "http://example.org/labellables",
@@ -129,6 +137,14 @@ describe "dna_rna_manual_extraction" do
             "read": "http://example.org/barcode2_ds",
             "first": "http://example.org/barcode2_ds/page=1",
             "last": "http://example.org/barcode2_ds/page=-1"
+        }
+    },
+    "texts": {
+        "actions": {
+            "create": "http://example.org/texts",
+            "read": "http://example.org/texts",
+            "first": "http://example.org/texts/page=1",
+            "last": "http://example.org/texts/page=-1"
         }
     },
     "plates": {
@@ -242,6 +258,11 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/create_gel"
         }
     },
+    "create_filter_papers": {
+        "actions": {
+            "create": "http://example.org/actions/create_filter_paper"
+        }
+    },
     "create_labels": {
         "actions": {
             "create": "http://example.org/actions/create_label"
@@ -255,6 +276,11 @@ describe "dna_rna_manual_extraction" do
     "update_labels": {
         "actions": {
             "create": "http://example.org/actions/update_label"
+        }
+    },
+    "bulk_update_labels": {
+        "actions": {
+            "create": "http://example.org/actions/bulk_update_label"
         }
     },
     "create_orders": {
@@ -312,6 +338,11 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/bulk_create_labellable"
         }
     },
+    "bulk_create_filter_papers": {
+        "actions": {
+            "create": "http://example.org/actions/bulk_create_filter_paper"
+        }
+    },
     "transfer_plates_to_plates": {
         "actions": {
             "create": "http://example.org/actions/transfer_plates_to_plates"
@@ -325,6 +356,11 @@ describe "dna_rna_manual_extraction" do
     "transfer_wells_to_tubes": {
         "actions": {
             "create": "http://example.org/actions/transfer_wells_to_tubes"
+        }
+    },
+    "transfer_multiple_filter_papers_to_wells": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_multiple_filter_papers_to_wells"
         }
     },
     "tube_rack_moves": {

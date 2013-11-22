@@ -11,8 +11,8 @@ describe "root" do
   # Consider this URL and the JSON response like the entry point for S2 API. All the other interactions through the 
   # API can be performed browsing this JSON response.
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = get "/"
     response.should match_json_response(200, <<-EOD) 
@@ -92,6 +92,14 @@ describe "root" do
             "last": "http://example.org/gels/page=-1"
         }
     },
+    "filter_papers": {
+        "actions": {
+            "create": "http://example.org/filter_papers",
+            "read": "http://example.org/filter_papers",
+            "first": "http://example.org/filter_papers/page=1",
+            "last": "http://example.org/filter_papers/page=-1"
+        }
+    },
     "labellables": {
         "actions": {
             "create": "http://example.org/labellables",
@@ -130,6 +138,14 @@ describe "root" do
             "read": "http://example.org/barcode2_ds",
             "first": "http://example.org/barcode2_ds/page=1",
             "last": "http://example.org/barcode2_ds/page=-1"
+        }
+    },
+    "texts": {
+        "actions": {
+            "create": "http://example.org/texts",
+            "read": "http://example.org/texts",
+            "first": "http://example.org/texts/page=1",
+            "last": "http://example.org/texts/page=-1"
         }
     },
     "plates": {
@@ -243,9 +259,29 @@ describe "root" do
             "create": "http://example.org/actions/create_gel"
         }
     },
+    "create_filter_papers": {
+        "actions": {
+            "create": "http://example.org/actions/create_filter_paper"
+        }
+    },
+    "bulk_create_filter_papers": {
+        "actions": {
+            "create": "http://example.org/actions/bulk_create_filter_paper"
+        }
+    },
     "create_labels": {
         "actions": {
             "create": "http://example.org/actions/create_label"
+        }
+    },
+    "bulk_create_tubes": {
+        "actions": {
+            "create": "http://example.org/actions/bulk_create_tube"
+        }
+    },
+    "bulk_create_labellables": {
+        "actions": {
+            "create": "http://example.org/actions/bulk_create_labellable"
         }
     },
     "create_labellables": {
@@ -256,6 +292,11 @@ describe "root" do
     "update_labels": {
         "actions": {
             "create": "http://example.org/actions/update_label"
+        }
+    },
+    "bulk_update_labels": {
+        "actions": {
+            "create": "http://example.org/actions/bulk_update_label"
         }
     },
     "create_orders": {
@@ -353,19 +394,14 @@ describe "root" do
             "create": "http://example.org/actions/tag_wells"
         }
     },
-    "bulk_create_tubes": {
-        "actions": {
-            "create": "http://example.org/actions/bulk_create_tube"
-        }
-    },
-    "bulk_create_labellables": {
-        "actions": {
-            "create": "http://example.org/actions/bulk_create_labellable"
-        }
-    },
     "swap_samples": {
         "actions": {
             "create": "http://example.org/actions/swap_samples"
+        }
+    },
+    "transfer_multiple_filter_papers_to_wells": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_multiple_filter_papers_to_wells"
         }
     },
     "revision": 3

@@ -5,8 +5,8 @@ describe "delete_a_tube_rack", :tube_rack => true do
     tube_rack = Lims::LaboratoryApp::Laboratory::TubeRack.new(:number_of_rows => 8, :number_of_columns => 12)
     save_with_uuid tube_rack => [1,2,3,4,5]
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = delete "/11111111-2222-3333-4444-555555555555", <<-EOD
     {

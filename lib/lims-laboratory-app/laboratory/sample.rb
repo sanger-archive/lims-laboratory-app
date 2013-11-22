@@ -21,6 +21,9 @@ module Lims::LaboratoryApp
         super(args)
       end
 
+      def attributes
+        {name: @name}
+      end
       def to_s
         @name.inspect
       end

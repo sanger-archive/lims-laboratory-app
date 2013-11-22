@@ -9,8 +9,8 @@ describe "list_actions_for_tube_rack_resource", :plate => true do
   # * `first` lists the first plate resources in a page browsing system
   # * `last` lists the last plate resources in a page browsing system
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = get "/plates"
     response.should match_json_response(200, <<-EOD) 

@@ -26,8 +26,8 @@ describe "circular_swap_samples_in_a_tube_rack", :tube_rack => true do
       rack => [1,2,3,2,1]
     })
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/actions/swap_samples", <<-EOD
     {

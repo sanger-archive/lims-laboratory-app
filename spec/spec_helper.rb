@@ -49,13 +49,14 @@ end
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
+  config.filter_run_excluding :benchmark => true, :logger => true
 end
 
 RSpec::Matchers.define :io_stream do |content|
   match { |stream| content == stream.read }
 end
 
-Rspec::Matchers.define :match_json_response do |status, body|
+RSpec::Matchers.define :match_json_response do |status, body|
   match { |to_match| to_match.status == status && Helper::parse_json(to_match.body) == Helper::parse_json(body) }
 
   failure_message_for_should do |actual|
@@ -68,7 +69,7 @@ Rspec::Matchers.define :match_json_response do |status, body|
 end
 
 
-Rspec::Matchers.define :match_json do |content|
+RSpec::Matchers.define :match_json do |content|
 
   match { |to_match| Helper::parse_json(to_match) == Helper::parse_json(content) }
 
@@ -107,6 +108,10 @@ end
 
 def set_uuid(session, object, uuid)
   session << object
+  # save $uuid_sequence in case it's modify by the following block of code
+  uuid_sequence = $uuid_sequence
   ur = session.new_uuid_resource_for(object)
-  ur.send(:uuid=, uuid)
+  ur.send(:uuid=, uuid).tap do
+    $uuid_sequence = uuid_sequence
+  end
 end

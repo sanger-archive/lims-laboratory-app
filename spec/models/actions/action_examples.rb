@@ -18,6 +18,6 @@ shared_examples "an action" do
 end
 
 shared_context "for application" do |application_string|
-        let(:user) { mock(:user) }
+        let(:user) { double(:user) }
         let(:application) { application_string}
 end

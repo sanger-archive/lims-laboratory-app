@@ -88,7 +88,7 @@ module Lims::LaboratoryApp
           end
         end
 
-        context "valid transfer", :focus => true do
+        context "valid transfer" do
           let(:target_tube_rack1) { new_empty_tube_rack }
           let(:target_tube_rack2) { new_empty_tube_rack }
           before(:each) { subject.call }

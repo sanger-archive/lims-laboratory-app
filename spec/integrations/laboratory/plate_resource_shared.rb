@@ -1,3 +1,4 @@
+require 'lims-laboratory-app/laboratory/tube_rack/tube_rack_persistor'
 shared_context "for creating a plate-like with aliquots and solvent in it" do
   L = Lims::LaboratoryApp::Laboratory
   def create_plate_like_with_aliquots_and_solvent(asset, uuid, sample, location, quantity=100, volume=100)

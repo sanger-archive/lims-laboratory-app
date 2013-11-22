@@ -1,15 +1,12 @@
 # vi: ts=2:sts=2:et:sw=2  spell:spelllang=en  
-require 'lims-core/actions/action'
-
 require 'lims-laboratory-app/laboratory/plate'
-require 'lims-laboratory-app/laboratory/container/action_container'
+require 'lims-laboratory-app/laboratory/container/create_container_action'
 
 module Lims::LaboratoryApp
   module Laboratory
     class Plate
       class CreatePlate
-        include Lims::Core::Actions::Action
-        include Container::ActionContainer
+        include Container::CreateContainerAction
 
         # @attribute [Hash<String, Array<Hash>>] wells_description
         # @example

@@ -15,8 +15,8 @@ describe "update_a_tube_rack_with_solvent_volume", :tube_rack => true do
       new_tube1 => [1,2,4,5,3]
     })
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = put "/11111111-2222-3333-4444-777777777777", <<-EOD
     {

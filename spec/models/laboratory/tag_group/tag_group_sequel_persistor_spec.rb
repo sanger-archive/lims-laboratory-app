@@ -9,11 +9,8 @@ require 'lims-laboratory-app/laboratory/tag_group/all'
 
 module Lims::LaboratoryApp
 
-  describe Laboratory::TagGroup::TagGroupSequelPersistor, :tag_group => true, :tag => true, :laboratory => true, :persistence => true, :sequel => true do
-    include_context "prepare tables"
-    let(:db) { ::Sequel.sqlite('') }
-    let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
-    before (:each) { prepare_table(db) }
+  describe "Laboratory::TagGroup::TagGroupSequelPersistor", :tag_group => true, :tag => true, :laboratory => true, :persistence => true, :sequel => true do
+    include_context "sequel store"
 
     let (:old_oligo) { Laboratory::Oligo.new ("AAA") }
     let (:new_oligo) { Laboratory::Oligo.new ("TTT") }

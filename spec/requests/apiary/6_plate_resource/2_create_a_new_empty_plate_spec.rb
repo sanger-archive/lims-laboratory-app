@@ -9,8 +9,8 @@ describe "create_a_new_empty_plate", :plate => true do
   # * `type` actual type of the plate
   # * `wells_description` map aliquots to well locations
 
-    header('Accept', 'application/json')
     header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
 
     response = post "/plates", <<-EOD
     {
