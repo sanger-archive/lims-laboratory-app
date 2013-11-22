@@ -57,6 +57,8 @@ module Lims::LaboratoryApp::Laboratory
       it_behaves_like "a hash with different indexes", [0,0], 0, "A1"
       it_behaves_like "a hash with different indexes", [15,0], 210, "A24"
       it_behaves_like "a hash with different indexes", [7,12], 110, "S96"
+      it_behaves_like "a hash with different indexes", [2,13], 41, "A5"
+      it_behaves_like "a hash with different indexes", [10,13], 153, "A17"
       it_behaves_like "labellable"
     end
 
