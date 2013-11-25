@@ -1,13 +1,13 @@
 require 'lims-api/core_action_resource'
-require 'lims-api/resources/create_container'
 
 require 'lims-laboratory-app/laboratory/plate'
+require 'lims-laboratory-app/laboratory/container/create_container_resource'
 
 module Lims::LaboratoryApp
   module Laboratory
     class Plate
       class CreatePlateResource < Lims::Api::CoreActionResource
-        include Lims::Api::Resources::CreateContainer
+        include Lims::LaboratoryApp::Laboratory::Container::CreateContainerResource
 
         def self.element_attr
           'wells_description'

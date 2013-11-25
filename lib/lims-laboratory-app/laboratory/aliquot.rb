@@ -3,6 +3,7 @@ require 'common'
 
 
 require 'lims-laboratory-app/laboratory/sample'
+require 'lims-laboratory-app/laboratory/snp_assay'
 require 'lims-laboratory-app/laboratory/oligo'
 require 'lims-core/resource'
 
@@ -26,6 +27,7 @@ module Lims::LaboratoryApp
     class Aliquot
       include Lims::Core::Resource
       attribute :sample, Sample
+      attribute :snp_assay, SnpAssay
       attribute :tag, Oligo
       # @todo add a unit to quantity
       attribute :quantity, Numeric, :required=> true, :gte => 0
