@@ -19,7 +19,7 @@ module Lims::Api
           end
         end
 
-        module NoLabellable
+        module Nolabellable
           def to_hash_stream(h)
             original_to_hash_stream(h)
           end
