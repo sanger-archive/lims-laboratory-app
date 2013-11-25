@@ -5,10 +5,13 @@ module Lims::Core
     module PersistorModule
       module EagerLabellableLoading
 
+        # @param [String] model
+        # @return [Bool]
         def self.defined_for?(model)
           ["tube"].include?(model)
         end
 
+        # @param [GroupState] states
         def eager_labellable_loading(states, *params)
           load_labellables(states).each do |labellable|
             labelled_resource_state = states.find { |state| state.uuid_resource.uuid == labellable.name }
@@ -18,12 +21,16 @@ module Lims::Core
           end
         end
 
+        # @param [GroupState] states
+        # @return [Array]
         def load_labellables(states)
-          uuid_resources = states.map { |state| @session.uuid_resource_for(state) }
+          uuid_resources = states.map { |state| @session.uuid_resource_for(state) }.compact
           uuids = uuid_resources.map(&:uuid).map { |uuid| @session.pack_uuid(uuid) }
           @session.labellable.find_by(:name => uuids, :type => "resource")
         end
 
+        # @param [Lims::Core::Resource] resource
+        # @param [Labellable] labellable
         def bind(resource, labellable)
           resource.extend LabelledResource
           resource.labellable = labellable
