@@ -383,11 +383,6 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/update_order"
         }
     },
-    "update_gels": {
-        "actions": {
-            "create": "http://example.org/actions/update_gel"
-        }
-    },
     "update_plates": {
         "actions": {
             "create": "http://example.org/actions/update_plate"
