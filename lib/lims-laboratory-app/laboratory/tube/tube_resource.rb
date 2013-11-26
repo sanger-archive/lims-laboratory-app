@@ -17,6 +17,7 @@ module Lims::LaboratoryApp
           s.add_key "aliquots"
           receptacle_to_stream(s, object, mime_type)
         end
+
       end
     end
   end

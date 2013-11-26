@@ -33,6 +33,7 @@ module Lims::LaboratoryApp
           def invalid?
             @aliquot && !@tube.include?(@aliquot)
           end
+
         end
       end
     end
