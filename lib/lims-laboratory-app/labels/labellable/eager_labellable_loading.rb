@@ -1,7 +1,17 @@
-require 'lims-core/persistence/persistor_module'
-
 module Lims
   module Core::Persistence
+    class Persistor
+      alias :load_children_old :load_children
+      def load_children(states, *params)
+        if self.is_a? Lims::Core::Persistence::PersistorModule::EagerLabellableLoading
+          eager_load_labellables(states, *params) 
+        end
+
+        load_children_old(states, *params)
+      end
+    end
+
+
     module PersistorModule
       module EagerLabellableLoading
 
@@ -15,12 +25,12 @@ module Lims
         end
 
         # @param [GroupState] states
-        def eager_labellable_loading(states, *params)
+        def eager_load_labellables(states, *params)
           load_labellables(states).each do |labellable|
             labelled_resource_state = states.find { |state| state.uuid_resource.uuid == labellable.name }
             next unless labelled_resource_state
             labelled_resource = labelled_resource_state.resource
-            bind(labelled_resource, labellable)
+            bind_labellable(labelled_resource, labellable)
           end
         end
 
@@ -34,13 +44,14 @@ module Lims
 
         # @param [Lims::Core::Resource] resource
         # @param [Labellable] labellable
-        def bind(resource, labellable)
+        def bind_labellable(resource, labellable)
           resource.extend Lims::LaboratoryApp::Laboratory::WithLabellable
           resource.labellable = labellable
         end
       end
     end
   end
+
 
   module LaboratoryApp::Laboratory
     module WithLabellable

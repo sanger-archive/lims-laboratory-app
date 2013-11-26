@@ -18,14 +18,14 @@ module Lims::LaboratoryApp
           # normaly the result should have to keys
           # the uuid one and the model one
           create(session).tap do |result|
+            resource_name = (result.keys - [:uuid]).first
             if labels
               uuid = result[:uuid]
               labellable_result = _create(uuid, 'resource', labels, session)
-              resource_name = (result.keys - [:uuid]).first
               resource = result[resource_name]
-              session.persistor_for(resource_name).bind(resource, labellable_result[:labellable])
+              session.persistor_for(resource_name).bind_labellable(resource, labellable_result[:labellable])
             else
-              session.persistor_for(resource_name).bind(resource, nil)
+              session.persistor_for(resource_name).bind_labellable(resource, nil)
             end
           end
         end
