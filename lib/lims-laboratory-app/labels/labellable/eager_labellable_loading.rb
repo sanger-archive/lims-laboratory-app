@@ -1,14 +1,17 @@
 require 'lims-core/persistence/persistor_module'
 
-module Lims::Core
-  module Persistence
+module Lims
+  module Core::Persistence
     module PersistorModule
       module EagerLabellableLoading
 
         # @param [String] model
         # @return [Bool]
         def self.defined_for?(model)
-          ["tube"].include?(model)
+          [
+            "filter_paper", "flowcell", "gel", "plate", 
+            "spin_column", "tube", "tube_rack"
+          ].include?(model.to_s)
         end
 
         # @param [GroupState] states
@@ -32,17 +35,19 @@ module Lims::Core
         # @param [Lims::Core::Resource] resource
         # @param [Labellable] labellable
         def bind(resource, labellable)
-          resource.extend LabelledResource
+          resource.extend Lims::LaboratoryApp::Laboratory::WithLabellable
           resource.labellable = labellable
         end
+      end
+    end
+  end
 
-        module LabelledResource
-          def self.extended(k)
-            k.instance_eval do
-              class << self
-                attr_accessor :labellable
-              end
-            end
+  module LaboratoryApp::Laboratory
+    module WithLabellable
+      def self.extended(k)
+        k.instance_eval do
+          class << self
+            attr_accessor :labellable
           end
         end
       end

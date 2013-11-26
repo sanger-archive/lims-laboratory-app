@@ -4,7 +4,7 @@ module Lims::Api
   class CoreResource
     module LabelledResource
       def labellable_to_stream(s, mime_type)
-        labellable = object.labellable if object.respond_to?(:labellable)
+        labellable = object.labellable if object.is_a? Lims::LaboratoryApp::Laboratory::WithLabellable
 
         if labellable.nil? && @context.last_session
           @context.last_session.tap do |session|
