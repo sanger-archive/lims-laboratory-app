@@ -273,6 +273,16 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/create_labellable"
         }
     },
+    "update_gels": {
+        "actions": {
+            "create": "http://example.org/actions/update_gel"
+        }
+    },
+    "bulk_update_labels": {
+        "actions": {
+            "create": "http://example.org/actions/bulk_update_label"
+        }
+    },
     "update_labels": {
         "actions": {
             "create": "http://example.org/actions/update_label"
@@ -351,11 +361,6 @@ describe "dna_rna_manual_extraction" do
     "transfer_wells_to_tubes": {
         "actions": {
             "create": "http://example.org/actions/transfer_wells_to_tubes"
-        }
-    },
-    "transfer_multiple_filter_papers_to_tubes": {
-        "actions": {
-            "create": "http://example.org/actions/transfer_multiple_filter_papers_to_tubes"
         }
     },
     "transfer_multiple_filter_papers_to_wells": {
