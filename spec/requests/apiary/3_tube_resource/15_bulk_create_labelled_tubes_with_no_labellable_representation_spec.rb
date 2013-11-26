@@ -1,10 +1,10 @@
 require "requests/apiary/3_tube_resource/spec_helper"
-describe "bulk_create_labelled_tubes_with_no_labellable_representation_spec", :tube => true do
+describe "bulk_create_labelled_tubes_with_no_labellable_representation", :tube => true do
   include_context "use core context service"
-  it "bulk_create_labelled_tubes_with_no_labellable_representation_spec" do
+  it "bulk_create_labelled_tubes_with_no_labellable_representation" do
 
     header('Content-Type', 'application/json; bulk=true')
-    header('Accept', 'application/json; representation=nolabellable')
+    header('Accept', 'application/json; representation=no-labellable')
 
     response = post "/tubes", <<-EOD
     {
