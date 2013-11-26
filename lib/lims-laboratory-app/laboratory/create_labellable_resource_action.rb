@@ -24,6 +24,8 @@ module Lims::LaboratoryApp
               resource_name = (result.keys - [:uuid]).first
               resource = result[resource_name]
               session.persistor_for(resource_name).bind(resource, labellable_result[:labellable])
+            else
+              session.persistor_for(resource_name).bind(resource, nil)
             end
           end
         end
