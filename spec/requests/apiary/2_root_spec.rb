@@ -294,6 +294,11 @@ describe "root" do
             "create": "http://example.org/actions/update_label"
         }
     },
+    "bulk_update_labels": {
+        "actions": {
+            "create": "http://example.org/actions/bulk_update_label"
+        }
+    },
     "create_orders": {
         "actions": {
             "create": "http://example.org/actions/create_order"
@@ -397,11 +402,6 @@ describe "root" do
     "swap_samples": {
         "actions": {
             "create": "http://example.org/actions/swap_samples"
-        }
-    },
-    "transfer_multiple_filter_papers_to_tubes": {
-        "actions": {
-            "create": "http://example.org/actions/transfer_multiple_filter_papers_to_tubes"
         }
     },
     "transfer_multiple_filter_papers_to_wells": {

@@ -1,27 +1,16 @@
-require 'lims-core/actions/action'
 require 'lims-laboratory-app/laboratory/spin_column'
+require 'lims-laboratory-app/laboratory/create_receptacle_action_trait'
 
 module Lims::LaboratoryApp
   module Laboratory
     class SpinColumn
       class CreateSpinColumn
-        include Lims::Core::Actions::Action
 
-        attribute :aliquots, Array, :default => []
+        does "lims/laboratory_app/laboratory/receptacle/create_receptacle_action", {
+          :receptacle_name => "spin_column",
+          :receptacle_class => Laboratory::SpinColumn
+        }
 
-        def initialize(*args, &block)
-          @name = "Create Spin Column"
-          super(*args, &block)
-        end
-
-        def _call_in_session(session)
-          spin_column = Laboratory::SpinColumn.new()
-          session << spin_column
-          aliquots.each do |aliquot|
-            spin_column << Laboratory::Aliquot.new(aliquot)
-          end
-          { :spin_column => spin_column, :uuid => session.uuid_for!(spin_column) }
-        end
       end
     end
   end
