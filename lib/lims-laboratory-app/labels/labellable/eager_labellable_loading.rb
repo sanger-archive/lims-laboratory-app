@@ -20,7 +20,7 @@ module Lims
         def self.defined_for?(model)
           [
             "filter_paper", "flowcell", "gel", "plate", 
-            "spin_column", "tube", "tube_rack"
+            "spin_column", "tube", "tube_rack", "fluidigm"
           ].include?(model.to_s)
         end
 

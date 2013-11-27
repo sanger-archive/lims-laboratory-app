@@ -11,7 +11,6 @@ require 'lims-api/persistence/search_resource'
 
 require 'lims-laboratory-app/context_service'
 
-
 module Lims
   module LaboratoryApp
     # Your code goes here...
