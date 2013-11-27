@@ -2,12 +2,13 @@ require 'lims-api/core_resource'
 require 'lims-api/struct_stream'
 require 'lims-api/resources/receptacle'
 
+require 'lims-laboratory-app/labels/labellable/api_labellable_resource'
 require 'lims-laboratory-app/laboratory/filter_paper'
 
 module Lims::LaboratoryApp
   module Laboratory
     class FilterPaper
-      class FilterPaperResource < Lims::Api::CoreResource
+      class FilterPaperResource < Lims::Api::LabellableResource
 
         include Lims::Api::Resources::Receptacle
 

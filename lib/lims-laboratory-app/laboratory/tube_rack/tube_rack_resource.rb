@@ -2,11 +2,12 @@ require 'lims-api/resources/container'
 require 'lims-api/core_resource'
 require 'lims-api/struct_stream'
 
+require 'lims-laboratory-app/labels/labellable/api_labellable_resource'
 require 'lims-laboratory-app/laboratory/tube_rack'
 module Lims::LaboratoryApp
   module Laboratory
     class TubeRack
-      class TubeRackResource < Lims::Api::CoreResource
+      class TubeRackResource < Lims::Api::LabellableResource
 
         include Lims::Api::Resources::Container
 
