@@ -1,7 +1,7 @@
 require 'lims-api/core_resource'
 
-module Lims::Api
-  class LabellableResource < CoreResource
+module Lims::LaboratoryApp
+  class LabellableCoreResource < Lims::Api::CoreResource
 
     module Encoder
       # TODO: when using ruby 2.0, the following code can be replaced
@@ -11,7 +11,7 @@ module Lims::Api
       module Representation
         # Include the default representation from CoreResource in 
         # the LabellableResource::Encoder::Representation module.
-        include CoreResource::Encoder::Representation
+        include Lims::Api::CoreResource::Encoder::Representation
 
         module AliasToHashStream
           def self.included(klass)
@@ -40,14 +40,14 @@ module Lims::Api
       Encoders.mash { |k| [k::ContentType, k] }
     end
 
-    Encoders = [
-      class JsonEncoder
-        include CoreResource::Encoder
-        include Lims::Api::JsonEncoder
-        include Encoder
-        include Representation::AliasToHashStream
-        include Representation::Labellable
+    Encoders = Lims::Api::CoreResource::Encoders.map do |encoder|
+      class_eval do
+        class JsonEncoder < encoder
+          include Encoder
+          include Representation::AliasToHashStream
+          include Representation::Labellable
+        end
       end
-    ]
+    end
   end
 end
