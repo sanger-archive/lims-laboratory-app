@@ -2,13 +2,14 @@
 require 'lims-api/core_resource'
 require 'lims-api/struct_stream'
 
+require 'lims-laboratory-app/labellable_core_resource'
 require 'lims-laboratory-app/laboratory/tube'
 require 'lims-laboratory-app/laboratory/container/receptacle'
 
 module Lims::LaboratoryApp
   module Laboratory
     class Tube
-      class TubeResource < Lims::Api::CoreResource
+      class TubeResource < LabellableCoreResource
 
         include Lims::LaboratoryApp::Laboratory::Container::Receptacle
 

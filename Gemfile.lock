@@ -46,7 +46,7 @@ GIT
 PATH
   remote: .
   specs:
-    lims-laboratory-app (3.4.0.3.0)
+    lims-laboratory-app (3.4.0.4.0)
 
 GEM
   remote: http://rubygems.org/
@@ -82,6 +82,7 @@ GEM
     jruby-rack (1.1.13.2)
     json (1.8.1)
     json (1.8.1-java)
+    linecache (0.46-java)
     macaddr (1.6.1)
       systemu (~> 2.5.0)
     modularity (0.6.1)
@@ -104,6 +105,8 @@ GEM
     ruby-debug (0.10.4)
       columnize (>= 0.1)
       ruby-debug-base (~> 0.10.4.0)
+    ruby-debug-base (0.10.4)
+      linecache (>= 0.3)
     ruby-debug-base (0.10.4-java)
     ruby-graphviz (1.0.9)
     ruby-prof (0.13.0)

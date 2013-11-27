@@ -1,6 +1,7 @@
 require 'lims-api/core_resource'
 require 'lims-api/struct_stream'
 
+require 'lims-laboratory-app/labellable_core_resource'
 require 'lims-laboratory-app/laboratory/tube_rack'
 require 'lims-laboratory-app/laboratory/container/children_to_stream'
 require 'lims-laboratory-app/laboratory/container/receptacle'
@@ -8,7 +9,7 @@ require 'lims-laboratory-app/laboratory/container/receptacle'
 module Lims::LaboratoryApp
   module Laboratory
     class TubeRack
-      class TubeRackResource < Lims::Api::CoreResource
+      class TubeRackResource < LabellableCoreResource
 
         include Lims::LaboratoryApp::Laboratory::Container::Receptacle
         include Lims::LaboratoryApp::Laboratory::Container::ChildrenToStream
