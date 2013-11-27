@@ -5264,6 +5264,183 @@ POST /actions/update_label
     }
 }
 
+**Use the bulk update labels on existing labellables with the position name.**
+
+* `by` can contains either the position name on an asset or a UUID of an asset to search for.
+The position of the label is an arbitray string (not a Symbol).
+* `labels` contains key value pairs.
+
+If the 'by' paramater contains the 'uuid' string, then the key contains the UUID of an asset, otherwise the label value on the position 
+described by the 'by' parameter. The value contains a list of the labels to add to the selected asset.
+
+The hash under the 'labels' element contains the new label information (position, type, value).
+
+By labels we mean any readable information found on a physical object.
+Label can eventually be identified by a position: an arbitray string (not a Symbol).
+It has a value, which can be serial number, stick label with barcode etc.
+It has a type, which can be sanger-barcode, 2d-barcode, ean13-barcode etc...
+
+POST /actions/bulk_update_label
+> Accept: application/json
+{
+    "bulk_update_label": {
+        "by": "sanger_id",
+        "labels": {
+            "s1": {
+                "lot_no": {
+                    "value": "1",
+                    "type": "text"
+                },
+                "barcode": {
+                    "value": "123",
+                    "type": "sanger-barcode"
+                }
+            }
+        }
+    }
+}
+< 200
+< Content-Type: application/json
+{
+    "bulk_update_label": {
+        "actions": {
+        },
+        "user": "user@example.com",
+        "application": "application_id",
+        "result": {
+            "labellables": [
+                {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                        "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+                        "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                        "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+                    },
+                    "uuid": "11111111-2222-3333-4444-555555555555",
+                    "name": "11111111-2222-3333-4444-000000000000",
+                    "type": "resource",
+                    "labels": {
+                        "sanger_id": {
+                            "value": "s1",
+                            "type": "sanger-barcode"
+                        },
+                        "lot_no": {
+                            "value": "1",
+                            "type": "text"
+                        },
+                        "barcode": {
+                            "value": "123",
+                            "type": "sanger-barcode"
+                        }
+                    }
+                }
+            ]
+        },
+        "by": "sanger_id",
+        "labels": {
+            "s1": {
+                "lot_no": {
+                    "value": "1",
+                    "type": "text"
+                },
+                "barcode": {
+                    "value": "123",
+                    "type": "sanger-barcode"
+                }
+            }
+        }
+    }
+}
+
+**Use the bulk update labels on existing labellables with the asset UUID.**
+
+* `by` can contains either the position name on an asset or a UUID of an asset to search for.
+The position of the label is an arbitray string (not a Symbol).
+* `labels` contains key value pairs.
+
+If the 'by' paramater contains the 'uuid' string, then the key contains the UUID of an asset, otherwise the label value on the position 
+described by the 'by' parameter. The value contains a list of the labels to add to the selected asset.
+
+The hash under the 'labels' element contains the new label information (position, type, value).
+
+By labels we mean any readable information found on a physical object.
+Label can eventually be identified by a position: an arbitray string (not a Symbol).
+It has a value, which can be serial number, stick label with barcode etc.
+It has a type, which can be sanger-barcode, 2d-barcode, ean13-barcode etc...
+
+POST /actions/bulk_update_label
+> Accept: application/json
+{
+    "bulk_update_label": {
+        "by": "uuid",
+        "labels": {
+            "11111111-2222-3333-4444-000000000000": {
+                "lot_no": {
+                    "value": "1",
+                    "type": "text"
+                },
+                "barcode": {
+                    "value": "123",
+                    "type": "sanger-barcode"
+                }
+            }
+        }
+    }
+}
+< 200
+< Content-Type: application/json
+{
+    "bulk_update_label": {
+        "actions": {
+        },
+        "user": "user@example.com",
+        "application": "application_id",
+        "result": {
+            "labellables": [
+                {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                        "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+                        "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                        "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+                    },
+                    "uuid": "11111111-2222-3333-4444-555555555555",
+                    "name": "11111111-2222-3333-4444-000000000000",
+                    "type": "resource",
+                    "labels": {
+                        "sanger_id": {
+                            "value": "s1",
+                            "type": "sanger-barcode"
+                        },
+                        "lot_no": {
+                            "value": "1",
+                            "type": "text"
+                        },
+                        "barcode": {
+                            "value": "123",
+                            "type": "sanger-barcode"
+                        }
+                    }
+                }
+            ]
+        },
+        "by": "uuid",
+        "labels": {
+            "11111111-2222-3333-4444-000000000000": {
+                "lot_no": {
+                    "value": "1",
+                    "type": "text"
+                },
+                "barcode": {
+                    "value": "123",
+                    "type": "sanger-barcode"
+                }
+            }
+        }
+    }
+}
+
+
 --
 Batch Resource
 

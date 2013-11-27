@@ -1,16 +1,17 @@
 #flowcell_resource.rb
-require 'lims-api/resources/receptacle'
 require 'lims-api/core_resource'
 require 'lims-api/struct_stream'
 
+require 'lims-laboratory-app/labellable_core_resource'
 require 'lims-laboratory-app/laboratory/flowcell'
+require 'lims-laboratory-app/laboratory/container/receptacle'
 
 module Lims::LaboratoryApp
   module Laboratory
     class Flowcell
-      class FlowcellResource < Lims::Api::CoreResource
+      class FlowcellResource < LabellableCoreResource
 
-        include Lims::Api::Resources::Receptacle
+        include Lims::LaboratoryApp::Laboratory::Container::Receptacle
 
         def content_to_stream(s, mime_type)
           s.add_key "number_of_lanes"

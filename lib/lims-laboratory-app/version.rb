@@ -14,7 +14,9 @@ module Lims
 
     MAJOR_DEV = %{
     --llh1
+    x
     --ke4
+    x
     --mb14
     x
     x
