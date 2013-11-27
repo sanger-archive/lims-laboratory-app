@@ -32,7 +32,7 @@ module Lims::LaboratoryApp::Laboratory
       its(:size) { should eq(size) }
 
       it_behaves_like "a valid gel"
-      it_behaves_like "a hash"
+      it_behaves_like "a hash", :B3, :A3, :A13, :I1
       it_behaves_like "labellable"
     end
   end

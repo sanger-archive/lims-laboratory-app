@@ -408,6 +408,47 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/delete_tube_rack"
         }
     },
+    "update_gels": {
+        "actions": {
+            "create": "http://example.org/actions/update_gel"
+        }
+    },
+    "snp_assays": {
+        "actions": {
+            "create": "http://example.org/snp_assays",
+            "read": "http://example.org/snp_assays",
+            "first": "http://example.org/snp_assays/page=1",
+            "last": "http://example.org/snp_assays/page=-1"
+        }
+    },
+    "fluidigms": {
+        "actions": {
+            "create": "http://example.org/fluidigms",
+            "read": "http://example.org/fluidigms",
+            "first": "http://example.org/fluidigms/page=1",
+            "last": "http://example.org/fluidigms/page=-1"
+        }
+    },
+    "transfer_plates_to_fluidigms": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_plates_to_fluidigm"
+        }
+    },
+    "create_fluidigms": {
+        "actions": {
+            "create": "http://example.org/actions/create_fluidigm"
+        }
+    },
+    "create_snp_assays": {
+        "actions": {
+            "create": "http://example.org/actions/create_snp_assay"
+        }
+    },
+    "move_snp_assays": {
+        "actions": {
+            "create": "http://example.org/actions/move_snp_assays"
+        }
+    },
     "revision": 3
 }
     EOD
