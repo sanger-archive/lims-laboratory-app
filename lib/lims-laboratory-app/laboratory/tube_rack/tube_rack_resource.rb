@@ -1,14 +1,17 @@
-require 'lims-api/resources/container'
 require 'lims-api/core_resource'
 require 'lims-api/struct_stream'
 
 require 'lims-laboratory-app/laboratory/tube_rack'
+require 'lims-laboratory-app/laboratory/container/children_to_stream'
+require 'lims-laboratory-app/laboratory/container/receptacle'
+
 module Lims::LaboratoryApp
   module Laboratory
     class TubeRack
       class TubeRackResource < Lims::Api::CoreResource
 
-        include Lims::Api::Resources::Container
+        include Lims::LaboratoryApp::Laboratory::Container::Receptacle
+        include Lims::LaboratoryApp::Laboratory::Container::ChildrenToStream
 
         def elements_name
           :tubes

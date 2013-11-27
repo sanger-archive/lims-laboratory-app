@@ -1,6 +1,6 @@
 #gel_resource.rb
-require 'lims-api/resources/receptacle'
-require 'lims-api/resources/container'
+require 'lims-laboratory-app/laboratory/container/receptacle'
+require 'lims-laboratory-app/laboratory/container/children_to_stream'
 require 'lims-api/core_resource'
 require 'lims-api/struct_stream'
 
@@ -11,8 +11,8 @@ module Lims::LaboratoryApp
     class Gel
       class GelResource < Lims::Api::CoreResource
 
-        include Lims::Api::Resources::Receptacle
-        include Lims::Api::Resources::Container
+        include Lims::LaboratoryApp::Laboratory::Container::Receptacle
+        include Lims::LaboratoryApp::Laboratory::Container::ChildrenToStream
 
         def elements_name
           "windows"
