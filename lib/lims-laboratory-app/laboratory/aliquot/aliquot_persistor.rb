@@ -4,6 +4,7 @@
 require 'lims-core/persistence/persistor'
 require 'lims-laboratory-app/laboratory/aliquot'
 require 'lims-laboratory-app/laboratory/sample/sample_persistor'
+require 'lims-laboratory-app/laboratory/snp_assay/snp_assay_persistor'
 require 'lims-laboratory-app/laboratory/oligo/oligo_persistor'
 
 module Lims::LaboratoryApp
@@ -14,7 +15,7 @@ module Lims::LaboratoryApp
     # include the suitable persistor.
     class Aliquot
       (does "lims/core/persistence/persistable", :parents => [:sample,
-          {:name => :tag, :session_name => :oligo}
+          :snp_assay, {:name => :tag, :session_name => :oligo}
         ]).class_eval do
 
         alias filter_attributes_on_save_old filter_attributes_on_save

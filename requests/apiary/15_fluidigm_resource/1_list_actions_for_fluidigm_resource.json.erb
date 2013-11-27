@@ -1,0 +1,28 @@
+<%
+require 'json'
+h={:header => [], :response_header => [] }
+h[:description]=<<EOD
+**List actions for fluidigm resource.**
+
+* `create` creates a new fluidigm via HTTP POST request
+* `read` returns the list of actions for a fluidigm resource via HTTP GET request
+* `first` lists the first fluidigms resources in a page browsing system
+* `last` lists the last fluidigms resources in a page browsing system
+EOD
+h[:method] = "GET"
+h[:url]='/fluidigms'
+h[:header] << 'Accept: application/json'
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{ "fluidigms": {
+    "actions": {
+        "create": "/fluidigms",
+        "read": "/fluidigms",
+        "first": "/fluidigms/page=1",
+        "last": "/fluidigms/page=-1"
+    }
+} }
+EOD
+%>
+<%= h.to_json %>
