@@ -10,7 +10,6 @@ require 'lims-core/persistence/search/all'
 require 'lims-api/persistence/search_resource'
 
 require 'lims-laboratory-app/context_service'
-require 'lims-laboratory-app/encoder'
 
 
 module Lims

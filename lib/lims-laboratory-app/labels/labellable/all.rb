@@ -7,4 +7,3 @@ require('lims-laboratory-app/labels/labellable')
 require 'lims-laboratory-app/labels/labellable/label_filter'
 require 'lims-laboratory-app/labels/labellable/sequel_label_filter'
 require 'lims-laboratory-app/labels/labellable/eager_labellable_loading'
-require 'lims-laboratory-app/labels/labellable/labelled_resource'

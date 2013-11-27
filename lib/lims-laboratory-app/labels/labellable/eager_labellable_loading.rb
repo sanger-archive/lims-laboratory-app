@@ -45,7 +45,7 @@ module Lims
         # @param [Lims::Core::Resource] resource
         # @param [Labellable] labellable
         def bind_labellable(resource, labellable)
-          resource.extend Lims::LaboratoryApp::Laboratory::WithLabellable
+          resource.extend Lims::LaboratoryApp::WithLabellable
           resource.labellable = labellable
         end
       end
@@ -53,7 +53,7 @@ module Lims
   end
 
 
-  module LaboratoryApp::Laboratory
+  module LaboratoryApp
     module WithLabellable
       def self.extended(k)
         k.instance_eval do
