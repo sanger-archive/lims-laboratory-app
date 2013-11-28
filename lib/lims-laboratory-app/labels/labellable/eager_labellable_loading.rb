@@ -1,17 +1,5 @@
 module Lims
   module Core::Persistence
-    class Persistor
-      alias :load_children_old :load_children
-      def load_children(states, *params)
-        if self.is_a? Lims::Core::Persistence::PersistorModule::EagerLabellableLoading
-          eager_load_labellables(states, *params) 
-        end
-
-        load_children_old(states, *params)
-      end
-    end
-
-
     module PersistorModule
       module EagerLabellableLoading
 
@@ -29,6 +17,19 @@ module Lims
             model_class = Lims::LaboratoryApp::Laboratory.const_get(c)
             m << model_class if model_class.ancestors.include?(Lims::Core::Resource)
             m
+          end
+        end
+
+        # @param [Lims::Core::Persistence::Persistor] persistor
+        # The method load_children of the persistor instance is 
+        # overriden to call eager_load_labellables.
+        def self.extended(persistor)
+          persistor.instance_eval do
+            alias :load_children_old :load_children
+            def load_children(states, *params)
+              eager_load_labellables(states, *params)
+              load_children_old(states, *params)
+            end
           end
         end
 
