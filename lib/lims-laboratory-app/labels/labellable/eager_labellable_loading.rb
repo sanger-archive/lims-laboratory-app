@@ -22,6 +22,8 @@ module Lims
         end
 
         # @return [Array]
+        # We select the resource which are under the laboratory 
+        # namespace and which are Lims::Core::Resource.
         def self.labellable_resource_model_names
           @labellable_resource_model_names ||= Lims::LaboratoryApp::Laboratory.constants.inject([]) do |m,c|
             model_class = Lims::LaboratoryApp::Laboratory.const_get(c)
