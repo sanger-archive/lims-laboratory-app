@@ -18,10 +18,17 @@ module Lims
         # @param [String] model
         # @return [Bool]
         def self.defined_for?(model)
-          [
-            "filter_paper", "flowcell", "gel", "plate", 
-            "spin_column", "tube", "tube_rack", "fluidigm"
-          ].include?(model.to_s)
+          labellable_resource_model_names.include?(model)
+        end
+
+        # @return [Array]
+        def self.labellable_resource_model_names
+          @labellable_resource_model_names ||= Lims::LaboratoryApp::Laboratory.constants.inject([]) do |m,c|
+            model_class = Lims::LaboratoryApp::Laboratory.const_get(c)
+            model_name = Lims::Core::Persistence::Session.model_to_name(model_class)
+            m << model_name if model_class.ancestors.include?(Lims::Core::Resource)
+            m
+          end
         end
 
         # @param [GroupState] states
