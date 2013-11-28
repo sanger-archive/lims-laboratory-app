@@ -15,10 +15,10 @@ module Lims
     module PersistorModule
       module EagerLabellableLoading
 
-        # @param [String] model
+        # @param [Lims::Core::Persistence::Persistor] persistor
         # @return [Bool]
-        def self.defined_for?(model)
-          labellable_resource_model_names.include?(model)
+        def self.defined_for?(persistor)
+          labellable_resource_model_names.include?(persistor.model)
         end
 
         # @return [Array]
@@ -27,8 +27,7 @@ module Lims
         def self.labellable_resource_model_names
           @labellable_resource_model_names ||= Lims::LaboratoryApp::Laboratory.constants.inject([]) do |m,c|
             model_class = Lims::LaboratoryApp::Laboratory.const_get(c)
-            model_name = Lims::Core::Persistence::Session.model_to_name(model_class)
-            m << model_name if model_class.ancestors.include?(Lims::Core::Resource)
+            m << model_class if model_class.ancestors.include?(Lims::Core::Resource)
             m
           end
         end
