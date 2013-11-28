@@ -3,6 +3,8 @@ require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
 
 #Model requirements
+require 'models/laboratory/spec_helper'
+require 'models/laboratory/resource_with_labellable_shared'
 require 'lims-laboratory-app/laboratory/tube/create_tube'
 require 'models/laboratory/tube_shared'
 require 'lims-core/persistence/store'
@@ -36,6 +38,15 @@ module Lims::LaboratoryApp
             result[:tube].max_volume.should == tube_max_volume
             result[:uuid].should == uuid
           end
+        end
+
+        context "create a tube with labellable" do
+          subject do
+            Tube::CreateTube.new(:store => store, :user => user, :application => application) do |a,s|
+              a.labels = labels
+            end
+          end
+          it_behaves_like "creating a resource with a labellable", Laboratory::Tube
         end
 
         context "create a tube with samples" do
