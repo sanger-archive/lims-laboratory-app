@@ -4,13 +4,11 @@ module Lims::LaboratoryApp
   class LabellableCoreResource < Lims::Api::CoreResource
 
     def labellable_to_stream(s, mime_type)
-      labellable = object.labellable if object.is_a? Lims::LaboratoryApp::WithLabellable
-
-      if labellable.nil? && @context.last_session
-        @context.last_session.tap do |session|
-          labellable = session.labellable[{:name => uuid, :type => "resource"}]
-        end
-      end
+      labellable = if object.is_a? Lims::LaboratoryApp::WithLabellable
+                     object.labellable
+                   elsif @context.last_session
+                     @context.last_session.labellable[{:name => uuid, :type => "resource"}]
+                   end
 
       if labellable
         s.add_key "labels"
