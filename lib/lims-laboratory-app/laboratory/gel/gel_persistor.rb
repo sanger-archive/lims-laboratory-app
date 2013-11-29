@@ -2,6 +2,7 @@
 
 require 'lims-laboratory-app/laboratory/gel'
 require 'lims-laboratory-app/container_persistor_trait'
+require 'lims-laboratory-app/labels/labellable/eager_labellable_loading'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -10,9 +11,14 @@ module Lims::LaboratoryApp
     # Real implementation classes (e.g. Sequel::Gel) should
     # include the suitable persistor.
     class Gel
-      does "lims/laboratory_app/container_persistor", :element => :window_aliquot, :table_name => :windows,
-        :contained_class => Aliquot
-
+      does "lims/laboratory_app/container_persistor", 
+       :element => :window_aliquot, 
+       :table_name => :windows,
+       :contained_class => Aliquot
+       
+      class GelPersistor
+        include Lims::LaboratoryApp::Labels::Labellable::EagerLabellableLoading
+      end
     end
   end
 end

@@ -4,6 +4,7 @@ require 'lims-laboratory-app/laboratory/plate'
 require 'lims-laboratory-app/container_persistor_trait'
 
 require 'lims-laboratory-app/laboratory/aliquot/aliquot_persistor'
+require 'lims-laboratory-app/labels/labellable/eager_labellable_loading'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -12,8 +13,14 @@ module Lims::LaboratoryApp
     # Real implementation classes (e.g. Sequel::Plate) should
     # include the suitable persistor.
     class Plate
-      does "lims/laboratory_app/container_persistor", :element => :well_aliquot, :table_name => :wells,
-      :contained_class => Aliquot
+      does "lims/laboratory_app/container_persistor", 
+        :element => :well_aliquot, 
+        :table_name => :wells,
+        :contained_class => Aliquot
+
+      class PlatePersistor
+        include Lims::LaboratoryApp::Labels::Labellable::EagerLabellableLoading
+      end
     end
   end
 end

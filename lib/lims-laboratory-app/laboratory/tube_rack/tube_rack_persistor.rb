@@ -2,6 +2,7 @@
 
 require 'lims-laboratory-app/laboratory/tube_rack'
 require 'lims-laboratory-app/container_persistor_trait'
+require 'lims-laboratory-app/labels/labellable/eager_labellable_loading'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -14,6 +15,8 @@ module Lims::LaboratoryApp
 
       # Overwrite some behavior
       class TubeRackPersistor
+        include Labels::Labellable::EagerLabellableLoading
+
         def children_tube_rack_slot(resource, children)
           resource.content.each_with_index.each do |tube, position|
             next unless tube
