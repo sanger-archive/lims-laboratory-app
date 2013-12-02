@@ -12,6 +12,7 @@ module Lims::LaboratoryApp
     class Gel
       does "lims/laboratory_app/container_persistor", :element => :window_aliquot, :table_name => :windows,
         :contained_class => Aliquot
+
     end
   end
 end
