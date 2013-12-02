@@ -1,4 +1,3 @@
-require 'lims-laboratory-app/laboratory/container/receptacle'
 require 'lims-api/core_resource'
 require 'lims-api/struct_stream'
 
