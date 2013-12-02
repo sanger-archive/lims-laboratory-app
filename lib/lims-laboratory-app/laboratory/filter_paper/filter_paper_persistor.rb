@@ -9,7 +9,7 @@ module Lims::LaboratoryApp
       (does "lims/core/persistence/persistable", :children => [
         {:name => :filter_paper_aliquot, :deletable => true}
       ]).class_eval do
-        
+
         def children_filter_paper_aliquot(resource, children)
           resource.each do |aliquot|
             children << FilterPaperPersistor::FilterPaperAliquot.new(resource, aliquot)
