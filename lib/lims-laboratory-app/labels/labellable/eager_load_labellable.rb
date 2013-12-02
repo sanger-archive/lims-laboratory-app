@@ -1,12 +1,12 @@
 module Lims::LaboratoryApp
   module Labels
     class Labellable
-      module EagerLabellableLoading
+      module EagerLoadLabellable
         # @param [Lims::Core::Persistence::Persistor] persistor
         # The method load_children of the persistor instance is 
         # overriden to call eager_load_labellables.
-        def self.included(klass)
-          klass.class_eval do
+        def self.extended(object)
+          object.instance_eval do
             alias :load_children_old :load_children
             def load_children(states, *params)
               eager_load_labellables(states, *params)
