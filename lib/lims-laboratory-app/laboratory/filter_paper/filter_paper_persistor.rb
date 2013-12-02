@@ -1,7 +1,6 @@
 require 'lims-core/persistence/persist_association_trait'
 require 'lims-laboratory-app/laboratory/filter_paper'
 require 'lims-laboratory-app/laboratory/aliquot/all'
-require 'lims-laboratory-app/labels/labellable/eager_labellable_loading'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -10,8 +9,6 @@ module Lims::LaboratoryApp
       (does "lims/core/persistence/persistable", :children => [
         {:name => :filter_paper_aliquot, :deletable => true}
       ]).class_eval do
-        include Labels::Labellable::EagerLabellableLoading
-        
         def children_filter_paper_aliquot(resource, children)
           resource.each do |aliquot|
             children << FilterPaperPersistor::FilterPaperAliquot.new(resource, aliquot)

@@ -4,7 +4,6 @@
 require 'lims-core/persistence/persistor'
 require 'lims-laboratory-app/laboratory/spin_column'
 require 'lims-laboratory-app/laboratory/aliquot/all'
-require 'lims-laboratory-app/labels/labellable/eager_labellable_loading'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -79,7 +78,6 @@ module Lims::LaboratoryApp
         # this module is here only to give 'parent' class for the persistor
         # to be associated 
         Model = Laboratory::SpinColumn
-        include Lims::LaboratoryApp::Labels::Labellable::EagerLabellableLoading
 
         def  spin_column_aliquot
           @session.spin_column_persistor_aliquot

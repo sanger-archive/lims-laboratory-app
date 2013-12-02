@@ -4,7 +4,6 @@ require 'lims-laboratory-app/laboratory/plate'
 require 'lims-laboratory-app/container_persistor_trait'
 
 require 'lims-laboratory-app/laboratory/aliquot/aliquot_persistor'
-require 'lims-laboratory-app/labels/labellable/eager_labellable_loading'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -17,10 +16,6 @@ module Lims::LaboratoryApp
         :element => :well_aliquot, 
         :table_name => :wells,
         :contained_class => Aliquot
-
-      class PlatePersistor
-        include Lims::LaboratoryApp::Labels::Labellable::EagerLabellableLoading
-      end
     end
   end
 end

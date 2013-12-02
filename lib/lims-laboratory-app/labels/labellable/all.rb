@@ -6,4 +6,3 @@ require('lims-laboratory-app/labels/labellable/labellable_persistor')
 require('lims-laboratory-app/labels/labellable')
 require 'lims-laboratory-app/labels/labellable/label_filter'
 require 'lims-laboratory-app/labels/labellable/sequel_label_filter'
-require 'lims-laboratory-app/labels/labellable/eager_labellable_loading'
