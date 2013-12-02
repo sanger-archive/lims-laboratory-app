@@ -1,6 +1,8 @@
 # vi: ts=2:sts=2:et:sw=2  spell:spelllang=en  
 require 'lims-laboratory-app/labels/labellable/create_labellable_shared'
+require 'lims-laboratory-app/labels/labellable/eager_load_labellable'
 require 'lims-core/actions/action'
+
 module Lims::LaboratoryApp
   module Laboratory
     module CreateLabellableResourceAction
@@ -21,6 +23,7 @@ module Lims::LaboratoryApp
             resource_name = (result.keys - [:uuid]).first
             persistor = session.persistor_for(resource_name)
             resource = result[resource_name]
+            session.send(resource_name).extend Labels::Labellable::EagerLoadLabellable
 
             if labels
               uuid = result[:uuid]
