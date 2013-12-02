@@ -38,7 +38,6 @@ module Lims::LaboratoryApp
         SESSION_NAME = :spin_column_persistor_aliquot
         class SpinColumnAliquotPersistor < Lims::Core::Persistence::Persistor
           Model = SpinColumnAliquot
-
           def attribute_for(key)
             {spin_column: 'spin_column_id',
               aliquot: 'aliquot_id'

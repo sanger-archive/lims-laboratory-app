@@ -10,10 +10,8 @@ module Lims::LaboratoryApp
     # Real implementation classes (e.g. Sequel::Gel) should
     # include the suitable persistor.
     class Gel
-      does "lims/laboratory_app/container_persistor", 
-       :element => :window_aliquot, 
-       :table_name => :windows,
-       :contained_class => Aliquot
+      does "lims/laboratory_app/container_persistor", :element => :window_aliquot, :table_name => :windows,
+        :contained_class => Aliquot
     end
   end
 end
