@@ -5,7 +5,7 @@ require 'lims-laboratory-app/organization/location'
 
 module Lims::LaboratoryApp::Organization
   describe Location do
-    # define the parameters for an snp_assay
+    # define the parameters for a  location
     let(:name)        { "ABC Hospital" }
     let(:address)     { "CB11 3DF Cambridge 123 Sample Way" }
     let(:internal)    { true }
