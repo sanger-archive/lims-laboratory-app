@@ -3,7 +3,7 @@ require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
 
 #Model requirements
-require 'lims-laboratory-app/organization/location/create_location'
+require 'lims-laboratory-app/organization/location/all'
 require 'lims-core/persistence/store'
 
 module Lims::LaboratoryApp
