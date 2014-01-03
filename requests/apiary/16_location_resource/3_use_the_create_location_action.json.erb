@@ -1,0 +1,51 @@
+<%
+require 'json'
+h = {:header => [], :response_header => [] }
+h[:description] = <<EOD
+**Use the create location action.**
+
+* `name` name of the location
+* `address` the address of the location
+* `internal` a boolean value. True if the labware is internal, otherwise false.
+
+EOD
+h[:method] = "POST"
+h[:url] = '/actions/create_location'
+h[:header] << 'Accept: application/json'
+h[:parameters] = <<EOD
+{ "create_location": {
+    "name": "ABC Hospital",
+    "address": "CB11 3DF Cambridge 123 Sample Way",
+    "internal": true
+}}
+EOD
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{ "create_location": {
+    "actions": {
+    },
+    "user": "user@example.com",
+    "application": "application_id",
+    "result": {
+        "location": {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "delete": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "create": "http://example.org/11111111-2222-3333-4444-555555555555"
+            },
+            "uuid": "11111111-2222-3333-4444-555555555555",
+            "name": "ABC Hospital",
+            "address": "CB11 3DF Cambridge 123 Sample Way",
+            "internal": true
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555"
+    },
+    "name": "ABC Hospital",
+    "address": "CB11 3DF Cambridge 123 Sample Way",
+    "internal": true
+}}
+EOD
+%>
+<%= h.to_json %>
