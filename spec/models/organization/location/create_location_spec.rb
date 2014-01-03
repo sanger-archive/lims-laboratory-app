@@ -11,11 +11,11 @@ module Lims::LaboratoryApp
     describe Location::CreateLocation, :organization => true, :persistence => true do
       context "with a valid store" do
         include_context "create object"
-        let (:store) { Lims::Core::Persistence::Store.new }
+        let(:store) { Lims::Core::Persistence::Store.new }
         let(:user) { double(:user) }
-        let(:application) { "Test create location" }
+        let(:application) { "Test for creating a location" }
 
-        # define the parameters for a  location
+        # define the parameters for a location
         let(:name)        { "ABC Hospital" }
         let(:address)     { "CB11 3DF Cambridge 123 Sample Way" }
         let(:internal)    { true }
