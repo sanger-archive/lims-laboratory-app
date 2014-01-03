@@ -21,7 +21,6 @@ module Lims::LaboratoryApp::Organization
     subject { described_class.new(parameters - excluded_parameters) }
 
     context "to be valid" do
-      
       it "valid" do
         subject.valid?.should == true
       end
