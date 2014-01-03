@@ -1,0 +1,41 @@
+<%
+require 'json'
+h={:header => [], :response_header => [] }
+h[:description]=<<EOD
+**Create a location resource.**
+
+* `name` name of the location
+* `address` the address of the location
+* `internal` a boolean value. True if the labware is internal, otherwise false.
+
+EOD
+h[:method] = "POST"
+h[:url]='/locations'
+h[:header] << 'Accept: application/json'
+h[:parameters]=<<EOD
+{ "location": {
+    "name": "ABC Hospital",
+    "address": "CB11 3DF Cambridge 123 Sample Way",
+    "internal": false
+}
+}
+EOD
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{ "location": {
+    "actions": {
+        "read": "/11111111-2222-3333-4444-555555555555",
+        "create": "/11111111-2222-3333-4444-555555555555",
+        "update": "/11111111-2222-3333-4444-555555555555",
+        "delete": "/11111111-2222-3333-4444-555555555555"
+    },
+    "uuid": "11111111-2222-3333-4444-555555555555",
+    "name": "ABC Hospital",
+    "address": "CB11 3DF Cambridge 123 Sample Way",
+    "internal": false
+}
+}
+EOD
+%>
+<%= h.to_json %>

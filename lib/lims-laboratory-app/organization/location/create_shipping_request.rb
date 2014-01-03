@@ -21,9 +21,6 @@ module Lims::LaboratoryApp
           { :shipping_request => shipping_request, :uuid => session.uuid_for!(shipping_request) }
         end
       end
-
-      Create = CreateShippingRequest
-
     end
   end
 end
