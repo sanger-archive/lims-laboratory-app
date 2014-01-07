@@ -1,0 +1,28 @@
+<%
+require 'json'
+h={:header => [], :response_header => [] }
+h[:description]=<<EOD
+**List actions for shipping request resource.**
+
+* `create` creates a new shipping request via HTTP POST request
+* `read` returns the list of actions for a shipping request resource via HTTP GET request
+* `first` lists the first shipping request resources in a page browsing system
+* `last` lists the last shipping request resources in a page browsing system
+EOD
+h[:method] = "GET"
+h[:url]='/shipping_requests'
+h[:header] << 'Accept: application/json'
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{ "shipping_requests": {
+    "actions": {
+        "create": "/shipping_requests",
+        "read": "/shipping_requests",
+        "first": "/shipping_requests/page=1",
+        "last": "/shipping_requests/page=-1"
+    }
+} }
+EOD
+%>
+<%= h.to_json %>
