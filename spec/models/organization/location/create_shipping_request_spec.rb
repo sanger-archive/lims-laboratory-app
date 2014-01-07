@@ -8,7 +8,7 @@ require 'lims-core/persistence/store'
 
 module Lims::LaboratoryApp
   module Organization
-    describe Location::CreateShippingRequest, :organization => true, :persistence => true do
+    describe Location::ShippingRequest::CreateShippingRequest, :organization => true, :persistence => true do
       context "with a valid store" do
         include_context "create object"
         let(:store)       { Lims::Core::Persistence::Store.new }
