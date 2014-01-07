@@ -51,6 +51,22 @@ describe "dna_rna_manual_extraction" do
             "last": "http://example.org/orders/page=-1"
         }
     },
+    "locations": {
+        "actions": {
+            "create": "http://example.org/locations",
+            "read": "http://example.org/locations",
+            "first": "http://example.org/locations/page=1",
+            "last": "http://example.org/locations/page=-1"
+        }
+    },
+    "shipping_requests": {
+        "actions": {
+            "create": "http://example.org/shipping_requests",
+            "read": "http://example.org/shipping_requests",
+            "first": "http://example.org/shipping_requests/page=1",
+            "last": "http://example.org/shipping_requests/page=-1"
+        }
+    },
     "samples": {
         "actions": {
             "create": "http://example.org/samples",
@@ -291,6 +307,16 @@ describe "dna_rna_manual_extraction" do
     "create_orders": {
         "actions": {
             "create": "http://example.org/actions/create_order"
+        }
+    },
+    "create_locations": {
+        "actions": {
+            "create": "http://example.org/actions/create_location"
+        }
+    },
+    "create_shipping_requests": {
+        "actions": {
+            "create": "http://example.org/actions/create_shipping_request"
         }
     },
     "create_plates": {
