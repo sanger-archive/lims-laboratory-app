@@ -1,0 +1,61 @@
+<%
+require 'json'
+h = {:header => [], :response_header => [] }
+h[:description] = <<EOD
+**Use the create shipping request action.**
+
+ `name` the UUID of the labware
+* `location` the location data of the labware
+
+EOD
+h[:method] = "POST"
+h[:url] = '/actions/create_shipping_request'
+h[:header] << 'Accept: application/json'
+h[:setup]=<<EOD
+tube = Lims::LaboratoryApp::Laboratory::Tube.new
+location = Lims::LaboratoryApp::Organization::Location.new(
+    :name     => "ABC Hospital",
+    :address  => "CB11 3DF Cambridge 123 Sample Way",
+    :internal => false)
+
+save_with_uuid tube => [1,2,3,4,0], location => [1,2,3,3,0]
+location 
+EOD
+h[:parameters] = <<EOD
+{ "create_shipping_request": {
+    "name": "11111111-2222-3333-4444-000000000000",
+    "location_uuid": "11111111-2222-3333-3333-000000000000"
+}}
+EOD
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{ "create_shipping_request": {
+    "actions": {
+    },
+    "user": "user@example.com",
+    "application": "application_id",
+    "result": {
+        "shipping_request": {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "delete": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "create": "http://example.org/11111111-2222-3333-4444-555555555555"
+            },
+            "uuid": "11111111-2222-3333-4444-555555555555",
+            "name": "11111111-2222-3333-4444-000000000000",
+            "location": {
+              "name": "ABC Hospital",
+              "address": "CB11 3DF Cambridge 123 Sample Way",
+              "internal": false
+            }
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555"
+    },
+    "name": "11111111-2222-3333-4444-000000000000",
+    "location_uuid": "11111111-2222-3333-3333-000000000000"
+}}
+EOD
+%>
+<%= h.to_json %>
