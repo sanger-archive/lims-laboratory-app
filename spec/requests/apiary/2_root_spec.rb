@@ -268,14 +268,6 @@ describe "root" do
             "last": "http://example.org/batch_filters/page=-1"
         }
     },
-    "location_filters": {
-        "actions": {
-            "create": "http://example.org/location_filters",
-            "read": "http://example.org/location_filters",
-            "first": "http://example.org/location_filters/page=1",
-            "last": "http://example.org/location_filters/page=-1"
-        }
-    },
     "uuid_resources": {
         "actions": {
             "create": "http://example.org/uuid_resources",
