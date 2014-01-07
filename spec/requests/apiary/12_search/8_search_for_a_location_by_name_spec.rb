@@ -30,8 +30,10 @@ describe "search_for_a_location_by_name", :search => true do
         "description": "search for a location by name",
         "model": "location",
         "criteria": {
-            "location": {
-                "name": "ABC"
+            "comparison": {
+                "name": {
+                    "like": "ABC"
+                }
             }
         }
     }

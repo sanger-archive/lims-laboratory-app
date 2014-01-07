@@ -29,7 +29,11 @@ search[:parameters]=<<EOD
     "description": "search for a location by name",
     "model": "location",
     "criteria": {
-        "location": { "name": "ABC" }
+        "comparison": {
+            "name": {
+                "like": "ABC"
+            }
+        }
     }
 }}
 EOD
