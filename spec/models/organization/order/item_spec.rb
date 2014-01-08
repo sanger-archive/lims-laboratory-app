@@ -1,5 +1,7 @@
 # vi: ts=2:sts=2:et:sw=2 spell:spelllang=en 
 require 'models/spec_helper'
+require 'integrations/spec_helper'
+require 'models/persistence/sequel/spec_helper'
 
 require 'lims-laboratory-app/organization/order/item'
 
@@ -58,60 +60,60 @@ module Lims
 				end
 
 				# state machine
-				context "pending" do
-					its(:iteration) { should == 0 }
-					it "can be started" do
-						subject.start.should == true
-					end
+        context "pending" do
+          its(:iteration) { should == 0 }
+          it "can be started" do
+            subject.start.should == true
+          end
 
-					context "source" do
-						before(:each) { subject.complete }
-						its(:status) { should == "done" }
-						its(:done?) { should be_true }
-						its(:iteration) { should == 0 }
+          context "source" do
+            before(:each) { subject.complete }
+            its(:status) { should == "done" }
+            its(:done?) { should be_true }
+            its(:iteration) { should == 0 }
 
-						it_can_not_be_modified :iteration
-						it_can_not_be_modified :uuid
+            it_can_not_be_modified :iteration
+            it_can_not_be_modified :uuid
 
-						it "can't no be reset" do
-							subject.reset.should == false
-						end
-					end
+            it "can't no be reset" do
+              subject.reset.should == false
+            end
+          end
 
-					context "in progress" do
-						before(:each) { subject.start }
-						its(:status) { should == "in_progress" }
-						its(:iteration) { should == 1 }
+          context "in progress" do
+            before(:each) { subject.start }
+            its(:status) { should == "in_progress" }
+            its(:iteration) { should == 1 }
 
-						it "can fail" do
-							subject.fail.should == true
-						end
+            it "can fail" do
+              subject.fail.should == true
+            end
 
-						it "can succeed" do
-							subject.complete.should == true
-						end
+            it "can succeed" do
+              subject.complete.should == true
+            end
 
-						context "failed" do
-							before(:each) { subject.fail }
-							it "can be reset to pending" do
-								subject.reset.should == true
-							end
+            context "failed" do
+              before(:each) { subject.fail }
+              it "can be reset to pending" do
+                subject.reset.should == true
+              end
 
-							it "can be restarted" do
-								subject.start.should == true
-							end
-							it "increments iteration when started" do
-								subject.reset
-								subject.start
-								subject.iteration.should == 2
-							end
+              it "can be restarted" do
+                subject.start.should == true
+              end
+              it "increments iteration when started" do
+                subject.reset
+                subject.start
+                subject.iteration.should == 2
+              end
 
-							it "increments when restarted" do
-								subject.start
-								subject.iteration.should == 2
-							end
-						end
-					end
+              it "increments when restarted" do
+                subject.start
+                subject.iteration.should == 2
+              end
+            end
+          end
 
           context "unused" do
             before(:each) { 
@@ -127,6 +129,42 @@ module Lims
 
             it "can't be reset" do
               subject.reset.should == false
+            end
+          end
+        end
+        context "SQL persistance" do
+      include_context "use core context service"
+          context "within an order" do
+            let(:order) {
+                 Order.new.tap do |order|
+                item = Order::Item.new
+                order.add_item(:source, item)
+              end
+            }
+            it "can be saved" do
+              store.with_session do |session|
+                session << order
+              end
+            end
+            it "can be modified" do
+              order_id = save(order)
+
+              expect {
+              store.with_session do |session|
+                order = session.order[order_id]
+                item = order[:source].first
+                item.complete
+              end
+            }.to change {store.database[:items].count}.by(0)
+            debugger
+
+              # check that no items have been created
+              store.with_session do |session|
+                order = session.order[order_id]
+                order[:source].size.should == 1
+                item = order[:source].first
+                item.done?.should == true
+              end
             end
           end
         end
