@@ -60,14 +60,6 @@ describe "root" do
             "last": "http://example.org/locations/page=-1"
         }
     },
-    "shipping_requests": {
-        "actions": {
-            "create": "http://example.org/shipping_requests",
-            "read": "http://example.org/shipping_requests",
-            "first": "http://example.org/shipping_requests/page=1",
-            "last": "http://example.org/shipping_requests/page=-1"
-        }
-    },
     "samples": {
         "actions": {
             "create": "http://example.org/samples",
@@ -464,11 +456,6 @@ describe "root" do
     "create_locations": {
         "actions": {
             "create": "http://example.org/actions/create_location"
-        }
-    },
-    "create_shipping_requests": {
-        "actions": {
-            "create": "http://example.org/actions/create_shipping_request"
         }
     },
     "revision": 3
