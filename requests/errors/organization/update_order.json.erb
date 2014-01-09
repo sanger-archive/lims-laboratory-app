@@ -1,0 +1,42 @@
+<%
+require 'json'
+h={:header => [], :response_header => [] }
+h[:description]= "Updating an order should check uuid format"
+h[:method] = "PUT"
+h[:url]='/11111111-2222-3333-4444-555555555555'
+h[:header] << 'Accept: application/json'
+h[:setup]=<<EOD
+study = Lims::LaboratoryApp::Organization::Study.new
+user = Lims::LaboratoryApp::Organization::User.new(:email => 'user@example.com')
+order = Lims::LaboratoryApp::Organization::Order.new(:creator => user, :study => study, :pipeline => "P1", :cost_code => "cost code")
+tube = Lims::LaboratoryApp::Laboratory::Tube.new
+batch = Lims::LaboratoryApp::Organization::Batch.new(:process => "manual extraction")
+item = Lims::LaboratoryApp::Organization::Order::Item.new(:uuid =>  "11111111-2222-3333-4444-666666666666")
+
+order.add_item("role1", item)
+save_with_uuid study => [1,1,1,1,1],
+  user => [1,1,1,1,0],
+  order => [1,2,3,4,5],
+  tube => [1,2,3,4,6],
+  batch => [1,2,3,4,7]
+EOD
+h[:parameters]=<<EOP
+{ "items": {
+    "role1": {
+      "111111112-222-3333-4444-666666666666": {"event": "start" }
+    }
+} }
+EOP
+h[:status]=422
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{
+  "errors": {
+    "role": "Item index '111111112-222-3333-4444-666666666666' not a valid uuid or number for role 'role1'"
+  }
+
+}
+
+EOD
+%>
+<%= h.to_json %>
