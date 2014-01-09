@@ -148,6 +148,7 @@ describe "swap_samples_across_16_tubes_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-0000-0000-0000-111111111111"
                             },
                             "uuid": "11111111-0000-0000-0000-111111111111",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -176,6 +177,7 @@ describe "swap_samples_across_16_tubes_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-0000-0000-0000-222222222222"
                             },
                             "uuid": "11111111-0000-0000-0000-222222222222",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -204,6 +206,7 @@ describe "swap_samples_across_16_tubes_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-0000-0000-0000-333333333333"
                             },
                             "uuid": "11111111-0000-0000-0000-333333333333",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -232,6 +235,7 @@ describe "swap_samples_across_16_tubes_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-0000-0000-0000-444444444444"
                             },
                             "uuid": "11111111-0000-0000-0000-444444444444",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -260,6 +264,7 @@ describe "swap_samples_across_16_tubes_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-0000-0000-0000-555555555555"
                             },
                             "uuid": "11111111-0000-0000-0000-555555555555",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -288,6 +293,7 @@ describe "swap_samples_across_16_tubes_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-0000-0000-0000-666666666666"
                             },
                             "uuid": "11111111-0000-0000-0000-666666666666",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -316,6 +322,7 @@ describe "swap_samples_across_16_tubes_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-0000-0000-0000-777777777777"
                             },
                             "uuid": "11111111-0000-0000-0000-777777777777",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -344,6 +351,7 @@ describe "swap_samples_across_16_tubes_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-0000-0000-0000-888888888888"
                             },
                             "uuid": "11111111-0000-0000-0000-888888888888",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -372,6 +380,7 @@ describe "swap_samples_across_16_tubes_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-0000-0000-0000-999999999999"
                             },
                             "uuid": "11111111-0000-0000-0000-999999999999",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -400,6 +409,7 @@ describe "swap_samples_across_16_tubes_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-0000-0000-1111-000000000000"
                             },
                             "uuid": "11111111-0000-0000-1111-000000000000",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -428,6 +438,7 @@ describe "swap_samples_across_16_tubes_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-0000-0000-1111-111111111111"
                             },
                             "uuid": "11111111-0000-0000-1111-111111111111",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -456,6 +467,7 @@ describe "swap_samples_across_16_tubes_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-0000-0000-1111-222222222222"
                             },
                             "uuid": "11111111-0000-0000-1111-222222222222",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -484,6 +496,7 @@ describe "swap_samples_across_16_tubes_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-0000-0000-1111-333333333333"
                             },
                             "uuid": "11111111-0000-0000-1111-333333333333",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -512,6 +525,7 @@ describe "swap_samples_across_16_tubes_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-0000-0000-1111-444444444444"
                             },
                             "uuid": "11111111-0000-0000-1111-444444444444",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -540,6 +554,7 @@ describe "swap_samples_across_16_tubes_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-0000-0000-1111-555555555555"
                             },
                             "uuid": "11111111-0000-0000-1111-555555555555",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -568,6 +583,7 @@ describe "swap_samples_across_16_tubes_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-0000-0000-1111-666666666666"
                             },
                             "uuid": "11111111-0000-0000-1111-666666666666",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
