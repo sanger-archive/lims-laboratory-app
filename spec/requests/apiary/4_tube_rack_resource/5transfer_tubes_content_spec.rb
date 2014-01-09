@@ -63,6 +63,7 @@ describe "5transfer_tubes_content", :tube_rack => true do
                             "delete": "http://example.org/11111111-2222-3333-4444-888888888888"
                         },
                         "uuid": "11111111-2222-3333-4444-888888888888",
+                        "location": null,
                         "type": null,
                         "max_volume": null,
                         "aliquots": [
@@ -106,6 +107,7 @@ describe "5transfer_tubes_content", :tube_rack => true do
                             "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
                         },
                         "uuid": "11111111-2222-3333-4444-777777777777",
+                        "location": null,
                         "type": null,
                         "max_volume": null,
                         "aliquots": [
@@ -149,6 +151,7 @@ describe "5transfer_tubes_content", :tube_rack => true do
                             "delete": "http://example.org/11111111-2222-3333-4444-888888888888"
                         },
                         "uuid": "11111111-2222-3333-4444-888888888888",
+                        "location": null,
                         "type": null,
                         "max_volume": null,
                         "aliquots": [

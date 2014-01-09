@@ -40,6 +40,7 @@ describe "create_a_new_tube_with_samples", :tube => true do
             "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
         },
         "uuid": "11111111-2222-3333-4444-555555555555",
+        "location": null,
         "type": "Eppendorf",
         "max_volume": 2,
         "aliquots": [

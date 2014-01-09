@@ -118,6 +118,7 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_tubes", :
                             "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
                         },
                         "uuid": "11111111-2222-3333-4444-666666666666",
+                        "location": null,
                         "type": null,
                         "max_volume": null,
                         "aliquots": [
@@ -147,6 +148,7 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_tubes", :
                             "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
                         },
                         "uuid": "11111111-2222-3333-4444-777777777777",
+                        "location": null,
                         "type": null,
                         "max_volume": null,
                         "aliquots": [

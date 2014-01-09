@@ -51,6 +51,7 @@ describe "create_a_new_tube_rack_and_add_it_multipe_tubes", :tube_rack => true d
                     "delete": "http://example.org/11111111-2222-3333-4444-111111111111"
                 },
                 "uuid": "11111111-2222-3333-4444-111111111111",
+                "location": null,
                 "type": null,
                 "max_volume": null,
                 "aliquots": [
@@ -79,6 +80,7 @@ describe "create_a_new_tube_rack_and_add_it_multipe_tubes", :tube_rack => true d
                     "delete": "http://example.org/11111111-2222-3333-4444-222222222222"
                 },
                 "uuid": "11111111-2222-3333-4444-222222222222",
+                "location": null,
                 "type": null,
                 "max_volume": null,
                 "aliquots": [
