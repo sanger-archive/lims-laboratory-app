@@ -138,6 +138,7 @@ shared_context "with source elements" do
                         "update"=>path,
                         "delete"=>path},
             "uuid"=>sample_uuid,
+            "location" => location,
             "type"=>nil,
             "max_volume"=>nil,
             "aliquots"=>source_aliquot_array1}
@@ -150,6 +151,7 @@ shared_context "with source elements" do
                         "update"=>path,
                         "delete"=>path},
             "uuid"=>sample_uuid,
+            "location" => location,
             "type"=>nil,
             "max_volume"=>nil,
             "aliquots"=>source_aliquot_array2}
@@ -224,6 +226,7 @@ shared_context "with target elements" do
                         "update"=>path,
                         "delete"=>path},
             "uuid"=>sample_uuid,
+            "location" => location,
             "type"=>nil,
             "max_volume"=>nil,
             "aliquots"=>target_aliquot_array1}
@@ -236,6 +239,7 @@ shared_context "with target elements" do
                         "update"=>path,
                         "delete"=>path},
             "uuid"=>sample_uuid,
+            "location" => location,
             "type"=>nil,
             "max_volume"=>nil,
             "aliquots"=>target_aliquot_array2}

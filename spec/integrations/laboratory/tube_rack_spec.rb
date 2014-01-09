@@ -70,6 +70,7 @@ module Lims::LaboratoryApp::Laboratory
     let(:aliquot_type) { "sample" }
     let(:aliquot_quantity) { 10 }
     let(:unit_type) { "mole" }
+    let(:location) { nil }
     let(:tube_type) { "Eppendorf" }
     let(:tube_max_volume) { 2 }
     let(:tube) { Lims::LaboratoryApp::Laboratory::Tube.new(:type => tube_type, :max_volume => tube_max_volume) }
@@ -105,6 +106,7 @@ module Lims::LaboratoryApp::Laboratory
         "update" => path,
         "delete" => path},
        "uuid" => tube_uuid,
+       "location" => location,
        "type" => tube_type,
        "max_volume" => tube_max_volume,
        "aliquots" => aliquot_array}}
@@ -283,6 +285,7 @@ module Lims::LaboratoryApp::Laboratory
                               "delete" => tube_action_path,
                               "create" => tube_action_path},
                             "uuid" => tube_uuid,
+                            "location" => location,
                             "type" => tube_type,
                             "max_volume" => tube_max_volume,
                             "aliquots" => aliquot_array}}
@@ -355,6 +358,7 @@ module Lims::LaboratoryApp::Laboratory
                       "update" => path,
                       "delete" => path},
                       "uuid" => tube_uuid,
+                      "location" => location,
                       "type" => tube_type,
                       "max_volume" => tube_max_volume,
                       "aliquots" => [ { "sample"=> {"actions" => { "read" => path_sample,
@@ -376,6 +380,7 @@ module Lims::LaboratoryApp::Laboratory
                       "update" => path,
                       "delete" => path},
                       "uuid" => target_tube_uuid,
+                      "location" => location,
                       "type" => target_tube_type,
                       "max_volume" => target_tube_max_volume,
                       "aliquots" => aliquot_array}}
@@ -436,6 +441,7 @@ module Lims::LaboratoryApp::Laboratory
                         "update" => path,
                         "delete" => path},
                         "uuid" => tube_uuid,
+                        "location" => location,
                         "type" => tube_type,
                         "max_volume" => tube_max_volume,
                         "aliquots" => aliquot_array}}
@@ -544,6 +550,7 @@ module Lims::LaboratoryApp::Laboratory
                         "update" => path1,
                         "delete" => path1},
                         "uuid" => tube_uuids_1[0],
+                        "location" => location,
                         "type" => tube_type,
                         "max_volume" => tube_max_volume,
                         "aliquots" => get_aliquot_array(sample_uuids_1[0])},
@@ -553,6 +560,7 @@ module Lims::LaboratoryApp::Laboratory
                         "update" => path2,
                         "delete" => path2},
                         "uuid" => tube_uuids_2[0],
+                        "location" => location,
                         "type" => tube_type,
                         "max_volume" => tube_max_volume,
                         "aliquots" => get_aliquot_array(sample_uuids_2[0])}
@@ -568,6 +576,7 @@ module Lims::LaboratoryApp::Laboratory
                         "update" => path2,
                         "delete" => path2},
                         "uuid" => tube_uuids_2[1],
+                        "location" => location,
                         "type" => tube_type,
                         "max_volume" => tube_max_volume,
                         "aliquots" => get_aliquot_array(sample_uuids_2[1])},
@@ -577,6 +586,7 @@ module Lims::LaboratoryApp::Laboratory
                         "update" => path1,
                         "delete" => path1},
                         "uuid" => tube_uuids_1[1],
+                        "location" => location,
                         "type" => tube_type,
                         "max_volume" => tube_max_volume,
                         "aliquots" => get_aliquot_array(sample_uuids_1[1])}

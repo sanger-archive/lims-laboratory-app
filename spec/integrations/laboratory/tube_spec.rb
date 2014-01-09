@@ -18,6 +18,7 @@ shared_context "expect tube JSON" do
           "delete" => path,
           "create" => path},
         "uuid" => uuid,
+        "location" => location,
         "type" => tube_type,
         "max_volume" => tube_max_volume,
         "aliquots" => aliquot_array}
@@ -33,6 +34,7 @@ shared_context "expect tube JSON with labels" do
           "delete" => path,
           "create" => path},
         "uuid" => uuid,
+        "location" => location,
         "type" => tube_type,
         "max_volume" => tube_max_volume,
         "aliquots" => aliquot_array,
@@ -59,6 +61,7 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
   let(:asset) { "tube" }
   include_context "use generated uuid"
   let(:model) { "tubes" }
+  let(:location) { nil }
 
   context "#create" do
     context do
@@ -149,6 +152,7 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
                         "delete" => source_tube1_url
                       },
                       "uuid" => source_tube1_uuid,
+                      "location" => location,
                       "type" => nil,
                       "max_volume" => nil,
                       "aliquots" => aliquot_array_source
@@ -163,6 +167,7 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
                         "delete" => target_tube2_url
                       },
                       "uuid" => target_tube2_uuid,
+                      "location" => location,
                       "type" => nil,
                       "max_volume" => nil,
                       "aliquots" => aliquot_array_target
@@ -206,6 +211,7 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
                         "delete" => source_tube1_url
                       },
                       "uuid" => source_tube1_uuid,
+                      "location" => location,
                       "type" => nil,
                       "max_volume" => nil,
                       "aliquots" => aliquot_array_source
@@ -267,6 +273,7 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
                         "delete" => source_tube1_url
                       },
                       "uuid" => source_tube1_uuid,
+                      "location" => location,
                       "type" => nil,
                       "max_volume" => nil,
                       "aliquots" => aliquot_array_source_with_fraction
@@ -281,6 +288,7 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
                       "delete" => target_tube2_url
                     },
                     "uuid" => target_tube2_uuid,
+                    "location" => location,
                     "type" => nil,
                     "max_volume" => nil,
                     "aliquots" => aliquot_array_target_DNA
