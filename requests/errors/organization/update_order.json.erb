@@ -1,2 +1,42 @@
+<%
+require 'json'
+h={:header => [], :response_header => [] }
+h[:description]= "Updating an order should check uuid format"
+h[:method] = "PUT"
+h[:url]='/11111111-2222-3333-4444-555555555555'
+h[:header] << 'Accept: application/json'
+h[:setup]=<<EOD
+study = Lims::LaboratoryApp::Organization::Study.new
+user = Lims::LaboratoryApp::Organization::User.new(:email => 'user@example.com')
+order = Lims::LaboratoryApp::Organization::Order.new(:creator => user, :study => study, :pipeline => "P1", :cost_code => "cost code")
+tube = Lims::LaboratoryApp::Laboratory::Tube.new
+batch = Lims::LaboratoryApp::Organization::Batch.new(:process => "manual extraction")
+item = Lims::LaboratoryApp::Organization::Order::Item.new(:uuid =>  "11111111-2222-3333-4444-666666666666")
 
-{"header":["Accept: application/json"],"response_header":["Content-Type: application/json"],"description":"**Assign an existing item to a batch**\n\nThis example can be combined with more complete order update using the above update example.\n\n* `items` can take a `batch_uuid` attribute to assign an item to a batch\n\nThe example below update an order and assign the item `11111111-2222-3333-4444-666666666666` to the batch \n`11111111-2222-3333-4444-777777777777`. Note that an item can be assigned to a batch only through \nan update order action.\n","method":"PUT","url":"/11111111-2222-3333-4444-555555555555","setup":"study = Lims::LaboratoryApp::Organization::Study.new\nuser = Lims::LaboratoryApp::Organization::User.new(:email => 'user@example.com')\norder = Lims::LaboratoryApp::Organization::Order.new(:creator => user, :study => study, :pipeline => \"P1\", :cost_code => \"cost code\")\ntube = Lims::LaboratoryApp::Laboratory::Tube.new\nbatch = Lims::LaboratoryApp::Organization::Batch.new(:process => \"manual extraction\")\nitem = Lims::LaboratoryApp::Organization::Order::Item.new(:uuid =>  \"11111111-2222-3333-4444-666666666666\")\nitem.start\n\norder.add_item(\"role1\", item)\nsave_with_uuid study => [1,1,1,1,1],\n  user => [1,1,1,1,0],\n  order => [1,2,3,4,5],\n  tube => [1,2,3,4,6],\n  batch => [1,2,3,4,7]\n","parameters":"{ \"items\": {\n    \"role1\": {\n        \"11111111-2222-3333-4444-666666666666\": {\"event\": \"complete\", \"batch_uuid\": \"11111111-2222-3333-4444-777777777777\"}\n    }\n} }\n","status":200,"response":"{\n   \"order\":{\n      \"actions\":{\n         \"read\":\"/11111111-2222-3333-4444-555555555555\",\n         \"create\":\"/11111111-2222-3333-4444-555555555555\",\n         \"update\":\"/11111111-2222-3333-4444-555555555555\",\n         \"delete\":\"/11111111-2222-3333-4444-555555555555\"\n      },\n      \"uuid\":\"11111111-2222-3333-4444-555555555555\",\n      \"pipeline\":\"P1\",\n      \"status\":\"draft\",\n      \"parameters\":{},\n      \"state\":{},\n      \"cost_code\":\"cost code\",\n      \"creator\":{\n         \"actions\":{\n            \"read\":\"/11111111-1111-1111-1111-000000000000\",\n            \"create\":\"/11111111-1111-1111-1111-000000000000\",\n            \"update\":\"/11111111-1111-1111-1111-000000000000\",\n            \"delete\":\"/11111111-1111-1111-1111-000000000000\"\n         },\n         \"uuid\":\"11111111-1111-1111-1111-000000000000\"\n      },\n      \"study\":{\n         \"actions\":{\n            \"read\":\"/11111111-1111-1111-1111-111111111111\",\n            \"create\":\"/11111111-1111-1111-1111-111111111111\",\n            \"update\":\"/11111111-1111-1111-1111-111111111111\",\n            \"delete\":\"/11111111-1111-1111-1111-111111111111\"\n         },\n         \"uuid\":\"11111111-1111-1111-1111-111111111111\"\n      },\n      \"items\":{\n         \"role1\":[\n            {\n               \"uuid\":\"11111111-2222-3333-4444-666666666666\",\n               \"status\":\"done\",\n               \"batch\":{\n                  \"actions\":{\n                     \"read\":\"/11111111-2222-3333-4444-777777777777\",\n                     \"create\":\"/11111111-2222-3333-4444-777777777777\",\n                     \"update\":\"/11111111-2222-3333-4444-777777777777\",\n                     \"delete\":\"/11111111-2222-3333-4444-777777777777\"\n                  },\n                  \"uuid\":\"11111111-2222-3333-4444-777777777777\",\n                  \"process\":\"manual extraction\",\n                  \"kit\":null\n               }\n            }\n         ]\n      }\n   }\n}\n"}
+order.add_item("role1", item)
+save_with_uuid study => [1,1,1,1,1],
+  user => [1,1,1,1,0],
+  order => [1,2,3,4,5],
+  tube => [1,2,3,4,6],
+  batch => [1,2,3,4,7]
+EOD
+h[:parameters]=<<EOP
+{ "items": {
+    "role1": {
+      "111111112-222-3333-4444-666666666666": {"event": "start" }
+    }
+} }
+EOP
+h[:status]=422
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{
+  "errors": {
+    "role": "Item index '111111112-222-3333-4444-666666666666' not a valid uuid or number for role 'role1'"
+  }
+
+}
+
+EOD
+%>
+<%= h.to_json %>
