@@ -5,6 +5,8 @@ require 'lims-core/persistence/persist_association_trait'
 require 'lims-laboratory-app/laboratory/tube'
 require 'lims-laboratory-app/laboratory/aliquot/all'
 
+require 'lims-core/persistence/sequel/persistor'
+
 module Lims::LaboratoryApp
   module Laboratory
 
@@ -13,9 +15,10 @@ module Lims::LaboratoryApp
     # include the suitable persistor.
     class Tube
 
-      (does "lims/core/persistence/persistable", :children => [
-        {:name => :tube_aliquot, :deletable => true }
-      ]).class_eval do
+      (does "lims/core/persistence/persistable",
+        :parents => [{:name => :location, :deletable => true}],
+        :children => [{:name => :tube_aliquot, :deletable => true }]
+      ).class_eval do
         def children_tube_aliquot(resource, children)
           resource.each do |aliquot|
             children << TubePersistor::TubeAliquot.new(resource, aliquot)
