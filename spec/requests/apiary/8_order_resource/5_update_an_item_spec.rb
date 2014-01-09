@@ -17,6 +17,7 @@ describe "update_an_item", :order => true do
     tube = Lims::LaboratoryApp::Laboratory::Tube.new
     batch = Lims::LaboratoryApp::Organization::Batch.new(:process => "manual extraction")
     item = Lims::LaboratoryApp::Organization::Order::Item.new(:uuid =>  "11111111-2222-3333-4444-666666666666")
+    item.start
     
     order.add_item("role1", item)
     save_with_uuid study => [1,1,1,1,1],
@@ -33,6 +34,7 @@ describe "update_an_item", :order => true do
     "items": {
         "role1": {
             "11111111-2222-3333-4444-666666666666": {
+                "event": "complete",
                 "batch_uuid": "11111111-2222-3333-4444-777777777777"
             }
         }
@@ -63,8 +65,7 @@ describe "update_an_item", :order => true do
                 "update": "http://example.org/11111111-1111-1111-1111-000000000000",
                 "delete": "http://example.org/11111111-1111-1111-1111-000000000000"
             },
-            "uuid": "11111111-1111-1111-1111-000000000000",
-            "email": "user@example.com"
+            "uuid": "11111111-1111-1111-1111-000000000000"
         },
         "study": {
             "actions": {
@@ -79,7 +80,7 @@ describe "update_an_item", :order => true do
             "role1": [
                 {
                     "uuid": "11111111-2222-3333-4444-666666666666",
-                    "status": "pending",
+                    "status": "done",
                     "batch": {
                         "actions": {
                             "read": "http://example.org/11111111-2222-3333-4444-777777777777",
