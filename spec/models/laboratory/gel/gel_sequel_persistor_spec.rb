@@ -8,6 +8,7 @@ require 'models/persistence/filter/label_sequel_filter_shared'
 require 'models/persistence/filter/batch_sequel_filter_shared'
 require 'models/persistence/filter/order_lookup_sequel_filter_shared'
 require 'models/persistence/filter/multi_criteria_sequel_filter_shared'
+require 'models/laboratory/location_shared'
 
 # Model requirement
 require 'lims-laboratory-app/laboratory/gel'
@@ -16,6 +17,7 @@ module Lims::LaboratoryApp
   describe "Persistence#Sequel#Gel", :gel => true, :laboratory => true, :persistence => true, :sequel => true do
     include_context "sequel store"
     include_context "container-like asset factory"
+    include_context "define location"
 
     def last_gel_id(session)
       session.gel.dataset.order_by(:id).last[:id]
@@ -133,6 +135,17 @@ module Lims::LaboratoryApp
 
           context "by batch" do
             it_behaves_like "batch filtrable"
+          end
+        end
+      end
+
+      context "with a location" do
+        it "can be saved and reloaded" do
+          gel_id = save(new_gel_with_samples(3))
+
+          store.with_session do |session|
+            gel = session.gel[gel_id]
+            gel.location.should == location
           end
         end
       end

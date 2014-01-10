@@ -1,5 +1,6 @@
 # Spec requirements
 require 'models/laboratory/located_examples'
+require 'models/laboratory/location_shared'
 require 'models/laboratory/container_examples'
 require 'models/labels/labellable_examples'
 
@@ -34,6 +35,7 @@ module Lims::LaboratoryApp::Laboratory
       it_behaves_like "a valid gel"
       it_behaves_like "a hash", :B3, :A3, :A13, :I1
       it_behaves_like "labellable"
+      it_behaves_like "can have a location"
     end
   end
 
