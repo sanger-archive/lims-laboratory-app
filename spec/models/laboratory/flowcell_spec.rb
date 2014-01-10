@@ -3,6 +3,7 @@ require 'models/laboratory/spec_helper'
 require 'models/laboratory/located_examples'
 require 'models/laboratory/container_examples'
 require 'models/labels/labellable_examples'
+require 'models/laboratory/location_shared'
 
 require 'models/laboratory/receptacle_examples'
 
@@ -28,16 +29,17 @@ module Lims::LaboratoryApp::Laboratory
 
   describe Flowcell, :flowcell => true, :laboratory => true  do
     subject {described_class.new(:number_of_lanes => number_of_lanes)}
-    
+
     context "of type MiSeq" do
-      let (:number_of_lanes) { 1 }
+      let(:number_of_lanes) { 1 }
       it_behaves_like "located" 
       it_behaves_like "contains lanes"
       it_behaves_like "labellable"
+      it_behaves_like "can have a location"
     end
 
     context "of type HiSeq" do
-      let (:number_of_lanes) { 8 }
+      let(:number_of_lanes) { 8 }
       it_behaves_like "located" 
       it_behaves_like "contains lanes"
       it_behaves_like "labellable"

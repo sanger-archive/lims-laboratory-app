@@ -1,5 +1,5 @@
 require 'models/spec_helper'
-require 'lims-laboratory-app/organization/location'
+require 'lims-laboratory-app/organization/location/all'
 
 shared_context "can have a location" do
   it_behaves_like "has an attribute of", :location, Lims::LaboratoryApp::Organization::Location
