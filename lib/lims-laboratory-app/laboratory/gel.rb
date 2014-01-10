@@ -1,4 +1,4 @@
-require 'lims-core/resource'
+require 'lims-laboratory-app/laboratory/location_resource'
 require 'lims-laboratory-app/laboratory/container'
 
 require 'facets/hash'
@@ -10,7 +10,7 @@ module Lims::LaboratoryApp
     # It has a number of rows and number of columns property.
     # Gel contains Windows and has some readable labels on it (i.e. barcode).
     class Gel
-      include Lims::Core::Resource
+      include LocationResource
 
       # creates the matrix of container elements (Windows)
       matrix_of(:Window)
