@@ -2,6 +2,8 @@ require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
 require 'models/laboratory/tube_shared'
 require 'models/laboratory/filter_paper_shared'
+require 'models/laboratory/location_shared'
+require 'models/laboratory/resource_with_location_shared'
 
 require 'lims-laboratory-app/laboratory/filter_paper/create_filter_paper'
 require 'lims-core/persistence/store'
@@ -11,6 +13,7 @@ module Lims::LaboratoryApp
     describe FilterPaper::CreateFilterPaper, :filter_paper => true, :laboratory => true, :persistence => true do
       context "with a valid store" do
         include_context "create object"
+        include_context "define location"
         let (:store) { Lims::Core::Persistence::Store.new }
         let(:user) { double(:user) }
         let(:application) { "Test create filter paper" }
@@ -31,11 +34,12 @@ module Lims::LaboratoryApp
           end
         end
 
-        context "create a filter paper with samples" do
+        context "create a filter paper with samples and location" do
           let(:sample) { new_sample(1) }
           subject do 
             FilterPaper::CreateFilterPaper.new(:store => store, :user => user, :application => application) do |a,s|
-              a.aliquots = [{:sample => sample }] 
+              a.aliquots = [{:sample => sample }]
+              a.location = location
             end
           end
           it_behaves_like "an action"
@@ -47,6 +51,8 @@ module Lims::LaboratoryApp
             result[:uuid].should == uuid
             result[:filter_paper].first.sample.should == sample
           end
+
+          it_behaves_like "creating a resource with a location", FilterPaper
         end
       end
     end

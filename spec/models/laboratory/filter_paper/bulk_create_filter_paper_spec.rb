@@ -2,6 +2,7 @@ require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
 require 'models/laboratory/tube_shared'
 require 'models/laboratory/filter_paper_shared'
+require 'models/laboratory/location_shared'
 
 require 'lims-laboratory-app/laboratory/filter_paper/bulk_create_filter_paper'
 require 'lims-core/persistence/store'
@@ -11,6 +12,7 @@ module Lims::LaboratoryApp
     describe FilterPaper::BulkCreateFilterPaper, :filter_paper => true, :laboratory => true, :persistence => true do
       context "with a valid store" do
         include_context "create object"
+        include_context "define location"
         let(:store) { Lims::Core::Persistence::Store.new }
         let(:user) { double(:user) }
         let(:application) { "bulk create filter paper" }
@@ -29,11 +31,11 @@ module Lims::LaboratoryApp
             end
           end
 
-          context "empty filter papers" do
+          context "empty filter papers with location" do
             let(:parameters) do
               [].tap do |filter_papers|
                 number_of_filter_papers.times do
-                  filter_papers << {}
+                  filter_papers << {"location" => location}
                 end
               end
             end
@@ -45,17 +47,19 @@ module Lims::LaboratoryApp
               result.should be_a(Hash)
               result[:filter_papers].should be_a(Array)
               result[:filter_papers].size.should == number_of_filter_papers
-              result[:filter_papers].each do |filter_paper|
+              result[:filter_papers].each_with_index do |filter_paper, i|
                 filter_paper.should be_a(FilterPaper)
+                filter_paper.location.should == parameters[i]["location"]
               end
             end
           end
 
-          context "filter papers with samples" do
+          context "filter papers with samples and location" do
             let(:parameters) do
               [].tap do |filter_papers|
                 number_of_filter_papers.times do
                   filter_papers << {
+                    "location" => location,
                     "aliquots" => [{
                       "sample" => new_sample(rand(50)), 
                       "type" => aliquot_types[rand(3)], 
@@ -80,6 +84,7 @@ module Lims::LaboratoryApp
                   aliquot[:type].should == parameters[i]["aliquots"][j]["type"]
                   aliquot[:quantity].should == parameters[i]["aliquots"][j]["quantity"]
                 end
+                filter_paper.location.should == location
               end
             end
           end

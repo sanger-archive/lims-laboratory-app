@@ -6,7 +6,7 @@ require 'models/laboratory/tube_shared'
 require 'models/persistence/filter/label_sequel_filter_shared'
 require 'models/persistence/filter/order_lookup_sequel_filter_shared'
 require 'models/persistence/filter/batch_sequel_filter_shared'
-require 'models/laboratory/location_examples'
+require 'models/laboratory/location_shared'
 
 # Model requirements
 require 'lims-core/persistence/sequel/store'
