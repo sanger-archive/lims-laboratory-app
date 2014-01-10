@@ -1,4 +1,5 @@
 require 'modularity'
+require 'lims-laboratory-app/organization/location'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -12,6 +13,8 @@ module Lims::LaboratoryApp
         # the quantity of every single aliquot contained in the resource.
         attribute :aliquot_type, String, :required => false, :writer => :private
         attribute :aliquot_quantity, Numeric, :required => false, :writer => :private
+        # Change the shipping location of the tube
+        attribute :location, Lims::LaboratoryApp::Organization::Location, :required => false
 
         define_method(:container) do
           self.send(container_name)
@@ -25,12 +28,12 @@ module Lims::LaboratoryApp
         # @return [Hash]
         define_method(:update) do |session|
           # Update aliquot individually 
-          elements.each do |location, element_data|
+          elements.each do |position, element_data|
             sample = element_data["sample"]
             aliquot_type = element_data["aliquot_type"]
             aliquot_quantity = element_data["aliquot_quantity"]
             aliquot_out_of_bounds = element_data["out_of_bounds"]
-            aliquot = container[location.to_s].content.find { |aliquot| aliquot.sample == sample }
+            aliquot = container[position.to_s].content.find { |aliquot| aliquot.sample == sample }
 
             if aliquot
               aliquot.type = aliquot_type if aliquot_type
@@ -46,6 +49,9 @@ module Lims::LaboratoryApp
               aliquot.quantity = aliquot_quantity if aliquot_quantity
             end
           end
+
+          # Update container shipping location
+          container.location = location if location
 
           {container_name => container}
         end
