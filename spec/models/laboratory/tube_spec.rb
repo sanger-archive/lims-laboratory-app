@@ -1,6 +1,6 @@
 # Spec requirements
 require 'models/laboratory/spec_helper'
-require 'models/laboratory/location_examples'
+require 'models/laboratory/location_shared'
 require 'models/laboratory/located_examples'
 require 'models/laboratory/receptacle_examples'
 require 'models/labels/labellable_examples'

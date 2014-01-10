@@ -1,7 +1,7 @@
 # Spec requirements
 require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
-require 'models/laboratory/location_examples'
+require 'models/laboratory/location_shared'
 
 #Model requirements
 require 'models/laboratory/spec_helper'
