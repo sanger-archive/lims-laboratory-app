@@ -19,6 +19,7 @@ shared_context "expect gel JSON" do
                               "delete" => path,
                               "create" => path},
                 "uuid" => uuid,
+                "location" => location,
                 "number_of_rows" => number_of_rows,
                 "number_of_columns" => number_of_columns,
                 "windows" => window_hash}
@@ -34,6 +35,7 @@ shared_context "expect gel JSON with labels" do
                               "delete" => path,
                               "create" => path},
                 "uuid" => uuid,
+                "location" => location,
                 "number_of_rows" => number_of_rows,
                 "number_of_columns" => number_of_columns,
                 "windows" => window_hash,
@@ -43,12 +45,14 @@ shared_context "expect gel JSON with labels" do
 end
 
 shared_context "parameters for empty gel" do
-  let(:parameters) { { :gel => dimensions } }
+  let(:parameters) { { :gel => dimensions.merge(:location => location) } }
   include_context "expect empty gel"
 end
 
 shared_context "for gel with samples" do
-  let(:parameters) { { :gel => dimensions.merge(:windows_description => windows_description) } }
+  let(:parameters) { { :gel => dimensions.merge(
+    :windows_description => windows_description,
+    :location => location) } }
   include_context "with saved sample"
   include_context "with filled aliquots"
   let(:aliquot_type) { 'sample' }
@@ -72,6 +76,13 @@ describe Lims::LaboratoryApp::Laboratory::Gel do
   include_context "JSON"
   include_context "use generated uuid"
   let(:model) { "gels" }
+  let(:location) {
+    {
+      :name => "ABC Hospital",
+      :address => "CB11 5RT TubeCity 123 Sample Way",
+      :internal => false
+    }
+  }
 
   context "#create" do
     include_context "has standard dimensions"

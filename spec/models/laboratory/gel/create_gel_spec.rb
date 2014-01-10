@@ -1,6 +1,7 @@
 # Spec requirements
 require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
+require 'models/laboratory/location_shared'
 
 require 'models/laboratory/container_like_asset_shared'
 
@@ -13,6 +14,7 @@ module Lims::LaboratoryApp
       subject do
         Gel::CreateGel.new(:store => store, :user => user, :application => application)  do |a,s|
           a.ostruct_update(dimensions)
+          a.location = location
         end
       end
 
@@ -39,6 +41,7 @@ module Lims::LaboratoryApp
         Gel::CreateGel.new(:store => store, :user => user, :application => application)  do |a,s|
           a.ostruct_update(dimensions)
           a.windows_description = windows_description
+          a.location = location
         end
       end
 
@@ -63,6 +66,7 @@ module Lims::LaboratoryApp
         gel = result[:gel]
         gel.number_of_rows.should == dimensions[:number_of_rows]
         gel.number_of_columns.should == dimensions[:number_of_columns]
+        gel.location = location
         gel_checker[gel]
 
         result[:uuid].should == uuid
@@ -79,6 +83,7 @@ module Lims::LaboratoryApp
       context "valid calling context" do
         let!(:store) { Lims::Core::Persistence::Store.new() }
         include_context "container-like asset factory"
+        include_context "define location"
         include_context("for application",  "Test gel creation")
 
         include_context("has gel dimension", 8, 12)
