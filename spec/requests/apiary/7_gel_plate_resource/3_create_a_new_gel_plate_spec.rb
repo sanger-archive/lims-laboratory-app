@@ -39,6 +39,7 @@ describe "create_a_new_gel_plate", :gel_plate => true do
             "create": "http://example.org/11111111-2222-3333-4444-555555555555"
         },
         "uuid": "11111111-2222-3333-4444-555555555555",
+        "location": null,
         "number_of_rows": 8,
         "number_of_columns": 12,
         "windows": {
