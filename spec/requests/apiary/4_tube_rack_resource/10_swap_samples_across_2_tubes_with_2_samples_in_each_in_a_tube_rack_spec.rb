@@ -64,6 +64,7 @@ describe "swap_samples_across_2_tubes_with_2_samples_in_each_in_a_tube_rack", :t
                     "uuid": "11111111-2222-3333-2222-111111111111",
                     "number_of_rows": 8,
                     "number_of_columns": 12,
+                    "location": null,
                     "tubes": {
                         "A1": {
                             "actions": {

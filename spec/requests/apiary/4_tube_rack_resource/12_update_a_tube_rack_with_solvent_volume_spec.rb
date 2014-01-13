@@ -44,6 +44,7 @@ describe "update_a_tube_rack_with_solvent_volume", :tube_rack => true do
         "uuid": "11111111-2222-3333-4444-777777777777",
         "number_of_rows": 8,
         "number_of_columns": 12,
+        "location": null,
         "tubes": {
             "A1": {
                 "actions": {

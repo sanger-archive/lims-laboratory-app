@@ -1,7 +1,7 @@
 require "requests/apiary/4_tube_rack_resource/spec_helper"
-describe "create_a_new_tube_rack_and_add_it_multipe_tubes", :tube_rack => true do
+describe "create_a_new_tube_rack_with_location_and_add_it_multipe_tubes", :tube_rack => true do
   include_context "use core context service"
-  it "create_a_new_tube_rack_and_add_it_multipe_tubes" do
+  it "create_a_new_tube_rack_with_location_and_add_it_multipe_tubes" do
   # **Create a new tube rack and add it multiple tubes.**
   # 
   # * `number_of_rows` number of rows in the rack
@@ -26,6 +26,10 @@ describe "create_a_new_tube_rack_and_add_it_multipe_tubes", :tube_rack => true d
         "tubes": {
             "A1": "11111111-2222-3333-4444-111111111111",
             "E5": "11111111-2222-3333-4444-222222222222"
+        },
+        "location": {
+            "name": "ABC Hospital",
+            "address": "CB11 2TY TubeCity 123 Sample Way"
         }
     }
 }
@@ -42,7 +46,11 @@ describe "create_a_new_tube_rack_and_add_it_multipe_tubes", :tube_rack => true d
         "uuid": "11111111-2222-3333-4444-777777777777",
         "number_of_rows": 8,
         "number_of_columns": 12,
-        "location": null,
+        "location": {
+            "name": "ABC Hospital",
+            "address": "CB11 2TY TubeCity 123 Sample Way",
+            "internal": true
+        },
         "tubes": {
             "A1": {
                 "actions": {

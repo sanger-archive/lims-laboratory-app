@@ -38,6 +38,10 @@ describe "update_a_tube_rack", :tube_rack => true do
     "tubes": {
         "C2": "11111111-2222-4444-5555-333333333333",
         "G10": "11111111-2222-4444-5555-444444444444"
+    },
+    "location": {
+        "name": "ABC Hospital",
+        "address": "CB11 2TY TubeCity 123 Sample Way"
     }
 }
     EOD
@@ -53,6 +57,11 @@ describe "update_a_tube_rack", :tube_rack => true do
         "uuid": "11111111-2222-3333-4444-777777777777",
         "number_of_rows": 8,
         "number_of_columns": 12,
+        "location": {
+            "name": "ABC Hospital",
+            "address": "CB11 2TY TubeCity 123 Sample Way",
+            "internal": true
+        },
         "tubes": {
             "A1": {
                 "actions": {
