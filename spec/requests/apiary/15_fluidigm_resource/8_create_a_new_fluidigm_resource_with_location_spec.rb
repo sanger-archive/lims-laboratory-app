@@ -1,12 +1,17 @@
 require "requests/apiary/15_fluidigm_resource/spec_helper"
-describe "create_a_new_fluidigm", :fluidigm => true do
+describe "create_a_new_fluidigm_resource_with_location", :fluidigm => true do
   include_context "use core context service"
-  it "create_a_new_fluidigm" do
+  it "create_a_new_fluidigm_resource_with_location" do
   # **Create a fluidigm resource.**
   # 
   # * `number_of_rows` number of rows on the fluidigm labware
   # * `number_of_columns` number of columns on the fluidigm labware
   # * `fluidigm_wells_description` map aliquots to wells
+    sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
+    snp_assay1 = Lims::LaboratoryApp::Laboratory::SnpAssay.new(
+        :name => 'snp assay 1', :allele_x => 'A', :allele_y => 'G')
+    
+    save_with_uuid sample1 => [1,2,3,4,6], snp_assay1 => [1,2,3,4,7]
 
     header('Content-Type', 'application/json')
     header('Accept', 'application/json')
@@ -17,6 +22,23 @@ describe "create_a_new_fluidigm", :fluidigm => true do
         "number_of_rows": 16,
         "number_of_columns": 12,
         "fluidigm_wells_description": {
+            "A1": [
+                {
+                    "snp_assay": "11111111-2222-3333-4444-777777777777",
+                    "quantity": 1
+                }
+            ],
+            "S3": [
+                {
+                    "sample": "11111111-2222-3333-4444-666666666666",
+                    "type": "DNA",
+                    "quantity": 2
+                }
+            ]
+        },
+        "location": {
+            "name": "ABC Hospital",
+            "address": "CB11 2TY TubeCity 123 Sample Way"
         }
     }
 }
@@ -33,9 +55,29 @@ describe "create_a_new_fluidigm", :fluidigm => true do
         "uuid": "11111111-2222-3333-4444-555555555555",
         "number_of_rows": 16,
         "number_of_columns": 12,
+        "location": {
+            "name": "ABC Hospital",
+            "address": "CB11 2TY TubeCity 123 Sample Way",
+            "internal": true
+        },
         "fluidigm_wells": {
             "A1": [
-
+                {
+                    "snp_assay": {
+                        "actions": {
+                            "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+                            "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+                            "delete": "http://example.org/11111111-2222-3333-4444-777777777777",
+                            "create": "http://example.org/11111111-2222-3333-4444-777777777777"
+                        },
+                        "uuid": "11111111-2222-3333-4444-777777777777",
+                        "name": "snp assay 1",
+                        "allele_x": "A",
+                        "allele_y": "G"
+                    },
+                    "quantity": 1,
+                    "unit": "mole"
+                }
             ],
             "A2": [
 
@@ -59,7 +101,21 @@ describe "create_a_new_fluidigm", :fluidigm => true do
 
             ],
             "S3": [
-
+                {
+                    "sample": {
+                        "actions": {
+                            "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "delete": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "create": "http://example.org/11111111-2222-3333-4444-666666666666"
+                        },
+                        "uuid": "11111111-2222-3333-4444-666666666666",
+                        "name": "sample 1"
+                    },
+                    "quantity": 2,
+                    "type": "DNA",
+                    "unit": "mole"
+                }
             ],
             "S4": [
 

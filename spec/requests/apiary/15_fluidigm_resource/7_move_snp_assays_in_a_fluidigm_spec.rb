@@ -59,6 +59,7 @@ describe "move_snp_assays_in_a_fluidigm", :fluidigm => true do
                     "uuid": "11111111-2222-3333-2222-111111111111",
                     "number_of_rows": 16,
                     "number_of_columns": 12,
+                    "location": null,
                     "fluidigm_wells": {
                         "A1": [
 
