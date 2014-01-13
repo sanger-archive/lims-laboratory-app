@@ -12,8 +12,11 @@ module Lims::LaboratoryApp
     # Real implementation classes (e.g. Sequel::Plate) should
     # include the suitable persistor.
     class Plate
-      does "lims/laboratory_app/container_persistor", :element => :well_aliquot, :table_name => :wells,
-      :contained_class => Aliquot
+      does "lims/laboratory_app/container_persistor",
+        :element => :well_aliquot,
+        :parents => [{:name => :location, :deletable => true}],
+        :table_name => :wells,
+        :contained_class => Aliquot
     end
   end
 end
