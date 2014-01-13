@@ -38,6 +38,7 @@ describe "update_a_plate", :plate => true do
         "number_of_rows": 8,
         "number_of_columns": 12,
         "type": "new plate type",
+        "location": null,
         "wells": {
             "A1": [
 
