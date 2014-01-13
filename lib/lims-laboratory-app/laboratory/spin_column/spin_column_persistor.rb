@@ -1,9 +1,11 @@
 # vi: ts=2:sts=2:et:sw=2 spell:spelllang=en
 
 
-require 'lims-core/persistence/persistor'
+require 'lims-core/persistence/persist_association_trait'
 require 'lims-laboratory-app/laboratory/spin_column'
 require 'lims-laboratory-app/laboratory/aliquot/all'
+
+require 'lims-core/persistence/persistor'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -14,6 +16,7 @@ module Lims::LaboratoryApp
     class SpinColumn
 
       (does "lims/core/persistence/persistable",
+        :parents => [{:name => :location, :deletable => true}],
         :children => [{:name => :spin_column_aliquot, :deletable => true }]
       ).class_eval do
         def children_spin_column_aliquot(resource, children)
