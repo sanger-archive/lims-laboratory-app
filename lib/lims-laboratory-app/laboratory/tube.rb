@@ -7,7 +7,7 @@ module Lims::LaboratoryApp
     # Piece of laboratory. 
     # Can have something in it and probably a label or something to identifiy it.
     class Tube
-      include Lims::LaboratoryApp::Laboratory::LocationResource
+      include LocationResource
       include Receptacle
       # Type contains the actual type of the tube, for example Eppendorf.
       attribute :type, String, :required => false
