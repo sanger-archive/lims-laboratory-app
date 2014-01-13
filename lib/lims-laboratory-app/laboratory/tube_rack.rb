@@ -1,11 +1,11 @@
-require 'lims-core/resource'
+require 'lims-laboratory-app/laboratory/location_resource'
 require 'lims-laboratory-app/laboratory/tube'
 require 'lims-laboratory-app/laboratory/container'
 
 module Lims::LaboratoryApp
   module Laboratory
     class TubeRack
-      include Lims::Core::Resource
+      include LocationResource
 
       is_matrix_of Tube do |p,t|
         Array.new(p.number_of_rows * p.number_of_columns)

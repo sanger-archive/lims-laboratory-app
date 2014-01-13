@@ -4,6 +4,7 @@ require 'lims-api/struct_stream'
 require 'lims-laboratory-app/labellable_core_resource'
 require 'lims-laboratory-app/laboratory/tube_rack'
 require 'lims-laboratory-app/laboratory/container/children_to_stream'
+require 'lims-laboratory-app/laboratory/location_resource_shared'
 require 'lims-laboratory-app/laboratory/container/receptacle'
 
 module Lims::LaboratoryApp
@@ -13,12 +14,14 @@ module Lims::LaboratoryApp
 
         include Lims::LaboratoryApp::Laboratory::Container::Receptacle
         include Lims::LaboratoryApp::Laboratory::Container::ChildrenToStream
+        include Lims::LaboratoryApp::Laboratory::LocationResourceShared
 
         def elements_name
           :tubes
         end
 
         def children_to_stream(s, mime_type)
+          location_to_stream(s, object.attributes[:location]) if object.attributes[:location]
           s.add_key :tubes
           tubes_to_stream(s, mime_type)
         end
