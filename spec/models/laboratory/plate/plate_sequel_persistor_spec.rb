@@ -121,12 +121,6 @@ module Lims::LaboratoryApp
         end
 
         context "with a location" do
-          let(:location) {
-            { :name => "ABC Hospital",
-              :address => "CB11 2RT",
-              :internal => false
-            }
-          }
           subject { Laboratory::Plate.new(:number_of_rows => number_of_rows,
                                           :number_of_columns => number_of_columns,
                                           :location => location) }
