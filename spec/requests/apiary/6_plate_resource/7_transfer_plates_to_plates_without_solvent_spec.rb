@@ -89,6 +89,7 @@ describe "transfer_plates_to_plates_without_solvent", :plate => true do
                         "type": "source plate type",
                         "number_of_rows": 8,
                         "number_of_columns": 12,
+                        "location": null,
                         "wells": {
                             "A1": [
                                 {
@@ -407,6 +408,7 @@ describe "transfer_plates_to_plates_without_solvent", :plate => true do
                         "type": "source plate type",
                         "number_of_rows": 8,
                         "number_of_columns": 12,
+                        "location": null,
                         "wells": {
                             "A1": [
 
@@ -727,6 +729,7 @@ describe "transfer_plates_to_plates_without_solvent", :plate => true do
                         "type": "target plate type",
                         "number_of_rows": 8,
                         "number_of_columns": 12,
+                        "location": null,
                         "wells": {
                             "A1": [
 
@@ -1044,6 +1047,7 @@ describe "transfer_plates_to_plates_without_solvent", :plate => true do
                         "type": "target plate type",
                         "number_of_rows": 8,
                         "number_of_columns": 12,
+                        "location": null,
                         "wells": {
                             "A1": [
 
