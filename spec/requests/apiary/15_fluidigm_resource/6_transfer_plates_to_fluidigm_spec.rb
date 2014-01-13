@@ -79,6 +79,7 @@ describe "transfer_plates_to_fluidigm", :fluidigm => true do
                         "type": "source plate type",
                         "number_of_rows": 8,
                         "number_of_columns": 12,
+                        "location": null,
                         "wells": {
                             "A1": [
                                 {
@@ -412,6 +413,7 @@ describe "transfer_plates_to_fluidigm", :fluidigm => true do
                         "uuid": "11111111-2222-3333-1111-222222222222",
                         "number_of_rows": 16,
                         "number_of_columns": 12,
+                        "location": null,
                         "fluidigm_wells": {
                             "A1": [
 

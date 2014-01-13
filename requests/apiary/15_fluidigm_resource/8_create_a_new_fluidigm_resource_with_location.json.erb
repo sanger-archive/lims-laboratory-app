@@ -26,6 +26,10 @@ h[:parameters]=<<EOD
     "fluidigm_wells_description": {
         "A1": [{ "snp_assay": "11111111-2222-3333-4444-777777777777", "quantity": 1 }],
         "S3": [{ "sample": "11111111-2222-3333-4444-666666666666", "type": "DNA", "quantity": 2 }]
+    },
+    "location": {
+        "name": "ABC Hospital",
+        "address": "CB11 2TY TubeCity 123 Sample Way"
     }
 }}
 EOD
@@ -42,7 +46,11 @@ h[:response]=<<EOD
     "uuid": "11111111-2222-3333-4444-555555555555",
     "number_of_rows": 16,
     "number_of_columns": 12,
-    "location": null,
+    "location": {
+        "name": "ABC Hospital",
+        "address": "CB11 2TY TubeCity 123 Sample Way",
+        "internal": true
+    },
     "fluidigm_wells": {
         "A1": [ { "snp_assay": {
             "actions": { 

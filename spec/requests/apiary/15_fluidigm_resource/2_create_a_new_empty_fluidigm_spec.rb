@@ -33,6 +33,7 @@ describe "create_a_new_empty_fluidigm", :fluidigm => true do
         "uuid": "11111111-2222-3333-4444-555555555555",
         "number_of_rows": 16,
         "number_of_columns": 12,
+        "location": null,
         "fluidigm_wells": {
             "A1": [
 

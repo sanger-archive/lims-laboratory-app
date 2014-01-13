@@ -58,6 +58,7 @@ describe "create_and_read_a_fluidigm_resource", :fluidigm => true do
                 "uuid": "11111111-2222-3333-4444-555555555555",
                 "number_of_rows": 16,
                 "number_of_columns": 12,
+                "location": null,
                 "fluidigm_wells": {
                     "A1": [
                         {
@@ -671,6 +672,7 @@ describe "create_and_read_a_fluidigm_resource", :fluidigm => true do
         "labels": null,
         "number_of_rows": 16,
         "number_of_columns": 12,
+        "location": null,
         "fluidigm_wells_description": {
             "A1": [
                 {
@@ -708,6 +710,7 @@ describe "create_and_read_a_fluidigm_resource", :fluidigm => true do
         "uuid": "11111111-2222-3333-4444-555555555555",
         "number_of_rows": 16,
         "number_of_columns": 12,
+        "location": null,
         "fluidigm_wells": {
             "A1": [
                 {
