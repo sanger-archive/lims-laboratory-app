@@ -54,6 +54,7 @@ describe "5transfer_tubes_content", :tube_rack => true do
                 "uuid": "11111111-2222-3333-4444-666666666666",
                 "number_of_rows": 8,
                 "number_of_columns": 12,
+                "location": null,
                 "tubes": {
                     "C3": {
                         "actions": {
@@ -98,6 +99,7 @@ describe "5transfer_tubes_content", :tube_rack => true do
                 "uuid": "11111111-2222-3333-4444-555555555555",
                 "number_of_rows": 8,
                 "number_of_columns": 12,
+                "location": null,
                 "tubes": {
                     "B5": {
                         "actions": {
@@ -142,6 +144,7 @@ describe "5transfer_tubes_content", :tube_rack => true do
                 "uuid": "11111111-2222-3333-4444-666666666666",
                 "number_of_rows": 8,
                 "number_of_columns": 12,
+                "location": null,
                 "tubes": {
                     "C3": {
                         "actions": {
