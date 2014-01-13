@@ -1,7 +1,7 @@
 require "requests/apiary/5_spin_column_resource/spec_helper"
-describe "create_a_new_empty_spin_column", :spin_column => true do
+describe "create_a_new_empty_spin_with_location_column", :spin_column => true do
   include_context "use core context service"
-  it "create_a_new_empty_spin_column" do
+  it "create_a_new_empty_spin_with_location_column" do
   # **Create a new empty spin column.**
 
     header('Content-Type', 'application/json')
@@ -10,6 +10,10 @@ describe "create_a_new_empty_spin_column", :spin_column => true do
     response = post "/spin_columns", <<-EOD
     {
     "spin_column": {
+        "location": {
+            "name": "ABC Hospital",
+            "address": "CB11 2TY TubeCity 123 Sample Way"
+        }
     }
 }
     EOD
@@ -23,7 +27,11 @@ describe "create_a_new_empty_spin_column", :spin_column => true do
             "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
         },
         "uuid": "11111111-2222-3333-4444-555555555555",
-        "location": null,
+        "location": {
+            "name": "ABC Hospital",
+            "address": "CB11 2TY TubeCity 123 Sample Way",
+            "internal": true
+        },
         "aliquots": [
 
         ]
