@@ -9,6 +9,7 @@ require 'models/persistence/filter/label_sequel_filter_shared'
 require 'models/persistence/filter/order_lookup_sequel_filter_shared'
 require 'models/persistence/filter/batch_sequel_filter_shared'
 require 'models/persistence/filter/comparison_lookup_sequel_filter_shared'
+require 'models/laboratory/location_shared'
 
 # Model requirements
 require 'lims-laboratory-app/laboratory/plate/all'
@@ -18,6 +19,7 @@ module Lims::LaboratoryApp
   describe "Sequel#Plate ", :plate => true, :laboratory => true, :persistence => true, :sequel => true do
     include_context "sequel store"
     include_context "container-like asset factory"
+    include_context "define location"
 
     def last_plate_id(session)
       session.plate.dataset.order_by(:id).last[:id]
@@ -117,6 +119,27 @@ module Lims::LaboratoryApp
             end
           end
         end
+
+        context "with a location" do
+          let(:location) {
+            { :name => "ABC Hospital",
+              :address => "CB11 2RT",
+              :internal => false
+            }
+          }
+          subject { Laboratory::Plate.new(:number_of_rows => number_of_rows,
+                                          :number_of_columns => number_of_columns,
+                                          :location => location) }
+          it "can be saved and reloaded" do
+            plate_id = save(subject)
+
+            store.with_session do |session|
+              plate = session.plate[plate_id]
+              plate.location.should == location
+            end
+          end
+        end
+
 
         context "#lookup" do
           let(:model) { Laboratory::Plate }
