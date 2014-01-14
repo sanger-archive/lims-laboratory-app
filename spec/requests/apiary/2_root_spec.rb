@@ -458,6 +458,11 @@ describe "root" do
             "create": "http://example.org/actions/create_location"
         }
     },
+    "update_locations": {
+        "actions": {
+            "create": "http://example.org/actions/update_location"
+        }
+    },
     "revision": 3
 }
     EOD
