@@ -156,7 +156,6 @@ module Lims
                 item.complete
               end
             }.to change {store.database[:items].count}.by(0)
-            debugger
 
               # check that no items have been created
               store.with_session do |session|
