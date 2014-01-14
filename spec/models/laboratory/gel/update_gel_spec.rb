@@ -2,6 +2,7 @@
 require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
 require 'models/laboratory/container_like_asset_shared'
+require 'models/laboratory/location_shared'
 
 # Model requirements
 require 'lims-laboratory-app/laboratory/gel/update_gel'
@@ -13,6 +14,7 @@ module Lims::LaboratoryApp
       include_context "for application", "test update gel"
       include_context "container-like asset factory"
       include_context "create object"
+      include_context "define location"
 
       let!(:store) { Lims::Core::Persistence::Store.new }
       let(:gel) { new_gel_with_samples }
@@ -30,6 +32,7 @@ module Lims::LaboratoryApp
             a.gel = gel 
             a.aliquot_type = aliquot_type
             a.aliquot_quantity = aliquot_quantity
+            a.location = location
           end
         }
 
@@ -54,6 +57,10 @@ module Lims::LaboratoryApp
               aliquot.quantity.should == aliquot_quantity
             end
           end
+        end
+
+        it "changes the gel shipping location" do
+          updated_gel.location.should == location
         end
       end
 

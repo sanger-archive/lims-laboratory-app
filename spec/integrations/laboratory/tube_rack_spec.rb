@@ -17,7 +17,10 @@ module Lims::LaboratoryApp::Laboratory
 
     def create_new_tube_rack(rack_uuid, tube_uuids, slots=["B5"])
       store.with_session do |session|
-        tuberack = TubeRack.new(:number_of_rows => number_of_rows, :number_of_columns => number_of_columns)
+        tuberack = TubeRack.new(
+          :number_of_rows => number_of_rows,
+          :number_of_columns => number_of_columns,
+          :location => location)
         slots.zip(tube_uuids).each do |slot, tube_uuid|
           tuberack[slot] = session[tube_uuid]
         end
@@ -51,13 +54,14 @@ module Lims::LaboratoryApp::Laboratory
       path = "http://example.org/#{sample_uuid}"
 
       [ { "sample"=> {"actions" => { "read" => path,
+              "create" => path,
               "update" => path,
-              "delete" => path,
-              "create" => path },
+              "delete" => path
+               },
               "uuid" => sample_uuid,
               "name" => sample_name},
-              "type" => aliquot_type,
               "quantity" => aliquot_quantity,
+              "type" => aliquot_type,
               "unit" => unit_type
         } 
       ]
@@ -71,6 +75,13 @@ module Lims::LaboratoryApp::Laboratory
     let(:aliquot_quantity) { 10 }
     let(:unit_type) { "mole" }
     let(:tube_type) { "Eppendorf" }
+    let(:location) {
+      {
+        :name => "ABC Hospital",
+        :address => "CB11 5RT TubeCity 123 Sample Way",
+        :internal => false
+      }
+    }
     let(:tube_max_volume) { 2 }
     let(:tube) { Lims::LaboratoryApp::Laboratory::Tube.new(:type => tube_type, :max_volume => tube_max_volume) }
     let!(:tube_uuid) {
@@ -87,7 +98,7 @@ module Lims::LaboratoryApp::Laboratory
 
 
   shared_context "parameters for empty tube rack" do
-    let(:parameters) { {:tube_rack => dimensions} }
+    let(:parameters) { {:tube_rack => dimensions.merge(:location => location)} }
     let(:tubes_hash) { {} }
   end
 
@@ -95,7 +106,14 @@ module Lims::LaboratoryApp::Laboratory
     include_context "with filled aliquots"
     include_context "with tube and sample"
     let(:tubes) { {tube_location => tube_uuid} } 
-    let(:parameters) { {:tube_rack => dimensions.merge(:tubes => tubes)} }
+    let(:location) {
+      {
+        :name => "ABC Hospital",
+        :address => "CB11 5RT TubeCity 123 Sample Way",
+        :internal => false
+      }
+    }
+    let(:parameters) { {:tube_rack => dimensions.merge(:tubes => tubes, :location => location)} }
     let(:tubes_hash) { 
       path = "http://example.org/#{tube_uuid}"
       {tube_location => 
@@ -105,6 +123,7 @@ module Lims::LaboratoryApp::Laboratory
         "update" => path,
         "delete" => path},
        "uuid" => tube_uuid,
+       "location" => nil,
        "type" => tube_type,
        "max_volume" => tube_max_volume,
        "aliquots" => aliquot_array}}
@@ -123,6 +142,7 @@ module Lims::LaboratoryApp::Laboratory
          "uuid" => uuid,
          "number_of_rows" => number_of_rows,
          "number_of_columns" => number_of_columns,
+         "location" => location,
          "tubes" => tubes_hash}}
     }
   end
@@ -142,7 +162,10 @@ module Lims::LaboratoryApp::Laboratory
 
     def create_new_target_tube_rack(rack_uuid, with_tube)
       store.with_session do |session|
-        tuberack = TubeRack.new(:number_of_rows => number_of_rows, :number_of_columns => number_of_columns)
+        tuberack = TubeRack.new(
+          :number_of_rows => number_of_rows,
+          :number_of_columns => number_of_columns,
+          :location => location)
         tuberack[target_location] = session[target_tube_uuid] if with_tube
         set_uuid(session, tuberack, rack_uuid)
       end
@@ -170,6 +193,7 @@ module Lims::LaboratoryApp::Laboratory
               :uuid => target_rack1_uuid,
               :number_of_rows => number_of_rows,
               :number_of_columns => number_of_columns,
+              :location => location,
               :tubes => target_tubes}
           },
           :source => {
@@ -183,6 +207,7 @@ module Lims::LaboratoryApp::Laboratory
               :uuid => source_rack1_uuid,
               :number_of_rows => number_of_rows,
               :number_of_columns => number_of_columns,
+              :location => location,
               :tubes => source_tubes}
           },
           :target => { 
@@ -196,6 +221,7 @@ module Lims::LaboratoryApp::Laboratory
               :uuid => target_rack1_uuid,
               :number_of_rows => number_of_rows,
               :number_of_columns => number_of_columns,
+              :location => location,
               :tubes => target_tubes}
           },
           action_map_name => transfer_map
@@ -215,6 +241,13 @@ module Lims::LaboratoryApp::Laboratory
     let(:target_rack_uuids) { ["11111111-2222-3333-4444-666666666660",
                                "11111111-2222-3333-4444-666666666661"]
     }
+    let(:location) {
+      {
+        :name => "ABC Hospital",
+        :address => "CB11 5RT TubeCity 123 Sample Way",
+        :internal => false
+      }
+    }
 
     context "#create" do
       include_context "has standard dimensions"
@@ -225,7 +258,7 @@ module Lims::LaboratoryApp::Laboratory
         it_behaves_like "creating a resource"
       end
 
-      context "with tubes in the tube rack" do
+      context "with tubes in the tube rack", :testt => true do
         let(:tube_location) { "A1" }
         include_context "for tube rack with tubes"
         include_context "expected tube rack JSON"
@@ -244,7 +277,7 @@ module Lims::LaboratoryApp::Laboratory
       let(:path) { "/#{uuid}" }
       let(:aliquot_type) { "DNA" }
       let(:aliquot_quantity) { 10 }
-      let(:parameters) { {:aliquot_type => aliquot_type, :aliquot_quantity => aliquot_quantity} }
+      let(:parameters) { {:aliquot_type => aliquot_type, :aliquot_quantity => aliquot_quantity, :location => location} }
 
       it_behaves_like "updating a resource"
     end
@@ -283,6 +316,7 @@ module Lims::LaboratoryApp::Laboratory
                               "delete" => tube_action_path,
                               "create" => tube_action_path},
                             "uuid" => tube_uuid,
+                            "location" => nil,
                             "type" => tube_type,
                             "max_volume" => tube_max_volume,
                             "aliquots" => aliquot_array}}
@@ -296,6 +330,7 @@ module Lims::LaboratoryApp::Laboratory
             "uuid" => uuid,
             "number_of_rows" => number_of_rows,
             "number_of_columns" => number_of_columns,
+            "location" => location,
             "tubes" => {"B5"=>viewed_tube}
             }]}
         let(:expected_size) { 1 }
@@ -355,16 +390,18 @@ module Lims::LaboratoryApp::Laboratory
                       "update" => path,
                       "delete" => path},
                       "uuid" => tube_uuid,
+                      "location" => nil,
                       "type" => tube_type,
                       "max_volume" => tube_max_volume,
                       "aliquots" => [ { "sample"=> {"actions" => { "read" => path_sample,
+                                                                   "create" => path_sample,
                                                                    "update" => path_sample,
-                                                                   "delete" => path_sample,
-                                                                   "create" => path_sample },
+                                                                   "delete" => path_sample
+                                                                    },
                                                                    "uuid" => sample_uuid,
                                                                    "name" => sample_name},
-                                                                   "type" => aliquot_type,
                                                                    "quantity" => remaining_aliquot_quantity,
+                                                                   "type" => aliquot_type,
                                                                    "unit" => unit_type} ]}}
         } 
         let(:target_tubes) {
@@ -376,6 +413,7 @@ module Lims::LaboratoryApp::Laboratory
                       "update" => path,
                       "delete" => path},
                       "uuid" => target_tube_uuid,
+                      "location" => nil,
                       "type" => target_tube_type,
                       "max_volume" => target_tube_max_volume,
                       "aliquots" => aliquot_array}}
@@ -436,6 +474,7 @@ module Lims::LaboratoryApp::Laboratory
                         "update" => path,
                         "delete" => path},
                         "uuid" => tube_uuid,
+                        "location" => nil,
                         "type" => tube_type,
                         "max_volume" => tube_max_volume,
                         "aliquots" => aliquot_array}}
@@ -459,6 +498,7 @@ module Lims::LaboratoryApp::Laboratory
                     "uuid" => target_rack1_uuid,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "tubes" => target_tubes}
                 }],
                 :moves => moves
@@ -544,6 +584,7 @@ module Lims::LaboratoryApp::Laboratory
                         "update" => path1,
                         "delete" => path1},
                         "uuid" => tube_uuids_1[0],
+                        "location" => nil,
                         "type" => tube_type,
                         "max_volume" => tube_max_volume,
                         "aliquots" => get_aliquot_array(sample_uuids_1[0])},
@@ -553,6 +594,7 @@ module Lims::LaboratoryApp::Laboratory
                         "update" => path2,
                         "delete" => path2},
                         "uuid" => tube_uuids_2[0],
+                        "location" => nil,
                         "type" => tube_type,
                         "max_volume" => tube_max_volume,
                         "aliquots" => get_aliquot_array(sample_uuids_2[0])}
@@ -568,6 +610,7 @@ module Lims::LaboratoryApp::Laboratory
                         "update" => path2,
                         "delete" => path2},
                         "uuid" => tube_uuids_2[1],
+                        "location" => nil,
                         "type" => tube_type,
                         "max_volume" => tube_max_volume,
                         "aliquots" => get_aliquot_array(sample_uuids_2[1])},
@@ -577,6 +620,7 @@ module Lims::LaboratoryApp::Laboratory
                         "update" => path1,
                         "delete" => path1},
                         "uuid" => tube_uuids_1[1],
+                        "location" => nil,
                         "type" => tube_type,
                         "max_volume" => tube_max_volume,
                         "aliquots" => get_aliquot_array(sample_uuids_1[1])}
@@ -602,6 +646,7 @@ module Lims::LaboratoryApp::Laboratory
                     "uuid" => target_rack1_uuid,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "tubes" => target1_tubes}
                   },
                   {"tube_rack" => {
@@ -614,6 +659,7 @@ module Lims::LaboratoryApp::Laboratory
                     "uuid" => target_rack2_uuid,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "tubes" => target2_tubes}
                   }
                 ],

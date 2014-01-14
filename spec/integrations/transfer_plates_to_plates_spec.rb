@@ -51,6 +51,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
     let(:target_aliquot_quantity2) { 40.0 }
     let(:target_aliquot_type1) { aliquot_type_DNA }
     let(:target_aliquot_type2) { aliquot_type_RNA }
+    let(:location) { nil }
 
     context "from plates with samples" do
       let(:source_plate1_uuid) { create_plate_with_aliquots_and_solvent(

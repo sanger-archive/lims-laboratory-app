@@ -1,6 +1,7 @@
 # Spec requirements
 require 'models/laboratory/spec_helper'
 require 'models/laboratory/located_examples'
+require 'models/laboratory/location_shared'
 require 'models/laboratory/container_examples'
 require 'models/labels/labellable_examples'
 
@@ -38,6 +39,7 @@ module Lims::LaboratoryApp::Laboratory
       it_behaves_like "a hash with different indexes", [3,5], 41, "A24"
       it_behaves_like "a hash with different indexes", [15,11], 191, "S96"
       it_behaves_like "labellable"
+      it_behaves_like "can have a location"
     end
 
     context "with 14x16 wells" do
@@ -60,6 +62,7 @@ module Lims::LaboratoryApp::Laboratory
       it_behaves_like "a hash with different indexes", [2,13], 41, "A5"
       it_behaves_like "a hash with different indexes", [10,13], 153, "A17"
       it_behaves_like "labellable"
+      it_behaves_like "can have a location"
     end
 
   end

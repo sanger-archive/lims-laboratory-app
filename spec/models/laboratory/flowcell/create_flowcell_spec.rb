@@ -1,6 +1,7 @@
 # Spec requirements
 require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
+require 'models/laboratory/location_shared'
 
 require 'models/laboratory/flowcell_shared'
 
@@ -14,6 +15,7 @@ module Lims::LaboratoryApp
       subject do
         Flowcell::CreateFlowcell.new(:store => store, :user => user, :application => application) do |action,session|
           action.ostruct_update(number_of_lanes_hash)
+          action.location = location
         end
       end
 
@@ -29,10 +31,11 @@ module Lims::LaboratoryApp
       it_behaves_like "an action"
       it "creates a flowcell when called" do
         result = subject.call()
-        result.should be_a Hash
+        result.should be_a(Hash)
 
         flowcell = result[:flowcell]
         flowcell.number_of_lanes.should == number_of_lanes_hash[:number_of_lanes]
+        flowcell.location.should == location
         flowcell_checker[flowcell]
 
         result[:uuid].should == uuid
@@ -54,6 +57,7 @@ module Lims::LaboratoryApp
         Flowcell::CreateFlowcell.new(:store => store, :user => user, :application => application)  do |action,session|
           action.ostruct_update(number_of_lanes_hash)
           action.lanes_description = lanes_description
+          action.location = location
         end
       end
 
@@ -73,6 +77,7 @@ module Lims::LaboratoryApp
         let!(:store) { Lims::Core::Persistence::Store.new() }
         include_context "flowcell factory"
         include_context("for application",  "Test flowcell creation")
+        include_context "define location"
         
         # testing flowcell creation with miseq flowcell
         context do

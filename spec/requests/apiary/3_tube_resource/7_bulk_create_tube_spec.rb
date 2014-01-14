@@ -64,6 +64,7 @@ describe "bulk_create_tube", :tube => true do
                         "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
                     },
                     "uuid": "11111111-2222-3333-4444-555555555555",
+                    "location": null,
                     "type": "Eppendorf",
                     "max_volume": 2,
                     "aliquots": [
@@ -92,6 +93,7 @@ describe "bulk_create_tube", :tube => true do
                         "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
                     },
                     "uuid": "11111111-2222-3333-4444-666666666666",
+                    "location": null,
                     "type": "Eppendorf",
                     "max_volume": 10,
                     "aliquots": [
@@ -120,6 +122,7 @@ describe "bulk_create_tube", :tube => true do
                         "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
                     },
                     "uuid": "11111111-2222-3333-4444-777777777777",
+                    "location": null,
                     "type": "New type",
                     "max_volume": 15,
                     "aliquots": [

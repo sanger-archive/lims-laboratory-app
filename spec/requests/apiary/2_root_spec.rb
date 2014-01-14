@@ -52,6 +52,14 @@ describe "root" do
             "last": "http://example.org/orders/page=-1"
         }
     },
+    "locations": {
+        "actions": {
+            "create": "http://example.org/locations",
+            "read": "http://example.org/locations",
+            "first": "http://example.org/locations/page=1",
+            "last": "http://example.org/locations/page=-1"
+        }
+    },
     "samples": {
         "actions": {
             "create": "http://example.org/samples",
@@ -443,6 +451,16 @@ describe "root" do
     "move_snp_assays": {
         "actions": {
             "create": "http://example.org/actions/move_snp_assays"
+        }
+    },
+    "create_locations": {
+        "actions": {
+            "create": "http://example.org/actions/create_location"
+        }
+    },
+    "update_locations": {
+        "actions": {
+            "create": "http://example.org/actions/update_location"
         }
     },
     "revision": 3

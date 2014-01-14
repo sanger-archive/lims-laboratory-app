@@ -1,5 +1,6 @@
 require 'models/laboratory/container_examples'
 require 'models/labels/labellable_examples'
+require 'models/laboratory/location_shared'
 require 'lims-laboratory-app/laboratory/tube_rack'
 
 module Lims::LaboratoryApp::Laboratory
@@ -63,6 +64,7 @@ module Lims::LaboratoryApp::Laboratory
       it_behaves_like "a container", Tube
       it_behaves_like "a tube rack hash"
       it_behaves_like "labellable"
+      it_behaves_like "can have a location"
     end
   end
 end

@@ -27,7 +27,10 @@ module Lims::LaboratoryApp
       end
 
       def new_container_with_samples(asset_to_create, sample_nb, volume=100, quantity=nil)
-        asset_to_create.new(:number_of_rows => number_of_rows, :number_of_columns => number_of_columns).tap do |asset|
+        asset_to_create.new(
+          :number_of_rows     => number_of_rows,
+          :number_of_columns  => number_of_columns,
+          :location           => location).tap do |asset|
           unless asset_to_create == Fluidigm
             populate_general_container_with_samples(asset, sample_nb, volume, quantity)
           else

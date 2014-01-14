@@ -10,6 +10,7 @@ require 'models/persistence/filter/label_sequel_filter_shared'
 require 'models/persistence/filter/order_lookup_sequel_filter_shared'
 require 'models/persistence/filter/batch_sequel_filter_shared'
 require 'models/persistence/filter/comparison_lookup_sequel_filter_shared'
+require 'models/laboratory/location_shared'
 
 
 # Model requirement
@@ -19,6 +20,7 @@ module Lims::LaboratoryApp
   describe "Persistence#Sequel#Fluidigm", :fluidigm => true, :laboratory => true, :persistence => true, :sequel => true do
     include_context "sequel store"
     include_context "container-like asset factory"
+    include_context "define location"
 
     def last_fluidigm_id(session)
       session.fluidigm.dataset.order_by(:id).last[:id]
@@ -103,6 +105,21 @@ module Lims::LaboratoryApp
           end
         end
       end
+
+      context "with a location" do
+        subject { Laboratory::Fluidigm.new( :number_of_rows => number_of_rows,
+                                            :number_of_columns => number_of_columns,
+                                            :location => location) }
+        it "can be saved and reloaded" do
+          fluidigm_id = save(subject)
+      
+          store.with_session do |session|
+            fluidigm = session.fluidigm[fluidigm_id]
+            fluidigm.location.should == location
+          end
+        end
+      end
+
 
       context do
         let(:constructor) { lambda { |*_| new_empty_fluidigm } }
