@@ -109,9 +109,9 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
   let(:model) { "plates" }
   let(:location) {
     {
-      :name => "ABC Hospital",
-      :address => "CB11 5RT TubeCity 123 Sample Way",
-      :internal => false
+      "name" => "ABC Hospital",
+      "address" => "CB11 5RT TubeCity 123 Sample Way",
+      "internal" => false
     }
   }
 

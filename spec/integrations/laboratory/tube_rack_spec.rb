@@ -77,9 +77,9 @@ module Lims::LaboratoryApp::Laboratory
     let(:tube_type) { "Eppendorf" }
     let(:location) {
       {
-        :name => "ABC Hospital",
-        :address => "CB11 5RT TubeCity 123 Sample Way",
-        :internal => false
+        "name" => "ABC Hospital",
+        "address" => "CB11 5RT TubeCity 123 Sample Way",
+        "internal" => false
       }
     }
     let(:tube_max_volume) { 2 }

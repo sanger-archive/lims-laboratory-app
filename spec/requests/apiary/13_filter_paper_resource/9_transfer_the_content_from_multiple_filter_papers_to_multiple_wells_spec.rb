@@ -137,6 +137,7 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_wells", :
                         "type": null,
                         "number_of_rows": 8,
                         "number_of_columns": 12,
+                        "location": null,
                         "wells": {
                             "A1": [
                                 {
@@ -454,6 +455,7 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_wells", :
                         "type": null,
                         "number_of_rows": 8,
                         "number_of_columns": 12,
+                        "location": null,
                         "wells": {
                             "A1": [
 

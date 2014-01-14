@@ -3,7 +3,7 @@ module Lims::LaboratoryApp
     module LocationResourceShared
 
       def location_to_stream(s, location)
-        s.add_key :location
+        s.add_key "location"
         s.with_hash do
           location.attributes.each do |key, value|
             s.add_key key.to_s

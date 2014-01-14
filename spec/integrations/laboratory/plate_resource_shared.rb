@@ -1,20 +1,21 @@
 require 'lims-laboratory-app/laboratory/tube_rack/tube_rack_persistor'
 shared_context "for creating a plate-like with aliquots and solvent in it" do
   L = Lims::LaboratoryApp::Laboratory
-  def create_plate_like_with_aliquots_and_solvent(asset, uuid, sample, location, quantity=100, volume=100)
+  def create_plate_like_with_aliquots_and_solvent(asset, uuid, sample, position, quantity=100, volume=100)
     store.with_session do |session|
       new_asset = asset.new(:number_of_rows => number_of_rows,
-                           :number_of_columns => number_of_columns)
+                           :number_of_columns => number_of_columns,
+                           :location => location)
 #      locations.zip(samples) do |location, sample|
         aliquot = L::Aliquot.new(:sample => sample, :quantity => quantity, :type => aliquot_type)
         if asset == L::TubeRack
           tube = L::Tube.new
           tube << aliquot
           tube << L::Aliquot.new(:type => L::Aliquot::Solvent, :quantity => volume)
-          new_asset[location] = tube
+          new_asset[position] = tube
         else
-          new_asset[location] << aliquot
-          new_asset[location] << L::Aliquot.new(:type => L::Aliquot::Solvent, :quantity => volume)
+          new_asset[position] << aliquot
+          new_asset[position] << L::Aliquot.new(:type => L::Aliquot::Solvent, :quantity => volume)
         end
 #      end
 
@@ -41,21 +42,21 @@ shared_context "for creating a plate-like with aliquots and solvent in it" do
     samples
   end
 
-  def create_plate_with_aliquots_and_solvent(uuid, sample, location, quantity=100, volume=100)
-    create_plate_like_with_aliquots_and_solvent(L::Plate, uuid, sample, location, quantity, volume)
+  def create_plate_with_aliquots_and_solvent(uuid, sample, position, quantity=100, volume=100)
+    create_plate_like_with_aliquots_and_solvent(L::Plate, uuid, sample, position, quantity, volume)
   end
 
-  def create_gel_with_aliquots_and_solvent(uuid, sample, location, quantity=100, volume=100)
-    create_plate_like_with_aliquots_and_solvent(L::Gel, uuid, sample, location, quantity, volume)
+  def create_gel_with_aliquots_and_solvent(uuid, sample, position, quantity=100, volume=100)
+    create_plate_like_with_aliquots_and_solvent(L::Gel, uuid, sample, position, quantity, volume)
   end
 
-  def create_tube_rack_with_aliquots_and_solvent(uuid, sample, location, quantity=100, volume=100)
-    create_plate_like_with_aliquots_and_solvent(L::TubeRack, uuid, sample, location, quantity, volume)
+  def create_tube_rack_with_aliquots_and_solvent(uuid, sample, position, quantity=100, volume=100)
+    create_plate_like_with_aliquots_and_solvent(L::TubeRack, uuid, sample, position, quantity, volume)
   end
 
   def new_empty_plate_like(asset_to_create, uuid)
     store.with_session do |session|
-      new_asset = asset_to_create.new(:number_of_rows => number_of_rows, :number_of_columns => number_of_columns)
+      new_asset = asset_to_create.new(:number_of_rows => number_of_rows, :number_of_columns => number_of_columns, :location => location)
       set_uuid(session, new_asset, uuid)
     end
     uuid
@@ -71,7 +72,7 @@ shared_context "for creating a plate-like with aliquots and solvent in it" do
 
   def new_tube_rack_with_empty_tubes(uuid, slots=nil)
     store.with_session do |session|
-      rack = L::TubeRack.new(:number_of_rows => number_of_rows, :number_of_columns => number_of_columns)
+      rack = L::TubeRack.new(:number_of_rows => number_of_rows, :number_of_columns => number_of_columns, :location => location)
       slots.each do |slot|
         tube = L::Tube.new
         session << tube
@@ -138,7 +139,7 @@ shared_context "with source elements" do
                         "update"=>path,
                         "delete"=>path},
             "uuid"=>sample_uuid,
-            "location" => location,
+            "location" => nil,
             "type"=>nil,
             "max_volume"=>nil,
             "aliquots"=>source_aliquot_array1}
@@ -151,7 +152,7 @@ shared_context "with source elements" do
                         "update"=>path,
                         "delete"=>path},
             "uuid"=>sample_uuid,
-            "location" => location,
+            "location" => nil,
             "type"=>nil,
             "max_volume"=>nil,
             "aliquots"=>source_aliquot_array2}
@@ -185,7 +186,6 @@ shared_context "with target elements" do
                                    "name" => sample2_name},
                                    "type" => target_aliquot_type2,
                                    "quantity" => target_aliquot_quantity2,
-                                   "type" => target_aliquot_type2,
                                    "unit" => unit_type},
                                    target_solvent_RNA ]
   }
@@ -226,7 +226,7 @@ shared_context "with target elements" do
                         "update"=>path,
                         "delete"=>path},
             "uuid"=>sample_uuid,
-            "location" => location,
+            "location" => nil,
             "type"=>nil,
             "max_volume"=>nil,
             "aliquots"=>target_aliquot_array1}
@@ -239,7 +239,7 @@ shared_context "with target elements" do
                         "update"=>path,
                         "delete"=>path},
             "uuid"=>sample_uuid,
-            "location" => location,
+            "location" => nil,
             "type"=>nil,
             "max_volume"=>nil,
             "aliquots"=>target_aliquot_array2}
