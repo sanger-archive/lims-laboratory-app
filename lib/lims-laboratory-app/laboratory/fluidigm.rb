@@ -1,4 +1,4 @@
-require 'lims-laboratory-app/laboratory/location_resource'
+require 'lims-laboratory-app/laboratory/locatable_resource'
 require 'lims-laboratory-app/laboratory/container'
 
 require 'facets/hash'
@@ -13,7 +13,7 @@ module Lims::LaboratoryApp
     # 192 Samples wells and 24 SNP Assay wells.
     # It can has some readable labels on it (i.e. barcode).
     class Fluidigm
-      include LocationResource
+      include LocatableResource
 
       FLUIDIGM_96_96  = 12*16
       FLUIDIGM_192_24 = 14*16

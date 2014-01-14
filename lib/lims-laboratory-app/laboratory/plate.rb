@@ -1,4 +1,4 @@
-require 'lims-laboratory-app/laboratory/location_resource'
+require 'lims-laboratory-app/laboratory/locatable_resource'
 require 'lims-laboratory-app/laboratory/container'
 
 require 'facets/hash'
@@ -11,7 +11,7 @@ module Lims::LaboratoryApp
     # readable labels on it.
     # TODO add label behavior
     class Plate 
-      include LocationResource
+      include LocatableResource
       # Type contains the actual type of the plate.
       attribute :type, String, :required => false
 

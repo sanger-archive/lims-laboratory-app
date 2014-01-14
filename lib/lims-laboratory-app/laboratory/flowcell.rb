@@ -1,5 +1,5 @@
 require 'lims-laboratory-app/laboratory/receptacle'
-require 'lims-laboratory-app/laboratory/location_resource'
+require 'lims-laboratory-app/laboratory/locatable_resource'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -7,7 +7,7 @@ module Lims::LaboratoryApp
     # readable labels on it.
     # TODO add label behavior
     class Flowcell
-      include LocationResource
+      include LocatableResource
 
       attribute :number_of_lanes, Fixnum, :required => true, :gte => 0, :writer => :private
 

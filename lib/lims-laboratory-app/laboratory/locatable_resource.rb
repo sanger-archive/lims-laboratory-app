@@ -5,7 +5,7 @@ require 'lims-laboratory-app/organization/location'
 
 module Lims::LaboratoryApp
   module Laboratory  
-    module LocationResource
+    module LocatableResource
 
       def self.included(klass)
         klass.class_eval do
