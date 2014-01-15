@@ -64,6 +64,7 @@ describe "search_for_a_tube_by_sample_uuid", :search => true do
                 "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
             },
             "uuid": "11111111-2222-3333-4444-666666666666",
+            "location": null,
             "type": null,
             "max_volume": null,
             "aliquots": [
@@ -90,6 +91,7 @@ describe "search_for_a_tube_by_sample_uuid", :search => true do
                 "delete": "http://example.org/11111111-2222-3333-4444-888888888888"
             },
             "uuid": "11111111-2222-3333-4444-888888888888",
+            "location": null,
             "type": null,
             "max_volume": null,
             "aliquots": [

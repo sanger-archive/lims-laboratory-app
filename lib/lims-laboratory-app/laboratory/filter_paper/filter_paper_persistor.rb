@@ -6,8 +6,9 @@ module Lims::LaboratoryApp
   module Laboratory
     class FilterPaper
 
-      (does "lims/core/persistence/persistable", :children => [
-        {:name => :filter_paper_aliquot, :deletable => true}
+      (does "lims/core/persistence/persistable",
+        :parents => [:location],
+        :children => [{:name => :filter_paper_aliquot, :deletable => true}
       ]).class_eval do
 
         def children_filter_paper_aliquot(resource, children)

@@ -14,6 +14,7 @@ module Lims::LaboratoryApp
         include Lims::LaboratoryApp::Laboratory::Container::Receptacle
 
         def content_to_stream(s, mime_type)
+          super(s, mime_type)
           s.add_key "aliquots"
           receptacle_to_stream(s, object, mime_type)
         end

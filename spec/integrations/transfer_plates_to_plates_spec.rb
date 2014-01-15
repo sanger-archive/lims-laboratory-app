@@ -51,6 +51,20 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
     let(:target_aliquot_quantity2) { 40.0 }
     let(:target_aliquot_type1) { aliquot_type_DNA }
     let(:target_aliquot_type2) { aliquot_type_RNA }
+    let(:location) {
+      {
+        "actions" => {
+           "read" => "http://example.org/11111111-2222-3333-4444-555555555555",
+           "create" => "http://example.org/11111111-2222-3333-4444-555555555555",
+           "update" => "http://example.org/11111111-2222-3333-4444-555555555555",
+           "delete" => "http://example.org/11111111-2222-3333-4444-555555555555"
+         },
+         "uuid" => "11111111-2222-3333-4444-555555555555",
+         "name" => "ABC Hospital",
+         "address" => "CB11 5RT TubeCity 123 Sample Way",
+         "internal" => false
+      }
+    }
 
     context "from plates with samples" do
       let(:source_plate1_uuid) { create_plate_with_aliquots_and_solvent(
@@ -111,6 +125,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "type"=>nil,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "wells"=> source_elements1 }
                   },
                   { "plate" => {
@@ -124,6 +139,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "type"=>nil,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "wells"=> source_elements2 }
                   }
                 ],
@@ -139,6 +155,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "type"=>nil,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "wells"=> target_elements1 }
                   },
                   { "plate" => {
@@ -152,6 +169,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "type"=>nil,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "wells"=> target_elements2 }
                   }
                 ]
@@ -209,6 +227,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "type"=>nil,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "wells"=> source_elements1 }
                   },
                   { "plate" => {
@@ -222,6 +241,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "type"=>nil,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "wells"=> source_elements2 }
                   }
                 ],
@@ -236,6 +256,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "uuid" => target_gel1_uuid,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "windows"=> target_elements1 }
                   },
                   { "gel" => {
@@ -248,6 +269,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "uuid" => target_gel2_uuid,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "windows"=> target_elements2 }
                   }
                 ]
@@ -261,7 +283,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
       end
     end
 
-    context "from tube-racks with samples" do
+    context "from tube-racks with samples", :trp => true do
       let(:source_rack1_uuid) { create_tube_rack_with_aliquots_and_solvent(
         '11111111-2222-3333-1111-000000000000',
         samples[0],
@@ -319,6 +341,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "uuid" => source_rack1_uuid,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "tubes"=> tube_rack_source_elements1 }
                   },
                   { "tube_rack" => {
@@ -331,6 +354,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "uuid" => source_rack2_uuid,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "tubes"=> tube_rack_source_elements2 }
                   }
                 ],
@@ -346,6 +370,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "type"=>nil,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "wells"=> target_elements1 }
                   },
                   { "plate" => {
@@ -359,6 +384,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "type"=>nil,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "wells"=> target_elements2 }
                   }
                 ]
@@ -419,6 +445,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "uuid" => source_rack1_uuid,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "tubes"=> tube_rack_source_elements1 }
                   },
                   { "tube_rack" => {
@@ -431,6 +458,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "uuid" => source_rack2_uuid,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "tubes"=> tube_rack_source_elements2 }
                   }
                 ],
@@ -445,6 +473,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "uuid" => target_rack1_uuid,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "tubes"=> tube_rack_target_elements1 }
                   },
                   { "tube_rack" => {
@@ -457,6 +486,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "uuid" => target_rack2_uuid,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "tubes"=> tube_rack_target_elements2 }
                   }
                 ]
@@ -509,12 +539,12 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
           source_rack1_url = "http://example.org/#{source_rack1_uuid}"
           source_plate1_url = "http://example.org/#{source_plate1_uuid}"
           target_plate1_url = "http://example.org/#{target_plate1_uuid}"
-          { :transfer_plates_to_plates =>
-            { :actions => {},
-              :user => "user@example.com",
-              :application => "application_id",
-              :result => {
-                :sources => [
+          { "transfer_plates_to_plates" =>
+            { "actions" => {},
+              "user" => "user@example.com",
+              "application" => "application_id",
+              "result" => {
+                "sources" => [
                   { "tube_rack" => {
                     "actions" => {
                       "read" => source_rack1_url,
@@ -523,6 +553,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                       "delete" => source_rack1_url
                     },
                     "uuid" => source_rack1_uuid,
+                    "location" => location,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
                     "tubes"=> tube_rack_source_elements1 }
@@ -538,10 +569,11 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "type"=>nil,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "wells"=> source_elements2 }
                   }
                 ],
-                :targets => [
+                "targets" => [
                   { "plate" => {
                     "actions" => {
                       "read" => target_plate1_url,
@@ -553,11 +585,12 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
                     "type"=>nil,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "wells"=> target_elements_B2_D4 }
                   }
                 ]
               },
-              :transfers => transfers
+              "transfers" => transfers
             }
           }
         }

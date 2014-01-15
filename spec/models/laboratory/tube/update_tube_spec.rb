@@ -2,6 +2,7 @@
 require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
 require 'models/laboratory/tube_shared'
+require 'models/laboratory/location_shared'
 
 # Model requirements
 require 'lims-laboratory-app/laboratory/tube/update_tube'
@@ -14,6 +15,7 @@ module Lims::LaboratoryApp
         include_context "for application", "test update tube" 
         include_context "tube factory"
         include_context "create object"
+        include_context "define location"
 
         let!(:store) { Lims::Core::Persistence::Store.new() }
         let(:tube_type) { "Eppendorf" }
@@ -24,7 +26,7 @@ module Lims::LaboratoryApp
         let(:updated_tube) { result[:tube] }
         subject { action }
 
-        context "updates aliquot type, quantity, tube type and max volume" do
+        context "updates aliquot type, quantity, tube type, max volume and location" do
           let(:action) { 
             described_class.new(:store => store, :user => user, :application => application) do |a,s|
               a.tube = new_tube_with_samples
@@ -32,6 +34,7 @@ module Lims::LaboratoryApp
               a.aliquot_quantity = aliquot_quantity
               a.type = tube_type
               a.max_volume = tube_max_volume
+              a.location = location
             end
           }
 
@@ -60,6 +63,10 @@ module Lims::LaboratoryApp
 
           it "changes the tube max volume" do
             updated_tube.max_volume.should == tube_max_volume
+          end
+
+          it "changes the tube's location" do
+            updated_tube.location.should == location
           end
         end
 

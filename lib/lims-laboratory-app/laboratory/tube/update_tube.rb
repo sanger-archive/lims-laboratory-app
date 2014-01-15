@@ -23,14 +23,16 @@ module Lims::LaboratoryApp
         attribute :max_volume, Numeric, :required => false, :writer => :private
         # Change the volume of the solvent (or create a solvent aliquot with the desired volume)
         attribute :volume, Numeric, :required => false, :writer => :private
+        # Change the shipping location of the tube
+        attribute :location, Organization::Location, :required => false
 
         def _call_in_session(session)
-          update_tube(tube, volume, aliquot_type, aliquot_quantity, type, max_volume)
+          update_tube(tube, volume, aliquot_type, aliquot_quantity, type, max_volume, location)
           {:tube => tube}
         end
 
         module UpdateTubeAction
-          def update_tube(tube, volume=nil, aliquot_type=nil, aliquot_quantity=nil, type=nil, max_volume=nil)
+          def update_tube(tube, volume=nil, aliquot_type=nil, aliquot_quantity=nil, type=nil, max_volume=nil, location=nil)
             tube.type = type if type
             tube.max_volume = max_volume if max_volume
             tube.each do |aliquot|
@@ -46,6 +48,8 @@ module Lims::LaboratoryApp
               end
               solvent.quantity = volume
             end
+
+            tube.location = location if location
           end
         end
         include UpdateTubeAction

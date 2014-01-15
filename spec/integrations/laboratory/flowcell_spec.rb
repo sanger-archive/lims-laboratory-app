@@ -31,6 +31,7 @@ shared_context "expect flowcell JSON" do
           "delete" => path,
           "create" => path},
           "uuid" => uuid,
+        "location" => location,
         "number_of_lanes" => number_of_lanes, 
         "lanes" => lane_array}
     }
@@ -45,6 +46,7 @@ shared_context "expect flowcell JSON  with labels" do
           "delete" => path,
           "create" => path},
           "uuid" => uuid,
+        "location" => location,
         "number_of_lanes" => number_of_lanes,
         "lanes" => lane_array,
         "labels" => actions_hash.merge(labellable_uuid_hash).merge(labels_hash)}
@@ -53,7 +55,7 @@ shared_context "expect flowcell JSON  with labels" do
 end
 
 shared_context "for empty flowcell parameter" do
-  let (:parameters) { { :flowcell => number_of_lanes_hash} }
+  let (:parameters) { { :flowcell => number_of_lanes_hash.merge(:location => location)} }
   include_context "expect empty flowcell"
 end
 
@@ -64,13 +66,13 @@ shared_context "for flowcell with samples" do
   let(:unit_type) { "mole" }
   let(:lanes_description) { { sample_position.to_s => [ { "sample_uuid"=> sample_uuid, "type" => aliquot_type, "quantity" => aliquot_quantity } ] } }
   let(:lanes_description_response) { { sample_position.to_s => aliquot_array } }
-  let (:parameters) { { :flowcell => number_of_lanes_hash.merge(:lanes_description => lanes_description) }}
+  let (:parameters) { { :flowcell => number_of_lanes_hash.merge(:lanes_description => lanes_description, :location => location) }}
   include_context "with saved sample"
   let(:lane_array) { create_lane_array.merge(lanes_description_response) }
 end
 
 shared_examples_for "with saved flowcell with samples" do
-  subject { described_class.new(:number_of_lanes => 8) } 
+  subject { described_class.new(:number_of_lanes => 8, :location => location) }
   let (:sample_location) { 4 }
   include_context "with sample in location"
 end
@@ -110,6 +112,7 @@ describe Lims::LaboratoryApp::Laboratory::Flowcell do
   include_context "JSON"
   include_context "use generated uuid"
   let(:model) { "flowcells" }
+  let(:location) { nil }
 
   context "of type Miseq with a sample in lane 1" do
     let(:sample_position) { 1 }
@@ -151,6 +154,7 @@ describe Lims::LaboratoryApp::Laboratory::Flowcell do
                   "create" => path
                   },
                 "uuid" => uuid,
+                "location" => location,
                 "number_of_lanes" => 8,
                 "lanes" => {"1"=>[],"2"=>[],"3"=>[],"4"=>[],"5"=>aliquot_array,"6"=>[],"7"=>[],"8"=>[]}
                 }

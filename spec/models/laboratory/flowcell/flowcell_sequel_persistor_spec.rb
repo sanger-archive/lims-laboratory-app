@@ -2,6 +2,7 @@
 require 'models/persistence/sequel/spec_helper'
 
 require 'models/laboratory/flowcell_shared'
+require 'models/laboratory/location_shared'
 require 'models/persistence/resource_shared'
 require 'models/persistence/sequel/store_shared'
 require 'models/persistence/sequel/page_shared'
@@ -55,12 +56,24 @@ module Lims::LaboratoryApp
     end
   end
 
+  shared_context "with a location" do
+    it "can be saved and reloaded" do
+      flowcell_id = save(subject)
+
+      store.with_session do |session|
+        flowcell = session.flowcell[flowcell_id]
+        flowcell.location.should == location
+      end
+    end
+  end
+
   describe "Sequel#Flowcell ", :flowcell => true, :laboratory => true, :persistence => true, :sequel => true do
     include_context "sequel store"
     let(:hiseq_number_of_lanes) { 8 }
     let(:miseq_number_of_lanes) { 1 }
 
     include_context "flowcell factory"
+    include_context "define location"
 
     def last_flowcell_id(session)
       session.flowcell.dataset.order_by(:id).last[:id]
@@ -75,6 +88,8 @@ module Lims::LaboratoryApp
       pending "only works for hiseq"  do
         include_context "already created flowcell"
       end
+
+      include_context "with a location"
     end
 
     # execute tests with hiseq flowcell
@@ -84,6 +99,7 @@ module Lims::LaboratoryApp
       subject { new_flowcell_with_samples(3) }
       it_behaves_like "storable resource", :flowcell, {:flowcells => 1, :lanes => 8*3 }
       include_context "already created flowcell"
+      include_context "with a location"
     end
 
     context do

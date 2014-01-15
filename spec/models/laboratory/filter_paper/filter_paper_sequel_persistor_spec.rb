@@ -2,6 +2,7 @@ require 'models/persistence/sequel/store_shared'
 require 'models/persistence/sequel/spec_helper'
 require 'models/laboratory/tube_shared'
 require 'models/laboratory/filter_paper_shared'
+require 'models/laboratory/location_shared'
 
 require 'models/persistence/filter/label_sequel_filter_shared'
 require 'models/persistence/filter/batch_sequel_filter_shared'
@@ -69,6 +70,20 @@ module Lims::LaboratoryApp
             store.with_session do |session|
               filter_paper = session.filter_paper[filter_paper_id]
               filter_paper.should be_empty
+            end
+          end
+        end
+
+        context "created with a location" do
+          include_context "define location"
+          subject { Laboratory::FilterPaper.new(:location => location) }
+
+          it "can be saved and reloaded" do
+            filter_paper_id = save(subject)
+
+            store.with_session do |session|
+              filter_paper = session.filter_paper[filter_paper_id]
+              filter_paper.location.should == location
             end
           end
         end

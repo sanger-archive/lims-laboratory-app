@@ -70,6 +70,7 @@ describe "swap_samples_in_a_tube_rack", :tube_rack => true do
                     "uuid": "11111111-2222-3333-2222-111111111111",
                     "number_of_rows": 8,
                     "number_of_columns": 12,
+                    "location": null,
                     "tubes": {
                         "A1": {
                             "actions": {
@@ -79,6 +80,7 @@ describe "swap_samples_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-2222-3333-1111-111111111111"
                             },
                             "uuid": "11111111-2222-3333-1111-111111111111",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -107,6 +109,7 @@ describe "swap_samples_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-2222-3333-1111-222222222222"
                             },
                             "uuid": "11111111-2222-3333-1111-222222222222",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -135,6 +138,7 @@ describe "swap_samples_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-2222-3333-1111-333333333333"
                             },
                             "uuid": "11111111-2222-3333-1111-333333333333",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [
@@ -163,6 +167,7 @@ describe "swap_samples_in_a_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-2222-3333-1111-444444444444"
                             },
                             "uuid": "11111111-2222-3333-1111-444444444444",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [

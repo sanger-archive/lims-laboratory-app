@@ -37,6 +37,7 @@ describe "use_the_create_filter_paper_action", :filter_paper => true do
                     "create": "http://example.org/11111111-2222-3333-4444-555555555555"
                 },
                 "uuid": "11111111-2222-3333-4444-555555555555",
+                "location": null,
                 "aliquots": [
                     {
                         "sample": {
@@ -58,6 +59,7 @@ describe "use_the_create_filter_paper_action", :filter_paper => true do
             "uuid": "11111111-2222-3333-4444-555555555555"
         },
         "labels": null,
+        "location": null,
         "aliquots": [
             {
                 "sample_uuid": "11111111-2222-3333-4444-666666666666",

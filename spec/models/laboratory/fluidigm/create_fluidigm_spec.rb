@@ -1,6 +1,7 @@
 # Spec requirements
 require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
+require 'models/laboratory/location_shared'
 
 require 'models/laboratory/container_like_asset_shared'
 
@@ -91,6 +92,7 @@ module Lims::LaboratoryApp
         fluidigm = result[:fluidigm]
         fluidigm.number_of_rows.should == number_of_rows
         fluidigm.number_of_columns.should == number_of_columns
+        fluidigm.location.should == location
         fluidigm_checker[fluidigm]
 
         result[:uuid].should == uuid
@@ -106,6 +108,7 @@ module Lims::LaboratoryApp
       context "valid calling context" do
         let!(:store) { Lims::Core::Persistence::Store.new() }
         include_context "container-like asset factory"
+        include_context "define location"
         include_context("for application",  "Test fluidigm creation")
 
         subject do
@@ -113,6 +116,7 @@ module Lims::LaboratoryApp
             a.number_of_rows    = number_of_rows
             a.number_of_columns = number_of_columns
             a.fluidigm_wells_description = fluidigm_wells_description
+            a.location = location
           end
         end
 

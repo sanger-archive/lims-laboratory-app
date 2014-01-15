@@ -18,6 +18,7 @@ shared_context "expect tube JSON" do
           "delete" => path,
           "create" => path},
         "uuid" => uuid,
+        "location" => location,
         "type" => tube_type,
         "max_volume" => tube_max_volume,
         "aliquots" => aliquot_array}
@@ -33,6 +34,7 @@ shared_context "expect tube JSON with labels" do
           "delete" => path,
           "create" => path},
         "uuid" => uuid,
+        "location" => location,
         "type" => tube_type,
         "max_volume" => tube_max_volume,
         "aliquots" => aliquot_array,
@@ -59,6 +61,7 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
   let(:asset) { "tube" }
   include_context "use generated uuid"
   let(:model) { "tubes" }
+  let(:location) { nil }
 
   context "#create" do
     context do
@@ -149,6 +152,7 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
                         "delete" => source_tube1_url
                       },
                       "uuid" => source_tube1_uuid,
+                      "location" => location,
                       "type" => nil,
                       "max_volume" => nil,
                       "aliquots" => aliquot_array_source
@@ -163,6 +167,7 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
                         "delete" => target_tube2_url
                       },
                       "uuid" => target_tube2_uuid,
+                      "location" => location,
                       "type" => nil,
                       "max_volume" => nil,
                       "aliquots" => aliquot_array_target
@@ -206,6 +211,7 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
                         "delete" => source_tube1_url
                       },
                       "uuid" => source_tube1_uuid,
+                      "location" => location,
                       "type" => nil,
                       "max_volume" => nil,
                       "aliquots" => aliquot_array_source
@@ -220,6 +226,7 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
                       "delete" => target_spin_column_url
                     },
                     "uuid" => target_spin_column_uuid,
+                    "location" => location,
                     "aliquots" => aliquot_array_target
                   }}
                 ]
@@ -232,7 +239,7 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
         it_behaves_like "a valid core action"
       end
 
-      context "to an existing target tube AND spin column" do
+      context "to an existing target tube AND spin column", :sp_test => true do
         include_context "aliquots with solvent"
         include_context "for creating a tube with aliquot and solvent in it"
         include_context "for creating an empty tube without aliquots"
@@ -267,6 +274,7 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
                         "delete" => source_tube1_url
                       },
                       "uuid" => source_tube1_uuid,
+                      "location" => location,
                       "type" => nil,
                       "max_volume" => nil,
                       "aliquots" => aliquot_array_source_with_fraction
@@ -281,6 +289,7 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
                       "delete" => target_tube2_url
                     },
                     "uuid" => target_tube2_uuid,
+                    "location" => location,
                     "type" => nil,
                     "max_volume" => nil,
                     "aliquots" => aliquot_array_target_DNA
@@ -293,6 +302,7 @@ describe Lims::LaboratoryApp::Laboratory::Tube do
                       "delete" => target_spin_column_url
                     },
                     "uuid" => target_spin_column_uuid,
+                    "location" => location,
                     "aliquots" => aliquot_array_target_RNA
                   }}
                 ]
