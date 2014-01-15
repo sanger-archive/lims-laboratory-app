@@ -46,6 +46,13 @@ describe "create_a_new_tube_with_samples_and_location", :tube => true do
         },
         "uuid": "11111111-2222-3333-4444-555555555555",
         "location": {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+                "create": "http://example.org/11111111-2222-3333-4444-777777777777",
+                "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+                "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
+            },
+            "uuid": "11111111-2222-3333-4444-777777777777",
             "name": "ABC Hospital",
             "address": "CB11 2TY TubeCity 123 Sample Way",
             "internal": true

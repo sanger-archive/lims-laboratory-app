@@ -56,6 +56,13 @@ describe "create_a_new_fluidigm_resource_with_location", :fluidigm => true do
         "number_of_rows": 16,
         "number_of_columns": 12,
         "location": {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+                "create": "http://example.org/11111111-2222-3333-4444-777777777777",
+                "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+                "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
+            },
+            "uuid": "11111111-2222-3333-4444-777777777777",
             "name": "ABC Hospital",
             "address": "CB11 2TY TubeCity 123 Sample Way",
             "internal": true

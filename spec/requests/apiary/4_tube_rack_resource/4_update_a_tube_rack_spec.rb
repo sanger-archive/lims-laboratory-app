@@ -58,6 +58,13 @@ describe "update_a_tube_rack", :tube_rack => true do
         "number_of_rows": 8,
         "number_of_columns": 12,
         "location": {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                "create": "http://example.org/11111111-2222-3333-4444-666666666666",
+                "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+            },
+            "uuid": "11111111-2222-3333-4444-666666666666",
             "name": "ABC Hospital",
             "address": "CB11 2TY TubeCity 123 Sample Way",
             "internal": true

@@ -69,6 +69,13 @@ describe "bulk_update_labwares_location" do
         },
         "uuid": "11111111-1111-3333-4444-555555555555",
         "location": {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+            },
+            "uuid": "11111111-2222-3333-4444-555555555555",
             "name": "new ABC Hospital",
             "address": "new CB11 3DF Cambridge 123 Sample Way",
             "internal": true

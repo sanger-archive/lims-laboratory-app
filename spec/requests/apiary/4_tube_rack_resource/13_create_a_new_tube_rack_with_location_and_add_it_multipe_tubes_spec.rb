@@ -47,6 +47,13 @@ describe "create_a_new_tube_rack_with_location_and_add_it_multipe_tubes", :tube_
         "number_of_rows": 8,
         "number_of_columns": 12,
         "location": {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-4444-999999999999",
+                "create": "http://example.org/11111111-2222-3333-4444-999999999999",
+                "update": "http://example.org/11111111-2222-3333-4444-999999999999",
+                "delete": "http://example.org/11111111-2222-3333-4444-999999999999"
+            },
+            "uuid": "11111111-2222-3333-4444-999999999999",
             "name": "ABC Hospital",
             "address": "CB11 2TY TubeCity 123 Sample Way",
             "internal": true
