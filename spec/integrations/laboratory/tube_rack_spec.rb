@@ -75,13 +75,8 @@ module Lims::LaboratoryApp::Laboratory
     let(:aliquot_quantity) { 10 }
     let(:unit_type) { "mole" }
     let(:tube_type) { "Eppendorf" }
-    let(:location) {
-      {
-        "name" => "ABC Hospital",
-        "address" => "CB11 5RT TubeCity 123 Sample Way",
-        "internal" => false
-      }
-    }
+    let(:location) { nil }
+
     let(:tube_max_volume) { 2 }
     let(:tube) { Lims::LaboratoryApp::Laboratory::Tube.new(:type => tube_type, :max_volume => tube_max_volume) }
     let!(:tube_uuid) {
@@ -105,14 +100,8 @@ module Lims::LaboratoryApp::Laboratory
   shared_context "for tube rack with tubes" do
     include_context "with filled aliquots"
     include_context "with tube and sample"
-    let(:tubes) { {tube_location => tube_uuid} } 
-    let(:location) {
-      {
-        :name => "ABC Hospital",
-        :address => "CB11 5RT TubeCity 123 Sample Way",
-        :internal => false
-      }
-    }
+    let(:tubes) { {tube_location => tube_uuid} }
+    let(:location) { nil }
     let(:parameters) { {:tube_rack => dimensions.merge(:tubes => tubes, :location => location)} }
     let(:tubes_hash) { 
       path = "http://example.org/#{tube_uuid}"
@@ -241,13 +230,7 @@ module Lims::LaboratoryApp::Laboratory
     let(:target_rack_uuids) { ["11111111-2222-3333-4444-666666666660",
                                "11111111-2222-3333-4444-666666666661"]
     }
-    let(:location) {
-      {
-        :name => "ABC Hospital",
-        :address => "CB11 5RT TubeCity 123 Sample Way",
-        :internal => false
-      }
-    }
+    let(:location) { nil }
 
     context "#create" do
       include_context "has standard dimensions"
@@ -277,6 +260,7 @@ module Lims::LaboratoryApp::Laboratory
       let(:path) { "/#{uuid}" }
       let(:aliquot_type) { "DNA" }
       let(:aliquot_quantity) { 10 }
+      let(:location) { nil }
       let(:parameters) { {:aliquot_type => aliquot_type, :aliquot_quantity => aliquot_quantity, :location => location} }
 
       it_behaves_like "updating a resource"
@@ -330,7 +314,7 @@ module Lims::LaboratoryApp::Laboratory
             "uuid" => uuid,
             "number_of_rows" => number_of_rows,
             "number_of_columns" => number_of_columns,
-            "location" => location,
+            "location" => nil,
             "tubes" => {"B5"=>viewed_tube}
             }]}
         let(:expected_size) { 1 }
@@ -425,6 +409,7 @@ module Lims::LaboratoryApp::Laboratory
     context "#move" do
       include_context "with filled aliquots"
       let(:url) { "/actions/tube_rack_move" }
+      let(:location) { nil }
 
       context "with no parameters" do
         let(:parameters) { {} }
@@ -498,7 +483,7 @@ module Lims::LaboratoryApp::Laboratory
                     "uuid" => target_rack1_uuid,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
-                    "location" => location,
+                    "location" => nil,
                     "tubes" => target_tubes}
                 }],
                 :moves => moves
@@ -646,7 +631,7 @@ module Lims::LaboratoryApp::Laboratory
                     "uuid" => target_rack1_uuid,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
-                    "location" => location,
+                    "location" => nil,
                     "tubes" => target1_tubes}
                   },
                   {"tube_rack" => {
@@ -659,7 +644,7 @@ module Lims::LaboratoryApp::Laboratory
                     "uuid" => target_rack2_uuid,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
-                    "location" => location,
+                    "location" => nil,
                     "tubes" => target2_tubes}
                   }
                 ],

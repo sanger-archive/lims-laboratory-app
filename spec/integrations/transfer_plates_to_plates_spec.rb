@@ -53,9 +53,16 @@ describe Lims::LaboratoryApp::Laboratory::Plate::TransferPlatesToPlates do
     let(:target_aliquot_type2) { aliquot_type_RNA }
     let(:location) {
       {
-        "name" => "ABC Hospital",
-        "address" => "CB11 5RT TubeCity 123 Sample Way",
-        "internal" => false
+        "actions" => {
+           "read" => "http://example.org/11111111-2222-3333-4444-555555555555",
+           "create" => "http://example.org/11111111-2222-3333-4444-555555555555",
+           "update" => "http://example.org/11111111-2222-3333-4444-555555555555",
+           "delete" => "http://example.org/11111111-2222-3333-4444-555555555555"
+         },
+         "uuid" => "11111111-2222-3333-4444-555555555555",
+         "name" => "ABC Hospital",
+         "address" => "CB11 5RT TubeCity 123 Sample Way",
+         "internal" => false
       }
     }
 
