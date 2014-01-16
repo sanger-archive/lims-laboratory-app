@@ -28,6 +28,14 @@ GIT
       virtus (= 0.2.0)
 
 GIT
+  remote: http://github.com/sanger/lims-exception-notifier-app.git
+  revision: 28a6507297f047c2ec5295f18ff8392309584753
+  branch: master
+  specs:
+    lims-exception-notifier-app (0.1.0)
+      mustache (~> 0.99.4)
+
+GIT
   remote: http://github.com/sanger/psd_logger.git
   revision: dd2d634114df75b1d8535715c169a7fc99521389
   specs:
@@ -46,7 +54,7 @@ GIT
 PATH
   remote: .
   specs:
-    lims-laboratory-app (3.4.0.7.0)
+    lims-laboratory-app (3.4.0.8.0)
 
 GEM
   remote: http://rubygems.org/
@@ -85,6 +93,7 @@ GEM
     macaddr (1.6.1)
       systemu (~> 2.5.0)
     modularity (0.6.1)
+    mustache (0.99.5)
     mysql2 (0.3.13)
     rack (1.5.2)
     rack-protection (1.5.0)
@@ -142,6 +151,7 @@ DEPENDENCIES
   jdbc-sqlite3
   lims-api (~> 3.1)!
   lims-core (~> 3.1)!
+  lims-exception-notifier-app!
   lims-laboratory-app!
   mysql2
   psd_logger!
