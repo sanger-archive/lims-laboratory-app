@@ -1,0 +1,7 @@
+server: "mailserver.address"  #change it to the real one
+template: "default_notification_template.txt"
+header:
+  from: "s2-exception-notifier-noreply@mailserver.address"
+  from_alias: "S2 - Exception Notifier No Reply"
+  to: "user@example.com"  #change it to the real one
+  subject: "[S2 Exception Notifier]"
