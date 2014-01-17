@@ -29,10 +29,10 @@ GIT
 
 GIT
   remote: http://github.com/sanger/lims-exception-notifier-app.git
-  revision: 28a6507297f047c2ec5295f18ff8392309584753
+  revision: 36e1d6a51e10276376d839d5cacce99c9aa4c416
   branch: master
   specs:
-    lims-exception-notifier-app (0.1.0)
+    lims-exception-notifier-app (0.1.1)
       mustache (~> 0.99.4)
 
 GIT
@@ -54,7 +54,7 @@ GIT
 PATH
   remote: .
   specs:
-    lims-laboratory-app (3.4.0.8.0)
+    lims-laboratory-app (3.4.0.8.1)
 
 GEM
   remote: http://rubygems.org/
@@ -151,7 +151,7 @@ DEPENDENCIES
   jdbc-sqlite3
   lims-api (~> 3.1)!
   lims-core (~> 3.1)!
-  lims-exception-notifier-app!
+  lims-exception-notifier-app (~> 0.1)!
   lims-laboratory-app!
   mysql2
   psd_logger!

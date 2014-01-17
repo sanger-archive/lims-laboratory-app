@@ -8,7 +8,8 @@ gem 'lims-core', '~>3.1', :git => 'http://github.com/sanger/lims-core.git' , :br
 #gem 'lims-core', :path => '../lims-core'
 gem 'lims-api', '~>3.1', :git => 'http://github.com/sanger/lims-api.git' , :branch => 'development'
 #gem 'lims-api', :path => '../lims-api'
-gem 'lims-exception-notifier-app', :git => 'http://github.com/sanger/lims-exception-notifier-app.git', :branch => 'master'
+gem 'lims-exception-notifier-app', '~>0.1', :git => 'http://github.com/sanger/lims-exception-notifier-app.git', :branch => 'master'
+#gem 'lims-exception-notifier-app', :path => '../lims-exception-notifier-app'
 
 group :debugging do
   gem 'debugger', :platforms => :mri
