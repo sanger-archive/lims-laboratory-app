@@ -40,31 +40,15 @@ module Lims::LaboratoryApp
             lambda { uuids }
           end.call
         }
-        let(:parameters) {
-          {
-            :store => store,
-            :user => user,
-            :application => application,
-            :location       => location_to_update,
-            :name           => new_name,
-            :address        => new_address,
-            :internal       => new_internal,
-            :labware_uuids  => labwares_to_update
-          }
-        }
         let(:action) {
-          described_class.new(parameters)
+          described_class.new(:store => store, :user => user, :application => application) do |a,s|
+            a.location = location_to_update
+            a.name = new_name
+            a.address = new_address
+            a.internal = new_internal
+            a.labware_uuids = labwares_to_update
+          end
         }
-
-        it "is a valid action" do
-          action.call
-          action.valid?.should == true
-        end
-
-        it "is a valid action without internal parameter" do
-          described_class.new(parameters - [:internal]).valid?.should == true
-        end
-
         let(:result) { action.call }
         let(:updated_location) { result[:location] }
         subject { action }
