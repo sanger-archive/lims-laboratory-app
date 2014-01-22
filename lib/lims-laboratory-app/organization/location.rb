@@ -6,9 +6,9 @@ module Lims::LaboratoryApp
     # This class stores the shipping address of a labware.
     class Location
       include Lims::Core::Resource
-      attribute :name, String, :required => true
-      attribute :address, String, :required => true
-      attribute :internal, TrueClass, :default => true, :required => false
+      attribute :name, String, :required => true, :initializable => true
+      attribute :address, String, :required => true, :initializable => true
+      attribute :internal, Boolean, :default => true, :required => false, :initializable => true
     end
   end
 end
