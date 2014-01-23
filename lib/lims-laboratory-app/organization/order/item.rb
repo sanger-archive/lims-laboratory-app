@@ -92,7 +92,11 @@ module Lims::LaboratoryApp
           end
 
           event :reset do
-            transition [:failed, :in_progress] => :pending
+            transition [:in_progress, :done, :unused, :failed, :cancelled] => :pending
+          end
+
+          event :reuse do
+            transition [:unused] => :done
           end
           end
         end
