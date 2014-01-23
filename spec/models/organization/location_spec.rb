@@ -26,6 +26,14 @@ module Lims::LaboratoryApp::Organization
       end
     end
 
+    context "to be valid without internal" do
+      let(:excluded_parameters) { [:internal] }
+      it "valid" do
+        subject.valid?.should == true
+      end
+    end
+
+
     it_behaves_like "requires", :name
     it_behaves_like "requires", :address
 
