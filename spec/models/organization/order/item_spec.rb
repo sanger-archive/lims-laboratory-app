@@ -108,9 +108,12 @@ module Lims
 
             context "cancelled" do
               before(:each) { subject.cancel }
+              its(:status) { should == "cancelled" }
+              its(:cancelled?) { should be_true }
 
               it "can reset" do
                 subject.reset.should == true
+                subject.status.should == "pending"
               end
 
               it "increments iteration when started" do
@@ -122,13 +125,17 @@ module Lims
 
             context "failed" do
               before(:each) { subject.fail }
+              its(:status) { should == "failed" }
+              its(:failed?) { should be_true }
 
               it "can be reset to pending" do
                 subject.reset.should == true
+                subject.status.should == "pending"
               end
 
               it "can be restarted" do
                 subject.start.should == true
+                subject.status.should == "in_progress"
               end
 
               it "increments iteration when started" do
@@ -158,6 +165,7 @@ module Lims
 
             it "can be reseted" do
               subject.reset.should == true
+              subject.status.should == "pending"
             end
 
             it "can be reused" do
