@@ -9,11 +9,11 @@ module Lims::LaboratoryApp
         
         LabwareNotFoundError = Class.new(Lims::Core::Actions::Action::InvalidParameters)
 
-        attribute :location, Organization::Location, :required => true, :writer => :private
-        attribute :name, String, :required => false, :writer => :private
-        attribute :address, String, :required => false, :writer => :private
-        attribute :internal, TrueClass, :required => false, :writer => :private
-        attribute :labware_uuids, Array, :default => [], :required => false, :writer => :private
+        attribute :location, Organization::Location, :required => true
+        attribute :name, String, :required => false
+        attribute :address, String, :required => false
+        attribute :internal, Integer, :required => false
+        attribute :labware_uuids, Array, :default => [], :required => false
 
         def _call_in_session(session)
           location.name = name if name
