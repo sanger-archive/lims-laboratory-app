@@ -23,6 +23,7 @@ describe "create_a_new_empty_filter_paper", :filter_paper => true do
             "create": "http://example.org/11111111-2222-3333-4444-555555555555"
         },
         "uuid": "11111111-2222-3333-4444-555555555555",
+        "location": null,
         "aliquots": [
 
         ]

@@ -1,6 +1,7 @@
 # Spec requirements
 require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
+require 'models/laboratory/location_shared'
 
 require 'models/laboratory/container_like_asset_shared'
 
@@ -14,6 +15,7 @@ module Lims::LaboratoryApp
         Plate::CreatePlate.new(:store => store, :user => user, :application => application)  do |a,s|
           a.ostruct_update(dimensions)
           a.type = plate_type
+          a.location = location
         end
       end
 
@@ -42,6 +44,7 @@ module Lims::LaboratoryApp
           a.ostruct_update(dimensions)
           a.wells_description = wells_description
           a.type = plate_type
+          a.location = location
         end
       end
 
@@ -68,6 +71,7 @@ module Lims::LaboratoryApp
         plate.number_of_rows.should == dimensions[:number_of_rows]
         plate.number_of_columns.should == dimensions[:number_of_columns]
         plate.type.should == plate_type
+        plate.location.should == location
         plate_checker[plate]
 
         result[:uuid].should == uuid
@@ -84,6 +88,7 @@ module Lims::LaboratoryApp
       context "valid calling context" do
         let!(:store) { Lims::Core::Persistence::Store.new() }
         include_context "container-like asset factory"
+        include_context "define location"
         include_context("for application",  "Test plate creation")
 
         include_context("has plate dimension", 8, 12)

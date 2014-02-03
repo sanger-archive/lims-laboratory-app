@@ -28,8 +28,8 @@ describe "create_and_read_a_filter_paper_resource", :filter_paper => true do
     "create_filter_paper": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "filter_paper": {
                 "actions": {
@@ -39,6 +39,7 @@ describe "create_and_read_a_filter_paper_resource", :filter_paper => true do
                     "create": "http://example.org/11111111-2222-3333-4444-555555555555"
                 },
                 "uuid": "11111111-2222-3333-4444-555555555555",
+                "location": null,
                 "aliquots": [
                     {
                         "sample": {
@@ -60,6 +61,7 @@ describe "create_and_read_a_filter_paper_resource", :filter_paper => true do
             "uuid": "11111111-2222-3333-4444-555555555555"
         },
         "labels": null,
+        "location": null,
         "aliquots": [
             {
                 "sample_uuid": "11111111-2222-3333-4444-666666666666",
@@ -87,6 +89,7 @@ describe "create_and_read_a_filter_paper_resource", :filter_paper => true do
             "create": "http://example.org/11111111-2222-3333-4444-555555555555"
         },
         "uuid": "11111111-2222-3333-4444-555555555555",
+        "location": null,
         "aliquots": [
             {
                 "sample": {

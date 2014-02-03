@@ -53,6 +53,7 @@ describe "create_a_new_plate_with_sample_uuids", :plate => true do
         "number_of_rows": 8,
         "number_of_columns": 12,
         "type": "plate type",
+        "location": null,
         "wells": {
             "A1": [
 

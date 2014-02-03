@@ -2,6 +2,7 @@
 require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
 require 'models/laboratory/container_like_asset_shared'
+require 'models/laboratory/location_shared'
 
 # Model requirements
 require 'lims-laboratory-app/laboratory/plate/update_plate'
@@ -13,6 +14,7 @@ module Lims::LaboratoryApp
       include_context "for application", "test update tube rack"
       include_context "container-like asset factory"
       include_context "create object"
+      include_context "define location"
 
       let!(:store) { Lims::Core::Persistence::Store.new }
       let(:plate) { new_plate_with_samples }
@@ -32,6 +34,7 @@ module Lims::LaboratoryApp
             a.aliquot_type = aliquot_type
             a.aliquot_quantity = aliquot_quantity
             a.type = plate_type
+            a.location = location
           end
         }
 
@@ -61,6 +64,11 @@ module Lims::LaboratoryApp
             end
           end
         end
+
+        it "changes the plate shipping location" do
+          updated_plate.location.should == location
+        end
+
       end
 
       context "Update individual well in the plate" do

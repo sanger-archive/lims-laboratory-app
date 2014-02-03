@@ -35,8 +35,8 @@ describe "add_multiply_labels_to_an_asset_with_an_existing_label", :labellable =
     "create_label": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "labellable": {
                 "actions": {

@@ -6,8 +6,3 @@ header:
   to: "user@example.com"  #change it to the real one
   subject: "[S2 Exception Notifier]"
 application_name: "app-name"
-environment_name:
-  dev_server_name: "DEVELOPMENT"
-  uat_server_name: "UAT"
-  prod_server_name: "PRODUCTION"
-

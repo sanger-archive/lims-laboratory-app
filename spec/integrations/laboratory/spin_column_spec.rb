@@ -16,6 +16,7 @@ shared_context "expect spin column JSON" do
                                       "delete" => path,
                                       "create" => path},
                         "uuid" => uuid,
+                        "location" => location,
                         "aliquots" => aliquot_array}
     }
   }
@@ -29,6 +30,7 @@ shared_context "expect spin column JSON with labels" do
                                       "delete" => path,
                                       "create" => path},
                         "uuid" => uuid,
+                        "location" => location,
                         "aliquots" => aliquot_array,
                         "labels" => actions_hash.merge(labellable_uuid_hash).merge(labels_hash)}
     }
@@ -41,6 +43,7 @@ describe Lims::LaboratoryApp::Laboratory::SpinColumn do
   include_context "use generated uuid"
   let(:asset) { "spin_column" }
   let(:model) { "spin_columns" }
+  let(:location) { nil }
 
   context "#create" do
     context do

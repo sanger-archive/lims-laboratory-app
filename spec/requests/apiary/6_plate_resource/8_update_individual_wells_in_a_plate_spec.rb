@@ -43,6 +43,7 @@ describe "update_individual_wells_in_a_plate", :plate => true do
         "number_of_rows": 8,
         "number_of_columns": 12,
         "type": null,
+        "location": null,
         "wells": {
             "A1": [
                 {

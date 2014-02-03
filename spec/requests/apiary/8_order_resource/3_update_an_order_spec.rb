@@ -13,7 +13,7 @@ describe "update_an_order", :order => true do
   # * `parameters` updates the parameters attribute
   # * `state` updates the state parameter
     study = Lims::LaboratoryApp::Organization::Study.new
-    user = Lims::LaboratoryApp::Organization::User.new
+    user = Lims::LaboratoryApp::Organization::User.new(:email => 'user@example.com')
     plate = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_rows => 8,
                                         :number_of_columns => 12,
                                         :type => "stock plate type")
@@ -76,7 +76,8 @@ describe "update_an_order", :order => true do
                 "update": "http://example.org/11111111-2222-3333-4444-666666666666",
                 "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
             },
-            "uuid": "11111111-2222-3333-4444-666666666666"
+            "uuid": "11111111-2222-3333-4444-666666666666",
+            "email": "user@example.com"
         },
         "study": {
             "actions": {

@@ -54,8 +54,8 @@ describe "bulk_create_labellable", :labellable => true do
     "bulk_create_labellable": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "labellables": [
                 {

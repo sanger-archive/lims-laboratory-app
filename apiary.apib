@@ -34,324 +34,396 @@ GET /
 > Accept: application/json
 < 200
 < Content-Type: application/json
- {
-         "actions": {
-           "actions": {
-             "create": "http://example.org/actions/action"
-           }
-         },
-         "batches": {
-           "actions": {
-             "create": "http://example.org/batches",
-             "read": "http://example.org/batches",
-             "first": "http://example.org/batches/page=1",
-             "last": "http://example.org/batches/page=-1"
-           }
-         },
-         "users": {
-           "actions": {
-             "create": "http://example.org/users",
-             "read": "http://example.org/users",
-             "first": "http://example.org/users/page=1",
-             "last": "http://example.org/users/page=-1"
-           }
-         },
-         "studies": {
-           "actions": {
-             "create": "http://example.org/studies",
-             "read": "http://example.org/studies",
-             "first": "http://example.org/studies/page=1",
-             "last": "http://example.org/studies/page=-1"
-           }
-         },
-         "orders": {
-           "actions": {
-             "create": "http://example.org/orders",
-             "read": "http://example.org/orders",
-             "first": "http://example.org/orders/page=1",
-             "last": "http://example.org/orders/page=-1"
-           }
-         },
-         "projects": {
-           "actions": {
-             "create": "http://example.org/projects",
-             "read": "http://example.org/projects",
-             "first": "http://example.org/projects/page=1",
-             "last": "http://example.org/projects/page=-1"
-           }
-         },
-         "samples": {
-           "actions": {
-             "create": "http://example.org/samples",
-             "read": "http://example.org/samples",
-             "first": "http://example.org/samples/page=1",
-             "last": "http://example.org/samples/page=-1"
-           }
-         },
-         "oligos": {
-           "actions": {
-             "create": "http://example.org/oligos",
-             "read": "http://example.org/oligos",
-             "first": "http://example.org/oligos/page=1",
-             "last": "http://example.org/oligos/page=-1"
-           }
-         },
-         "aliquots": {
-           "actions": {
-             "create": "http://example.org/aliquots",
-             "read": "http://example.org/aliquots",
-             "first": "http://example.org/aliquots/page=1",
-             "last": "http://example.org/aliquots/page=-1"
-           }
-         },
-         "flowcells": {
-           "actions": {
-             "create": "http://example.org/flowcells",
-             "read": "http://example.org/flowcells",
-             "first": "http://example.org/flowcells/page=1",
-             "last": "http://example.org/flowcells/page=-1"
-           }
-         },
-         "gels": {
-           "actions": {
-             "create": "http://example.org/gels",
-             "read": "http://example.org/gels",
-             "first": "http://example.org/gels/page=1",
-             "last": "http://example.org/gels/page=-1"
-           }
-         },
-         "labellables": {
-           "actions": {
-             "create": "http://example.org/labellables",
-             "read": "http://example.org/labellables",
-             "first": "http://example.org/labellables/page=1",
-             "last": "http://example.org/labellables/page=-1"
-           }
-         },
-         "sanger_barcodes": {
-           "actions": {
-             "create": "http://example.org/sanger_barcodes",
-             "read": "http://example.org/sanger_barcodes",
-             "first": "http://example.org/sanger_barcodes/page=1",
-             "last": "http://example.org/sanger_barcodes/page=-1"
-           }
-         },
-         "ean13_barcodes": {
-           "actions": {
-             "create": "http://example.org/ean13_barcodes",
-             "read": "http://example.org/ean13_barcodes",
-             "first": "http://example.org/ean13_barcodes/page=1",
-             "last": "http://example.org/ean13_barcodes/page=-1"
-           }
-         },
-         "barcode2_ds": {
-           "actions": {
-             "create": "http://example.org/barcode2_ds",
-             "read": "http://example.org/barcode2_ds",
-             "first": "http://example.org/barcode2_ds/page=1",
-             "last": "http://example.org/barcode2_ds/page=-1"
-           }
-         },
-         "plates": {
-           "actions": {
-             "create": "http://example.org/plates",
-             "read": "http://example.org/plates",
-             "first": "http://example.org/plates/page=1",
-             "last": "http://example.org/plates/page=-1"
-           }
-         },
-         "spin_columns": {
-           "actions": {
-             "create": "http://example.org/spin_columns",
-             "read": "http://example.org/spin_columns",
-             "first": "http://example.org/spin_columns/page=1",
-             "last": "http://example.org/spin_columns/page=-1"
-           }
-         },
-         "tubes": {
-           "actions": {
-             "create": "http://example.org/tubes",
-             "read": "http://example.org/tubes",
-             "first": "http://example.org/tubes/page=1",
-             "last": "http://example.org/tubes/page=-1"
-           }
-         },
-         "tube_racks": {
-           "actions": {
-             "create": "http://example.org/tube_racks",
-             "read": "http://example.org/tube_racks",
-             "first": "http://example.org/tube_racks/page=1",
-             "last": "http://example.org/tube_racks/page=-1"
-           }
-         },
-         "tag_groups": {
-           "actions": {
-             "create": "http://example.org/tag_groups",
-             "read": "http://example.org/tag_groups",
-             "first": "http://example.org/tag_groups/page=1",
-             "last": "http://example.org/tag_groups/page=-1"
-           }
-         },
-         "searches": {
-           "actions": {
-             "create": "http://example.org/searches",
-             "read": "http://example.org/searches",
-             "first": "http://example.org/searches/page=1",
-             "last": "http://example.org/searches/page=-1"
-           }
-         },
-         "multi_criteria_filters": {
-           "actions": {
-             "create": "http://example.org/multi_criteria_filters",
-             "read": "http://example.org/multi_criteria_filters",
-             "first": "http://example.org/multi_criteria_filters/page=1",
-             "last": "http://example.org/multi_criteria_filters/page=-1"
-           }
-         },
-         "label_filters": {
-           "actions": {
-             "create": "http://example.org/label_filters",
-             "read": "http://example.org/label_filters",
-             "first": "http://example.org/label_filters/page=1",
-             "last": "http://example.org/label_filters/page=-1"
-           }
-         },
-         "order_filters": {
-           "actions": {
-             "create": "http://example.org/order_filters",
-             "read": "http://example.org/order_filters",
-             "first": "http://example.org/order_filters/page=1",
-             "last": "http://example.org/order_filters/page=-1"
-           }
-         },
-         "batch_filters": {
-           "actions": {
-             "create": "http://example.org/batch_filters",
-             "read": "http://example.org/batch_filters",
-             "first": "http://example.org/batch_filters/page=1",
-             "last": "http://example.org/batch_filters/page=-1"
-           }
-         },
-         "uuid_resources": {
-           "actions": {
-             "create": "http://example.org/uuid_resources",
-             "read": "http://example.org/uuid_resources",
-             "first": "http://example.org/uuid_resources/page=1",
-             "last": "http://example.org/uuid_resources/page=-1"
-           }
-         },
-         "create_batches": {
-           "actions": {
-             "create": "http://example.org/actions/create_batch"
-           }
-         },
-         "create_flowcells": {
-           "actions": {
-             "create": "http://example.org/actions/create_flowcell"
-           }
-         },
-         "create_gels": {
-           "actions": {
-             "create": "http://example.org/actions/create_gel"
-           }
-         },
-         "create_labels": {
-           "actions": {
-             "create": "http://example.org/actions/create_label"
-           }
-         },
-         "create_labellables": {
-           "actions": {
-             "create": "http://example.org/actions/create_labellable"
-           }
-         },
-         "create_orders": {
-           "actions": {
-             "create": "http://example.org/actions/create_order"
-           }
-         },
-         "create_plates": {
-           "actions": {
-             "create": "http://example.org/actions/create_plate"
-           }
-         },
-         "create_searches": {
-           "actions": {
-             "create": "http://example.org/actions/create_search"
-           }
-         },
-         "create_spin_columns": {
-           "actions": {
-             "create": "http://example.org/actions/create_spin_column"
-           }
-         },
-         "create_tubes": {
-           "actions": {
-             "create": "http://example.org/actions/create_tube"
-           }
-         },
-         "create_tube_racks": {
-           "actions": {
-             "create": "http://example.org/actions/create_tube_rack"
-           }
-         },
-         "plate_transfers": {
-           "actions": {
-             "create": "http://example.org/actions/plate_transfer"
-           }
-         },
-         "tag_wells": {
-           "actions": {
-             "create": "http://example.org/actions/tag_wells"
-           }
-         },
-         "transfer_plates_to_plates": {
-           "actions": {
-             "create": "http://example.org/actions/transfer_plates_to_plates"
-           }
-         },
-         "transfer_tubes_to_tubes": {
-           "actions": {
-             "create": "http://example.org/actions/transfer_tubes_to_tubes"
-           }
-         },
-         "transfer_wells_to_tubes": {
-           "actions": {
-             "create": "http://example.org/actions/transfer_wells_to_tubes"
-           }
-         },
-         "tube_rack_moves": {
-           "actions": {
-             "create": "http://example.org/actions/tube_rack_move"
-           }
-         },
-         "tube_rack_transfers": {
-           "actions": {
-             "create": "http://example.org/actions/tube_rack_transfer"
-           }
-         },
-         "update_orders": {
-           "actions": {
-             "create": "http://example.org/actions/update_order"
-           }
-         },
-         "update_plates": {
-           "actions": {
-             "create": "http://example.org/actions/update_plate"
-           }
-         },
-         "update_tubes": {
-           "actions": {
-             "create": "http://example.org/actions/update_tube"
-           }
-         },
-         "update_tube_racks": {
-           "actions": {
-             "create": "http://example.org/actions/update_tube_rack"
-           }
-         },
-         "revision": 3
-       }
+{
+    "actions": {
+        "read": "http://example.org/"
+    },
+    "batches": {
+        "actions": {
+            "create": "http://example.org/batches",
+            "read": "http://example.org/batches",
+            "first": "http://example.org/batches/page=1",
+            "last": "http://example.org/batches/page=-1"
+        }
+    },
+    "users": {
+        "actions": {
+            "create": "http://example.org/users",
+            "read": "http://example.org/users",
+            "first": "http://example.org/users/page=1",
+            "last": "http://example.org/users/page=-1"
+        }
+    },
+    "studies": {
+        "actions": {
+            "create": "http://example.org/studies",
+            "read": "http://example.org/studies",
+            "first": "http://example.org/studies/page=1",
+            "last": "http://example.org/studies/page=-1"
+        }
+    },
+    "orders": {
+        "actions": {
+            "create": "http://example.org/orders",
+            "read": "http://example.org/orders",
+            "first": "http://example.org/orders/page=1",
+            "last": "http://example.org/orders/page=-1"
+        }
+    },
+    "samples": {
+        "actions": {
+            "create": "http://example.org/samples",
+            "read": "http://example.org/samples",
+            "first": "http://example.org/samples/page=1",
+            "last": "http://example.org/samples/page=-1"
+        }
+    },
+    "oligos": {
+        "actions": {
+            "create": "http://example.org/oligos",
+            "read": "http://example.org/oligos",
+            "first": "http://example.org/oligos/page=1",
+            "last": "http://example.org/oligos/page=-1"
+        }
+    },
+    "aliquots": {
+        "actions": {
+            "create": "http://example.org/aliquots",
+            "read": "http://example.org/aliquots",
+            "first": "http://example.org/aliquots/page=1",
+            "last": "http://example.org/aliquots/page=-1"
+        }
+    },
+    "flowcells": {
+        "actions": {
+            "create": "http://example.org/flowcells",
+            "read": "http://example.org/flowcells",
+            "first": "http://example.org/flowcells/page=1",
+            "last": "http://example.org/flowcells/page=-1"
+        }
+    },
+    "gels": {
+        "actions": {
+            "create": "http://example.org/gels",
+            "read": "http://example.org/gels",
+            "first": "http://example.org/gels/page=1",
+            "last": "http://example.org/gels/page=-1"
+        }
+    },
+    "filter_papers": {
+        "actions": {
+            "create": "http://example.org/filter_papers",
+            "read": "http://example.org/filter_papers",
+            "first": "http://example.org/filter_papers/page=1",
+            "last": "http://example.org/filter_papers/page=-1"
+        }
+    },
+    "labellables": {
+        "actions": {
+            "create": "http://example.org/labellables",
+            "read": "http://example.org/labellables",
+            "first": "http://example.org/labellables/page=1",
+            "last": "http://example.org/labellables/page=-1"
+        }
+    },
+    "sanger_barcodes": {
+        "actions": {
+            "create": "http://example.org/sanger_barcodes",
+            "read": "http://example.org/sanger_barcodes",
+            "first": "http://example.org/sanger_barcodes/page=1",
+            "last": "http://example.org/sanger_barcodes/page=-1"
+        }
+    },
+    "code128_c_barcodes": {
+        "actions": {
+            "create": "http://example.org/code128_c_barcodes",
+            "read": "http://example.org/code128_c_barcodes",
+            "first": "http://example.org/code128_c_barcodes/page=1",
+            "last": "http://example.org/code128_c_barcodes/page=-1"
+        }
+    },
+    "ean13_barcodes": {
+        "actions": {
+            "create": "http://example.org/ean13_barcodes",
+            "read": "http://example.org/ean13_barcodes",
+            "first": "http://example.org/ean13_barcodes/page=1",
+            "last": "http://example.org/ean13_barcodes/page=-1"
+        }
+    },
+    "barcode2_ds": {
+        "actions": {
+            "create": "http://example.org/barcode2_ds",
+            "read": "http://example.org/barcode2_ds",
+            "first": "http://example.org/barcode2_ds/page=1",
+            "last": "http://example.org/barcode2_ds/page=-1"
+        }
+    },
+    "texts": {
+        "actions": {
+            "create": "http://example.org/texts",
+            "read": "http://example.org/texts",
+            "first": "http://example.org/texts/page=1",
+            "last": "http://example.org/texts/page=-1"
+        }
+    },
+    "plates": {
+        "actions": {
+            "create": "http://example.org/plates",
+            "read": "http://example.org/plates",
+            "first": "http://example.org/plates/page=1",
+            "last": "http://example.org/plates/page=-1"
+        }
+    },
+    "spin_columns": {
+        "actions": {
+            "create": "http://example.org/spin_columns",
+            "read": "http://example.org/spin_columns",
+            "first": "http://example.org/spin_columns/page=1",
+            "last": "http://example.org/spin_columns/page=-1"
+        }
+    },
+    "tubes": {
+        "actions": {
+            "create": "http://example.org/tubes",
+            "read": "http://example.org/tubes",
+            "first": "http://example.org/tubes/page=1",
+            "last": "http://example.org/tubes/page=-1"
+        }
+    },
+    "tube_racks": {
+        "actions": {
+            "create": "http://example.org/tube_racks",
+            "read": "http://example.org/tube_racks",
+            "first": "http://example.org/tube_racks/page=1",
+            "last": "http://example.org/tube_racks/page=-1"
+        }
+    },
+    "tag_groups": {
+        "actions": {
+            "create": "http://example.org/tag_groups",
+            "read": "http://example.org/tag_groups",
+            "first": "http://example.org/tag_groups/page=1",
+            "last": "http://example.org/tag_groups/page=-1"
+        }
+    },
+    "searches": {
+        "actions": {
+            "create": "http://example.org/searches",
+            "read": "http://example.org/searches",
+            "first": "http://example.org/searches/page=1",
+            "last": "http://example.org/searches/page=-1"
+        }
+    },
+    "sample_filters": {
+        "actions": {
+            "create": "http://example.org/sample_filters",
+            "read": "http://example.org/sample_filters",
+            "first": "http://example.org/sample_filters/page=1",
+            "last": "http://example.org/sample_filters/page=-1"
+        }
+    },
+    "multi_criteria_filters": {
+        "actions": {
+            "create": "http://example.org/multi_criteria_filters",
+            "read": "http://example.org/multi_criteria_filters",
+            "first": "http://example.org/multi_criteria_filters/page=1",
+            "last": "http://example.org/multi_criteria_filters/page=-1"
+        }
+    },
+    "label_filters": {
+        "actions": {
+            "create": "http://example.org/label_filters",
+            "read": "http://example.org/label_filters",
+            "first": "http://example.org/label_filters/page=1",
+            "last": "http://example.org/label_filters/page=-1"
+        }
+    },
+    "order_filters": {
+        "actions": {
+            "create": "http://example.org/order_filters",
+            "read": "http://example.org/order_filters",
+            "first": "http://example.org/order_filters/page=1",
+            "last": "http://example.org/order_filters/page=-1"
+        }
+    },
+    "batch_filters": {
+        "actions": {
+            "create": "http://example.org/batch_filters",
+            "read": "http://example.org/batch_filters",
+            "first": "http://example.org/batch_filters/page=1",
+            "last": "http://example.org/batch_filters/page=-1"
+        }
+    },
+    "uuid_resources": {
+        "actions": {
+            "create": "http://example.org/uuid_resources",
+            "read": "http://example.org/uuid_resources",
+            "first": "http://example.org/uuid_resources/page=1",
+            "last": "http://example.org/uuid_resources/page=-1"
+        }
+    },
+    "create_batches": {
+        "actions": {
+            "create": "http://example.org/actions/create_batch"
+        }
+    },
+    "create_flowcells": {
+        "actions": {
+            "create": "http://example.org/actions/create_flowcell"
+        }
+    },
+    "create_gels": {
+        "actions": {
+            "create": "http://example.org/actions/create_gel"
+        }
+    },
+    "create_filter_papers": {
+        "actions": {
+            "create": "http://example.org/actions/create_filter_paper"
+        }
+    },
+    "bulk_create_filter_papers": {
+        "actions": {
+            "create": "http://example.org/actions/bulk_create_filter_paper"
+        }
+    },
+    "create_labels": {
+        "actions": {
+            "create": "http://example.org/actions/create_label"
+        }
+    },
+    "bulk_create_tubes": {
+        "actions": {
+            "create": "http://example.org/actions/bulk_create_tube"
+        }
+    },
+    "bulk_create_labellables": {
+        "actions": {
+            "create": "http://example.org/actions/bulk_create_labellable"
+        }
+    },
+    "create_labellables": {
+        "actions": {
+            "create": "http://example.org/actions/create_labellable"
+        }
+    },
+    "update_labels": {
+        "actions": {
+            "create": "http://example.org/actions/update_label"
+        }
+    },
+    "create_orders": {
+        "actions": {
+            "create": "http://example.org/actions/create_order"
+        }
+    },
+    "create_plates": {
+        "actions": {
+            "create": "http://example.org/actions/create_plate"
+        }
+    },
+    "create_searches": {
+        "actions": {
+            "create": "http://example.org/actions/create_search"
+        }
+    },
+    "create_spin_columns": {
+        "actions": {
+            "create": "http://example.org/actions/create_spin_column"
+        }
+    },
+    "create_tubes": {
+        "actions": {
+            "create": "http://example.org/actions/create_tube"
+        }
+    },
+    "create_tube_racks": {
+        "actions": {
+            "create": "http://example.org/actions/create_tube_rack"
+        }
+    },
+    "plate_transfers": {
+        "actions": {
+            "create": "http://example.org/actions/plate_transfer"
+        }
+    },
+    "transfer_plates_to_plates": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_plates_to_plates"
+        }
+    },
+    "transfer_tubes_to_tubes": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_tubes_to_tubes"
+        }
+    },
+    "transfer_wells_to_tubes": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_wells_to_tubes"
+        }
+    },
+    "tube_rack_moves": {
+        "actions": {
+            "create": "http://example.org/actions/tube_rack_move"
+        }
+    },
+    "tube_rack_transfers": {
+        "actions": {
+            "create": "http://example.org/actions/tube_rack_transfer"
+        }
+    },
+    "update_batches": {
+        "actions": {
+            "create": "http://example.org/actions/update_batch"
+        }
+    },
+    "update_orders": {
+        "actions": {
+            "create": "http://example.org/actions/update_order"
+        }
+    },
+    "update_plates": {
+        "actions": {
+            "create": "http://example.org/actions/update_plate"
+        }
+    },
+    "update_tubes": {
+        "actions": {
+            "create": "http://example.org/actions/update_tube"
+        }
+    },
+    "update_tube_racks": {
+        "actions": {
+            "create": "http://example.org/actions/update_tube_rack"
+        }
+    },
+    "delete_tube_racks": {
+        "actions": {
+            "create": "http://example.org/actions/delete_tube_rack"
+        }
+    },
+    "tag_wells": {
+        "actions": {
+            "create": "http://example.org/actions/tag_wells"
+        }
+    },
+    "swap_samples": {
+        "actions": {
+            "create": "http://example.org/actions/swap_samples"
+        }
+    },
+    "transfer_multiple_filter_papers_to_tubes": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_multiple_filter_papers_to_tubes"
+        }
+    },
+    "transfer_multiple_filter_papers_to_wells": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_multiple_filter_papers_to_wells"
+        }
+    },
+    "revision": 3
+}
 
 
 --
@@ -446,48 +518,111 @@ POST /tubes
 }}
 
 
+**Create an new empty tube and add label(s) to it.**
+
+* `labels` contains a hash of the label(s) information to add to the resource (in our case to the tube).
+
+POST /tubes
+> Accept: application/json
+{
+    "tube": {
+        "labels": {
+            "front barcode": {
+                "value": "1234-ABC",
+                "type": "ean13-barcode"
+            },
+            "back barcode": {
+                "value": "1234-ABC",
+                "type": "sanger-barcode"
+            }
+        }
+    }
+}
+< 200
+< Content-Type: application/json
+{
+    "tube": {
+        "actions": {
+            "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555",
+        "type": null,
+        "max_volume": null,
+        "aliquots": [],
+        "labels": {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                "create": "http://example.org/11111111-2222-3333-4444-666666666666",
+                "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+            },
+            "uuid": "11111111-2222-3333-4444-666666666666",
+            "front barcode": {
+                "value": "1234-ABC",
+                "type": "ean13-barcode"
+            },
+            "back barcode": {
+                "value": "1234-ABC",
+                "type": "sanger-barcode"
+            }
+        }
+    }
+}
+
+
 **Bulk create tubes**
 
 * `tubes` is mandatory
+
+This action creates a number of tubes with the given parameters. 
+
+The parameter of this action is an array. An element of this array contains parameters to create a tube.
+The elements can contains different parameters, so this way we could create tubes with different types and content with the use of only one action.
+
 POST /actions/bulk_create_tube
 > Accept: application/json
-{ "bulk_create_tube": {
-    "tubes": [
-        {
-            "type": "Eppendorf",
-            "max_volume": 2,
-            "aliquots": [
-                {
-                    "sample_uuid": "11111111-0000-0000-0000-111111111111",
-                    "type": "NA",
-                    "quantity": 5
-                }
-            ]
-        },
-        {
-            "type": "Eppendorf",
-            "max_volume": 10,
-            "aliquots": [
-                {
-                    "sample_uuid": "11111111-0000-0000-0000-222222222222",
-                    "type": "RNA",
-                    "quantity": 15
-                }
-            ]
-        },
-        {
-            "type": "New type",
-            "max_volume": 15,
-            "aliquots": [
-                {
-                    "sample_uuid": "11111111-0000-0000-0000-333333333333",
-                    "type": "DNA",
-                    "quantity": 25
-                }
-            ]
-        }
-    ] 
-}}
+{
+    "bulk_create_tube": {
+        "tubes": [
+            {
+                "type": "Eppendorf",
+                "max_volume": 2,
+                "aliquots": [
+                    {
+                        "sample_uuid": "11111111-0000-0000-0000-111111111111",
+                        "type": "NA",
+                        "quantity": 5
+                    }
+                ]
+            },
+            {
+                "type": "Eppendorf",
+                "max_volume": 10,
+                "aliquots": [
+                    {
+                        "sample_uuid": "11111111-0000-0000-0000-222222222222",
+                        "type": "RNA",
+                        "quantity": 15
+                    }
+                ]
+            },
+            {
+                "type": "New type",
+                "max_volume": 15,
+                "aliquots": [
+                    {
+                        "sample_uuid": "11111111-0000-0000-0000-333333333333",
+                        "type": "DNA",
+                        "quantity": 25
+                    }
+                ]
+            }
+        ]
+    }
+}
 < 200
 < Content-Type: application/json
 {
@@ -518,7 +653,7 @@ POST /actions/bulk_create_tube
                                     "delete": "http://example.org/11111111-0000-0000-0000-111111111111"
                                 },
                                 "uuid": "11111111-0000-0000-0000-111111111111",
-                                "name": null
+                                "name": "Sample 1"
                             },
                             "quantity": 5,
                             "type": "NA",
@@ -546,7 +681,7 @@ POST /actions/bulk_create_tube
                                     "delete": "http://example.org/11111111-0000-0000-0000-222222222222"
                                 },
                                 "uuid": "11111111-0000-0000-0000-222222222222",
-                                "name": null
+                                "name": "Sample 1"
                             },
                             "quantity": 15,
                             "type": "RNA",
@@ -574,7 +709,7 @@ POST /actions/bulk_create_tube
                                     "delete": "http://example.org/11111111-0000-0000-0000-333333333333"
                                 },
                                 "uuid": "11111111-0000-0000-0000-333333333333",
-                                "name": null
+                                "name": "Sample 1"
                             },
                             "quantity": 25,
                             "type": "DNA",
@@ -622,13 +757,334 @@ POST /actions/bulk_create_tube
     }
 }
 
+**Bulk create tubes with labels.**
+
+* `tubes` is mandatory
+
+This action creates a number of tubes with the given parameters. 
+
+The parameter of this action is an array. An element of this array contains parameters to create a tube.
+The elements can contains different parameters, so this way we could create tubes with different types and content with the use of only one action.
+
+In our examples we add labels to the created tubes, too.
+
+POST /actions/bulk_create_tube
+> Accept: application/json
+{
+    "bulk_create_tube": {
+        "tubes": [
+            {
+                "type": "Eppendorf",
+                "max_volume": 2,
+                "aliquots": [
+                    {
+                        "sample_uuid": "11111111-0000-0000-0000-111111111111",
+                        "type": "NA",
+                        "quantity": 5
+                    }
+                ],
+                "labels": {
+                    "front barcode": {
+                        "value": "1234-ABC",
+                        "type": "ean13-barcode"
+                    },
+                    "back barcode": {
+                        "value": "1234-ABC",
+                        "type": "sanger-barcode"
+                    }
+                }
+            },
+            {
+                "type": "Eppendorf",
+                "max_volume": 10,
+                "aliquots": [
+                    {
+                        "sample_uuid": "11111111-0000-0000-0000-222222222222",
+                        "type": "RNA",
+                        "quantity": 15
+                    }
+                ]
+            },
+            {
+                "type": "New type",
+                "max_volume": 15,
+                "aliquots": [
+                    {
+                        "sample_uuid": "11111111-0000-0000-0000-333333333333",
+                        "type": "DNA",
+                        "quantity": 25
+                    }
+                ]
+            }
+        ]
+    }
+}
+< 200
+< Content-Type: application/json
+{
+    "bulk_create_tube": {
+        "actions": {
+        },
+        "user": "user",
+        "application": "application",
+        "result": {
+            "tubes": [
+                {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                        "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+                        "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                        "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+                    },
+                    "uuid": "11111111-2222-3333-4444-555555555555",
+                    "type": "Eppendorf",
+                    "max_volume": 2,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-0000-0000-0000-111111111111",
+                                    "create": "http://example.org/11111111-0000-0000-0000-111111111111",
+                                    "update": "http://example.org/11111111-0000-0000-0000-111111111111",
+                                    "delete": "http://example.org/11111111-0000-0000-0000-111111111111"
+                                },
+                                "uuid": "11111111-0000-0000-0000-111111111111",
+                                "name": "Sample 1"
+                            },
+                            "quantity": 5,
+                            "type": "NA",
+                            "unit": "mole"
+                        }
+                    ],
+                    "labels": {
+                        "actions": {
+                            "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "create": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+                        },
+                        "uuid": "11111111-2222-3333-4444-666666666666",
+                        "front barcode": {
+                            "value": "1234-ABC",
+                            "type": "ean13-barcode"
+                        },
+                        "back barcode": {
+                            "value": "1234-ABC",
+                            "type": "sanger-barcode"
+                        }
+                    }
+                },
+                {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+                        "create": "http://example.org/11111111-2222-3333-4444-777777777777",
+                        "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+                        "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
+                    },
+                    "uuid": "11111111-2222-3333-4444-777777777777",
+                    "type": "Eppendorf",
+                    "max_volume": 10,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-0000-0000-0000-222222222222",
+                                    "create": "http://example.org/11111111-0000-0000-0000-222222222222",
+                                    "update": "http://example.org/11111111-0000-0000-0000-222222222222",
+                                    "delete": "http://example.org/11111111-0000-0000-0000-222222222222"
+                                },
+                                "uuid": "11111111-0000-0000-0000-222222222222",
+                                "name": "Sample 1"
+                            },
+                            "quantity": 15,
+                            "type": "RNA",
+                            "unit": "mole"
+                        }
+                    ]
+                },
+                {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-888888888888",
+                        "create": "http://example.org/11111111-2222-3333-4444-888888888888",
+                        "update": "http://example.org/11111111-2222-3333-4444-888888888888",
+                        "delete": "http://example.org/11111111-2222-3333-4444-888888888888"
+                    },
+                    "uuid": "11111111-2222-3333-4444-888888888888",
+                    "type": "New type",
+                    "max_volume": 15,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-0000-0000-0000-333333333333",
+                                    "create": "http://example.org/11111111-0000-0000-0000-333333333333",
+                                    "update": "http://example.org/11111111-0000-0000-0000-333333333333",
+                                    "delete": "http://example.org/11111111-0000-0000-0000-333333333333"
+                                },
+                                "uuid": "11111111-0000-0000-0000-333333333333",
+                                "name": "Sample 1"
+                            },
+                            "quantity": 25,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            ]
+        },
+        "tubes": [
+            {
+                "type": "Eppendorf",
+                "max_volume": 2,
+                "aliquots": [
+                    {
+                        "sample_uuid": "11111111-0000-0000-0000-111111111111",
+                        "type": "NA",
+                        "quantity": 5
+                    }
+                ],
+                "labels": {
+                    "front barcode": {
+                        "value": "1234-ABC",
+                        "type": "ean13-barcode"
+                    },
+                    "back barcode": {
+                        "value": "1234-ABC",
+                        "type": "sanger-barcode"
+                    }
+                }
+            },
+            {
+                "type": "Eppendorf",
+                "max_volume": 10,
+                "aliquots": [
+                    {
+                        "sample_uuid": "11111111-0000-0000-0000-222222222222",
+                        "type": "RNA",
+                        "quantity": 15
+                    }
+                ]
+            },
+            {
+                "type": "New type",
+                "max_volume": 15,
+                "aliquots": [
+                    {
+                        "sample_uuid": "11111111-0000-0000-0000-333333333333",
+                        "type": "DNA",
+                        "quantity": 25
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+
+**Bulk create tube using mime-type.**
+
+You can specify the content type for bulk creation like this:
+`'Content-Type': 'application/json; bulk=true'`
+then this will be a bulk creation. 
+
+In the parameters you have to add an array of resource's parameters.
+
+You can also specify `representation=minimal` for the `Accept` header parameter. This will results a minimal JSON representation of the response JSON.
+
+`'Accept': 'application/json; representation=minimal'`
+POST /tubes
+> Accept: application/json; representation=minimal
+{
+    "tubes": [
+        {
+            "type": "Eppendorf",
+            "max_volume": 2,
+            "aliquots": [
+                {
+                    "sample_uuid": "11111111-0000-0000-0000-111111111111",
+                    "type": "NA",
+                    "quantity": 5
+                }
+            ],
+            "labels": {
+                "front barcode": {
+                    "value": "1234-ABC",
+                    "type": "ean13-barcode"
+                },
+                "back barcode": {
+                    "value": "1234-ABC",
+                    "type": "sanger-barcode"
+                }
+            }
+        },
+        {
+            "type": "Eppendorf",
+            "max_volume": 10,
+            "aliquots": [
+                {
+                    "sample_uuid": "11111111-0000-0000-0000-222222222222",
+                    "type": "RNA",
+                    "quantity": 15
+                }
+            ]
+        },
+        {
+            "type": "New type",
+            "max_volume": 15,
+            "aliquots": [
+                {
+                    "sample_uuid": "11111111-0000-0000-0000-333333333333",
+                    "type": "DNA",
+                    "quantity": 25
+                }
+            ]
+        }
+    ]
+}
+< 200
+< Content-Type: application/json; bulk=true
+{
+    "actions": {
+    },
+    "tubes": [
+        {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+            },
+            "uuid": "11111111-2222-3333-4444-555555555555"
+        },
+        {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+                "create": "http://example.org/11111111-2222-3333-4444-777777777777",
+                "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+                "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
+            },
+            "uuid": "11111111-2222-3333-4444-777777777777"
+        },
+        {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-4444-888888888888",
+                "create": "http://example.org/11111111-2222-3333-4444-888888888888",
+                "update": "http://example.org/11111111-2222-3333-4444-888888888888",
+                "delete": "http://example.org/11111111-2222-3333-4444-888888888888"
+            },
+            "uuid": "11111111-2222-3333-4444-888888888888"
+        }
+    ],
+    "size": 3
+}
+
 
 **Update a tube.** All the aliquots in the tube will be updated with 
 `aliquot_type` and `aliquot_quantity`.
 
 * `type` the actual type of the tube
 * `max_volume` the max volume a tube can hold
-* `aliquot_type`
+* `aliquot_type` type of the aliquot (like: 'DNA', 'RNA' etc...)
 * `aliquot_quantity` volume (ul) if liquid, mass (mg) if solid
 PUT /11111111-2222-3333-4444-555555555555
 > Accept: application/json
@@ -1021,6 +1477,7 @@ POST /actions/transfer_tubes_to_tubes
 }}
 
 
+
 --
 Tube Rack Resource
 --
@@ -1161,6 +1618,7 @@ POST /tube_racks
 
 
 **Update a tube rack.**
+
 All aliquots in each tube of the tube rack will be updated with 
 `aliquot_type` and `aliquot_quantity`.
 
@@ -1278,6 +1736,7 @@ PUT /11111111-2222-3333-4444-777777777777
 
 
 **Update a tube rack and set the volume of the solvent**
+
 For each tube mentionned in `tubes` which have a `volume` parameter, the solvent aliquot is updated with that volume.
 If the tube do not contain solvent yet, the solvent aliquot is created with the specified volume and added in the tube.
 
@@ -1374,8 +1833,36 @@ PUT /11111111-2222-3333-4444-777777777777
     }
 }}
 
+**Delete a tube rack.**
+
+Use HTTP `DELETE` request with the tube rack's `UUID` to delete a tube rack.
+
+* `uuid_of_the_tube_rack` for example: 11111111-2222-3333-4444-555555555555
+
+DELETE /<uuid_of_the_tube_rack>
+> Accept: application/json
+{}
+< 200
+< Content-Type: application/json
+{
+    "tube_rack": {
+        "actions": {
+            "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555",
+        "number_of_rows": 8,
+        "number_of_columns": 12,
+        "tubes": {
+        }
+    }
+}
+
 
 **Transfer tubes content from a source tube rack to a target tube rack according to a transfer map.**
+
 As it is a content transfer between tubes in tube racks, targeted locations mentioned in the transfer map
 need to contain tubes.
 
@@ -1530,6 +2017,7 @@ POST /actions/tube_rack_transfer
 
 
 **Physically move tubes from source tube racks to target tube racks.**
+
 It takes an array, which contains the elements of the movement.
 An element has a source, source_location, target and target_location.
 As it physically moves tubes, targeted locations mentioned in the movement elements need to be empty.
@@ -1731,7 +2219,21 @@ POST /plates
     "number_of_columns": 12,
     "type": "plate type",
     "wells_description": { 
-        "C5": [{ "sample": "11111111-2222-3333-4444-666666666666", "type": "DNA", "quantity": 10 }]
+        "C5": [
+            {   "sample": "11111111-2222-3333-4444-666666666666", 
+                "type": "DNA", 
+                "quantity": 10 
+            }
+        ]
+        "F1": [
+            {   "sample": "11111111-2222-3333-4444-666666666666", 
+                "type": "DNA", 
+                "quantity": 10,
+                "out_of_bounds": {
+                    "attribute_1": "value 1"
+                }
+            }
+        ]
 } } }
 < 200
 < Content-Type: application/json
@@ -1766,13 +2268,108 @@ POST /plates
         "C6": [],"C7": [],"C8": [],"C9": [],"C10": [],"C11": [],"C12": [],
         "D1": [], "D2": [], "D3": [], "D4": [], "D5": [], "D6": [], "D7": [],"D8": [],"D9": [],"D10": [],"D11": [],"D12": [],
         "E1": [], "E2": [], "E3": [], "E4": [], "E5": [], "E6": [], "E7": [],"E8": [],"E9": [],"E10": [],"E11": [],"E12": [],
-        "F1": [], "F2": [], "F3": [], "F4": [], "F5": [], "F6": [], "F7": [],"F8": [],"F9": [],"F10": [],"F11": [],"F12": [],
+        "F1": [{ "sample": {
+            "actions": { 
+                "read": "/11111111-2222-3333-4444-777777777777",
+                "update": "/11111111-2222-3333-4444-777777777777",
+                "delete": "/11111111-2222-3333-4444-777777777777",
+                "create": "/11111111-2222-3333-4444-777777777777" 
+            },
+            "uuid": "11111111-2222-3333-4444-777777777777",
+            "name": "sample 2"},
+            "quantity": 10,
+            "type": "DNA",
+            "unit": "mole",
+            "out_of_bounds": {
+                "attribute_1": "value 1"
+            }
+        } ], 
+        "F2": [], "F3": [], "F4": [], "F5": [], "F6": [], "F7": [],"F8": [],"F9": [],"F10": [],"F11": [],"F12": [],
         "G1": [], "G2": [], "G3": [], "G4": [], "G5": [], "G6": [], "G7": [],"G8": [],"G9": [],"G10": [],"G11": [],"G12": [],
         "H1": [], "H2": [], "H3": [], "H4": [], "H5": [], "H6": [], "H7": [],"H8": [],"H9": [],"H10": [],"H11": [],"H12": []}
 }}
 
+**Bulk create new empty plates.**
+
+* `plates` is mandatory
+
+This action creates a number of plates with the given parameters.
+The parameter of this action is an array. An element of this array contains parameters to create a plate.
+
+* `number_of_rows` number of rows in the plate
+* `number_of_columns` number of columns in the plate
+* `type` actual type of the plate
+* `wells_description` map aliquots to well locations
+
+The elements can contains different parameters, so this way we could create plates with different types and content with the use of only one action.
+
+POST /plates
+> Accept: application/json; representation=minimal
+{
+    "plates": [
+        {
+            "number_of_rows": 8,
+            "number_of_columns": 12,
+            "type": "plate type1",
+            "wells_description": {
+            }
+        },
+        {
+            "number_of_rows": 8,
+            "number_of_columns": 12,
+            "type": "plate type2",
+            "wells_description": {
+            }
+        },
+        {
+            "number_of_rows": 8,
+            "number_of_columns": 12,
+            "type": "plate type3",
+            "wells_description": {
+            }
+        }
+    ]
+}
+< 200
+< Content-Type: application/json; bulk=true
+{
+    "actions": {
+    },
+    "plates": [
+        {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "delete": "http://example.org/11111111-2222-3333-4444-555555555555",
+                "create": "http://example.org/11111111-2222-3333-4444-555555555555"
+            },
+            "uuid": "11111111-2222-3333-4444-555555555555"
+        },
+        {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                "delete": "http://example.org/11111111-2222-3333-4444-666666666666",
+                "create": "http://example.org/11111111-2222-3333-4444-666666666666"
+            },
+            "uuid": "11111111-2222-3333-4444-666666666666"
+        },
+        {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+                "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+                "delete": "http://example.org/11111111-2222-3333-4444-777777777777",
+                "create": "http://example.org/11111111-2222-3333-4444-777777777777"
+            },
+            "uuid": "11111111-2222-3333-4444-777777777777"
+        }
+    ],
+    "size": 3
+}
+
 
 **Update a plate.**
+
 All the aliquots in each well of the plate will be updated with `aliquot_type` and `aliquot_quantity`.
 
 * `type` new type of the plate
@@ -1821,7 +2418,8 @@ PUT /11111111-2222-3333-4444-555555555555
 }}
 
 
-**Update individual wells in a plate**
+**Update individual wells in a plate.**
+
 For each location mentionnend in `wells`, the aliquot containing the referenced sample_uuid is updated 
 with aliquot_type and aliquot_quantity.
 
@@ -1831,8 +2429,15 @@ PUT /11111111-2222-3333-4444-555555555555
 > Accept: application/json
 { 
     "wells": {
-        "C5": {
+        "A1": {
             "sample_uuid": "11111111-2222-3333-4444-666666666666", 
+            "out_of_bounds": {
+                "attribute_1": "value 1",
+                "attribute_2": "value 2"
+            }
+        },
+        "C5": {
+            "sample_uuid": "11111111-2222-3333-4444-777777777777", 
             "aliquot_type": "New type", 
             "aliquot_quantity": 100 
         }
@@ -1852,18 +2457,39 @@ PUT /11111111-2222-3333-4444-555555555555
     "number_of_columns": 12,
     "type": null,
     "wells": { 
-        "A1": [], "A2": [], "A3": [], "A4": [], "A5": [], "A6": [], "A7": [], "A8": [], "A9": [], "A10": [], "A11": [], "A12": [],
+        "A1": [ 
+            {
+                "sample": {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                        "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                        "delete": "http://example.org/11111111-2222-3333-4444-666666666666",
+                        "create": "http://example.org/11111111-2222-3333-4444-666666666666"
+                    },
+                    "uuid": "11111111-2222-3333-4444-666666666666",
+                    "name": "sample 1"
+                },
+                "quantity": 5,
+                "type": "RNA",
+                "unit": "mole",
+                "out_of_bounds": {
+                    "attribute_1": "value 1",
+                    "attribute_2": "value 2"
+                }
+            }
+        ], 
+        "A2": [], "A3": [], "A4": [], "A5": [], "A6": [], "A7": [], "A8": [], "A9": [], "A10": [], "A11": [], "A12": [],
         "B1": [], "B2": [], "B3": [], "B4": [], "B5": [], "B6": [], "B7": [],"B8": [],"B9": [],"B10": [],"B11": [],"B12": [],
         "C1": [], "C2": [], "C3": [], "C4": [], 
         "C5": [ { "sample": {
             "actions": { 
-                "read": "/11111111-2222-3333-4444-666666666666",
-                "update": "/11111111-2222-3333-4444-666666666666",
-                "delete": "/11111111-2222-3333-4444-666666666666",
-                "create": "/11111111-2222-3333-4444-666666666666" 
+                "read": "/11111111-2222-3333-4444-777777777777",
+                "update": "/11111111-2222-3333-4444-777777777777",
+                "delete": "/11111111-2222-3333-4444-777777777777",
+                "create": "/11111111-2222-3333-4444-777777777777" 
             },
-            "uuid": "11111111-2222-3333-4444-666666666666",
-            "name": "sample 1"},
+            "uuid": "11111111-2222-3333-4444-777777777777",
+            "name": "sample 2"},
             "quantity": 100,
             "type": "New type",
             "unit": "mole"
@@ -1875,6 +2501,57 @@ PUT /11111111-2222-3333-4444-555555555555
         "G1": [], "G2": [], "G3": [], "G4": [], "G5": [], "G6": [], "G7": [],"G8": [],"G9": [],"G10": [],"G11": [],"G12": [],
         "H1": [], "H2": [], "H3": [], "H4": [], "H5": [], "H6": [], "H7": [],"H8": [],"H9": [],"H10": [],"H11": [],"H12": []}
 }}
+
+** View the minimal representation of a plate.**
+
+* `uuid_of_the_plate` for example: 11111111-2222-3333-4444-555555555555
+
+With the representation parameter set to minimal the JSON should only contains the action and the UUID of the object.
+
+`'Content-Type': 'application/json; level_of_detail=minimum'`
+
+GET /<uuid_of_the_plate>
+> Accept: application/json; representation=minimal
+< 200
+< Content-Type: application/json; level_of_detail=minimum
+{
+    "plate": {
+        "actions": {
+            "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "delete": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "create": "http://example.org/11111111-2222-3333-4444-555555555555"
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555"
+    }
+}
+
+** View the plate attributes in the JSON.**
+
+* `uuid_of_the_plate` for example: 11111111-2222-3333-4444-555555555555
+
+With the representation parameter set to minimal the JSON should only contains the action and the UUID of the object.
+
+`'Content-Type': 'application/json; level_of_detail=minimum'`
+
+GET /<uuid_of_the_plate>
+> Accept: application/json; representation=attributes
+< 200
+< Content-Type: application/json; level_of_detail=minimum
+{
+    "plate": {
+        "actions": {
+            "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "delete": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "create": "http://example.org/11111111-2222-3333-4444-555555555555"
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555",
+        "number_of_rows": 8,
+        "number_of_columns": 12,
+        "type": "original plate type"
+    }
+}
 
 
 **Transfer content from a source plate to a target plate.**
@@ -2032,7 +2709,7 @@ from transfer the aliquots
 * `target_uuid` uuid of the target plate
 * `target_location` is the well/window/tube location (like "A1")
 to transfer the aliquots.
-* `fractionmount` Amount is an amount of an aliquot to transfer.
+* `fraction` or `amount` Amount is an amount of an aliquot to transfer.
 Fraction is the fraction of an aliquot to transfer.
 You should give the fraction OR the amount of the transfer, not both of them.
 * `aliquot_type` set a new type for all aliquots in the target plate-like asset
@@ -2625,7 +3302,7 @@ from transfer the aliquots
 * `target_uuid` uuid of the target plate
 * `target_location` is the well/window/tube location (like "A1")
 to transfer the aliquots.
-* `fractionmount` Amount is an amount of an aliquot to transfer.
+* `fraction` or `amount` Amount is an amount of an aliquot to transfer.
 Fraction is the fraction of an aliquot to transfer.
 You should give the fraction OR the amount of the transfer, not both of them.
 * `aliquot_type` set a new type for all aliquots in the target plate-like asset
@@ -3206,8 +3883,8 @@ GET /gels
 
 **Create a new empty gel plate.**
 
-* `number_of_rows` number of rows in the rack
-* `number_of_columns` number of columns in the rack
+* `number_of_rows` number of rows in the gel plate
+* `number_of_columns` number of columns in the gel plate
 * `windows_description` map aliquots to window locations
 POST /gels
 > Accept: application/json
@@ -3244,7 +3921,7 @@ POST /gels
 
 * `number_of_rows` number of rows in the gel plate
 * `number_of_columns` number of columns in the gel plate
-* `windows_description` map tubes identified by their uuids to rack locations
+* `windows_description` map aliquots to window locations
 POST /gels
 > Accept: application/json
 { "gel": {
@@ -3292,14 +3969,1264 @@ POST /gels
 }}
 
 
+**Update a gel plate.**
+
+For each location mentioned in windows, the aliquot containing the referenced sample_uuid is updated with `aliquot_type` and `aliquot_quantity`. An `out_of_bounds` parameter
+can be passed per aliquot to attach extra information to the aliquot and which are not stored in S2.
+
+* `windows` in the location specified, update the aliquot containing the `sample_uuid` with `aliquot_type`, `aliquot_quantity` and `out_of_bounds`
+* `aliquot_type` changes the type of all the aliquots contained in the gel
+* `aliquot_quantity` changes the quantity of all the aliquots contained in the gel
+* `out_of_bounds` hash containing extra data passed through S2 but not stored in S2
+
+PUT /11111111-2222-3333-4444-555555555555
+> Accept: application/json
+{ 
+    "aliquot_type": "DNA",
+    "aliquot_quantity": 100,
+    "out_of_bounds": {"extra_field": "extra data"},
+    "windows": {
+        "A1": {
+            "sample_uuid": "11111111-2222-3333-4444-666666666666", 
+            "out_of_bounds": {
+                "attribute_1": "value 1",
+                "attribute_2": "value 2"
+            }
+        },
+        "C5": {
+            "sample_uuid": "11111111-2222-3333-4444-777777777777", 
+            "aliquot_type": "New type", 
+            "aliquot_quantity": 100 
+        }
+    }
+}
+< 200
+< Content-Type: application/json
+{ "gel": {
+    "actions": {
+        "read": "/11111111-2222-3333-4444-555555555555",
+        "update": "/11111111-2222-3333-4444-555555555555",
+        "delete": "/11111111-2222-3333-4444-555555555555",
+        "create": "/11111111-2222-3333-4444-555555555555"
+    },
+    "uuid": "11111111-2222-3333-4444-555555555555",
+    "number_of_rows": 8,
+    "number_of_columns": 12,
+    "windows": { 
+        "A1": [ { "sample": {
+                    "actions": { 
+                        "read": "/11111111-2222-3333-4444-666666666666",
+                        "update": "/11111111-2222-3333-4444-666666666666",
+                        "delete": "/11111111-2222-3333-4444-666666666666",
+                        "create": "/11111111-2222-3333-4444-666666666666" 
+                    },
+                    "uuid": "11111111-2222-3333-4444-666666666666",
+                "name": "sample 1"},
+                "quantity": 100,
+                "type": "DNA",
+                "unit": "mole",
+                "out_of_bounds": {
+                    "attribute_1": "value 1",
+                    "attribute_2": "value 2"
+                }
+        } ], 
+        "A2": [], "A3": [], "A4": [], "A5": [], "A6": [], "A7": [], "A8": [], "A9": [], "A10": [], "A11": [], "A12": [],
+        "B1": [], "B2": [], "B3": [], "B4": [], "B5": [], "B6": [], "B7": [],"B8": [],"B9": [],"B10": [],"B11": [],"B12": [],
+        "C1": [], "C2": [], "C3": [], "C4": [], 
+        "C5": [ { "sample": {
+            "actions": { 
+                "read": "/11111111-2222-3333-4444-777777777777",
+                "update": "/11111111-2222-3333-4444-777777777777",
+                "delete": "/11111111-2222-3333-4444-777777777777",
+                "create": "/11111111-2222-3333-4444-777777777777" 
+            },
+            "uuid": "11111111-2222-3333-4444-777777777777",
+            "name": "sample 1"},
+            "quantity": 100,
+            "type": "DNA",
+            "unit": "mole"
+        } ],
+        "C6": [],"C7": [],"C8": [],"C9": [],"C10": [],"C11": [],"C12": [],
+        "D1": [], "D2": [], "D3": [], "D4": [], "D5": [], "D6": [], "D7": [],"D8": [],"D9": [],"D10": [],"D11": [],"D12": [],
+        "E1": [], "E2": [], "E3": [], "E4": [], "E5": [], "E6": [], "E7": [],"E8": [],"E9": [],"E10": [],"E11": [],"E12": [],
+        "F1": [], "F2": [], "F3": [], "F4": [], "F5": [], "F6": [], "F7": [],"F8": [],"F9": [],"F10": [],"F11": [],"F12": [],
+        "G1": [], "G2": [], "G3": [], "G4": [], "G5": [], "G6": [], "G7": [],"G8": [],"G9": [],"G10": [],"G11": [],"G12": [],
+        "H1": [], "H2": [], "H3": [], "H4": [], "H5": [], "H6": [], "H7": [],"H8": [],"H9": [],"H10": [],"H11": [],"H12": []},
+        "out_of_bounds": {"extra_field": "extra data"}
+}}
+
+
+--
+Filter Paper Resource
+--
+**List actions for filter paper resource.**
+
+* `create` creates a new filter paper via HTTP POST request
+* `read` returns the list of actions for a filter paper resource via HTTP GET request
+* `first` lists the first page of filter paper resources in a page browsing system
+* `last` lists the last page of filter paper resources in a page browsing system
+GET /filter_papers
+> Accept: application/json
+< 200
+< Content-Type: application/json
+{ "filter_papers": {
+    "actions": {
+        "create": "/filter_papers",
+        "read": "/filter_papers",
+        "first": "/filter_papers/page=1",
+        "last": "/filter_papers/page=-1"
+    }
+} }
+
+
+**Create a new empty filter paper.**
+
+POST /filter_papers
+> Accept: application/json
+{ "filter_paper": {}}
+< 200
+< Content-Type: application/json
+{ "filter_paper": {
+    "actions": {
+        "read": "/11111111-2222-3333-4444-555555555555",
+        "update": "/11111111-2222-3333-4444-555555555555",
+        "delete": "/11111111-2222-3333-4444-555555555555",
+        "create": "/11111111-2222-3333-4444-555555555555"
+    },
+    "uuid": "11111111-2222-3333-4444-555555555555",
+    "aliquots": []
+}}
+
+
+**Create a new filter paper with samples**
+
+* `aliquots` 
+POST /filter_papers
+> Accept: application/json
+{ "filter_paper": {
+    "aliquots": [
+        {"sample": "11111111-2222-3333-4444-666666666666", "type": "DNA", "quantity": 2}
+    ]
+}}
+< 200
+< Content-Type: application/json
+{ "filter_paper": {
+    "actions": {
+        "read": "/11111111-2222-3333-4444-555555555555",
+        "update": "/11111111-2222-3333-4444-555555555555",
+        "delete": "/11111111-2222-3333-4444-555555555555",
+        "create": "/11111111-2222-3333-4444-555555555555"
+    },
+    "uuid": "11111111-2222-3333-4444-555555555555",
+    "aliquots": [ 
+        { 
+            "sample": {
+                "actions": { 
+                    "read": "/11111111-2222-3333-4444-666666666666",
+                    "update": "/11111111-2222-3333-4444-666666666666",
+                    "delete": "/11111111-2222-3333-4444-666666666666",
+                    "create": "/11111111-2222-3333-4444-666666666666" 
+                },
+            "uuid": "11111111-2222-3333-4444-666666666666",
+            "name": "sample 1"},
+            "quantity": 2,
+            "type": "DNA",
+            "unit": "mole"
+        } 
+    ]
+}}
+
+
+**Read a filter paper.**
+
+GET /11111111-2222-3333-4444-555555555555
+> Accept: application/json
+< 200
+< Content-Type: application/json
+{ "filter_paper": {
+    "actions": {
+        "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+        "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+        "delete": "http://example.org/11111111-2222-3333-4444-555555555555",
+        "create": "http://example.org/11111111-2222-3333-4444-555555555555"
+    },
+    "uuid": "11111111-2222-3333-4444-555555555555",
+    "aliquots": [
+        {
+            "sample": {
+                "actions": {
+                    "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                    "create": "http://example.org/11111111-2222-3333-4444-666666666666",
+                    "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                    "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+                },
+                "uuid": "11111111-2222-3333-4444-666666666666",
+                "name": "sample 1"
+            },
+            "quantity": 2,
+            "type": "DNA",
+            "unit": "mole"
+        }
+    ]
+}}
+
+
+**Transfer the content from filter papers to 1 or multiple tubes.**
+
+Use the generic action "transfer_tubes_to_tubes" which works with tube-like resources.
+ 
+POST /actions/transfer_tubes_to_tubes
+> Accept: application/json
+{ "transfer_tubes_to_tubes": {
+    "transfers": [
+        {
+            "source_uuid": "11111111-2222-3333-4444-333333333333",
+            "target_uuid": "11111111-2222-3333-4444-666666666666"
+        },
+        {
+            "source_uuid": "11111111-2222-3333-4444-444444444444",
+            "target_uuid": "11111111-2222-3333-4444-777777777777"
+        }
+    ]
+}}
+< 200
+< Content-Type: application/json
+{ "transfer_tubes_to_tubes": {
+    "actions": {
+    },
+    "user": "user",
+    "application": "application",
+    "result": {
+        "sources": [
+            {
+                "filter_paper": {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-333333333333",
+                        "create": "http://example.org/11111111-2222-3333-4444-333333333333",
+                        "update": "http://example.org/11111111-2222-3333-4444-333333333333",
+                        "delete": "http://example.org/11111111-2222-3333-4444-333333333333"
+                    },
+                    "uuid": "11111111-2222-3333-4444-333333333333",
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                    "create": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                    "update": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                    "delete": "http://example.org/11111111-2222-3333-0000-000000000000"
+                                },
+                                "uuid": "11111111-2222-3333-0000-000000000000",
+                                "name": "sample 1"
+                            },
+                            "quantity": 100,
+                            "type": "sample",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "filter_paper": {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-444444444444",
+                        "create": "http://example.org/11111111-2222-3333-4444-444444444444",
+                        "update": "http://example.org/11111111-2222-3333-4444-444444444444",
+                        "delete": "http://example.org/11111111-2222-3333-4444-444444444444"
+                    },
+                    "uuid": "11111111-2222-3333-4444-444444444444",
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                    "create": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                    "update": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                    "delete": "http://example.org/11111111-2222-3333-0000-111111111111"
+                                },
+                                "uuid": "11111111-2222-3333-0000-111111111111",
+                                "name": "sample 2"
+                            },
+                            "quantity": 100,
+                            "type": "sample",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            }
+        ],
+        "targets": [
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                        "create": "http://example.org/11111111-2222-3333-4444-666666666666",
+                        "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                        "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+                    },
+                    "uuid": "11111111-2222-3333-4444-666666666666",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                    "create": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                    "update": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                    "delete": "http://example.org/11111111-2222-3333-0000-000000000000"
+                                },
+                                "uuid": "11111111-2222-3333-0000-000000000000",
+                                "name": "sample 1"
+                            },
+                            "type": "sample",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "tube": {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+                        "create": "http://example.org/11111111-2222-3333-4444-777777777777",
+                        "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+                        "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
+                    },
+                    "uuid": "11111111-2222-3333-4444-777777777777",
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                    "create": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                    "update": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                    "delete": "http://example.org/11111111-2222-3333-0000-111111111111"
+                                },
+                                "uuid": "11111111-2222-3333-0000-111111111111",
+                                "name": "sample 2"
+                            },
+                            "type": "sample",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "transfers": [
+        {
+            "source_uuid": "11111111-2222-3333-4444-333333333333",
+            "target_uuid": "11111111-2222-3333-4444-666666666666"
+        },
+        {
+            "source_uuid": "11111111-2222-3333-4444-444444444444",
+            "target_uuid": "11111111-2222-3333-4444-777777777777"
+        }
+    ]
+}}
+
+
+**Transfer the content from multiple filter papers to 1 or more wells.**
+
+This action transfers the content of 1 or more Filter Paper to 1 or more well(s).
+The action takes an array, which contains the elements of the transfer(s).
+ 
+* `source_uuid` uuid of the source Filter Paper
+* `target_uuid` uuid of the target plate
+* `target_location` is the target Location (like "A1") to transfer the aliquots.
+ 
+The example below shows how to make a transfer from two Filter Paper to 2 plates:
+ 
+POST /actions/transfer_multiple_filter_papers_to_wells
+> Accept: application/json
+{ "transfer_multiple_filter_papers_to_wells": {
+    "transfers": [
+        {
+            "source_uuid": "11111111-2222-3333-4444-333333333333",
+            "target_uuid": "11111111-2222-3333-4444-666666666666",
+            "target_location": "A1"
+        },
+        {
+            "source_uuid": "11111111-2222-3333-4444-444444444444",
+            "target_uuid": "11111111-2222-3333-4444-777777777777",
+            "target_location": "A2"
+        }
+    ]
+}}
+< 200
+< Content-Type: application/json
+{ "transfer_multiple_filter_papers_to_wells": {
+    "actions": {
+    },
+    "user": "user",
+    "application": "application",
+    "result": {
+        "sources": [
+            {
+                "filter_paper": {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-333333333333",
+                        "create": "http://example.org/11111111-2222-3333-4444-333333333333",
+                        "update": "http://example.org/11111111-2222-3333-4444-333333333333",
+                        "delete": "http://example.org/11111111-2222-3333-4444-333333333333"
+                    },
+                    "uuid": "11111111-2222-3333-4444-333333333333",
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                    "create": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                    "update": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                    "delete": "http://example.org/11111111-2222-3333-0000-000000000000"
+                                },
+                                "uuid": "11111111-2222-3333-0000-000000000000",
+                                "name": "sample 1"
+                            },
+                            "quantity": 100,
+                            "type": "sample",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            },
+            {
+                "filter_paper": {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-444444444444",
+                        "create": "http://example.org/11111111-2222-3333-4444-444444444444",
+                        "update": "http://example.org/11111111-2222-3333-4444-444444444444",
+                        "delete": "http://example.org/11111111-2222-3333-4444-444444444444"
+                    },
+                    "uuid": "11111111-2222-3333-4444-444444444444",
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                    "create": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                    "update": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                    "delete": "http://example.org/11111111-2222-3333-0000-111111111111"
+                                },
+                                "uuid": "11111111-2222-3333-0000-111111111111",
+                                "name": "sample 2"
+                            },
+                            "quantity": 100,
+                            "type": "sample",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            }
+        ],
+        "targets": [
+            {
+                "plate": {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                        "create": "http://example.org/11111111-2222-3333-4444-666666666666",
+                        "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                        "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+                    },
+                    "uuid": "11111111-2222-3333-4444-666666666666",
+                    "type": null,
+                    "number_of_rows": 8,
+                    "number_of_columns": 12,
+                    "wells": {
+                        "A1": [
+                            {
+                                "sample": {
+                                    "actions": {
+                                        "read": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                        "create": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                        "update": "http://example.org/11111111-2222-3333-0000-000000000000",
+                                        "delete": "http://example.org/11111111-2222-3333-0000-000000000000"
+                                    },
+                                    "uuid": "11111111-2222-3333-0000-000000000000",
+                                    "name": "sample 1"
+                                },
+                                "type": "sample",
+                                "unit": "mole"
+                            }
+                        ],
+                        "A2": [], "A3": [], "A4": [], "A5": [], "A6": [], "A7": [], "A8": [], "A9": [], "A10": [],"A11": [],"A12": [], 
+                        "B1": [], "B2": [], "B3": [], "B4": [], "B5": [], "B6": [], "B7": [], "B8": [], "B9": [], "B10": [], "B11": [], "B12": [], 
+                        "C1": [], "C2": [], "C3": [], "C4": [], "C5": [], "C6": [], "C7": [], "C8": [], "C9": [], "C10": [], "C11": [], "C12": [],
+                        "D1": [], "D2": [], "D3": [], "D4": [], "D5": [], "D6": [], "D7": [], "D8": [], "D9": [], "D10": [], "D11": [], "D12": [],
+                        "E1": [], "E2": [], "E3": [], "E4": [], "E5": [], "E6": [], "E7": [], "E8": [], "E9": [], "E10": [], "E11": [], "E12": [],
+                        "F1": [], "F2": [], "F3": [], "F4": [], "F5": [], "F6": [], "F7": [], "F8": [], "F9": [], "F10": [], "F11": [], "F12": [],
+                        "G1": [], "G2": [], "G3": [], "G4": [], "G5": [], "G6": [], "G7": [], "G8": [], "G9": [], "G10": [], "G11": [], "G12": [],
+                        "H1": [], "H2": [], "H3": [], "H4": [], "H5": [], "H6": [], "H7": [], "H8": [], "H9": [], "H10": [], "H11": [], "H12": []
+                    }
+                }
+            },
+            {
+                "plate": {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+                        "create": "http://example.org/11111111-2222-3333-4444-777777777777",
+                        "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+                        "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
+                    },
+                    "uuid": "11111111-2222-3333-4444-777777777777",
+                    "type": null,
+                    "number_of_rows": 8,
+                    "number_of_columns": 12,
+                    "wells": {
+                        "A1": [],
+                        "A2": [
+                            {
+                                "sample": {
+                                    "actions": {
+                                        "read": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                        "create": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                        "update": "http://example.org/11111111-2222-3333-0000-111111111111",
+                                        "delete": "http://example.org/11111111-2222-3333-0000-111111111111"
+                                    },
+                                    "uuid": "11111111-2222-3333-0000-111111111111",
+                                    "name": "sample 2"
+                                },
+                                "type": "sample",
+                                "unit": "mole"
+                            }
+                        ],
+                        "A3": [], "A4": [], "A5": [], "A6": [], "A7": [], "A8": [], "A9": [], "A10": [],"A11": [],"A12": [], 
+                        "B1": [], "B2": [], "B3": [], "B4": [], "B5": [], "B6": [], "B7": [], "B8": [], "B9": [], "B10": [], "B11": [], "B12": [], 
+                        "C1": [], "C2": [], "C3": [], "C4": [], "C5": [], "C6": [], "C7": [], "C8": [], "C9": [], "C10": [], "C11": [], "C12": [],
+                        "D1": [], "D2": [], "D3": [], "D4": [], "D5": [], "D6": [], "D7": [], "D8": [], "D9": [], "D10": [], "D11": [], "D12": [],
+                        "E1": [], "E2": [], "E3": [], "E4": [], "E5": [], "E6": [], "E7": [], "E8": [], "E9": [], "E10": [], "E11": [], "E12": [],
+                        "F1": [], "F2": [], "F3": [], "F4": [], "F5": [], "F6": [], "F7": [], "F8": [], "F9": [], "F10": [], "F11": [], "F12": [],
+                        "G1": [], "G2": [], "G3": [], "G4": [], "G5": [], "G6": [], "G7": [], "G8": [], "G9": [], "G10": [], "G11": [], "G12": [],
+                        "H1": [], "H2": [], "H3": [], "H4": [], "H5": [], "H6": [], "H7": [], "H8": [], "H9": [], "H10": [], "H11": [], "H12": []
+                    }
+                }
+            }
+        ]
+    },
+    "transfers": [
+        {
+            "source_uuid": "11111111-2222-3333-4444-333333333333",
+            "target_uuid": "11111111-2222-3333-4444-666666666666",
+            "target_location": "A1"
+        },
+        {
+            "source_uuid": "11111111-2222-3333-4444-444444444444",
+            "target_uuid": "11111111-2222-3333-4444-777777777777",
+            "target_location": "A2"
+        }
+    ]
+}}
+
+**Using the Bulk Create Filter Paper action.**
+
+This action creates a number of filter papers with the given parameters. 
+
+The parameter of this action is an array. An element of this array contains the parameters of a filter paper.
+The elements can contains different parameters, so this way we could create different types of filter papers with one action.
+
+POST /actions/bulk_create_filter_paper
+> Accept: application/json
+{ "bulk_create_filter_paper": {
+    "filter_papers": [
+        {
+            "aliquots": [ 
+                { "sample_uuid": "11111111-2222-3333-4444-000000000000" }
+            ]
+        },
+        {
+            "aliquots": [ 
+                { "sample_uuid": "11111111-2222-3333-4444-111111111111" }
+            ]
+        },
+        {
+            "aliquots": [ 
+                { "sample_uuid": "11111111-2222-3333-4444-222222222222" }
+            ]
+        }
+    ]
+}}
+< 200
+< Content-Type: application/json
+{ "bulk_create_filter_paper": {
+    "actions": {
+    },
+    "user": "user",
+    "application": "application",
+    "result": {
+        "filter_papers": [
+            {
+                "actions": {
+                    "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                    "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+                    "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                    "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+                },
+                "uuid": "11111111-2222-3333-4444-555555555555",
+                "aliquots": [
+                    {
+                        "sample": {
+                            "actions": {
+                                "read": "http://example.org/11111111-2222-3333-4444-000000000000",
+                                "update": "http://example.org/11111111-2222-3333-4444-000000000000",
+                                "delete": "http://example.org/11111111-2222-3333-4444-000000000000",
+                                "create": "http://example.org/11111111-2222-3333-4444-000000000000"
+                            },
+                            "uuid": "11111111-2222-3333-4444-000000000000",
+                            "name": "sample 1"
+                        },
+                        "unit": "mole"
+                    }
+                ]
+            },
+            {
+                "actions": {
+                    "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                    "create": "http://example.org/11111111-2222-3333-4444-666666666666",
+                    "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                    "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+                },
+                "uuid": "11111111-2222-3333-4444-666666666666",
+                "aliquots": [
+                    {
+                        "sample": {
+                            "actions": {
+                                "read": "http://example.org/11111111-2222-3333-4444-111111111111",
+                                "update": "http://example.org/11111111-2222-3333-4444-111111111111",
+                                "delete": "http://example.org/11111111-2222-3333-4444-111111111111",
+                                "create": "http://example.org/11111111-2222-3333-4444-111111111111"
+                            },
+                            "uuid": "11111111-2222-3333-4444-111111111111",
+                            "name": "sample 2"
+                        },
+                        "unit": "mole"
+                    }
+                ]
+            },
+            {
+                "actions": {
+                    "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+                    "create": "http://example.org/11111111-2222-3333-4444-777777777777",
+                    "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+                    "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
+                },
+                "uuid": "11111111-2222-3333-4444-777777777777",
+                "aliquots": [
+                    {
+                        "sample": {
+                            "actions": {
+                                "read": "http://example.org/11111111-2222-3333-4444-222222222222",
+                                "update": "http://example.org/11111111-2222-3333-4444-222222222222",
+                                "delete": "http://example.org/11111111-2222-3333-4444-222222222222",
+                                "create": "http://example.org/11111111-2222-3333-4444-222222222222"
+                            },
+                            "uuid": "11111111-2222-3333-4444-222222222222",
+                            "name": "sample 3"
+                        },
+                        "unit": "mole"
+                    }
+                ]
+            }
+        ]
+    },
+    "filter_papers": [
+        {
+            "aliquots": [
+                {"sample_uuid": "11111111-2222-3333-4444-000000000000"}
+            ]
+        },
+        {
+            "aliquots": [
+                {"sample_uuid": "11111111-2222-3333-4444-111111111111"}
+            ]
+        },
+        {
+            "aliquots": [
+                { "sample_uuid": "11111111-2222-3333-4444-222222222222"}
+            ]
+        }
+    ]
+}}
+
+
+--
+Fluidigm Resource
+--
+
+**List actions for fluidigm resource.**
+
+* `create` creates a new fluidigm via HTTP POST request
+* `read` returns the list of actions for a fluidigm resource via HTTP GET request
+* `first` lists the first fluidigms resources in a page browsing system
+* `last` lists the last fluidigms resources in a page browsing system
+GET /fluidigms
+> Accept: application/json
+< 200
+< Content-Type: application/json
+{ "fluidigms": {
+    "actions": {
+        "create": "/fluidigms",
+        "read": "/fluidigms",
+        "first": "/fluidigms/page=1",
+        "last": "/fluidigms/page=-1"
+    }
+} }
+
+**Create a fluidigm resource.**
+
+* `number_of_rows` number of rows on the fluidigm labware
+* `number_of_columns` number of columns on the fluidigm labware
+* `fluidigm_wells_description` map aliquots to wells
+
+POST /fluidigms
+> Accept: application/json
+{ "fluidigm": {
+    "number_of_rows": 16,
+    "number_of_columns": 12,
+    "fluidigm_wells_description": {}
+    }
+}
+< 200
+< Content-Type: application/json
+{ "fluidigm": {
+    "actions": {
+        "read": "/11111111-2222-3333-4444-555555555555",
+        "create": "/11111111-2222-3333-4444-555555555555",
+        "update": "/11111111-2222-3333-4444-555555555555",
+        "delete": "/11111111-2222-3333-4444-555555555555"
+    },
+    "uuid": "11111111-2222-3333-4444-555555555555",
+    "number_of_rows": 16,
+    "number_of_columns": 12,
+    "fluidigm_wells": {
+        "A1": [], "A2": [], "A3": [], "A4": [], "A5": [], "A6": [], 
+        "S1": [], "S2": [], "S3": [], "S4": [], "S5": [], "S6": [], 
+        "A7": [], "A8": [], "A9": [], "A10": [], "A11": [], "A12": [], 
+        "S7": [], "S8": [], "S9": [], "S10": [], "S11": [], "S12": [], 
+        "A13": [], "A14": [], "A15": [], "A16": [], "A17": [], "A18": [], 
+        "S13": [], "S14": [], "S15": [], "S16": [], "S17": [], "S18": [], 
+        "A19": [], "A20": [], "A21": [], "A22": [], "A23": [], "A24": [], 
+        "S19": [], "S20": [], "S21": [], "S22": [], "S23": [], "S24": [], 
+        "A25": [], "A26": [], "A27": [], "A28": [], "A29": [], "A30": [], 
+        "S25": [], "S26": [], "S27": [], "S28": [], "S29": [], "S30": [], 
+        "A31": [], "A32": [], "A33": [], "A34": [], "A35": [], "A36": [], 
+        "S31": [], "S32": [], "S33": [], "S34": [], "S35": [], "S36": [], 
+        "A37": [], "A38": [], "A39": [], "A40": [], "A41": [], "A42": [], 
+        "S37": [], "S38": [], "S39": [], "S40": [], "S41": [], "S42": [], 
+        "A43": [], "A44": [], "A45": [], "A46": [], "A47": [], "A48": [], 
+        "S43": [], "S44": [], "S45": [], "S46": [], "S47": [], "S48": [], 
+        "A49": [], "A50": [], "A51": [], "A52": [], "A53": [], "A54": [], 
+        "S49": [], "S50": [], "S51": [], "S52": [], "S53": [], "S54": [], 
+        "A55": [], "A56": [], "A57": [], "A58": [], "A59": [], "A60": [], 
+        "S55": [], "S56": [], "S57": [], "S58": [], "S59": [], "S60": [], 
+        "A61": [], "A62": [], "A63": [], "A64": [], "A65": [], "A66": [], 
+        "S61": [], "S62": [], "S63": [], "S64": [], "S65": [], "S66": [], 
+        "A67": [], "A68": [], "A69": [], "A70": [], "A71": [], "A72": [], 
+        "S67": [], "S68": [], "S69": [], "S70": [], "S71": [], "S72": [], 
+        "A73": [], "A74": [], "A75": [], "A76": [], "A77": [], "A78": [], 
+        "S73": [], "S74": [], "S75": [], "S76": [], "S77": [], "S78": [], 
+        "A79": [], "A80": [], "A81": [], "A82": [], "A83": [], "A84": [], 
+        "S79": [], "S80": [], "S81": [], "S82": [], "S83": [], "S84": [], 
+        "A85": [], "A86": [], "A87": [], "A88": [], "A89": [], "A90": [], 
+        "S85": [], "S86": [], "S87": [], "S88": [], "S89": [], "S90": [], 
+        "A91": [], "A92": [], "A93": [], "A94": [], "A95": [], "A96": [], 
+        "S91": [], "S92": [], "S93": [], "S94": [], "S95": [], "S96": []
+    }
+}}
+
+**Create a fluidigm resource.**
+
+* `number_of_rows` number of rows on the fluidigm labware
+* `number_of_columns` number of columns on the fluidigm labware
+* `fluidigm_wells_description` map aliquots to wells
+
+POST /fluidigms
+> Accept: application/json
+{ "fluidigm": {
+    "number_of_rows": 16,
+    "number_of_columns": 12,
+    "fluidigm_wells_description": {
+        "A1": [{ "snp_assay": "11111111-2222-3333-4444-777777777777", "quantity": 1 }],
+        "S3": [{ "sample": "11111111-2222-3333-4444-666666666666", "type": "DNA", "quantity": 2 }]
+    }
+}}
+< 200
+< Content-Type: application/json
+{ "fluidigm": {
+    "actions": {
+        "read": "/11111111-2222-3333-4444-555555555555",
+        "create": "/11111111-2222-3333-4444-555555555555",
+        "update": "/11111111-2222-3333-4444-555555555555",
+        "delete": "/11111111-2222-3333-4444-555555555555"
+    },
+    "uuid": "11111111-2222-3333-4444-555555555555",
+    "number_of_rows": 16,
+    "number_of_columns": 12,
+    "fluidigm_wells": {
+        "A1": [ { "snp_assay": {
+            "actions": { 
+                "read": "/11111111-2222-3333-4444-777777777777",
+                "update": "/11111111-2222-3333-4444-777777777777",
+                "delete": "/11111111-2222-3333-4444-777777777777",
+                "create": "/11111111-2222-3333-4444-777777777777"
+            },
+            "uuid": "11111111-2222-3333-4444-777777777777",
+            "name": "snp assay 1",
+            "allele_x": "A",
+            "allele_y": "G"},
+            "quantity": 1,
+            "unit": "mole"
+        } ],
+        "A2": [], "A3": [], "A4": [], "A5": [], "A6": [], 
+        "S1": [], "S2": [],
+        "S3": [ { "sample": {
+            "actions": { 
+                "read": "/11111111-2222-3333-4444-666666666666",
+                "update": "/11111111-2222-3333-4444-666666666666",
+                "delete": "/11111111-2222-3333-4444-666666666666",
+                "create": "/11111111-2222-3333-4444-666666666666"
+            },
+            "uuid": "11111111-2222-3333-4444-666666666666",
+            "name": "sample 1"},
+            "quantity": 2,
+            "type": "DNA",
+            "unit": "mole"
+        } ],
+        "S4": [], "S5": [], "S6": [], 
+        "A7": [], "A8": [], "A9": [], "A10": [], "A11": [], "A12": [], 
+        "S7": [], "S8": [], "S9": [], "S10": [], "S11": [], "S12": [], 
+        "A13": [], "A14": [], "A15": [], "A16": [], "A17": [], "A18": [], 
+        "S13": [], "S14": [], "S15": [], "S16": [], "S17": [], "S18": [], 
+        "A19": [], "A20": [], "A21": [], "A22": [], "A23": [], "A24": [], 
+        "S19": [], "S20": [], "S21": [], "S22": [], "S23": [], "S24": [], 
+        "A25": [], "A26": [], "A27": [], "A28": [], "A29": [], "A30": [], 
+        "S25": [], "S26": [], "S27": [], "S28": [], "S29": [], "S30": [], 
+        "A31": [], "A32": [], "A33": [], "A34": [], "A35": [], "A36": [], 
+        "S31": [], "S32": [], "S33": [], "S34": [], "S35": [], "S36": [], 
+        "A37": [], "A38": [], "A39": [], "A40": [], "A41": [], "A42": [], 
+        "S37": [], "S38": [], "S39": [], "S40": [], "S41": [], "S42": [], 
+        "A43": [], "A44": [], "A45": [], "A46": [], "A47": [], "A48": [], 
+        "S43": [], "S44": [], "S45": [], "S46": [], "S47": [], "S48": [], 
+        "A49": [], "A50": [], "A51": [], "A52": [], "A53": [], "A54": [], 
+        "S49": [], "S50": [], "S51": [], "S52": [], "S53": [], "S54": [], 
+        "A55": [], "A56": [], "A57": [], "A58": [], "A59": [], "A60": [], 
+        "S55": [], "S56": [], "S57": [], "S58": [], "S59": [], "S60": [], 
+        "A61": [], "A62": [], "A63": [], "A64": [], "A65": [], "A66": [], 
+        "S61": [], "S62": [], "S63": [], "S64": [], "S65": [], "S66": [], 
+        "A67": [], "A68": [], "A69": [], "A70": [], "A71": [], "A72": [], 
+        "S67": [], "S68": [], "S69": [], "S70": [], "S71": [], "S72": [], 
+        "A73": [], "A74": [], "A75": [], "A76": [], "A77": [], "A78": [], 
+        "S73": [], "S74": [], "S75": [], "S76": [], "S77": [], "S78": [], 
+        "A79": [], "A80": [], "A81": [], "A82": [], "A83": [], "A84": [], 
+        "S79": [], "S80": [], "S81": [], "S82": [], "S83": [], "S84": [], 
+        "A85": [], "A86": [], "A87": [], "A88": [], "A89": [], "A90": [], 
+        "S85": [], "S86": [], "S87": [], "S88": [], "S89": [], "S90": [], 
+        "A91": [], "A92": [], "A93": [], "A94": [], "A95": [], "A96": [], 
+        "S91": [], "S92": [], "S93": [], "S94": [], "S95": [], "S96": []
+    }
+}}
+
+**Use the create a fluidigm action.**
+
+* `number_of_rows` number of rows on the fluidigm labware
+* `number_of_columns` number of columns on the fluidigm labware
+* `fluidigm_wells_description` map aliquots to wells
+
+POST /actions/create_fluidigm
+> Accept: application/json
+{ "create_fluidigm": {
+    "number_of_rows": 16,
+    "number_of_columns": 12,
+    "fluidigm_wells_description": {
+        "A1": [{ "snp_assay": "11111111-2222-3333-4444-777777777777", "quantity": 1 }],
+        "S3": [{ "sample": "11111111-2222-3333-4444-666666666666", "type": "DNA", "quantity": 2 }]
+    }
+}}
+< 200
+< Content-Type: application/json
+{ "create_fluidigm": {
+    "actions": {
+    },
+    "user": "user",
+    "application": "application",
+    "result": {
+        "fluidigm": {
+            "actions": {
+                "read": "/11111111-2222-3333-4444-555555555555",
+                "create": "/11111111-2222-3333-4444-555555555555",
+                "update": "/11111111-2222-3333-4444-555555555555",
+                "delete": "/11111111-2222-3333-4444-555555555555"
+            },
+            "uuid": "11111111-2222-3333-4444-555555555555",
+            "number_of_rows": 16,
+            "number_of_columns": 12,
+            "fluidigm_wells": {
+                "A1": [ { "snp_assay": {
+                    "actions": { 
+                        "read": "/11111111-2222-3333-4444-777777777777",
+                        "update": "/11111111-2222-3333-4444-777777777777",
+                        "delete": "/11111111-2222-3333-4444-777777777777",
+                        "create": "/11111111-2222-3333-4444-777777777777"
+                    },
+                    "uuid": "11111111-2222-3333-4444-777777777777",
+                    "name": "snp assay 1",
+                    "allele_x": "A",
+                    "allele_y": "G"},
+                    "quantity": 1,
+                    "unit": "mole"
+                } ],
+                "A2": [], "A3": [], "A4": [], "A5": [], "A6": [], 
+                "S1": [], "S2": [],
+                "S3": [ { "sample": {
+                    "actions": { 
+                        "read": "/11111111-2222-3333-4444-666666666666",
+                        "update": "/11111111-2222-3333-4444-666666666666",
+                        "delete": "/11111111-2222-3333-4444-666666666666",
+                        "create": "/11111111-2222-3333-4444-666666666666"
+                    },
+                    "uuid": "11111111-2222-3333-4444-666666666666",
+                    "name": "sample 1"},
+                    "quantity": 2,
+                    "type": "DNA",
+                    "unit": "mole"
+                } ],
+                "S4": [], "S5": [], "S6": [], 
+                "A7": [], "A8": [], "A9": [], "A10": [], "A11": [], "A12": [], 
+                "S7": [], "S8": [], "S9": [], "S10": [], "S11": [], "S12": [], 
+                "A13": [], "A14": [], "A15": [], "A16": [], "A17": [], "A18": [], 
+                "S13": [], "S14": [], "S15": [], "S16": [], "S17": [], "S18": [], 
+                "A19": [], "A20": [], "A21": [], "A22": [], "A23": [], "A24": [], 
+                "S19": [], "S20": [], "S21": [], "S22": [], "S23": [], "S24": [], 
+                "A25": [], "A26": [], "A27": [], "A28": [], "A29": [], "A30": [], 
+                "S25": [], "S26": [], "S27": [], "S28": [], "S29": [], "S30": [], 
+                "A31": [], "A32": [], "A33": [], "A34": [], "A35": [], "A36": [], 
+                "S31": [], "S32": [], "S33": [], "S34": [], "S35": [], "S36": [], 
+                "A37": [], "A38": [], "A39": [], "A40": [], "A41": [], "A42": [], 
+                "S37": [], "S38": [], "S39": [], "S40": [], "S41": [], "S42": [], 
+                "A43": [], "A44": [], "A45": [], "A46": [], "A47": [], "A48": [], 
+                "S43": [], "S44": [], "S45": [], "S46": [], "S47": [], "S48": [], 
+                "A49": [], "A50": [], "A51": [], "A52": [], "A53": [], "A54": [], 
+                "S49": [], "S50": [], "S51": [], "S52": [], "S53": [], "S54": [], 
+                "A55": [], "A56": [], "A57": [], "A58": [], "A59": [], "A60": [], 
+                "S55": [], "S56": [], "S57": [], "S58": [], "S59": [], "S60": [], 
+                "A61": [], "A62": [], "A63": [], "A64": [], "A65": [], "A66": [], 
+                "S61": [], "S62": [], "S63": [], "S64": [], "S65": [], "S66": [], 
+                "A67": [], "A68": [], "A69": [], "A70": [], "A71": [], "A72": [], 
+                "S67": [], "S68": [], "S69": [], "S70": [], "S71": [], "S72": [], 
+                "A73": [], "A74": [], "A75": [], "A76": [], "A77": [], "A78": [], 
+                "S73": [], "S74": [], "S75": [], "S76": [], "S77": [], "S78": [], 
+                "A79": [], "A80": [], "A81": [], "A82": [], "A83": [], "A84": [], 
+                "S79": [], "S80": [], "S81": [], "S82": [], "S83": [], "S84": [], 
+                "A85": [], "A86": [], "A87": [], "A88": [], "A89": [], "A90": [], 
+                "S85": [], "S86": [], "S87": [], "S88": [], "S89": [], "S90": [], 
+                "A91": [], "A92": [], "A93": [], "A94": [], "A95": [], "A96": [], 
+                "S91": [], "S92": [], "S93": [], "S94": [], "S95": [], "S96": []
+            }
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555"
+    },
+    "labels": null,
+    "number_of_rows": 16,
+    "number_of_columns": 12,
+    "fluidigm_wells_description": {
+        "A1": [{ "snp_assay": "11111111-2222-3333-4444-777777777777", "quantity": 1 }],
+        "S3": [{ "sample": "11111111-2222-3333-4444-666666666666", "type": "DNA", "quantity": 2 }]
+    }
+}}
+
+
+**Transfer plates to fluidigm action.**
+
+This action transfers the given fraction of aliquot from plate-like asset(s)
+to a fluidigm asset and it changes the aliquot type to the given one.
+
+The action takes an array, which contains transfer elements.
+
+* `source_uuid` uuid of the source asset (plate)
+* `source_location` is the well location (like "A1") from transfer the aliquots
+* `target_uuid` uuid of the target asset (fluidigm)
+* `target_location` is the well (like "S1") to transfer the aliquots.
+* `fraction\amount` Amount is an amount of an aliquot to transfer.
+Fraction is the fraction of an aliquot to transfer.
+You should give the fraction OR the amount of the transfer, not both of them.
+* `aliquot_type` set a new type for all aliquots in the target plate-like asset
+
+POST /actions/transfer_plates_to_fluidigm
+> Accept: application/json
+{ "transfer_plates_to_fluidigm": {
+    "transfers": [
+        { "source_uuid": "11111111-2222-3333-1111-000000000000",
+          "source_location": "A1",
+          "target_uuid": "11111111-2222-3333-1111-222222222222",
+          "target_location": "S2",
+          "fraction": 0.4,
+          "aliquot_type": "DNA"
+        },
+        { "source_uuid": "11111111-2222-3333-1111-000000000000",
+          "source_location": "C3",
+          "target_uuid": "11111111-2222-3333-1111-222222222222",
+          "target_location": "S4",
+          "fraction": 0.4,
+          "aliquot_type": "RNA"
+        }
+    ]
+}}
+< 200
+< Content-Type: application/json
+{ "transfer_plates_to_fluidigm": {
+    "actions": {
+    },
+    "user": "user",
+    "application": "application",
+    "result": {
+        "sources": [ {
+            "plate": {
+                "actions": {
+                    "read": "http://example.org/11111111-2222-3333-1111-000000000000",
+                     "create": "http://example.org/11111111-2222-3333-1111-000000000000",
+                     "update": "http://example.org/11111111-2222-3333-1111-000000000000",
+                     "delete": "http://example.org/11111111-2222-3333-1111-000000000000"
+                },
+                "uuid": "11111111-2222-3333-1111-000000000000",
+                "type": "source plate type",
+                "number_of_rows": 8,
+                "number_of_columns": 12,
+                "wells": {
+                    "A1": [ {
+                        "sample": {
+                            "actions": {
+                                "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                                "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+                                "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                                "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+                            },
+                            "uuid": "11111111-2222-3333-4444-555555555555",
+                            "name": "sample for A1"
+                        },
+                        "quantity": 100,
+                        "type": "sample",
+                        "unit": "mole"
+                    } ],
+                    "A2": [],
+                    "A3": [],
+                    "A4": [],
+                    "A5": [],
+                    "A6": [],
+                    "A7": [],
+                    "A8": [],
+                    "A9": [],
+                    "A10": [],
+                    "A11": [],
+                    "A12": [],
+                    "B1": [],
+                    "B2": [],
+                    "B3": [],
+                    "B4": [],
+                    "B5": [],
+                    "B6": [],
+                    "B7": [],
+                    "B8": [],
+                    "B9": [],
+                    "B10": [],
+                    "B11": [],
+                    "B12": [],
+                    "C1": [],
+                    "C2": [],
+                    "C3": [ {
+                        "sample": {
+                            "actions": {
+                                "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                                "create": "http://example.org/11111111-2222-3333-4444-666666666666",
+                                "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                                "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+                            },
+                            "uuid": "11111111-2222-3333-4444-666666666666",
+                            "name": "sample for C3"
+                        },
+                        "quantity": 100,
+                        "type": "sample",
+                        "unit": "mole"
+                    } ],
+                    "C4": [],
+                    "C5": [],
+                    "C6": [],
+                    "C7": [],
+                    "C8": [],
+                    "C9": [],
+                    "C10": [],
+                    "C11": [],
+                    "C12": [],
+                    "D1": [],
+                    "D2": [],
+                    "D3": [],
+                    "D4": [],
+                    "D5": [],
+                    "D6": [],
+                    "D7": [],
+                    "D8": [],
+                    "D9": [],
+                    "D10": [],
+                    "D11": [],
+                    "D12": [],
+                    "E1": [],
+                    "E2": [],
+                    "E3": [],
+                    "E4": [],
+                    "E5": [],
+                    "E6": [],
+                    "E7": [],
+                    "E8": [],
+                    "E9": [],
+                    "E10": [],
+                    "E11": [],
+                    "E12": [],
+                    "F1": [],
+                    "F2": [],
+                    "F3": [],
+                    "F4": [],
+                    "F5": [],
+                    "F6": [],
+                    "F7": [],
+                    "F8": [],
+                    "F9": [],
+                    "F10": [],
+                    "F11": [],
+                    "F12": [],
+                    "G1": [],
+                    "G2": [],
+                    "G3": [],
+                    "G4": [],
+                    "G5": [],
+                    "G6": [],
+                    "G7": [],
+                    "G8": [],
+                    "G9": [],
+                    "G10": [],
+                    "G11": [],
+                    "G12": [],
+                    "H1": [],
+                    "H2": [],
+                    "H3": [],
+                    "H4": [],
+                    "H5": [],
+                    "H6": [],
+                    "H7": [],
+                    "H8": [],
+                    "H9": [],
+                    "H10": [],
+                    "H11": [],
+                    "H12": []
+                }
+            }
+        }],
+        "targets": [ {
+            "fluidigm": {
+                "actions": {
+                    "read": "http://example.org/11111111-2222-3333-1111-222222222222",
+                    "create": "http://example.org/11111111-2222-3333-1111-222222222222",
+                    "update": "http://example.org/11111111-2222-3333-1111-222222222222",
+                    "delete": "http://example.org/11111111-2222-3333-1111-222222222222"
+                },
+                "uuid": "11111111-2222-3333-1111-222222222222",
+                "number_of_rows": 16,
+                "number_of_columns": 12,
+                "fluidigm_wells": {
+                    "A1": [], "A2": [], "A3": [], "A4": [], "A5": [], "A6": [], 
+                    "S1": [], "S2": [ {
+                        "sample": {
+                            "actions": {
+                                "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                                "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+                                "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                                "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+                            },
+                            "uuid": "11111111-2222-3333-4444-555555555555",
+                            "name": "sample for A1"
+                        },
+                        "type": "DNA",
+                        "unit": "mole"
+                    } ],
+                    "S3": [], "S4": [ {
+                        "sample": {
+                            "actions": {
+                                "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                                "create": "http://example.org/11111111-2222-3333-4444-666666666666",
+                                "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                                "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
+                            },
+                            "uuid": "11111111-2222-3333-4444-666666666666",
+                            "name": "sample for C3"
+                        },
+                        "type": "RNA",
+                        "unit": "mole"
+                    } ],
+                    "S5": [], "S6": [],
+                    "A7": [], "A8": [], "A9": [], "A10": [], "A11": [], "A12": [], 
+                    "S7": [], "S8": [], "S9": [], "S10": [], "S11": [], "S12": [], 
+                    "A13": [], "A14": [], "A15": [], "A16": [], "A17": [], "A18": [], 
+                    "S13": [], "S14": [], "S15": [], "S16": [], "S17": [], "S18": [], 
+                    "A19": [], "A20": [], "A21": [], "A22": [], "A23": [], "A24": [], 
+                    "S19": [], "S20": [], "S21": [], "S22": [], "S23": [], "S24": [], 
+                    "A25": [], "A26": [], "A27": [], "A28": [], "A29": [], "A30": [], 
+                    "S25": [], "S26": [], "S27": [], "S28": [], "S29": [], "S30": [], 
+                    "A31": [], "A32": [], "A33": [], "A34": [], "A35": [], "A36": [], 
+                    "S31": [], "S32": [], "S33": [], "S34": [], "S35": [], "S36": [], 
+                    "A37": [], "A38": [], "A39": [], "A40": [], "A41": [], "A42": [], 
+                    "S37": [], "S38": [], "S39": [], "S40": [], "S41": [], "S42": [], 
+                    "A43": [], "A44": [], "A45": [], "A46": [], "A47": [], "A48": [], 
+                    "S43": [], "S44": [], "S45": [], "S46": [], "S47": [], "S48": [], 
+                    "A49": [], "A50": [], "A51": [], "A52": [], "A53": [], "A54": [], 
+                    "S49": [], "S50": [], "S51": [], "S52": [], "S53": [], "S54": [], 
+                    "A55": [], "A56": [], "A57": [], "A58": [], "A59": [], "A60": [], 
+                    "S55": [], "S56": [], "S57": [], "S58": [], "S59": [], "S60": [], 
+                    "A61": [], "A62": [], "A63": [], "A64": [], "A65": [], "A66": [], 
+                    "S61": [], "S62": [], "S63": [], "S64": [], "S65": [], "S66": [], 
+                    "A67": [], "A68": [], "A69": [], "A70": [], "A71": [], "A72": [], 
+                    "S67": [], "S68": [], "S69": [], "S70": [], "S71": [], "S72": [], 
+                    "A73": [], "A74": [], "A75": [], "A76": [], "A77": [], "A78": [], 
+                    "S73": [], "S74": [], "S75": [], "S76": [], "S77": [], "S78": [], 
+                    "A79": [], "A80": [], "A81": [], "A82": [], "A83": [], "A84": [], 
+                    "S79": [], "S80": [], "S81": [], "S82": [], "S83": [], "S84": [], 
+                    "A85": [], "A86": [], "A87": [], "A88": [], "A89": [], "A90": [], 
+                    "S85": [], "S86": [], "S87": [], "S88": [], "S89": [], "S90": [], 
+                    "A91": [], "A92": [], "A93": [], "A94": [], "A95": [], "A96": [], 
+                    "S91": [], "S92": [], "S93": [], "S94": [], "S95": [], "S96": []
+                }
+            }
+        }]
+    },
+    "transfers": [ {
+        "source_uuid": "11111111-2222-3333-1111-000000000000",
+        "source_location": "A1",
+        "target_uuid": "11111111-2222-3333-1111-222222222222",
+        "target_location": "S2",
+        "fraction": 0.4,
+        "aliquot_type": "DNA"
+        },
+        {
+        "source_uuid": "11111111-2222-3333-1111-000000000000",
+        "source_location": "C3",
+        "target_uuid": "11111111-2222-3333-1111-222222222222",
+        "target_location": "S4",
+        "fraction": 0.4,
+        "aliquot_type": "RNA"
+        }
+    ] }
+}
+
+
 --
 Order Resource
---
+
 An order stores all the information needed by a pipeline to achieve works. In particular, an order has a list of 
 items which are used and a status. Items map a role to a resource (like a plate or a tube). A role informs how 
 an item participates in the order. A status represents the progress of the order from an end-user point
 of view. A status is meant to be used in order related application, not by the pipeline. Typically, when the
-pipeline interacts with the order, its status should be `in_progress`. Here is the different status for an order: 
+pipeline interacts with the order, its status should be `in_progress`.
+
+Here is the different status for an order: 
 
 * `draft` this is the initial state on order creation
 * `pending` after a `build` event. The order has been validated by the user and is ready to be used
@@ -3315,8 +5242,8 @@ On top of that, each item in an order gets a status which represent its progress
 * `done` after a `complete` event. The item is available to be used in a new pipeline step.
 * `cancelled` after a `cancel` event. The item has been cancelled by the user.
 * `failed` after a `fail` event. The item cannot be done for some reason.
-
 --
+
 **List actions for order resource.**
 
 * `create` creates a new order via HTTP POST request
@@ -3336,13 +5263,12 @@ GET /orders
     }
 } }
 
-
 **Create a new order.**
 
 * `study_uuid` uuid of an existing study
 * `user_uuid` uuid of the order's creator
 * `pipeline` pipeline name
-* `cost_code` 
+* `cost_code` cost code of the order
 * `sources` map a role to an array of resource uuids. All the items in sources get a `done` status on order creation
 * `targets` map a role to an array of resource uuids. All the items in targets get a `pending` status on order creation
 POST /orders
@@ -3361,48 +5287,49 @@ POST /orders
 } }
 < 200
 < Content-Type: application/json
-{ "order": {
-    "actions": {
-        "create": "/11111111-2222-3333-4444-555555555555",
-        "read": "/11111111-2222-3333-4444-555555555555",
-        "update": "/11111111-2222-3333-4444-555555555555",
-        "delete": "/11111111-2222-3333-4444-555555555555"
-    },
-    "uuid": "11111111-2222-3333-4444-555555555555",
-    "creator": {
+{ 
+    "order": {
         "actions": {
-                "create": "/11111111-2222-3333-4444-666666666666",
-                "read": "/11111111-2222-3333-4444-666666666666",
-                "update": "/11111111-2222-3333-4444-666666666666",
-                "delete": "/11111111-2222-3333-4444-666666666666"
-            },
-        "uuid": "11111111-2222-3333-4444-666666666666"
-    },
-    "study": {
-        "actions": {
-            "create": "/11111111-2222-3333-4444-777777777777",
-            "read": "/11111111-2222-3333-4444-777777777777",
-            "update": "/11111111-2222-3333-4444-777777777777",
-            "delete": "/11111111-2222-3333-4444-777777777777"
+            "create": "/11111111-2222-3333-4444-555555555555",
+            "read": "/11111111-2222-3333-4444-555555555555",
+            "update": "/11111111-2222-3333-4444-555555555555",
+            "delete": "/11111111-2222-3333-4444-555555555555"
         },
-        "uuid": "11111111-2222-3333-4444-777777777777"
-    },
-    "pipeline": "pipeline 1",
-    "cost_code": "cost code 1",
-    "status": "draft",
-    "parameters": {},
-    "state": {},
-    "items": {
-        "Stock Plate 1": [
-            { "status": "done", "batch": null, "uuid": "11111111-2222-3333-0000-111111111111" }
-        ],
-        "Tube 1": [
-            { "status": "pending", "batch": null, "uuid": "11111111-2222-3333-0000-222222222222" },
-            { "status": "pending", "batch": null, "uuid": "11111111-2222-3333-0000-333333333333" }
-        ]
-    }
-} }
-
+        "uuid": "11111111-2222-3333-4444-555555555555",
+        "creator": {
+            "actions": {
+                    "create": "/11111111-2222-3333-4444-666666666666",
+                    "read": "/11111111-2222-3333-4444-666666666666",
+                    "update": "/11111111-2222-3333-4444-666666666666",
+                    "delete": "/11111111-2222-3333-4444-666666666666"
+                },
+            "uuid": "11111111-2222-3333-4444-666666666666"
+        },
+        "study": {
+            "actions": {
+                "create": "/11111111-2222-3333-4444-777777777777",
+                "read": "/11111111-2222-3333-4444-777777777777",
+                "update": "/11111111-2222-3333-4444-777777777777",
+                "delete": "/11111111-2222-3333-4444-777777777777"
+            },
+            "uuid": "11111111-2222-3333-4444-777777777777"
+        },
+        "pipeline": "pipeline 1",
+        "cost_code": "cost code 1",
+        "status": "draft",
+        "parameters": {},
+        "state": {},
+        "items": {
+            "Stock Plate 1": [
+                { "status": "done", "batch": null, "uuid": "11111111-2222-3333-0000-111111111111" }
+            ],
+            "Tube 1": [
+                { "status": "pending", "batch": null, "uuid": "11111111-2222-3333-0000-222222222222" },
+                { "status": "pending", "batch": null, "uuid": "11111111-2222-3333-0000-333333333333" }
+            ]
+        }
+    } 
+}
 
 **Update an order.**
 
@@ -3543,7 +5470,8 @@ PUT /11111111-2222-3333-4444-555555555555
                      "delete":"/11111111-2222-3333-4444-777777777777"
                   },
                   "uuid":"11111111-2222-3333-4444-777777777777",
-                  "process":"manual extraction"
+                  "process":"manual extraction",
+                  "kit": null
                }
             }
          ]
@@ -3580,6 +5508,7 @@ GET /labellables
 * `name` unique identifier of an asset (for example: uuid of a plate)
 * `type` type of the object the labellable related (resource, equipment, user etc...)
 * `labels` it is a hash which contains the information of the labels.
+
 By labels we mean any readable information found on a physical object.
 Label can eventually be identified by a position: an arbitray string (not a Symbol).
 It has a value, which can be serial number, stick label with barcode etc.
@@ -3620,6 +5549,11 @@ POST /labellables
 **Bulk create labellable**
 
 * `labellables` is mandatory
+
+This action creates a number of labellables with the given parameters.
+The parameter of this action is an array. An element of this array contains parameters to create a labellable. 
+The elements can contains different parameters, so this way we could create labellables with different types and content with the use of only one action.
+
 POST /actions/bulk_create_labellable
 > Accept: application/json
 {
@@ -3807,32 +5741,606 @@ POST /actions/create_label
     "position": "rear barcode"
 }}
 
+**Add an already existing label to an asset.**
 
---
-Batch Resource
---
-A batch groups order items together.
-**Create a new batch**
+The above example should return an error message, if the given label position already contains a label on a resource.
 
-* `process` the process that the batch is going through
-POST /batches
+* `labellable_uuid` unique identifier of an object the labellable related to
+* `type` the type of the label. It can be 'sanger-barcode', '2d-barcode', 'ean13-barcode' etc...
+* `value` the value of the barcode
+* `position` the position of the barcode is an arbitray string (not a Symbol).
+
+POST /actions/create_label
 > Accept: application/json
-{ "batch": {"process": "manual extraction"} }
+{
+    "create_label": {
+        "labellable_uuid": "11111111-2222-3333-4444-555555555555",
+        "type": "sanger-barcode",
+        "value": "1234-ABC",
+        "position": "front barcode"
+    }
+}
 < 200
 < Content-Type: application/json
 {
-   "batch":{
-      "actions":{
-         "read":"/11111111-2222-3333-4444-555555555555",
-         "create":"/11111111-2222-3333-4444-555555555555",
-         "update":"/11111111-2222-3333-4444-555555555555",
-         "delete":"/11111111-2222-3333-4444-555555555555"
-      },
-      "uuid":"11111111-2222-3333-4444-555555555555",
-      "process":"manual extraction"
+    "errors": {
+        "position": "The front barcode position already contains a label."
+    }
+}
+
+**Use update_label action to update a label.**
+
+* `labellable` the labellable resource to update
+* `position` position of the label to update
+* `new_label` it is an hash which contains the update information related to the label
+The hash can contains the new label information (position, type, value).
+
+By labels we mean any readable information found on a physical object.
+Label can eventually be identified by a position: an arbitray string (not a Symbol).
+It has a value, which can be serial number, stick label with barcode etc.
+It has a type, which can be sanger-barcode, 2d-barcode, ean13-barcode etc...
+
+POST /actions/update_label
+> Accept: application/json
+{
+    "update_label": {
+        "labellable_uuid": "11111111-2222-3333-4444-555555555555",
+        "existing_position": "front barcode",
+        "new_label": {
+            "position": "rear barcode",
+            "type": "sanger-barcode",
+            "value": "5678DEF"
+        }
+    }
+}
+< 200
+< Content-Type: application/json
+{
+    "update_label": {
+        "actions": {
+        },
+        "user": "user",
+        "application": "application",
+        "result": {
+            "labellable": {
+                "actions": {
+                    "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                    "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                    "delete": "http://example.org/11111111-2222-3333-4444-555555555555",
+                    "create": "http://example.org/11111111-2222-3333-4444-555555555555"
+                },
+                "uuid": "11111111-2222-3333-4444-555555555555",
+                "name": "11111111-2222-3333-4444-000000000000",
+                "type": "resource",
+                "labels": {
+                    "rear barcode": {
+                        "value": "5678DEF",
+                        "type": "sanger-barcode"
+                    }
+                }
+            }
+        },
+        "labellable_uuid": "11111111-2222-3333-4444-555555555555",
+        "existing_position": "front barcode",
+        "new_label": {
+            "position": "rear barcode",
+            "type": "sanger-barcode",
+            "value": "5678DEF"
+        }
+    }
+}
+
+**Use the bulk update labels on existing labellables with the position name.**
+
+* `by` can contains either the position name on an asset or a UUID of an asset to search for.
+The position of the label is an arbitray string (not a Symbol).
+* `labels` contains key value pairs.
+
+If the 'by' paramater contains the 'uuid' string, then the key contains the UUID of an asset, otherwise the label value on the position 
+described by the 'by' parameter. The value contains a list of the labels to add to the selected asset.
+
+The hash under the 'labels' element contains the new label information (position, type, value).
+
+By labels we mean any readable information found on a physical object.
+Label can eventually be identified by a position: an arbitray string (not a Symbol).
+It has a value, which can be serial number, stick label with barcode etc.
+It has a type, which can be sanger-barcode, 2d-barcode, ean13-barcode etc...
+
+POST /actions/bulk_update_label
+> Accept: application/json
+{
+    "bulk_update_label": {
+        "by": "sanger_id",
+        "labels": {
+            "s1": {
+                "lot_no": {
+                    "value": "1",
+                    "type": "text"
+                },
+                "barcode": {
+                    "value": "123",
+                    "type": "sanger-barcode"
+                }
+            }
+        }
+    }
+}
+< 200
+< Content-Type: application/json
+{
+    "bulk_update_label": {
+        "actions": {
+        },
+        "user": "user@example.com",
+        "application": "application_id",
+        "result": {
+            "labellables": [
+                {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                        "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+                        "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                        "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+                    },
+                    "uuid": "11111111-2222-3333-4444-555555555555",
+                    "name": "11111111-2222-3333-4444-000000000000",
+                    "type": "resource",
+                    "labels": {
+                        "sanger_id": {
+                            "value": "s1",
+                            "type": "sanger-barcode"
+                        },
+                        "lot_no": {
+                            "value": "1",
+                            "type": "text"
+                        },
+                        "barcode": {
+                            "value": "123",
+                            "type": "sanger-barcode"
+                        }
+                    }
+                }
+            ]
+        },
+        "by": "sanger_id",
+        "labels": {
+            "s1": {
+                "lot_no": {
+                    "value": "1",
+                    "type": "text"
+                },
+                "barcode": {
+                    "value": "123",
+                    "type": "sanger-barcode"
+                }
+            }
+        }
+    }
+}
+
+**Use the bulk update labels on existing labellables with the asset UUID.**
+
+* `by` can contains either the position name on an asset or a UUID of an asset to search for.
+The position of the label is an arbitray string (not a Symbol).
+* `labels` contains key value pairs.
+
+If the 'by' paramater contains the 'uuid' string, then the key contains the UUID of an asset, otherwise the label value on the position 
+described by the 'by' parameter. The value contains a list of the labels to add to the selected asset.
+
+The hash under the 'labels' element contains the new label information (position, type, value).
+
+By labels we mean any readable information found on a physical object.
+Label can eventually be identified by a position: an arbitray string (not a Symbol).
+It has a value, which can be serial number, stick label with barcode etc.
+It has a type, which can be sanger-barcode, 2d-barcode, ean13-barcode etc...
+
+POST /actions/bulk_update_label
+> Accept: application/json
+{
+    "bulk_update_label": {
+        "by": "uuid",
+        "labels": {
+            "11111111-2222-3333-4444-000000000000": {
+                "lot_no": {
+                    "value": "1",
+                    "type": "text"
+                },
+                "barcode": {
+                    "value": "123",
+                    "type": "sanger-barcode"
+                }
+            }
+        }
+    }
+}
+< 200
+< Content-Type: application/json
+{
+    "bulk_update_label": {
+        "actions": {
+        },
+        "user": "user@example.com",
+        "application": "application_id",
+        "result": {
+            "labellables": [
+                {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                        "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+                        "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                        "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+                    },
+                    "uuid": "11111111-2222-3333-4444-555555555555",
+                    "name": "11111111-2222-3333-4444-000000000000",
+                    "type": "resource",
+                    "labels": {
+                        "sanger_id": {
+                            "value": "s1",
+                            "type": "sanger-barcode"
+                        },
+                        "lot_no": {
+                            "value": "1",
+                            "type": "text"
+                        },
+                        "barcode": {
+                            "value": "123",
+                            "type": "sanger-barcode"
+                        }
+                    }
+                }
+            ]
+        },
+        "by": "uuid",
+        "labels": {
+            "11111111-2222-3333-4444-000000000000": {
+                "lot_no": {
+                    "value": "1",
+                    "type": "text"
+                },
+                "barcode": {
+                    "value": "123",
+                    "type": "sanger-barcode"
+                }
+            }
+        }
+    }
+}
+
+
+--
+Batch Resource
+
+A batch groups order items together.
+--
+
+**Create a new batch.**
+
+* `process` the process that the batch is going through
+* `kit`
+
+POST /batches
+> Accept: application/json
+{ 
+    "batch": {
+        "process": "manual extraction",
+        "kit": "AAABBBCCC"
+    } 
+}
+< 200
+< Content-Type: application/json
+{
+    "batch":{
+        "actions":{
+            "read":"/11111111-2222-3333-4444-555555555555",
+            "create":"/11111111-2222-3333-4444-555555555555",
+            "update":"/11111111-2222-3333-4444-555555555555",
+            "delete":"/11111111-2222-3333-4444-555555555555"
+        },
+        "uuid":"11111111-2222-3333-4444-555555555555",
+        "process":"manual extraction",
+        "kit": "AAABBBCCC"
    }
 }
 
+**Update a batch.**
+
+* `process` the process that the batch is going through
+* `kit` the kit to update the batch with
+
+PUT /batches
+> Accept: application/json
+{ 
+    "batch": {
+        "process": "manual extraction",
+        "kit": "AAABBBCCC"
+    } 
+}
+< 200
+< Content-Type: application/json
+{
+    "batch":{
+        "actions":{
+            "read":"/11111111-2222-3333-4444-555555555555",
+            "create":"/11111111-2222-3333-4444-555555555555",
+            "update":"/11111111-2222-3333-4444-555555555555",
+            "delete":"/11111111-2222-3333-4444-555555555555"
+        },
+        "uuid":"11111111-2222-3333-4444-555555555555",
+        "process":"manual extraction",
+        "kit": "AAABBBCCC"
+   }
+}
+
+
+--
+SNP Assay Resource
+--
+
+
+**List actions for SNP Assay resource.**
+
+* `create` creates a new snp_assay via HTTP POST request
+* `read` returns the list of actions for a snp_assay resource via HTTP GET request
+* `first` lists the first snp_assays resources in a page browsing system
+* `last` lists the last snp_assays resources in a page browsing system
+
+GET /snp_assays
+> Accept: application/json
+< 200
+< Content-Type: application/json
+{
+    "snp_assays": {
+        "actions": {
+            "create": "http://localhost:9292/snp_assays",
+            "read": "http://localhost:9292/snp_assays",
+            "first": "http://localhost:9292/snp_assays/page=1",
+            "last": "http://localhost:9292/snp_assays/page=-1"
+        }
+    }
+}
+
+
+**Create an snp assay resource.**
+
+* `name` the name of the snp assay
+* `allele_x` a group of genes. Its value can be A, C, G or T.
+* `allele_y` a group of genes. Its value can be A, C, G or T.
+
+POST /snp_assays
+> Accept: application/json
+{
+    "snp_assay": {
+        "name": "snp assay name",
+        "allele_x": "G",
+        "allele_y": "A"
+    }
+}
+< 200
+< Content-Type: application/json
+{
+    "snp_assay": {
+        "actions": {
+            "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555",
+        "name": "snp assay name",
+        "allele_x": "G",
+        "allele_y": "A"
+    }
+}
+
+**Use the createn snp assay action.**
+
+* `name` the name of the snp assay
+* `allele_x` a group of genes. Its value can be A, C, G or T.
+* `allele_y` a group of genes. Its value can be A, C, G or T.
+
+POST /actions/create_snp_assay
+> Accept: application/json
+{
+    "create_snp_assay": {
+        "name": "snp assay name",
+        "allele_x": "G",
+        "allele_y": "A"
+    }
+}
+< 200
+< Content-Type: application/json
+{
+    "create_snp_assay": {
+        "actions": {
+        },
+        "user": "user@example.com",
+        "application": "application_id",
+        "result": {
+            "snp_assay": {
+                "actions": {
+                    "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                    "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                    "delete": "http://example.org/11111111-2222-3333-4444-555555555555",
+                    "create": "http://example.org/11111111-2222-3333-4444-555555555555"
+                },
+                "uuid": "11111111-2222-3333-4444-555555555555",
+                "name": "snp assay name",
+                "allele_x": "G",
+                "allele_y": "A"
+            },
+            "uuid": "11111111-2222-3333-4444-555555555555"
+        },
+        "name": "snp assay name",
+        "allele_x": "G",
+        "allele_y": "A"
+    }
+}
+
+**Move SnpAssays action.**
+
+* `parameters` accepting an array with:
+* `resource_uuid` the uuid of the resource containing the snp_assays
+* `swaps` hash describing the snp_assay uuid to replace in the resource. For example {AAA:BBB} means that the snp_assay AAA is replaced by the snp_assay BBB in the resource.
+
+POST /actions/move_snp_assays
+> Accept: application/json
+{
+    "move_snp_assays": {
+        "parameters": [
+            {
+                "resource_uuid": "11111111-2222-3333-2222-111111111111",
+                "swaps": {
+                    "11111111-2222-3333-0000-111111111111":"11111111-2222-3333-0000-444444444444",
+                    "11111111-2222-3333-0000-222222222222":"11111111-2222-3333-0000-333333333333",
+                    "11111111-2222-3333-0000-333333333333":"11111111-2222-3333-0000-222222222222",
+                    "11111111-2222-3333-0000-444444444444":"11111111-2222-3333-0000-111111111111"
+                }
+            }
+        ]
+    }
+}
+< 200
+< Content-Type: application/json
+{
+   "move_snp_assays":{
+        "actions":{
+        },
+        "user":"user",
+        "application":"application",
+        "result":[
+            {
+                "fluidigm":{
+                    "actions":{
+                        "read":"http://example.org/11111111-2222-3333-2222-111111111111",
+                        "create":"http://example.org/11111111-2222-3333-2222-111111111111",
+                        "update":"http://example.org/11111111-2222-3333-2222-111111111111",
+                        "delete":"http://example.org/11111111-2222-3333-2222-111111111111"
+                    },
+                    "uuid":"11111111-2222-3333-2222-111111111111",
+                    "number_of_rows":16,
+                    "number_of_columns":12,
+                    "fluidigm_wells":{
+                        "A1": [], "A2": [], "A3": [], "A4": [], "A5": [], "A6": [],
+                         "S1": [
+                            {
+                                "snp_assay":{
+                                    "actions":{
+                                        "read":"http://example.org/11111111-2222-3333-0000-444444444444",
+                                        "create":"http://example.org/11111111-2222-3333-0000-444444444444",
+                                        "update":"http://example.org/11111111-2222-3333-0000-444444444444",
+                                        "delete":"http://example.org/11111111-2222-3333-0000-444444444444"
+                                    },
+                                    "uuid":"11111111-2222-3333-0000-444444444444",
+                                    "name":"snp_assay 4", 
+                                    "allele_x": "A",
+                                    "allele_y": "G"
+                                },
+                                "quantity":10,
+                                "unit":"mole"
+                            }
+                        ],
+                        "S2": [
+                           {
+                                "snp_assay":{
+                                    "actions":{
+                                        "read":"http://example.org/11111111-2222-3333-0000-333333333333",
+                                        "create":"http://example.org/11111111-2222-3333-0000-333333333333",
+                                        "update":"http://example.org/11111111-2222-3333-0000-333333333333",
+                                        "delete":"http://example.org/11111111-2222-3333-0000-333333333333"
+                                    },
+                                    "uuid":"11111111-2222-3333-0000-333333333333",
+                                    "name":"snp_assay 3",
+                                    "allele_x": "A",
+                                    "allele_y": "G"
+                                },
+                                "quantity":10,
+                                "unit":"mole"
+                           }
+                        ],
+                        "S3": [
+                           {
+                              "snp_assay":{
+                                 "actions":{
+                                    "read":"http://example.org/11111111-2222-3333-0000-222222222222",
+                                    "create":"http://example.org/11111111-2222-3333-0000-222222222222",
+                                    "update":"http://example.org/11111111-2222-3333-0000-222222222222",
+                                    "delete":"http://example.org/11111111-2222-3333-0000-222222222222"
+                                 },
+                                 "uuid":"11111111-2222-3333-0000-222222222222",
+                                 "name":"snp_assay 2",
+                                 "allele_x": "A",
+                                 "allele_y": "G"
+                              },
+                              "quantity":10,
+                              "unit":"mole"
+                           }
+                         ],
+                         "S4": [
+                           {
+                                "snp_assay":{
+                                    "actions":{
+                                        "read":"http://example.org/11111111-2222-3333-0000-111111111111",
+                                        "create":"http://example.org/11111111-2222-3333-0000-111111111111",
+                                        "update":"http://example.org/11111111-2222-3333-0000-111111111111",
+                                        "delete":"http://example.org/11111111-2222-3333-0000-111111111111"
+                                    },
+                                    "uuid":"11111111-2222-3333-0000-111111111111",
+                                    "name":"snp_assay 1",
+                                    "allele_x": "A",
+                                    "allele_y": "G"
+                                },
+                                "quantity":10,
+                                "unit":"mole"
+                            }
+                        ],
+                        "S5": [], "S6": [],
+                        "A7": [], "A8": [], "A9": [], "A10": [], "A11": [], "A12": [], 
+                        "S7": [], "S8": [], "S9": [], "S10": [], "S11": [], "S12": [], 
+                        "A13": [], "A14": [], "A15": [], "A16": [], "A17": [], "A18": [], 
+                        "S13": [], "S14": [], "S15": [], "S16": [], "S17": [], "S18": [], 
+                        "A19": [], "A20": [], "A21": [], "A22": [], "A23": [], "A24": [], 
+                        "S19": [], "S20": [], "S21": [], "S22": [], "S23": [], "S24": [], 
+                        "A25": [], "A26": [], "A27": [], "A28": [], "A29": [], "A30": [], 
+                        "S25": [], "S26": [], "S27": [], "S28": [], "S29": [], "S30": [], 
+                        "A31": [], "A32": [], "A33": [], "A34": [], "A35": [], "A36": [], 
+                        "S31": [], "S32": [], "S33": [], "S34": [], "S35": [], "S36": [], 
+                        "A37": [], "A38": [], "A39": [], "A40": [], "A41": [], "A42": [], 
+                        "S37": [], "S38": [], "S39": [], "S40": [], "S41": [], "S42": [], 
+                        "A43": [], "A44": [], "A45": [], "A46": [], "A47": [], "A48": [], 
+                        "S43": [], "S44": [], "S45": [], "S46": [], "S47": [], "S48": [], 
+                        "A49": [], "A50": [], "A51": [], "A52": [], "A53": [], "A54": [], 
+                        "S49": [], "S50": [], "S51": [], "S52": [], "S53": [], "S54": [], 
+                        "A55": [], "A56": [], "A57": [], "A58": [], "A59": [], "A60": [], 
+                        "S55": [], "S56": [], "S57": [], "S58": [], "S59": [], "S60": [], 
+                        "A61": [], "A62": [], "A63": [], "A64": [], "A65": [], "A66": [], 
+                        "S61": [], "S62": [], "S63": [], "S64": [], "S65": [], "S66": [], 
+                        "A67": [], "A68": [], "A69": [], "A70": [], "A71": [], "A72": [], 
+                        "S67": [], "S68": [], "S69": [], "S70": [], "S71": [], "S72": [], 
+                        "A73": [], "A74": [], "A75": [], "A76": [], "A77": [], "A78": [], 
+                        "S73": [], "S74": [], "S75": [], "S76": [], "S77": [], "S78": [], 
+                        "A79": [], "A80": [], "A81": [], "A82": [], "A83": [], "A84": [], 
+                        "S79": [], "S80": [], "S81": [], "S82": [], "S83": [], "S84": [], 
+                        "A85": [], "A86": [], "A87": [], "A88": [], "A89": [], "A90": [], 
+                        "S85": [], "S86": [], "S87": [], "S88": [], "S89": [], "S90": [], 
+                        "A91": [], "A92": [], "A93": [], "A94": [], "A95": [], "A96": [], 
+                        "S91": [], "S92": [], "S93": [], "S94": [], "S95": [], "S96": []
+                    }
+                }
+            }
+        ],
+        "parameters":[
+            {
+                "resource_uuid":"11111111-2222-3333-2222-111111111111",
+                "swaps":{
+                    "11111111-2222-3333-0000-111111111111":"11111111-2222-3333-0000-444444444444",
+                    "11111111-2222-3333-0000-222222222222":"11111111-2222-3333-0000-333333333333",
+                    "11111111-2222-3333-0000-333333333333":"11111111-2222-3333-0000-222222222222",
+                    "11111111-2222-3333-0000-444444444444":"11111111-2222-3333-0000-111111111111"
+                }
+            }
+        ]
+    }
+}
 
 --
 Sample Resource
@@ -4029,6 +6537,148 @@ POST /actions/swap_samples
 
 
 --
+Location Resource
+--
+
+**List actions for Location resource.**
+
+* `create` creates a new location via HTTP POST request
+* `read` returns the list of actions for a location resource via HTTP GET request
+* `first` lists the first location resources in a page browsing system
+* `last` lists the last location resources in a page browsing system
+
+GET /locations
+> Accept: application/json
+< 200
+< Content-Type: application/json
+{
+    "locations": {
+        "actions": {
+            "create": "http://example.org/locations",
+            "read": "http://example.org/locations",
+            "first": "http://example.org/locations/page=1",
+            "last": "http://example.org/locations/page=-1"
+        }
+    }
+}
+
+**Create an location resource.**
+
+* `name` name of the location
+* `address` the address of the location
+* `internal` a boolean value. True if the labware is internal, otherwise false.
+
+POST /locations
+> Accept: application/json
+{
+    "location": {
+        "name": "ABC Hospital",
+        "address": "CB11 3DF Cambridge 123 Sample Way",
+        "internal": false
+    }
+}
+< 200
+< Content-Type: application/json
+{
+    "location": {
+        "actions": {
+            "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555",
+        "name": "ABC Hospital",
+        "address": "CB11 3DF Cambridge 123 Sample Way",
+        "internal": false
+    }
+}
+
+**Use the create location action.**
+
+* `name` name of the location
+* `address` the address of the location
+* `internal` a boolean value. True if the labware is internal, otherwise false.
+
+POST /actions/create_location
+> Accept: application/json
+{
+    "create_location": {
+        "name": "ABC Hospital",
+        "address": "CB11 3DF Cambridge 123 Sample Way",
+        "internal": true
+    }
+}
+< 200
+< Content-Type: application/json
+{
+    "create_location": {
+        "actions": {
+        },
+        "user": "user@example.com",
+        "application": "application_id",
+        "result": {
+            "location": {
+                "actions": {
+                    "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+                    "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+                    "delete": "http://example.org/11111111-2222-3333-4444-555555555555",
+                    "create": "http://example.org/11111111-2222-3333-4444-555555555555"
+                },
+                "uuid": "11111111-2222-3333-4444-555555555555",
+                "name": "ABC Hospital",
+                "address": "CB11 3DF Cambridge 123 Sample Way",
+                "internal": true
+            },
+            "uuid": "11111111-2222-3333-4444-555555555555"
+        },
+        "name": "ABC Hospital",
+        "address": "CB11 3DF Cambridge 123 Sample Way",
+        "internal": true
+    }
+}
+
+**Update the location resource.**
+
+It can also bulk update the location of the given labwares.
+
+* `name` name of the location
+* `address` the address of the location
+* `internal` a boolean value. True if the labware is internal, otherwise false.
+* `labware_uuids` an array of labware uuids to update
+
+PUT /11111111-2222-3333-4444-555555555555
+> Accept: application/json
+{
+    "name": "new ABC Hospital",
+    "address": "new CB11 3DF Cambridge 123 Sample Way",
+    "internal": true,
+    "labware_uuids": [
+        "11111111-1111-3333-4444-555555555555",
+        "11111111-1111-3333-4444-666666666666",
+        "11111111-1111-3333-4444-777777777777"
+    ]
+}
+< 200
+< Content-Type: application/json
+{
+    "location": {
+        "actions": {
+            "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555",
+        "name": "new ABC Hospital",
+        "address": "new CB11 3DF Cambridge 123 Sample Way",
+        "internal": true
+    }
+}
+
+
+
+--
 Search
 --
 **Search for a resource**
@@ -4040,7 +6690,7 @@ Search
 The search below returns plates with ids 1 and 2.
 You can search for a tube the same way as below if you know its id.
 
-To actually get the search results, you need to access the first page of result 
+To actually get the search results, you need to access the first page of the result 
 thanks to the `first` action in the JSON response.
 POST /searches
 > Accept: application/json
@@ -4068,10 +6718,10 @@ POST /searches
 * `description` describe the search
 * `model` searched model
 * `criteria` set parameters for the search. Here, it can be a combination of the following attributes:
-    * `pipeline` 
+    * `pipeline` the pipeline to search for
     * `items` which itself can contain the parameters `uuid`, `status`, `role` and `batch_uuid`
-    * `status`
-    * `cost_code`
+    * `status` the status to search for
+    * `cost_code` the cost_code to search for
 
 The search below looks for an order for the `pipeline 1` which has a status `in_progress`. On top of
 that, the search looks for an order which contains an item which has the uuid 
@@ -4119,9 +6769,9 @@ POST /searches
 * `description` describe the search
 * `model` searched model
 * `criteria` set parameters for the search. Here, it can be a combination of the following attributes:
-    * `position`
-    * `type`
-    * `value`
+    * `position`    position of the label to search for
+    * `type`        the type of the label to search for
+    * `value`       the value of the label to search for
 
 The search below looks for a tube by its label which is a `sanger-barcode` with the position 
 `front barcode` and the value `ABC123456`.
@@ -4160,10 +6810,10 @@ POST /searches
 * `description` describe the search
 * `model` search for resource instances of model
 * `criteria` set parameters for the search. Here, it can be a combination of the following attributes:
-    * `pipeline` 
+    * `pipeline` the pipeline to search for
     * `items` which itself can contain the parameters `status` and `role`
-    * `status`
-    * `cost_code`
+    * `status` the status to search for
+    * `cost_code` the cost_code to search for
 
 The search below looks for a tube used in a order for the pipeline `pipeline 1` which has the status `in_progress`.
 On top of that, the tube used in that order should have a role `role A` and a `pending` status.
@@ -4231,10 +6881,51 @@ POST /searches
     }
 }
 
+**Search for a labellable**
+
+* `description` describe the search
+* `model` labellable model 
+* `criteria` set parameters for the search. Here, it can be a combination of the following attributes:
+    * `position` the label position to search for
+    * `type` the label type to search for
+    * `value` the label value to search for
+
+Searching for a labellable is useful to get a resource without knowing its model. 
+In fact, in a normal search, the model attribute needs to be set. In the case the model of the
+searched resource isn't known in advance, we can search its corresponding labellable,
+then get the resource (the uuid of the resource appears under the name attribute in the labellable JSON).
+ 
+To actually get the search results, you need to access the first page of result thanks to the `first` action in the JSON response.
+
+POST /searches
+> Accept: application/json
+{
+    "search": {
+        "description": "search for a labellable",
+        "model": "labellable",
+        "criteria": {
+            "label": {
+                "value": "ABC123456"
+            }
+        }
+    }
+}
+< 200
+< Content-Type: application/json
+{
+    "search": {
+        "actions": {
+            "read": "/11111111-2222-3333-4444-555555555555",
+            "first": "/11111111-2222-3333-4444-555555555555/page=1",
+            "last": "/11111111-2222-3333-4444-555555555555/page=-1"
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555"
+    }
+}
 
 **Search for a resource by sample uuid**
 
-* `uuid` uuid ot a sample (can pass an array of sample uuids as well)
+* `uuid` uuid of a sample (can pass an array of sample uuids as well)
 
 The search below looks for a tube which contain the sample referenced by the sample uuid `11111111-2222-3333-4444-666666666666`.
 
@@ -4261,4 +6952,47 @@ POST /searches
         "uuid": "11111111-2222-3333-4444-555555555555"
     }
 }
+
+**Search for a location by address and name**
+
+* `description` describe the search
+* `model` location model 
+* `criteria` set parameters for the search. Here, it can be a combination of the following attributes:
+    * `address`
+    * `name`
+
+To actually get the search results, you need to access the first page of result thanks to the `first` action in the JSON response.
+  
+POST /searches
+> Accept: application/json
+{
+    "search": {
+        "description": "search for a location by name",
+        "model": "location",
+        "criteria": {
+            "comparison": {
+                "name": {
+                    "like": "ABC"
+                },
+                "address": {
+                    "like": "CB11 3DF"
+                }
+            }
+        }
+    }
+}
+< 200
+< Content-Type: application/json
+{
+    "search": {
+        "actions": {
+            "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "first": "http://example.org/11111111-2222-3333-4444-555555555555/page=1",
+            "last": "http://example.org/11111111-2222-3333-4444-555555555555/page=-1"
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555"
+    }
+}
+
+
 

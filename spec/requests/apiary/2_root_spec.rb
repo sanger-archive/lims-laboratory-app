@@ -52,12 +52,28 @@ describe "root" do
             "last": "http://example.org/orders/page=-1"
         }
     },
+    "locations": {
+        "actions": {
+            "create": "http://example.org/locations",
+            "read": "http://example.org/locations",
+            "first": "http://example.org/locations/page=1",
+            "last": "http://example.org/locations/page=-1"
+        }
+    },
     "samples": {
         "actions": {
             "create": "http://example.org/samples",
             "read": "http://example.org/samples",
             "first": "http://example.org/samples/page=1",
             "last": "http://example.org/samples/page=-1"
+        }
+    },
+    "snp_assays": {
+        "actions": {
+            "create": "http://example.org/snp_assays",
+            "read": "http://example.org/snp_assays",
+            "first": "http://example.org/snp_assays/page=1",
+            "last": "http://example.org/snp_assays/page=-1"
         }
     },
     "oligos": {
@@ -98,6 +114,14 @@ describe "root" do
             "read": "http://example.org/filter_papers",
             "first": "http://example.org/filter_papers/page=1",
             "last": "http://example.org/filter_papers/page=-1"
+        }
+    },
+    "fluidigms": {
+        "actions": {
+            "create": "http://example.org/fluidigms",
+            "read": "http://example.org/fluidigms",
+            "first": "http://example.org/fluidigms/page=1",
+            "last": "http://example.org/fluidigms/page=-1"
         }
     },
     "labellables": {
@@ -264,6 +288,11 @@ describe "root" do
             "create": "http://example.org/actions/create_filter_paper"
         }
     },
+    "create_fluidigms": {
+        "actions": {
+            "create": "http://example.org/actions/create_fluidigm"
+        }
+    },
     "bulk_create_filter_papers": {
         "actions": {
             "create": "http://example.org/actions/bulk_create_filter_paper"
@@ -287,6 +316,11 @@ describe "root" do
     "create_labellables": {
         "actions": {
             "create": "http://example.org/actions/create_labellable"
+        }
+    },
+    "create_snp_assays": {
+        "actions": {
+            "create": "http://example.org/actions/create_snp_assay"
         }
     },
     "update_labels": {
@@ -379,6 +413,11 @@ describe "root" do
             "create": "http://example.org/actions/update_tube"
         }
     },
+    "update_gels": {
+        "actions": {
+            "create": "http://example.org/actions/update_gel"
+        }
+    },
     "update_tube_racks": {
         "actions": {
             "create": "http://example.org/actions/update_tube_rack"
@@ -402,6 +441,26 @@ describe "root" do
     "transfer_multiple_filter_papers_to_wells": {
         "actions": {
             "create": "http://example.org/actions/transfer_multiple_filter_papers_to_wells"
+        }
+    },
+    "transfer_plates_to_fluidigms": {
+        "actions": {
+            "create": "http://example.org/actions/transfer_plates_to_fluidigm"
+        }
+    },
+    "move_snp_assays": {
+        "actions": {
+            "create": "http://example.org/actions/move_snp_assays"
+        }
+    },
+    "create_locations": {
+        "actions": {
+            "create": "http://example.org/actions/create_location"
+        }
+    },
+    "update_locations": {
+        "actions": {
+            "create": "http://example.org/actions/update_location"
         }
     },
     "revision": 3
