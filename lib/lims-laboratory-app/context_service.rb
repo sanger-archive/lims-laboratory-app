@@ -2,6 +2,16 @@ require 'lims-api/context_service'
 
 require 'lims-laboratory-app/organization/user'
 
+module Lims::Core::Persistence
+  class UserSession
+    NOT_IN_ROOT = true
+  end
+
+  class Revision
+    NOT_IN_ROOT = true
+  end
+end
+
 module Lims::LaboratoryApp
   # Subclass ContextService to extract an Organization::User instead
   # of a string for request params
