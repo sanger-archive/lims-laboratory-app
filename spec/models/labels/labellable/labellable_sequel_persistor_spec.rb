@@ -17,6 +17,9 @@ module Lims::LaboratoryApp
     let(:content) { { label_position => Labels::SangerBarcode.new({:value => label_value}) } }
     let(:parameters) { { :name => name, :type => type, :content => content } }
     let(:labellable) { Labels::Labellable.new(parameters) }
+    let(:labellable_with_same_name) { Labels::Labellable.new(
+      { :name => name, :type => "other type", :content => content })
+    }
     let(:other_label_position) { "ean13" }
     let(:other_label_value) { "1234567890123" }
     let(:other_label) { Labels::EAN13Barcode.new({:value => other_label_value }) }
@@ -48,6 +51,13 @@ module Lims::LaboratoryApp
             session << loaded_labellable
           end
         end.to raise_error(Lims::LaboratoryApp::Labels::Labellable::LabelPositionNotEmptyError)
+      end
+
+      it "should not save 2 labellables with the same name property" do
+        expect do
+          labellable_id1 = save(labellable)
+          labellable_id2 = save(labellable_with_same_name)
+        end.to raise_error(Sequel::ConstraintViolation)
       end
     end
 
