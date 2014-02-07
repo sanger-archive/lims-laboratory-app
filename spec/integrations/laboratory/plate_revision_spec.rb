@@ -57,7 +57,7 @@ module Lims::LaboratoryApp
         end
       }
       let!(:session_id2)  { plate2; get_last_session_id }
-      it do 
+      it "can load plate state for a given session_id" do 
         # create plates revision
 
         for_session(session_id0) do |session|
@@ -79,6 +79,14 @@ module Lims::LaboratoryApp
           plate.should == plate2
 
           plate.type.should == 'new type'
+        end
+      end
+
+      it "can find all revision modifying the plate" do
+        store.with_session do |session|
+          plate = session.plate[plate_id]
+          sessions = session.user_session.for_resources(plate)
+          sessions.map {|s| s.id }.should == [session_id0, session_id1, session_id2]
         end
       end
     end
