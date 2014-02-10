@@ -73,6 +73,20 @@ module Lims::LaboratoryApp
           end
         end
 
+        context "should be deletable" do
+
+          def delete_tube
+            store.with_session do |session|
+              tube = session.tube[tube_id]
+              session.delete(tube)
+            end
+          end
+
+          it "delete the tube" do
+            expect { delete_tube }.to change { db[:tubes].count}.by(-1)
+          end
+        end
+
         context "with a tube type" do
           let(:type) { "Eppendorf" }
           subject { Laboratory::Tube.new(:type => type) } 
