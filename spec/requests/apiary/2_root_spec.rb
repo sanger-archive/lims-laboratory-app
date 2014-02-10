@@ -384,6 +384,11 @@ describe "root" do
             "create": "http://example.org/actions/update_tube_rack"
         }
     },
+    "delete_tubes": {
+        "actions": {
+            "create": "http://example.org/actions/delete_tube"
+        }
+    },
     "delete_tube_racks": {
         "actions": {
             "create": "http://example.org/actions/delete_tube_rack"
