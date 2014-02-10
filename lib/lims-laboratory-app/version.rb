@@ -10,8 +10,6 @@ module Lims
     --llh1
     --ke4
     --mb14
-    x
-    x
     }
 
     MAJOR_DEV = %{
@@ -20,6 +18,7 @@ module Lims
     x
     x
     --ke4
+    x
     x
     x
     x
