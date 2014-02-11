@@ -403,6 +403,11 @@ describe "dna_rna_manual_extraction" do
             "create": "http://example.org/actions/delete_tube_rack"
         }
     },
+    "delete_tubes": {
+        "actions": {
+            "create": "http://example.org/actions/delete_tube"
+        }
+    },
     "revision": 3
 }
     EOD

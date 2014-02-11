@@ -4,6 +4,7 @@ require('lims-laboratory-app/laboratory/tube/transfer_tubes_to_tubes')
 require('lims-laboratory-app/laboratory/tube/transfer_wells_to_tubes')
 require('lims-laboratory-app/laboratory/tube/tube_persistor')
 require('lims-laboratory-app/laboratory/tube/update_tube')
+require('lims-laboratory-app/laboratory/tube/delete_tube')
 require 'lims-laboratory-app/laboratory/aliquot/all'
 require('lims-laboratory-app/laboratory/tube')
 require 'lims-laboratory-app/laboratory/tube/transfer_tubes_to_tubes_resource'
