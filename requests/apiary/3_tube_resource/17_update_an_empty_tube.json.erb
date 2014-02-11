@@ -1,0 +1,38 @@
+<%
+require 'json'
+h={:header => [], :response_header => [] }
+h[:description]=<<EOD
+EOD
+h[:method] = "PUT"
+h[:url]='/11111111-2222-3333-4444-555555555555'
+h[:header] << 'Accept: application/json'
+h[:parameters]=<<EOP
+{ "type": "Eppendorf", "max_volume": 2 }
+EOP
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json'
+h[:setup]=<<EOD
+tube = Lims::LaboratoryApp::Laboratory::Tube.new
+save_with_uuid tube => [1,2,3,4,5]
+EOD
+
+h[:response]=<<EOD
+{
+    "tube": {
+        "actions": {
+            "read": "/11111111-2222-3333-4444-555555555555",
+            "create": "/11111111-2222-3333-4444-555555555555",
+            "update": "/11111111-2222-3333-4444-555555555555",
+            "delete": "/11111111-2222-3333-4444-555555555555"
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555",
+        "location": null,
+        "type": "Eppendorf",
+        "max_volume": 2,
+        "aliquots": [
+        ]
+    }
+}
+EOD
+%>
+<%= h.to_json %>
