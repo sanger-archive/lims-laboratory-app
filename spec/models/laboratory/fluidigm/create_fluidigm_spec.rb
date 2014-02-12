@@ -19,7 +19,7 @@ module Lims::LaboratoryApp
     shared_context "empty fluidigm checker" do
       let(:fluidigm_checker) do
         lambda do |fluidigm|
-          fluidigm.each  { |w| w.should be_empty }
+          fluidigm.each  { |w| w.empty_resource?.should be_true }
         end
       end
     end

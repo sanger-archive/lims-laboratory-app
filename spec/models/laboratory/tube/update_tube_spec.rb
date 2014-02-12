@@ -70,6 +70,20 @@ module Lims::LaboratoryApp
           end
         end
 
+        context "update empty tube" do
+          let(:volume) { 30 }
+          let(:action) { 
+            described_class.new(:store => store, :user => user, :application => application) do |a,s|
+              a.tube = new_empty_tube
+              a.max_volume = volume
+            end
+          }          
+
+          it "updates the tube" do
+            updated_tube.max_volume.should == volume                        
+          end
+        end
+
         context "updates solvent volume" do
           let(:volume) { 30 }
           let(:action) { 

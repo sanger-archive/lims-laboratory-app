@@ -69,7 +69,7 @@ module Lims::LaboratoryApp
           it "should not be saved" do
             store.with_session do |session|
               tube = session.tube[tube_id]
-              tube.should be_empty
+              tube.empty_resource?.should be_true
             end
           end
         end

@@ -70,7 +70,7 @@ module Lims::LaboratoryApp
           it "should not be saved" do
             store.with_session do |session|
               spin_column = session.spin_column[spin_column_id]
-              spin_column.should be_empty
+              spin_column.empty_resource?.should be_true
             end
           end
         end

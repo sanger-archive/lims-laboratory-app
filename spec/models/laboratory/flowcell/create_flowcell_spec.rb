@@ -21,7 +21,7 @@ module Lims::LaboratoryApp
 
       let (:flowcell_checker) do
         lambda do |flowcell|
-          flowcell.each { |lane| lane.should be_empty }
+          flowcell.each { |lane| lane.empty_resource?.should be_true }
         end
       end
     end
