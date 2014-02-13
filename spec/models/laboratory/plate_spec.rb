@@ -57,7 +57,7 @@ module Lims::LaboratoryApp::Laboratory
           pooled_wells = Set.new(subject.pools.values.flatten(1))
 
           subject.each_with_index do |well, name|
-            next if well.empty?
+            next if well.empty_resource?
             pooled_wells.should include(name)
           end
 

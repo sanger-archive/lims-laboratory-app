@@ -67,7 +67,10 @@ end
 shared_examples "receptacle" do
   context "when first created" do
     its(:size) { should eq(0) }
-    it { should be_empty}
+    #it { should be_empty}
+    it "is empty" do
+      subject.empty_resource?.should be_true
+    end
     include_examples "add contents"
   end
 
@@ -125,7 +128,9 @@ shared_examples "receptacle" do
     subject { described_class.new.tap { |r| r << solvent << aliquot } }
 
     include_examples "add contents"
-    it { should_not be_empty }
+    it "is not empty" do
+      subject.empty_resource?.should be_false
+    end
 
     it "has the correct volume" do
       subject.volume.should == solvent.quantity

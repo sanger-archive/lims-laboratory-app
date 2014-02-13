@@ -21,7 +21,7 @@ module Lims::LaboratoryApp
 
       let (:plate_checker) do
         lambda do |plate|
-          plate.each  { |w| w.should be_empty }
+          plate.each  { |w| w.empty_resource?.should be_true }
         end
       end
     end

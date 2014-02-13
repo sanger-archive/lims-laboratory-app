@@ -69,7 +69,7 @@ module Lims::LaboratoryApp
           it "should not be saved" do
             store.with_session do |session|
               filter_paper = session.filter_paper[filter_paper_id]
-              filter_paper.should be_empty
+              filter_paper.empty_resource?.should be_true
             end
           end
         end

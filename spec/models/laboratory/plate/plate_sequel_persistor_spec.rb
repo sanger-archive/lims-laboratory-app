@@ -54,9 +54,9 @@ module Lims::LaboratoryApp
           it "should be saved" do
             store.with_session do |session|
               f = session.plate[plate_id]
-              f[7].should be_empty
+              f[7].empty_resource?.should be_true
               f[1].should == [aliquot]
-              f[0].should be_empty
+              f[0].empty_resource?.should be_true
             end
           end
         end
@@ -71,8 +71,8 @@ module Lims::LaboratoryApp
           it "should not be saved" do
             store.with_session do |session|
               f = session.plate[plate_id]
-              f[7].should be_empty
-              f[1].should be_empty
+              f[7].empty_resource?.should be_true
+              f[1].empty_resource?.should be_true
               f[0].should == [aliquot]
             end
           end

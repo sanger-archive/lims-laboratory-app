@@ -20,7 +20,7 @@ module Lims::LaboratoryApp
 
       let (:gel_checker) do
         lambda do |gel|
-          gel.each  { |w| w.should be_empty }
+          gel.each  { |w| w.empty_resource?.should be_true }
         end
       end
     end
