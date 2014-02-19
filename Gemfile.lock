@@ -1,9 +1,9 @@
 GIT
   remote: http://github.com/sanger/lims-api.git
-  revision: 3e4c15e00b0b06af116ec2e2b2f2da865c117703
+  revision: eb23ebebd0057a8e533a9f1819cc5be2373bf148
   branch: uat_blood_reception
   specs:
-    lims-api (3.2.0.pre)
+    lims-api (3.2.1.pre)
       active_support
       bunny (= 0.9.0.pre10)
       json
@@ -29,10 +29,10 @@ GIT
 
 GIT
   remote: http://github.com/sanger/lims-exception-notifier-app.git
-  revision: 4e789cdb62446d6b0b3496046350a111d245fd38
+  revision: 360dda5975b21a7b5bea1575ed5de176ad9ba8fb
   branch: master
   specs:
-    lims-exception-notifier-app (0.1.2)
+    lims-exception-notifier-app (0.1.3)
       mustache (~> 0.99.4)
 
 GIT
@@ -54,7 +54,7 @@ GIT
 PATH
   remote: .
   specs:
-    lims-laboratory-app (3.5.1.pre)
+    lims-laboratory-app (3.5.2.pre)
 
 GEM
   remote: http://rubygems.org/
@@ -151,7 +151,7 @@ DEPENDENCIES
   jdbc-sqlite3
   lims-api (~> 3.2.0.pre)!
   lims-core (~> 3.2.0.pre)!
-  lims-exception-notifier-app (~> 0.1)!
+  lims-exception-notifier-app (~> 0.1.3)!
   lims-laboratory-app!
   mysql2
   psd_logger!
