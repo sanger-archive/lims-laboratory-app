@@ -58,60 +58,98 @@ module Lims
 				end
 
 				# state machine
-				context "pending" do
-					its(:iteration) { should == 0 }
-					it "can be started" do
-						subject.start.should == true
-					end
 
-					context "source" do
-						before(:each) { subject.complete }
-						its(:status) { should == "done" }
-						its(:done?) { should be_true }
-						its(:iteration) { should == 0 }
+        context "pending" do
+          its(:iteration) { should == 0 }
+          it "can be started" do
+            subject.start.should == true
+          end
 
-						it_can_not_be_modified :iteration
-						it_can_not_be_modified :uuid
+          context "source" do
+            before(:each) { subject.complete }
+            its(:status) { should == "done" }
+            its(:done?) { should be_true }
+            its(:iteration) { should == 0 }
 
-						it "can't no be reset" do
-							subject.reset.should == false
-						end
-					end
+            it_can_not_be_modified :iteration
+            it_can_not_be_modified :uuid
 
-					context "in progress" do
-						before(:each) { subject.start }
-						its(:status) { should == "in_progress" }
-						its(:iteration) { should == 1 }
+            it "can reset" do
+              subject.reset.should == true
+            end
 
-						it "can fail" do
-							subject.fail.should == true
-						end
+            it "increments iteration when started after reset" do
+              subject.reset
+              subject.start
+              subject.iteration.should == 1
+            end
+          end
 
-						it "can succeed" do
-							subject.complete.should == true
-						end
+          context "in progress" do
+            before(:each) { subject.start }
+            its(:status) { should == "in_progress" }
+            its(:iteration) { should == 1 }
 
-						context "failed" do
-							before(:each) { subject.fail }
-							it "can be reset to pending" do
-								subject.reset.should == true
-							end
+            it "can fail" do
+              subject.fail.should == true
+            end
 
-							it "can be restarted" do
-								subject.start.should == true
-							end
-							it "increments iteration when started" do
-								subject.reset
-								subject.start
-								subject.iteration.should == 2
-							end
+            it "can succeed" do
+              subject.complete.should == true
+            end
 
-							it "increments when restarted" do
-								subject.start
-								subject.iteration.should == 2
-							end
-						end
-					end
+            it "can reset" do
+              subject.reset.should == true
+            end
+
+            it "can cancel" do
+              subject.cancel.should == true
+            end
+
+            context "cancelled" do
+              before(:each) { subject.cancel }
+              its(:status) { should == "cancelled" }
+              its(:cancelled?) { should be_true }
+
+              it "can reset" do
+                subject.reset.should == true
+                subject.status.should == "pending"
+              end
+
+              it "increments iteration when started" do
+                subject.reset
+                subject.start
+                subject.iteration.should == 2
+              end
+            end
+
+            context "failed" do
+              before(:each) { subject.fail }
+              its(:status) { should == "failed" }
+              its(:failed?) { should be_true }
+
+              it "can be reset to pending" do
+                subject.reset.should == true
+                subject.status.should == "pending"
+              end
+
+              it "can be restarted" do
+                subject.start.should == true
+                subject.status.should == "in_progress"
+              end
+
+              it "increments iteration when started" do
+                subject.reset
+                subject.start
+                subject.iteration.should == 2
+              end
+
+              it "increments when restarted" do
+                subject.start
+                subject.iteration.should == 2
+              end
+            end
+          end
 
           context "unused" do
             before(:each) { 
@@ -125,8 +163,14 @@ module Lims
             it_can_not_be_modified :iteration
             it_can_not_be_modified :uuid
 
-            it "can't be reset" do
-              subject.reset.should == false
+            it "can be reseted" do
+              subject.reset.should == true
+              subject.status.should == "pending"
+            end
+
+            it "can be reused" do
+              subject.reuse.should == true
+              subject.status.should == "done"
             end
           end
         end
