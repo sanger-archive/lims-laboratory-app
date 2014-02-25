@@ -13,31 +13,29 @@ require 'models/persistence/sequel/spec_helper'
 require 'lims-core/persistence/sequel/user_session_sequel_persistor'
 
 shared_examples "retrieving direct and related revisions" do
-  it_behaves_like "retrieving direct revisions"
-  it_behaves_like "retrieving all modified resources"
-end
-
-shared_examples "retrieving direct revisions" do
-  it "retrieves direct revisions" do
+  let(:user_session) {
     store.with_session do |session|
       user_session = Lims::Core::Persistence::UserSession.new(:id => session_id, :parent_session => session)
-      revisions = user_session.direct_revisions
-      got = revisions.map { |r| { :id => r.id, :action => r.action, :model => r.model.name.split('::').last.snakecase} }
-      got.sort_by { |h| h.inspect}.should == direct.sort_by { |h| h.inspect}
     end
+  }
+
+  context "retrieves direct revisions" do
+    let(:revisions) { user_session.direct_revisions }
+    let(:expected) { direct }
+    it_behaves_like "retrieving the expected revisions"
+  end
+
+  context "retrieves all modified resources" do
+    let(:revisions) { user_session.collect_related_states.map { |s| s.revision } }
+    let(:expected) { direct + related }
+    it_behaves_like "retrieving the expected revisions"
   end
 end
 
-shared_examples "retrieving all modified resources" do
-
-  let(:expected) { direct + related }
-  it do
-    store.with_session do |session|
-      user_session = Lims::Core::Persistence::UserSession.new(:id => session_id, :parent_session => session)
-      states = user_session.collect_related_states
-      got = states.map { |s| r=s.revision; { :id => r.id, :action => r.action, :model => r.model.name.split('::').last.snakecase} }
-      got.sort_by { |h| h.inspect}.should == expected.sort_by { |h| h.inspect}
-    end
+shared_examples "retrieving the expected revisions" do
+  it "gets the correct revisions" do
+    got = revisions.map { |r| { :id => r.id, :action => r.action, :model => r.model.name.split('::').last.snakecase} }
+    got.sort_by { |h| h.inspect}.should == expected.sort_by { |h| h.inspect}
   end
 end
 
@@ -224,16 +222,21 @@ module Lims::LaboratoryApp
               {:id => aliquot_id+4, :action=> "delete", :model => "aliquot"},
             ]
           }
-          let(:related) { [] }
+          let(:related) { [
+              {:id => plate_id, :action=> "update", :model => "plate"},
+          ] }
           it_behaves_like "retrieving direct and related revisions"
         end
         context "session 3" do
           let(:session_id) { session_id3 }
           let(:direct) {[
               {:id => aliquot_id+5, :action=> "update", :model => "aliquot"},
+              {:id => well_aliquot_id+5, :action=> "delete", :model => "well_aliquot"},
             ]
           }
-          let(:related) { [] }
+          let(:related) { [
+              {:id => plate_id, :action=> "update", :model => "plate"},
+          ] }
           it_behaves_like "retrieving direct and related revisions"
         end
       end
