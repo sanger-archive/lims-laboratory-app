@@ -95,6 +95,16 @@ module Lims::LaboratoryApp
         end
       }
       let!(:session_id2)  { plate2; get_last_session_id }
+      let!(:plate3) {
+        session_id1
+        store.with_session do |session|
+          session.plate[plate_id].tap do |plate|
+            # clear first well containing 5 aliquots and 5 samples
+            plate[1].first.quantity = 5
+          end
+        end
+      }
+      let!(:session_id3)  { plate3; get_last_session_id }
       it "can load plate state for a given session_id" do 
         # create plates revision
 
@@ -118,13 +128,19 @@ module Lims::LaboratoryApp
 
           plate.type.should == 'new type'
         end
+        for_session(session_id3) do |session|
+          plate = session.plate[plate_id]
+
+          plate.should_not == plate2
+          plate.should == plate3
+        end
       end
 
       it "can find all revisions modifying the plate" do
         store.with_session do |session|
           plate = session.plate[plate_id]
           sessions = session.user_session.for_resources(plate)
-          sessions.map {|s| s.id }.should == [session_id0, session_id1, session_id2]
+          sessions.map {|s| s.id }.should == [session_id0, session_id1, session_id2, session_id3]
         end
       end
       context "for a specific revision" do
@@ -193,10 +209,14 @@ module Lims::LaboratoryApp
             }
             it_behaves_like "retrieving direct revisions"
           end
-          #it_behaves_like "retrieving direct revisions", 0, [{:id => plate_id, :action=> "insert", :model => plate.class}, {:id =>1, :action=> "insert", :model => ForTest::User}]
-          #it_behaves_like "retrieving direct revisions", session_id1, [{:id => 1, :action=> "update", :model => ForTest::Name}]
-          #it_behaves_like "retrieving direct revisions", session_id2, [{:id =>1, :action=> "update", :model => ForTest::User}]
-          #it_behaves_like "retrieving direct revisions", session_id3, [{:id => 2, :action=> "insert", :model => ForTest::Name}, {:id =>1, :action=> "update", :model => ForTest::User}]
+          context "session 3" do
+            let(:session_id) { session_id3 }
+            let(:expected) {[
+                {:id => aliquot_id+5, :action=> "update", :model => "aliquot"},
+              ]
+            }
+            it_behaves_like "retrieving direct revisions"
+          end
         end
 
         context "retrieves all resources" do
