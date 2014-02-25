@@ -12,12 +12,30 @@ require 'models/persistence/sequel/spec_helper'
 
 require 'lims-core/persistence/sequel/user_session_sequel_persistor'
 
+shared_examples "retrieving direct and related revisions" do
+  it_behaves_like "retrieving direct revisions"
+  it_behaves_like "retrieving all modified resources"
+end
+
 shared_examples "retrieving direct revisions" do
-  it do
+  it "retrieves direct revisions" do
     store.with_session do |session|
       user_session = Lims::Core::Persistence::UserSession.new(:id => session_id, :parent_session => session)
       revisions = user_session.direct_revisions
       got = revisions.map { |r| { :id => r.id, :action => r.action, :model => r.model.name.split('::').last.snakecase} }
+      got.sort_by { |h| h.inspect}.should == direct.sort_by { |h| h.inspect}
+    end
+  end
+end
+
+shared_examples "retrieving all modified resources" do
+
+  let(:expected) { direct + related }
+  it do
+    store.with_session do |session|
+      user_session = Lims::Core::Persistence::UserSession.new(:id => session_id, :parent_session => session)
+      states = user_session.collect_related_states
+      got = states.map { |s| r=s.revision; { :id => r.id, :action => r.action, :model => r.model.name.split('::').last.snakecase} }
       got.sort_by { |h| h.inspect}.should == expected.sort_by { |h| h.inspect}
     end
   end
@@ -37,7 +55,6 @@ module Lims::LaboratoryApp
     def for_session(session_id)
       store.with_session do |session|
         Lims::Core::Persistence::Sequel::Revision::Session.new(store, session_id).with_session do |revision|
-
           yield(revision)
         end
       end
@@ -144,89 +161,89 @@ module Lims::LaboratoryApp
         end
       end
       context "for a specific revision" do
-        context "retrieves direct resources" do
-
-          context "session 0" do
-            let(:session_id) { session_id0 }
-            let(:expected) {[
-                {:id => plate_id, :action=> "insert", :model => "plate"},
-                {:id => well_aliquot_id, :action=> "insert", :model => "well_aliquot"},
-                {:id => well_aliquot_id+1, :action=> "insert", :model => "well_aliquot"},
-                {:id => well_aliquot_id+2, :action=> "insert", :model => "well_aliquot"},
-                {:id => well_aliquot_id+3, :action=> "insert", :model => "well_aliquot"},
-                {:id => well_aliquot_id+4, :action=> "insert", :model => "well_aliquot"},
-                {:id => well_aliquot_id+5, :action=> "insert", :model => "well_aliquot"},
-                {:id => well_aliquot_id+6, :action=> "insert", :model => "well_aliquot"},
-                {:id => well_aliquot_id+7, :action=> "insert", :model => "well_aliquot"},
-                {:id => well_aliquot_id+8, :action=> "insert", :model => "well_aliquot"},
-                {:id => well_aliquot_id+9, :action=> "insert", :model => "well_aliquot"},
-                {:id => aliquot_id, :action=> "insert", :model => "aliquot"},
-                {:id => aliquot_id+1, :action=> "insert", :model => "aliquot"},
-                {:id => aliquot_id+2, :action=> "insert", :model => "aliquot"},
-                {:id => aliquot_id+3, :action=> "insert", :model => "aliquot"},
-                {:id => aliquot_id+4, :action=> "insert", :model => "aliquot"},
-                {:id => aliquot_id+5, :action=> "insert", :model => "aliquot"},
-                {:id => aliquot_id+6, :action=> "insert", :model => "aliquot"},
-                {:id => aliquot_id+7, :action=> "insert", :model => "aliquot"},
-                {:id => aliquot_id+8, :action=> "insert", :model => "aliquot"},
-                {:id => aliquot_id+9, :action=> "insert", :model => "aliquot"},
-                {:id => sample_id+0, :action=> "insert", :model => "sample"},
-                {:id => sample_id+1, :action=> "insert", :model => "sample"},
-                {:id => sample_id+2, :action=> "insert", :model => "sample"},
-                {:id => sample_id+3, :action=> "insert", :model => "sample"},
-                {:id => sample_id+4, :action=> "insert", :model => "sample"},
-                {:id => sample_id+5, :action=> "insert", :model => "sample"},
-                {:id => sample_id+6, :action=> "insert", :model => "sample"},
-                {:id => sample_id+7, :action=> "insert", :model => "sample"},
-                {:id => sample_id+8, :action=> "insert", :model => "sample"},
-                {:id => sample_id+9, :action=> "insert", :model => "sample"},
-              ]
-            }
-            it_behaves_like "retrieving direct revisions"
-          end
-          context "session 1" do
-            let(:session_id) { session_id1 }
-            let(:expected) {[
-                {:id => plate_id, :action=> "update", :model => "plate"},
-              ]
-            }
-            it_behaves_like "retrieving direct revisions"
-          end
-          context "session 2" do
-            let(:session_id) { session_id2 }
-            let(:expected) {[
-                {:id => well_aliquot_id+0, :action=> "delete", :model => "well_aliquot"},
-                {:id => well_aliquot_id+1, :action=> "delete", :model => "well_aliquot"},
-                {:id => well_aliquot_id+2, :action=> "delete", :model => "well_aliquot"},
-                {:id => well_aliquot_id+3, :action=> "delete", :model => "well_aliquot"},
-                {:id => well_aliquot_id+4, :action=> "delete", :model => "well_aliquot"},
-                {:id => aliquot_id+0, :action=> "delete", :model => "aliquot"},
-                {:id => aliquot_id+1, :action=> "delete", :model => "aliquot"},
-                {:id => aliquot_id+2, :action=> "delete", :model => "aliquot"},
-                {:id => aliquot_id+3, :action=> "delete", :model => "aliquot"},
-                {:id => aliquot_id+4, :action=> "delete", :model => "aliquot"},
-              ]
-            }
-            it_behaves_like "retrieving direct revisions"
-          end
-          context "session 3" do
-            let(:session_id) { session_id3 }
-            let(:expected) {[
-                {:id => aliquot_id+5, :action=> "update", :model => "aliquot"},
-              ]
-            }
-            it_behaves_like "retrieving direct revisions"
-          end
+        context "session 0" do
+          let(:session_id) { session_id0 }
+          let(:direct) {[
+              {:id => plate_id, :action=> "insert", :model => "plate"},
+              {:id => well_aliquot_id, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+1, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+2, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+3, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+4, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+5, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+6, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+7, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+8, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+9, :action=> "insert", :model => "well_aliquot"},
+              {:id => aliquot_id, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+1, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+2, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+3, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+4, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+5, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+6, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+7, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+8, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+9, :action=> "insert", :model => "aliquot"},
+              {:id => sample_id+0, :action=> "insert", :model => "sample"},
+              {:id => sample_id+1, :action=> "insert", :model => "sample"},
+              {:id => sample_id+2, :action=> "insert", :model => "sample"},
+              {:id => sample_id+3, :action=> "insert", :model => "sample"},
+              {:id => sample_id+4, :action=> "insert", :model => "sample"},
+              {:id => sample_id+5, :action=> "insert", :model => "sample"},
+              {:id => sample_id+6, :action=> "insert", :model => "sample"},
+              {:id => sample_id+7, :action=> "insert", :model => "sample"},
+              {:id => sample_id+8, :action=> "insert", :model => "sample"},
+              {:id => sample_id+9, :action=> "insert", :model => "sample"},
+            ]
+          }
+          let(:related) { [] }
+          it_behaves_like "retrieving direct and related revisions"
         end
-
-        context "retrieves all resources" do
-          #it_behaves_like "retrieving all modified resources", session_id0, [[:name, 1], [:plate, plate_id]]
-          #it_behaves_like "retrieving all modified resources", session_id1, [[:name, 1], [:plate, plate_id]]
-          #it_behaves_like "retrieving all modified resources", session_id2, [[:name, 1], [:plate, plate_id]]
-          #it_behaves_like "retrieving all modified resources", session_id3, [[:name, 2], [:plate, plate_id]]
+        context "session 1" do
+          let(:session_id) { session_id1 }
+          let(:direct) {[
+              {:id => plate_id, :action=> "update", :model => "plate"},
+            ]
+          }
+          let(:related) { [] }
+          it_behaves_like "retrieving direct and related revisions"
+        end
+        context "session 2" do
+          let(:session_id) { session_id2 }
+          let(:direct) {[
+              {:id => well_aliquot_id+0, :action=> "delete", :model => "well_aliquot"},
+              {:id => well_aliquot_id+1, :action=> "delete", :model => "well_aliquot"},
+              {:id => well_aliquot_id+2, :action=> "delete", :model => "well_aliquot"},
+              {:id => well_aliquot_id+3, :action=> "delete", :model => "well_aliquot"},
+              {:id => well_aliquot_id+4, :action=> "delete", :model => "well_aliquot"},
+              {:id => aliquot_id+0, :action=> "delete", :model => "aliquot"},
+              {:id => aliquot_id+1, :action=> "delete", :model => "aliquot"},
+              {:id => aliquot_id+2, :action=> "delete", :model => "aliquot"},
+              {:id => aliquot_id+3, :action=> "delete", :model => "aliquot"},
+              {:id => aliquot_id+4, :action=> "delete", :model => "aliquot"},
+            ]
+          }
+          let(:related) { [] }
+          it_behaves_like "retrieving direct and related revisions"
+        end
+        context "session 3" do
+          let(:session_id) { session_id3 }
+          let(:direct) {[
+              {:id => aliquot_id+5, :action=> "update", :model => "aliquot"},
+            ]
+          }
+          let(:related) { [] }
+          it_behaves_like "retrieving direct and related revisions"
         end
       end
 
+      context "retrieves all resources" do
+        #it_behaves_like "retrieving all modified resources", session_id1, [[:name, 1], [:plate, plate_id]]
+        #it_behaves_like "retrieving all modified resources", session_id2, [[:name, 1], [:plate, plate_id]]
+        #it_behaves_like "retrieving all modified resources", session_id3, [[:name, 2], [:plate, plate_id]]
+      end
     end
+
   end
 end
