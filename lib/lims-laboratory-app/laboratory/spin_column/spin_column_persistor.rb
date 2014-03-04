@@ -16,7 +16,7 @@ module Lims::LaboratoryApp
     class SpinColumn
 
       (does "lims/core/persistence/persistable",
-        :parents => [{:name => :location, :deletable => true}],
+        :parents => [:location],
         :children => [{:name => :spin_column_aliquot, :deletable => true }]
       ).class_eval do
         def children_spin_column_aliquot(resource, children)

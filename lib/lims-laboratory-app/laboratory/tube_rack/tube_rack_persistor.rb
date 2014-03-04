@@ -12,7 +12,7 @@ module Lims::LaboratoryApp
     class TubeRack
       does "lims/laboratory_app/container_persistor",
         :element => :tube_rack_slot,
-        :parents => [{:name => :location, :deletable => true}],
+        :parents => [:location],
         :table_name => :tube_rack_slots,
         :contained_class => Tube,
         :deletable => false
