@@ -47,3 +47,7 @@ def save_with_uuid(args)
     end
   end
 end
+
+    def get_last_session_id
+      store.database[:sessions].max(:id)
+    end
