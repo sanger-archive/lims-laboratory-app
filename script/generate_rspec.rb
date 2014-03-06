@@ -203,7 +203,7 @@ def generate_http_request(example, target)
       target.puts %Q{    #{JSON.pretty_generate(JSON.parse(expected_response), :indent => '    ')}}
       target.puts "    EOD"
     else
-      target.puts %Q{    response.status.should = #{example.status || 200 }}
+      target.puts %Q{    response.status.should == #{example.status || 200 }}
     end
     target.puts
   elsif example.is_a?(Hash)
