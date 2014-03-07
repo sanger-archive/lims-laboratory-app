@@ -12,7 +12,7 @@ module Lims::LaboratoryApp
     class Fluidigm
       does "lims/laboratory_app/container_persistor",
         :element => :fluidigm_well_aliquot,
-        :parents => [{:name => :location, :deletable => true}],
+        :parents => [:location],
         :table_name => :fluidigm_wells,
         :contained_class => Aliquot
 

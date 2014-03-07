@@ -14,7 +14,7 @@ module Lims::LaboratoryApp
     class Plate
       does "lims/laboratory_app/container_persistor",
         :element => :well_aliquot,
-        :parents => [{:name => :location, :deletable => true}],
+        :parents => [:location],
         :table_name => :wells,
         :contained_class => Aliquot
     end
