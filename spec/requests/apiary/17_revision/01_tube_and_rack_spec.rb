@@ -7,7 +7,6 @@ describe "tube_and_rack", :revision => true do
     # Impact : +tube1, +sample1, +sample2, +rack1, +rack2
     ##################################################
     
-    debugger
     sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
     sample2 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2')
     
@@ -61,12 +60,19 @@ describe "tube_and_rack", :revision => true do
       rack2["A1"] = tube
     end
 
+
+
     header('Content-Type', 'application/json')
     header('Accept', 'application/json')
 
-    response = get "/11111111-2222-3333-1111-111111111111/revisions"
+    response = get "/11111111-2222-3333-1111-111111111111/revisions/#{session_id1}"
     response.should match_json_response(200, <<-EOD) 
     {
+    "revision": {
+        "actions": {
+            "read": "http://example.org/11111111-2222-3333-1111-111111111111/revisions/#{session_id1}"
+        }
+    }
 }
     EOD
 
