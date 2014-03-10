@@ -68,9 +68,27 @@ describe "tube_and_rack", :revision => true do
     response = get "/11111111-2222-3333-1111-111111111111/revisions/#{session_id1}"
     response.should match_json_response(200, <<-EOD) 
     {
+    "actions": {
+        "read": "http://example.org/11111111-2222-3333-1111-111111111111/revisions/#{session_id1}"
+    },
     "revision": {
-        "actions": {
-            "read": "http://example.org/11111111-2222-3333-1111-111111111111/revisions/#{session_id1}"
+        "session": {
+        },
+        "tube": {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-1111-111111111111"
+            },
+            "uuid": "11111111-2222-3333-1111-111111111111",
+            "location": null,
+            "type": null,
+            "aliquots": [
+                {
+                    "quantity": 10,
+                    "type": "DNA",
+                    "sample": {
+                    }
+                }
+            ]
         }
     }
 }
