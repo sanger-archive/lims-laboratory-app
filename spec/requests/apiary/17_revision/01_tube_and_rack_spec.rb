@@ -4,8 +4,10 @@ describe "tube_and_rack", :revision => true do
   it "tube_and_rack" do
     ##################################################
     # Session 1 : create tube and rack
+    # Impact : +tube1, +sample1, +sample2, +rack1, +rack2
     ##################################################
     
+    debugger
     sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
     sample2 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2')
     
@@ -26,6 +28,7 @@ describe "tube_and_rack", :revision => true do
     session_id1 = get_last_session_id
     ##################################################
     # Session 2 : put tube in a rack
+    # Impact: !tube1, !rack1
     ##################################################
     
     store.with_session do |session|
@@ -36,6 +39,7 @@ describe "tube_and_rack", :revision => true do
     
     ##################################################
     # Session 3 : swap sample to sample 2
+    # Impact : !tube1, !sample1, !sample2, !rack1
     ##################################################
     
     store.with_session do |session|
@@ -46,6 +50,7 @@ describe "tube_and_rack", :revision => true do
     
     ##################################################
     # Session 4 : move tube in another rack
+    # Impact: !tube1, !rack1, !rack2
     ##################################################
     
     store.with_session do |session|

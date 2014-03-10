@@ -8,7 +8,44 @@ h[:url]='/11111111-2222-3333-1111-111111111111/revisions'
 h[:header] << 'Accept: application/json'
 h[:status]=200
 h[:response_header] << 'Content-Type: application/json'
-h[:response]={}
+h[:response]=<<EOD
+{ "revision": {
+    :actions: {
+      "read" :"http:/11111111-2222-3333-1111-111111111111/revisions',
+      "first" :"http:/11111111-2222-3333-1111-111111111111/revisions/page=1',
+      "last" :"http:/11111111-2222-3333-1111-111111111111/revisions/page=-1',
+    },
+    "revisions": [
+      {
+        "actions": {
+          "read": "http://example.org/11111111-2222-3333-1111-111111111111/revisions/1"
+        },
+
+        "id": 71,
+        "backend_application_id": null,
+        "parameters": "null",
+        "success": true,
+        "start_time": null,
+        "end_time": "2014-03-06 15:00:50 +0000",
+      },
+      {
+        "actions": {
+          "read": "http://example.org/11111111-2222-3333-1111-111111111111/revisions/73"
+        },
+        "id": 73,
+        "backend_application_id": null,
+        "parameters": "null",
+        "success": true,
+        "start_time": null,
+        "end_time": "2014-03-06 15:00:50 +0000",
+        "parent_session": null
+      }
+    ]
+    "revisions" [
+    ]
+}
+}
+EOD
 h[:setup]=<<EOD
 ##################################################
 # Session 1 : create tube and rack
@@ -72,4 +109,4 @@ end
 EOD
 %>
 <%= h.to_json %>
-  
+
