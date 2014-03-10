@@ -186,9 +186,9 @@ def generate_http_request(example, target)
     method = example["method"].downcase
 
     if method == 'get'
-      target.puts %Q{    response = #{method} #{example.url.inspect}}
+      target.puts %Q{    response = #{method} "#{example.url}"}
     else
-      target.puts %Q{    response = #{method} #{example.url.inspect}, <<-EOD}
+      target.puts %Q{    response = #{method} "#{example.url}", <<-EOD}
       parameters = example.parameters ? JSON.parse(example.parameters) : example.request
       target.puts %Q{    #{JSON.pretty_generate(parameters, :indent => '    ')}}
       target.puts "    EOD"
