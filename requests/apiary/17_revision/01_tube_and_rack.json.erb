@@ -71,11 +71,30 @@ step[:header] << 'Accept: application/json'
 step[:status]=200
 step[:response_header] << 'Content-Type: application/json'
 step[:response]=<<EOD
-{ "revision":  {
+{
     "actions": {
       "read": "#{step[:url]}"
+    },
+    "revision": {
+      "session": {
+      },
+      "tube": {
+            "actions": {
+                "read": "http://example.org/11111111-2222-3333-1111-111111111111"
+            },
+            "uuid": "11111111-2222-3333-1111-111111111111",
+            "location": null,
+            "type": null,
+            "aliquots": [
+              {
+                "quantity": 10,
+                "type": "DNA",
+                "sample": {
+                }
+              }
+            ]
+      }
     }
-  }
 }
 EOD
 %>
