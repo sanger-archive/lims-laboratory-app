@@ -1,0 +1,28 @@
+<%
+require 'json'
+h={:header => [], :response_header => [] }
+h[:description]=<<EOD
+**List actions for flowcell resource.**
+
+* `create` creates a new flowcell via HTTP POST request
+* `read` returns the list of actions for an flowcell resource via HTTP GET request
+* `first` lists the first flowcells resources in a page browsing system
+* `last` lists the last flowcells resources in a page browsing system
+EOD
+h[:method] = "GET"
+h[:url]='/flowcells'
+h[:header] << 'Accept: application/json'
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{ "flowcells": {
+    "actions": {
+        "create": "/flowcells",
+        "read": "/flowcells",
+        "first": "/flowcells/page=1",
+        "last": "/flowcells/page=-1"
+    }
+} }
+EOD
+%>
+<%= h.to_json %>
