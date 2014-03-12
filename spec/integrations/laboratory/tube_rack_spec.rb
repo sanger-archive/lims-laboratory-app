@@ -100,7 +100,11 @@ module Lims::LaboratoryApp::Laboratory
   shared_context "for tube rack with tubes" do
     include_context "with filled aliquots"
     include_context "with tube and sample"
-    let(:tubes) { {tube_location => tube_uuid} }
+    let(:tubes) {
+      {tube_location => tube_uuid}.tap do |tubes|
+        tubes.merge!(tube_location_null => nil) if defined?(tube_location_null)
+      end
+    }
     let(:location) { nil }
     let(:parameters) { {:tube_rack => dimensions.merge(:tubes => tubes, :location => location)} }
     let(:tubes_hash) { 
@@ -243,6 +247,14 @@ module Lims::LaboratoryApp::Laboratory
 
       context "with tubes in the tube rack", :testt => true do
         let(:tube_location) { "A1" }
+        include_context "for tube rack with tubes"
+        include_context "expected tube rack JSON"
+        it_behaves_like "creating a resource"
+      end
+
+      context "with null in some positions in the tube rack", :testt => true do
+        let(:tube_location) { "A1" }
+        let(:tube_location_null) { "B1" }
         include_context "for tube rack with tubes"
         include_context "expected tube rack JSON"
         it_behaves_like "creating a resource"
