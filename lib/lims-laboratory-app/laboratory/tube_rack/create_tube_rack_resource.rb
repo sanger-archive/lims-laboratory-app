@@ -11,13 +11,13 @@ module Lims::LaboratoryApp
 
           def self.map_tubes(tubes, &block)
             tubes.update_values do |tube|
-              tube = block[tube]
+              tube = block[tube] if tube
             end unless tubes.nil?
           end
 
           def self.filter_attributes_on_create(attributes, context, session)
             super.tap do |new_attributes|
-              map_tubes(new_attributes["tubes"]) { |v| session[v] }  
+              map_tubes(new_attributes["tubes"]) { |v| session[v] }
             end
           end
 
