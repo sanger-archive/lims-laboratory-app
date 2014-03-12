@@ -1,0 +1,37 @@
+<%
+require 'json'
+h={:header => [], :response_header => [] }
+h[:description]=<<EOD
+**Create an flowcell resource.**
+
+* `number_of_lanes` the number of lanes the flowcell has.
+
+EOD
+h[:method] = "POST"
+h[:url]='/flowcells'
+h[:header] << 'Accept: application/json'
+h[:parameters]=<<EOD
+{ "flowcell": {
+  "number_of_lanes": 8 }
+}
+EOD
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{ "flowcell": {
+    "actions": {
+        "read": "/11111111-2222-3333-4444-555555555555",
+        "create": "/11111111-2222-3333-4444-555555555555",
+        "update": "/11111111-2222-3333-4444-555555555555",
+        "delete": "/11111111-2222-3333-4444-555555555555"
+    },
+    "uuid": "11111111-2222-3333-4444-555555555555",
+    "location": null,
+    "number_of_lanes": 8,
+    "lanes": {
+        "1": [], "2": [], "3": [], "4": [], "5": [], "6": [], "7": [], "8": []
+     }
+}}
+EOD
+%>
+<%= h.to_json %>

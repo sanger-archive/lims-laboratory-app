@@ -1,0 +1,72 @@
+<%
+require 'json'
+h={:header => [], :response_header => [] }
+h[:description]=<<EOD
+**Create a new flowcell with samples.**
+
+* `number_of_lanes` number of lanes the flowcell has.
+* `lanes` map aliquots to lane locations
+EOD
+h[:method] = "POST"
+h[:url]='/flowcells'
+h[:header] << 'Accept: application/json'
+h[:setup]=<<EOD
+sample1 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 1')
+sample2 = Lims::LaboratoryApp::Laboratory::Sample.new(:name => 'sample 2')
+save_with_uuid sample1 => [1,2,3,4,6], sample2 => [1,2,3,4,7]
+EOD
+h[:parameters]=<<EOD
+{ "flowcell": {
+    "number_of_lanes": 8,
+    "lanes_description": { 
+        "2": [{ "sample_uuid": "11111111-2222-3333-4444-666666666666", "type": "DNA", "quantity": 10 }],
+        "5": [{ "sample_uuid": "11111111-2222-3333-4444-777777777777", "type": "DNA", "quantity": 10 }]
+} } }
+EOD
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{ "flowcell": {
+    "actions": {
+        "read": "/11111111-2222-3333-4444-555555555555",
+        "update": "/11111111-2222-3333-4444-555555555555",
+        "delete": "/11111111-2222-3333-4444-555555555555",
+        "create": "/11111111-2222-3333-4444-555555555555"
+    },
+    "uuid": "11111111-2222-3333-4444-555555555555",
+    "number_of_lanes": 8,
+    "location": null,
+    "lanes": { 
+        "1": [],
+        "2": [ { "sample": {
+            "actions": { 
+                "read": "/11111111-2222-3333-4444-666666666666",
+                "update": "/11111111-2222-3333-4444-666666666666",
+                "delete": "/11111111-2222-3333-4444-666666666666",
+                "create": "/11111111-2222-3333-4444-666666666666" 
+            },
+            "uuid": "11111111-2222-3333-4444-666666666666",
+            "name": "sample 1"},
+            "quantity": 10,
+            "type": "DNA",
+            "unit": "mole"
+        } ],
+        "3": [], "4": [],
+        "5": [ { "sample": {
+            "actions": { 
+                "read": "/11111111-2222-3333-4444-777777777777",
+                "update": "/11111111-2222-3333-4444-777777777777",
+                "delete": "/11111111-2222-3333-4444-777777777777",
+                "create": "/11111111-2222-3333-4444-777777777777" 
+            },
+            "uuid": "11111111-2222-3333-4444-777777777777",
+            "name": "sample 2"},
+            "quantity": 10,
+            "type": "DNA",
+            "unit": "mole"
+        } ], 
+        "6": [], "7": [], "8": []}
+}}
+EOD
+%>
+<%= h.to_json %>
