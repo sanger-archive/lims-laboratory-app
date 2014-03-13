@@ -5295,6 +5295,149 @@ POST /actions/transfer_plates_to_fluidigm
 
 
 --
+Flowcell Resource
+--
+
+**List actions for flowcell resource.**
+
+* `create` creates a new flowcell via HTTP POST request
+* `read` returns the list of actions for a flowcell resource via HTTP GET request
+* `first` lists the first flowcells resources in a page browsing system
+* `last` lists the last flowcells resources in a page browsing system
+GET /flowcells
+> Accept: application/json
+< 200
+< Content-Type: application/json
+{ 
+    "flowcells": {
+        "actions": {
+            "create": "/flowcells",
+            "read": "/flowcells",
+            "first": "/flowcells/page=1",
+            "last": "/flowcells/page=-1"
+        }
+    } 
+}
+
+**Create an empty flowcell resource.**
+
+* `number_of_lanes` number of lanes the flowcell has.
+
+POST /flowcells
+> Accept: application/json
+{ 
+    "flowcell": {
+        "number_of_lanes": 8
+    }
+}
+< 200
+< Content-Type: application/json
+{
+    "flowcell": {
+        "actions": {
+            "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "create": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555",
+        "location": null,
+        "number_of_lanes": 8,
+        "lanes": {
+            "1": [], "2": [], "3": [], "4": [], "5": [], "6": [], "7": [], "8": []
+        }
+    }
+}
+
+**Create a new flowcell resource with samples.**
+
+* `number_of_lanes` number of lanes the flowcell has.
+* `lanes_description` map aliquots to lane locations
+
+POST /flowcells
+> Accept: application/json
+{   
+    "flowcell": {
+        "number_of_lanes": 8,
+        "lanes_description": {
+            "2": [
+                {
+                    "sample_uuid": "11111111-2222-3333-4444-666666666666",
+                    "type": "DNA",
+                    "quantity": 10
+                }
+            ],
+            "5": [
+                {
+                    "sample_uuid": "11111111-2222-3333-4444-777777777777",
+                    "type": "DNA",
+                    "quantity": 10
+                }
+            ]
+        }
+    }
+}
+< 200
+< Content-Type: application/json
+{
+    "flowcell": {
+        "actions": {
+            "read": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "update": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "delete": "http://example.org/11111111-2222-3333-4444-555555555555",
+            "create": "http://example.org/11111111-2222-3333-4444-555555555555"
+        },
+        "uuid": "11111111-2222-3333-4444-555555555555",
+        "number_of_lanes": 8,
+        "location": null,
+        "lanes": {
+            "1": [],
+            "2": [
+                {
+                    "sample": {
+                        "actions": {
+                            "read": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "update": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "delete": "http://example.org/11111111-2222-3333-4444-666666666666",
+                            "create": "http://example.org/11111111-2222-3333-4444-666666666666"
+                        },
+                        "uuid": "11111111-2222-3333-4444-666666666666",
+                        "name": "sample 1"
+                    },
+                    "quantity": 10,
+                    "type": "DNA",
+                    "unit": "mole"
+                }
+            ],
+            "3": [],
+            "4": [],
+            "5": [
+                {
+                    "sample": {
+                        "actions": {
+                            "read": "http://example.org/11111111-2222-3333-4444-777777777777",
+                            "update": "http://example.org/11111111-2222-3333-4444-777777777777",
+                            "delete": "http://example.org/11111111-2222-3333-4444-777777777777",
+                            "create": "http://example.org/11111111-2222-3333-4444-777777777777"
+                        },
+                        "uuid": "11111111-2222-3333-4444-777777777777",
+                        "name": "sample 2"
+                    },
+                    "quantity": 10,
+                    "type": "DNA",
+                    "unit": "mole"
+                }
+            ],
+            "6": [],
+            "7": [],
+            "8": []
+        }
+    }
+}
+
+
+
+--
 Order Resource
 
 An order stores all the information needed by a pipeline to achieve works. In particular, an order has a list of 
