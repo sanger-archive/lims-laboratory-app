@@ -10,6 +10,8 @@ gem 'lims-core', '~>3.1.0', :git => 'http://github.com/sanger/lims-core.git' , :
 gem 'lims-api', '~>3.1.0', :git => 'http://github.com/sanger/lims-api.git' , :branch => 'master'
 #gem 'lims-api', :path => '../lims-api'
 
+gem 'lims-exception-notifier-app', '~>0.1', :git => 'http://github.com/sanger/lims-exception-notifier-app.git', :branch => 'master'
+
 group :debugging do
   gem 'debugger', :platforms => :mri
   gem 'debugger-completion', :platforms => :mri
