@@ -2,6 +2,8 @@ module Lims::LaboratoryApp
   module Laboratory
     module TransferAction
 
+      TargetElementIsNull = Class.new(StandardError)
+
       def self.included(klass)
         klass.class_eval do
 
@@ -47,6 +49,8 @@ module Lims::LaboratoryApp
               target_element, source_element = nil, nil
               target_element = to ? target[to] : target
               source_element = from ? source[from] : source
+
+              raise TargetElementIsNull, "Target element: #{target.class} is NULL. Target element can't be NULL." unless target_element
               target_element << source_element.take_amount(amount)
 
               # change the aliquot_type of the target

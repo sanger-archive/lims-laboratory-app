@@ -8,6 +8,7 @@ require 'models/laboratory/location_shared'
 # Model requirements
 require 'lims-laboratory-app/laboratory/plate/all'
 require 'lims-laboratory-app/laboratory/gel/all'
+require 'lims-laboratory-app/laboratory/transfer_action'
 
 shared_examples_for "transfer from many plates to many gels" do
   it "transfers the contents of plate-like(s) to plate-like(s)" do
@@ -86,6 +87,7 @@ shared_examples_for "transfer from many racks to many plates" do
     end
   end
 end
+
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -174,7 +176,7 @@ module Lims::LaboratoryApp
               let(:rack2_id) { save(new_tube_rack_with_samples(5, quantity2, 1000)) }
               let(:plate1_id) { save(new_empty_plate) }
               let(:plate2_id) { save(new_empty_plate) }
-        
+
               subject { described_class.new(:store => store, 
                                             :user => user, 
                                             :application => application) do |action, session|
@@ -208,8 +210,32 @@ module Lims::LaboratoryApp
                 ]
               end
               }
-        
+
               it_behaves_like "transfer from many racks to many plates"
+            end
+
+            context "transfer from a rack to an empty rack" do
+              let(:source_rack_id) { save(new_tube_rack_with_samples(5, 1000, 1000)) }
+              let(:target_rack_id) { save(new_empty_tube_rack) }
+
+              subject { described_class.new(:store        => store,
+                                            :user         => user,
+                                            :application  => application) do |action, session|
+                  source_rack = session.tube_rack[source_rack_id]
+                  target_rack = session.tube_rack[target_rack_id]
+                  action.transfers = [ { "source" => source_rack,
+                                        "source_location" => "A1",
+                                        "target" => target_rack,
+                                        "target_location" => "B2",
+                                        "amount" => 60,
+                                        "aliquot_type" => type1}
+                  ]
+                end
+              }
+
+              it "raising TargetElementIsNull exception" do
+                expect { subject.call }.to raise_error(Lims::LaboratoryApp::Laboratory::TransferAction::TargetElementIsNull)
+              end
             end
           end
 
