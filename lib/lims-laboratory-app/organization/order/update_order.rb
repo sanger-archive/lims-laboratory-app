@@ -53,7 +53,7 @@ module Lims::LaboratoryApp
               items[key.to_i]
             when "last"
               Organization::Order::Item.new.tap { |item|  items << item }
-            else # uuid
+            when Lims::Core::Persistence::UuidResource::ValidationRegexp #uuid
               # Lookup item by uuid
               # If we don't find it
               # we need to create it and add it.
@@ -67,6 +67,9 @@ module Lims::LaboratoryApp
               else
                 raise InvalidParameters, "there are too many items with the uuid #{key} for role '#{role}'"
               end
+            else
+              raise InvalidParameters, {:role => "Item index '#{key}' not a valid uuid or number for role '#{role}'"}
+
             end
 
             item_args["uuid"].andtap { |uuid| item.uuid = uuid }
