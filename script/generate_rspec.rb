@@ -200,7 +200,7 @@ def generate_http_request(example, target)
                             example.response.to_s.gsub(/"\//, '"http://example.org/')
                           end
       target.puts %Q{    response.should match_json_response(#{example.status || 200 }, <<-EOD) }
-      target.puts %Q{    #{JSON.pretty_generate(JSON.parse(expected_response), :indent => '    ')}}
+      target.puts %Q{    #{JSON.pretty_generate(JSON.parse(expected_response), :indent => '    ').gsub(/"\*|\*"/,'')}}
       target.puts "    EOD"
     else
       target.puts %Q{    response.status.should == #{example.status || 200 }}

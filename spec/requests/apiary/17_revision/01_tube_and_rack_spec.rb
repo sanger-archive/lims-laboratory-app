@@ -59,6 +59,13 @@ describe "tube_and_rack", :revision => true do
       rack1.clear
       rack2["A1"] = tube
     end
+    
+    #  Modify the time of sessions
+    
+    [session_id1].each_with_index do |id, i|
+      store.database[:sessions].filter(:id => id).update(:end_time => "2014-01-0#{i+2}",
+                                                      :start_time => "2014-01-0#{i+1}")
+    end
 
 
 
@@ -78,13 +85,13 @@ describe "tube_and_rack", :revision => true do
             "actions": {
                 "read": "http://example.org/sessions/#{session_id1}"
             },
-            "id": "#{session_id1}",
+            "id": #{session_id1},
             "user": null,
             "backend_application_id": null,
             "parameters": "null",
             "success": true,
-            "start_time": null,
-            "end_time": "2014-03-18 16:12:16 +0000"
+            "start_time": "2014-01-01 00:00:00 +0000",
+            "end_time": "2014-01-02 00:00:00 +0000"
         },
         "location": null,
         "type": null,
