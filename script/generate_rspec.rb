@@ -20,6 +20,16 @@ class Hash
   end
 end
 
+RSPEC_RESERVED_HASH_KEYS = [
+  "description",
+  "example_group",
+  "execution_result",
+  "file_path",
+  "full_description",
+  "line_number",
+  "location"
+]
+
 def process_directory(directory_name, directories=[])
   Dir.entries("#{directory_name}").sort { |a, b| a.to_i <=> b.to_i }.each do |name|
     full_name = File.join(directory_name, name)
@@ -70,7 +80,11 @@ def process_file(filename, directories=[])
     h.post_require { |p| print_lines(target, p) }
 
     tag_name = directories.last.match(/^[0-9]*_([a-z_]*?)(_resource)?$/)
-    tag = tag_name ? ", :#{tag_name[1]} => true" : ""
+    if tag_name && RSPEC_RESERVED_HASH_KEYS.include?(tag_name[1])
+      tag = ""
+    else
+      tag = tag_name ? ", :#{tag_name[1]} => true" : ""
+    end
 
     target.puts %Q{describe "#{h.title}"#{tag} do}
     target.puts %Q{  include_context "use core context service"}

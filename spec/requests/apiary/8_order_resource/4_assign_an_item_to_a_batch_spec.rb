@@ -12,7 +12,7 @@ describe "assign_an_item_to_a_batch", :order => true do
   # `11111111-2222-3333-4444-777777777777`. Note that an item can be assigned to a batch only through 
   # an update order action.
     study = Lims::LaboratoryApp::Organization::Study.new
-    user = Lims::LaboratoryApp::Organization::User.new
+    user = Lims::LaboratoryApp::Organization::User.new(:email => 'user@example.com')
     order = Lims::LaboratoryApp::Organization::Order.new(:creator => user, :study => study, :pipeline => "P1", :cost_code => "cost code")
     tube = Lims::LaboratoryApp::Laboratory::Tube.new
     batch = Lims::LaboratoryApp::Organization::Batch.new(:process => "manual extraction")
@@ -57,7 +57,8 @@ describe "assign_an_item_to_a_batch", :order => true do
                 "update": "http://example.org/11111111-1111-1111-1111-000000000000",
                 "delete": "http://example.org/11111111-1111-1111-1111-000000000000"
             },
-            "uuid": "11111111-1111-1111-1111-000000000000"
+            "uuid": "11111111-1111-1111-1111-000000000000",
+            "email": "user@example.com"
         },
         "study": {
             "actions": {

@@ -12,12 +12,14 @@ module Lims::LaboratoryApp
         include_context "create object"
         it_behaves_like "an action"
 
+        let(:unwrapped_user) { mock(:unwrapped_user) }
         it "creates an order object" do
-          Lims::Core::Persistence::Session.any_instance.should_receive(:save_all)
+          Lims::Core::Persistence::Session.any_instance.stub(:<<)
+          user.stub(:user) { unwrapped_user }
           result = subject.call 
           order = result[:order]
           order.should be_a Organization::Order
-          order.creator.should == user
+          order.creator.should == user.user
           order.pipeline.should == pipeline
           order.parameters.should == parameters
           order.study.should == study

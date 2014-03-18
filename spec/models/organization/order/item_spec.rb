@@ -1,5 +1,7 @@
 # vi: ts=2:sts=2:et:sw=2 spell:spelllang=en 
 require 'models/spec_helper'
+require 'integrations/spec_helper'
+require 'models/persistence/sequel/spec_helper'
 
 require 'lims-laboratory-app/organization/order/item'
 
@@ -58,7 +60,6 @@ module Lims
 				end
 
 				# state machine
-
         context "pending" do
           its(:iteration) { should == 0 }
           it "can be started" do
@@ -171,6 +172,76 @@ module Lims
             it "can be reused" do
               subject.reuse.should == true
               subject.status.should == "done"
+            end
+          end
+        end
+        context "SQL persistance" do
+      include_context "use core context service"
+          context "within an order" do
+            let(:order) {
+                 Order.new.tap do |order|
+                item = Order::Item.new
+                order.add_item(:source, item)
+              end
+            }
+            it "can be saved" do
+              store.with_session do |session|
+                session << order
+              end
+            end
+            it "can be modified" do
+              order_id = save(order)
+
+              expect {
+              store.with_session do |session|
+                order = session.order[order_id]
+                item = order[:source].first
+                item.complete
+              end
+            }.to change {store.database[:items].count}.by(0)
+
+              # check that no items have been created
+              store.with_session do |session|
+                order = session.order[order_id]
+                order[:source].size.should == 1
+                item = order[:source].first
+                item.done?.should == true
+              end
+            end
+          end
+        end
+        context "SQL persistance" do
+      include_context "use core context service"
+          context "within an order" do
+            let(:order) {
+                 Order.new.tap do |order|
+                item = Order::Item.new
+                order.add_item(:source, item)
+              end
+            }
+            it "can be saved" do
+              store.with_session do |session|
+                session << order
+              end
+            end
+            it "can be modified" do
+              order_id = save(order)
+
+              expect {
+              store.with_session do |session|
+                order = session.order[order_id]
+                item = order[:source].first
+                item.complete
+              end
+            }.to change {store.database[:items].count}.by(0)
+
+              # check that no items have been created
+              store.with_session do |session|
+                order = session.order[order_id]
+                order[:source].size.should == 1
+                item = order[:source].first
+                item.done?.should == true
+              end
             end
           end
         end

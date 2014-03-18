@@ -1,0 +1,28 @@
+<%
+require 'json'
+h={:header => [], :response_header => [] }
+h[:description]=<<EOD
+**List actions for location resource.**
+
+* `create` creates a new location via HTTP POST request
+* `read` returns the list of actions for a location resource via HTTP GET request
+* `first` lists the first location resources in a page browsing system
+* `last` lists the last location resources in a page browsing system
+EOD
+h[:method] = "GET"
+h[:url]='/locations'
+h[:header] << 'Accept: application/json'
+h[:status]=200
+h[:response_header] << 'Content-Type: application/json'
+h[:response]=<<EOD
+{ "locations": {
+    "actions": {
+        "create": "/locations",
+        "read": "/locations",
+        "first": "/locations/page=1",
+        "last": "/locations/page=-1"
+    }
+} }
+EOD
+%>
+<%= h.to_json %>

@@ -24,6 +24,7 @@ describe "delete_a_tube", :tube => true do
             "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
         },
         "uuid": "11111111-2222-3333-4444-555555555555",
+        "location": null,
         "type": null,
         "max_volume": null,
         "aliquots": [

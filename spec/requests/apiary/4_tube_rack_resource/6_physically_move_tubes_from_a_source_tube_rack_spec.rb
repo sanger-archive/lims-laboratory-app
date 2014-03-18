@@ -44,8 +44,8 @@ describe "physically_move_tubes_from_a_source_tube_rack", :tube_rack => true do
     "tube_rack_move": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": [
             {
                 "tube_rack": {
@@ -58,6 +58,7 @@ describe "physically_move_tubes_from_a_source_tube_rack", :tube_rack => true do
                     "uuid": "11111111-2222-3333-4444-666666666666",
                     "number_of_rows": 8,
                     "number_of_columns": 12,
+                    "location": null,
                     "tubes": {
                         "C3": {
                             "actions": {
@@ -67,6 +68,7 @@ describe "physically_move_tubes_from_a_source_tube_rack", :tube_rack => true do
                                 "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
                             },
                             "uuid": "11111111-2222-3333-4444-777777777777",
+                            "location": null,
                             "type": null,
                             "max_volume": null,
                             "aliquots": [

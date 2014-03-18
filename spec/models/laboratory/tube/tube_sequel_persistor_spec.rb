@@ -6,6 +6,7 @@ require 'models/laboratory/tube_shared'
 require 'models/persistence/filter/label_sequel_filter_shared'
 require 'models/persistence/filter/order_lookup_sequel_filter_shared'
 require 'models/persistence/filter/batch_sequel_filter_shared'
+require 'models/laboratory/location_shared'
 
 # Model requirements
 require 'lims-core/persistence/sequel/store'
@@ -107,10 +108,24 @@ module Lims::LaboratoryApp
 
           it "can be saved and reloaded" do
             tube_id = save(subject)
-            
+
             store.with_session do |session|
               tube = session.tube[tube_id]
               tube.max_volume.should == max_volume
+            end
+          end
+        end
+
+        context "with a location" do
+          include_context "define location"
+          subject { Laboratory::Tube.new(:location => location) }
+
+          it "can be saved and reloaded" do
+            tube_id = save(subject)
+
+            store.with_session do |session|
+              tube = session.tube[tube_id]
+              tube.location.should == location
             end
           end
         end

@@ -54,8 +54,8 @@ describe "tranfer_the_content_from_multiples_tubes_to_multiples_tubes", :tube =>
     "transfer_tubes_to_tubes": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {
@@ -67,6 +67,7 @@ describe "tranfer_the_content_from_multiples_tubes_to_multiples_tubes", :tube =>
                             "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
                         },
                         "uuid": "11111111-2222-3333-4444-555555555555",
+                        "location": null,
                         "type": null,
                         "max_volume": null,
                         "aliquots": [
@@ -97,6 +98,7 @@ describe "tranfer_the_content_from_multiples_tubes_to_multiples_tubes", :tube =>
                             "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
                         },
                         "uuid": "11111111-2222-3333-4444-777777777777",
+                        "location": null,
                         "type": null,
                         "max_volume": null,
                         "aliquots": [
@@ -129,6 +131,7 @@ describe "tranfer_the_content_from_multiples_tubes_to_multiples_tubes", :tube =>
                             "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
                         },
                         "uuid": "11111111-2222-3333-4444-666666666666",
+                        "location": null,
                         "type": null,
                         "max_volume": null,
                         "aliquots": [
@@ -158,6 +161,7 @@ describe "tranfer_the_content_from_multiples_tubes_to_multiples_tubes", :tube =>
                             "delete": "http://example.org/11111111-2222-3333-4444-888888888888"
                         },
                         "uuid": "11111111-2222-3333-4444-888888888888",
+                        "location": null,
                         "type": null,
                         "max_volume": null,
                         "aliquots": [

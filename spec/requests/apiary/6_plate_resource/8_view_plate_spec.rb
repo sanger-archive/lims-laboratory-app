@@ -58,7 +58,8 @@ describe "view_plate", :plate => true do
         "uuid": "11111111-2222-3333-4444-555555555555",
         "number_of_rows": 8,
         "number_of_columns": 12,
-        "type": "original plate type"
+        "type": "original plate type",
+        "location": null
     }
 }
     EOD

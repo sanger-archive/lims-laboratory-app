@@ -49,8 +49,8 @@ describe "bulk_update_labels_on_existing_labellable_using_label_position", :labe
     "bulk_update_label": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "labellables": [
                 {

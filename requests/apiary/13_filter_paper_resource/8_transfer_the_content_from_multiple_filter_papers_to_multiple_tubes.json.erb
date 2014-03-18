@@ -48,8 +48,8 @@ h[:response_header] << 'Content-Type: application/json'
 h[:response]=<<EOD
 { "transfer_tubes_to_tubes": {
     "actions": {},
-    "user": "user",
-    "application": "application",
+    "user": "user@example.com",
+    "application": "application_id",
     "result": {
         "sources": [
             {
@@ -61,6 +61,7 @@ h[:response]=<<EOD
                         "delete": "http://example.org/11111111-2222-3333-4444-333333333333"
                     },
                     "uuid": "11111111-2222-3333-4444-333333333333",
+                    "location": null,
                     "aliquots": [
                         {
                             "sample": {
@@ -89,6 +90,7 @@ h[:response]=<<EOD
                         "delete": "http://example.org/11111111-2222-3333-4444-444444444444"
                     },
                     "uuid": "11111111-2222-3333-4444-444444444444",
+                    "location": null,
                     "aliquots": [
                         {
                             "sample": {
@@ -118,6 +120,7 @@ h[:response]=<<EOD
                     "delete": "/11111111-2222-3333-4444-666666666666"
                 },
                 "uuid": "11111111-2222-3333-4444-666666666666",
+                "location": null,
                 "type": null,
                 "max_volume": null,
                 "aliquots": [
@@ -144,6 +147,7 @@ h[:response]=<<EOD
                     "delete": "/11111111-2222-3333-4444-777777777777"
                 },
                 "uuid": "11111111-2222-3333-4444-777777777777",
+                "location": null,
                 "type": null,
                 "max_volume": null,
                 "aliquots": [

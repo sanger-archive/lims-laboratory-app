@@ -1,6 +1,7 @@
 # Spec requirements
 require 'models/actions/action_examples'
 require 'models/actions/spec_helper'
+require 'models/laboratory/location_shared'
 
 # Model requirements
 require 'lims-laboratory-app/laboratory/tube_rack/create_tube_rack'
@@ -19,6 +20,7 @@ module Lims::LaboratoryApp
       subject do
         TubeRack::CreateTubeRack.new(:store => store, :user => user, :application => application) do |a,s|
           a.ostruct_update(dimensions)
+          a.location = location
         end
       end
 
@@ -41,6 +43,7 @@ module Lims::LaboratoryApp
         TubeRack::CreateTubeRack.new(:store => store, :user => user, :application => application) do |a,s|
           a.ostruct_update(dimensions)
           a.tubes = tubes
+          a.location = location
         end
       end
 
@@ -68,6 +71,7 @@ module Lims::LaboratoryApp
         tube_rack = result[:tube_rack]
         tube_rack.number_of_rows.should == dimensions[:number_of_rows]
         tube_rack.number_of_columns.should == dimensions[:number_of_columns]
+        tube_rack.location.should == location
         tube_rack_checker[tube_rack]
 
         result[:uuid].should == uuid
@@ -79,6 +83,7 @@ module Lims::LaboratoryApp
         let!(:store) { Lims::Core::Persistence::Store.new() }
         include_context "for application", "Test TubeRack creation"
         include_context "has tube rack dimension", 8, 12 
+        include_context "define location"
 
         context do
           include_context "for empty tube rack"
