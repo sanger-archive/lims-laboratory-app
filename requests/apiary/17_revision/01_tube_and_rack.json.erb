@@ -66,37 +66,51 @@ steps << step={:header => [], :response_header => [] }
 step[:description]=<<EOD
 EOD
 step[:method] = "GET"
-step[:url]='/11111111-2222-3333-1111-111111111111/revisions/#{session_id1}'
+step[:url]='11111111-2222-3333-1111-111111111111/sessions/#{session_id1}'
+step[:session_id1]='#{session_id1}'
 step[:header] << 'Accept: application/json'
 step[:status]=200
 step[:response_header] << 'Content-Type: application/json'
 step[:response]=<<EOD
 {
-    "actions": {
-      "read": "#{step[:url]}"
+  "tube":{
+    "actions":{
+      "read":"http://example.org/#{step[:url]}"
     },
-    "revision": {
-      "session": {
+    "uuid":"11111111-2222-3333-1111-111111111111",
+    "action":"insert",
+    "session": {
+      "actions": {
+        "read": "http://example.org/sessions/#{step[:session_id1]}"
       },
-      "tube": {
-            "actions": {
-                "read": "http://example.org/11111111-2222-3333-1111-111111111111"
-            },
-            "uuid": "11111111-2222-3333-1111-111111111111",
-            "location": null,
-            "type": null,
-            "aliquots": [
-              {
-                "quantity": 10,
-                "type": "DNA",
-                "sample": {
-                }
-              }
-            ]
+      "id": "#{step[:session_id1]}",
+      "user": null,
+      "backend_application_id": null,
+      "parameters": "null",
+      "success": true,
+      "start_time": null,
+      "end_time": "2014-03-18 16:12:16 +0000"
+    },
+  "location":null,
+    "type":null,
+    "max_volume":null,
+    "aliquots":[
+      {
+        "sample":{
+      "actions": {
+        "read": "http://example.org/11111111-2222-3333-0000-111111111111/sessions/#{step[:session_id1]}"
+      },
+          "uuid":"11111111-2222-3333-0000-111111111111",
+          "name":"sample 1"
+        },
+        "quantity":10,
+        "type":"DNA",
+        "unit":"mole"
       }
-    }
+    ]
+}
 }
 EOD
 %>
-<%= h.to_json %>
+<%=h.to_json%>
 
