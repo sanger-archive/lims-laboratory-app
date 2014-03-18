@@ -16,23 +16,24 @@ def config_bus(env)
   YAML.load_file(File.join('config','amqp.yml'))[env.to_s] 
 end
 
-shared_context 'use core context service' do
+shared_context 'use core context service' do |user='user@example.com', application_id='application_id'|
   let(:db) { connect_db(:test) }
   let(:store) { Lims::Core::Persistence::Sequel::Store.new(db) }
-  let(:message_bus) { double(:message_bus).tap { |m| m.stub(:publish) } } 
-  let(:context_service) { Lims::Api::ContextService.new(store, message_bus) }
+  let(:message_bus) { double(:message_bus).tap { |m|
+      m.stub(:connect)
+      m.stub(:publish)
+      m.stub(:backend_application_id) { "lims-laboratory-app/spec" }
+    } } 
+  let(:context_service) { Lims::LaboratoryApp::ContextService.new(store, message_bus) }
 
   before(:each) do
     app.set(:context_service, context_service)
+    header('user_email', user) if user
+    header('application_id', application_id) if application_id
   end
-  #This code is cleaning up the DB after each test case execution
-  after(:each) do
-    # list of all the tables in our DB
-    %w{items orders batches searches labels labellables tube_aliquots filter_paper_aliquots spin_column_aliquots windows wells lanes tag_group_associations aliquots tube_rack_slots tube_racks tubes spin_columns gels plates flowcells filter_papers samples oligos tag_groups studies users uuid_resources primary_keys}.each do |table|
-      db[table.to_sym].delete
-    end
-    db.disconnect
-  end
+
+
+  include_context "clean store"
 end
 
 shared_context 'JSON' do

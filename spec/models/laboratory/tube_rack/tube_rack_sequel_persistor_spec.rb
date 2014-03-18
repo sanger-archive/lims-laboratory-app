@@ -7,7 +7,7 @@ require 'models/persistence/sequel/store_shared'
 require 'models/persistence/sequel/page_shared'
 require 'models/persistence/filter/multi_criteria_sequel_filter_shared'
 require 'models/persistence/filter/label_sequel_filter_shared'
-
+require 'models/laboratory/location_shared'
 
 # Model requirements
 require 'lims-laboratory-app/laboratory/tube_rack/all'
@@ -20,6 +20,7 @@ module Lims::LaboratoryApp
   describe "Sequel#TubeRack ", :tube => true, :laboratory => true, :persistence => true, :sequel => true do
     include_context "sequel store"
     include_context "tube_rack factory"
+    include_context "define location"
 
     include
 
@@ -121,6 +122,18 @@ module Lims::LaboratoryApp
           it_behaves_like "labels filtrable"
 
         end
+
+        context "with a location", :testt => true do
+          it "can be saved and reloaded" do
+            tube_rack_id = save(new_tube_rack_with_samples(3))
+
+            store.with_session do |session|
+              tube_rack = session.tube_rack[tube_rack_id]
+              tube_rack.location.should == location
+            end
+          end
+        end
+
       end
 
       context do

@@ -4,10 +4,14 @@ module Lims::LaboratoryApp
     module ContainerPersistorTrait
       as_trait do |args|
         element = args[:element]
-        parent_class = self.name.split('::').last
-        parent = parent_class.snakecase
+        container_class = self.name.split('::').last.snakecase
         class_name = element.to_s.camelcase
         table_name = args[:table_name]
+        parents = args[:parents]
+
+        parents_and_children = {}
+        parents_and_children[:children] = [{:name => element, :deletable => true }]
+        parents_and_children[:parents] = parents if parents
 
         contained_class = args[:contained_class]
         contained = contained_class.name.split('::').last.snakecase
@@ -16,10 +20,7 @@ module Lims::LaboratoryApp
         delete_contained = args.fetch(:deletable, contained_is_a_resource)
 
         class_eval <<-EOC
-        (does "lims/core/persistence/persistable", :children => [
-            {:name => :#{element}, :deletable => true }
-          ]).class_eval do
-
+        (does "lims/core/persistence/persistable", parents_and_children).class_eval do
 
           def children_#{element}(resource, children)
             resource.content.each_with_index do |#{element}, position|
@@ -33,19 +34,19 @@ module Lims::LaboratoryApp
           end
 
           association_class "#{class_name}" do
-            attribute :#{parent}, #{self.name}, :relation => :parent, :skip_parents_for_attributes => true
+            attribute :#{container_class}, #{self.name}, :relation => :parent, :skip_parents_for_attributes => true
             attribute :position, Object
             attribute :#{contained}, #{contained_class.name},
             :relation => :parent, # #{contained_is_a_resource ? :parent : false},
             :deletable => #{delete_contained}
 
             def on_load
-              @#{parent}[@position] << @#{contained}
+              @#{container_class}[@position] << @#{contained}
             end
 
             def invalid?
               @position.nil? && @#{contained} != nil ||
-              !@#{parent}[@position].andtap { |p| p.include?(@#{contained}) }
+              !@#{container_class}[@position].andtap { |p| p.include?(@#{contained}) }
             end
           end
 

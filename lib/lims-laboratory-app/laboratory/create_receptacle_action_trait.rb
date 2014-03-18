@@ -2,6 +2,7 @@ require 'modularity'
 require 'lims-laboratory-app/laboratory/receptacle'
 require 'lims-laboratory-app/laboratory/sample/create_sample_shared'
 require 'lims-laboratory-app/laboratory/create_labellable_resource_action'
+require 'lims-laboratory-app/organization/location/all'
 
 module Lims::LaboratoryApp
   module Laboratory::Receptacle
@@ -12,10 +13,11 @@ module Lims::LaboratoryApp
         include Laboratory::Sample::CreateSampleShared
 
         attribute :aliquots, Array, :default => []
+        attribute :location, Organization::Location, :default => nil
 
         receptacle_name = args[:receptacle_name].to_sym
         receptacle_class = args[:receptacle_class]
-        extra_parameters = args[:extra_parameters] || []
+        extra_parameters = args[:extra_parameters] ? args[:extra_parameters] << :location : [:location]
 
         define_method(:receptacle_parameters) do
           {}.tap do |p|

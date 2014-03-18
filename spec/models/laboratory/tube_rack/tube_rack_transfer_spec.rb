@@ -2,6 +2,7 @@
 require 'models/actions/action_examples'
 require 'models/persistence/sequel/store_shared'
 require 'models/laboratory/tube_rack_shared'
+require 'models/laboratory/location_shared'
 
 # Model requirements
 require 'lims-laboratory-app/laboratory/tube_rack/tube_rack_transfer'
@@ -15,6 +16,7 @@ module Lims::LaboratoryApp
         include_context "for application", "test tube rack transfer"
         include_context "prepare tables"
         include_context "tube_rack factory"
+        include_context "define location"
 
         let(:number_of_rows) { 8 }
         let(:number_of_columns) { 12 }

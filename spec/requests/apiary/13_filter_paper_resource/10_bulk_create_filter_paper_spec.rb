@@ -44,8 +44,8 @@ describe "bulk_create_filter_paper", :filter_paper => true do
     "bulk_create_filter_paper": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "filter_papers": [
                 {
@@ -56,6 +56,7 @@ describe "bulk_create_filter_paper", :filter_paper => true do
                         "delete": "http://example.org/11111111-2222-3333-4444-555555555555"
                     },
                     "uuid": "11111111-2222-3333-4444-555555555555",
+                    "location": null,
                     "aliquots": [
                         {
                             "sample": {
@@ -80,6 +81,7 @@ describe "bulk_create_filter_paper", :filter_paper => true do
                         "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
                     },
                     "uuid": "11111111-2222-3333-4444-666666666666",
+                    "location": null,
                     "aliquots": [
                         {
                             "sample": {
@@ -104,6 +106,7 @@ describe "bulk_create_filter_paper", :filter_paper => true do
                         "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
                     },
                     "uuid": "11111111-2222-3333-4444-777777777777",
+                    "location": null,
                     "aliquots": [
                         {
                             "sample": {

@@ -17,7 +17,7 @@ h[:url]='/11111111-2222-3333-4444-555555555555'
 h[:header] << 'Accept: application/json'
 h[:setup]=<<EOD
 study = Lims::LaboratoryApp::Organization::Study.new
-user = Lims::LaboratoryApp::Organization::User.new
+user = Lims::LaboratoryApp::Organization::User.new(:email => 'user@example.com')
 order = Lims::LaboratoryApp::Organization::Order.new(:creator => user, :study => study, :pipeline => "P1", :cost_code => "cost code")
 tube = Lims::LaboratoryApp::Laboratory::Tube.new
 batch = Lims::LaboratoryApp::Organization::Batch.new(:process => "manual extraction")
@@ -55,7 +55,8 @@ h[:response]=<<EOD
             "update":"/11111111-1111-1111-1111-000000000000",
             "delete":"/11111111-1111-1111-1111-000000000000"
          },
-         "uuid":"11111111-1111-1111-1111-000000000000"
+         "uuid":"11111111-1111-1111-1111-000000000000",
+         "email": "user@example.com"
       },
       "study":{
          "actions":{

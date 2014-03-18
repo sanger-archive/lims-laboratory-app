@@ -1,14 +1,21 @@
 # Spec requirements
-require 'models/persistence/sequel/store_shared'
+require 'lims-laboratory-app/laboratory/container'
+
 require 'models/persistence/sequel/spec_helper'
-require 'models/laboratory/tube_shared'
+require 'models/persistence/sequel/store_shared'
+require 'models/laboratory/spin_column_shared'
 require 'models/persistence/filter/label_sequel_filter_shared'
 
+require 'models/laboratory/location_shared'
+
 # Model requirements
+require 'lims-core/persistence/sequel/store'
 require 'lims-laboratory-app/laboratory/spin_column'
 
 module Lims::LaboratoryApp
   describe Laboratory::SpinColumn, :spin_column => true, :laboratory => true, :persistence => true, :sequel => true do
+    include_context "prepare tables"
+    include_context "spin column factory"
     include_context "sequel store"
     
     context "created and added to session" do
@@ -64,6 +71,20 @@ module Lims::LaboratoryApp
             store.with_session do |session|
               spin_column = session.spin_column[spin_column_id]
               spin_column.should be_empty
+            end
+          end
+        end
+
+        context "with a location" do
+          include_context "define location"
+          subject { Laboratory::SpinColumn.new(:location => location) }
+
+          it "can be saved and reloaded" do
+            spin_column_id = save(subject)
+
+            store.with_session do |session|
+              spin_column = session.spin_column[spin_column_id]
+              spin_column.location.should == location
             end
           end
         end

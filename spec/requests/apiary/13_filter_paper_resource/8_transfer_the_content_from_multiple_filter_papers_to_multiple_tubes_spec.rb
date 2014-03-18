@@ -47,8 +47,8 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_tubes", :
     "transfer_tubes_to_tubes": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "sources": [
                 {
@@ -60,6 +60,7 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_tubes", :
                             "delete": "http://example.org/11111111-2222-3333-4444-333333333333"
                         },
                         "uuid": "11111111-2222-3333-4444-333333333333",
+                        "location": null,
                         "aliquots": [
                             {
                                 "sample": {
@@ -88,6 +89,7 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_tubes", :
                             "delete": "http://example.org/11111111-2222-3333-4444-444444444444"
                         },
                         "uuid": "11111111-2222-3333-4444-444444444444",
+                        "location": null,
                         "aliquots": [
                             {
                                 "sample": {
@@ -118,6 +120,7 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_tubes", :
                             "delete": "http://example.org/11111111-2222-3333-4444-666666666666"
                         },
                         "uuid": "11111111-2222-3333-4444-666666666666",
+                        "location": null,
                         "type": null,
                         "max_volume": null,
                         "aliquots": [
@@ -147,6 +150,7 @@ describe "transfer_the_content_from_multiple_filter_papers_to_multiple_tubes", :
                             "delete": "http://example.org/11111111-2222-3333-4444-777777777777"
                         },
                         "uuid": "11111111-2222-3333-4444-777777777777",
+                        "location": null,
                         "type": null,
                         "max_volume": null,
                         "aliquots": [

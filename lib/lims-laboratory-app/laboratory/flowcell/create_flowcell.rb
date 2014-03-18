@@ -15,9 +15,13 @@ module Lims::LaboratoryApp
         #   { "1" => [{ :sample => s1, :quantity => 2}, {:sample => s2}] }
         # # the keys are a String and start a 1 for the firt lane.
         attribute :lanes_description, Hash, :default => {}
+        attribute :location, Organization::Location, :default => nil
 
         def create(session)
-          flowcell = Laboratory::Flowcell.new(:number_of_lanes => number_of_lanes)
+          flowcell = Laboratory::Flowcell.new(
+            :number_of_lanes  => number_of_lanes,
+            :location         => location
+          )
           session << flowcell
           lanes_description.each do |lane_name, aliquots|
             aliquots.each do |aliquot|
