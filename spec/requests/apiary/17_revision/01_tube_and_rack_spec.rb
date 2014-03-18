@@ -65,31 +65,44 @@ describe "tube_and_rack", :revision => true do
     header('Content-Type', 'application/json')
     header('Accept', 'application/json')
 
-    response = get "/11111111-2222-3333-1111-111111111111/revisions/#{session_id1}"
+    response = get "11111111-2222-3333-1111-111111111111/sessions/#{session_id1}"
     response.should match_json_response(200, <<-EOD) 
     {
-    "actions": {
-        "read": "http://example.org/11111111-2222-3333-1111-111111111111/revisions/#{session_id1}"
-    },
-    "revision": {
-        "session": {
+    "tube": {
+        "actions": {
+            "read": "http://example.org/11111111-2222-3333-1111-111111111111/sessions/#{session_id1}"
         },
-        "tube": {
+        "uuid": "11111111-2222-3333-1111-111111111111",
+        "action": "insert",
+        "session": {
             "actions": {
-                "read": "http://example.org/11111111-2222-3333-1111-111111111111"
+                "read": "http://example.org/sessions/#{session_id1}"
             },
-            "uuid": "11111111-2222-3333-1111-111111111111",
-            "location": null,
-            "type": null,
-            "aliquots": [
-                {
-                    "quantity": 10,
-                    "type": "DNA",
-                    "sample": {
-                    }
-                }
-            ]
-        }
+            "id": "#{session_id1}",
+            "user": null,
+            "backend_application_id": null,
+            "parameters": "null",
+            "success": true,
+            "start_time": null,
+            "end_time": "2014-03-18 16:12:16 +0000"
+        },
+        "location": null,
+        "type": null,
+        "max_volume": null,
+        "aliquots": [
+            {
+                "sample": {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-0000-111111111111/sessions/#{session_id1}"
+                    },
+                    "uuid": "11111111-2222-3333-0000-111111111111",
+                    "name": "sample 1"
+                },
+                "quantity": 10,
+                "type": "DNA",
+                "unit": "mole"
+            }
+        ]
     }
 }
     EOD
