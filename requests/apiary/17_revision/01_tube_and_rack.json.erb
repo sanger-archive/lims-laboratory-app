@@ -72,6 +72,9 @@ end
 
 
 EOD
+##################################################
+## Session 1
+##################################################
 steps << step={:header => [], :response_header => [] }
 step[:description]=<<EOD
 EOD
@@ -121,6 +124,9 @@ step[:response]=<<EOD
 }
 }
 EOD
+##################################################
+## Session 2
+##################################################
 steps << step={:header => [], :response_header => [] }
 step[:description]=<<EOD
 EOD
@@ -161,6 +167,58 @@ step[:response]=<<EOD
       },
           "uuid":"11111111-2222-3333-0000-111111111111",
           "name":"sample 1"
+        },
+        "quantity":10,
+        "type":"DNA",
+        "unit":"mole"
+      }
+    ]
+}
+}
+EOD
+##################################################
+## Session 3
+##################################################
+steps << step={:header => [], :response_header => [] }
+step[:description]=<<EOD
+EOD
+step[:method] = "GET"
+step[:url]='11111111-2222-3333-1111-111111111111/sessions/#{session_id3}'
+step[:session_id3]='#{session_id3}'
+step[:header] << 'Accept: application/json'
+step[:status]=200
+step[:response_header] << 'Content-Type: application/json'
+step[:response]=<<EOD
+{
+  "tube":{
+    "actions":{
+      "read":"http://example.org/#{step[:url]}"
+    },
+    "uuid":"11111111-2222-3333-1111-111111111111",
+    "action":"insert",
+    "session": {
+      "actions": {
+        "read": "http://example.org/sessions/#{step[:session_id3]}"
+      },
+      "id": "*#{step[:session_id3]}*",
+      "user": null,
+      "backend_application_id": null,
+      "parameters": "null",
+      "success": true,
+      "start_time": "2014-01-03 00:00:00 +0000",
+      "end_time": "2014-01-04 00:00:00 +0000"
+    },
+  "location":null,
+    "type":null,
+    "max_volume":null,
+    "aliquots":[
+      {
+        "sample":{
+      "actions": {
+        "read": "http://example.org/11111111-2222-3333-0000-222222222222/sessions/#{step[:session_id3]}"
+      },
+          "uuid":"11111111-2222-3333-0000-222222222222",
+          "name":"sample 2"
         },
         "quantity":10,
         "type":"DNA",

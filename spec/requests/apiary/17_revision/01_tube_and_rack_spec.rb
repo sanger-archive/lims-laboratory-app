@@ -163,5 +163,51 @@ describe "tube_and_rack", :revision => true do
 }
     EOD
 
+
+    header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
+
+    response = get "11111111-2222-3333-1111-111111111111/sessions/#{session_id3}"
+    response.should match_json_response(200, <<-EOD) 
+    {
+    "tube": {
+        "actions": {
+            "read": "http://example.org/11111111-2222-3333-1111-111111111111/sessions/#{session_id3}"
+        },
+        "uuid": "11111111-2222-3333-1111-111111111111",
+        "action": "insert",
+        "session": {
+            "actions": {
+                "read": "http://example.org/sessions/#{session_id3}"
+            },
+            "id": #{session_id3},
+            "user": null,
+            "backend_application_id": null,
+            "parameters": "null",
+            "success": true,
+            "start_time": "2014-01-03 00:00:00 +0000",
+            "end_time": "2014-01-04 00:00:00 +0000"
+        },
+        "location": null,
+        "type": null,
+        "max_volume": null,
+        "aliquots": [
+            {
+                "sample": {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-0000-222222222222/sessions/#{session_id3}"
+                    },
+                    "uuid": "11111111-2222-3333-0000-222222222222",
+                    "name": "sample 2"
+                },
+                "quantity": 10,
+                "type": "DNA",
+                "unit": "mole"
+            }
+        ]
+    }
+}
+    EOD
+
   end
 end
