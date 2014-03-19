@@ -35,6 +35,7 @@ describe "tube_and_rack", :revision => true do
       rack = session['11111111-2222-3333-2222-111111111111']
       rack["A1"] = tube
     end
+    session_id2 = get_last_session_id
     
     ##################################################
     # Session 3 : swap sample to sample 2
@@ -46,6 +47,7 @@ describe "tube_and_rack", :revision => true do
       sample2 = session['11111111-2222-3333-0000-222222222222']
       tube[0].sample = sample2
     end
+    session_id3 = get_last_session_id
     
     ##################################################
     # Session 4 : move tube in another rack
@@ -59,10 +61,11 @@ describe "tube_and_rack", :revision => true do
       rack1.clear
       rack2["A1"] = tube
     end
+    session_id4 = get_last_session_id
     
     #  Modify the time of sessions
     
-    [session_id1].each_with_index do |id, i|
+    [session_id1, session_id2, session_id3, session_id4].each_with_index do |id, i|
       store.database[:sessions].filter(:id => id).update(:end_time => "2014-01-0#{i+2}",
                                                       :start_time => "2014-01-0#{i+1}")
     end
@@ -101,6 +104,52 @@ describe "tube_and_rack", :revision => true do
                 "sample": {
                     "actions": {
                         "read": "http://example.org/11111111-2222-3333-0000-111111111111/sessions/#{session_id1}"
+                    },
+                    "uuid": "11111111-2222-3333-0000-111111111111",
+                    "name": "sample 1"
+                },
+                "quantity": 10,
+                "type": "DNA",
+                "unit": "mole"
+            }
+        ]
+    }
+}
+    EOD
+
+
+    header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
+
+    response = get "11111111-2222-3333-1111-111111111111/sessions/#{session_id2}"
+    response.should match_json_response(200, <<-EOD) 
+    {
+    "tube": {
+        "actions": {
+            "read": "http://example.org/11111111-2222-3333-1111-111111111111/sessions/#{session_id2}"
+        },
+        "uuid": "11111111-2222-3333-1111-111111111111",
+        "action": "insert",
+        "session": {
+            "actions": {
+                "read": "http://example.org/sessions/#{session_id2}"
+            },
+            "id": #{session_id2},
+            "user": null,
+            "backend_application_id": null,
+            "parameters": "null",
+            "success": true,
+            "start_time": "2014-01-02 00:00:00 +0000",
+            "end_time": "2014-01-03 00:00:00 +0000"
+        },
+        "location": null,
+        "type": null,
+        "max_volume": null,
+        "aliquots": [
+            {
+                "sample": {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-0000-111111111111/sessions/#{session_id2}"
                     },
                     "uuid": "11111111-2222-3333-0000-111111111111",
                     "name": "sample 1"
