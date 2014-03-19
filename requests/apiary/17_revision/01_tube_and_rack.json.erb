@@ -240,8 +240,7 @@ step[:response]=<<EOD
       "number_of_rows": 8,
       "number_of_columns": 12,
       "tubes": {
-        "A1": [
-          {
+        "A1": {
             "actions": {
               "read": "http://example.org/11111111-2222-3333-1111-111111111111/sessions/#{step[:session_id2]}"
             },
@@ -264,7 +263,6 @@ step[:response]=<<EOD
               }
             ]
           }
-        ]
           },
           "session": {
             "actions": {
