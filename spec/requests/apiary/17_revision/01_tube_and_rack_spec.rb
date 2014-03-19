@@ -121,6 +121,40 @@ describe "tube_and_rack", :revision => true do
     header('Content-Type', 'application/json')
     header('Accept', 'application/json')
 
+    response = get "11111111-2222-3333-2222-111111111111/sessions/#{session_id1}"
+    response.should match_json_response(200, <<-EOD) 
+    {
+    "tube_rack": {
+        "actions": {
+            "read": "http://example.org/11111111-2222-3333-2222-111111111111/sessions/#{session_id1}"
+        },
+        "uuid": "11111111-2222-3333-2222-111111111111",
+        "action": "insert",
+        "location": null,
+        "number_of_rows": 8,
+        "number_of_columns": 12,
+        "tubes": {
+        },
+        "session": {
+            "actions": {
+                "read": "http://example.org/sessions/#{session_id1}"
+            },
+            "id": #{session_id1},
+            "user": null,
+            "backend_application_id": null,
+            "parameters": "null",
+            "success": true,
+            "start_time": "2014-01-01 00:00:00 +0000",
+            "end_time": "2014-01-02 00:00:00 +0000"
+        }
+    }
+}
+    EOD
+
+
+    header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
+
     response = get "11111111-2222-3333-1111-111111111111/sessions/#{session_id2}"
     response.should match_json_response(200, <<-EOD) 
     {
@@ -159,6 +193,65 @@ describe "tube_and_rack", :revision => true do
                 "unit": "mole"
             }
         ]
+    }
+}
+    EOD
+
+
+    header('Content-Type', 'application/json')
+    header('Accept', 'application/json')
+
+    response = get "11111111-2222-3333-2222-111111111111/sessions/#{session_id2}"
+    response.should match_json_response(200, <<-EOD) 
+    {
+    "tube_rack": {
+        "actions": {
+            "read": "http://example.org/11111111-2222-3333-2222-111111111111/sessions/#{session_id2}"
+        },
+        "uuid": "11111111-2222-3333-2222-111111111111",
+        "action": "insert",
+        "location": null,
+        "number_of_rows": 8,
+        "number_of_columns": 12,
+        "tubes": {
+            "A1": [
+                {
+                    "actions": {
+                        "read": "http://example.org/11111111-2222-3333-1111-111111111111/sessions/#{session_id2}"
+                    },
+                    "uuid": "11111111-2222-3333-1111-111111111111",
+                    "location": null,
+                    "type": null,
+                    "max_volume": null,
+                    "aliquots": [
+                        {
+                            "sample": {
+                                "actions": {
+                                    "read": "http://example.org/11111111-2222-3333-0000-111111111111/sessions/#{session_id2}"
+                                },
+                                "uuid": "11111111-2222-3333-0000-111111111111",
+                                "name": "sample 1"
+                            },
+                            "quantity": 10,
+                            "type": "DNA",
+                            "unit": "mole"
+                        }
+                    ]
+                }
+            ]
+        },
+        "session": {
+            "actions": {
+                "read": "http://example.org/sessions/#{session_id2}"
+            },
+            "id": #{session_id2},
+            "user": null,
+            "backend_application_id": null,
+            "parameters": "null",
+            "success": true,
+            "start_time": "2014-01-02 00:00:00 +0000",
+            "end_time": "2014-01-03 00:00:00 +0000"
+        }
     }
 }
     EOD
