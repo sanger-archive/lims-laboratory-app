@@ -214,31 +214,29 @@ describe "tube_and_rack", :revision => true do
         "number_of_rows": 8,
         "number_of_columns": 12,
         "tubes": {
-            "A1": [
-                {
-                    "actions": {
-                        "read": "http://example.org/11111111-2222-3333-1111-111111111111/sessions/#{session_id2}"
-                    },
-                    "uuid": "11111111-2222-3333-1111-111111111111",
-                    "location": null,
-                    "type": null,
-                    "max_volume": null,
-                    "aliquots": [
-                        {
-                            "sample": {
-                                "actions": {
-                                    "read": "http://example.org/11111111-2222-3333-0000-111111111111/sessions/#{session_id2}"
-                                },
-                                "uuid": "11111111-2222-3333-0000-111111111111",
-                                "name": "sample 1"
+            "A1": {
+                "actions": {
+                    "read": "http://example.org/11111111-2222-3333-1111-111111111111/sessions/#{session_id2}"
+                },
+                "uuid": "11111111-2222-3333-1111-111111111111",
+                "location": null,
+                "type": null,
+                "max_volume": null,
+                "aliquots": [
+                    {
+                        "sample": {
+                            "actions": {
+                                "read": "http://example.org/11111111-2222-3333-0000-111111111111/sessions/#{session_id2}"
                             },
-                            "quantity": 10,
-                            "type": "DNA",
-                            "unit": "mole"
-                        }
-                    ]
-                }
-            ]
+                            "uuid": "11111111-2222-3333-0000-111111111111",
+                            "name": "sample 1"
+                        },
+                        "quantity": 10,
+                        "type": "DNA",
+                        "unit": "mole"
+                    }
+                ]
+            }
         },
         "session": {
             "actions": {
