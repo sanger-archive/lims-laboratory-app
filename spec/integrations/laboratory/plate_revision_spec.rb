@@ -1,4 +1,3 @@
-
 require 'integrations/laboratory/spec_helper'
 
 require 'lims-api/context_service'
@@ -12,6 +11,32 @@ require 'models/persistence/sequel/spec_helper'
 
 require 'lims-core/persistence/sequel/user_session_sequel_persistor'
 
+shared_examples "retrieving direct and related revisions" do
+  let(:user_session) {
+    store.with_session do |session|
+      user_session = Lims::Core::Persistence::UserSession.new(:id => session_id, :parent_session => session)
+    end
+  }
+
+  context "retrieves direct revisions" do
+    let(:revisions) { user_session.direct_revisions }
+    let(:expected) { direct }
+#    it_behaves_like "retrieving the expected revisions"
+  end
+
+  context "retrieves all modified resources" do
+    let(:revisions) { user_session.collect_related_states.map { |s| s.revision } }
+    let(:expected) { direct + related }
+    it_behaves_like "retrieving the expected revisions"
+  end
+end
+
+shared_examples "retrieving the expected revisions" do
+  it "gets the correct revisions" do
+    got = revisions.compact.map { |r| { :id => r.id, :action => r.action, :model => r.model.name.split('::').last.snakecase} }
+    got.sort_by { |h| h.inspect}.should == expected.sort_by { |h| h.inspect}
+  end
+end
 
 module Lims::LaboratoryApp
   describe "#plate revision" do
@@ -27,7 +52,6 @@ module Lims::LaboratoryApp
     def for_session(session_id)
       store.with_session do |session|
         Lims::Core::Persistence::Sequel::Revision::Session.new(store, session_id).with_session do |revision|
-
           yield(revision)
         end
       end
@@ -40,6 +64,33 @@ module Lims::LaboratoryApp
       include_context "container-like asset factory"
       let!(:plate_id) { save(new_plate_with_samples) }
       let!(:session_id0) { get_last_session_id }
+      let!(:aliquot_id) {
+        store.with_session do |session|
+          aliquot_ids = []
+          session.plate[plate_id].each do |well|
+            well.each do |aliquot|
+              aliquot_ids << session.aliquot.id_for(aliquot)
+            end
+          end
+          aliquot_ids.min
+        end
+      }
+      let!(:well_aliquot_id) { 
+        store.with_session do |session|
+          session.plate.well_aliquot.dataset.select(:id).where(:aliquot_id => aliquot_id).first[:id]
+        end
+      } # Hack !!!
+      let!(:sample_id) {
+        store.with_session do |session|
+          sample_ids = []
+          session.plate[plate_id].each do |well|
+            well.each do |aliquot|
+              sample_ids << session.sample.id_for(aliquot.sample)
+            end
+          end
+          sample_ids.min
+        end
+      }
       # /!\ The order of those let is IMPORTANT
       let!(:plate1) { store.with_session do |session|
           session.plate[plate_id].tap do |plate|
@@ -52,11 +103,31 @@ module Lims::LaboratoryApp
         session_id1
         store.with_session do |session|
           session.plate[plate_id].tap do |plate|
+            # clear first well containing 5 aliquots and 5 samples
             plate[0].clear
           end
         end
       }
       let!(:session_id2)  { plate2; get_last_session_id }
+      let!(:plate3) {
+        session_id1
+        store.with_session do |session|
+          session.plate[plate_id].tap do |plate|
+            # clear first well containing 5 aliquots and 5 samples
+            plate[1].first.quantity = 5
+          end
+        end
+      }
+      let!(:session_id3)  { plate3; get_last_session_id }
+      let!(:plate_id2) {
+        session_id3
+        save(new_plate_with_samples(0))
+      }
+      let!(:session_id4)  { get_last_session_id.tap do |s_id|
+          # update database manually
+          store.database.run "update  wells set plate_id = #{plate_id2} where id = #{well_aliquot_id+8}"
+        end
+    }
       it "can load plate state for a given session_id" do 
         # create plates revision
 
@@ -80,15 +151,124 @@ module Lims::LaboratoryApp
 
           plate.type.should == 'new type'
         end
+        for_session(session_id3) do |session|
+          plate = session.plate[plate_id]
+
+          plate.should_not == plate2
+          plate.should == plate3
+        end
       end
 
-      it "can find all revision modifying the plate" do
+      it "can find all revisions modifying the plate" do
         store.with_session do |session|
           plate = session.plate[plate_id]
           sessions = session.user_session.for_resources(plate)
-          sessions.map {|s| s.id }.should == [session_id0, session_id1, session_id2]
+          sessions.map {|s| s.id }.should == [session_id0, session_id1, session_id2, session_id3, session_id4]
         end
       end
+      context "for a specific revision" do
+        context "session 0" do
+          let(:session_id) { session_id0 }
+          let(:direct) {[
+              {:id => plate_id, :action=> "insert", :model => "plate"},
+              {:id => well_aliquot_id, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+1, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+2, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+3, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+4, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+5, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+6, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+7, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+8, :action=> "insert", :model => "well_aliquot"},
+              {:id => well_aliquot_id+9, :action=> "insert", :model => "well_aliquot"},
+              {:id => aliquot_id, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+1, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+2, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+3, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+4, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+5, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+6, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+7, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+8, :action=> "insert", :model => "aliquot"},
+              {:id => aliquot_id+9, :action=> "insert", :model => "aliquot"},
+              {:id => sample_id+0, :action=> "insert", :model => "sample"},
+              {:id => sample_id+1, :action=> "insert", :model => "sample"},
+              {:id => sample_id+2, :action=> "insert", :model => "sample"},
+              {:id => sample_id+3, :action=> "insert", :model => "sample"},
+              {:id => sample_id+4, :action=> "insert", :model => "sample"},
+              {:id => sample_id+5, :action=> "insert", :model => "sample"},
+              {:id => sample_id+6, :action=> "insert", :model => "sample"},
+              {:id => sample_id+7, :action=> "insert", :model => "sample"},
+              {:id => sample_id+8, :action=> "insert", :model => "sample"},
+              {:id => sample_id+9, :action=> "insert", :model => "sample"},
+            ]
+          }
+          let(:related) { [] }
+          it_behaves_like "retrieving direct and related revisions"
+        end
+        context "session 1" do
+          let(:session_id) { session_id1 }
+          let(:direct) {[
+              {:id => plate_id, :action=> "update", :model => "plate"},
+            ]
+          }
+          let(:related) { [] }
+          it_behaves_like "retrieving direct and related revisions"
+        end
+        context "session 2" do
+          let(:session_id) { session_id2 }
+          let(:direct) {[
+              {:id => well_aliquot_id+0, :action=> "delete", :model => "well_aliquot"},
+              {:id => well_aliquot_id+1, :action=> "delete", :model => "well_aliquot"},
+              {:id => well_aliquot_id+2, :action=> "delete", :model => "well_aliquot"},
+              {:id => well_aliquot_id+3, :action=> "delete", :model => "well_aliquot"},
+              {:id => well_aliquot_id+4, :action=> "delete", :model => "well_aliquot"},
+              {:id => aliquot_id+0, :action=> "delete", :model => "aliquot"},
+              {:id => aliquot_id+1, :action=> "delete", :model => "aliquot"},
+              {:id => aliquot_id+2, :action=> "delete", :model => "aliquot"},
+              {:id => aliquot_id+3, :action=> "delete", :model => "aliquot"},
+              {:id => aliquot_id+4, :action=> "delete", :model => "aliquot"},
+            ]
+          }
+          let(:related) { [
+              {:id => plate_id, :action=> "update", :model => "plate"},
+          ] }
+          it_behaves_like "retrieving direct and related revisions"
+        end
+        context "session 3" do
+          let(:session_id) { session_id3 }
+          let(:direct) {[
+              {:id => aliquot_id+5, :action=> "update", :model => "aliquot"},
+            ]
+          }
+          let(:related) { [
+              {:id => plate_id, :action=> "update", :model => "plate"},
+              {:id => well_aliquot_id+5, :action=> "insert", :model => "well_aliquot"},
+          ] }
+          it_behaves_like "retrieving direct and related revisions"
+        end
+        context "session 4" do
+          let(:session_id) { session_id4 }
+          let(:direct) {[
+              {:id => well_aliquot_id+8, :action=> "update", :model => "well_aliquot"}
+            ]
+          }
+          let(:related) { [
+              {:id => plate_id, :action=> "update", :model => "plate"},
+              {:id => plate_id2, :action=> "insert", :model => "plate"},
+          ] }
+          it_behaves_like "retrieving direct and related revisions"
+        end
+
+
+      end
+
+      context "retrieves all resources" do
+        #it_behaves_like "retrieving all modified resources", session_id1, [[:name, 1], [:plate, plate_id]]
+        #it_behaves_like "retrieving all modified resources", session_id2, [[:name, 1], [:plate, plate_id]]
+        #it_behaves_like "retrieving all modified resources", session_id3, [[:name, 2], [:plate, plate_id]]
+      end
     end
+
   end
 end
