@@ -149,7 +149,7 @@ DEPENDENCIES
   hashdiff
   jdbc-mysql
   jdbc-sqlite3
-  lims-api (~> 3.2.0.rc1)!
+  lims-api (~> 3.2.1.rc1)!
   lims-core (~> 3.2.0.rc1)!
   lims-exception-notifier-app (~> 0.1)!
   lims-laboratory-app!
