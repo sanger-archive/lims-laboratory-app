@@ -6,6 +6,7 @@ require 'models/laboratory/tube_rack_shared'
 # Model requirements
 require 'lims-laboratory-app/laboratory/tube_rack/update_tube_rack'
 require 'lims-laboratory-app/laboratory/tube_rack'
+require 'models/laboratory/location_shared'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -13,6 +14,7 @@ module Lims::LaboratoryApp
       include_context "for application", "test update tube rack"
       include_context "tube_rack factory"
       include_context "create object"
+      include_context "define location"
 
       let!(:store) { Lims::Core::Persistence::Store.new }
       let(:tube_rack) { new_tube_rack_with_samples(5, nil, 100, 5) }
@@ -26,6 +28,7 @@ module Lims::LaboratoryApp
           a.aliquot_type = aliquot_type
           a.aliquot_quantity = aliquot_quantity
           a.tubes = tubes
+          a.location = location
         end
       }
       subject { action }
@@ -66,6 +69,10 @@ module Lims::LaboratoryApp
                 end
               end
             end
+          end
+
+          it "changes the tube rack shipping location" do
+            updated_tube_rack.location.should == location
           end
 
           it "has the new tubes at the right location" do

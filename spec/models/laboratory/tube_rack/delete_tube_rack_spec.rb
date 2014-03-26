@@ -2,6 +2,7 @@
 require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
 require 'models/laboratory/tube_rack_shared'
+require 'models/laboratory/location_shared'
 
 # Model requirements
 require 'lims-laboratory-app/laboratory/tube_rack/delete_tube_rack'
@@ -13,6 +14,7 @@ module Lims::LaboratoryApp
       include_context "for application", "test delete tube rack"
       include_context "tube_rack factory"
       include_context "create object"
+      include_context "define location"
 
       let!(:store) { Lims::Core::Persistence::Store.new }
       let(:tube_rack) { new_tube_rack_with_samples(5, nil, 100, 5) }

@@ -1,7 +1,7 @@
 require 'lims-api/core_action_resource'
-require 'lims-api/resources/container_to_uuid'
 
 require 'lims-laboratory-app/laboratory/tube'
+require 'lims-laboratory-app/laboratory/container/container_to_uuid'
 
 module Lims::LaboratoryApp
   module Laboratory
@@ -9,7 +9,7 @@ module Lims::LaboratoryApp
       class TransferTubesToTubes
         class TransferTubesToTubesResource < Lims::Api::CoreActionResource
 
-          include Lims::Api::Resources::ContainerToUuid
+          include Lims::LaboratoryApp::Laboratory::Container::ContainerToUuid
 
         end
       end

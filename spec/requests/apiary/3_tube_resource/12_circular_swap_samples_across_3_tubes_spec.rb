@@ -54,8 +54,8 @@ describe "circular_swap_samples_across_3_tubes", :tube => true do
     "swap_samples": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": [
             {
                 "tube": {
@@ -66,6 +66,7 @@ describe "circular_swap_samples_across_3_tubes", :tube => true do
                         "delete": "http://example.org/11111111-2222-3333-1111-111111111111"
                     },
                     "uuid": "11111111-2222-3333-1111-111111111111",
+                    "location": null,
                     "type": null,
                     "max_volume": null,
                     "aliquots": [
@@ -96,6 +97,7 @@ describe "circular_swap_samples_across_3_tubes", :tube => true do
                         "delete": "http://example.org/11111111-2222-3333-1111-222222222222"
                     },
                     "uuid": "11111111-2222-3333-1111-222222222222",
+                    "location": null,
                     "type": null,
                     "max_volume": null,
                     "aliquots": [
@@ -126,6 +128,7 @@ describe "circular_swap_samples_across_3_tubes", :tube => true do
                         "delete": "http://example.org/11111111-2222-3333-1111-333333333333"
                     },
                     "uuid": "11111111-2222-3333-1111-333333333333",
+                    "location": null,
                     "type": null,
                     "max_volume": null,
                     "aliquots": [

@@ -9,6 +9,8 @@ require 'lims-api/message_bus'
 require 'lims-core/persistence/search/all'
 require 'lims-api/persistence/search_resource'
 
+require 'lims-laboratory-app/context_service'
+
 module Lims
   module LaboratoryApp
     # Your code goes here...

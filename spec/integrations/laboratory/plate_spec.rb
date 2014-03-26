@@ -24,6 +24,7 @@ shared_context "expect plate JSON" do
       "number_of_rows" => number_of_rows,
       "number_of_columns" => number_of_columns,
       "type" => plate_type,
+      "location" => location,
       "wells" => well_hash}
     }
   }
@@ -40,6 +41,7 @@ shared_context "expect plate JSON with labels" do
       "number_of_rows" => number_of_rows,
       "number_of_columns" => number_of_columns,
       "type" => plate_type,
+      "location" => location,
       "wells" => well_hash,
       "labels" => actions_hash.merge(labellable_uuid_hash).merge(labels_hash)}
     }
@@ -47,13 +49,17 @@ shared_context "expect plate JSON with labels" do
 end
 
 shared_context "parameters for empty plate" do
-  let (:parameters) { { :plate => dimensions } }
+  let (:parameters) { { :plate => dimensions.merge(:location => location) } }
   let(:plate_type) { nil }
   include_context "expect empty plate"
 end
 
 shared_context "for plate with samples" do
-  let (:parameters) { { :plate => dimensions.merge({:wells_description => wells_description, :type => plate_type}) } }
+  let(:parameters) { { :plate => dimensions.merge({
+    :wells_description => wells_description, 
+    :type => plate_type,
+    :location => location}) }
+  }
   include_context "with saved sample"
   include_context "with filled aliquots"
   let(:aliquot_type) { 'sample' }
@@ -70,7 +76,8 @@ shared_examples_for "with saved plate with samples" do
   let(:plate_type) { "plate type" }
   subject { described_class.new(:number_of_rows => number_of_rows,
                                 :number_of_columns => number_of_columns,
-                                :type => plate_type) }
+                                :type => plate_type,
+                                :location => location) }
   let (:sample_location) { :C5 }
   include_context "with sample in location"
 end
@@ -100,6 +107,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
   include_context "JSON"
   include_context "use generated uuid"
   let(:model) { "plates" }
+  let(:location) { nil }
 
   context "#create" do
     include_context "has standard dimensions"
@@ -175,6 +183,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
             "number_of_rows" => number_of_rows,
             "number_of_columns" => number_of_columns,
             "type" => plate_type,
+            "location" => location,
             "wells"=>{
               "A1"=>[],"A2"=>[],"A3"=>[],"A4"=>[],"A5"=>[],"A6"=>[],"A7"=>[],"A8"=>[],"A9"=>[],"A10"=>[],"A11"=>[],"A12"=>[],
               "B1"=>[],"B2"=>[],"B3"=>[],"B4"=>[],"B5"=>[],"B6"=>[],"B7"=>[],"B8"=>[],"B9"=>[],"B10"=>[],"B11"=>[],"B12"=>[],
@@ -230,7 +239,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
       context "to an existing target" do
         let(:target_uuid) {     '11111111-2222-3333-1111-000000000000'.tap do |uuid|
           store.with_session do |session|
-            plate = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_rows => 8, :number_of_columns => 12, :type => plate_type)
+            plate = Lims::LaboratoryApp::Laboratory::Plate.new(:number_of_rows => 8, :number_of_columns => 12, :type => plate_type, :location => location)
             set_uuid(session, plate, uuid)
           end
         end}
@@ -265,8 +274,8 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
               target_url = "http://example.org/#{target_uuid}"
               {:plate_transfer =>
                 {:actions => {},
-                  :user => "user",
-                  :application => "application",
+                  :user => "user@example.com",
+                  :application => "application_id",
                   :result => { "plate" => { "actions" => {"read" => target_url,
                     "create" => target_url,
                     "update" => target_url,
@@ -275,6 +284,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
                     "type" => plate_type,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "wells"=> target_wells}
                   },
                   :source => {"plate" => {"actions" => {"read" => source_url,
@@ -285,6 +295,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
                     "type" => plate_type,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "wells"=> source_wells}},
                   :target => { "plate" => { "actions" => {"read" => target_url,
                     "create" => target_url,
@@ -294,6 +305,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
                     "type" => plate_type,
                     "number_of_rows" => number_of_rows,
                     "number_of_columns" => number_of_columns,
+                    "location" => location,
                     "wells"=> target_wells}},
                     :transfer_map => { "C5" => "B2" },
                     "aliquot_type" => aliquot_type
@@ -346,8 +358,8 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
           source_url = "http://example.org/#{uuid}"
           { :transfer_wells_to_tubes =>
             {:actions => {},
-            :user => "user",
-            :application => "application",
+            :user => "user@example.com",
+            :application => "application_id",
             :plate => {"plate" => {"actions" => {"read" => source_url,
               "update" => source_url,
               "delete" => source_url,
@@ -356,6 +368,7 @@ describe Lims::LaboratoryApp::Laboratory::Plate do
               "number_of_rows" => number_of_rows,
               "number_of_columns" => number_of_columns,
               "type" => plate_type,
+              "location" => location,
               "wells"=> source_wells}},
             :result => { "C5" => tube_uuid },
             :well_to_tube_map => { "C5" => tube_uuid },

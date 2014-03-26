@@ -37,8 +37,8 @@ h[:response_header] << 'Content-Type: application/json'
 h[:response]=<<EOD
 { "plate_transfer": {
     "actions": {},
-    "user": "user",
-    "application": "application",
+    "user": "user@example.com",
+    "application": "application_id",
     "result": {
         "plate": {
             "actions": {
@@ -51,6 +51,7 @@ h[:response]=<<EOD
             "number_of_rows": 8,
             "number_of_columns": 12,
             "type": "target plate type",
+            "location": null,
             "wells": {
                 "A1": [], "A2": [], "A3": [], "A4": [], "A5": [], "A6": [], "A7": [], "A8": [], "A9": [], "A10": [], "A11": [], "A12": [], 
                 "B1": [], 
@@ -89,6 +90,7 @@ h[:response]=<<EOD
         "number_of_rows": 8,
         "number_of_columns": 12,
         "type": "source plate type",
+        "location": null,
         "wells": {
                 "A1": [], "A2": [], "A3": [], "A4": [], "A5": [], "A6": [], "A7": [], "A8": [], "A9": [], "A10": [], "A11": [], "A12": [], 
                 "B1": [], "B2": [], "B3": [], "B4": [], "B5": [], "B6": [], "B7": [], "B8": [], "B9": [], "B10": [], "B11": [], "B12": [], 
@@ -128,6 +130,7 @@ h[:response]=<<EOD
         "number_of_rows": 8,
         "number_of_columns": 12,
         "type": "target plate type",
+        "location": null,
         "wells": {
                 "A1": [], "A2": [], "A3": [], "A4": [], "A5": [], "A6": [], "A7": [], "A8": [], "A9": [], "A10": [], "A11": [], "A12": [], 
                 "B1": [], 

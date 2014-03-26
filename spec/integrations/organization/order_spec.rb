@@ -21,7 +21,8 @@ module Lims::LaboratoryApp
             :uuid => uuid, 
             :creator => {
               :actions => {:read => user_url, :create => user_url, :update => user_url, :delete => user_url},
-              :uuid => user_uuid 
+              :uuid => user_uuid ,
+              :email => user_email
             },
             :pipeline => order_pipeline,
             :status => order_status,
@@ -65,7 +66,7 @@ module Lims::LaboratoryApp
 
     let(:user_uuid) { "66666666-2222-4444-9999-000000000000".tap do |uuid|
       store.with_session do |session|
-        user = Lims::LaboratoryApp::Organization::User.new
+        user = Lims::LaboratoryApp::Organization::User.new(:email => user_email)
         set_uuid(session, user, uuid)
       end
     end
@@ -112,7 +113,7 @@ module Lims::LaboratoryApp
 
   shared_context "setup order" do |*events|
     let(:order) { 
-      described_class.new(:creator => Organization::User.new(), :study => Organization::Study.new()).tap { |o| 
+      described_class.new(:creator => Organization::User.new(:email => user_email), :study => Organization::Study.new()).tap { |o| 
         if events
           events.each do |event|
             o.send(event)
@@ -190,7 +191,12 @@ module Lims::LaboratoryApp
 
 
   describe Organization::Order do
-    include_context "use core context service"
+    def self.user_email 
+      'creator@example.com'
+    end
+    let(:user_email) { self.class.user_email }
+
+    include_context "use core context service", user_email
     include_context "JSON"
 
     context "#create" do
@@ -198,7 +204,7 @@ module Lims::LaboratoryApp
 
       context "with empty parameters" do
         let(:url) { "/actions/create_order" }
-        let(:parameters) { {"create_order" => []} }
+        let(:parameters) { {"create_order" => {} } }
         let(:expected_json) { {"errors" => {
           "study" => [
             "Study must not be blank"

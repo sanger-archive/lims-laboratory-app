@@ -2,6 +2,7 @@
 require 'models/actions/spec_helper'
 require 'models/actions/action_examples'
 require 'models/laboratory/container_like_asset_shared'
+require 'models/laboratory/location_shared'
 
 require 'models/persistence/sequel/store_shared'
 #Model requirements
@@ -14,6 +15,7 @@ module Lims::LaboratoryApp
   module Laboratory
     describe Plate::PlateTransfer, :plate => true, :transfer => true, :laboratory => true, :persistence => true, :sequel => true do
       include_context "container-like asset factory"
+      include_context "define location"
         let(:user) { double(:user) }
         let(:application) { "Test create plate" }
       def self.should_transfer 

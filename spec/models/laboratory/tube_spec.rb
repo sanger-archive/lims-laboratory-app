@@ -1,5 +1,6 @@
 # Spec requirements
 require 'models/laboratory/spec_helper'
+require 'models/laboratory/location_shared'
 require 'models/laboratory/located_examples'
 require 'models/laboratory/receptacle_examples'
 require 'models/labels/labellable_examples'
@@ -25,6 +26,8 @@ module Lims::LaboratoryApp::Laboratory
     it_can_assign :type
     it_can_assign :max_volume
 
+    it_behaves_like "can have a location"
+
     it "sets a type" do
       type = double(:type)
       subject.type = type
@@ -36,5 +39,6 @@ module Lims::LaboratoryApp::Laboratory
       subject.max_volume = max_volume
       subject.max_volume.should == max_volume
     end
+
   end
 end

@@ -6,6 +6,7 @@ module Lims::LaboratoryApp
     # A user. Anybody that can log into to the system.
     class User
       include Lims::Core::Resource
+      attribute :email, String
     end
   end
 end

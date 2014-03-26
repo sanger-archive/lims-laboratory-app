@@ -38,8 +38,8 @@ describe "transfer_content_from_a_source_plate_to_a_target_plate", :plate => tru
     "plate_transfer": {
         "actions": {
         },
-        "user": "user",
-        "application": "application",
+        "user": "user@example.com",
+        "application": "application_id",
         "result": {
             "plate": {
                 "actions": {
@@ -52,6 +52,7 @@ describe "transfer_content_from_a_source_plate_to_a_target_plate", :plate => tru
                 "number_of_rows": 8,
                 "number_of_columns": 12,
                 "type": "target plate type",
+                "location": null,
                 "wells": {
                     "A1": [
 
@@ -369,6 +370,7 @@ describe "transfer_content_from_a_source_plate_to_a_target_plate", :plate => tru
                 "number_of_rows": 8,
                 "number_of_columns": 12,
                 "type": "source plate type",
+                "location": null,
                 "wells": {
                     "A1": [
 
@@ -687,6 +689,7 @@ describe "transfer_content_from_a_source_plate_to_a_target_plate", :plate => tru
                 "number_of_rows": 8,
                 "number_of_columns": 12,
                 "type": "target plate type",
+                "location": null,
                 "wells": {
                     "A1": [
 

@@ -75,8 +75,14 @@ module Lims
             it_can_not_be_modified :iteration
             it_can_not_be_modified :uuid
 
-            it "can't no be reset" do
-              subject.reset.should == false
+            it "can reset" do
+              subject.reset.should == true
+            end
+
+            it "increments iteration when started after reset" do
+              subject.reset
+              subject.start
+              subject.iteration.should == 1
             end
           end
 
@@ -93,15 +99,46 @@ module Lims
               subject.complete.should == true
             end
 
+            it "can reset" do
+              subject.reset.should == true
+            end
+
+            it "can cancel" do
+              subject.cancel.should == true
+            end
+
+            context "cancelled" do
+              before(:each) { subject.cancel }
+              its(:status) { should == "cancelled" }
+              its(:cancelled?) { should be_true }
+
+              it "can reset" do
+                subject.reset.should == true
+                subject.status.should == "pending"
+              end
+
+              it "increments iteration when started" do
+                subject.reset
+                subject.start
+                subject.iteration.should == 2
+              end
+            end
+
             context "failed" do
               before(:each) { subject.fail }
+              its(:status) { should == "failed" }
+              its(:failed?) { should be_true }
+
               it "can be reset to pending" do
                 subject.reset.should == true
+                subject.status.should == "pending"
               end
 
               it "can be restarted" do
                 subject.start.should == true
+                subject.status.should == "in_progress"
               end
+
               it "increments iteration when started" do
                 subject.reset
                 subject.start
@@ -127,8 +164,49 @@ module Lims
             it_can_not_be_modified :iteration
             it_can_not_be_modified :uuid
 
-            it "can't be reset" do
-              subject.reset.should == false
+            it "can be reseted" do
+              subject.reset.should == true
+              subject.status.should == "pending"
+            end
+
+            it "can be reused" do
+              subject.reuse.should == true
+              subject.status.should == "done"
+            end
+          end
+        end
+        context "SQL persistance" do
+      include_context "use core context service"
+          context "within an order" do
+            let(:order) {
+                 Order.new.tap do |order|
+                item = Order::Item.new
+                order.add_item(:source, item)
+              end
+            }
+            it "can be saved" do
+              store.with_session do |session|
+                session << order
+              end
+            end
+            it "can be modified" do
+              order_id = save(order)
+
+              expect {
+              store.with_session do |session|
+                order = session.order[order_id]
+                item = order[:source].first
+                item.complete
+              end
+            }.to change {store.database[:items].count}.by(0)
+
+              # check that no items have been created
+              store.with_session do |session|
+                order = session.order[order_id]
+                order[:source].size.should == 1
+                item = order[:source].first
+                item.done?.should == true
+              end
             end
           end
         end

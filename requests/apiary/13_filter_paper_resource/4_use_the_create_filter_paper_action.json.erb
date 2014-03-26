@@ -21,8 +21,8 @@ h[:response]=<<EOD
 { "create_filter_paper": {
     "actions": {
     },
-    "user": "user",
-    "application": "application",
+    "user": "user@example.com",
+    "application": "application_id",
     "result": {
         "filter_paper": {
             "actions": {
@@ -32,6 +32,7 @@ h[:response]=<<EOD
                 "create": "http://example.org/11111111-2222-3333-4444-555555555555"
             },
             "uuid": "11111111-2222-3333-4444-555555555555",
+            "location": null,
             "aliquots": [
                 {
                  "sample": {
@@ -53,6 +54,7 @@ h[:response]=<<EOD
         "uuid": "11111111-2222-3333-4444-555555555555"
     },
     "labels": null,
+    "location": null,
     "aliquots": 
        [{ "sample_uuid": "11111111-2222-3333-4444-666666666666", "type": "DNA", "quantity": 2 }]
 }}
